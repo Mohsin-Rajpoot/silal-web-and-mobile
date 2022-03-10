@@ -21,7 +21,7 @@ const login = () => {
             <Text style={styles.phoneNumberText}>Password</Text>
             <TextInput placeholderText="Enter password" />
           </View>
-        ) :active ==1? (
+        ) : active == 1 ? (
           <View>
             <Text style={styles.phoneNumberText}>Phone number</Text>
             <PhoneInput
@@ -33,7 +33,9 @@ const login = () => {
               defaultCode="US"
             />
           </View>
-        ):<View/>}
+        ) : (
+          <View />
+        )}
       </View>
 
       <Button name="Continue" />
