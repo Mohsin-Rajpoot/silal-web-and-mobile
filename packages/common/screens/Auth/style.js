@@ -1,11 +1,6 @@
 import { ScaledSheet } from "react-native-size-matters";
 import colors from "../../assets/colors";
 const styles = ScaledSheet.create({
-  heading: {
-    alignSelf: "center",
-    color: colors.textPrimary,
-    fontSize: "14@s",
-  },
   innerContainer: {
     width: "85%",
     alignSelf: "center",
@@ -20,7 +15,7 @@ const styles = ScaledSheet.create({
     fontSize: "12@s",
   },
   textContainer: {
-    backgroundColor: colors.white,
+    backgroundColor: "transparent",
     borderColor: colors.gray,
     borderWidth: "1@s",
     borderTopRightRadius: "5@s",
@@ -41,11 +36,11 @@ const styles = ScaledSheet.create({
     alignSelf: "center",
     color: colors.textPrimary,
   },
-  nestedBottomText:{
+  nestedBottomText: {
     fontSize: "14@s",
     alignSelf: "center",
     color: colors.primary,
-  }
+  },
 });
 
 export default styles;
