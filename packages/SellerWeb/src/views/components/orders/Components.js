@@ -225,6 +225,39 @@ const OrderHistory = () => {
     )
 }
 
+const PreOrder = ({
+    orderNumber,
+    time,
+}) => {
+    return (
+        <PreOrderStyled>
+            <div className="between">
+                <div className="d-flex">
+                    <Link to="/order-detail">
+                        <h1>Order ID <span>{orderNumber}</span></h1>
+                    </Link>
+                </div>
+                <h2>Delivery by {time}</h2>
+            </div>
+            <div className="order-detail">
+                <span>2</span>
+                <img src={xIcon} alt="x" />
+                <span>French fries</span>
+            </div>
+            <div className="order-detail">
+                <span>1</span>
+                <img src={xIcon} alt="x" />
+                <span>Cheesecakes with sour cream and citrus hone</span>
+            </div>
+            <span className="more">3 more</span>
+            <div className="d-flex">
+                <Button disabled>Decline</Button>
+                <Button>Move to current orders</Button>
+            </div>
+        </PreOrderStyled>
+    )
+}
+
 const ReceivedOrderStyled = styled.div`
     background: #FFFFFF;
     border-radius: 5px;
@@ -260,7 +293,7 @@ const ReceivedOrderStyled = styled.div`
             display: block;
         }
         span {
-            font-size: 16px;
+            font-size: 15px;
             letter-spacing: -0.408px;
             color: #002733;
         }
@@ -403,6 +436,11 @@ const OrderIdMain = styled.div`
     display: flex;
     align-items: center;
     margin: 27px 0 11px;
+    button {
+        border: none;
+        background-color: transparent;
+        padding: 0;
+    }
     svg {
         margin-right: 15px;
     }
@@ -675,6 +713,33 @@ const OrderHistoryStyled = styled.div`
     }
 `;
 
+const PreOrderStyled = styled(ReceivedOrderStyled)`
+    .between {
+        margin-bottom: 20px;
+        h2 {
+            background: rgba(242, 163, 65, 0.15);
+            border-radius: 4px;
+            padding: 5px;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: -0.408px;
+            text-transform: uppercase;
+            color: #F2A341;
+        }
+    }
+    button {
+        margin-top: 15px;
+        &:first-of-type {
+            flex: 1;
+            max-width: 200px;
+            margin-right: 5px;
+        }
+        &:last-of-type {
+            flex: 2;
+        }
+    }
+`;
+
 export {
     ReceivedOrder,
     AcceptedOrder,
@@ -682,6 +747,7 @@ export {
     OrderListItem,
     OrderDetails,
     OrderHistory,
+    PreOrder,
     OrderListMain,
     PickupCard,
     OrderIdMain,

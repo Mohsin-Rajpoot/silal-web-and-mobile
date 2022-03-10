@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
 import {
     OrderIdMain,
@@ -19,12 +19,15 @@ import {
 import { orderListData } from './DummyData'
 
 const OrderDetail = () => {
+    const history = useHistory()
+    console.log(history)
+
     return (
         <>
             <OrderIdMain>
-                <Link to="/current-order">
+                <button onClick={history.goBack}>
                     <BackArrow />
-                </Link>
+                </button>
                 <h1>Order ID #247HW9</h1>
             </OrderIdMain>
             <Row>

@@ -41,6 +41,10 @@ const Button = styled.button`
     &:hover {
         background: rgba(90, 179, 169, 0.9);
     }
+    &:disabled {
+        background: rgba(90, 179, 168, 0.5);
+        cursor: inherit;
+    }
 `;
 
 const ButtonText = styled.button`

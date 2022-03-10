@@ -24,13 +24,13 @@ const Nav = ({
                     <Menu />
                 </button>
                 <Link
-                    to="/"
+                    to="/current-order"
                     className={`nav-link-btn ${location.pathname == "/current-order" ? "active" : ""}`}>
                     Current orders
                 </Link>
                 <Link
-                    to="#"
-                    className={`nav-link-btn`}>
+                    to="/pre-order"
+                    className={`nav-link-btn ${location.pathname == "/pre-order" ? "active" : ""}`}>
                     Pre-orders <span>(8)</span>
                 </Link>
                 <Link
