@@ -6,11 +6,12 @@ const styles = ScaledSheet.create({
     alignItems: "center",
   },
   backIconContainer: {
-    width: "45%",
-    alignSelf: "flex-start",
+    alignSelf: "center",
   },
   headingContainer: {
-    alignSelf: "flex-start",
+    flexDirection: "row",
+    flex: 1,
+    justifyContent: "center",
   },
   heading: {
     alignSelf: "flex-start",

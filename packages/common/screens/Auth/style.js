@@ -33,13 +33,43 @@ const styles = ScaledSheet.create({
   },
   bottomText: {
     fontSize: "14@s",
-    alignSelf: "center",
     color: colors.textPrimary,
   },
   nestedBottomText: {
     fontSize: "14@s",
-    alignSelf: "center",
     color: colors.primary,
+  },
+  optStyling: {
+    marginVertical: "30@s",
+    height: "45@s",
+    flexDirection: "row",
+    width: "70%",
+    alignSelf: "center",
+  },
+  optContainer: {
+    borderWidth: "1@s",
+    borderColor: colors.gray,
+    borderRadius: "5@s",
+    height: "45@s",
+  },
+  timerCode: {
+    alignSelf: "center",
+    borderBottomWidth: "1@s",
+    borderBottomColor: colors.gray,
+  },
+  passwordWaring: {
+    flexDirection: "row",
+    alignItems: "center",
+    margin: "3@s",
+  },
+  passwordWarningText:{
+    fontSize:"12@s",
+    color:colors.light_grey,
+    paddingHorizontal:'2@s'
+  },
+  changePassword: {
+    flex: 1,
+    marginTop: "20@s",
   },
 });
 

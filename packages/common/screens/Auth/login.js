@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import LoginSignUpButton from "../../components/native/LoginSignUp";
 import CommonStyle from "../../styles";
@@ -12,7 +12,9 @@ import colors from "../../assets/colors";
 const Login = ({ navigation }) => {
   const [active, setActive] = useState(1);
   const [text, setText] = useState("");
-
+  const goForgerPassword = () => {
+    navigation.navigate("ForgetPassword");
+  };
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
       <HeaderBack name="Login" />
@@ -50,14 +52,30 @@ const Login = ({ navigation }) => {
 
       <Button
         name="Continue"
-        onPress={() => navigation.navigate("Verification")}
+        onPress={() =>
+          navigation.navigate("Verification", {
+            params: {
+              active: active,
+            },
+          })
+        }
       />
-      <Text style={styles.bottomText}>
-        Trouble signing in?{" "}
-        <Text style={styles.nestedBottomText}>
-          {active == 1 ? "Contact Us" : "Forgot password"}{" "}
-        </Text>{" "}
-      </Text>
+      <View
+        style={{ flexDirection: "row", alignSelf: "center", marginVertical: 5 }}
+      >
+        <Text style={styles.bottomText}>Trouble signing in?</Text>
+        <TouchableOpacity
+          activeOpacity={0.6}
+          onPress={() => {
+            active == 2 && goForgerPassword();
+          }}
+        >
+          <Text style={styles.nestedBottomText}>
+            {" "}
+            {active == 1 ? "Contact Us" : "Forgot password"}
+          </Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };

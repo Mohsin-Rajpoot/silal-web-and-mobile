@@ -9,7 +9,7 @@ const styles = ScaledSheet.create({
   phoneNumberInput: {
     height: "47@s",
     width: "100%",
-    backgroundColor:'transparent'
+    backgroundColor: "transparent",
   },
   textInputStyles: {
     alignSelf: "center",
@@ -23,6 +23,11 @@ const styles = ScaledSheet.create({
     paddingHorizontal: "10@s",
     fontSize: "12@s",
     color: colors.black,
+  },
+  CommonView: {
+    width: "85%",
+    alignSelf: "center",
+    flex: 1,
   },
 });
 export default styles;
