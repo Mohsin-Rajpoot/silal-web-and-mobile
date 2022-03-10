@@ -12,6 +12,7 @@ import xIcon from "../../assets/images/svg/x-icon.svg"
 import clock from "../../assets/images/svg/clock.svg"
 import walkIcon from "../../assets/images/svg/walk-icon.svg"
 import locationIcon from "../../assets/images/svg/location-icon.svg"
+import phoneIcon from "../../assets/images/svg/phone-icon.svg"
 import { ReactComponent as Menu } from "../../assets/images/svg/menu.svg"
 import { ReactComponent as Home } from "../../assets/images/svg/home.svg"
 import { ReactComponent as Order } from "../../assets/images/svg/order.svg"
@@ -50,4 +51,5 @@ export {
     locationIcon,
     CycleIcon,
     BackArrow,
+    phoneIcon,
 }

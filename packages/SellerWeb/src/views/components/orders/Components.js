@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { Row, Col } from 'react-bootstrap'
 import {
     Button,
     ButtonText,
@@ -10,6 +11,7 @@ import {
     clock,
     walkIcon,
     locationIcon,
+    phoneIcon,
 } from '../AllImages'
 
 const ReceivedOrder = ({
@@ -149,6 +151,52 @@ const OrderListItem = ({ ListItem }) => {
                 })
             }
         </OrderListItemStyled>
+    )
+}
+
+const OrderDetails = ({
+    number1,
+    number2,
+    address,
+    distance,
+}) => {
+    return (
+        <OrderDetailsStyled>
+            <Row>
+                <Col md={6}>
+                    <h4>customer</h4>
+                    <h2>Olive Johnanson</h2>
+                    <div className="d-flex align-items-center mb-10">
+                        <div className="icon-div blue center">
+                            <img src={phoneIcon} alt="icon" />
+                        </div>
+                        <h3>{number1}</h3>
+                    </div>
+                    <div className="d-flex align-items-center mb-10">
+                        <div className="icon-div purple center">
+                            <img src={locationIcon} alt="icon" />
+                        </div>
+                        <h3>{address}</h3>
+                    </div>
+                </Col>
+                <Col md={6}>
+                    <h4>driver</h4>
+                    <h2>Olive Johnanson</h2>
+                    <div className="d-flex align-items-center mb-10">
+                        <div className="icon-div blue center">
+                            <img src={phoneIcon} alt="icon" />
+                        </div>
+                        <h3>{number2}</h3>
+                    </div>
+                    <div className="d-flex align-items-center mb-10">
+                        <div className="icon-div purple center">
+                            <img src={locationIcon} alt="icon" />
+                        </div>
+                        <h3>{distance}</h3>
+                    </div>
+                </Col>
+            </Row>
+        </OrderDetailsStyled>
     )
 }
 
@@ -474,7 +522,7 @@ const OrderListItemStyled = styled.div`
     .customization {
         display: flex;
         align-items: center;
-        padding-top: 10px;
+        padding: 10px 0;
         &:first-of-type {
             border-top: 1px solid #EBEEEF;
         }
@@ -501,11 +549,48 @@ const OrderListItemStyled = styled.div`
     }
 `;
 
+const OrderDetailsStyled = styled.div`
+    h4 {
+        font-weight: 500;
+        font-size: 15px;
+        text-transform: uppercase;
+        color: #CCD4D6;
+        margin-bottom: 5px;
+    }
+    h2 {
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 120%;
+        color: #000000;
+    }
+    .icon-div {
+        border-radius: 5px;
+        height: 44px;
+        min-width: 44px;
+        width: 44px;
+        margin-right: 10px;
+        &.blue {
+            background: #DEEBFF;
+        }
+        &.purple {
+            background: #EAE6FF;
+        }
+    }
+    h3 {
+        font-weight: normal;
+        font-size: 17px;
+        letter-spacing: -0.408px;
+        color: #000000;
+        margin-bottom: 4px;
+    }
+`;
+
 export {
     ReceivedOrder,
     AcceptedOrder,
     PickupOrder,
     OrderListItem,
+    OrderDetails,
     OrderListMain,
     PickupCard,
     OrderIdMain,
