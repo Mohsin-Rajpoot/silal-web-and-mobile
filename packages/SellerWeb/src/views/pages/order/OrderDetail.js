@@ -7,6 +7,7 @@ import {
     OrderList,
     OrderListItem,
     OrderDetails,
+    OrderHistory,
 } from '../../components/orders/Components'
 import {
     Heading,
@@ -76,7 +77,8 @@ const OrderDetail = () => {
                     </CardStyled>
                     <CardStyled>
                         <Heading>History</Heading>
-                        
+                        <OrderHistory
+                        />
                     </CardStyled>
                 </Col>
             </Row>

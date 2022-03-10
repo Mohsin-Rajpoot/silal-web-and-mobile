@@ -200,6 +200,31 @@ const OrderDetails = ({
     )
 }
 
+const OrderHistory = () => {
+    return (
+        <OrderHistoryStyled>
+            <div className="track-list-main">
+                <div className="track-item active">
+                    <h1>order created</h1>
+                    <p>10.22.2021 14:47</p>
+                </div>
+                <div className="track-item active">
+                    <h1>Order preparation</h1>
+                    <p>10.22.2021 14:47</p>
+                </div>
+                <div className="track-item">
+                    <h1>Order picked</h1>
+                    <p>10.22.2021 14:47</p>
+                </div>
+                <div className="track-item">
+                    <h1>Order delivered</h1>
+                    <p>10.22.2021 14:47</p>
+                </div>
+            </div>
+        </OrderHistoryStyled>
+    )
+}
+
 const ReceivedOrderStyled = styled.div`
     background: #FFFFFF;
     border-radius: 5px;
@@ -585,12 +610,78 @@ const OrderDetailsStyled = styled.div`
     }
 `;
 
+const OrderHistoryStyled = styled.div`
+    .track-list-main {
+        border-left: 2px solid #5AB3A8;
+        margin-left: 10px;
+        .track-item {
+            position: relative;
+            color: #CCD4D6;
+            margin: 0 0 28px 20px;
+            letter-spacing: -0.408px;
+            font-weight: 400;
+            &:before {
+                content:"";
+                position: absolute;
+                top: 4px;
+                left: -25px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: #5AB3A8;
+                z-index: 10;
+            }
+            &:after {
+                content:"";
+                position: absolute;
+                top: 0;
+                left: -31px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: #def0ee;
+                z-index: 1;
+            }
+            &.active {
+                color: #002733;
+                &:before {
+                    top: 0;
+                    left: -31px;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            /* &:last-of-type {
+                padding-top: 4px;
+                &:before {
+                    top: 19px;
+                }
+                &:after {
+                    top: 14px;
+                }
+            } */
+            h1 {
+                font-size: 13px;
+                line-height: 10px;
+                text-transform: uppercase;
+                margin: 0 0 10px 0;
+            }
+            p {
+                font-size: 11px;
+                line-height: 10px;
+                margin: 0;
+            }
+        }
+    }
+`;
+
 export {
     ReceivedOrder,
     AcceptedOrder,
     PickupOrder,
     OrderListItem,
     OrderDetails,
+    OrderHistory,
     OrderListMain,
     PickupCard,
     OrderIdMain,
