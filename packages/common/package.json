@@ -1,5 +1,9 @@
 {
   "name": "@SilalApp/common",
   "version": "1.0.0",
-  "main": "index.js"
+  "main": "index.js",
+  "dependencies": {
+    "react-native-phone-number-input": "^2.1.0",
+    "react-native-size-matters": "^0.4.0"
+  }
 }

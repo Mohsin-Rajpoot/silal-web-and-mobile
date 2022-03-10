@@ -12,7 +12,8 @@ import Order from './src/screens/Order';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-
+import Login from '@SilalApp/common/screens/Auth/login'
+import test from './test'
 const App = ({navigation}) => {
   return (
     <NavigationContainer>
@@ -21,7 +22,7 @@ const App = ({navigation}) => {
         initialRouteName="Home">
         <Tab.Screen
           name="Home"
-          component={Home}
+          component={Login}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({color, size}) => (
