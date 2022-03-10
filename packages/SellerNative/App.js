@@ -8,7 +8,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Home from './src/screens/Home';
 import Clints from './src/screens/Clints';
 import Products from './src/screens/Products';
-import Order from './src/screens/Order';
+import Order from './src/screens/orders/Order';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
