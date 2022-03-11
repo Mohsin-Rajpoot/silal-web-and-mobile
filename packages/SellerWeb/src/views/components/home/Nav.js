@@ -12,7 +12,7 @@ const Nav = ({
 }) => {
     const location = useLocation()
 
-    const sidebarHandler = () => {
+    const sidebarHandler = () => {  
         setSideBar(!sideBar)
     }
 
@@ -59,9 +59,13 @@ export const NavStyled = styled.nav`
         border: none;
         background-color: transparent;
         margin-right: 20px;
+<<<<<<< HEAD
         padding: 0 8px 2px;
         width: 32px;
         height: 32px;
+=======
+        line-height: 1;
+>>>>>>> b62894287e2ebca268f9de269a39ecb8916323f7
         margin-bottom: 15px;
         svg {
             width: 19px;

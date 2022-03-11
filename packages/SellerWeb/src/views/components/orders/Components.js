@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { Row, Col } from 'react-bootstrap'
 import {
     Button,
     ButtonText,
@@ -10,6 +11,7 @@ import {
     clock,
     walkIcon,
     locationIcon,
+    phoneIcon,
 } from '../AllImages'
 
 const ReceivedOrder = ({
@@ -152,6 +154,110 @@ const OrderListItem = ({ ListItem }) => {
     )
 }
 
+const OrderDetails = ({
+    number1,
+    number2,
+    address,
+    distance,
+}) => {
+    return (
+        <OrderDetailsStyled>
+            <Row>
+                <Col md={6}>
+                    <h4>customer</h4>
+                    <h2>Olive Johnanson</h2>
+                    <div className="d-flex align-items-center mb-10">
+                        <div className="icon-div blue center">
+                            <img src={phoneIcon} alt="icon" />
+                        </div>
+                        <h3>{number1}</h3>
+                    </div>
+                    <div className="d-flex align-items-center mb-10">
+                        <div className="icon-div purple center">
+                            <img src={locationIcon} alt="icon" />
+                        </div>
+                        <h3>{address}</h3>
+                    </div>
+                </Col>
+                <Col md={6}>
+                    <h4>driver</h4>
+                    <h2>Olive Johnanson</h2>
+                    <div className="d-flex align-items-center mb-10">
+                        <div className="icon-div blue center">
+                            <img src={phoneIcon} alt="icon" />
+                        </div>
+                        <h3>{number2}</h3>
+                    </div>
+                    <div className="d-flex align-items-center mb-10">
+                        <div className="icon-div purple center">
+                            <img src={locationIcon} alt="icon" />
+                        </div>
+                        <h3>{distance}</h3>
+                    </div>
+                </Col>
+            </Row>
+        </OrderDetailsStyled>
+    )
+}
+
+const OrderHistory = () => {
+    return (
+        <OrderHistoryStyled>
+            <div className="track-list-main">
+                <div className="track-item active">
+                    <h1>order created</h1>
+                    <p>10.22.2021 14:47</p>
+                </div>
+                <div className="track-item active">
+                    <h1>Order preparation</h1>
+                    <p>10.22.2021 14:47</p>
+                </div>
+                <div className="track-item">
+                    <h1>Order picked</h1>
+                    <p>10.22.2021 14:47</p>
+                </div>
+                <div className="track-item">
+                    <h1>Order delivered</h1>
+                    <p>10.22.2021 14:47</p>
+                </div>
+            </div>
+        </OrderHistoryStyled>
+    )
+}
+
+const PreOrder = ({
+    orderNumber,
+    time,
+}) => {
+    return (
+        <PreOrderStyled>
+            <div className="between">
+                <div className="d-flex">
+                    <Link to="/order-detail">
+                        <h1>Order ID <span>{orderNumber}</span></h1>
+                    </Link>
+                </div>
+                <h2>Delivery by {time}</h2>
+            </div>
+            <div className="order-detail">
+                <span>2</span>
+                <img src={xIcon} alt="x" />
+                <span>French fries</span>
+            </div>
+            <div className="order-detail">
+                <span>1</span>
+                <img src={xIcon} alt="x" />
+                <span>Cheesecakes with sour cream and citrus hone</span>
+            </div>
+            <span className="more">3 more</span>
+            <div className="d-flex">
+                <Button disabled>Decline</Button>
+                <Button>Move to current orders</Button>
+            </div>
+        </PreOrderStyled>
+    )
+}
+
 const ReceivedOrderStyled = styled.div`
     background: #FFFFFF;
     border-radius: 5px;
@@ -187,7 +293,11 @@ const ReceivedOrderStyled = styled.div`
             display: block;
         }
         span {
+<<<<<<< HEAD
             font-size: 16px;
+=======
+            font-size: 15px;
+>>>>>>> b62894287e2ebca268f9de269a39ecb8916323f7
             letter-spacing: -0.408px;
             color: #002733;
         }
@@ -330,6 +440,14 @@ const OrderIdMain = styled.div`
     display: flex;
     align-items: center;
     margin: 27px 0 11px;
+<<<<<<< HEAD
+=======
+    button {
+        border: none;
+        background-color: transparent;
+        padding: 0;
+    }
+>>>>>>> b62894287e2ebca268f9de269a39ecb8916323f7
     svg {
         margin-right: 15px;
     }
@@ -474,7 +592,7 @@ const OrderListItemStyled = styled.div`
     .customization {
         display: flex;
         align-items: center;
-        padding-top: 10px;
+        padding: 10px 0;
         &:first-of-type {
             border-top: 1px solid #EBEEEF;
         }
@@ -501,13 +619,149 @@ const OrderListItemStyled = styled.div`
     }
 `;
 
+const OrderDetailsStyled = styled.div`
+    h4 {
+        font-weight: 500;
+        font-size: 15px;
+        text-transform: uppercase;
+        color: #CCD4D6;
+        margin-bottom: 5px;
+    }
+    h2 {
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 120%;
+        color: #000000;
+    }
+    .icon-div {
+        border-radius: 5px;
+        height: 44px;
+        min-width: 44px;
+        width: 44px;
+        margin-right: 10px;
+        &.blue {
+            background: #DEEBFF;
+        }
+        &.purple {
+            background: #EAE6FF;
+        }
+    }
+    h3 {
+        font-weight: normal;
+        font-size: 17px;
+        letter-spacing: -0.408px;
+        color: #000000;
+        margin-bottom: 4px;
+    }
+`;
+
+const OrderHistoryStyled = styled.div`
+    .track-list-main {
+        border-left: 2px solid #5AB3A8;
+        margin-left: 10px;
+        .track-item {
+            position: relative;
+            color: #CCD4D6;
+            margin: 0 0 28px 20px;
+            letter-spacing: -0.408px;
+            font-weight: 400;
+            &:before {
+                content:"";
+                position: absolute;
+                top: 5px;
+                left: -26px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: #5AB3A8;
+                z-index: 10;
+            }
+            &:after {
+                content:"";
+                position: absolute;
+                top: 0;
+                left: -31px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: #def0ee;
+                z-index: 1;
+            }
+            &.active {
+                color: #002733;
+                &:before {
+                    top: 0;
+                    left: -31px;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            /* &:last-of-type {
+                padding-top: 4px;
+                &:before {
+                    top: 19px;
+                }
+                &:after {
+                    top: 14px;
+                }
+            } */
+            h1 {
+                font-size: 13px;
+                line-height: 10px;
+                text-transform: uppercase;
+                margin: 0 0 10px 0;
+            }
+            p {
+                font-size: 11px;
+                line-height: 10px;
+                margin: 0;
+            }
+        }
+    }
+`;
+
+const PreOrderStyled = styled(ReceivedOrderStyled)`
+    .between {
+        margin-bottom: 20px;
+        h2 {
+            background: rgba(242, 163, 65, 0.15);
+            border-radius: 4px;
+            padding: 5px;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: -0.408px;
+            text-transform: uppercase;
+            color: #F2A341;
+        }
+    }
+    button {
+        margin-top: 15px;
+        &:first-of-type {
+            flex: 1;
+            max-width: 200px;
+            margin-right: 5px;
+        }
+        &:last-of-type {
+            flex: 2;
+        }
+    }
+`;
+
+const ArchiveOrderHead = styled.div`
+    
+`;
+
 export {
     ReceivedOrder,
     AcceptedOrder,
     PickupOrder,
     OrderListItem,
+    OrderDetails,
+    OrderHistory,
+    PreOrder,
     OrderListMain,
     PickupCard,
     OrderIdMain,
     OrderList,
+    ArchiveOrderHead,
 }

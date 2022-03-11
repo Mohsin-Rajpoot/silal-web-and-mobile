@@ -24,18 +24,18 @@ const Nav = ({
                     <Menu />
                 </button>
                 <Link
-                    to="/"
+                    to="/current-order"
                     className={`nav-link-btn ${location.pathname == "/current-order" ? "active" : ""}`}>
                     Current orders
                 </Link>
                 <Link
-                    to="#"
-                    className={`nav-link-btn`}>
+                    to="/pre-order"
+                    className={`nav-link-btn ${location.pathname == "/pre-order" ? "active" : ""}`}>
                     Pre-orders <span>(8)</span>
                 </Link>
                 <Link
-                    to="#"
-                    className={`nav-link-btn`}>
+                    to="/archive-order"
+                    className={`nav-link-btn ${location.pathname == "/archive-order" ? "active" : ""}`}>
                     Archive
                 </Link>
             </div>
@@ -53,9 +53,7 @@ export const NavStyled = styled.nav`
         border: none;
         background-color: transparent;
         margin-right: 20px;
-        padding: 0 8px 2px;
-        width: 32px;
-        height: 32px;
+        line-height: 1;
         margin-bottom: 15px;
         svg {
             width: 19px;

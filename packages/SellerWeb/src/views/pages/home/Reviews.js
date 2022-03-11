@@ -16,12 +16,12 @@ import {
 } from '../../components/AllImages'
 
 
-const Reviews = ({ setSideBar }) => {
+const Reviews = ({ setSideBar , sideBar }) => {
     const [dateValue, dateOnChange] = useState(new Date());
 
     return (
         <>
-            <Nav setSideBar={setSideBar} />
+            <Nav setSideBar={setSideBar} sideBar={sideBar}/>
             <RestaurantHeading
                 heading="Restaurant’s name"
                 hours="Peak Hours 12 AM - 14 PM"

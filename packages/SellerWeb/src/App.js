@@ -1,7 +1,7 @@
 import React from "react";
+import Layout from "./routes/Layout";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import GlobalStyle from "./views/components/GlobalStyled";
-import Layout from "@SilalApp/sellerweb/src/routes/Layout";
 
 const App = () => {
   return (
