@@ -20,7 +20,6 @@ import { orderListData } from './DummyData'
 
 const OrderDetail = () => {
     const history = useHistory()
-    console.log(history)
 
     return (
         <>

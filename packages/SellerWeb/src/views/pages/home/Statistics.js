@@ -18,10 +18,10 @@ import {
     dish,
 } from '../../components/AllImages'
 
-const Statistics = ({ setSideBar }) => {
+const Statistics = ({ setSideBar , sideBar }) => {
     return (
         <>
-            <Nav setSideBar={setSideBar} />
+            <Nav setSideBar={setSideBar} sideBar={sideBar} />
             <div className="d-flex">
                 <RestaurantHeading
                     heading="Restaurant’s name"

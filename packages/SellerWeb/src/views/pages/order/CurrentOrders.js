@@ -16,10 +16,10 @@ import {
     CycleIcon,
 } from '../../components/AllImages'
 
-const CurrentOrder = ({ setSideBar }) => {
+const CurrentOrder = ({ setSideBar , sideBar }) => {
     return (
         <>
-            <Nav setSideBar={setSideBar} />
+            <Nav setSideBar={setSideBar} sideBar={sideBar} />
             <Row>
                 <Col lg={5} md={12}>
                     <CardStyled className="bg-grey current-order-card-height">

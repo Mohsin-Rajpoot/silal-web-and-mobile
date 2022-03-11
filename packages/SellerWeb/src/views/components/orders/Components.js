@@ -661,8 +661,8 @@ const OrderHistoryStyled = styled.div`
             &:before {
                 content:"";
                 position: absolute;
-                top: 4px;
-                left: -25px;
+                top: 5px;
+                left: -26px;
                 width: 10px;
                 height: 10px;
                 border-radius: 50%;

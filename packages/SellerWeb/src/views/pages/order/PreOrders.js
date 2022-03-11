@@ -7,10 +7,10 @@ import {
     Heading,
 } from '../../components/Style'
 
-const PreOrders = ({ setSideBar }) => {
+const PreOrders = ({ setSideBar , sideBar }) => {
     return (
         <>
-            <Nav setSideBar={setSideBar} />
+            <Nav setSideBar={setSideBar} sideBar={sideBar} />
             <Row>
                 <Col md={6}>
                     <CardStyled className="bg-grey">

@@ -17,7 +17,6 @@ body {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 14px;
-    padding: 0 20px;
 }
 .theme-clr {
     color: var(--theme-clr);

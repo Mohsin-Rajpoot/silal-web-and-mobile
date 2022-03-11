@@ -21,7 +21,7 @@ import {
     DropdownMenu,
 } from "../../components/AllImages"
 
-const Archive = () => {
+const Archive = ({ setSideBar , sideBar }) => {
     const [canvasShow, setCanvasShow] = useState(false)
     const canvasCloseHandler = () => setCanvasShow(false)
     const canvasShowHanler = () => setCanvasShow(true)
@@ -143,7 +143,7 @@ const Archive = () => {
 
     return (
         <>
-            <NavCustom />
+            <NavCustom setSideBar={setSideBar} sideBar={sideBar} />
             <Tab.Container id="orders-tab-container" defaultActiveKey="all-orders">
                 <div className="between">
                     <ThemeTabs>
