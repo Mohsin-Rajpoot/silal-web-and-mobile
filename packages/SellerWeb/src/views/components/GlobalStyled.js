@@ -1,4 +1,7 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components"
+import {
+    collpaseArrow
+} from './AllImages'
 
 const GlobalStyle = createGlobalStyle`
 :root {
@@ -135,6 +138,14 @@ span {
     font-size: 19px;
     line-height: 28px;
     color: #002733;
+}
+hr {
+    background-color: rgba(0, 39, 51, 0.4);
+}
+.accordion-button::after {
+    background-image: url(${collpaseArrow}) !important;
+    background-size: 13px;
+    background-position: right center;
 }
 `;
 

@@ -11,6 +11,7 @@ import {
     TableSpan,
     FilterBtn,
     DetailText,
+    QtyDetail,
 } from '../../components/UseFullElements'
 import {
     ThemeTabs,
@@ -204,30 +205,73 @@ const Archive = () => {
                                         title="Customer name"
                                         detail="Willson Genemal"
                                     />
+                                    <DetailText
+                                        title="Customer ID"
+                                        detail="133"
+                                    />
+                                    <DetailText
+                                        title="Phone"
+                                        detail="*** *** **** 112"
+                                    />
+                                    <DetailText
+                                        title="Address"
+                                        detail="2715 Ash Dr. San Jose"
+                                    />
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
                                 <Accordion.Header>driver data</Accordion.Header>
                                 <Accordion.Body>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                    est laborum.
+                                    <DetailText
+                                        title="Driver name"
+                                        detail="Willson Genemal"
+                                    />
+                                    <DetailText
+                                        title="Phone"
+                                        detail="(208) 555-0112"
+                                    />
+                                    <DetailText
+                                        title="Delivery time"
+                                        detail="37 minutes"
+                                    />
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="2">
                                 <Accordion.Header>order details</Accordion.Header>
                                 <Accordion.Body>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                    est laborum.
+                                    <DetailText
+                                        title="Order created"
+                                        detail="11.13.2021 17:33"
+                                    />
+                                    <DetailText
+                                        title="Payment"
+                                        detail="$ 13.00"
+                                    />
+                                    <DetailText
+                                        title="Credit card"
+                                        detail="**** **** **** 3782"
+                                    />
+                                    <hr />
+                                    <QtyDetail
+                                        qty="3"
+                                        detail="French fries"
+                                    />
+                                    <QtyDetail
+                                        qty="1"
+                                        detail="Cheesecakes with sour cream and citrus hone"
+                                    />
+                                    <QtyDetail
+                                        qty="1"
+                                        detail="Cheesecakes with sour cream and citrus hone"
+                                    />
+                                    <QtyDetail
+                                        qty="1"
+                                        detail="Cheesecakes with sour cream and citrus hone"
+                                    />
+                                    <QtyDetail
+                                        qty="1"
+                                        detail="Cheesecakes with sour cream and citrus hone"
+                                    />
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
