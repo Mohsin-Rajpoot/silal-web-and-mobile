@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import {
-    FilterIcon
+    FilterIcon,
+    XIcon,
 } from './AllImages'
 
 const RestaurantHeading = ({
@@ -56,6 +57,7 @@ const TableSpanStyled = styled.span`
     padding: 3px 10px;
     font-weight: 500;
     font-size: 11px;
+    height: 20px;
     &.bank {
         background: #FFFAE6;
         color: #FF8B00;
@@ -82,6 +84,10 @@ const TableSpanStyled = styled.span`
     }
     &.cancelled {
         background: #FF5630;
+        color: white;
+    }
+    &.theme-clr {
+        background-color: var(--theme-clr);
         color: white;
     }
 `;
@@ -127,19 +133,53 @@ const DetailText = ({
 }
 
 const DetailTextStyled = styled.div`
+    display: flex;
     span {
-        font-weight: 500;
+        font-weight: 400;
         font-size: 15px;
         line-height: 120%;
         margin-bottom: 10px;
-        margin-right: 10px;
         min-width: 105px;
+        display: block;
         &:first-of-type {
             color: #CCD4D6;
+            margin-right: 10px;
         }
         &:last-of-type {
             color: #002733;
+            flex: 1;
         }
+    }
+`;
+
+const QtyDetail = ({
+    qty,
+    detail
+}) => {
+    return (
+        <QtyDetailStyled>
+            <span>{qty}</span>
+            <XIcon />
+            <span>{detail}</span>
+        </QtyDetailStyled>
+    )
+}
+
+const QtyDetailStyled = styled.div`
+    display: flex;
+    span {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 120%;
+        letter-spacing: -0.408px;
+        color: #002733;
+        margin: 0 0 10px 0;
+        &:last-of-type {
+            flex: 1;
+        }
+    }
+    svg {
+        margin: 6px 13px 10px 13px;
     }
 `;
 
@@ -148,4 +188,5 @@ export {
     TableSpan,
     FilterBtn,
     DetailText,
+    QtyDetail,
 }

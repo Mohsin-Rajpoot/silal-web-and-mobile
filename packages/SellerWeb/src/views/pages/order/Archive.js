@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import NavCustom from '../../components/orders/Nav'
+import DatePicker from 'react-date-picker'
 import {
     Tab,
     Nav,
@@ -11,6 +12,7 @@ import {
     TableSpan,
     FilterBtn,
     DetailText,
+    QtyDetail,
 } from '../../components/UseFullElements'
 import {
     ThemeTabs,
@@ -19,12 +21,14 @@ import {
 } from '../../components/Style'
 import {
     DropdownMenu,
+    CalendarIcon,
 } from "../../components/AllImages"
 
 const Archive = ({ setSideBar , sideBar }) => {
     const [canvasShow, setCanvasShow] = useState(false)
     const canvasCloseHandler = () => setCanvasShow(false)
     const canvasShowHanler = () => setCanvasShow(true)
+    const [dateValue, dateOnChange] = useState(new Date());
 
     const columns = [
         {
@@ -161,6 +165,13 @@ const Archive = ({ setSideBar , sideBar }) => {
                     </ThemeTabs>
                     <div className="d-flex">
                         <FilterBtn click={canvasShowHanler} />
+                        <DatePicker
+                            onChange={dateOnChange}
+                            value={dateValue}
+                            calendarIcon={<CalendarIcon />}
+                            clearIcon={null}
+                            className="btn-style ms-3"
+                        />
                     </div>
                 </div>
                 <Tab.Content>
@@ -192,7 +203,13 @@ const Archive = ({ setSideBar , sideBar }) => {
             </Tab.Container>
             <Offcanvas show={canvasShow} onHide={canvasCloseHandler} placement="end">
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Order ID #247HW9</Offcanvas.Title>
+                    <Offcanvas.Title>
+                        Order ID #247HW9
+                        <TableSpan
+                            classN="theme-clr"
+                            text="Reccuring client"
+                        />
+                    </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <ThemeAccordion>
@@ -204,30 +221,73 @@ const Archive = ({ setSideBar , sideBar }) => {
                                         title="Customer name"
                                         detail="Willson Genemal"
                                     />
+                                    <DetailText
+                                        title="Customer ID"
+                                        detail="133"
+                                    />
+                                    <DetailText
+                                        title="Phone"
+                                        detail="*** *** **** 112"
+                                    />
+                                    <DetailText
+                                        title="Address"
+                                        detail="2715 Ash Dr. San Jose"
+                                    />
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
                                 <Accordion.Header>driver data</Accordion.Header>
                                 <Accordion.Body>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                    est laborum.
+                                    <DetailText
+                                        title="Driver name"
+                                        detail="Willson Genemal"
+                                    />
+                                    <DetailText
+                                        title="Phone"
+                                        detail="(208) 555-0112"
+                                    />
+                                    <DetailText
+                                        title="Delivery time"
+                                        detail="37 minutes"
+                                    />
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="2">
                                 <Accordion.Header>order details</Accordion.Header>
                                 <Accordion.Body>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                    est laborum.
+                                    <DetailText
+                                        title="Order created"
+                                        detail="11.13.2021 17:33"
+                                    />
+                                    <DetailText
+                                        title="Payment"
+                                        detail="$ 13.00"
+                                    />
+                                    <DetailText
+                                        title="Credit card"
+                                        detail="**** **** **** 3782"
+                                    />
+                                    <hr />
+                                    <QtyDetail
+                                        qty="3"
+                                        detail="French fries"
+                                    />
+                                    <QtyDetail
+                                        qty="1"
+                                        detail="Cheesecakes with sour cream and citrus hone"
+                                    />
+                                    <QtyDetail
+                                        qty="1"
+                                        detail="Cheesecakes with sour cream and citrus hone"
+                                    />
+                                    <QtyDetail
+                                        qty="1"
+                                        detail="Cheesecakes with sour cream and citrus hone"
+                                    />
+                                    <QtyDetail
+                                        qty="1"
+                                        detail="Cheesecakes with sour cream and citrus hone"
+                                    />
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>

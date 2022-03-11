@@ -187,6 +187,9 @@ const ThemeAccordion = styled.div`
                 color: #002733;
             }
         }
+        .accordion-body {
+            padding: 20px 0 10px 0;
+        }
     }
 `;
 
