@@ -34,8 +34,8 @@ const Nav = ({
                     Pre-orders <span>(8)</span>
                 </Link>
                 <Link
-                    to="#"
-                    className={`nav-link-btn`}>
+                    to="/archive-order"
+                    className={`nav-link-btn ${location.pathname == "/archive-order" ? "active" : ""}`}>
                     Archive
                 </Link>
             </div>

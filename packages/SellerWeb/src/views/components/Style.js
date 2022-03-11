@@ -122,10 +122,80 @@ const TableStyled = styled.div`
     }
 `;
 
+const ThemeTabs = styled.div`
+    .nav-pills {
+        position: relative;
+        margin-bottom: 10px;
+        &:after {
+            content:"";
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 39, 51, 0.05);
+            height: 4px;
+            width: 100%;
+            border-radius: 4px;
+        }
+        .nav-item {
+            cursor: pointer;
+            a {
+                position: relative;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 140%;
+                text-align: center;
+                letter-spacing: -0.408px;
+                color: #4C6870;
+                margin: 0px;
+                &.active {
+                    color: #002733;
+                    background-color: transparent;
+                    &:before {
+                        content:"";
+                        position: absolute;
+                        bottom: 0px;
+                        left: 0;
+                        right: 0;
+                        background-color: var(--theme-clr);
+                        height: 4px;
+                        width: 100%;
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+    }
+`;
+
+const ThemeAccordion = styled.div`
+    .accordion-item {
+        border: none;
+        margin-bottom: 10px;
+        .accordion-header {
+            button {
+                padding: 8px 10px;
+                background: #F2F4F5;
+                border-radius: 5px;
+                outline: none;
+                box-shadow: none;
+                font-weight: 500;
+                font-size: 13px;
+                line-height: 20px;
+                letter-spacing: -0.408px;
+                text-transform: uppercase;
+                color: #002733;
+            }
+        }
+    }
+`;
+
 export {
     CardStyled,
     Heading,
     Button,
     ButtonText,
-    TableStyled
+    TableStyled,
+    ThemeTabs,
+    ThemeAccordion,
 }

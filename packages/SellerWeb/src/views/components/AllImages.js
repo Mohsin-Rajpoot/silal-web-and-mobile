@@ -24,6 +24,7 @@ import { ReactComponent as CalendarIcon } from "../../assets/images/svg/calendar
 import { ReactComponent as DropdownMenu } from "../../assets/images/svg/dropdown-menu.svg"
 import { ReactComponent as CycleIcon } from "../../assets/images/svg/cycle-icon.svg"
 import { ReactComponent as BackArrow } from "../../assets/images/svg/back-arrow.svg"
+import { ReactComponent as FilterIcon } from "../../assets/images/svg/filter-icon.svg"
 
 export {
     Menu,
@@ -52,4 +53,5 @@ export {
     CycleIcon,
     BackArrow,
     phoneIcon,
+    FilterIcon,
 }

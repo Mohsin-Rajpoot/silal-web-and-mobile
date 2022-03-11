@@ -740,6 +740,10 @@ const PreOrderStyled = styled(ReceivedOrderStyled)`
     }
 `;
 
+const ArchiveOrderHead = styled.div`
+    
+`;
+
 export {
     ReceivedOrder,
     AcceptedOrder,
@@ -752,4 +756,5 @@ export {
     PickupCard,
     OrderIdMain,
     OrderList,
+    ArchiveOrderHead,
 }

@@ -124,6 +124,18 @@ span {
 .mb-5px {
     margin-bottom: 5px;
 }
+.offcanvas-header {
+    padding: 30px 20px 11px 20px;
+}
+.offcanvas-body {
+    padding: 0 20px 20px 20px;
+}
+.offcanvas-title {
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 28px;
+    color: #002733;
+}
 `;
 
 export default GlobalStyle;
