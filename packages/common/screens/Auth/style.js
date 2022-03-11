@@ -1,11 +1,6 @@
 import { ScaledSheet } from "react-native-size-matters";
 import colors from "../../assets/colors";
 const styles = ScaledSheet.create({
-  heading: {
-    alignSelf: "center",
-    color: colors.textPrimary,
-    fontSize: "14@s",
-  },
   innerContainer: {
     width: "85%",
     alignSelf: "center",
@@ -20,7 +15,7 @@ const styles = ScaledSheet.create({
     fontSize: "12@s",
   },
   textContainer: {
-    backgroundColor: colors.white,
+    backgroundColor: "transparent",
     borderColor: colors.gray,
     borderWidth: "1@s",
     borderTopRightRadius: "5@s",
@@ -38,14 +33,44 @@ const styles = ScaledSheet.create({
   },
   bottomText: {
     fontSize: "14@s",
-    alignSelf: "center",
     color: colors.textPrimary,
   },
-  nestedBottomText:{
+  nestedBottomText: {
     fontSize: "14@s",
-    alignSelf: "center",
     color: colors.primary,
-  }
+  },
+  optStyling: {
+    marginVertical: "30@s",
+    height: "45@s",
+    flexDirection: "row",
+    width: "70%",
+    alignSelf: "center",
+  },
+  optContainer: {
+    borderWidth: "1@s",
+    borderColor: colors.gray,
+    borderRadius: "5@s",
+    height: "45@s",
+  },
+  timerCode: {
+    alignSelf: "center",
+    borderBottomWidth: "1@s",
+    borderBottomColor: colors.gray,
+  },
+  passwordWaring: {
+    flexDirection: "row",
+    alignItems: "center",
+    margin: "3@s",
+  },
+  passwordWarningText:{
+    fontSize:"12@s",
+    color:colors.light_grey,
+    paddingHorizontal:'2@s'
+  },
+  changePassword: {
+    flex: 1,
+    marginTop: "20@s",
+  },
 });
 
 export default styles;

@@ -9,6 +9,7 @@ const styles = ScaledSheet.create({
     borderRadius: "5@s",
     overflow: "hidden",
     marginVertical: "10@s",
+    padding: "1@s",
   },
   activeTabContainer: {
     alignItems: "center",
