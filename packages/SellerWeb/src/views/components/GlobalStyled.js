@@ -128,7 +128,7 @@ span {
     margin-bottom: 5px;
 }
 .offcanvas-header {
-    padding: 30px 20px 11px 20px;
+    padding: 30px 20px 18px 20px;
 }
 .offcanvas-body {
     padding: 0 20px 20px 20px;
@@ -146,6 +146,36 @@ hr {
     background-image: url(${collpaseArrow}) !important;
     background-size: 13px;
     background-position: right center;
+}
+.offcanvas-end {
+    width: 438px;
+}
+.offcanvas-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    span {
+        margin-left: 8px;
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+    }
+}
+.btn-style {
+    .react-date-picker__wrapper {
+        padding: 0 10px;
+        height: 40px;
+        font-weight: 500;
+        font-size: 15px;
+        color: #4C6870;
+        background-color: white;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+}
+.react-date-picker__wrapper input {
+    width: 100%;
 }
 `;
 

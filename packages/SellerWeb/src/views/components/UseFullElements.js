@@ -57,6 +57,7 @@ const TableSpanStyled = styled.span`
     padding: 3px 10px;
     font-weight: 500;
     font-size: 11px;
+    height: 20px;
     &.bank {
         background: #FFFAE6;
         color: #FF8B00;
@@ -83,6 +84,10 @@ const TableSpanStyled = styled.span`
     }
     &.cancelled {
         background: #FF5630;
+        color: white;
+    }
+    &.theme-clr {
+        background-color: var(--theme-clr);
         color: white;
     }
 `;

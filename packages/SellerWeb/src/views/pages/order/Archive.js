@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import NavCustom from '../../components/orders/Nav'
+import DatePicker from 'react-date-picker'
 import {
     Tab,
     Nav,
@@ -20,12 +21,14 @@ import {
 } from '../../components/Style'
 import {
     DropdownMenu,
+    CalendarIcon,
 } from "../../components/AllImages"
 
 const Archive = () => {
     const [canvasShow, setCanvasShow] = useState(false)
     const canvasCloseHandler = () => setCanvasShow(false)
     const canvasShowHanler = () => setCanvasShow(true)
+    const [dateValue, dateOnChange] = useState(new Date());
 
     const columns = [
         {
@@ -162,6 +165,13 @@ const Archive = () => {
                     </ThemeTabs>
                     <div className="d-flex">
                         <FilterBtn click={canvasShowHanler} />
+                        <DatePicker
+                            onChange={dateOnChange}
+                            value={dateValue}
+                            calendarIcon={<CalendarIcon />}
+                            clearIcon={null}
+                            className="btn-style ms-3"
+                        />
                     </div>
                 </div>
                 <Tab.Content>
@@ -193,7 +203,13 @@ const Archive = () => {
             </Tab.Container>
             <Offcanvas show={canvasShow} onHide={canvasCloseHandler} placement="end">
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Order ID #247HW9</Offcanvas.Title>
+                    <Offcanvas.Title>
+                        Order ID #247HW9
+                        <TableSpan
+                            classN="theme-clr"
+                            text="Reccuring client"
+                        />
+                    </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <ThemeAccordion>
