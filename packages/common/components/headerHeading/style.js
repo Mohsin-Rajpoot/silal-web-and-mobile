@@ -6,10 +6,12 @@ const styles = ScaledSheet.create({
     lineHeight: "38@s",
     fontWeight: "700",
     color: colors.black,
+    textAlign:"center"
   },
   headingDetail: {
     fontSize: "14@ms",
     color: colors.black,
+    textAlign:"center"
   },
 });
 export default styles;

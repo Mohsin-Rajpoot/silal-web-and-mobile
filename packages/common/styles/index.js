@@ -8,19 +8,26 @@ const styles = ScaledSheet.create({
   },
   phoneNumberInput: {
     height: "47@s",
+    width: "100%",
+    backgroundColor: "transparent",
   },
   textInputStyles: {
     alignSelf: "center",
-    borderWidth: "1@s",
-    borderColor: colors.light_grey,
+    borderWidth: "0.5@s",
+    borderColor: colors.gray,
     width: "100%",
-    borderRadius: "5@s",
+    borderRadius: "10@s",
     height: "40@s",
   },
   inputTextStyle: {
     paddingHorizontal: "10@s",
     fontSize: "12@s",
     color: colors.black,
+  },
+  CommonView: {
+    width: "85%",
+    alignSelf: "center",
+    flex: 1,
   },
 });
 export default styles;

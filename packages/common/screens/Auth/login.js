@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import LoginSignUpButton from "../../components/native/LoginSignUp";
 import CommonStyle from "../../styles";
@@ -7,11 +7,18 @@ import Button from "../../components/native/AuthButton";
 import PhoneInput from "react-native-phone-number-input";
 import TextInput from "../../components/native/TextInput";
 
-const login = () => {
+import HeaderBack from "../../components/native/HeaderBack";
+import colors from "../../assets/colors";
+const Login = ({ navigation }) => {
   const [active, setActive] = useState(1);
+  const [text, setText] = useState("");
+  const goForgerPassword = () => {
+    navigation.navigate("ForgetPassword");
+  };
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
-      <Text style={styles.heading}>Log in</Text>
+      <HeaderBack name="Login" />
+
       <LoginSignUpButton active={active} setActive={setActive} />
       <View style={styles.innerContainer}>
         {active == 2 ? (
@@ -27,10 +34,15 @@ const login = () => {
             <PhoneInput
               containerStyle={CommonStyle.phoneNumberInput}
               textContainerStyle={styles.textContainer}
+              textInputProps={{ fontSize: 12, padding: 0, marginTop: 0 }}
               countryPickerButtonStyle={styles.countyPickerContainer}
-              textInputStyle={styles.codeText}
+              textInputStyle={{ color: colors.gray }}
               codeTextStyle={styles.codeText}
-              defaultCode="US"
+              defaultCode="RU"
+              layout="first"
+              onChangeFormattedText={(value) => setText(value)}
+              value={text}
+              placeholder="Phone Number"
             />
           </View>
         ) : (
@@ -38,15 +50,34 @@ const login = () => {
         )}
       </View>
 
-      <Button name="Continue" />
-      <Text style={styles.bottomText}>
-        Trouble signing in?{" "}
-        <Text style={styles.nestedBottomText}>
-          {/* {active == 1 ? "Contact Us" : "Forgot password"}{" "} */}
-        </Text>{" "}
-      </Text>
+      <Button
+        name="Continue"
+        onPress={() =>
+          navigation.navigate("Verification", {
+            params: {
+              active: active,
+            },
+          })
+        }
+      />
+      <View
+        style={{ flexDirection: "row", alignSelf: "center", marginVertical: 5 }}
+      >
+        <Text style={styles.bottomText}>Trouble signing in?</Text>
+        <TouchableOpacity
+          activeOpacity={0.6}
+          onPress={() => {
+            active == 2 && goForgerPassword();
+          }}
+        >
+          <Text style={styles.nestedBottomText}>
+            {" "}
+            {active == 1 ? "Contact Us" : "Forgot password"}
+          </Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
 
-export default login;
+export default Login;
