@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import basic from "./basic";
 import CustomButton from "./CustomButton";
 import TitleHeading from "./TitleHeading";
@@ -14,3 +15,6 @@ export {
     // Graph,
     // Calender,
 }
+=======
+console.log('hello!')
+>>>>>>> 0a8d3d38eb0321e707dfb2974100cbff9bd494ab

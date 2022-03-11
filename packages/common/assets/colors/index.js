@@ -1,17 +1,18 @@
-const sidebar = '#4C6870'
-const active_bar = '#5AB3A8'
-const nested_list = '#5AB3A8'
-const light_grey = '#CCD4D6'
-const purple = '#8777D9'
-const black = '#002733'
-const light_blue = '#DEEBFF'
-const dark_blue = '#0052CC'
-const light_green = '#34C759'
-const red = '#FF5630'
-const orange = '#FF8F73'
-
-
-export {
-    sidebar, active_bar, nested_list, light_grey, purple,
-    black, light_blue, dark_blue, light_green, red, orange 
-}
+const colors = {
+  sidebar: "#4C6870",
+  primary: "#5AB3A8",
+  light_grey: "#CCD4D6",
+  purple: "#8777D9",
+  black: "#002733",
+  light_blue: "#DEEBFF",
+  dark_blue: "#0052CC",
+  light_green: "#34C759",
+  red: "#FF5630",
+  orange: "#FF8F73",
+  white: "#E5E5E5",
+  grayLight:'#F5F5F5',
+  textWhite:'#FFFFFF',
+  textPrimary:"#4C6870",
+  gray:'#8D8E96'
+};
+export default colors;
