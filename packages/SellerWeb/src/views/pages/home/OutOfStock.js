@@ -7,7 +7,7 @@ import {
     DropdownMenu,
 } from "../../components/AllImages"
 
-const OutOfStock = ({ setSideBar }) => {
+const OutOfStock = ({ setSideBar , sideBar }) => {
     const columns = [
         {
             name: 'Photo',
@@ -92,7 +92,7 @@ const OutOfStock = ({ setSideBar }) => {
 
     return (
         <>
-            <Nav setSideBar={setSideBar} />
+            <Nav setSideBar={setSideBar} sideBar={sideBar} />
             <TableStyled>
                 <TableData
                     cols={columns}

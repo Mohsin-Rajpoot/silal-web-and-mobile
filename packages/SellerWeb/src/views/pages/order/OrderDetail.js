@@ -1,29 +1,36 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
 import {
     OrderIdMain,
     OrderListMain,
     OrderList,
     OrderListItem,
+    OrderDetails,
+    OrderHistory,
 } from '../../components/orders/Components'
 import {
+    Heading,
+    CardStyled,
+} from '../../components/Style'
+import {
     BackArrow,
-    dish,
 } from '../../components/AllImages'
 import { orderListData } from './DummyData'
 
 const OrderDetail = () => {
+    const history = useHistory()
+
     return (
         <>
             <OrderIdMain>
-                <Link to="/current-order">
+                <button onClick={history.goBack}>
                     <BackArrow />
-                </Link>
+                </button>
                 <h1>Order ID #247HW9</h1>
             </OrderIdMain>
             <Row>
-                <Col lg={7}>
+                <Col lg={8}>
                     <OrderListMain>
                         <div className="between flex-wrap">
                             <div className="d-flex align-items-center">
@@ -60,7 +67,21 @@ const OrderDetail = () => {
                         </div>
                     </OrderListMain>
                 </Col>
-                <Col lg={5}>
+                <Col lg={4}>
+                    <CardStyled>
+                        <Heading>Details</Heading>
+                        <OrderDetails
+                            number1="(808) 555-0111"
+                            number2="(808) 555-0111"
+                            address="8502 Preston Rd. Inglewood"
+                            distance="15 min away"
+                        />
+                    </CardStyled>
+                    <CardStyled>
+                        <Heading>History</Heading>
+                        <OrderHistory
+                        />
+                    </CardStyled>
                 </Col>
             </Row>
         </>
