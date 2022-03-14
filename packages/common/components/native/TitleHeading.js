@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import {Calender} from '@SilalApp/common/components/native'
+import { Calender } from '@SilalApp/common/components/native'
 const TitleHeading = ({ navigation }) => {
     return (
         <SafeAreaView>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 35,
         marginVertical: 10,
         // backgroundColor: 'red',
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
     },
     Title: {
         color: '#002733',

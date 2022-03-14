@@ -36,8 +36,8 @@ const Graph = () => {
                 color={"#005d21"}
                 chartConfig={{
                   backgroundColor: '#FFFFFF',
-                  backgroundGradientFrom: '#005d30',
-                  backgroundGradientTo: '#005d21',
+                  backgroundGradientFrom: '#fff',
+                  backgroundGradientTo: '#fff',
                   fillShadowGradientOpacity: 1,
                   // decimalPlaces: 0,
                   color: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
@@ -65,4 +65,4 @@ const styles = StyleSheet.create({
   },
 });
 
-
+ 
