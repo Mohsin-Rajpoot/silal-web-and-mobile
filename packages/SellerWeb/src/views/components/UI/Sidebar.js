@@ -71,8 +71,8 @@ const Sidebar = ({ sideBar, setSideBar }) => {
 
 const SidebarStyled = styled.aside`
   width: 200px;
-  /* height: 100%;
-  min-height: 100vh; */
+  /* height: 100%;*/
+  min-height: 100vh;
   margin-left:-200px;
   transition: 0.3s margin-left ease;
   background: #4c6870;
