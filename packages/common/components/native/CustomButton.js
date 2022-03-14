@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   mainbutton: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 15,
+    padding: 12,
     marginVertical: 5,
     width: 150,
     alignSelf: 'center',
@@ -42,19 +42,18 @@ const styles = StyleSheet.create({
   },
   mainbutton_PRIMARY: {
     backgroundColor: '#5AB3A8',
-    fontFamily:'Poppins-Light'
+    fontFamily: 'Poppins-SemiBold'
   },
   mainbutton_TERTIARY: {},
   buttonText: {
-    
     color: '#fff',
-    fontSize:16,
-    letterSpacing:1
+    fontSize: 16,
+    letterSpacing: 1
 
   },
   buttonText_TERTIARY: {
     color: '#4C6870',
-    fontFamily:'Poppins-Light'
+    fontFamily: 'Poppins-SemiBold'
   },
 
 });

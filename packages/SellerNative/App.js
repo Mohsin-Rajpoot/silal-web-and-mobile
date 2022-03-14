@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -13,10 +13,10 @@ import Order from './src/screens/orders/Order';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-import Login from '@SilalApp/common/screens/Auth/Login'
+import Login from '@SilalApp/common/screens/Auth/login'
 import AuthStack from './src/routes/AuthStack';
 import test from './test'
-const App = ({navigation}) => {
+const App = ({ navigation }) => {
   const navTheme = {
     ...DefaultTheme,
     colors: {
@@ -27,14 +27,18 @@ const App = ({navigation}) => {
   return (
     <NavigationContainer theme={navTheme}>
       <Tab.Navigator
-        screenOptions={{headerShown: false}}
+        screenOptions={{
+          headerShown: false,
+          tabBarActiveTintColor: '#5AB3A8',
+
+        }}
         initialRouteName="Home">
         <Tab.Screen
           name="Home"
-          component={AuthStack}
+          component={Home}
           options={{
             tabBarLabel: 'Home',
-            tabBarIcon: ({color, size}) => (
+            tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="home" color={color} size={size} />
             ),
           }}
@@ -44,7 +48,7 @@ const App = ({navigation}) => {
           component={Order}
           options={{
             tabBarLabel: 'Order',
-            tabBarIcon: ({color, size}) => (
+            tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="bus" color={color} size={size} />
             ),
           }}
@@ -54,7 +58,7 @@ const App = ({navigation}) => {
           component={Clints}
           options={{
             tabBarLabel: 'Clints',
-            tabBarIcon: ({color, size}) => (
+            tabBarIcon: ({ color, size }) => (
               <Ionicons name="people-sharp" color={color} size={size} />
             ),
           }}
@@ -64,7 +68,7 @@ const App = ({navigation}) => {
           component={Products}
           options={{
             tabBarLabel: 'Products',
-            tabBarIcon: ({color, size}) => (
+            tabBarIcon: ({ color, size }) => (
               <Ionicons name="pricetag" color={color} size={size} />
             ),
           }}

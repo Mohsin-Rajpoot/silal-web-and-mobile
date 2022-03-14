@@ -40,22 +40,23 @@ const Calender = () => {
         <View>
             <View
                 style={{
-                    height: 40,
-                    width: 253,
                     justifyContent: 'center',
-                    alignSelf: 'center',
-                    paddingHorizontal: 10,
                     color: '#000000',
-                    flexDirection: 'row'
-                }}>
-                <Text onPress={showDatepicker}>{moment(date).format('MMM DD')} -
+                    flexDirection: 'row',
+                    backgroundColor: '#F2F4F5',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    borderRadius: 5,
+                    padding: 5,
+                    paddingHorizontal: 10,
 
-                </Text>
-                <Text onPress={showDatepicker}>
+                }}>
+                <Text style={{ color: '#4C6870', textAlign: 'center' }} onPress={showDatepicker}>{moment(date).format('MMM DD')} - </Text>
+                <Text style={{ color: '#4C6870', }} onPress={showDatepicker}>
                     {moment(dateSecond).format('MMM DD')}
                 </Text>
                 <MaterialCommunityIcons name="calendar-month-outline"
-                    style={{ fontSize: 28, color: '#4C6870', paddingHorizontal: 25, marginBottom: 5 }} />
+                    style={{ fontSize: 17, color: '#4C6870', paddingHorizontal: 3, }} />
             </View>
             {show && (
                 <DateTimePicker

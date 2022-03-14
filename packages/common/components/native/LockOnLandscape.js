@@ -1,8 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { View } from 'react-native'
+import React from 'react';
 import {
   OrientationLocker,
-  PORTRAIT,
   LANDSCAPE,
 } from 'react-native-orientation-locker';
 
