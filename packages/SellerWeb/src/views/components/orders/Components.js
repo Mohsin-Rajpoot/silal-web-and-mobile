@@ -13,6 +13,7 @@ import {
     locationIcon,
     phoneIcon,
 } from '../AllImages'
+import SwipeableButton from '../SwipeableButton/SwipeableButton'
 
 const ReceivedOrder = ({
     orderNumber,
@@ -45,6 +46,10 @@ const ReceivedOrder = ({
                 <span>Cheesecakes with sour cream and citrus hone</span>
             </div>
             <span className="more">3 more</span>
+            <div className='mt-3'>
+                <SwipeableButton color='#5AB3A8' text='SLIDE TO UNLOCK' />
+            </div>
+            {/* <ReactSwipeButton /> */}
         </ReceivedOrderStyled>
     )
 }

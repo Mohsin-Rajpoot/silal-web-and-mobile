@@ -91,7 +91,7 @@ const CurrentOrder = ({ setSideBar, sideBar }) => {
                                     <Link to="/order-detail" className="text-decoration-none">
                                         <PickupOrder
                                             orderNumber="#247hw9"
-                                            time="1h 50min ago "
+                                            time="1h 50min ago"
                                         />
                                     </Link>
                                 </Col>

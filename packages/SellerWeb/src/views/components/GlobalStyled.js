@@ -37,7 +37,7 @@ body {
     font-weight: 400;
 }
 .f-medium {
-    font-weight: 500;
+    font-weight: 500 !important;
 }
 .f-semibold {
     font-weight: 600;
@@ -195,6 +195,32 @@ hr {
 }
 .react-date-picker__wrapper input {
     width: 100%;
+}
+.btn_theme{
+    background-color:var(--theme-clr);
+    color:#fff;
+    border:0;
+    border-radius:5px;
+
+}
+.modal-546{
+    width:546px;
+    max-width: inherit;
+    .modal-header{
+        border-bottom:0;
+        padding-bottom:0;
+    }
+    .modal-title{
+        font-size: 17px;
+        font-weight:700;
+        span{
+            color:var(--theme-clr);
+        }
+    }
+    .modal-footer{
+        padding-top:0px;
+        border-top:0;
+    }
 }
 `;
 
