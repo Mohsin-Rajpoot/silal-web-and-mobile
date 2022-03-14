@@ -25,7 +25,7 @@ import {
     CalendarIcon,
 } from "../../components/AllImages"
 
-const Archive = ({ setSideBar , sideBar }) => {
+const Archive = ({ setSideBar, sideBar }) => {
     const [canvasShow, setCanvasShow] = useState(false)
     const canvasCloseHandler = () => setCanvasShow(false)
     const canvasShowHanler = () => setCanvasShow(true)
@@ -158,158 +158,160 @@ const Archive = ({ setSideBar , sideBar }) => {
     return (
         <>
             <NavCustom setSideBar={setSideBar} sideBar={sideBar} />
-            <Tab.Container id="orders-tab-container" defaultActiveKey="all-orders">
-                <div className="between">
-                    <ThemeTabs>
-                        <Nav variant="pills">
-                            <Nav.Item>
-                                <Nav.Link eventKey="all-orders">All orders</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link eventKey="completed-orders">Completed</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link eventKey="cancelled-orders">Cancelled</Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-                    </ThemeTabs>
-                    <div className="d-flex">
-                        <FilterBtn click={canvasShowHanler} />
-                        <DatePicker
-                            onChange={dateOnChange}
-                            value={dateValue}
-                            calendarIcon={<CalendarIcon />}
-                            clearIcon={null}
-                            className="btn-style ms-3"
-                        />
+            <div className="archive-content">
+                <Tab.Container id="orders-tab-container" defaultActiveKey="all-orders">
+                    <div className="between">
+                        <ThemeTabs>
+                            <Nav variant="pills">
+                                <Nav.Item>
+                                    <Nav.Link eventKey="all-orders">All orders</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="completed-orders">Completed</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="cancelled-orders">Cancelled</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                        </ThemeTabs>
+                        <div className="d-flex">
+                            <FilterBtn click={canvasShowHanler} />
+                            <DatePicker
+                                onChange={dateOnChange}
+                                value={dateValue}
+                                calendarIcon={<CalendarIcon />}
+                                clearIcon={null}
+                                className="btn-style ms-3"
+                            />
+                        </div>
                     </div>
-                </div>
-                <Tab.Content>
-                    <Tab.Pane eventKey="all-orders">
-                        <TableStyled>
-                            <DataTable
-                                columns={columns}
-                                data={data}
-                                customStyles={customStyles}
-                                pagination
+                    <Tab.Content>
+                        <Tab.Pane eventKey="all-orders">
+                            <TableStyled>
+                                <DataTable
+                                    columns={columns}
+                                    data={data}
+                                    customStyles={customStyles}
+                                    pagination
+                                />
+                            </TableStyled>
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="completed-orders">
+                            <TableStyled>
+                                <DataTable
+                                    columns={columns}
+                                    data={data}
+                                    customStyles={customStyles}
+                                    pagination
+                                />
+                            </TableStyled>
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="cancelled-orders">
+                            <TableStyled>
+                                <DataTable
+                                    columns={columns}
+                                    data={data}
+                                    customStyles={customStyles}
+                                    pagination
+                                />
+                            </TableStyled>
+                        </Tab.Pane>
+                    </Tab.Content>
+                </Tab.Container>
+                <Offcanvas show={canvasShow} onHide={canvasCloseHandler} placement="end">
+                    <Offcanvas.Header closeButton>
+                        <Offcanvas.Title>
+                            Order ID #247HW9
+                            <TableSpan
+                                classN="theme-clr"
+                                text="Reccuring client"
                             />
-                        </TableStyled>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="completed-orders">
-                        <TableStyled>
-                            <DataTable
-                                columns={columns}
-                                data={data}
-                                customStyles={customStyles}
-                                pagination
-                            />
-                        </TableStyled>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="cancelled-orders">
-                        <TableStyled>
-                            <DataTable
-                                columns={columns}
-                                data={data}
-                                customStyles={customStyles}
-                                pagination
-                            />
-                        </TableStyled>
-                    </Tab.Pane>
-                </Tab.Content>
-            </Tab.Container>
-            <Offcanvas show={canvasShow} onHide={canvasCloseHandler} placement="end">
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>
-                        Order ID #247HW9
-                        <TableSpan
-                            classN="theme-clr"
-                            text="Reccuring client"
-                        />
-                    </Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                    <ThemeAccordion>
-                        <Accordion>
-                            <Accordion.Item eventKey="0">
-                                <Accordion.Header>customer data</Accordion.Header>
-                                <Accordion.Body>
-                                    <DetailText
-                                        title="Customer name"
-                                        detail="Willson Genemal"
-                                    />
-                                    <DetailText
-                                        title="Customer ID"
-                                        detail="133"
-                                    />
-                                    <DetailText
-                                        title="Phone"
-                                        detail="*** *** **** 112"
-                                    />
-                                    <DetailText
-                                        title="Address"
-                                        detail="2715 Ash Dr. San Jose"
-                                    />
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item eventKey="1">
-                                <Accordion.Header>driver data</Accordion.Header>
-                                <Accordion.Body>
-                                    <DetailText
-                                        title="Driver name"
-                                        detail="Willson Genemal"
-                                    />
-                                    <DetailText
-                                        title="Phone"
-                                        detail="(208) 555-0112"
-                                    />
-                                    <DetailText
-                                        title="Delivery time"
-                                        detail="37 minutes"
-                                    />
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item eventKey="2">
-                                <Accordion.Header>order details</Accordion.Header>
-                                <Accordion.Body>
-                                    <DetailText
-                                        title="Order created"
-                                        detail="11.13.2021 17:33"
-                                    />
-                                    <DetailText
-                                        title="Payment"
-                                        detail="$ 13.00"
-                                    />
-                                    <DetailText
-                                        title="Credit card"
-                                        detail="**** **** **** 3782"
-                                    />
-                                    <hr />
-                                    <QtyDetail
-                                        qty="3"
-                                        detail="French fries"
-                                    />
-                                    <QtyDetail
-                                        qty="1"
-                                        detail="Cheesecakes with sour cream and citrus hone"
-                                    />
-                                    <QtyDetail
-                                        qty="1"
-                                        detail="Cheesecakes with sour cream and citrus hone"
-                                    />
-                                    <QtyDetail
-                                        qty="1"
-                                        detail="Cheesecakes with sour cream and citrus hone"
-                                    />
-                                    <QtyDetail
-                                        qty="1"
-                                        detail="Cheesecakes with sour cream and citrus hone"
-                                    />
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion>
-                    </ThemeAccordion>
-                </Offcanvas.Body>
-            </Offcanvas>
+                        </Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                        <ThemeAccordion>
+                            <Accordion>
+                                <Accordion.Item eventKey="0">
+                                    <Accordion.Header>customer data</Accordion.Header>
+                                    <Accordion.Body>
+                                        <DetailText
+                                            title="Customer name"
+                                            detail="Willson Genemal"
+                                        />
+                                        <DetailText
+                                            title="Customer ID"
+                                            detail="133"
+                                        />
+                                        <DetailText
+                                            title="Phone"
+                                            detail="*** *** **** 112"
+                                        />
+                                        <DetailText
+                                            title="Address"
+                                            detail="2715 Ash Dr. San Jose"
+                                        />
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                                <Accordion.Item eventKey="1">
+                                    <Accordion.Header>driver data</Accordion.Header>
+                                    <Accordion.Body>
+                                        <DetailText
+                                            title="Driver name"
+                                            detail="Willson Genemal"
+                                        />
+                                        <DetailText
+                                            title="Phone"
+                                            detail="(208) 555-0112"
+                                        />
+                                        <DetailText
+                                            title="Delivery time"
+                                            detail="37 minutes"
+                                        />
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                                <Accordion.Item eventKey="2">
+                                    <Accordion.Header>order details</Accordion.Header>
+                                    <Accordion.Body>
+                                        <DetailText
+                                            title="Order created"
+                                            detail="11.13.2021 17:33"
+                                        />
+                                        <DetailText
+                                            title="Payment"
+                                            detail="$ 13.00"
+                                        />
+                                        <DetailText
+                                            title="Credit card"
+                                            detail="**** **** **** 3782"
+                                        />
+                                        <hr />
+                                        <QtyDetail
+                                            qty="3"
+                                            detail="French fries"
+                                        />
+                                        <QtyDetail
+                                            qty="1"
+                                            detail="Cheesecakes with sour cream and citrus hone"
+                                        />
+                                        <QtyDetail
+                                            qty="1"
+                                            detail="Cheesecakes with sour cream and citrus hone"
+                                        />
+                                        <QtyDetail
+                                            qty="1"
+                                            detail="Cheesecakes with sour cream and citrus hone"
+                                        />
+                                        <QtyDetail
+                                            qty="1"
+                                            detail="Cheesecakes with sour cream and citrus hone"
+                                        />
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            </Accordion>
+                        </ThemeAccordion>
+                    </Offcanvas.Body>
+                </Offcanvas>
+            </div>
         </>
     )
 }

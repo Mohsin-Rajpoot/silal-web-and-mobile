@@ -400,8 +400,8 @@ const PickupCard = styled.div`
     border-radius: 5px;
     margin-bottom: 20px;
     background-color: #4C6870;
-    min-height: 600px;
     height: calc(100vh - 100px);
+    min-height: 450px;
     .body {
         padding: 20px;
         height: calc(100% - 65px);

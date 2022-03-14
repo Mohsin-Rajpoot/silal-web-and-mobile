@@ -44,15 +44,20 @@ const Sidebar = ({ sideBar, setSideBar }) => {
             pathname == "/" ||
             pathname == "/reviews" ||
             pathname == "/out-of-stock"
-              ? "active"
-              : ""
+            ? "active" : ""
           }
         >
           Dashboard
         </Link>
         <Link
           to="/current-order"
-          className={pathname == "/current-order" ? "active" : ""}
+          className={
+            pathname == "/current-order" ||
+            pathname == "/pre-order" ||
+            pathname == "/archive-order" ||
+            pathname == "/order-detail"
+            ? "active" : ""
+          }
         >
           Orders
         </Link>
