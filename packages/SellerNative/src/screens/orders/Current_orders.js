@@ -1,9 +1,11 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity,Dimensions,SafeAreaView ,FlatList, ScrollView} from 'react-native';
+import React,{useState} from 'react';
+import { StyleSheet, Text, View, TouchableOpacity,Dimensions,SafeAreaView ,FlatList, ScrollView,Modal,Pressable} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo'
 import { Image, SvgXml } from 'react-native-svg';
 import Svg, { Path ,Defs,LinearGradient,Stop,Rect,Circle, G} from "react-native-svg"
+
+
 const { width, height } = Dimensions.get("window");
 
 
@@ -11,6 +13,9 @@ export default function Current_orders({
 title,
   navigation
 }) {
+
+  const [modal_timer_visible, set_modal_timer_visible] = useState(false);
+
 
     const data = [
         {
@@ -52,7 +57,7 @@ title,
       {
         id: '7',
         Title: 'Embedded Software full last',
-        SubTitle: 'USA',
+        SubTitle: 'USA 2nd last',
         year: '22/03/2022',
     },
     {
@@ -65,7 +70,7 @@ title,
 
     ];
 
-  const render_received=()=>{
+  const render_received=(item)=>{
     return(
       <TouchableOpacity  style={styles.single_order} >
         <View style={styles.order_header}>
@@ -92,7 +97,7 @@ title,
     )
   }
 
-  const render_accepted=()=>{
+  const render_accepted=(item)=>{
     return(
         <TouchableOpacity  style={styles.single_order} >
             <View style={styles.order_header}>
@@ -119,7 +124,11 @@ title,
               </View>
             </View>
             <View style={styles.order_recve_loc_view}>
-              <Text style={{marginRight:20,color:'#5AB3A8'}}>Change estimation time</Text>
+              <TouchableOpacity 
+              // onPress={()=>set_modal_timer_visible(true)}
+              >
+                <Text style={{marginRight:20,color:'#5AB3A8'}}>Change estimation time</Text>
+              </TouchableOpacity>
               <View style={styles.ready_btn}>
                 <Text style={{color:'white'}}>Ready</Text>
               </View>
@@ -138,27 +147,26 @@ title,
 
   return (
         
-      <View style={{flex:1,}}>
-
-          <View style={{flexDirection:'row',height:height-190}}>
-            <View style={{backgroundColor:'#E5EAEB',width:width/2.65,marginLeft:10,borderRadius:5}}>
+      <View style={{height:'82%',width:'100%'}}>
+          <View style={{flexDirection:'row'}}>
+            <View style={{backgroundColor:'#E5EAEB',width:'40%',marginLeft:10,borderRadius:5}}>
                 <Text style={styles.title}>Received</Text>
                 <FlatList
                     keyExtractor={(item, index) => index.toString()}
                     data={data}
                     renderItem={({ item }) => (
-                      render_received()
+                      render_received(item)
                     )}
                 />
             </View>
 
-            <View style={{backgroundColor:'#E5EAEB',width:width/2.65,marginLeft:10,borderRadius:5}}>
+            <View style={{backgroundColor:'#E5EAEB',width:'40%',marginLeft:10,borderRadius:5}}>
               <Text style={styles.title}>Accepted</Text>
               <FlatList
                   keyExtractor={(item, index) => index.toString()}
                   data={data}
                   renderItem={({ item }) => (
-                    render_accepted()
+                    render_accepted(item)
 
                   )}
               />
@@ -176,6 +184,27 @@ title,
             </View>
 
           </View>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modal_timer_visible}
+            onRequestClose={() => {
+              Alert.alert("Modal has been closed.");
+              set_modal_timer_visible(!modal_timer_visible);
+            }}
+          >
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <Text >Hello World!</Text>
+                <Pressable
+                  // style={[styles.button, styles.buttonClose]}
+                  onPress={() => set_modal_timer_visible(!modal_timer_visible)}
+                >
+                  <Text >Hide Modal</Text>
+                </Pressable>
+              </View>
+            </View>
+          </Modal>
 
       </View>
 
@@ -272,6 +301,25 @@ const styles = StyleSheet.create({
     alignItems:'center',
     paddingVertical:10,
     justifyContent:'center'
-  }
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalView: {
+
+    backgroundColor: "white",
+    padding: 20,
+    // alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
 });
 
