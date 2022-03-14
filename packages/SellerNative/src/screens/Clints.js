@@ -1,6 +1,6 @@
 import { SafeAreaView, StyleSheet, Text, View, Dimensions, TextInput, FlatList, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
-import { Picker } from '@react-native-picker/picker';
+// import { Picker } from '@react-native-picker/picker';
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 
 const { width, height } = Dimensions.get("window");
@@ -136,14 +136,14 @@ const Clints = () => {
           backgroundColor: 'white',
           borderRadius: 5,
         }}>
-          <Picker
+          {/* <Picker
             selectedValue={selectedLanguage}
             onValueChange={(itemValue, itemIndex) =>
               setSelectedLanguage(itemValue)
             }>
             <Picker.Item label="Java" value="java" />
             <Picker.Item label="JavaScript" value="js" />
-          </Picker>
+          </Picker> */}
         </View>
       </View>
 

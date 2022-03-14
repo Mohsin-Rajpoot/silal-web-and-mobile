@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView, TouchableOpacity, Image, StyleSheet, Dimensio
 import Current_orders from './Current_orders'
 import Pre_orders from './Pre_orders'
 import Archive_orders from './Archive_orders'
-import LockOnLandscape from '../../components/LockOnLandscape';
+import LockOnLandscape from '../../components/Dashboard/LockOnLandscape';
 
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
