@@ -13,7 +13,7 @@ const PreOrders = ({ setSideBar , sideBar }) => {
             <Nav setSideBar={setSideBar} sideBar={sideBar} />
             <Row>
                 <Col md={6}>
-                    <CardStyled className="bg-grey">
+                    <CardStyled className="bg-grey content-height">
                         <Heading>For today</Heading>
                         <PreOrder
                             orderNumber="#247hw9"
@@ -30,7 +30,7 @@ const PreOrders = ({ setSideBar , sideBar }) => {
                     </CardStyled>
                 </Col>
                 <Col md={6}>
-                    <CardStyled className="bg-grey">
+                    <CardStyled className="bg-grey content-height">
                         <Heading>This week</Heading>
                         <PreOrder
                             orderNumber="#247hw9"

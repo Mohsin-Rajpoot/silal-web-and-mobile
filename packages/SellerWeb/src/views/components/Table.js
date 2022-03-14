@@ -19,7 +19,7 @@ const TableData = ({ cols, rows }) => {
             data={rows}
             customStyles={customStyles}
             pagination
-            // selectableRows
+            selectableRows
         />
 
     )

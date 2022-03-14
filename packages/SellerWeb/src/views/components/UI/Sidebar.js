@@ -44,15 +44,20 @@ const Sidebar = ({ sideBar, setSideBar }) => {
             pathname == "/" ||
             pathname == "/reviews" ||
             pathname == "/out-of-stock"
-              ? "active"
-              : ""
+            ? "active" : ""
           }
         >
           Dashboard
         </Link>
         <Link
           to="/current-order"
-          className={pathname == "/current-order" ? "active" : ""}
+          className={
+            pathname == "/current-order" ||
+            pathname == "/pre-order" ||
+            pathname == "/archive-order" ||
+            pathname == "/order-detail"
+            ? "active" : ""
+          }
         >
           Orders
         </Link>
@@ -71,9 +76,9 @@ const Sidebar = ({ sideBar, setSideBar }) => {
 
 const SidebarStyled = styled.aside`
   width: 200px;
-  /* height: 100%;*/
+  /* height: 100%; */
   min-height: 100vh;
-  margin-left:-200px;
+  margin-left: -200px;
   transition: 0.3s margin-left ease;
   background: #4c6870;
   /* border-radius: 0px 20px 20px 0px; */

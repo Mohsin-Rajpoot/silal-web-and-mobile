@@ -116,9 +116,29 @@ span {
 .react-calendar__month-view__days__day--weekend {
     color: #002733 !important;
 }
-.hot-products-height {
-    height: 600px;
+.dasboard-card-height {
     overflow-y: auto;
+    height: calc(100vh - 285px);
+    min-height: 450px;
+}
+.review-card-height {
+    overflow-y: auto;
+    height: calc(100vh - 175px);
+    min-height: 450px;
+}
+.content-height {
+    overflow-y: auto;
+    height: calc(100vh - 100px);
+}
+.current-order-card-height {
+    overflow-y: auto;
+    height: calc(100vh - 100px);
+    min-height: 450px;
+}
+.archive-content {
+    /* overflow-y: auto; */
+    height: calc(100vh - 115px);
+    /* min-height: 450px; */
 }
 .mb-10 {
     margin-bottom: 10px;

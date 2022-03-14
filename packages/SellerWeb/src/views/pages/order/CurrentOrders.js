@@ -16,7 +16,7 @@ import {
     CycleIcon,
 } from '../../components/AllImages'
 
-const CurrentOrder = ({ setSideBar , sideBar }) => {
+const CurrentOrder = ({ setSideBar, sideBar }) => {
     return (
         <>
             <Nav setSideBar={setSideBar} sideBar={sideBar} />

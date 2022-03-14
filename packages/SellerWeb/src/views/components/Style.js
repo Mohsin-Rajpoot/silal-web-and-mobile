@@ -12,11 +12,6 @@ const CardStyled = styled.div`
     &.bg-blue {
         background-color: #4C6870;
     }
-    &.current-order-card-height {
-        min-height: 600px;
-        height: calc(100vh - 100px);
-        overflow-y: auto;
-    }
 `;
 
 const Heading = styled.h1`
