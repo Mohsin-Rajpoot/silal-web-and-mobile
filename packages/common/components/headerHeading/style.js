@@ -11,7 +11,10 @@ const styles = ScaledSheet.create({
   headingDetail: {
     fontSize: "14@ms",
     color: colors.black,
-    textAlign:"center"
+    alignSelf:"center",
+    textAlign:"center",
+    lineHeight:21
+
   },
 });
 export default styles;

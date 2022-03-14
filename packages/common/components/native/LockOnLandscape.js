@@ -9,9 +9,7 @@ const LockOnLandscape = () => {
     <OrientationLocker
       orientation={LANDSCAPE}
       onChange={orientation => console.log('onChange', orientation)}
-      onDeviceChange={orientation =>
-        console.log('onDeviceChange', orientation)
-      }
+      onDeviceChange={orientation => console.log('onDeviceChange', orientation)}
     />
   );
 };

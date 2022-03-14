@@ -4,6 +4,7 @@ const styles = ScaledSheet.create({
   mainContainer: {
     flexDirection: "row",
     alignItems: "center",
+    marginVertical:"10@s"
   },
   backIconContainer: {
     alignSelf: "center",
