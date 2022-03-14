@@ -63,7 +63,7 @@ const Login = ({ navigation }) => {
       <View
         style={{ flexDirection: "row", alignSelf: "center", marginVertical: 5 }}
       >
-        <Text style={styles.bottomText}>Trouble signing in?</Text>
+        <Text style={styles.bottomText}> signing in?</Text>
         <TouchableOpacity
           activeOpacity={0.6}
           onPress={() => {

@@ -1,15 +1,15 @@
-import logo from "./logo.svg";
-import "./App.css";
-import AuthStates from "@SilalApp/common/states";
-function App() {
-  const { user, setUser, setUserData } = AuthStates();
+import React from "react";
+import Layout from "./routes/Layout";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import GlobalStyle from "./views/components/GlobalStyled";
+
+const App = () => {
   return (
     <div className="App">
-      <div>
-        <p style={{color:'red'}} onClick={()=>setUser('Hello Silal Web app mono repo')}>{user}</p>
-      </div>
+      <GlobalStyle />
+      <Layout />
     </div>
-  );
+  )
 }
 
 export default App;
