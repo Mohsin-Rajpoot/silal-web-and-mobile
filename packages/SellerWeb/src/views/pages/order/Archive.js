@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import NavCustom from '../../components/orders/Nav'
 import DatePicker from 'react-date-picker'
+// import TableData from "../../components/Table"
+import DataTable from 'react-data-table-component'
 import {
     Tab,
     Nav,
     Offcanvas,
     Accordion,
 } from 'react-bootstrap'
-import TableData from "../../components/Table"
 import {
     TableSpan,
     FilterBtn,
@@ -30,6 +31,15 @@ const Archive = ({ setSideBar , sideBar }) => {
     const canvasShowHanler = () => setCanvasShow(true)
     const [dateValue, dateOnChange] = useState(new Date());
 
+
+    const customStyles = {
+        headCells: {
+            style: {
+                fontSize: "13px",
+                fontWeight: 700
+            },
+        }
+    }
     const columns = [
         {
             name: 'Order ID',
@@ -177,25 +187,31 @@ const Archive = ({ setSideBar , sideBar }) => {
                 <Tab.Content>
                     <Tab.Pane eventKey="all-orders">
                         <TableStyled>
-                            <TableData
-                                cols={columns}
-                                rows={data}
+                            <DataTable
+                                columns={columns}
+                                data={data}
+                                customStyles={customStyles}
+                                pagination
                             />
                         </TableStyled>
                     </Tab.Pane>
                     <Tab.Pane eventKey="completed-orders">
                         <TableStyled>
-                            <TableData
-                                cols={columns}
-                                rows={data}
+                            <DataTable
+                                columns={columns}
+                                data={data}
+                                customStyles={customStyles}
+                                pagination
                             />
                         </TableStyled>
                     </Tab.Pane>
                     <Tab.Pane eventKey="cancelled-orders">
                         <TableStyled>
-                            <TableData
-                                cols={columns}
-                                rows={data}
+                            <DataTable
+                                columns={columns}
+                                data={data}
+                                customStyles={customStyles}
+                                pagination
                             />
                         </TableStyled>
                     </Tab.Pane>
