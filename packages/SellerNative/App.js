@@ -13,10 +13,10 @@ import Order from './src/screens/orders/Order';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-import Login from '@SilalApp/common/screens/Auth/login'
+// import Login from '@SilalApp/common/screens/Auth/Login'
 import AuthStack from './src/routes/AuthStack';
-import test from './test'
-const App = ({ navigation }) => {
+// import test from './test'
+const App = ({navigation}) => {
   const navTheme = {
     ...DefaultTheme,
     colors: {
@@ -65,7 +65,7 @@ const App = ({ navigation }) => {
         />
         <Tab.Screen
           name="Products"
-          component={Products}
+          component={AuthStack}
           options={{
             tabBarLabel: 'Products',
             tabBarIcon: ({ color, size }) => (

@@ -52,9 +52,10 @@ const Verification = ({ route, navigation }) => {
       </View>
       <Button
         name={params?.active == 3 ? "Submit" : "Verify"}
-        onPress={() => {
-          params.active == 3 && goToChangePassword();
-        }}
+        onPress={()=>navigation.navigate('Tab_stack')}
+        // onPress={() => {
+        //   params.active == 3 && goToChangePassword();
+        // }}
       />
     </SafeAreaView>
   );

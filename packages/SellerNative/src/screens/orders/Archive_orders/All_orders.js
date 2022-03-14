@@ -136,10 +136,10 @@ title,
 
   return (
         
-      <View style={{height:'80%',width:'100%'}}>
+      <View style={{flex:1,}}>
 
-          <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
-            <View style={{backgroundColor:'#E5EAEB',width:'48%',borderRadius:5}}>
+          <View style={{flexDirection:'row',height:height-190,justifyContent:'space-evenly'}}>
+            <View style={{backgroundColor:'#E5EAEB',width:width/2.1,borderRadius:5}}>
                 <Text style={styles.title}>For today</Text>
                 <FlatList
                     keyExtractor={(item, index) => index.toString()}
@@ -150,7 +150,7 @@ title,
                 />
             </View>
 
-            <View style={{backgroundColor:'#E5EAEB',width:'48%',marginLeft:10,borderRadius:5}}>
+            <View style={{backgroundColor:'#E5EAEB',width:width/2.1,marginLeft:10,borderRadius:5}}>
               <Text style={styles.title}>This week</Text>
               <FlatList
                   keyExtractor={(item, index) => index.toString()}

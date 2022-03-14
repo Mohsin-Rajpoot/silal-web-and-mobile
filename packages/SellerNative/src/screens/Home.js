@@ -2,10 +2,19 @@ import React, { useState } from 'react'
 import { View, Text, SafeAreaView, TouchableOpacity, Image, StyleSheet, Dimensions, FlatList, ScrollView } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+<<<<<<< HEAD
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import { CustomButton, TitleHeading, StatisticWhiteBoxTitle, LockOnLandscape, Graph, Raiting, Calender } from '@SilalApp/common/components/native';
 
 import { CheckBox } from 'react-native-elements';
+=======
+import LockOnLandscape from '../components/LockOnLandscape';
+import Graph from '@SilalApp/common/components/native';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import Calender from '@SilalApp/common/components/native';
+import Raiting from '@SilalApp/common/components/native';
+import { CustomButton, TitleHeading, StatisticWhiteBoxTitle, } from '@SilalApp/common/components/native';
+>>>>>>> d514a3547ab21148033903daf69f869cd61c0839
 
 const { width, height } = Dimensions.get("window");
 

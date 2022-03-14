@@ -3,6 +3,7 @@ import { View, Text, SafeAreaView, TouchableOpacity, Image, StyleSheet, Dimensio
 import Current_orders from './Current_orders'
 import Pre_orders from './Pre_orders'
 import Archive_orders from './Archive_orders'
+import LockOnLandscape from '../../components/LockOnLandscape';
 
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -37,9 +38,9 @@ const Header=()=>{
 
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor:'#f4f7f8'}}>
       {/* <LockOnLandscape /> */}
-      <View style={{ flexDirection: 'row',alignItems:'center' }}>
+      <View style={{ flexDirection: 'row',alignItems:'center',height:'15%' }}>
         <View style={{ padding: 15 }}>
           <TouchableOpacity>
             <MaterialCommunityIcons
