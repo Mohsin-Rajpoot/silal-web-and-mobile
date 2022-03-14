@@ -12,7 +12,6 @@ import Order from './src/screens/Order';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-import Login from '@SilalApp/common/screens/Auth/Login'
 import AuthStack from './src/routes/AuthStack';
 import test from './test'
 const App = ({navigation}) => {
