@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { View } from 'react-native'
+import React, {useEffect, useRef} from 'react';
+import {View} from 'react-native';
 import {
   OrientationLocker,
   PORTRAIT,
@@ -11,9 +11,7 @@ const LockOnLandscape = () => {
     <OrientationLocker
       orientation={LANDSCAPE}
       onChange={orientation => console.log('onChange', orientation)}
-      onDeviceChange={orientation =>
-        console.log('onDeviceChange', orientation)
-      }
+      onDeviceChange={orientation => console.log('onDeviceChange', orientation)}
     />
   );
 };

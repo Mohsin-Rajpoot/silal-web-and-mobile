@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { View, Text, SafeAreaView, TouchableOpacity, Image, StyleSheet, Dimensions, FlatList, ScrollView } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import LockOnLandscape from '../components/LockOnLandscape';
-import Graph from '../components/Graph';
+import LockOnLandscape from '../Components/LockOnLandscape';
+import Graph from '../../../common/components/native/Graph';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import Calender from '../components/Calender';
-import Raiting from '../components/Raiting';
+import Calender from '../../../common/components/native/Calender';
+import Raiting from '../../../common/components/native/Raiting';
 import { CustomButton, TitleHeading, StatisticWhiteBoxTitle, } from '@SilalApp/common/components/native';
 
 const { width, height } = Dimensions.get("window");
@@ -15,7 +15,7 @@ const data = [
   {
     id: '1',
     Identity: '12',
-    image: require('../assets/image8.png'),
+    image: require('../../../common/assets/images/image8.png'),
     Text: 'Udon tom yum with shrimps and mussels',
     price: '$ 2.90',
   },
@@ -23,21 +23,21 @@ const data = [
   {
     id: '2',
     Identity: '9',
-    image: require('../assets/image13.png'),
+    image: require('../../../common/assets/images/image13.png'),
     Text: 'Chicken burger in cheese sauce',
     price: '$ 3.10',
   },
   {
     id: '3',
     Identity: '9',
-    image: require('../assets/image12.png'),
+    image: require('../../../common/assets/images/image12.png'),
     Text: 'Cheesecakes with sour cream and fresh stra...',
     price: '$ 2.50',
   },
   {
     id: '4',
     Identity: '7',
-    image: require('../assets/image11.png'),
+    image: require('../../../common/assets/images/image11.png'),
     Text: 'Cheesecakes with sour cream and fresh stra...',
     price: '$ 2.50',
   },
@@ -141,7 +141,7 @@ const Home = ({ navigation }) => {
               <View style={styles.One}>
                 <View style={styles.WhiteDive}>
                   <View style={styles.ImgeViewBKG}>
-                    <Image source={require("../assets/Currency.png")} style={styles.CurrencyImage} />
+                    <Image source={require("../../../common/assets/images/Currency.png")} style={styles.CurrencyImage} />
                   </View>
                   <StatisticWhiteBoxTitle Title="Total Sales" />
                   <View style={[styles.PercentageBkgGreen, { backgroundColor: '#E3FCEF', }]}>
