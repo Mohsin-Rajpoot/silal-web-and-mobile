@@ -130,6 +130,6 @@ const styles = StyleSheet.create({
     letterSpacing:1
   },
   order_container:{
-    flexDirection:'row',
+    // flexDirection:'row',
   }
 })

@@ -322,8 +322,6 @@ export default function Archive_orders({title, navigation}) {
 
           <Modal
             animationType="slide"
-            // animationIn="slideInLeft"
-            // animationOut="slideOutRight"
             transparent={true}
             visible={modalVisible}
             onRequestClose={() => {
