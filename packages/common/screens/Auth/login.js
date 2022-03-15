@@ -10,7 +10,7 @@ import TextInput from "../../components/native/TextInput";
 import HeaderBack from "../../components/native/HeaderBack";
 import colors from "../../assets/colors";
 const Login = ({ navigation, route }) => {
-  const { params } = route?.params;
+  const data = route?.params;
   const [active, setActive] = useState(1);
   const [text, setText] = useState("");
   const goForgerPassword = () => {
@@ -18,7 +18,7 @@ const Login = ({ navigation, route }) => {
   };
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
-      <HeaderBack name={params?.signup ? "Sign Up" : "Login"} />
+      <HeaderBack name={data?.params?.signUp ? "Sign Up" : "Login"} />
 
       <LoginSignUpButton active={active} setActive={setActive} />
       <View style={styles.innerContainer}>
@@ -41,7 +41,8 @@ const Login = ({ navigation, route }) => {
               codeTextStyle={styles.codeText}
               defaultCode="RU"
               layout="first"
-              onChangeFormattedText={(value) => setText(value)}
+              onChangeText={(value) => setText(value)}
+              // onChangeFormattedText={(value) => setText(value)}
               value={text}
               placeholder="Phone Number"
             />
@@ -64,18 +65,37 @@ const Login = ({ navigation, route }) => {
       <View
         style={{ flexDirection: "row", alignSelf: "center", marginVertical: 5 }}
       >
-        <Text style={styles.bottomText}> signing in?</Text>
-        <TouchableOpacity
-          activeOpacity={0.6}
-          onPress={() => {
-            active == 2 && goForgerPassword();
-          }}
-        >
-          <Text style={styles.nestedBottomText}>
-            {" "}
-            {active == 1 ? "Contact Us" : "Forgot password"}
-          </Text>
-        </TouchableOpacity>
+        {data?.params?.signUp ? (
+          <View style={{justifyContent:'center'}}>
+            <Text style={styles.signUpDetailText}>
+              By signing up, you agree to the
+              <TouchableOpacity activeOpacity={0.6} style={{margin:5}}>
+                <Text style={styles.termCondition}> Terms of Service </Text>
+              </TouchableOpacity>
+              and
+              <TouchableOpacity activeOpacity={0.6}>
+                <Text style={styles.termCondition}> Privacy Policy</Text>
+              </TouchableOpacity>
+            </Text>
+          </View>
+        ) : (
+          <Text style={styles.bottomText}> Signing in?</Text>
+        )}
+        {data?.params?.signUp ? (
+          <View />
+        ) : (
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => {
+              active == 2 && goForgerPassword();
+            }}
+          >
+            <Text style={styles.nestedBottomText}>
+              {" "}
+              {active == 1 ? "Contact Us" : "Forgot password"}
+            </Text>
+          </TouchableOpacity>
+        )}
       </View>
     </SafeAreaView>
   );

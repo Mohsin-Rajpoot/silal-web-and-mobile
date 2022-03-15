@@ -6,8 +6,8 @@ import {
   heightPercentageToDP as hp,
   listenOrientationChange as lor,
   removeOrientationListener as rol,
-} from 'react-native-responsive-screen-hooks';
- import fonts from '../../assets/fonts'
+} from "react-native-responsive-screen-hooks";
+import fonts from "../../assets/fonts";
 const styles = ScaledSheet.create({
   innerContainer: {
     width: "75%",
@@ -19,10 +19,10 @@ const styles = ScaledSheet.create({
     margin: "3@s",
     marginVertical: "5@s",
     fontSize: "11@ms",
-    fontFamily:fonts.LatoBold
+    fontFamily: fonts.LatoBold,
   },
   codeText: {
-    fontSize: "8@s",
+    fontSize: "8@ms",
   },
   textContainer: {
     backgroundColor: "transparent",
@@ -51,15 +51,22 @@ const styles = ScaledSheet.create({
   },
   optStyling: {
     marginVertical: "30@s",
-    height: "45@s",
+    width: wp("60%"),
     flexDirection: "row",
+    alignItems: "center",
     alignSelf: "center",
+    fontSize:'12@ms',
+    color:colors.black
   },
   optContainer: {
     borderWidth: "1@s",
     borderColor: colors.light_grey,
     borderRadius: "5@s",
-    height: "50@s",
+    height: "35@s",
+    width: "30@s",
+    fontSize:'12@ms',
+    color:colors.black,
+    textAlign:'center'
   },
   timerCode: {
     alignSelf: "center",
@@ -81,58 +88,69 @@ const styles = ScaledSheet.create({
     marginTop: "20@s",
   },
   choseAccountShopping: {
-    backgroundColor: colors.red,
-    width: "75@s",
-    height: "75@s",
+    backgroundColor: colors.black,
+    width: "40@s",
+    height: "40@s",
     borderRadius: "99@s",
     alignSelf: "center",
-    margin: "5@s",
+    marginTop:"10@s"
   },
   choseMainContainer: {
-    width: "160@s",
-    height: "100%",
-    backgroundColor: colors.primary,
+    width: "125@s",
+    height: "100@s",
+    backgroundColor: 'rgba(90, 179, 168, 0.15)',
     borderRadius: "10@s",
     margin: "5@s",
+    borderWidth:'1@s',
+    color:colors.primary
+  },
+  choseMainContainer1: {
+    width: "125@s",
+    height: "100@s",
+    backgroundColor: 'transparent',
+    borderRadius: "10@s",
+    margin: "5@s",
+    borderWidth:'1@s',
+    borderColor:"rgba(205, 205, 208, 0.5)"
   },
   accountTitle: {
     fontSize: "13@ms",
     color: colors.black,
     textAlign: "center",
-    fontWeight: "500",
+    fontFamily:fonts.PoppinsMedium,
     marginVertical: "5@s",
   },
   accountDetail: {
     fontSize: "12@ms",
     color: colors.textPrimary,
     textAlign: "center",
-    fontWeight: "300",
+    fontFamily:fonts.LatoMedium,
     marginBottom: "10@s",
   },
   heading: {
     fontSize: "23@ms",
     color: colors.primary,
-    fontFamily:fonts.bold,
+    fontFamily: fonts.bold,
     textAlign: "center",
-    margin:'5@ms'
+    margin: "5@ms",
   },
   body: {
     fontSize: "14@ms",
     color: colors.black,
     textAlign: "center",
-    fontFamily:fonts.LatoRegular,
-    marginHorizontal:"5@s"
+    fontFamily: fonts.LatoRegular,
+    marginHorizontal: "5@s",
   },
-  onBoardingDetailconatiner:{
-    width:wp('58%'),
-    alignItems:'center'
+  onBoardingDetailconatiner: {
+    width: wp("58%"),
+    alignItems: "center",
   },
   screenImage: {
     resizeMode: "contain",
-    width:wp('30%'),
-    height:hp('30%'),
-    alignSelf:"center",
-    margin:'10@s'
+    width: wp("30%"),
+    height: hp("30%"),
+    alignSelf: "center",
+    margin: "10@s",
   },
   dot: {
     width: "10@ms",
@@ -149,17 +167,29 @@ const styles = ScaledSheet.create({
     marginEnd: "5@s",
   },
   screenContainer: {
-    flex:1,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
-  skipbutton:{
-    fontSize:'12@ms',
-    color:colors.primary,
-    fontFamily:fonts.LatoBold,
-    alignSelf:'flex-end',
-    margin:'10@ms'
-  }
+  skipbutton: {
+    fontSize: "12@ms",
+    color: colors.primary,
+    fontFamily: fonts.LatoBold,
+    alignSelf: "flex-end",
+    margin: "10@ms",
+  },
+  signUpDetailText: {
+    fontSize: "12@ms",
+    fontFamily: fonts.LatoMedium,
+    color: colors.textPrimary,
+    textAlign: "center",
+  },
+  termCondition: {
+    fontSize: "12@ms",
+    fontFamily: fonts.LatoBold,
+    color: colors.primary,
+    textAlign: "center",
+  },
 });
 
 export default styles;

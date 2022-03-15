@@ -14,6 +14,7 @@ const styles = ScaledSheet.create({
     flexDirection: "row",
     flex: 1,
     justifyContent: "center",
+    marginRight:'15@s'
   },
   heading: {
     alignSelf: "flex-start",

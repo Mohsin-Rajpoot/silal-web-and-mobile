@@ -1,6 +1,6 @@
 import { ScaledSheet } from "react-native-size-matters";
 import colors from "../assets/colors";
-
+import fonts from "../assets/fonts";
 const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
@@ -11,22 +11,25 @@ const styles = ScaledSheet.create({
     height: "30@s",
     width: "100%",
     backgroundColor: "transparent",
+    padding:0,
+    margin:0
   },
   textInputStyles: {
     alignSelf: "center",
     borderWidth: "0.5@s",
     borderColor: colors.gray,
     width: "100%",
-    borderRadius: "10@s",
-    height: "40@s",
+    borderRadius: "5@s",
+    height: "30@s",
   },
   inputTextStyle: {
-    paddingHorizontal: "10@s",
-    fontSize: "12@s",
+  
+    fontSize: "12@ms",
     color: colors.black,
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
+    fontFamily:fonts.LatoRegular,
+    flexDirection:'column',
+    justifyContent:'center',
+    margin:'5@s'
   },
   CommonView: {
     width: "85%",
@@ -34,12 +37,12 @@ const styles = ScaledSheet.create({
     flex: 1,
   },
   commonIcon: {
-    width: "275@s",
-    height: "275@s",
+    width: "150@s",
+    height: "150@s",
     backgroundColor: colors.primary,
     alignSelf: "center",
     borderRadius: "10@s",
-    marginVertical: "30@s",
+    marginVertical: "50@s",
   },
 });
 export default styles;

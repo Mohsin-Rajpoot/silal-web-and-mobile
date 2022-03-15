@@ -8,7 +8,7 @@ const GettingStarted = () => {
   return (
     <View>
       <HeaderBack name={"Registration"} />
-
+      <View style={{width:'70%', alignSelf:'center'}}>
       <HeaderHeading
         headingName={"Fill out a questionnaire"}
         headingDetail={
@@ -16,6 +16,9 @@ const GettingStarted = () => {
         }
       />
       <CommonIcon />
+
+      </View>
+    
     </View>
   );
 };

@@ -1,18 +1,20 @@
-import { View, Text, Image } from "react-native";
-import React from "react";
+import { View, Text, Image ,TouchableOpacity} from "react-native";
+import React,{useState} from "react";
 import HeaderBack from "../../components/native/HeaderBack";
 import HeaderHeading from "../../components/headerHeading";
 import Images from "../../assets/images";
 import Button from "../../components/native/AuthButton";
 import styles from "./style";
 const ChooseAccount = () => {
+  const [active,setActive]=useState(1)
   return (
     <View>
       <HeaderBack name={"Silal Seller"} backIcon={true} />
       <HeaderHeading headingName={"Choose an account"} />
 
-      <View style={{ flexDirection: "row" }}>
-        <View style={styles.choseMainContainer}>
+      <View style={{ flexDirection: "row" , alignSelf:'center'}}>
+        <TouchableOpacity activeOpacity={0.6} onPress={()=>setActive(1)}>
+        <View style={[active==1 ? styles.choseMainContainer: styles.choseMainContainer1]}>
           {/* <Image
             source={Images?.Image11}
             style={{ width: 90, height: 90 }}
@@ -22,7 +24,10 @@ const ChooseAccount = () => {
           <Text style={styles.accountTitle}>Restourant’s name</Text>
           <Text style={styles.accountDetail}>bill.sanders@example.com</Text>
         </View>
-        <View style={styles.choseMainContainer}>
+        </TouchableOpacity>
+  
+        <TouchableOpacity activeOpacity={0.6} onPress={()=>setActive(2)}>
+        <View style={[active==2? styles.choseMainContainer: styles.choseMainContainer1]}>
           {/* <Image
             source={Images?.Image11}
             style={{ width: 90, height: 90 }}
@@ -32,6 +37,7 @@ const ChooseAccount = () => {
           <Text style={styles.accountTitle}>Restourant’s name</Text>
           <Text style={styles.accountDetail}>bill.sanders@example.com</Text>
         </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
