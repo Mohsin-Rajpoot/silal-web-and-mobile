@@ -193,20 +193,20 @@ const RangeSlider = styled.div`
   ul {
     li {
       margin-right: 15px;
-      padding-top:20px;
+      padding-top: 20px;
       font-weight: 500;
       font-size: 14px;
       color: #002733;
       position: relative;
-      &:before{
-        content:"";
+      &:before {
+        content: "";
         position: absolute;
-        top:0;
-        left:0;
-        left:50%;
+        top: 0;
+        left: 0;
+        left: 50%;
         width: 1px;
         height: 10px;
-        border: 1px solid #4C6870;
+        border: 1px solid #4c6870;
       }
       &:last-child {
         margin-right: 0;
@@ -234,7 +234,7 @@ const RangeSlider = styled.div`
     cursor: pointer;
     background-color: #fff;
     border-radius: 50%;
-    z-index:22;
+    z-index: 22;
     &:before {
       content: "";
       width: 35px;
@@ -247,7 +247,7 @@ const RangeSlider = styled.div`
   }
   .slider-range::-webkit-slider-thumb {
     appearance: none;
-    z-index:22;
+    z-index: 22;
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -265,6 +265,61 @@ const RangeSlider = styled.div`
     } */
   }
 `;
+const NavStyled = styled.nav`
+  margin-top: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  .menu {
+    border: none;
+    background-color: transparent;
+    margin-right: 20px;
+    line-height: 1;
+    margin-bottom: 15px;
+    svg {
+      width: 19px;
+    }
+  }
+  .nav-link-btn {
+    display: block;
+    margin-right: 20px;
+    padding: 5px 10px;
+    height: 32px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #4c6870;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 15px;
+    white-space: nowrap;
+    &.active,
+    &:hover {
+      background: var(--theme-clr);
+      color: white;
+      span {
+        color: white;
+      }
+    }
+    span {
+      color: #a0afb4;
+    }
+  }
+  .link {
+    svg {
+      width: 42px;
+    }
+  }
+`;
+const FlexContainer = styled.div`
+  display:flex;
+  align-items:center;
+`;
+const HeadingStyled = styled.div`
+  font-size:${(props)=>props.size&&(props.size)};
+  font-weight:${(props)=>props.weight&&(props.weight)};
+  color:${(props)=>props.color?props.color:"inherit"};
+`;
 export {
   CardStyled,
   Heading,
@@ -274,4 +329,7 @@ export {
   ThemeTabs,
   RangeSlider,
   ThemeAccordion,
+  NavStyled,
+  HeadingStyled,
+  FlexContainer
 };

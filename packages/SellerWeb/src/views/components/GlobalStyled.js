@@ -1,7 +1,5 @@
-import { createGlobalStyle } from "styled-components"
-import {
-    collpaseArrow
-} from './AllImages'
+import { createGlobalStyle } from "styled-components";
+import { collpaseArrow } from "./AllImages";
 
 const GlobalStyle = createGlobalStyle`
 :root {
@@ -119,7 +117,7 @@ span {
 .dasboard-card-height {
     overflow-y: auto;
     height: calc(100vh - 285px);
-    min-height: 450px;
+    /* min-height: 450px; */
 }
 .review-card-height {
     overflow-y: auto;
@@ -221,6 +219,9 @@ hr {
         padding-top:0px;
         border-top:0;
     }
+}
+.btn,.btn-close{
+    box-shadow:none !important;
 }
 `;
 

@@ -47,7 +47,7 @@ const ReceivedOrder = ({
             </div>
             <span className="more">3 more</span>
             <div className='mt-3'>
-                <SwipeableButton color='#5AB3A8' text='SLIDE TO UNLOCK' />
+                <SwipeableButton color='#5AB3A8' text='Slide to confirm order' />
             </div>
             {/* <ReactSwipeButton /> */}
         </ReceivedOrderStyled>

@@ -8,6 +8,7 @@ const Sidebar = ({ sideBar, setSideBar }) => {
   const closeSidebar = () => {
     setSideBar(false);
   };
+  const clientPath = window.location.href.indexOf("client") > -1?true:false;
   const { pathname } = useLocation();
 
   return (
@@ -61,7 +62,7 @@ const Sidebar = ({ sideBar, setSideBar }) => {
         >
           Orders
         </Link>
-        <Link to="#">Clients</Link>
+        <Link to="/client/database" className={clientPath&&("active")}>Clients</Link>
         <Link to="#">Products</Link>
         <Link to="#">Offers</Link>
         <Link to="#">Documents</Link>

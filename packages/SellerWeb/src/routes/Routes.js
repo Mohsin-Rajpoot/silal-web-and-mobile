@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Database from '../views/pages/clients/Database'
 const Statistics = React.lazy(() => import('../views/pages/home/Statistics'))
 const Reviews = React.lazy(() => import('../views/pages/home/Reviews'))
 const OutOfStock = React.lazy(() => import('../views/pages/home/OutOfStock'))
@@ -18,7 +18,7 @@ const routes = [
     { path: '/order-detail', exact: true, name: 'Order Detail', component: OrderDetail },
     { path: '/pre-order', exact: true, name: 'Pre Orders', component: PreOrders },
     { path: '/archive-order', exact: true, name: 'Archive Orders', component: ArchiveOrders },
-
+    { path: '/client/database', exact: true, name: 'Client Database', component: Database },
 ]
 
 export default routes

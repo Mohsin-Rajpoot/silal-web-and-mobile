@@ -2,6 +2,7 @@ import cartIcon from "../../assets/images/cart-icon.png"
 import bellIcon from "../../assets/images/bell-icon.png"
 import ratingIcon from "../../assets/images/rating-icon.png"
 import dish from "../../assets/images/dish.png"
+import Burger from "../../assets/images/burger.png"
 import avatar from "../../assets/images/avatar.png"
 import avatar2 from "../../assets/images/avatar2.png"
 import shirt from "../../assets/images/cloth-img.png"
@@ -58,4 +59,5 @@ export {
     FilterIcon,
     XIcon,
     collpaseArrow,
+    Burger
 }
