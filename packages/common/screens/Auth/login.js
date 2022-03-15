@@ -9,7 +9,8 @@ import TextInput from "../../components/native/TextInput";
 
 import HeaderBack from "../../components/native/HeaderBack";
 import colors from "../../assets/colors";
-const Login = ({ navigation }) => {
+const Login = ({ navigation, route }) => {
+  const { params } = route?.params;
   const [active, setActive] = useState(1);
   const [text, setText] = useState("");
   const goForgerPassword = () => {
@@ -17,7 +18,7 @@ const Login = ({ navigation }) => {
   };
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
-      <HeaderBack name="Login" />
+      <HeaderBack name={params?.signup ? "Sign Up" : "Login"} />
 
       <LoginSignUpButton active={active} setActive={setActive} />
       <View style={styles.innerContainer}>

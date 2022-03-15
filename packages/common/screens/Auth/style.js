@@ -1,10 +1,16 @@
 import { ScaledSheet } from "react-native-size-matters";
 import colors from "../../assets/colors";
 import { Dimensions } from "react-native";
-const SCREEN_WIDTH = Dimensions.get("window").width;
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+  listenOrientationChange as lor,
+  removeOrientationListener as rol,
+} from 'react-native-responsive-screen-hooks';
+ import fonts from '../../assets/fonts'
 const styles = ScaledSheet.create({
   innerContainer: {
-    width: "85%",
+    width: "75%",
     alignSelf: "center",
     flex: 1,
   },
@@ -12,14 +18,15 @@ const styles = ScaledSheet.create({
     color: colors.textPrimary,
     margin: "3@s",
     marginVertical: "5@s",
-    fontSize: "13@s",
+    fontSize: "11@ms",
+    fontFamily:fonts.LatoBold
   },
   codeText: {
-    fontSize: "12@s",
+    fontSize: "8@s",
   },
   textContainer: {
     backgroundColor: "transparent",
-    borderColor: colors.gray,
+    borderColor: "rgba(141, 142, 150, 1)",
     borderWidth: "1@s",
     borderTopRightRadius: "5@s",
     borderBottomRightRadius: "5@s",
@@ -103,26 +110,35 @@ const styles = ScaledSheet.create({
     marginBottom: "10@s",
   },
   heading: {
-    //styleName: Headline 1;
-    fontSize: "20@s",
+    fontSize: "23@ms",
     color: colors.primary,
-    fontWeight: "700",
+    fontFamily:fonts.bold,
     textAlign: "center",
+    margin:'5@ms'
   },
   body: {
-    fontSize: "13@ms",
-    color: colors.light_grey,
-    fontWeight: "400",
+    fontSize: "14@ms",
+    color: colors.black,
     textAlign: "center",
+    fontFamily:fonts.LatoRegular,
+    marginHorizontal:"5@s"
+  },
+  onBoardingDetailconatiner:{
+    width:wp('58%'),
+    alignItems:'center'
   },
   screenImage: {
     resizeMode: "contain",
+    width:wp('30%'),
+    height:hp('30%'),
+    alignSelf:"center",
+    margin:'10@s'
   },
   dot: {
     width: "10@ms",
     height: "10@ms",
     borderRadius: "10@ms",
-    backgroundColor: colors.secondary,
+    backgroundColor: "rgba(90, 179, 168, 0.2)",
     marginEnd: "5@s",
   },
   underScore: {
@@ -133,12 +149,17 @@ const styles = ScaledSheet.create({
     marginEnd: "5@s",
   },
   screenContainer: {
-    flexDirection: "column",
-    width: SCREEN_WIDTH,
-    flex: 0.1,
+    flex:1,
     justifyContent: "center",
     alignItems: "center",
   },
+  skipbutton:{
+    fontSize:'12@ms',
+    color:colors.primary,
+    fontFamily:fonts.LatoBold,
+    alignSelf:'flex-end',
+    margin:'10@ms'
+  }
 });
 
 export default styles;

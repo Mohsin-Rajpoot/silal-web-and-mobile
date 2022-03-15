@@ -8,6 +8,8 @@
     "moment": "^2.29.1",
     "react-native-app-intro-slider": "^4.0.4",
     "react-native-phone-number-input": "^2.1.0",
+    "react-native-responsive-screen": "^1.4.2",
+    "react-native-responsive-screen-hooks": "^1.4.2",
     "react-native-size-matters": "^0.4.0",
     "react-native-vector-icons": "^9.1.0"
   }

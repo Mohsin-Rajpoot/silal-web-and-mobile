@@ -8,7 +8,7 @@ const styles = ScaledSheet.create({
     padding: "5@s",
   },
   phoneNumberInput: {
-    height: "47@s",
+    height: "30@s",
     width: "100%",
     backgroundColor: "transparent",
   },

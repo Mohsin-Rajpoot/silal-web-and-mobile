@@ -1,5 +1,6 @@
 import { ScaledSheet } from "react-native-size-matters";
 import colors from "../../../assets/colors";
+import fonts from "../../../assets/fonts";
 const styles = ScaledSheet.create({
   mainContainer: {
     flexDirection: "row",
@@ -17,8 +18,8 @@ const styles = ScaledSheet.create({
   heading: {
     alignSelf: "flex-start",
     color: colors.black,
-    fontSize: "14@s",
-    margin: "5@s",
+    fontSize: "14@ms",
+    fontFamily:fonts.LatoBold
   },
   icon: {
     fontSize: "16@ms",

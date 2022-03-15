@@ -17,7 +17,7 @@ const Route = () => {
   return (
     <NavigationContainer theme={navTheme}>
       <Stack.Navigator
-        initialRouteName="MainStack"
+        initialRouteName="AuthStack"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="AuthStack" component={AuthStack} />
         <Stack.Screen name="MainStack" component={MainStack} />
