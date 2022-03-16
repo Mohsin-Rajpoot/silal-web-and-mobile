@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 16,
-    letterSpacing: 1
+    letterSpacing: 1,
+    fontFamily:'Poppins-SemiBold'
 
   },
   buttonText_TERTIARY: {
