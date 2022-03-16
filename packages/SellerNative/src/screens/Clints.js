@@ -5,7 +5,7 @@ import Fontisto from 'react-native-vector-icons/Fontisto'
 
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import { ModalView } from '../Components/ModalView';
+import { ModalView } from '../components/ModalView';
 const { width, height } = Dimensions.get("window");
 const Clints = () => {
   const [choseData, setchoseData] = useState('Sort by');
