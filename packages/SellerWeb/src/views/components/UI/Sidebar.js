@@ -8,6 +8,8 @@ const Sidebar = ({ sideBar, setSideBar }) => {
   const closeSidebar = () => {
     setSideBar(false);
   };
+  const clientPath = window.location.href.indexOf("client") > -1 ? true : false;
+  const productPath = window.location.href.indexOf("product") > -1 ? true : false;
   const { pathname } = useLocation();
 
   return (
@@ -42,22 +44,35 @@ const Sidebar = ({ sideBar, setSideBar }) => {
           to="/"
           className={
             pathname == "/" ||
-            pathname == "/reviews" ||
-            pathname == "/out-of-stock"
-              ? "active"
-              : ""
+              pathname == "/reviews" ||
+              pathname == "/out-of-stock"
+              ? "active" : ""
           }
         >
           Dashboard
         </Link>
         <Link
           to="/current-order"
-          className={pathname == "/current-order" ? "active" : ""}
+          className={
+            pathname == "/current-order" ||
+              pathname == "/pre-order" ||
+              pathname == "/archive-order" ||
+              pathname == "/order-detail"
+              ? "active" : ""
+          }
         >
           Orders
         </Link>
-        <Link to="#">Clients</Link>
-        <Link to="#">Products</Link>
+        <Link
+          to="/client/database"
+          className={clientPath && ("active")}>
+          Clients
+        </Link>
+        <Link
+          to="/product/products"
+          className={productPath && ("active")}>
+          Products
+        </Link>
         <Link to="#">Offers</Link>
         <Link to="#">Documents</Link>
         <Link to="#">Contact us</Link>
@@ -71,9 +86,9 @@ const Sidebar = ({ sideBar, setSideBar }) => {
 
 const SidebarStyled = styled.aside`
   width: 200px;
-  /* height: 100%;
-  min-height: 100vh; */
-  margin-left:-200px;
+  /* height: 100%; */
+  min-height: 100vh;
+  margin-left: -200px;
   transition: 0.3s margin-left ease;
   background: #4c6870;
   /* border-radius: 0px 20px 20px 0px; */

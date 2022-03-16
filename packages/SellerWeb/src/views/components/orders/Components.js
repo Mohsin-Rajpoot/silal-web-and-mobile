@@ -13,6 +13,7 @@ import {
     locationIcon,
     phoneIcon,
 } from '../AllImages'
+import SwipeableButton from '../SwipeableButton/SwipeableButton'
 
 const ReceivedOrder = ({
     orderNumber,
@@ -45,6 +46,10 @@ const ReceivedOrder = ({
                 <span>Cheesecakes with sour cream and citrus hone</span>
             </div>
             <span className="more">3 more</span>
+            <div className='mt-3'>
+                <SwipeableButton color='#5AB3A8' text='Slide to confirm order' />
+            </div>
+            {/* <ReactSwipeButton /> */}
         </ReceivedOrderStyled>
     )
 }
@@ -404,8 +409,8 @@ const PickupCard = styled.div`
     border-radius: 5px;
     margin-bottom: 20px;
     background-color: #4C6870;
-    min-height: 600px;
     height: calc(100vh - 100px);
+    min-height: 450px;
     .body {
         padding: 20px;
         height: calc(100% - 65px);

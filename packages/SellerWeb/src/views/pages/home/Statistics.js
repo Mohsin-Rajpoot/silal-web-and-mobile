@@ -18,7 +18,7 @@ import {
     dish,
 } from '../../components/AllImages'
 
-const Statistics = ({ setSideBar , sideBar }) => {
+const Statistics = ({ setSideBar, sideBar }) => {
     return (
         <>
             <Nav setSideBar={setSideBar} sideBar={sideBar} />
@@ -66,7 +66,7 @@ const Statistics = ({ setSideBar , sideBar }) => {
                     />
                 </Col>
                 <Col lg={4} md={12}>
-                    <CardStyled className="hot-products-height">
+                    <CardStyled className="dasboard-card-height">
                         <Heading>Hot products</Heading>
                         <HotProduct
                             img={dish}
@@ -101,7 +101,7 @@ const Statistics = ({ setSideBar , sideBar }) => {
                     </CardStyled>
                 </Col>
                 <Col lg={8} md={12}>
-                    <CardStyled>
+                    <CardStyled className="dasboard-card-height">
                         <Heading>Revenue overview</Heading>
                     </CardStyled>
                 </Col>

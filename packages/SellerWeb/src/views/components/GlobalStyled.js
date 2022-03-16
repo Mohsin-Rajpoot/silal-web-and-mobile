@@ -1,7 +1,5 @@
-import { createGlobalStyle } from "styled-components"
-import {
-    collpaseArrow
-} from './AllImages'
+import { createGlobalStyle } from "styled-components";
+import { collpaseArrow } from "./AllImages";
 
 const GlobalStyle = createGlobalStyle`
 :root {
@@ -37,7 +35,7 @@ body {
     font-weight: 400;
 }
 .f-medium {
-    font-weight: 500;
+    font-weight: 500 !important;
 }
 .f-semibold {
     font-weight: 600;
@@ -116,9 +114,29 @@ span {
 .react-calendar__month-view__days__day--weekend {
     color: #002733 !important;
 }
-.hot-products-height {
-    height: 600px;
+.dasboard-card-height {
     overflow-y: auto;
+    height: calc(100vh - 285px);
+    /* min-height: 450px; */
+}
+.review-card-height {
+    overflow-y: auto;
+    height: calc(100vh - 175px);
+    min-height: 450px;
+}
+.content-height {
+    overflow-y: auto;
+    height: calc(100vh - 100px);
+}
+.current-order-card-height {
+    overflow-y: auto;
+    height: calc(100vh - 100px);
+    min-height: 450px;
+}
+.archive-content {
+    /* overflow-y: auto; */
+    height: calc(100vh - 115px);
+    /* min-height: 450px; */
 }
 .mb-10 {
     margin-bottom: 10px;
@@ -175,6 +193,38 @@ hr {
 }
 .react-date-picker__wrapper input {
     width: 100%;
+}
+.btn_theme{
+    background-color:var(--theme-clr);
+    color:#fff;
+    border:0;
+    border-radius:5px;
+
+}
+.modal-546{
+    width:546px;
+    max-width: inherit;
+    .modal-header{
+        border-bottom:0;
+        padding-bottom:0;
+    }
+    .modal-title{
+        font-size: 17px;
+        font-weight:700;
+        span{
+            color:var(--theme-clr);
+        }
+    }
+    .modal-footer{
+        padding-top:0px;
+        border-top:0;
+    }
+}
+.btn,.btn-close{
+    box-shadow:none !important;
+}
+.mb-26 {
+    margin-bottom: 26px;
 }
 `;
 

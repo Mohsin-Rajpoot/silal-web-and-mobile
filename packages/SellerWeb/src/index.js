@@ -2,12 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ClientContainer from "./ClientContainer";
+import ProductContainer from "./ProductContainer";
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/client" component={ClientContainer} />
+        <Route path="/product" component={ProductContainer} />
+        <Route path="/" component={App} />
+      </Switch>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
