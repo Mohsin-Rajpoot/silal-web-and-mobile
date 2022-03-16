@@ -139,7 +139,7 @@ const Home = ({ navigation }) => {
       <LockOnLandscape />
       <View style={{ flexDirection: 'row' }}>
         <View style={{ padding: 15 }}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.openDrawer()}>
             <MaterialCommunityIcons
               name="reorder-horizontal"
               size={20}
