@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
-<<<<<<< HEAD
-// import { Picker } from '@react-native-picker/picker';
-import EvilIcons from 'react-native-vector-icons/EvilIcons'
-=======
 import { SafeAreaView, StyleSheet, Text, View, Dimensions, TextInput, FlatList, TouchableOpacity, Modal, ScrollView, Image } from 'react-native'
 import Entypo from 'react-native-vector-icons/Entypo'
 import Fontisto from 'react-native-vector-icons/Fontisto'
->>>>>>> 2e05c1a778cf5a67d984e2adc653b4c8d4438a17
 
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import { ModalView } from '../Components/ModalView';
+import { ModalView } from '../components/ModalView';
 const { width, height } = Dimensions.get("window");
 const Clints = () => {
   const [choseData, setchoseData] = useState('Sort by');

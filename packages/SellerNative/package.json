@@ -24,6 +24,7 @@
     "react-native": "0.67.3",
     "react-native-chart-kit": "^6.12.0",
     "react-native-charts-wrapper": "^0.5.7",
+    "react-native-easy-toast": "^2.0.0",
     "react-native-elements": "^3.4.2",
     "react-native-orientation-locker": "^1.4.0",
     "react-native-phone-number-input": "^2.1.0",

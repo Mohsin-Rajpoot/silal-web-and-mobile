@@ -1,11 +1,11 @@
-import React,{useState} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity,Dimensions,SafeAreaView ,FlatList, Pressable,Modal, ScrollView} from 'react-native';
+import React,{useState,useRef} from 'react';
+import { StyleSheet, Text, View, TouchableOpacity,Dimensions,SafeAreaView ,FlatList, Pressable,Modal, ScrollView,Button} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import { Image, SvgXml } from 'react-native-svg';
 import Svg, { Path ,Defs,LinearGradient,Stop,Rect,Circle, G} from "react-native-svg"
-// import Calender from '@SilalApp/common/components/native';
+import Toast from 'react-native-easy-toast';
 
 const { width, height } = Dimensions.get("window");
 
@@ -16,6 +16,7 @@ export default function Archive_orders({title, navigation}) {
   const [show_modal_customer_data, set_show_modal_customer_data] = useState(false);
   const [show_modal_driver_data, set_show_modal_driver_data] = useState(false);
   const [show_modal_order_details, set_show_modal_order_details] = useState(false);
+  const toastRef = useRef();
 
 
   const data = [
@@ -77,25 +78,25 @@ export default function Archive_orders({title, navigation}) {
       return(
         <TouchableOpacity onPress={()=>setModalVisible(true)} style={styles.render_all_orders}>
           <View style={[styles.render_all_order_single,{width:'12%',}]}>
-            <Text>#723DN2</Text>
+            <Text style={{fontFamily:'Lato-Regular',}}>#723DN2</Text>
           </View>
           <View style={[styles.render_all_order_single,{width:'18%',}]}>
-            <Text>Leslie A.</Text>
+            <Text style={{fontFamily:'Lato-Regular',}}>Leslie A.</Text>
           </View>
           <View style={[styles.render_all_order_single,{width:'14%',}]}>
-            <Text>2327</Text>
+            <Text style={{fontFamily:'Lato-Regular',}}>2327</Text>
           </View>
           <View style={[styles.render_all_order_single,{width:'12%',}]}>
-            <Text>Payment</Text>
+            <Text style={{fontFamily:'Lato-Regular',}}>Payment</Text>
           </View>
           <View style={[styles.render_all_order_single,{width:'10%',}]}>
             <Text>Type</Text>
           </View>
           <View style={[styles.render_all_order_single,{width:'12%',}]}>
-            <Text>Status</Text>
+            <Text style={{fontFamily:'Lato-Regular',}}>Status</Text>
           </View>
           <View style={[styles.render_all_order_single,{width:'14%',}]}>
-            <Text>$ 120</Text>
+            <Text style={{fontFamily:'Lato-Regular',}}>$ 120</Text>
           </View>
 
           <View style={[styles.render_all_order_single,{width:'8%',}]} >
@@ -110,28 +111,28 @@ export default function Archive_orders({title, navigation}) {
       return(
           <View style={styles.all_orders_header}>
             <View style={[styles.all_orders,{width:'12%'}]}>
-              <Text>Order ID</Text>
+              <Text style={styles.all_orders_heading_txt}>Order ID</Text>
             </View>
             <View style={[styles.all_orders,{width:'18%'}]} >
-              <Text>Customer name</Text>
+              <Text style={styles.all_orders_heading_txt}>Customer name</Text>
             </View>
             <View style={[styles.all_orders,{width:'14%'}]} >
-              <Text>Customer ID</Text>
+              <Text style={styles.all_orders_heading_txt}>Customer ID</Text>
             </View>
             <View style={[styles.all_orders,{width:'12%'}]} >
-              <Text>Payment</Text>
+              <Text style={styles.all_orders_heading_txt}>Payment</Text>
             </View>
             <View style={[styles.all_orders,{width:'10%'}]} >
-              <Text>Type</Text>
+              <Text style={styles.all_orders_heading_txt}>Type</Text>
             </View>
             <View style={[styles.all_orders,{width:'12%'}]} >
               <Text>Status</Text>
             </View>
             <View style={[styles.all_orders,{width:'14%'}]} >
-              <Text>Total price</Text>
+              <Text style={styles.all_orders_heading_txt}>Total price</Text>
             </View>
             <View style={[styles.all_orders,{width:'8%'}]} >
-              <Text>Action</Text>
+              <Text style={styles.all_orders_heading_txt}>Action</Text>
             </View>
 
           </View>
@@ -263,13 +264,13 @@ export default function Archive_orders({title, navigation}) {
 
             <View style={{flexDirection:'row'}}>
                 <TouchableOpacity onPress={()=>set_order_state('All')} style={[styles.archive_orders_tab,{borderColor:order_state=='All'?'#5AB3A8':'#e8edee'}]}>
-                  <Text style={{color:order_state=='All'?'#002733':'#4C6870',fontWeight:'600'}}>All orders</Text>
+                  <Text style={{color:order_state=='All'?'#002733':'#4C6870',fontWeight:'600',fontFamily:'Poppins-SemiBold'}}>All orders</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=>set_order_state('completed')} style={[styles.archive_orders_tab,{borderColor:order_state=='completed'?'#5AB3A8':'#e8edee'}]} >
-                  <Text style={{color:order_state=='completed'?'#002733':'#4C6870',fontWeight:'600'}}>Completed</Text>
+                  <Text style={{color:order_state=='completed'?'#002733':'#4C6870',fontWeight:'600',fontFamily:'Poppins-SemiBold'}}>Completed</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=>set_order_state('cancelled')} style={[styles.archive_orders_tab,{borderColor:order_state=='cancelled'?'#5AB3A8':'#e8edee'}]} >
-                  <Text style={{color:order_state=='cancelled'?'#002733':'#4C6870',fontWeight:'600'}}>Cancelled</Text>
+                  <Text style={{color:order_state=='cancelled'?'#002733':'#4C6870',fontWeight:'600',fontFamily:'Poppins-SemiBold'}}>Cancelled</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.filter_box}>
@@ -287,6 +288,24 @@ export default function Archive_orders({title, navigation}) {
             </View>
 
           </View>
+          <Button title="Show Toast" onPress={() => toastRef.current.show(
+              <View style={{flexDirection:'row'}}>
+                <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to Accepted</Text>
+                <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
+                  <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>UNDO</Text>
+                </TouchableOpacity>
+              </View>
+              ,1000
+              )} />
+            <Toast ref={toastRef}
+              style={styles.toast}
+              position='bottom'
+              positionValue={250}
+              fadeInDuration={750}
+              fadeOutDuration={800}
+              opacity={1}
+              textStyle={{color:'red'}}
+            />
 
           {order_state=='All'?
           
@@ -566,6 +585,23 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
     marginLeft:10 
+  },
+  all_orders_heading_txt:{
+    fontFamily:'Lato-Bold'
+  },
+  toast:{
+    backgroundColor:'#FFFFFF',
+    // marginHorizontal:30,
+    paddingVertical:10,
+    paddingHorizontal:20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
   }
 });
 
