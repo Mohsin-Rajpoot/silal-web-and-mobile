@@ -1,20 +1,20 @@
 import React,{useState} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity,Dimensions,SafeAreaView ,FlatList, ScrollView,Modal,Pressable} from 'react-native';
+import { StyleSheet, Text, View , TouchableOpacity,Dimensions,SafeAreaView ,FlatList, TextInput,Modal,Pressable, ToastAndroid} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo'
 import { Image, SvgXml } from 'react-native-svg';
 import Svg, { Path ,Defs,LinearGradient,Stop,Rect,Circle, G} from "react-native-svg"
-
+import { Slider ,Icon} from 'react-native-elements';
+import Toast from 'react-native-toast-message'
 
 const { width, height } = Dimensions.get("window");
 
 
-export default function Current_orders({
-title,
-  navigation
-}) {
+export default function Current_orders({title, navigation}) {
 
   const [modal_timer_visible, set_modal_timer_visible] = useState(false);
+  const [values, set_values] = useState(0);
+  const [manual_time, set_manual_time] = useState('');
 
 
     const data = [
@@ -99,7 +99,7 @@ title,
 
   const render_accepted=(item)=>{
     return(
-        <TouchableOpacity  style={styles.single_order} >
+        <View  style={styles.single_order} >
             <View style={styles.order_header}>
                 <Text style={styles.orderid_text}>ORDER ID<Text style={[styles.orderid_text,{color:'black'}]}>  #123456</Text></Text>
                 <Text style={[styles.orderid_text,{color:'black'}]}>19.43 MIN</Text>
@@ -124,16 +124,14 @@ title,
               </View>
             </View>
             <View style={styles.order_recve_loc_view}>
-              <TouchableOpacity 
-              // onPress={()=>set_modal_timer_visible(true)}
-              >
+              <TouchableOpacity onPress={()=>set_modal_timer_visible(true)} >
                 <Text style={{marginRight:20,color:'#5AB3A8'}}>Change estimation time</Text>
               </TouchableOpacity>
               <View style={styles.ready_btn}>
                 <Text style={{color:'white'}}>Ready</Text>
               </View>
             </View>
-        </TouchableOpacity>
+        </View>
       )
   }
   const render_ready_pickup=()=>{
@@ -143,6 +141,116 @@ title,
         <Text style={{fontSize:17}}>21 min ago</Text>
       </TouchableOpacity>
       )
+  }
+
+  const render_modal_view=()=>{
+    return(
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
+              <Text style={{fontSize:18,fontWeight:'700',color:'black'}}>Order will be ready in: </Text>
+              <Text style={{color:'#5AB3A8',fontSize:18,fontWeight:'700',width:150}}>{values} minutes</Text>
+              <TouchableOpacity onPress={() => set_modal_timer_visible(!modal_timer_visible)} >
+                <Entypo name='cross' style={[styles.cross_icon,{color:'#4C6870',fontSize:25}]} />
+              </TouchableOpacity>
+            </View>
+
+            <View style={{marginTop:20,width:450}}>
+              <Slider
+                value={values}
+                onValueChange={set_values}
+                maximumValue={15}
+                minimumValue={-15}
+                step={5}
+                // allowTouchTrack
+                minimumTrackTintColor="#CCD4D6"
+                maximumTrackTintColor="#CCD4D6"
+                // trackStyle={{ height: 5, backgroundColor: '#CCD4D6' }}
+                thumbStyle={{ height: 30, width: 30, backgroundColor: 'transparent' }}
+                thumbProps={{
+                  children: (
+                    <View style={{backgroundColor:'white',height:30,width:30,borderRadius:20,borderWidth:2,borderColor:'#5AB3A8',alignItems:'center',justifyContent:'center'}}>
+                      <View style={{backgroundColor:'#5AB3A8',height:10,width:10,borderRadius:20,}}>
+
+                      </View>
+                    </View>
+                  ),
+                }}
+              />
+              <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+                <View style={{alignItems:'center',justifyContent:'center'}}>
+                  <View style={{height:10,width:2,backgroundColor:'#CCD4D6'}}></View>
+                  <Text>-15 min</Text>
+                </View>
+                <View style={{alignItems:'center',justifyContent:'center'}}>
+                  <View style={{height:10,width:2,backgroundColor:'#CCD4D6'}}></View>
+                  <Text>-10 min</Text>
+                </View>
+                <View style={{alignItems:'center',justifyContent:'center'}}>
+                  <View style={{height:10,width:2,backgroundColor:'#CCD4D6'}}></View>
+                  <Text>-5 min</Text>
+                </View>
+                <View style={{alignItems:'center',justifyContent:'center'}}>
+                  <View style={{height:10,width:2,backgroundColor:'#CCD4D6'}}></View>
+                  <Text style={{color:'#CCD4D6'}}>(19:22 PM)</Text>
+                </View>
+                <View style={{alignItems:'center',justifyContent:'center'}}>
+                  <View style={{height:10,width:2,backgroundColor:'#CCD4D6'}}></View>
+                  <Text>5 min</Text>
+                </View>
+                <View style={{alignItems:'center',justifyContent:'center'}}>
+                  <View style={{height:10,width:2,backgroundColor:'#CCD4D6'}}></View>
+                  <Text>10 min</Text>
+                </View>
+                <View style={{alignItems:'center',justifyContent:'center'}}>
+                  <View style={{height:10,width:2,backgroundColor:'#CCD4D6'}}></View>
+                  <Text>15 min</Text>
+                </View>
+
+              </View>
+            </View>
+            <View style={{flexDirection:'row',alignItems:'center',marginTop:30}}>
+              <Text style={{fontSize:15,fontWeight:'600'}}>Add manually</Text>
+              <View>
+              <TextInput
+                  placeholder='+30 min'
+                  placeholderTextColor='#CCD4D6'
+                  value={manual_time}
+                  onChangeText={(text)=>set_manual_time(text)}
+                  style={{borderWidth:1,borderRadius:5,width:120,height:40,borderColor:'#CCD4D6',marginLeft:10}}
+                  // style={CommonStyle.inputTextStyle}
+                />
+              </View>
+            </View>
+            <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
+              <TouchableOpacity onPress={()=>set_modal_timer_visible(!modal_timer_visible)} style={[styles.modal_save_btn,{backgroundColor:'#CCD4D6'}]}>
+                <Text style={{color:'black'}}>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={
+                ()=>{
+                  set_modal_timer_visible(false)
+                  ToastAndroid.showWithGravityAndOffset(
+                    'Preperation time is changed',
+                    ToastAndroid.LONG,
+                    ToastAndroid.BOTTOM,
+                    25,
+                    50
+                  );
+                  // Toast.show({
+                  //   position:'top',
+                  //   // bottomOffset:'20',
+                  //   type: 'info',
+                  //   text1: 'This is an info message'
+                  //   })
+                  }}
+                  style={styles.modal_save_btn}>
+                <Text style={{color:'white'}}>Save</Text>
+              </TouchableOpacity>
+            </View>
+            
+          </View>
+        </View>
+    )
   }
 
   return (
@@ -172,7 +280,7 @@ title,
               />
             </View>
 
-            <View style={{backgroundColor:'#4C6870',flex:1,marginLeft:10,borderRadius:5}}>
+            <View style={{backgroundColor:'#4C6870',width:'16%',marginLeft:10,borderRadius:5}}>
               <Text style={[styles.title,{color:'white'}]}>Ready for pickup</Text>
               <FlatList
                   keyExtractor={(item, index) => index.toString()}
@@ -181,6 +289,16 @@ title,
                     render_ready_pickup()
                   )}
               />
+              <View style={{flexDirection:'row',padding:10,backgroundColor:'#5AB3A8',borderBottomLeftRadius:5,borderBottomRightRadius:5,alignItems:'center',justifyContent:'space-evenly'}}>
+                <Svg width="36" height="24" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <Path d="M27.27 9L24.72 1.98C24.285 0.795 23.16 0 21.9 0H18V3H21.9L24.09 9H16.875L16.335 7.5H18V4.5H10.5V7.5H13.125L15.855 15H14.85C14.19 11.655 11.385 9.18 7.875 9.015C3.675 8.805 0 12.3 0 16.5C0 20.7 3.3 24 7.5 24C11.19 24 14.175 21.465 14.85 18H21.15C21.81 21.345 24.615 23.82 28.125 23.985C32.325 24.18 36 20.7 36 16.485C36 12.285 32.7 8.985 28.5 8.985H27.27V9ZM11.73 18C11.13 19.755 9.495 21 7.5 21C4.98 21 3 19.02 3 16.5C3 13.98 4.98 12 7.5 12C9.495 12 11.13 13.245 11.73 15H7.5V18H11.73ZM21.15 15H19.05L17.955 12H22.5C21.84 12.87 21.36 13.875 21.15 15ZM28.5 21C25.98 21 24 19.02 24 16.5C24 15.105 24.615 13.905 25.575 13.08L27.015 17.04L29.835 16.02L28.38 12.015C28.425 12.015 28.47 12 28.515 12C31.035 12 33.015 13.98 33.015 16.5C33.015 19.02 31.02 21 28.5 21Z" fill="white"/>
+                </Svg>
+                <View>
+                  <Text style={{color:'white'}}>ON-WAY</Text>
+                  <Text style={{color:'white',marginTop:5}}>4 orders</Text>
+                </View>
+              </View>
+
             </View>
 
           </View>
@@ -189,21 +307,11 @@ title,
             transparent={true}
             visible={modal_timer_visible}
             onRequestClose={() => {
-              Alert.alert("Modal has been closed.");
+              // Alert.alert("Modal has been closed.");
               set_modal_timer_visible(!modal_timer_visible);
             }}
           >
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-                <Text >Hello World!</Text>
-                <Pressable
-                  // style={[styles.button, styles.buttonClose]}
-                  onPress={() => set_modal_timer_visible(!modal_timer_visible)}
-                >
-                  <Text >Hide Modal</Text>
-                </Pressable>
-              </View>
-            </View>
+           {render_modal_view()}
           </Modal>
 
       </View>
@@ -311,7 +419,7 @@ const styles = StyleSheet.create({
 
     backgroundColor: "white",
     padding: 20,
-    // alignItems: "center",
+    borderRadius:10,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -321,5 +429,13 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5
   },
+  modal_save_btn:{
+    alignItems:'center',
+    justifyContent:'center',
+    backgroundColor:'#5AB3A8',
+    width:210,
+    padding:10,
+    borderRadius:5
+  }
 });
 

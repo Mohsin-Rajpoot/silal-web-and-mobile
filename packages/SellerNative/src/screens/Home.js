@@ -224,7 +224,7 @@ const Home = ({ navigation }) => {
               </Text>
             </View>
             {/* Four */}
-            <View style={[styles.One, { paddingHorizontal: 5 }]}>
+            <View style={[styles.One, { paddingHorizontal: 8 }]}>
               <View style={styles.WhiteDive}>
                 <View style={styles.ImgeViewBKG}>
                   <MaterialCommunityIcons name='medal-outline' style={{ fontSize: 30, color: '#5AB3A8' }} />
@@ -324,7 +324,7 @@ const Home = ({ navigation }) => {
                 <FlatList
                   data={data2}
                   numColumns={1}
-                  style={{ marginBottom: 100,height:450 }}
+                  style={{ marginBottom: 100, height: 450 }}
                   renderItem={({ item }) => (
                     <View>
                       <View style={{ height: 50, flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -535,7 +535,7 @@ const styles = StyleSheet.create({
   },
   One: {
     backgroundColor: '#fff',
-    width: width / 100 * 23,
+    width: "24%",
     elevation: 2,
     borderRadius: 5,
     marginVertical: 15
@@ -549,7 +549,7 @@ const styles = StyleSheet.create({
     marginTop: -20
   },
   FlatListMainView: {
-    width: width / 100 * 29,
+    width: "91%",
     backgroundColor: '#F4F7F8',
     alignSelf: 'center',
     borderRadius: 5,
@@ -623,7 +623,7 @@ const styles = StyleSheet.create({
 
   },
   HotproductMainContainer: {
-    width: width / 100 * 35,
+    width: "35%",
     backgroundColor: '#FFFFFF',
     borderRadius: 5,
     elevation: 5,
