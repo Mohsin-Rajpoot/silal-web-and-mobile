@@ -47,7 +47,7 @@ const App = ({ navigation }) => {
           name="Order"
           component={Order}
           options={{
-            tabBarLabel: 'Order',
+            tabBarLabel: 'Orders',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="bus" color={color} size={size} />
             ),
@@ -57,7 +57,7 @@ const App = ({ navigation }) => {
           name="Clints"
           component={Clints}
           options={{
-            tabBarLabel: 'Clints',
+            tabBarLabel: 'Clients',
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="people-sharp" color={color} size={size} />
             ),

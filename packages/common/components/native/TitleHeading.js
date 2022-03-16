@@ -12,7 +12,7 @@ const TitleHeading = ({ navigation }) => {
                         <Text style={styles.subTitle}>8502 Preston Rd. Inglewood</Text>
                     </View>
                     <View style={styles.PeackTimeBackground}>
-                        <Text style={styles.TextPeackTime}>Peak Hours 12 AM - 14 PM</Text>
+                        <Text style={styles.TextPeackTime}>PEAK HOURS  12 AM - 14 PM</Text>
                     </View>
 
                 </View>
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     TextPeackTime: {
         fontFamily: 'Lato-Regular',
         fontSize: 12,
-        color: '#fff'
+        color: '#fff',
+        paddingHorizontal:5
 
     }
 })

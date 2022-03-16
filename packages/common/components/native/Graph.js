@@ -8,7 +8,7 @@ const Graph = () => {
       <View
         style={{
           backgroundColor: '#FFFFFF',
-          width: 500,
+          width: '100%',
           height: 707,
           marginHorizontal: 15,
           borderRadius: 5,
@@ -30,7 +30,7 @@ const Graph = () => {
                     },
                   ],
                 }}
-                width={Dimensions.get('window').width - 500}
+                width={600}
                 height={220}
                 yAxisLabel={'$'}
                 chartConfig={{
