@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Content } from "../views/index";
-import Sidebar from "../views/components/UI/Sidebar";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import Nav from "../views/components/clients/Nav";
+import React, { useState } from "react"
+import { Content } from "../views/index"
+import Sidebar from "../views/components/UI/Sidebar"
+import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
+import Nav from "../views/components/products/Nav"
 
-const ClientLayout = () => {
-  const [sideBar, setSideBar] = useState(true);
+const ProductLayout = () => {
+  const [sideBar, setSideBar] = useState(true)
   const sideBarToggle = (view) => {
-    setSideBar(view);
-  };
+    setSideBar(view)
+  }
 
   return (
     <React.Fragment>
@@ -23,7 +23,7 @@ const ClientLayout = () => {
         </div>
       </div>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default ClientLayout;
+export default ProductLayout

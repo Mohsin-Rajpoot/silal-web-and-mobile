@@ -5,6 +5,7 @@ import { Menu } from "../AllImages";
 import { NavStyled, FlexContainer, HeadingStyled } from "../Style";
 import { Search, ArrowDownUp } from "react-bootstrap-icons";
 import Dropdown from "react-bootstrap/esm/Dropdown";
+
 const Nav = ({ sideBar, setSideBar }) => {
   const sidebarHandler = () => {
     setSideBar(!sideBar);

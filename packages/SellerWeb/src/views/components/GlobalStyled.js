@@ -223,6 +223,9 @@ hr {
 .btn,.btn-close{
     box-shadow:none !important;
 }
+.mb-26 {
+    margin-bottom: 26px;
+}
 `;
 
 export default GlobalStyle;

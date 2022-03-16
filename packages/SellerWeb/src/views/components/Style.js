@@ -40,6 +40,9 @@ const Button = styled.button`
     background: rgba(90, 179, 168, 0.5);
     cursor: inherit;
   }
+  &.w-230 {
+    width: 230px;
+  }
 `;
 
 const ButtonText = styled.button`

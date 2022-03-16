@@ -4,11 +4,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ClientContainer from "./ClientContainer";
+import ProductContainer from "./ProductContainer";
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
         <Route path="/client" component={ClientContainer} />
+        <Route path="/product" component={ProductContainer} />
         <Route path="/" component={App} />
       </Switch>
     </BrowserRouter>

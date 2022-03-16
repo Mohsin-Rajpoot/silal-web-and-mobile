@@ -8,7 +8,8 @@ const Sidebar = ({ sideBar, setSideBar }) => {
   const closeSidebar = () => {
     setSideBar(false);
   };
-  const clientPath = window.location.href.indexOf("client") > -1?true:false;
+  const clientPath = window.location.href.indexOf("client") > -1 ? true : false;
+  const productPath = window.location.href.indexOf("product") > -1 ? true : false;
   const { pathname } = useLocation();
 
   return (
@@ -43,9 +44,9 @@ const Sidebar = ({ sideBar, setSideBar }) => {
           to="/"
           className={
             pathname == "/" ||
-            pathname == "/reviews" ||
-            pathname == "/out-of-stock"
-            ? "active" : ""
+              pathname == "/reviews" ||
+              pathname == "/out-of-stock"
+              ? "active" : ""
           }
         >
           Dashboard
@@ -54,16 +55,24 @@ const Sidebar = ({ sideBar, setSideBar }) => {
           to="/current-order"
           className={
             pathname == "/current-order" ||
-            pathname == "/pre-order" ||
-            pathname == "/archive-order" ||
-            pathname == "/order-detail"
-            ? "active" : ""
+              pathname == "/pre-order" ||
+              pathname == "/archive-order" ||
+              pathname == "/order-detail"
+              ? "active" : ""
           }
         >
           Orders
         </Link>
-        <Link to="/client/database" className={clientPath&&("active")}>Clients</Link>
-        <Link to="#">Products</Link>
+        <Link
+          to="/client/database"
+          className={clientPath && ("active")}>
+          Clients
+        </Link>
+        <Link
+          to="/product/products"
+          className={productPath && ("active")}>
+          Products
+        </Link>
         <Link to="#">Offers</Link>
         <Link to="#">Documents</Link>
         <Link to="#">Contact us</Link>
