@@ -1,6 +1,6 @@
 import { ScaledSheet } from "react-native-size-matters";
 import colors from "../../assets/colors";
-import { Dimensions } from "react-native";
+
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -26,20 +26,19 @@ const styles = ScaledSheet.create({
   },
   textContainer: {
     backgroundColor: "transparent",
-    borderColor: "rgba(141, 142, 150, 1)",
-    borderWidth: "1@s",
+    borderColor: colors.borderColor,
+    borderWidth: "0.5@s",
     borderTopRightRadius: "5@s",
     borderBottomRightRadius: "5@s",
     fontSize: "10@ms",
   },
   countyPickerContainer: {
-    backgroundColor: colors.white,
-    borderColor: colors.gray,
-    borderTopWidth: "1@s",
-    borderLeftWidth: "1@s",
-    borderBottomWidth: "1@s",
-    borderTopLeftRadius: "5@s",
-    borderBottomLeftRadius: "5@s",
+    borderColor: colors.borderColor,
+    borderTopWidth: "0.5@s",
+    borderLeftWidth: "0.5@s",
+    borderBottomWidth: "0.5@s",
+    borderTopLeftRadius: "3@s",
+    borderBottomLeftRadius: "3@s",
   },
   bottomText: {
     fontSize: "14@s",
@@ -55,8 +54,8 @@ const styles = ScaledSheet.create({
     flexDirection: "row",
     alignItems: "center",
     alignSelf: "center",
-    fontSize:'12@ms',
-    color:colors.black
+    fontSize: "12@ms",
+    color: colors.black,
   },
   optContainer: {
     borderWidth: "1@s",
@@ -64,9 +63,9 @@ const styles = ScaledSheet.create({
     borderRadius: "5@s",
     height: "35@s",
     width: "30@s",
-    fontSize:'12@ms',
-    color:colors.black,
-    textAlign:'center'
+    fontSize: "12@ms",
+    color: colors.black,
+    textAlign: "center",
   },
   timerCode: {
     alignSelf: "center",
@@ -93,38 +92,38 @@ const styles = ScaledSheet.create({
     height: "40@s",
     borderRadius: "99@s",
     alignSelf: "center",
-    marginTop:"10@s"
+    marginTop: "10@s",
   },
   choseMainContainer: {
     width: "125@s",
     height: "100@s",
-    backgroundColor: 'rgba(90, 179, 168, 0.15)',
+    backgroundColor: "rgba(90, 179, 168, 0.15)",
     borderRadius: "10@s",
     margin: "5@s",
-    borderWidth:'1@s',
-    color:colors.primary
+    borderWidth: "1@s",
+    color: colors.primary,
   },
   choseMainContainer1: {
     width: "125@s",
     height: "100@s",
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     borderRadius: "10@s",
     margin: "5@s",
-    borderWidth:'1@s',
-    borderColor:"rgba(205, 205, 208, 0.5)"
+    borderWidth: "1@s",
+    borderColor: "rgba(205, 205, 208, 0.5)",
   },
   accountTitle: {
     fontSize: "13@ms",
     color: colors.black,
     textAlign: "center",
-    fontFamily:fonts.PoppinsMedium,
+    fontFamily: fonts.PoppinsMedium,
     marginVertical: "5@s",
   },
   accountDetail: {
     fontSize: "12@ms",
     color: colors.textPrimary,
     textAlign: "center",
-    fontFamily:fonts.LatoMedium,
+    fontFamily: fonts.LatoMedium,
     marginBottom: "10@s",
   },
   heading: {
@@ -190,6 +189,102 @@ const styles = ScaledSheet.create({
     color: colors.primary,
     textAlign: "center",
   },
+  SignformHeader: {
+    width: wp("32%"),
+    backgroundColor: colors.primary,
+    height: "5@s",
+    borderRadius: "5@s",
+  },
+  SignUpHeaderInactive: {
+    width: wp("32%"),
+    backgroundColor: colors.grayLight,
+    height: "5@s",
+    borderRadius: "5@s",
+  },
+  headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginHorizontal: "5@s",
+  },
+  headerText: {
+    fontSize: "12@ms",
+    fontFamily: fonts.LatoBold,
+    color: colors.black,
+    marginVertical: "3@s",
+  },
+  headerTextInactive: {
+    fontSize: "12@ms",
+    fontFamily: fonts.LatoBold,
+    color: colors.light_grey,
+    marginVertical: "3@s",
+  },
+  firstPageMainContainer: {
+    margin: "5@s",
+  },
+  formTextHeading: {
+    fontSize: "12@ms",
+    fontFamily: fonts.LatoBold,
+    color: colors.black,
+    paddingHorizontal: "2@s",
+    marginVertical: "5@s",
+  },
+  addressContainer:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    marginTop:'10@s',
+    height:'30@s'
+  },
+  formTextHeadingOptional: {
+    fontSize: "12@ms",
+    fontFamily: fonts.LatoBold,
+    color: colors.black,
+    paddingHorizontal: "2@s",
+  
+  },
+  addressInput:{
+    width:wp('30%'),
+    borderWidth: "0.5@s",
+    borderColor: colors.borderColor,
+    borderWidth: "0.5@s",
+    borderRadius:'4@s'
+  },
+  star: {
+    color: colors.red,
+
+    flexDirection: "column",
+  },
+  optionalText:{
+    fontSize: "12@ms",
+    fontFamily: fonts.LatoBold,
+    color: colors.gray,
+    textAlign:'center',
+    alignSelf:'center'
+  },
+  outerContainer:{
+    flexDirection:'row',
+    alignSelf:'flex-end',
+    marginHorizontal:'15@s'
+  },
+  backIconInnerContainer:{
+    flexDirection:'row',
+    alignSelf:'center'
+  },
+  backText:{
+    fontSize:'12@ms',
+    fontFamily:fonts.PoppinsSemiBold,
+    color:colors.black,
+    marginRight:"10@s",
+    marginLeft:"5@s"
+  },
+  formButton:{
+    backgroundColor: 'rgba(90, 179, 168, 0.2)',
+    width: wp('35%'),
+    alignSelf: "center",
+    alignItems: "center",
+    padding: "6@s",
+    borderRadius: "3@s",
+    margin:'5@s'
+  }
 });
 
 export default styles;

@@ -17,9 +17,9 @@ const styles = ScaledSheet.create({
   textInputStyles: {
     alignSelf: "center",
     borderWidth: "0.5@s",
-    borderColor: colors.gray,
+    borderColor: colors.borderColor,
     width: "100%",
-    borderRadius: "5@s",
+    borderRadius: "4@s",
     height: "30@s",
   },
   inputTextStyle: {

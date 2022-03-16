@@ -48,6 +48,9 @@ const OnBoarding = ({navigation}) => {
   const goToMainStack=()=>{
     navigation.navigate('MainStack')
   }
+  const goToSignupForm=()=>{
+    navigation.navigate('SignUpForm')
+  }
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {page == 3 ? <View/>:
@@ -80,6 +83,7 @@ const OnBoarding = ({navigation}) => {
                 <AuthButton name="Sign up"  onPress={goToSignUp}/>
                 <AuthButton name="Login" changeColor={true} onPress={goToLogin} />
                 <AuthButton name="MainStack" changeColor={true} onPress={goToMainStack} />
+                <AuthButton name="Sign up form" changeColor={true} onPress={goToSignupForm} />
               </View>
             ) : (
               <View />

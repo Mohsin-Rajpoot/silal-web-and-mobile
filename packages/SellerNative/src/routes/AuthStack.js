@@ -8,6 +8,7 @@ import ChangePassword from '@SilalApp/common/screens/Auth/ChangePassword';
 import GettingStarted from '@SilalApp/common/screens/Auth/GettingStarted';
 import ChooseAccount from '@SilalApp/common/screens/Auth/ChooseAccount';
 import Onboarding from '@SilalApp/common/screens/Auth'
+import SignUpForm from '@SilalApp/common/screens/Auth/SignUpForm';
 const Stack = createNativeStackNavigator();
 const AuthStack = () => {
   return (
@@ -21,6 +22,7 @@ const AuthStack = () => {
       <Stack.Screen name="GettingStarted" component={GettingStarted} />
       <Stack.Screen name='ChooseAccount' component={ChooseAccount}/>
       <Stack.Screen name='OnBoarding' component={Onboarding}/>
+      <Stack.Screen name='SignUpForm' component={SignUpForm}/>
     </Stack.Navigator>
   );
 };
