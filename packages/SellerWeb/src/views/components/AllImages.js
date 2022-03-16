@@ -12,11 +12,8 @@ import xIcon from "../../assets/images/svg/x-icon.svg"
 import clock from "../../assets/images/svg/clock.svg"
 import walkIcon from "../../assets/images/svg/walk-icon.svg"
 import locationIcon from "../../assets/images/svg/location-icon.svg"
-<<<<<<< HEAD
-=======
 import phoneIcon from "../../assets/images/svg/phone-icon.svg"
 import collpaseArrow from "../../assets/images/svg/collpase-arrow.svg"
->>>>>>> b62894287e2ebca268f9de269a39ecb8916323f7
 import { ReactComponent as Menu } from "../../assets/images/svg/menu.svg"
 import { ReactComponent as Home } from "../../assets/images/svg/home.svg"
 import { ReactComponent as Order } from "../../assets/images/svg/order.svg"
@@ -28,11 +25,8 @@ import { ReactComponent as CalendarIcon } from "../../assets/images/svg/calendar
 import { ReactComponent as DropdownMenu } from "../../assets/images/svg/dropdown-menu.svg"
 import { ReactComponent as CycleIcon } from "../../assets/images/svg/cycle-icon.svg"
 import { ReactComponent as BackArrow } from "../../assets/images/svg/back-arrow.svg"
-<<<<<<< HEAD
-=======
 import { ReactComponent as FilterIcon } from "../../assets/images/svg/filter-icon.svg"
 import { ReactComponent as XIcon } from "../../assets/images/svg/x-icon.svg"
->>>>>>> b62894287e2ebca268f9de269a39ecb8916323f7
 
 export {
     Menu,
@@ -60,11 +54,8 @@ export {
     locationIcon,
     CycleIcon,
     BackArrow,
-<<<<<<< HEAD
-=======
     phoneIcon,
     FilterIcon,
     XIcon,
     collpaseArrow,
->>>>>>> b62894287e2ebca268f9de269a39ecb8916323f7
 }
