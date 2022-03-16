@@ -4,5 +4,6 @@ export default {
     LatoRegular:'Lato-Regular',
     LatoBold:'Lato-Bold',
     LatoMedium:'Lato-Medium',
-    PoppinsMedium:'Poppins-Medium'
+    PoppinsMedium:'Poppins-Medium',
+    PoppinsRegular:'Poppins-Regular'
 }
