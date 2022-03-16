@@ -1,11 +1,12 @@
-import React,{useState} from 'react';
+import React,{useState,useRef} from 'react';
 import { StyleSheet, Text, View , TouchableOpacity,Dimensions,SafeAreaView ,FlatList, TextInput,Modal,Pressable, ToastAndroid} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import { Image, SvgXml } from 'react-native-svg';
 import Svg, { Path ,Defs,LinearGradient,Stop,Rect,Circle, G} from "react-native-svg"
 import { Slider ,Icon} from 'react-native-elements';
-import Toast from 'react-native-toast-message'
+import Toast from 'react-native-easy-toast';
 
 const { width, height } = Dimensions.get("window");
 
@@ -15,6 +16,7 @@ export default function Current_orders({title, navigation}) {
   const [modal_timer_visible, set_modal_timer_visible] = useState(false);
   const [values, set_values] = useState(0);
   const [manual_time, set_manual_time] = useState('');
+  const toastRef = useRef();
 
 
     const data = [
@@ -111,7 +113,7 @@ export default function Current_orders({title, navigation}) {
               </Svg>
               <View style={{marginLeft:10}}>
                 <Text style={styles.order_recve_name}>Wade Wamen</Text>
-                <Text style={{fontSize:17}}>(808)555-0111</Text>
+                <Text style={{fontSize:17,fontFamily:'Lato-Regular',}}>(808)555-0111</Text>
               </View>
             </View>
             <View style={styles.order_recve_loc_view}> 
@@ -125,10 +127,10 @@ export default function Current_orders({title, navigation}) {
             </View>
             <View style={styles.order_recve_loc_view}>
               <TouchableOpacity onPress={()=>set_modal_timer_visible(true)} >
-                <Text style={{marginRight:20,color:'#5AB3A8'}}>Change estimation time</Text>
+                <Text style={{marginRight:20,color:'#5AB3A8',fontFamily:"Poppins-Regular"}}>Change estimation time</Text>
               </TouchableOpacity>
               <View style={styles.ready_btn}>
-                <Text style={{color:'white'}}>Ready</Text>
+                <Text style={{color:'white',fontFamily:'Poppins-SemiBold',fontSize:15}}>Ready</Text>
               </View>
             </View>
         </View>
@@ -138,7 +140,7 @@ export default function Current_orders({title, navigation}) {
     return(
       <TouchableOpacity  style={[styles.single_order,{paddingVertical:10,marginHorizontal:20,marginVertical:10}]} >
         <Text style={styles.order_recve_name}>#247HW9</Text>
-        <Text style={{fontSize:17}}>21 min ago</Text>
+        <Text style={{fontSize:17,fontFamily:'Lato-Regular',}}>21 min ago</Text>
       </TouchableOpacity>
       )
   }
@@ -226,23 +228,19 @@ export default function Current_orders({title, navigation}) {
               <TouchableOpacity onPress={()=>set_modal_timer_visible(!modal_timer_visible)} style={[styles.modal_save_btn,{backgroundColor:'#CCD4D6'}]}>
                 <Text style={{color:'black'}}>Cancel</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={
-                ()=>{
-                  set_modal_timer_visible(false)
-                  ToastAndroid.showWithGravityAndOffset(
-                    'Preperation time is changed',
-                    ToastAndroid.LONG,
-                    ToastAndroid.BOTTOM,
-                    25,
-                    50
-                  );
-                  // Toast.show({
-                  //   position:'top',
-                  //   // bottomOffset:'20',
-                  //   type: 'info',
-                  //   text1: 'This is an info message'
-                  //   })
-                  }}
+              <TouchableOpacity 
+                     onPress={() =>{
+                       set_modal_timer_visible(false)
+                       toastRef.current.show(
+                      <View style={{flexDirection:'row'}}>
+                        <FontAwesome name='check-circle' style={{color:'#36b27c',fontSize:20}} />
+                        <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold',marginLeft:10}}>Order #247HW9 was declined</Text>
+                        <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
+                          <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>UNDO</Text>
+                        </TouchableOpacity>
+                      </View>
+                      ,3000
+                      )}}
                   style={styles.modal_save_btn}>
                 <Text style={{color:'white'}}>Save</Text>
               </TouchableOpacity>
@@ -294,14 +292,24 @@ export default function Current_orders({title, navigation}) {
                     <Path d="M27.27 9L24.72 1.98C24.285 0.795 23.16 0 21.9 0H18V3H21.9L24.09 9H16.875L16.335 7.5H18V4.5H10.5V7.5H13.125L15.855 15H14.85C14.19 11.655 11.385 9.18 7.875 9.015C3.675 8.805 0 12.3 0 16.5C0 20.7 3.3 24 7.5 24C11.19 24 14.175 21.465 14.85 18H21.15C21.81 21.345 24.615 23.82 28.125 23.985C32.325 24.18 36 20.7 36 16.485C36 12.285 32.7 8.985 28.5 8.985H27.27V9ZM11.73 18C11.13 19.755 9.495 21 7.5 21C4.98 21 3 19.02 3 16.5C3 13.98 4.98 12 7.5 12C9.495 12 11.13 13.245 11.73 15H7.5V18H11.73ZM21.15 15H19.05L17.955 12H22.5C21.84 12.87 21.36 13.875 21.15 15ZM28.5 21C25.98 21 24 19.02 24 16.5C24 15.105 24.615 13.905 25.575 13.08L27.015 17.04L29.835 16.02L28.38 12.015C28.425 12.015 28.47 12 28.515 12C31.035 12 33.015 13.98 33.015 16.5C33.015 19.02 31.02 21 28.5 21Z" fill="white"/>
                 </Svg>
                 <View>
-                  <Text style={{color:'white'}}>ON-WAY</Text>
-                  <Text style={{color:'white',marginTop:5}}>4 orders</Text>
+                  <Text style={styles.onway}>ON-WAY</Text>
+                  <Text style={[styles.onway,{marginTop:5,}]}>4 orders</Text>
                 </View>
               </View>
 
             </View>
 
           </View>
+
+            <Toast ref={toastRef}
+              style={styles.toast}
+              position='bottom'
+              positionValue={250}
+              fadeInDuration={750}
+              fadeOutDuration={800}
+              opacity={1}
+              textStyle={{color:'red'}}
+            />
           <Modal
             animationType="slide"
             transparent={true}
@@ -324,9 +332,10 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize:18,
-    fontWeight:'700',
-    fontFamily:'Poppins-Light',
-    margin:10
+    // fontWeight:'700',
+    fontFamily:'Poppins-Bold',
+    margin:10,
+    color:'black'
   },
   single_order:{
     backgroundColor:'white',
@@ -347,7 +356,8 @@ const styles = StyleSheet.create({
   orderid_text:{
     fontSize:15,
     color:'#CCD4D6',
-    fontWeight:'bold',
+    // fontWeight:'bold',
+    fontFamily:'Lato-Bold'
   },
   order_timer:{
     backgroundColor:'#F2A341',
@@ -355,7 +365,8 @@ const styles = StyleSheet.create({
   },
   order_title:{
     width:'70%',
-    fontSize:17
+    fontSize:17,
+    fontFamily:'Lato-Bold'
   },
   order_item:{
     flexDirection: 'row',
@@ -384,11 +395,12 @@ const styles = StyleSheet.create({
   },
   accept_btn_txt:{
     color:'white',
-    fontSize:15
+    fontSize:15,
+    fontFamily:'Poppins-SemiBold'
   },
   order_recve_name:{
     fontSize:17,
-    fontWeight:'400',
+    fontFamily:'Lato-Regular',
     color:'black'
   },
   order_recve_phone_view:{
@@ -436,6 +448,25 @@ const styles = StyleSheet.create({
     width:210,
     padding:10,
     borderRadius:5
+  },
+  onway:{
+    color:'white',
+    fontFamily:'Lato-Regular',
+  },
+  
+  toast:{
+    backgroundColor:'#FFFFFF',
+    // marginHorizontal:30,
+    paddingVertical:10,
+    paddingHorizontal:20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
   }
 });
 

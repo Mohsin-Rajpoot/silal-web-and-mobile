@@ -1,9 +1,13 @@
-import React ,{useState} from 'react';
+import React ,{useState,useRef} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,Dimensions,SafeAreaView ,ToastAndroid,FlatList, TextInput,Modal} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
 import { Image, SvgXml } from 'react-native-svg';
 import Svg, { Path ,Defs,LinearGradient,Stop,Rect,Circle, G} from "react-native-svg"
+import Toast from 'react-native-easy-toast';
+
 const { width, height } = Dimensions.get("window");
 
 
@@ -11,6 +15,7 @@ export default function Pre_orders({title, navigation}) {
 
   const [modal_timer_visible, set_modal_timer_visible] = useState(false);
   const [refusal_text, set_refusal_text] = useState('');
+  const toastRef = useRef();
 
 
     const data = [
@@ -86,13 +91,23 @@ export default function Pre_orders({title, navigation}) {
             <Text style={styles.order_title}>Cheesecakes with sour cream and citrus </Text>
         </View>
         <View style={styles.more_order}>
-          <Text>3 more</Text>
+          <Text style={{color:'#5AB3A8'}}>3 more</Text>
         </View>
         <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
             <TouchableOpacity onPress={()=>set_modal_timer_visible(true)} style={[styles.accept_btn,{width:'30%',backgroundColor:'#acd9d3'}]}>
                 <Text style={styles.accept_btn_txt}>Decline</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.accept_btn,{width:'60%'}]}>
+            <TouchableOpacity 
+                onPress={() => toastRef.current.show(
+                  <View style={{flexDirection:'row'}}>
+                    <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to Accepted</Text>
+                    <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
+                      <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>UNDO</Text>
+                    </TouchableOpacity>
+                  </View>
+                  ,3000
+                  )} 
+                style={[styles.accept_btn,{width:'60%'}]}>
                 <Text style={styles.accept_btn_txt}>Move to current orders</Text>
             </TouchableOpacity>
         </View>
@@ -120,13 +135,35 @@ export default function Pre_orders({title, navigation}) {
             <Text style={styles.order_title}>Cheesecakes with sour cream and citrus </Text>
         </View>
         <View style={styles.more_order}>
-          <Text>3 more</Text>
+          <Text style={{color:'#5AB3A8'}}>3 more</Text>
         </View>
+        
         <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
-            <TouchableOpacity  onPress={()=>set_modal_timer_visible(true)} style={[styles.accept_btn,{width:'30%',backgroundColor:'#acd9d3'}]}>
+            <TouchableOpacity       
+                onPress={() => toastRef.current.show(
+                  <View style={{flexDirection:'row'}}>
+                    <FontAwesome name='check-circle' style={{color:'#36b27c',fontSize:20}} />
+                    <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold',marginLeft:10}}>Order #247HW9 was declined</Text>
+                    <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
+                      <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>UNDO</Text>
+                    </TouchableOpacity>
+                  </View>
+                  ,3000
+                  )}
+                  style={[styles.accept_btn,{width:'30%',backgroundColor:'#acd9d3'}]}>
                 <Text style={styles.accept_btn_txt}>Decline</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.accept_btn,{width:'60%'}]}>
+            <TouchableOpacity 
+             onPress={() => toastRef.current.show(
+              <View style={{flexDirection:'row'}}>
+                <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to Accepted</Text>
+                <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
+                  <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>UNDO</Text>
+                </TouchableOpacity>
+              </View>
+              ,3000
+              )} 
+              style={[styles.accept_btn,{width:'60%'}]}>
                 <Text style={styles.accept_btn_txt}>Move to current orders</Text>
             </TouchableOpacity>
         </View>
@@ -218,6 +255,24 @@ export default function Pre_orders({title, navigation}) {
                   )}
               />
             </View>
+            {/* <Button title="Show Toast" onPress={() => toastRef.current.show(
+              <View style={{flexDirection:'row'}}>
+                <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to Accepted</Text>
+                <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
+                  <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>Undo</Text>
+                </TouchableOpacity>
+              </View>
+              ,1000
+              )} /> */}
+            <Toast ref={toastRef}
+              style={styles.toast}
+              position='bottom'
+              positionValue={250}
+              fadeInDuration={750}
+              fadeOutDuration={800}
+              opacity={1}
+              textStyle={{color:'red'}}
+            />
 
             <Modal
               animationType="slide"
@@ -243,9 +298,9 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize:18,
-    fontWeight:'700',
-    fontFamily:'Poppins-Light',
-    margin:10
+    fontFamily:'Poppins-Bold',
+    margin:10,
+    color:'black'
   },
   single_order:{
     backgroundColor:'white',
@@ -266,7 +321,7 @@ const styles = StyleSheet.create({
   orderid_text:{
     fontSize:15,
     color:'#CCD4D6',
-    fontWeight:'bold',
+    fontFamily:'Lato-Bold'
   },
   order_timer:{
     backgroundColor:'#F2A341',
@@ -274,7 +329,8 @@ const styles = StyleSheet.create({
   },
   order_title:{
     width:'70%',
-    fontSize:17
+    fontSize:17,
+    fontFamily:'Lato-Bold'
   },
   order_item:{
     flexDirection: 'row',
@@ -303,7 +359,8 @@ const styles = StyleSheet.create({
   },
   accept_btn_txt:{
     color:'white',
-    fontSize:15
+    fontSize:15,
+    fontFamily:'Poppins-SemiBold'
   },
   order_recve_name:{
     fontSize:17,
@@ -335,7 +392,8 @@ const styles = StyleSheet.create({
       borderRadius:5
   },
   delivryby_btn_txt:{
-      color:'#F2A341'
+      color:'#F2A341',
+      fontFamily:'Lato-Bold'
   },
   centeredView: {
     flex: 1,
@@ -368,6 +426,21 @@ const styles = StyleSheet.create({
     fontSize:18,
     fontWeight:'700',
     color:'black'
+  },
+  
+  toast:{
+    backgroundColor:'#FFFFFF',
+    // marginHorizontal:30,
+    paddingVertical:10,
+    paddingHorizontal:20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
   }
 });
 
