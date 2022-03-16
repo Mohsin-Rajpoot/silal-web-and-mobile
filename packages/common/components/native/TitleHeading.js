@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import {Calender} from '@SilalApp/common/components/native'
+import { Calender } from '@SilalApp/common/components/native'
 const TitleHeading = ({ navigation }) => {
     return (
         <SafeAreaView>
@@ -12,7 +12,7 @@ const TitleHeading = ({ navigation }) => {
                         <Text style={styles.subTitle}>8502 Preston Rd. Inglewood</Text>
                     </View>
                     <View style={styles.PeackTimeBackground}>
-                        <Text style={styles.TextPeackTime}>Peak Hours 12 AM - 14 PM</Text>
+                        <Text style={styles.TextPeackTime}>PEAK HOURS  12 AM - 14 PM</Text>
                     </View>
 
                 </View>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 35,
         marginVertical: 10,
         // backgroundColor: 'red',
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
     },
     Title: {
         color: '#002733',
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     TextPeackTime: {
         fontFamily: 'Lato-Regular',
         fontSize: 12,
-        color: '#fff'
+        color: '#fff',
+        paddingHorizontal:5
 
     }
 })

@@ -7,6 +7,7 @@ import CustomText from "../../components/CustomText";
 import styles from "./style";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 import Button from "../../components/native/AuthButton";
+import AuthCustomText from "../../components/native/AuthCustomText";
 const Verification = ({ route, navigation }) => {
   const { params } = route?.params;
 
@@ -15,14 +16,23 @@ const Verification = ({ route, navigation }) => {
   const goToChangePassword = () => {
     navigation.navigate("ChangePassword");
   };
+  const goGettingStarted = () => {
+    navigation.navigate("GettingStarted");
+  };
+  const goChooseAccount = () => {
+    navigation.navigate("ChooseAccount");
+  };
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
       <HeaderBack name="Verification" />
+
       <HeaderHeading
         headingName={`${
           params?.active == 3 ? "Enter 6-digit code" : "Verification code"
         }`}
-        headingDetail={
+      />
+      <AuthCustomText
+        fisrtText={
           params?.active == 3
             ? detail
             : ` We have sent the code verification to your ${
@@ -31,15 +41,17 @@ const Verification = ({ route, navigation }) => {
                   : params?.active == 2
                   ? "email"
                   : ""
-              } ${
-                params?.active == 1
-                  ? "+7(934) 455 34 45"
-                  : params?.active == 2
-                  ? "willie.jennings@example.com"
-                  : ""
               } `
         }
+        SecondText={
+          params?.active == 1
+            ? "+7(934) 455 34 45"
+            : params?.active == 2
+            ? "willie.jennings@example.com"
+            : ""
+        }
       />
+
       <View style={{ flex: 1 }}>
         <OTPInputView
           autoFocusOnLoad={true}
@@ -53,7 +65,11 @@ const Verification = ({ route, navigation }) => {
       <Button
         name={params?.active == 3 ? "Submit" : "Verify"}
         onPress={() => {
-          params.active == 3 && goToChangePassword();
+          params.active == 3
+            ? goToChangePassword()
+            : params?.active == 1
+            ? goChooseAccount()
+            : goGettingStarted();
         }}
       />
     </SafeAreaView>

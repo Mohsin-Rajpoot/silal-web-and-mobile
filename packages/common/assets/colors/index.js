@@ -13,6 +13,7 @@ const colors = {
   grayLight:'#F5F5F5',
   textWhite:'#FFFFFF',
   textPrimary:"#4C6870",
-  gray:'#8D8E96'
+  gray:'#8D8E96',
+  borderColor:'#E8E8E8'
 };
 export default colors;

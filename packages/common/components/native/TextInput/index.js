@@ -2,9 +2,9 @@ import { View, TextInput } from "react-native";
 import React from "react";
 import CommonStyle from "../../../styles";
 import colors from "../../../assets/colors";
-const index = ({ placeholderText }) => {
+const index = ({ placeholderText ,  inputStyle}) => {
   return (
-    <View style={CommonStyle.textInputStyles}>
+    <View style={[inputStyle? inputStyle:CommonStyle.textInputStyles]}>
       <TextInput
         placeholder={placeholderText}
         placeholderTextColor={colors.light_grey}

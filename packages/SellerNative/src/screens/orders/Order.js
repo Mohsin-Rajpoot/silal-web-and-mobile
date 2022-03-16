@@ -3,6 +3,7 @@ import { View, Text, SafeAreaView, TouchableOpacity, Image, StyleSheet, Dimensio
 import Current_orders from './Current_orders'
 import Pre_orders from './Pre_orders'
 import Archive_orders from './Archive_orders'
+// import LockOnLandscape from '../../components/Dashboard/LockOnLandscape';
 
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -22,13 +23,13 @@ const Home = ({ navigation }) => {
 const Header=()=>{
   return(
       <View style={{ paddingVertical: 15,flex:1, flexDirection: 'row',}}>
-        <TouchableOpacity onPress={()=>set_order_state('current')}  style={[styles.order_button,{backgroundColor:order_state=='current'? '#5AB3A8':null,}]}>
+        <TouchableOpacity onPress={()=>set_order_state('current')}  style={[styles.order_button,{backgroundColor:order_state=='current'? '#5AB3A8':null,width:200}]}>
           <Text style={[styles.order_button_text,{color:order_state=='current'?'white':'#4C6870'}]}>Current orders</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>set_order_state('preorder')}  style={[styles.order_button,{backgroundColor:order_state=='preorder'? '#5AB3A8':null,width:150}]}>
+        <TouchableOpacity onPress={()=>set_order_state('preorder')}  style={[styles.order_button,{backgroundColor:order_state=='preorder'? '#5AB3A8':null,width:200}]}>
           <Text style={[styles.order_button_text,{color:order_state=='preorder'?'white':'#4C6870'}]}>pre-orders (8)</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>set_order_state('archive')}  style={[styles.order_button,{backgroundColor:order_state=='archive'? '#5AB3A8':null,width:100}]}>
+        <TouchableOpacity onPress={()=>set_order_state('archive')}  style={[styles.order_button,{backgroundColor:order_state=='archive'? '#5AB3A8':null,width:120}]}>
           <Text style={[styles.order_button_text,{color:order_state=='archive'?'white':'#4C6870'}]}>Archive</Text>
         </TouchableOpacity>
       </View>
@@ -37,9 +38,9 @@ const Header=()=>{
 
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor:'#f4f7f8'}}>
       {/* <LockOnLandscape /> */}
-      <View style={{ flexDirection: 'row',alignItems:'center' }}>
+      <View style={{ flexDirection: 'row',alignItems:'center',height:'15%' }}>
         <View style={{ padding: 15 }}>
           <TouchableOpacity>
             <MaterialCommunityIcons
@@ -115,20 +116,20 @@ const styles = StyleSheet.create({
   order_button:{
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 15,
+    // padding: 15,
+    height:50,
     marginVertical: 5,
-    width: 150,
     alignSelf: 'center',
     borderRadius: 5,
     marginLeft:10
   },
   order_button_text:{
     color:'white',
-    fontFamily:'Poppins-Light',
+    fontFamily:'Poppins-SemiBold',
     fontSize:16,
     letterSpacing:1
   },
   order_container:{
-    flexDirection:'row',
+    // flexDirection:'row',
   }
 })

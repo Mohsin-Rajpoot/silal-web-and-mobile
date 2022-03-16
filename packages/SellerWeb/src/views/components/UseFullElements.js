@@ -123,9 +123,10 @@ const FilterBtnStyled = styled.button`
 const DetailText = ({
     title,
     detail,
+    classes
 }) => {
     return(
-        <DetailTextStyled>
+        <DetailTextStyled className={classes}>
             <span>{title}</span>
             <span>{detail}</span>
         </DetailTextStyled>
@@ -136,7 +137,7 @@ const DetailTextStyled = styled.div`
     display: flex;
     span {
         font-weight: 400;
-        font-size: 15px;
+        font-size: 14px;
         line-height: 120%;
         margin-bottom: 10px;
         min-width: 105px;

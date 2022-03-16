@@ -1,8 +1,9 @@
 import { ScaledSheet } from "react-native-size-matters";
 import colors from "../../../assets/colors";
+import fonts from "../../../assets/fonts";
 const styles = ScaledSheet.create({
   mainContainer: {
-    width: "85%",
+    width: '75%',
     alignSelf: "center",
     flexDirection: "row",
     backgroundColor: colors.grayLight,
@@ -27,9 +28,12 @@ const styles = ScaledSheet.create({
   textPhone: {
     color: colors.textWhite,
     fontSize: "13@ms",
+    fontFamily:fonts.LatoBold
   },
   textEmail: {
     color: colors.textPrimary,
+    fontSize: "13@ms",
+    fontFamily:fonts.LatoBold
   },
 });
 

@@ -93,7 +93,7 @@ const OutOfStock = ({ setSideBar , sideBar }) => {
     return (
         <>
             <Nav setSideBar={setSideBar} sideBar={sideBar} />
-            <TableStyled>
+            <TableStyled className="content-height">
                 <TableData
                     cols={columns}
                     rows={data}

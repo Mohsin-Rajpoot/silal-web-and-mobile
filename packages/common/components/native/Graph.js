@@ -1,6 +1,6 @@
 import React from 'react';
-import {BarChart} from 'react-native-chart-kit';
-import {Text, View, StyleSheet, Dimensions, ScrollView} from 'react-native';
+import { BarChart } from 'react-native-chart-kit';
+import { Text, View, StyleSheet, Dimensions, ScrollView } from 'react-native';
 
 const Graph = () => {
   return (
@@ -8,19 +8,19 @@ const Graph = () => {
       <View
         style={{
           backgroundColor: '#FFFFFF',
-          width: 500,
+          width: '100%',
           height: 707,
           marginHorizontal: 15,
           borderRadius: 5,
         }}>
-        <View style={{paddingVertical: 15, paddingHorizontal: 25}}>
-          <Text style={{color: '#002733', fontSize: 17, fontWeight: 'bold'}}>
+        <View style={{ paddingVertical: 15, paddingHorizontal: 25 }}>
+          <Text style={{ color: '#002733', fontSize: 17, fontWeight: 'bold' }}>
             Revenue overview
           </Text>
         </View>
         <ScrollView>
           <View style={styles.container}>
-            <View>             
+            <View>
               <BarChart
                 data={{
                   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
@@ -30,20 +30,21 @@ const Graph = () => {
                     },
                   ],
                 }}
-                width={Dimensions.get('window').width - 400}
+                width={600}
                 height={220}
                 yAxisLabel={'$'}
-                color={"#005d21"}
                 chartConfig={{
                   backgroundColor: '#FFFFFF',
-                  backgroundGradientFrom: '#005d30',
-                  backgroundGradientTo: '#005d21',
+                  backgroundGradientFrom: '#fff',
+                  backgroundGradientTo: '#fff',
                   fillShadowGradientOpacity: 1,
-                  // decimalPlaces: 0,
-                  color: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
-                
+                  barRadius: 5,
+                  labelColor: (opacity = 1) => `rgba(0, 0, 0, 1)`,
+                  color: (opacity = 1) => `#5AB3A8`
+
+
                 }}
-                style={{marginTop: 88,}}
+                style={{ marginTop: 70 }}
               />
             </View>
           </View>
@@ -61,8 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 8,
     paddingTop: 30,
-    // backgroundColor: '#ecf0f1',
+
   },
 });
-
 
