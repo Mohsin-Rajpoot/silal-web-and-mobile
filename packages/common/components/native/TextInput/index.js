@@ -4,7 +4,7 @@ import CommonStyle from "../../../styles";
 import colors from "../../../assets/colors";
 const index = ({ placeholderText ,  inputStyle}) => {
   return (
-    <View style={[inputStyle? inputStyle:CommonStyle.textInputStyles]}>
+    <View style={[CommonStyle.textInputStyles,inputStyle]}>
       <TextInput
         placeholder={placeholderText}
         placeholderTextColor={colors.light_grey}

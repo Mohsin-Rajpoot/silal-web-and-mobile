@@ -6,8 +6,8 @@ export default function CustomButton({
   onPress,
   type = 'PRIMARY',
   navigation,
-  containerStyle
-
+  containerStyle,
+  textStyle
 }) {
   return (
     <View>
@@ -22,7 +22,7 @@ export default function CustomButton({
           style={[
             styles.buttonText,
             styles[`buttonText_${type}`],
-
+            textStyle
           ]}>
           {text}
         </Text>

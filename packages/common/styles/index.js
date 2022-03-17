@@ -23,13 +23,15 @@ const styles = ScaledSheet.create({
     height: "30@s",
   },
   inputTextStyle: {
-  
+    padding:0,
+    margin:0,
     fontSize: "12@ms",
     color: colors.black,
     fontFamily:fonts.LatoRegular,
     flexDirection:'column',
     justifyContent:'center',
-    margin:'5@s'
+    margin:'5@s',
+    
   },
   CommonView: {
     width: "85%",

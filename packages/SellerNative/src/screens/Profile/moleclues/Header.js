@@ -11,7 +11,7 @@ const Header = () => {
         <TouchableOpacity>
           <MaterialCommunityIcons
             name="reorder-horizontal"
-            size={20}
+            size={28}
             color="#000000"
           />
         </TouchableOpacity>
@@ -33,7 +33,7 @@ const styles = ScaledSheet.create({
         paddingTop: '42@vs',
       },
   profileText: {
-    fontSize: '25@ms',
+    fontSize: '20@ms',
     marginLeft: '10@s',
   },
 });
