@@ -1,5 +1,5 @@
 import React from 'react'
-import Database from '../views/pages/clients/Database'
+import Database from '../views/pages/clients/components/Database'
 
 const Statistics = React.lazy(() => import('../views/pages/home/Statistics'))
 const Reviews = React.lazy(() => import('../views/pages/home/Reviews'))
@@ -8,8 +8,8 @@ const CurrentOrder = React.lazy(() => import('../views/pages/order/CurrentOrders
 const OrderDetail = React.lazy(() => import('../views/pages/order/OrderDetail'))
 const PreOrders = React.lazy(() => import('../views/pages/order/PreOrders'))
 const ArchiveOrders = React.lazy(() => import('../views/pages/order/Archive'))
-const Products = React.lazy(() => import('../views/pages/products/Products'))
-const ProductDetail = React.lazy(() => import('../views/pages/products/ProductDetail'))
+const Products = React.lazy(() => import('../views/pages/products/components/Products'))
+const ProductDetail = React.lazy(() => import('../views/pages/products/components/ProductDetail'))
 // const notFound = React.lazy(() => import('../views/errorPages/NotFound'))
 
 const routes = [

@@ -4,12 +4,13 @@ import {
     Dropdown,
     Offcanvas,
     Row,
-    Col
+    Col,
+    Modal,
 } from 'react-bootstrap'
 import {
     EditProductContainer,
     AddOns,
-} from '../../components/products/Components'
+} from '../../../components/products/Components'
 import {
     TableStyled,
     Button,
@@ -19,20 +20,26 @@ import {
     Textarea,
     Input,
     EditButton,
-} from '../../components/Style'
+    ThemeModal,
+} from '../../../components/Style'
 import {
     DropdownMenu,
     dish,
     Burger,
     EditIcon,
     EditWhite,
-} from "../../components/AllImages"
+} from "../../../components/AllImages"
 
 const ProductDetail = () => {
     const [canvasShow, setCanvasShow] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
     const handleClose = () => setCanvasShow(false)
     const handleShow = () => setCanvasShow(true)
+
+    const handleCloseModal = () => setShowModal(false)
+    const handleShowModal = () => setShowModal(true)
+
 
     const customStyles = {
         headCells: {
@@ -95,7 +102,7 @@ const ProductDetail = () => {
                     <Dropdown.Menu>
                         <Dropdown.Item href="#" onClick={handleShow}>Edit</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Freeze Listing</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Delete</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={handleShowModal}>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>,
         },
@@ -116,7 +123,7 @@ const ProductDetail = () => {
                     <Dropdown.Menu>
                         <Dropdown.Item href="#" onClick={handleShow}>Edit</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Freeze Listing</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Delete</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={handleShowModal}>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>,
         },
@@ -137,7 +144,7 @@ const ProductDetail = () => {
                     <Dropdown.Menu>
                         <Dropdown.Item href="#" onClick={handleShow}>Edit</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Freeze Listing</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Delete</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={handleShowModal}>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>,
         },
@@ -158,7 +165,7 @@ const ProductDetail = () => {
                     <Dropdown.Menu>
                         <Dropdown.Item href="#" onClick={handleShow}>Edit</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Freeze Listing</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Delete</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={handleShowModal}>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>,
         },
@@ -179,7 +186,7 @@ const ProductDetail = () => {
                     <Dropdown.Menu>
                         <Dropdown.Item href="#" onClick={handleShow}>Edit</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Freeze Listing</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Delete</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={handleShowModal}>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>,
         },
@@ -200,7 +207,7 @@ const ProductDetail = () => {
                     <Dropdown.Menu>
                         <Dropdown.Item href="#" onClick={handleShow}>Edit</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Freeze Listing</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Delete</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={handleShowModal}>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>,
         },
@@ -221,7 +228,7 @@ const ProductDetail = () => {
                     <Dropdown.Menu>
                         <Dropdown.Item href="#" onClick={handleShow}>Edit</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Freeze Listing</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Delete</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={handleShowModal}>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>,
         },
@@ -242,7 +249,7 @@ const ProductDetail = () => {
                     <Dropdown.Menu>
                         <Dropdown.Item href="#" onClick={handleShow}>Edit</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Freeze Listing</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Delete</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={handleShowModal}>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>,
         },
@@ -371,6 +378,30 @@ const ProductDetail = () => {
                     </EditProductContainer>
                 </Offcanvas.Body>
             </Offcanvas>
+            <Modal show={showModal} onHide={handleCloseModal} centered>
+                <ThemeModal>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Delete this item from folder?</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="text">Are you sure you want to delete the <span>#723DN2</span> item from Salads folder?</div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="d-flex w-100">
+                            <Col lg={6} className="pe-2">
+                                <Button className="grey w-100" onClick={handleCloseModal}>
+                                    Cancel
+                                </Button>
+                            </Col>
+                            <Col lg={6} className="ps-2">
+                                <Button className="w-100" onClick={handleCloseModal}>
+                                    Delete
+                                </Button>
+                            </Col>
+                        </div>
+                    </Modal.Footer>
+                </ThemeModal>
+            </Modal>
         </>
     )
 }

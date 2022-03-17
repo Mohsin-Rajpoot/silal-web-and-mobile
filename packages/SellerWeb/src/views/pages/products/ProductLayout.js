@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 import { Content } from "../../index"
 import Sidebar from "../../components/UI/Sidebar"
-import { useEffect } from "react"
-import { useLocation } from "react-router-dom"
 import Nav from "../../components/products/Nav"
 
 const ProductLayout = () => {
@@ -10,6 +8,7 @@ const ProductLayout = () => {
   const sideBarToggle = (view) => {
     setSideBar(view)
   }
+  const [category, setCategory] = useState()
 
   return (
     <React.Fragment>

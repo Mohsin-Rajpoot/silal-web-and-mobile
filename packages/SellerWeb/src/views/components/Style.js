@@ -41,6 +41,10 @@ const Button = styled.button`
     background: rgba(90, 179, 168, 0.5);
     cursor: inherit;
   }
+  &.grey {
+    background: #CCD4D6;
+    color: rgba(0, 39, 51, 0.5);
+  }
   &.w-230 {
     width: 230px;
   }
@@ -427,6 +431,38 @@ const EditButton = styled.button`
   margin-left: 5px;
 `;
 
+const ThemeModal = styled.div`
+  .modal-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    color: #414342;
+    margin: 0;
+  }
+  .modal-header {
+    padding: 20px 20px 15px 20px;
+    border: none;
+  }
+  .modal-body {
+    padding: 0 20px 15px 20px;
+  }
+  .modal-footer {
+    padding: 0 20px 20px 20px;
+    border: none;
+  }
+  .text {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    color: #4C6870;
+    margin: 0;
+    span {
+      color: #002733;
+      font-weight: 500;
+    }
+  }
+`;
+
 export {
   CardStyled,
   Heading,
@@ -445,4 +481,5 @@ export {
   Textarea,
   Input,
   EditButton,
+  ThemeModal,
 };

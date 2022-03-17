@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import styled from "styled-components";
-import { FlexContainer, HeadingStyled } from "../../components/Style";
-import CanvasModal from "./components/CanvasModal";
+import { FlexContainer, HeadingStyled } from "../../../components/Style";
+import CanvasModal from "./CanvasModal";
 const Database = () => {
   const [modalShow, setModalShow] = useState(false);
   const [modalType, setModalType] = useState(false);

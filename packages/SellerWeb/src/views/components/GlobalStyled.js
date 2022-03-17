@@ -241,6 +241,11 @@ hr {
     border: none;
     margin-right: 16px;
 }
+.modal-content {
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: none;
+}
 `;
 
 export default GlobalStyle;
