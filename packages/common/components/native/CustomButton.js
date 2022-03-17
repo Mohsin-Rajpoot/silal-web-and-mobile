@@ -5,7 +5,8 @@ export default function CustomButton({
   text,
   onPress,
   type = 'PRIMARY',
-  navigation
+  navigation,
+  containerStyle
 
 }) {
   return (
@@ -15,7 +16,7 @@ export default function CustomButton({
         style={[
           styles.mainbutton,
           styles[`mainbutton_${type}`],
-
+          containerStyle
         ]}>
         <Text
           style={[
@@ -34,9 +35,9 @@ const styles = StyleSheet.create({
   mainbutton: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 12,
+    paddingHorizontal: 12,
+    paddingVertical:6,
     marginVertical: 5,
-    width: 150,
     alignSelf: 'center',
     borderRadius: 5
   },
