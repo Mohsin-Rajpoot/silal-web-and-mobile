@@ -107,7 +107,75 @@ const AddCategory = styled(CategoryStyled)`
     }
 `;
 
+const EditProductContainer = styled.div`
+    .product-img-main {
+        position: relative;
+        border-radius: 5px;
+        height: 200px;
+        width: 100%;
+        margin-bottom: 20px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        .edit {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            right: 10px;
+            bottom: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            border-radius: 5px;
+        }
+    }
+    .charac-left {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 120%;
+        margin-bottom: 6px;
+        text-align: right;
+        letter-spacing: -0.408px;
+        color: #CCD4D6;
+    }
+`;
+
+const AddOns = styled.div`
+    background: #F2F4F5;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    h1, span {
+        font-size: 16px;
+        line-height: 130%;
+        letter-spacing: -0.408px;
+        margin: 0;
+    }
+    h1 {
+        color: #002733;
+        font-weight: 500;
+    }
+    span {
+        color: #7E9298;
+        font-weight: 400;
+    }
+    .item {
+        background: #CCD4D6;
+        border-radius: 5px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 120%;
+        letter-spacing: -0.408px;
+        color: #4C6870;
+        margin: 0 10px 10px 0;
+        padding: 9px 20px;
+    }
+`;
+
 export {
     Category,
     AddCategory,
+    EditProductContainer,
+    AddOns,
 }

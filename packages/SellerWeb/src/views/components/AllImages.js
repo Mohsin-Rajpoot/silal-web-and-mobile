@@ -15,6 +15,7 @@ import walkIcon from "../../assets/images/svg/walk-icon.svg"
 import locationIcon from "../../assets/images/svg/location-icon.svg"
 import phoneIcon from "../../assets/images/svg/phone-icon.svg"
 import collpaseArrow from "../../assets/images/svg/collpase-arrow.svg"
+import selectArrow from "../../assets/images/svg/select-arrow.svg"
 import { ReactComponent as Menu } from "../../assets/images/svg/menu.svg"
 import { ReactComponent as Home } from "../../assets/images/svg/home.svg"
 import { ReactComponent as Order } from "../../assets/images/svg/order.svg"
@@ -28,6 +29,8 @@ import { ReactComponent as CycleIcon } from "../../assets/images/svg/cycle-icon.
 import { ReactComponent as BackArrow } from "../../assets/images/svg/back-arrow.svg"
 import { ReactComponent as FilterIcon } from "../../assets/images/svg/filter-icon.svg"
 import { ReactComponent as XIcon } from "../../assets/images/svg/x-icon.svg"
+import { ReactComponent as EditIcon } from "../../assets/images/svg/edit-icon.svg"
+import { ReactComponent as EditWhite } from "../../assets/images/svg/edit-white.svg"
 
 export {
     Menu,
@@ -59,5 +62,8 @@ export {
     FilterIcon,
     XIcon,
     collpaseArrow,
-    Burger
+    Burger,
+    EditIcon,
+    selectArrow,
+    EditWhite,
 }

@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from "styled-components"
+import { selectArrow } from './AllImages'
 
 const CardStyled = styled.div`
   background: #ffffff;
@@ -119,6 +120,33 @@ const TableStyled = styled.div`
       }
     }
   }
+  .table-product-img {
+    height: 44px;
+    width: 44px;
+    border-radius: 4px;
+  }
+  .rdt_TableCell {
+    &:last-child {
+      div {
+        overflow: visible !important;
+      }
+    }
+  }
+  .dropdown {
+    overflow: visible !important;
+    button {
+      border: none !important;
+      background-color: transparent !important;
+      padding: 0 10px;
+      margin: 0 10px;
+      &::after {
+        display: none;
+      }
+    }
+  }
+  input[type=checkbox] {
+    transform: scale(1.1);
+  }
 `;
 
 const ThemeTabs = styled.div`
@@ -191,6 +219,7 @@ const ThemeAccordion = styled.div`
     }
   }
 `;
+
 const RangeSlider = styled.div`
   width: 100%;
   ul {
@@ -268,6 +297,7 @@ const RangeSlider = styled.div`
     } */
   }
 `;
+
 const NavStyled = styled.nav`
   margin-top: 19px;
   display: flex;
@@ -314,15 +344,89 @@ const NavStyled = styled.nav`
     }
   }
 `;
+
 const FlexContainer = styled.div`
   display:flex;
   align-items:center;
 `;
+
 const HeadingStyled = styled.div`
-  font-size:${(props)=>props.size&&(props.size)};
-  font-weight:${(props)=>props.weight&&(props.weight)};
-  color:${(props)=>props.color?props.color:"inherit"};
+  font-size:${(props) => props.size && (props.size)};
+  font-weight:${(props) => props.weight && (props.weight)};
+  color:${(props) => props.color ? props.color : "inherit"};
 `;
+
+const Title = styled.h6`
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  color: #002733;
+  margin-bottom: 10px;
+`;
+
+const Label = styled.label`
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 120%;
+  color: #002733;
+  margin-bottom: 7px;
+`;
+
+const Select = styled.select`
+  background-image: url(${selectArrow});
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  appearance: none;
+  padding: 9px 10px 8px;
+  width: 100%;
+  height: 39px;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: -0.408px;
+  color: #002733;
+`;
+
+const Textarea = styled.textarea`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: -0.408px;
+  color: #002733;
+  padding: 10px;
+  height: 105px;
+  width: 100%;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+  resize: none;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  height: 39px;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+  padding: 9px 15px 8px 10px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: -0.408px;
+  color: #002733;
+`;
+
+const EditButton = styled.button`
+  width: 24px;
+  height: 24px;
+  background: #4C6870;
+  border: none;
+  border-radius: 3px;
+  margin-left: 5px;
+`;
+
 export {
   CardStyled,
   Heading,
@@ -334,5 +438,11 @@ export {
   ThemeAccordion,
   NavStyled,
   HeadingStyled,
-  FlexContainer
+  FlexContainer,
+  Title,
+  Label,
+  Select,
+  Textarea,
+  Input,
+  EditButton,
 };

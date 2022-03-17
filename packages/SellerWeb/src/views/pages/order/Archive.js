@@ -31,7 +31,6 @@ const Archive = ({ setSideBar, sideBar }) => {
     const canvasShowHanler = () => setCanvasShow(true)
     const [dateValue, dateOnChange] = useState(new Date());
 
-
     const customStyles = {
         headCells: {
             style: {

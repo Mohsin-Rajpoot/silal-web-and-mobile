@@ -133,6 +133,10 @@ span {
     height: calc(100vh - 100px);
     min-height: 450px;
 }
+.product-detail-height {
+    overflow-y: auto;
+    height: calc(100vh - 150px);
+}
 .archive-content {
     /* overflow-y: auto; */
     height: calc(100vh - 115px);
@@ -140,6 +144,12 @@ span {
 }
 .mb-10 {
     margin-bottom: 10px;
+}
+.mb-15 {
+    margin-bottom: 15px;
+}
+.mb-20 {
+    margin-bottom: 20px;
 }
 .mb-5px {
     margin-bottom: 5px;
@@ -225,6 +235,11 @@ hr {
 }
 .mb-26 {
     margin-bottom: 26px;
+}
+.back-arrow {
+    background-color: transparent;
+    border: none;
+    margin-right: 16px;
 }
 `;
 
