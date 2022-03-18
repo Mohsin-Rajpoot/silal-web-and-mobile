@@ -58,7 +58,7 @@ const Statistics = ({ setSideBar, sideBar }) => {
                 <Col lg={3} md={6}>
                     <RestaurantCard
                         icon={ratingIcon}
-                        heading="Total Raiting"
+                        heading="Total Rating"
                         number="4.8"
                         rate="+ 0.9%"
                         rateStatus={true}

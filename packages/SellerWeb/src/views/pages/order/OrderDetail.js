@@ -34,12 +34,12 @@ const OrderDetail = () => {
                 <h1>
                   Order list <span>(6 items)</span>
                 </h1>
-                <span className="method card">Credit card</span>
+                <span className="method card lato">Credit card</span>
               </div>
-              <h2>14:58:15</h2>
+              <h2 className="lato">14:58:15</h2>
             </div>
             <OrderList>
-              <div className="head">
+              <div className="head lato">
                 <h3 className="item-width">Item</h3>
                 <h3 className="col-width">Q-ty</h3>
                 <h3 className="col-width">Price</h3>
@@ -131,7 +131,7 @@ const OrderDetail = () => {
         </Modal.Body>
         <Modal.Footer>
           <div className="w-50 m-0 pe-2 mt-4">
-            <Button className="w-100 m-0" style={{background:"#CCD4D6",color:"rgba(0, 39, 51, 0.5)"}} onClick={() => setModalShow(false)}>
+            <Button className="w-100 m-0" style={{ background: "#CCD4D6", color: "rgba(0, 39, 51, 0.5)" }} onClick={() => setModalShow(false)}>
               Cancel
             </Button>
           </div>

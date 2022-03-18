@@ -1,5 +1,5 @@
 import React from "react"
-import { useLocation, useHistory } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { Form } from "react-bootstrap"
 import styled from "styled-components"
 import { Menu } from "../AllImages"
@@ -49,7 +49,9 @@ const Nav = ({
           />
           <Search className="icon-label position-absolute" size={17} />
         </SearchBar>
-        <Button className="w-230 ms-auto mb-26">Add new item</Button>
+        <Link to="/product/create-new-item" className="ms-auto mb-26 d-block">
+          <Button className="w-230">Add new item</Button>
+        </Link>
       </FlexContainer>
     </>
   )

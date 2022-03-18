@@ -48,6 +48,9 @@ const Button = styled.button`
   &.w-230 {
     width: 230px;
   }
+  &.w-148 {
+    width: 148px;
+  }
 `;
 
 const ButtonText = styled.button`
@@ -63,6 +66,7 @@ const ButtonText = styled.button`
 `;
 
 const TableStyled = styled.div`
+  font-family: 'Lato', sans-serif;
   .rdt_Table {
     padding: 20px;
     background: #ffffff;
@@ -78,9 +82,15 @@ const TableStyled = styled.div`
       background: rgba(90, 179, 168, 0.15);
     }
   }
+  .rdt_TableCol {
+    font-weight: 700;
+    font-size: 13px;
+  }
   .rdt_TableCell {
     padding-top: 8px;
     padding-bottom: 8px;
+    font-size: 15px;
+    font-weight: 400;
   }
   .rdt_Pagination {
     background-color: #f4f7f8;
@@ -149,7 +159,7 @@ const TableStyled = styled.div`
     }
   }
   input[type=checkbox] {
-    transform: scale(1.1);
+    transform: scale(1.16);
   }
 `;
 
@@ -406,6 +416,10 @@ const Textarea = styled.textarea`
   border: 1px solid #E8E8E8;
   border-radius: 5px;
   resize: none;
+  margin-bottom: 20px;
+  &::placeholder {
+    color: #CCD4D6;
+  }
 `;
 
 const Input = styled.input`
@@ -420,6 +434,9 @@ const Input = styled.input`
   line-height: 130%;
   letter-spacing: -0.408px;
   color: #002733;
+  &::placeholder {
+    color: #CCD4D6;
+  }
 `;
 
 const EditButton = styled.button`

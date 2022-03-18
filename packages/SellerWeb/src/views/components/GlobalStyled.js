@@ -16,8 +16,15 @@ body {
     background: #F4F7F8;
     color: var(--dark-clr);
     font-family: 'Poppins', sans-serif;
+    /* font-family: 'Lato', sans-serif; */
     font-weight: 400;
     font-size: 14px;
+}
+.lato {
+    font-family: 'Lato', sans-serif;
+}
+.poppins {
+    font-family: 'Poppins', sans-serif;
 }
 .theme-clr {
     color: var(--theme-clr);
@@ -151,6 +158,9 @@ span {
 .mb-20 {
     margin-bottom: 20px;
 }
+.mt-20 {
+    margin-top: 20px;
+}
 .mb-5px {
     margin-bottom: 5px;
 }
@@ -245,6 +255,16 @@ hr {
     background: #FFFFFF;
     border-radius: 10px;
     border: none;
+}
+.charac-left {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 120%;
+    text-align: right;
+    letter-spacing: -0.408px;
+    color: #CCD4D6;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 7px;
 }
 `;
 

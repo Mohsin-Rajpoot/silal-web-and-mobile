@@ -10,6 +10,7 @@ const PreOrders = React.lazy(() => import('../views/pages/order/PreOrders'))
 const ArchiveOrders = React.lazy(() => import('../views/pages/order/Archive'))
 const Products = React.lazy(() => import('../views/pages/products/components/Products'))
 const ProductDetail = React.lazy(() => import('../views/pages/products/components/ProductDetail'))
+const CreateItem = React.lazy(() => import('../views/pages/products/components/CreateItem'))
 // const notFound = React.lazy(() => import('../views/errorPages/NotFound'))
 
 const routes = [
@@ -24,6 +25,7 @@ const routes = [
     { path: '/client/database', exact: true, name: 'Client Database', component: Database },
     { path: '/product/products', exact: true, name: 'Products', component: Products },
     { path: '/product/product-detail', exact: true, name: 'Products Details', component: ProductDetail },
+    { path: '/product/create-new-item', exact: true, name: 'Create Item', component: CreateItem },
 
 ]
 

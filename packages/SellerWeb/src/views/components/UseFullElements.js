@@ -16,7 +16,7 @@ const RestaurantHeading = ({
                 <h1 className="dark-clr">{heading}</h1>
                 <span className="text-white">{hours}</span>
             </div>
-            <p className="f-medium">{location}</p>
+            <p className="f-medium lato">{location}</p>
         </RestHeadStyled>
     )
 }
@@ -33,6 +33,7 @@ const RestHeadStyled = styled.div`
         border-radius: 5px;
         padding: 5px 10px;
         font-size: 12px;
+        text-transform: uppercase;
     }
     p {
         font-size: 13px;

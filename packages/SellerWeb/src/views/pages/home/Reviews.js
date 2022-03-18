@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import DatePicker from 'react-date-picker'
+// import { DateRange } from 'react-date-range'
+// import 'react-date-range/dist/styles.css' // main css file
+// import 'react-date-range/dist/theme/default.css' // theme css file
 import { Row, Col } from 'react-bootstrap'
 import Nav from "../../components/home/Nav"
 import { RestaurantHeading } from '../../components/UseFullElements'
@@ -9,14 +12,21 @@ import {
 } from '../../components/home/Components'
 import {
     CardStyled,
-    Heading
+    Heading,
 } from '../../components/Style'
 import {
     CalendarIcon
 } from '../../components/AllImages'
 
 const Reviews = ({ setSideBar, sideBar }) => {
-    const [dateValue, dateOnChange] = useState(new Date());
+    const [dateValue, dateOnChange] = useState(new Date())
+    // const [rangeState, setRangeState] = useState([
+    //     {
+    //         startDate: new Date(),
+    //         endDate: new Date(),
+    //         key: 'selection'
+    //     }
+    // ])
 
     return (
         <>
@@ -37,6 +47,12 @@ const Reviews = ({ setSideBar, sideBar }) => {
                                 calendarIcon={<CalendarIcon />}
                                 clearIcon={null}
                             />
+                            {/* <DateRange
+                                onChange={item => setRangeState([item.selection])}
+                                ranges={rangeState}
+                                editableDateInputs={false}
+                                showMonthAndYearPickers={false}
+                            /> */}
                         </div>
                         <Review
                             reviewBy="Ursula Landerskape"

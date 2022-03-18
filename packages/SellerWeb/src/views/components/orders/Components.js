@@ -30,22 +30,22 @@ const ReceivedOrder = ({
                         </span>
                     }
                     <Link to="/order-detail">
-                        <h1>Order ID <span>{orderNumber}</span></h1>
+                        <h1 className="lato f-bold">Order ID <span>{orderNumber}</span></h1>
                     </Link>
                 </div>
-                <h2>{time}</h2>
+                <h2 className="lato f-bold">{time}</h2>
             </div>
-            <div className="order-detail">
+            <div className="order-detail lato f-medium">
                 <span>2</span>
                 <img src={xIcon} alt="x" />
                 <span>French fries</span>
             </div>
-            <div className="order-detail">
+            <div className="order-detail lato f-medium">
                 <span>1</span>
                 <img src={xIcon} alt="x" />
                 <span>Cheesecakes with sour cream and citrus hone</span>
             </div>
-            <span className="more">3 more</span>
+            <span className="more lato f-medium">3 more</span>
             <div className='mt-3'>
                 <SwipeableButton color='#5AB3A8' text='Slide to confirm order' />
             </div>
@@ -65,11 +65,11 @@ const AcceptedOrder = ({
         <AcceptedOrderStyled>
             <div className="between">
                 <Link to="/order-detail">
-                    <h1>Order ID <span>{orderNumber}</span></h1>
+                    <h1 className="lato f-bold">Order ID <span>{orderNumber}</span></h1>
                 </Link>
-                <h2>{time}</h2>
+                <h2 className="lato f-bold">{time}</h2>
             </div>
-            <div className="d-flex mb-10">
+            <div className="d-flex mb-10 lato f-medium">
                 <div className="icon-div blue center">
                     <img src={walkIcon} alt="icon" />
                 </div>
@@ -78,14 +78,14 @@ const AcceptedOrder = ({
                     <p>{number}</p>
                 </div>
             </div>
-            <div className="d-flex mb-10">
+            <div className="d-flex mb-10 lato f-medium">
                 <div className="icon-div purple center">
                     <img src={locationIcon} alt="icon" />
                 </div>
                 <h3 className="mt-1 pt-2">{distance}</h3>
             </div>
             <div className="between mb-1">
-                <ButtonText>Change estimatoin time</ButtonText>
+                <ButtonText>Change estimation time</ButtonText>
                 <Button>Ready</Button>
             </div>
         </AcceptedOrderStyled>
@@ -97,7 +97,7 @@ const PickupOrder = ({
     time,
 }) => {
     return (
-        <PickupOrderStyled>
+        <PickupOrderStyled className="lato">
             <h6 className="dark-clr">{orderNumber}</h6>
             <p>{time}</p>
         </PickupOrderStyled>
@@ -119,7 +119,7 @@ const OrderListItem = ({ ListItem }) => {
             <div className="d-flex align-items-center">
                 <div className="item-width d-flex align-items-center">
                     <img src={img} alt="img" />
-                    <h6 className="pr-2">{name}</h6>
+                    <h6 className="pr-2 lato">{name}</h6>
                 </div>
                 <div className="col-width">
                     <h6>{qty}</h6>
@@ -132,7 +132,7 @@ const OrderListItem = ({ ListItem }) => {
                 </div>
             </div>
             {note &&
-                <div className="note">Note: <span>{note}</span></div>
+                <div className="note lato">Note: <span>{note}</span></div>
             }
             {customization &&
                 // <span>Customization</span>
@@ -140,7 +140,7 @@ const OrderListItem = ({ ListItem }) => {
                     return (
                         <div className="customization" key={index}>
                             <div className="item-width d-flex align-items-start">
-                                <h5>{customize.custItem}</h5>
+                                <h5 className="lato">{customize.custItem}</h5>
                             </div>
                             <div className="col-width">
                                 <h5>{customize.custQty}</h5>
@@ -166,7 +166,7 @@ const OrderDetails = ({
     distance,
 }) => {
     return (
-        <OrderDetailsStyled>
+        <OrderDetailsStyled className="lato">
             <Row>
                 <Col md={6}>
                     <h4>customer</h4>
@@ -207,7 +207,7 @@ const OrderDetails = ({
 
 const OrderHistory = () => {
     return (
-        <OrderHistoryStyled>
+        <OrderHistoryStyled className="lato">
             <div className="track-list-main">
                 <div className="track-item active">
                     <h1>order created</h1>
@@ -235,14 +235,14 @@ const PreOrder = ({
     time,
 }) => {
     return (
-        <PreOrderStyled>
+        <PreOrderStyled className="lato">
             <div className="between">
                 <div className="d-flex">
                     <Link to="/order-detail">
-                        <h1>Order ID <span>{orderNumber}</span></h1>
+                        <h1 className="f-bold">Order ID <span>{orderNumber}</span></h1>
                     </Link>
                 </div>
-                <h2>Delivery by {time}</h2>
+                <h2 className="f-bold">Delivery by {time}</h2>
             </div>
             <div className="order-detail">
                 <span>2</span>
@@ -386,7 +386,7 @@ const PickupOrderStyled = styled.div`
     padding: 10px;
     margin-bottom: 15px;
     h6 {
-        font-weight: 500;
+        font-weight: 700;
         font-size: 15px;
         letter-spacing: -0.408px;
         margin: 0;
@@ -421,11 +421,13 @@ const PickupCard = styled.div`
         h2 {
             font-weight: bold;
             font-size: 15px;
+            font-family: 'Lato';
             text-transform: uppercase;
             color: #FFFFFF;
             margin-bottom: 5px;
         }
         h3 {
+            font-family: 'Lato';
             font-weight: normal;
             font-size: 15px;
             color: #FFFFFF;

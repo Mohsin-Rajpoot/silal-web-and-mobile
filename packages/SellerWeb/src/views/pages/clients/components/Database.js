@@ -12,7 +12,7 @@ const Database = () => {
   };
   return (
     <>
-      <Row className="mt-4">
+      <Row className="mt-4 lato">
         {[...Array(6)].map((x, i) => (
           <>
             <Col className="mb-4" xs={12} md={6} lg={4} key={i}>

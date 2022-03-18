@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from '../../components/orders/Nav'
 import { Link } from 'react-router-dom'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Modal } from 'react-bootstrap'
 import {
     ReceivedOrder,
     AcceptedOrder,
@@ -11,12 +11,16 @@ import {
 import {
     CardStyled,
     Heading,
+    Button,
+    RangeSlider,
 } from '../../components/Style'
 import {
     CycleIcon,
 } from '../../components/AllImages'
 
 const CurrentOrder = ({ setSideBar, sideBar }) => {
+    const [modalShow, setModalShow] = React.useState(false);
+
     return (
         <>
             <Nav setSideBar={setSideBar} sideBar={sideBar} />
@@ -107,6 +111,51 @@ const CurrentOrder = ({ setSideBar, sideBar }) => {
                     </PickupCard>
                 </Col>
             </Row>
+
+            <Modal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                centered
+                dialogClassName="modal-546"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        Order will be ready in: <span>7 minutes</span>
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <RangeSlider className="mt-4">
+                        <input type="range" min="1" max="100" className="slider-range" />
+                        <ul class="mb-0 p-0 list-unstyled d-flex">
+                            <li>-15 min</li>
+                            <li>-10 min</li>
+                            <li>-5 min</li>
+                            <li class="ms-auto">+5 min</li>
+                            <li>+10 min</li>
+                            <li>+15 min</li>
+                        </ul>
+                    </RangeSlider>
+                    <div class="d-flex mt-4 align-items-center">
+                        <label className="me-3">Add manually</label>
+                        <input
+                            type="text"
+                            placeholder="+300"
+                            className="border px-3"
+                            style={{ height: "40px", width: "100px" }}
+                        />
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="w-50 m-0 pe-2 mt-4">
+                        <Button className="w-100 m-0" style={{ background: "#CCD4D6", color: "rgba(0, 39, 51, 0.5)" }} onClick={() => setModalShow(false)}>
+                            Cancel
+                        </Button>
+                    </div>
+                    <Button className="w-50 m-0 mt-4" onClick={() => setModalShow(false)}>
+                        Save
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }
