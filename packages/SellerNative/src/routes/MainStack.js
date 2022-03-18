@@ -9,7 +9,7 @@ const Drawer = createDrawerNavigator();
 const MainStack = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="Profile"
+      initialRouteName="TabStack"
       drawerContent={props => <CustomDrawerContent {...props} />}
       screenOptions={{headerShown: false, drawerStyle: {width: '40%'}}}>
       <Drawer.Screen name="TabStack" component={TabStack} />

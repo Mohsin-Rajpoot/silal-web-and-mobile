@@ -3,9 +3,9 @@ import React from 'react';
 import {scale, ScaledSheet} from 'react-native-size-matters';
 import CustomText from '@SilalApp/common/components/CustomText';
 import TextInput from '@SilalApp/common/components/native/TextInput';
+import DropDown from '@SilalApp/common/components/native/DropDown';
 
 import fonts from 'fonts';
-import {CustomButton} from '@SilalApp/common/components/native';
 import colors from '@SilalApp/common/assets/colors';
 const EditBox = () => {
   return (
@@ -16,10 +16,11 @@ const EditBox = () => {
         fontFamily={fonts.LatoRegular}
         label="Cuisine"
       />
-      <TextInput
+      {/* <TextInput
         inputStyle={styles.inputContainer}
         placeholderText="Europian"
-      />
+      /> */}
+      <DropDown placeholder={"City"} />
       <CustomText
         marginTop={20}
         marginBottom={8}
@@ -62,27 +63,26 @@ const EditBox = () => {
 
       <View style={[styles.inputTextWrapper, {marginTop: 0}]}>
         <TextInput
-          inputStyle={[styles.inputContainer, {width: '58%',borderRadius:5}]}
+          inputStyle={[styles.inputContainer, {width: '58%', borderRadius: 5}]}
           placeholderText="Street name"
         />
         <TextInput
-          inputStyle={[styles.inputContainer, {width: '38%',borderRadius:5}]}
+          inputStyle={[styles.inputContainer, {width: '38%', borderRadius: 5}]}
           placeholderText="Location via GPS"
         />
       </View>
       <View style={[styles.inputTextWrapper, {marginTop: 20}]}>
         <TextInput
-          inputStyle={[styles.inputContainer, {width: '31%',borderRadius:5}]}
+          inputStyle={[styles.inputContainer, {width: '31%', borderRadius: 5}]}
           placeholderText="Number"
         />
         <TextInput
-          inputStyle={[styles.inputContainer, {width: '31%',borderRadius:5}]}
+          inputStyle={[styles.inputContainer, {width: '31%', borderRadius: 5}]}
           placeholderText="Postal Address"
         />
-           <TextInput
-          inputStyle={[styles.inputContainer, {width: '31%',borderRadius:5}]}
-          placeholderText="New York"
-        />
+        <View style={{width: '31%', borderRadius: 5}}>
+          <DropDown placeholder={"City"} />
+        </View>
       </View>
     </View>
   );
@@ -109,7 +109,7 @@ const styles = ScaledSheet.create({
   },
   inputContainer: {
     height: null,
-    borderRadius:5
+    borderRadius: 5,
   },
   inputTextWrapper: {
     flexDirection: 'row',

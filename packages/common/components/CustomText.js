@@ -5,7 +5,7 @@ import fonts from '../assets/fonts'
 const CustomText = (props) => {
   return (
     <View style={[props.container]}>
-      <Text
+     {props.label &&<Text
         style={[
           {
             fontSize: moderateScale(props.fontSize || 14),
@@ -14,12 +14,14 @@ const CustomText = (props) => {
             marginTop:verticalScale(props.marginTop || 0),
             marginBottom:verticalScale(props.marginBottom || 0),
             marginLeft:scale(props.marginLeft || 0),
+            alignSelf:props.alignSelf || "flex-start"
           },
           props.textStyle,
         ]}
       >
         {props.label}
-      </Text>
+        {props.children}
+      </Text>}
     </View>
   );
 };
