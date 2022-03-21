@@ -29,8 +29,6 @@ const OnBoarding = ({navigation}) => {
       rol();
     };
   }, []);
-
-  console.log("-------Console", screens);
   const onAccept = () => {
     if (page + 1 != 3) {
       ref?.current?.goToSlide(page + 1);
@@ -82,8 +80,8 @@ const OnBoarding = ({navigation}) => {
               <View style={{flex:0.6, justifyContent:'flex-end'}}> 
                 <AuthButton name="Sign up"  onPress={goToSignUp}/>
                 <AuthButton name="Login" changeColor={true} onPress={goToLogin} />
-                <AuthButton name="MainStack" changeColor={true} onPress={goToMainStack} />
-                <AuthButton name="Sign up form" changeColor={true} onPress={goToSignupForm} />
+                {/* <AuthButton name="MainStack" changeColor={true} onPress={goToMainStack} />
+                <AuthButton name="Sign up form" changeColor={true} onPress={goToSignupForm} /> */}
               </View>
             ) : (
               <View />

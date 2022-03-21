@@ -35,7 +35,7 @@ const Profile = () => {
   const [freezedModal, setFreezedModal] = useState(false);
   return (
     <ScrollView style={styles.mainContainer}>
-      <Header />
+      <Header label={"Profile"}/>
       <Tabs />
 
       <View style={styles.container}>
@@ -182,7 +182,7 @@ const Profile = () => {
 export default Profile;
 
 const styles = ScaledSheet.create({
-  mainContainer: {
+mainContainer: {
     paddingHorizontal: '15@s',
     backgroundColor: colors.profileBackground,
   },

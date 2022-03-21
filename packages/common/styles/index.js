@@ -4,34 +4,48 @@ import fonts from "../assets/fonts";
 const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.grayLight,
     padding: "5@s",
   },
   phoneNumberInput: {
     height: "30@s",
     width: "100%",
     backgroundColor: "transparent",
-    padding:0,
-    margin:0
+    padding: 0,
+    margin: 0,
+  },
+  searchIconContainer:{
+    flexDirection:'row',
+    alignItems:'center'
+  },
+  searchIcon:{
+    marginHorizontal:'5@ms',
+    
+  },
+  searchText:{
+    fontSize:'10@ms',
+    color:colors.gray_light,
+    fontFamily:fonts.LatoMedium
   },
   textInputStyles: {
     alignSelf: "center",
-    borderWidth: "0.5@s",
-    borderColor: colors.borderColor,
+    borderWidth: "0.3@s",
+    borderColor: colors.light_grey,
     width: "100%",
-    borderRadius: "4@s",
+    borderRadius: "4@ms",
     height: "30@s",
+    flexDirection:'row',
+    alignItems:'center'
   },
   inputTextStyle: {
-    padding:0,
-    margin:0,
     fontSize: "12@ms",
     color: colors.black,
-    fontFamily:fonts.LatoRegular,
-    flexDirection:'column',
-    justifyContent:'center',
-    margin:'5@s',
-    
+    fontFamily: fonts.LatoRegular,
+    flexDirection: "column",
+    justifyContent: "center",
+    margin: "3@s",
+    width: "90%",
+    lineHeight: 22,
   },
   CommonView: {
     width: "85%",
@@ -39,8 +53,8 @@ const styles = ScaledSheet.create({
     flex: 1,
   },
   commonIcon: {
-    width: "150@s",
-    height: "150@s",
+    width: "120@s",
+    height: "120@s",
     backgroundColor: colors.primary,
     alignSelf: "center",
     borderRadius: "10@s",

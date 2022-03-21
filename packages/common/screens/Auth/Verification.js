@@ -10,7 +10,7 @@ import Button from "../../components/native/AuthButton";
 import AuthCustomText from "../../components/native/AuthCustomText";
 const Verification = ({ route, navigation }) => {
   const { params } = route?.params;
-
+  
   const [code, setCode] = useState("");
   const detail = "We will email your a code to reset password";
   const goToChangePassword = () => {
@@ -22,9 +22,15 @@ const Verification = ({ route, navigation }) => {
   const goChooseAccount = () => {
     navigation.navigate("ChooseAccount");
   };
+  const goToSignUpForm = () => {
+    navigation.navigate("SignUpForm");
+  };
+  const goBack=()=>{
+    navigation.pop()
+  }
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
-      <HeaderBack name="Verification" />
+      <HeaderBack name="Verification" onGoBack={goBack} />
 
       <HeaderHeading
         headingName={`${
@@ -67,9 +73,13 @@ const Verification = ({ route, navigation }) => {
         onPress={() => {
           params.active == 3
             ? goToChangePassword()
-            : params?.active == 1
+            : params?.active == 2
             ? goChooseAccount()
-            : goGettingStarted();
+            : params?.activeTab == 4
+            ? goGettingStarted()
+            : params?.active ==1
+            ? goChooseAccount()
+            :goToSignUpForm()
         }}
       />
     </SafeAreaView>
