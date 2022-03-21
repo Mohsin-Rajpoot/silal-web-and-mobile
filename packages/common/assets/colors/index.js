@@ -15,6 +15,10 @@ const colors = {
   textPrimary:"#4C6870",
   gray:'#8D8E96',
   borderColor:'#E8E8E8',
-  profileBackground:'#f5f7f9'
+  profileBackground:'#f5f7f9',
+  dropDownBackground:"#F2F4F5",
+  lightRed:"#DE350B",
+  red50:"#FFEBE6"
+
 };
 export default colors;
