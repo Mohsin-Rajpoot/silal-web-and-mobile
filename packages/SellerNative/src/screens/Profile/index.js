@@ -4,7 +4,7 @@ import {
   ScrollView,
   ImageBackground,
   Pressable,
-  Text
+  Text,
 } from 'react-native';
 import {
   moderateScale,
@@ -35,7 +35,7 @@ const Profile = () => {
   const [freezedModal, setFreezedModal] = useState(false);
   return (
     <ScrollView style={styles.mainContainer}>
-      <Header />
+      <Header label="Profile" />
       <Tabs />
 
       <View style={styles.container}>
@@ -153,25 +153,36 @@ const Profile = () => {
 
         <CustomModal
           isModalVisible={freezedModal}
-          modalContainerStyle={{alignItems:'flex-start'}}
-          modalWrapperStyle={{marginVertical:height(26)}}
+          modalContainerStyle={{alignItems: 'flex-start'}}
+          modalWrapperStyle={{marginVertical: height(26)}}
           setModalVisible={setFreezedModal}>
-             <Pressable
-                  onPress={() => setFreezedModal(false)}
-                  style={[styles.iconContainer,{zIndex:99}]}>
-                  <Icon name="cross" type="entypo" size={moderateScale(19)} />
-                </Pressable>
-            <View style={{width:"100%",alignItems:"center",marginBottom:verticalScale(20),}}>
-          <CustomText  fontFamily={fonts.bold} label="Account is freezed" />
+          <Pressable
+            onPress={() => setFreezedModal(false)}
+            style={[styles.iconContainer, {zIndex: 99}]}>
+            <Icon name="cross" type="entypo" size={moderateScale(19)} />
+          </Pressable>
+          <View
+            style={{
+              width: '100%',
+              alignItems: 'center',
+              marginBottom: verticalScale(20),
+            }}>
+            <CustomText fontFamily={fonts.bold} label="Account is freezed" />
           </View>
           <Text style={styles.freezedMainText}>
-            {" "}It seems that your account was deactivated because {"\n"} it violated the
-            <Text style={{color:colors.primary}}> terms of use </Text> or our<Text style={{color:colors.primary}}> community guideline. </Text>{"\n"} If you believe this was by
-            mistake, <Text style={{color:colors.primary}}>please contact us.</Text>
+            {' '}
+            It seems that your account was deactivated because {'\n'} it
+            violated the
+            <Text style={{color: colors.primary}}> terms of use </Text> or our
+            <Text style={{color: colors.primary}}> community guideline. </Text>
+            {'\n'} If you believe this was by mistake,{' '}
+            <Text style={{color: colors.primary}}>please contact us.</Text>
           </Text>
-          <Text style={[styles.freezedMainText,{marginTop:verticalScale(43)}]}>
-          <Text style={{fontFamily:fonts.LatoBold}}>Note from Silal:</Text> account freezed for 30 days due to leaving inappropriate reviews on products.
-
+          <Text
+            style={[styles.freezedMainText, {marginTop: verticalScale(43)}]}>
+            <Text style={{fontFamily: fonts.LatoBold}}>Note from Silal:</Text>{' '}
+            account freezed for 30 days due to leaving inappropriate reviews on
+            products.
           </Text>
         </CustomModal>
       </View>
@@ -242,11 +253,11 @@ const styles = ScaledSheet.create({
     top: '22@ms',
     marginEnd: '10@ms',
   },
-  freezedMainText:{
-    fontFamily:fonts.LatoRegular,
-    fontSize:moderateScale(15),
-    marginHorizontal:"13@s",
-    marginTop:'10@s',
-    textAlign:'left',
-  }
+  freezedMainText: {
+    fontFamily: fonts.LatoRegular,
+    fontSize: moderateScale(15),
+    marginHorizontal: '13@s',
+    marginTop: '10@s',
+    textAlign: 'left',
+  },
 });
