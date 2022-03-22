@@ -3,6 +3,7 @@ import styled from "styled-components"
 import {
     FilterIcon,
     XIcon,
+    SearchIcon,
 } from './AllImages'
 
 const RestaurantHeading = ({
@@ -126,7 +127,7 @@ const DetailText = ({
     detail,
     classes
 }) => {
-    return(
+    return (
         <DetailTextStyled className={classes}>
             <span>{title}</span>
             <span>{detail}</span>
@@ -185,10 +186,56 @@ const QtyDetailStyled = styled.div`
     }
 `;
 
+const SearchWindow = ({
+    classN,
+    ID,
+}) => {
+    return (
+        <SearchWindowStyled className={classN}>
+            <SearchIcon />
+            <input
+                type="text"
+                id={ID}
+                placeholder="Search"
+            />
+        </SearchWindowStyled>
+    )
+}
+
+const SearchWindowStyled = styled.div`
+    width: 100%;
+    height: 30px;
+    padding: 7px 0 7px 10px;
+    margin-bottom: 20px;
+    background: #FFFFFF;
+    border: 1px solid rgba(204, 212, 214, 0.5);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    svg {
+        width: 17px;
+        height: 17px;
+    }
+    input {
+        border: none;
+        padding-left: 11px;
+        height: 28px;
+        flex: 1;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 125%;
+        color: #002733;
+        &::placeholder {
+            color: #B3BEC2;
+        }
+    }
+`;
+
 export {
     RestaurantHeading,
     TableSpan,
     FilterBtn,
     DetailText,
     QtyDetail,
+    SearchWindow,
 }

@@ -16,6 +16,7 @@ import locationIcon from "../../assets/images/svg/location-icon.svg"
 import phoneIcon from "../../assets/images/svg/phone-icon.svg"
 import collpaseArrow from "../../assets/images/svg/collpase-arrow.svg"
 import selectArrow from "../../assets/images/svg/select-arrow.svg"
+import uploadImgPlaceholder from "../../assets/images/upload-img-placeholder.png"
 import { ReactComponent as Menu } from "../../assets/images/svg/menu.svg"
 import { ReactComponent as Home } from "../../assets/images/svg/home.svg"
 import { ReactComponent as Order } from "../../assets/images/svg/order.svg"
@@ -31,6 +32,8 @@ import { ReactComponent as FilterIcon } from "../../assets/images/svg/filter-ico
 import { ReactComponent as XIcon } from "../../assets/images/svg/x-icon.svg"
 import { ReactComponent as EditIcon } from "../../assets/images/svg/edit-icon.svg"
 import { ReactComponent as EditWhite } from "../../assets/images/svg/edit-white.svg"
+import { ReactComponent as SearchIcon } from "../../assets/images/svg/search-icon.svg"
+import { ReactComponent as UplaodIcon } from "../../assets/images/svg/uplaod-icon.svg"
 
 export {
     Menu,
@@ -66,4 +69,7 @@ export {
     EditIcon,
     selectArrow,
     EditWhite,
+    SearchIcon,
+    uploadImgPlaceholder,
+    UplaodIcon,
 }

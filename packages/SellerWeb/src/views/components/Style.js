@@ -480,6 +480,60 @@ const ThemeModal = styled.div`
   }
 `;
 
+const UploadImages = styled.div`
+  .display-img {
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    img {
+      height: 128px;
+      width: 100%;
+      border-radius: 5px;
+      object-fit: cover;
+    }
+    .checkbox-main {
+      position: absolute;
+      top: 8px;
+      right: 7px;
+    }
+    .checkbox,
+    .checkmark  {
+      width: 16px;
+      height: 16px;
+    }
+    .checkmark {
+      border: 2px solid #CCD4D6;
+    }
+    .checkbox .checkmark:after {
+      left: 4px;
+      top: 1px;
+      width: 4px;
+      height: 8px;
+    }
+  }
+  .size-text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 120%;
+    text-align: right;
+    color: #CCD4D6;
+    margin-bottom: 9px;
+  }
+  button {
+    width: 100%;
+    height: 39px;
+    background: #4C6870;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 130%;
+    svg {
+      margin-right: 8px;
+    }
+  }
+`;
+
 export {
   CardStyled,
   Heading,
@@ -499,4 +553,5 @@ export {
   Input,
   EditButton,
   ThemeModal,
+  UploadImages,
 };

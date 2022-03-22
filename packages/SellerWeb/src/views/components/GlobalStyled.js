@@ -53,11 +53,15 @@ body {
 .f-ubold {
     font-weight: 800;
 }
+.f-15 {
+    font-size: 15px;
+}
 button {
     cursor: pointer;
 }
 input, textarea, select, button {
     outline: none !important;
+    font-family: 'Lato', sans-serif;
 }
 .center {
     display: flex;
@@ -68,6 +72,11 @@ input, textarea, select, button {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 .flex-1 {
     flex: 1;
@@ -265,6 +274,84 @@ hr {
     color: #CCD4D6;
     font-family: 'Lato', sans-serif;
     margin-bottom: 7px;
+}
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    border-color: #CCD4D6 !important;
+    border-radius: 3px;
+    box-shadow: none !important;
+}
+.form-check-label {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 120%;
+    letter-spacing: -0.408px;
+    color: #002733;
+    margin: 4px 0 0 10px;
+}
+// custom checkbox styles
+.checkbox {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 3px;
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        border-radius: 3px;
+        background-color: transparent;
+        border: 1px solid white;
+    }
+}
+.checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.checkbox input:checked ~ .checkmark {
+    background-color: white;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+.checkbox .checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 10px;
+    border: solid #002733;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.input-dollar-sign {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: -0.408px;
+    color: #CCD4D6;
+    font-family: 'Lato', sans-serif;
+    position: absolute;
+    top: 8px;
+    left: 10px;
 }
 `;
 

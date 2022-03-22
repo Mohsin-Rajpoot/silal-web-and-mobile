@@ -173,9 +173,67 @@ const AddOns = styled.div`
     }
 `;
 
+const CustomizationCategory = styled.div`
+    background: #F2F4F5;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 130%;
+    letter-spacing: -0.408px;
+    color: #002733;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    width: 100%;
+`;
+
+const CustomizationItem = ({ item, classN }) => {
+    return (
+    <CustomizationItemStyled className={classN}>
+            <div className="checkbox-main">
+                <label class="checkbox">
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <h1 className="lato">{item}</h1>
+        </CustomizationItemStyled>
+    )
+}
+
+const CustomizationItemStyled = styled.div`
+    min-height: 100px;
+    background: #5AB3A8;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    &.grey {
+        background: #A5B4B8;
+    }
+    h1 {
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 115%;
+        letter-spacing: -0.408px;
+        color: #FFFFFF;
+        margin: 0;
+    }
+    .checkbox-main {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+`;
+
 export {
     Category,
     AddCategory,
     EditProductContainer,
     AddOns,
+    CustomizationCategory,
+    CustomizationItem,
 }

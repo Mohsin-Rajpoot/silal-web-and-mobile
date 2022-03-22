@@ -1,6 +1,12 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Tab, Nav, Row, Col } from 'react-bootstrap'
+import {
+    Tab,
+    Nav,
+    Row,
+    Col,
+    Form
+} from 'react-bootstrap'
 import {
     FlexContainer,
     HeadingStyled,
@@ -12,8 +18,20 @@ import {
     Select,
     Textarea,
     Input,
+    UploadImages,
 } from "../../../components/Style"
-import { BackArrow } from "../../../components/AllImages"
+import {
+    CustomizationCategory,
+    CustomizationItem,
+} from '../../../components/products/Components'
+import {
+    SearchWindow
+} from '../../../components/UseFullElements'
+import {
+    BackArrow,
+    uploadImgPlaceholder,
+    UplaodIcon,
+} from "../../../components/AllImages"
 
 const CreateItem = () => {
     const history = useHistory()
@@ -101,9 +119,206 @@ const CreateItem = () => {
                                 </CardStyled>
                                 <CardStyled>
                                     <Label className="mb-20">Allergies</Label>
+                                    <Row>
+                                        <Col md={3} xs={6}>
+                                            <Form.Group className="mb-1" controlId="glutten">
+                                                <Form.Check type="checkbox" label="Glutten" />
+                                            </Form.Group>
+                                        </Col>
+                                        <Col md={3} xs={6}>
+                                            <Form.Group className="mb-1" controlId="milk">
+                                                <Form.Check type="checkbox" label="Cow’s milk" />
+                                            </Form.Group>
+                                        </Col>
+                                        <Col md={3} xs={6}>
+                                            <Form.Group className="mb-1" controlId="eggs">
+                                                <Form.Check type="checkbox" label="Eggs" />
+                                            </Form.Group>
+                                        </Col>
+                                        <Col md={3} xs={6}>
+                                            <Form.Group className="mb-1" controlId="nuts">
+                                                <Form.Check type="checkbox" label="True nuts" />
+                                            </Form.Group>
+                                        </Col>
+                                        <Col md={3} xs={6}>
+                                            <Form.Group className="mb-1" controlId="meat">
+                                                <Form.Check type="checkbox" label="Meat" />
+                                            </Form.Group>
+                                        </Col>
+                                        <Col md={3} xs={6}>
+                                            <Form.Group className="mb-1" controlId="fish">
+                                                <Form.Check type="checkbox" label="Fish" />
+                                            </Form.Group>
+                                        </Col>
+                                        <Col md={3} xs={6}>
+                                            <Form.Group className="mb-1" controlId="peanut">
+                                                <Form.Check type="checkbox" label="Peanut" />
+                                            </Form.Group>
+                                        </Col>
+                                        <Col md={3} xs={6}>
+                                            <Form.Group className="mb-1" controlId="shell-fish">
+                                                <Form.Check type="checkbox" label="Shellfish" />
+                                            </Form.Group>
+                                        </Col>
+                                    </Row>
+                                    <Label className="mb-20 mt-20">Food preferences</Label>
+                                    <Row>
+                                        <Col md={3} xs={6}>
+                                            <Form.Group className="mb-1" controlId="spicy">
+                                                <Form.Check type="checkbox" label="Spicy" />
+                                            </Form.Group>
+                                        </Col>
+                                        <Col md={3} xs={6}>
+                                            <Form.Group className="mb-1" controlId="organic">
+                                                <Form.Check type="checkbox" label="Organic" />
+                                            </Form.Group>
+                                        </Col>
+                                        <Col md={3} xs={6}>
+                                            <Form.Group className="mb-1" controlId="vegan">
+                                                <Form.Check type="checkbox" label="Vegan" />
+                                            </Form.Group>
+                                        </Col>
+                                        <Col md={3} xs={6}>
+                                            <Form.Group className="mb-1" controlId="vege">
+                                                <Form.Check type="checkbox" label="Vegeterian" />
+                                            </Form.Group>
+                                        </Col>
+                                    </Row>
+                                </CardStyled>
+                                <CardStyled>
+                                    <Label className="mb-20 f-15">Select customisations</Label>
+                                    <Row>
+                                        <Col md={3} xs={6}>
+                                            <CustomizationCategory>Toppings</CustomizationCategory>
+                                            <CustomizationItem
+                                                item="Sandwiches Toppings"
+                                            />
+                                        </Col>
+                                        <Col md={3} xs={6}>
+                                            <CustomizationCategory>Sauces</CustomizationCategory>
+                                            <CustomizationItem
+                                                item="Sauces"
+                                            />
+                                        </Col>
+                                        <Col md={3} xs={6}>
+                                            <CustomizationCategory>Drink</CustomizationCategory>
+                                            <CustomizationItem
+                                                item="Soft Drinks"
+                                            />
+                                        </Col>
+                                    </Row>
+                                    <SearchWindow
+                                        ID="customizatoin-search"
+                                    />
+                                    <Row>
+                                        <Col md={3} xs={6}>
+                                            <CustomizationItem
+                                                classN="grey"
+                                                item="Soft Drinks"
+                                            />
+                                        </Col>
+                                    </Row>
                                 </CardStyled>
                             </Col>
                             <Col lg={4}>
+                                <CardStyled>
+                                    <Label>Set the price (!)</Label>
+                                    <div className="position-relative">
+                                        <span className="input-dollar-sign">$</span>
+                                        <Input type="text" className="ps-4" />
+                                    </div>
+                                </CardStyled>
+                                <CardStyled>
+                                    <UploadImages>
+                                        <Row>
+                                            <Col xs={6}>
+                                                <div className="display-img">
+                                                    <img src={uploadImgPlaceholder} alt="img" />
+                                                    <div className="checkbox-main">
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" />
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                            <Col xs={6}>
+                                                <div className="display-img">
+                                                    <img src={uploadImgPlaceholder} alt="img" />
+                                                    <div className="checkbox-main">
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" />
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                            <Col xs={6}>
+                                                <div className="display-img">
+                                                    <img src={uploadImgPlaceholder} alt="img" />
+                                                    <div className="checkbox-main">
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" />
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                            <Col xs={6}>
+                                                <div className="display-img">
+                                                    <img src={uploadImgPlaceholder} alt="img" />
+                                                    <div className="checkbox-main">
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" />
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                        <div className="pt-1">
+                                            <div className="end">
+                                                <p className="lato size-text">2 mb max</p>
+                                            </div>
+                                            <button className="center border-0 text-white poppins">
+                                                <UplaodIcon />
+                                                Upload
+                                            </button>
+                                        </div>
+                                    </UploadImages>
+                                </CardStyled>
+                                <CardStyled>
+                                    <Row>
+                                        <Col xs={6}>
+                                            <Form.Group className="mb-1" controlId="hot">
+                                                <Form.Check type="checkbox" label="Hot" />
+                                            </Form.Group>
+                                            <Form.Group className="mb-1" controlId="Breakable">
+                                                <Form.Check type="checkbox" label="Breakable" />
+                                            </Form.Group>
+                                            <Form.Group className="mb-1" controlId="Flammable">
+                                                <Form.Check type="checkbox" label="Flammable" />
+                                            </Form.Group>
+                                            <Form.Group className="mb-1" controlId="Liquid">
+                                                <Form.Check type="checkbox" label="Liquid" />
+                                            </Form.Group>
+                                        </Col>
+                                        <Col xs={6}>
+                                            <Form.Group className="mb-1" controlId="pick-up">
+                                                <Form.Check type="checkbox" label="Pick up only" />
+                                            </Form.Group>
+                                        </Col>
+                                    </Row>
+                                </CardStyled>
+                                <CardStyled>
+                                    <Label>Set the price  (!)</Label>
+                                    <div className="d-flex align-items-center">
+                                        <Col sm={6}>
+                                            <Input type="text" placeholder="30" />
+                                        </Col>
+                                        <Label className="f-15 mb-4 ms-3">minutes</Label>
+                                    </div>
+                                </CardStyled>
                             </Col>
                         </Row>
                     </Tab.Pane>
