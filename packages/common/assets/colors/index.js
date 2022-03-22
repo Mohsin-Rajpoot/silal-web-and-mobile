@@ -21,6 +21,10 @@ const colors = {
   otpBorder:'#CDCDD0',
   backGround:'#E5E5E5',
   gray_light:'#B3BEC2',
-  underLine: 'rgba(0, 39, 51, 0.08)'
+  underLine: 'rgba(0, 39, 51, 0.08)',
+  dropDownBackground:"#F2F4F5",
+  lightRed:"#DE350B",
+  red50:"#FFEBE6"
+
 };
 export default colors;

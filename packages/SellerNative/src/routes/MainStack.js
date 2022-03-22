@@ -2,7 +2,6 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import TabStack from './TabStack';
 import React from 'react';
 import CustomDrawerContent from './Drawer';
-import {View} from 'react-native';
 import Profile from '../screens/Profile';
 import Offers from '../screens/offers/Offers';
 const Drawer = createDrawerNavigator();

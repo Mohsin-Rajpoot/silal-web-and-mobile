@@ -1,4 +1,4 @@
-const screens = [
+export const screens = [
   {
     id: 0,
     image: require("../images/Rectangle.png"),
@@ -29,4 +29,14 @@ const screens = [
   },
 ];
 
-export default screens;
+
+export const days = [
+  "Every day",
+  "Thursday",
+  "Monday",
+  "Friday",
+  "Tuesday",
+  "Saturday",
+  "Wednesday",
+  "Sunday",
+];

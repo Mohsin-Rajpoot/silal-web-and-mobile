@@ -10,6 +10,8 @@ const index = ({
   multiLine,
   password,
   search,
+  placeholderTextColor,
+  inputTextStyle,
 }) => {
   const [showPassword, setShowPassword] = useState(!secureText ? true : false);
   const [text, setText] = useState("");
@@ -33,8 +35,10 @@ const index = ({
       )}
       <TextInput
         placeholder={placeholderText}
-        placeholderTextColor={colors.light_grey}
-        style={CommonStyle.inputTextStyle}
+        placeholderTextColor={
+          placeholderTextColor ? placeholderTextColor : colors.light_grey
+        }
+        style={inputTextStyle ? inputTextStyle : CommonStyle.inputTextStyle}
         secureTextEntry={!showPassword}
         multiline={multiLine}
         value={text}
