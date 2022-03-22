@@ -25,7 +25,7 @@ const SecondPage = () => {
         textInputStyle={{ color: colors.gray }}
         codeTextStyle={styles.codeText}
         defaultCode="RU"
-        layout="first"
+        layout="second"
         onChangeText={(value) => setText(value)}
         // onChangeFormattedText={(value) => setText(value)}
         value={text}

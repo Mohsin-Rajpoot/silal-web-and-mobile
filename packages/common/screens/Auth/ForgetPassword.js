@@ -13,9 +13,12 @@ const ForgetPassword = ({ navigation }) => {
         active:3
     }});
   };
+  const goBack=()=>{
+    navigation.pop()
+  }
   return (
     <View style={CommonStyle.mainContainer}>
-      <HeaderBack name="Reset Password" />
+      <HeaderBack name="Reset Password" onGoBack={goBack} />
       <View style={{ marginVertical: 20 }}>
         <HeaderHeading
           headingName="Enter your email"

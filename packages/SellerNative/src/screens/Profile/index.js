@@ -35,7 +35,7 @@ const Profile = () => {
   const [freezedModal, setFreezedModal] = useState(false);
   return (
     <ScrollView style={styles.mainContainer}>
-      <Header label="Profile" />
+      <Header label={'Profile'} />
       <Tabs />
 
       <View style={styles.container}>

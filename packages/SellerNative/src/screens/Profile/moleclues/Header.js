@@ -4,13 +4,13 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import CustomText from '@SilalApp/common/components/CustomText';
 import {ScaledSheet} from 'react-native-size-matters';
 import fonts from 'fonts';
-const Header = ({label}) => {
+const Header = ({label, onPress}) => {
   return (
     <View style={styles.mainContainer}>
-      <TouchableOpacity style={{alignItems: 'center'}}>
+      <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
         <MaterialCommunityIcons
           name="reorder-horizontal"
-          size={25}
+          size={28}
           color="#000000"
         />
       </TouchableOpacity>
@@ -19,6 +19,11 @@ const Header = ({label}) => {
         textStyle={styles.profileText}
         label={label}
       />
+      {/* <CustomText
+        fontFamily={fonts.bold}
+        textStyle={styles.profileText}
+        label={label}
+      /> */}
     </View>
   );
 };
@@ -29,10 +34,10 @@ const styles = ScaledSheet.create({
   mainContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: '42@vs',
+    paddingTop: '12@vs',
   },
   profileText: {
-    fontSize: '20@ms',
+    fontSize: '19@ms',
     marginLeft: '10@s',
   },
 });
