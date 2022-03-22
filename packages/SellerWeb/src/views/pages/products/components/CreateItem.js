@@ -79,7 +79,10 @@ const CreateItem = () => {
                                             </Select>
                                         </Col>
                                         <Col sm={6}>
-                                            <Label>Cuisine (!)</Label>
+                                            <div className="between">
+                                                <Label>Cuisine (!)</Label>
+                                                <div className="info-sign poppins text-white center">?</div>
+                                            </div>
                                             <Select>
                                                 <option>Europian</option>
                                                 <option>American</option>
@@ -225,7 +228,7 @@ const CreateItem = () => {
                                     <Label>Set the price (!)</Label>
                                     <div className="position-relative">
                                         <span className="input-dollar-sign">$</span>
-                                        <Input type="text" className="ps-4" />
+                                        <Input type="number" min="0" className="ps-4" />
                                     </div>
                                 </CardStyled>
                                 <CardStyled>

@@ -353,6 +353,16 @@ hr {
     top: 8px;
     left: 10px;
 }
+.info-sign {
+    width: 15px;
+    height: 15px;
+    background: #5AB3A8;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 14px;
+    border-radius: 50%;
+    cursor: help;
+}
 `;
 
 export default GlobalStyle;
