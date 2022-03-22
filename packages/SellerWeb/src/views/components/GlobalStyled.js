@@ -363,6 +363,36 @@ hr {
     border-radius: 50%;
     cursor: help;
 }
+.info-hover {
+    &:hover {
+        .info-div {
+            display: block;
+        }
+    }
+}
+.info-div {
+    display: none;
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 120%;
+    letter-spacing: -0.3px;
+    position: absolute;
+    padding: 6px 5px;
+    background-color: #1a3d47;
+    color: white;
+    border-radius: 3px;
+    top: 18px;
+    width: 127px;
+    height: 54px;
+    left: -52px;
+    z-index: 100;
+    a {
+        font-weight: 600;
+        color: var(--theme-clr);
+        text-decoration: none;
+    }
+}
 `;
 
 export default GlobalStyle;

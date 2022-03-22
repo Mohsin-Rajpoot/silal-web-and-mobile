@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import {
     Tab,
     Nav,
     Row,
     Col,
-    Form
+    Form,
 } from 'react-bootstrap'
 import {
     FlexContainer,
@@ -19,10 +20,12 @@ import {
     Textarea,
     Input,
     UploadImages,
+    EditButton,
 } from "../../../components/Style"
 import {
     CustomizationCategory,
     CustomizationItem,
+    CustomizationTemplate,
 } from '../../../components/products/Components'
 import {
     SearchWindow
@@ -31,6 +34,7 @@ import {
     BackArrow,
     uploadImgPlaceholder,
     UplaodIcon,
+    EditWhite,
 } from "../../../components/AllImages"
 
 const CreateItem = () => {
@@ -81,7 +85,10 @@ const CreateItem = () => {
                                         <Col sm={6}>
                                             <div className="between">
                                                 <Label>Cuisine (!)</Label>
-                                                <div className="info-sign poppins text-white center">?</div>
+                                                <div className="position-relative info-hover">
+                                                    <div className="info-sign poppins text-white center">?</div>
+                                                    <div className="info-div">Didn’t find an appropriate category? <Link to="#">Contact us</Link> and we'll add it!</div>
+                                                </div>
                                             </div>
                                             <Select>
                                                 <option>Europian</option>
@@ -326,7 +333,128 @@ const CreateItem = () => {
                         </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="second">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam laudantium voluptates quidem, unde atque distinctio ex quae eum nobis nemo aperiam, incidunt velit consequatur ea, minima voluptate sit deserunt vitae!
+                        <CardStyled>
+                            <CustomizationTemplate>
+                                <div className="between">
+                                    <h1 className="mb-15">Toppings: <span>Lettuce, Cheese, Tomatoes, Pickle</span></h1>
+                                    <div className="d-flex align-items-center mb-15">
+                                        <h2>#542399</h2>
+                                        <EditButton className="center">
+                                            <EditWhite />
+                                        </EditButton>
+                                    </div>
+                                </div>
+                                <div className="d-flex flex-wrap">
+                                    <div className="items-col">
+                                        <div className="box">Lettuce</div>
+                                        <input type="text" value="$ 0.00" disabled />
+                                    </div>
+                                    <div className="items-col">
+                                        <div className="box">Cheese</div>
+                                        <input type="text" value="$ 2.00" />
+                                    </div>
+                                    <div className="items-col">
+                                        <div className="box">Tomatoes</div>
+                                        <input type="text" value="$ 2.00" />
+                                    </div>
+                                    <div className="items-col">
+                                        <div className="box">Pickle</div>
+                                        <input type="text" value="$ 2.00" />
+                                    </div>
+                                    <div className="items-col">
+                                        <div className="box disabled">Onion</div>
+                                        <p>Unavailable</p>
+                                    </div>
+                                </div>
+                                <div className="between">
+                                    <h1 className="mb-0">Use for: <span>Sandwiches: Burger, Deli</span></h1>
+                                    <div className="d-flex">
+                                        <Button className="version-btn">Customise new version</Button>
+                                        <Button className="template-btn">Add template as is</Button>
+                                    </div>
+                                </div>
+                            </CustomizationTemplate>
+                        </CardStyled>
+                        <CardStyled>
+                            <CustomizationTemplate>
+                                <div className="between">
+                                    <h1 className="mb-15">Sauces: <span>Lettuce, Cheese, Tomatoes, Pickle</span></h1>
+                                    <div className="d-flex align-items-center mb-15">
+                                        <h2>#542399</h2>
+                                        <EditButton className="center">
+                                            <EditWhite />
+                                        </EditButton>
+                                    </div>
+                                </div>
+                                <div className="d-flex flex-wrap">
+                                    <div className="items-col">
+                                        <div className="box">Ketchup</div>
+                                        <input type="text" value="$ 0.00" disabled />
+                                    </div>
+                                    <div className="items-col">
+                                        <div className="box">Mayonaise</div>
+                                        <input type="text" value="$ 0.00" disabled />
+                                    </div>
+                                    <div className="items-col">
+                                        <div className="box">BBQ</div>
+                                        <input type="text" value="$ 0.00" disabled />
+                                    </div>
+                                    <div className="items-col">
+                                        <div className="box">1000 Islands</div>
+                                        <input type="text" value="$ 0.00" disabled />
+                                    </div>
+                                </div>
+                                <div className="between">
+                                    <h1 className="mb-0">Use for: <span>All meals</span></h1>
+                                    <div className="d-flex">
+                                        <Button className="version-btn">Customise new version</Button>
+                                        <Button className="template-btn">Add template as is</Button>
+                                    </div>
+                                </div>
+                            </CustomizationTemplate>
+                        </CardStyled>
+                        <CardStyled>
+                            <CustomizationTemplate>
+                                <div className="between">
+                                    <h1 className="mb-15">Drinks: <span>Pepsi, Nestea, Coca-cola, Water, 7UP</span></h1>
+                                    <div className="d-flex align-items-center mb-15">
+                                        <h2>#542399</h2>
+                                        <EditButton className="center">
+                                            <EditWhite />
+                                        </EditButton>
+                                    </div>
+                                </div>
+                                <div className="d-flex flex-wrap">
+                                    <div className="items-col">
+                                        <div className="box">Pepsi</div>
+                                        <input type="text" value="$ 0.00" />
+                                    </div>
+                                    <div className="items-col">
+                                        <div className="box">Nestea</div>
+                                        <input type="text" value="$ 2.00" />
+                                    </div>
+                                    <div className="items-col">
+                                        <div className="box">Coca-Cola</div>
+                                        <input type="text" value="$ 2.00" />
+                                    </div>
+                                    <div className="items-col">
+                                        <div className="box">Water</div>
+                                        <input type="text" value="$ 2.00" />
+                                    </div>
+                                    <div className="items-col">
+                                        <div className="box">7UP</div>
+                                        <input type="text" value="$ 2.00" />
+                                    </div>
+                                </div>
+                                <div className="between">
+                                    <h1 className="mb-0">Use for: <span>All meals</span></h1>
+                                    <div className="d-flex">
+                                        <Button className="version-btn">Customise new version</Button>
+                                        <Button className="template-btn">Add template as is</Button>
+                                    </div>
+                                </div>
+                            </CustomizationTemplate>
+                        </CardStyled>
                     </Tab.Pane>
                 </Tab.Content>
             </Tab.Container>

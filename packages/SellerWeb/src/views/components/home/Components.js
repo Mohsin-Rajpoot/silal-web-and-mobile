@@ -3,7 +3,8 @@ import ReactStars from "react-rating-stars-component"
 import styled from "styled-components"
 import { Row, Col } from 'react-bootstrap'
 import {
-    Button
+    Button,
+    Textarea,
 } from '../../components/Style'
 import {
     star
@@ -68,6 +69,10 @@ const Review = ({
     text,
     order,
 }) => {
+    const showTextarea = () => {
+        alert()
+    }
+
     return (
         <ReviewStyled>
             <Row>
@@ -81,8 +86,8 @@ const Review = ({
                             <ReactStars
                                 size={24}
                                 count={5}
-                                value={rating}
-                                edit={false}
+                                // value={rating}
+                                edit={true}
                                 activeColor="#FFC400"
                             />
                         </div>
@@ -92,8 +97,9 @@ const Review = ({
                     <div className="order">
                         <h3 className="dark-clr m-0 lato">Order: <span>{order}</span></h3>
                     </div>
+                    <Textarea className="d-none" placeholder="Type here..."></Textarea>
                     <div className="between">
-                        <Button className="reply">Reply</Button>
+                        <Button className="reply" onClick={showTextarea}>Reply</Button>
                         <button className="contact-support">Contact support</button>
                     </div>
                 </Col>

@@ -229,6 +229,100 @@ const CustomizationItemStyled = styled.div`
     }
 `;
 
+const CustomizationTemplate = styled.div`
+    font-family: 'Lato', sans-serif;
+    h1 {
+        font-weight: 600;
+        font-size: 17px;
+        line-height: 130%;
+        letter-spacing: -0.408px;
+        color: #002733;
+        span {
+            font-weight: 500;
+            color: #82959B;
+        }
+    }
+    h2 {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 14px;
+        text-align: right;
+        letter-spacing: -0.3px;
+        color: rgba(76, 104, 112, 0.7);
+        margin: 0 20px 0 0;
+    }
+    .items-col {
+        width: 110px;
+        min-width: 110px;
+        max-width: max-content;
+        margin-right: 20px;
+        margin-bottom: 30px;
+        .box {
+            width: 100%;
+            height: 36px;
+            margin-bottom: 10px;
+            padding: 8px 15px;
+            background: rgba(204, 212, 214, 0.5);
+            border-radius: 5px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 120%;
+            letter-spacing: -0.408px;
+            color: #4C6870;
+            &.disabled {
+                background: #4C6870;
+                color: #CCD4D6;
+            }
+        }
+        input {
+            padding: 8px 20px;
+            border: 1px solid #CCD4D6;
+            border-radius: 5px;
+            width: 100%;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 120%;
+            text-align: center;
+            letter-spacing: -0.408px;
+            color: #002733;
+            &:disabled {
+                color: #CCD4D6;
+                border: 1px solid #E8E8E8;
+            }
+        }
+        p {
+            text-align: center;
+            margin: 18px 0 0 0;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 120%;
+            letter-spacing: -0.408px;
+            color: #002733;
+        }
+    }
+    .version-btn {
+        border: 1px solid #4C6870;
+        color: #4C6870;
+        background-color: transparent;
+        margin-right: 20px;
+        &:hover {
+            background-color: #4C6870;
+            color: white;
+        }
+    }
+    .template-btn {
+        background: #C7EDEA;
+        color: #4C6870;
+        &:hover {
+            background: #c7edea96;
+        }
+    }
+`;
+
 export {
     Category,
     AddCategory,
@@ -236,4 +330,5 @@ export {
     AddOns,
     CustomizationCategory,
     CustomizationItem,
+    CustomizationTemplate,
 }
