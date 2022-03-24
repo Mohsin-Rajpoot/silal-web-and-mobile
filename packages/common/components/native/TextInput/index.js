@@ -29,7 +29,7 @@ const index = ({
               size={30}
               color={colors.gray_light}
             />
-            <Text style={CommonStyle.searchText}>Search</Text>
+            
           </View>
         )
       )}

@@ -24,7 +24,8 @@ const colors = {
   underLine: 'rgba(0, 39, 51, 0.08)',
   dropDownBackground:"#F2F4F5",
   lightRed:"#DE350B",
-  red50:"#FFEBE6"
+  red50:"#FFEBE6",
+  bluish:"#E6FCFF",
 
 };
 export default colors;

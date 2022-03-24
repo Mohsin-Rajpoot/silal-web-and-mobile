@@ -11,6 +11,8 @@ import colors from '@SilalApp/common/assets/colors';
 import PagerView from 'react-native-pager-view';
 import ProfileTab from './Tabs/ProfileTab';
 import OpenTab from './Tabs/OpenTab';
+import PaymentTab from './Tabs/Payment'
+import TransactionTab from './Tabs/Transaction'
 const Profile = () => {
   const ref = useRef(null);
   const tabs=["Profile","Opening hours","Payment history","Transaction ledger"]
@@ -33,6 +35,12 @@ const Profile = () => {
         </View>
         <View key={'2'}>
           <OpenTab />
+        </View>
+        <View key={'3'}>
+        <PaymentTab/>
+        </View>
+        <View key={'4'}>
+          <TransactionTab/>
         </View>
       </PagerView>
     </View>
