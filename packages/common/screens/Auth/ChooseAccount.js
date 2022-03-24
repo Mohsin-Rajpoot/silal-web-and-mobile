@@ -5,7 +5,7 @@ import HeaderHeading from "../../components/headerHeading";
 import Images from "../../assets/images";
 import AuthButton from "../../components/native/AuthButton";
 import styles from "./style";
-const ChooseAccount = () => {
+const ChooseAccount = ({navigation}) => {
   const [active,setActive]=useState(1)
   return (
     <>
@@ -27,7 +27,7 @@ const ChooseAccount = () => {
         </View>
         </TouchableOpacity>
   
-        <TouchableOpacity activeOpacity={0.6} onPress={()=>setActive(2)}>
+        <TouchableOpacity  activeOpacity={0.6} onPress={()=>setActive(2)}>
         <View style={[active==2? styles.choseMainContainer: styles.choseMainContainer1]}>
           {/* <Image
             source={Images?.Image11}
@@ -43,7 +43,7 @@ const ChooseAccount = () => {
     
     </View>
     <View style={{flex:0.95}}/>
-      <AuthButton name={'Continue'}/>
+      <AuthButton onPress={()=>navigation.navigate('MainStack')} name={'Continue'}/>
       </>
   );
 };
