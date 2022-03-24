@@ -10,30 +10,40 @@ import CustomText from "../../components/CustomText";
 import AuthButton from "../../components/native/AuthButton";
 import { Icon } from "react-native-elements";
 import colors from "../../assets/colors";
-const SignUpForm = () => {
+import ThirdPage from "./SignUpFormPages/ThirdPage";
+const SignUpForm = ({ navigation }) => {
   const ref = useRef(null);
   const [page, setPage] = useState(0);
-  const goToNextPage = () => {
-    ref?.current?.setPageWithoutAnimation(1);
-    setPage(page+1)
-    // if (page + 1 != 3) {
-    //   ref?.current?.setPageWithoutAnimation(page+1);
 
-    //   setPage(page + 1);
-    // } else {
-    //   setPage(0);
-    // }
+  const goprev = () => {
+    if (page > 0) {
+      const newStep = Math.max(0, page - 1);
+      ref.current?.setPageWithoutAnimation(newStep);
+      setPage(newStep);
+    } else {
+      setTimeout(() => {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: "AuthStack" }],
+        });
+      }, 400);
+    }
   };
-  const goBack = () => {
-    ref?.current?.setPageWithoutAnimation(0);
-    setPage(page-1)
-    // if (page - 1 < 0) {
-    //     ref?.current?.setPageWithoutAnimation(page-1);
-    //   setPage(page - 1);
-    // } else {
-    //   setPage(0);
-    // }
-  };
+  const moveForward=()=>{
+    const nextStep = Math.min(4, page + 1);
+
+        if (nextStep === 3) {
+          goToGettingStarted()
+        } else {
+          ref.current?.setPageWithoutAnimation(nextStep);
+          setPage(nextStep);
+        }
+  }
+  const goToGettingStarted=()=>{
+    navigation.navigate('GettingStarted',{params:{
+      gettingStarted:true
+    }})
+  }
   return (
     <>
       <HeaderBack name={`Step ${page + 1}/3`} />
@@ -73,23 +83,26 @@ const SignUpForm = () => {
         <View key="2">
           <SecondPage />
         </View>
+        <View key="3">
+          <ThirdPage />
+        </View>
       </PagerView>
       <View style={styles.outerContainer}>
         <TouchableOpacity
           activeOpacity={0.6}
-          onPress={goBack}
+          onPress={goprev}
           style={styles.backIconInnerContainer}
         >
-          <Icon name="arrowleft" type="AntDesign" color={colors.black} />
+          <Icon name="arrowleft" type="antdesign" color={colors.black} />
 
           <CustomText label="Back" textStyle={styles.backText} />
         </TouchableOpacity>
 
         <AuthButton
-          name={"Next step"}
+          name={page == 2 ? "Submit" : "Next step"}
           changeColor={true}
           buttonStyling={styles.formButton}
-          onPress={goToNextPage}
+          onPress={moveForward}
         />
       </View>
     </>

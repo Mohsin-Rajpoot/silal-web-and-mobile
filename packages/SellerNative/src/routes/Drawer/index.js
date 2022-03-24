@@ -15,6 +15,7 @@ import colors from 'common_colors';
 import CustomText from '@SilalApp/common/components/CustomText';
 import fonts from 'fonts';
 import ProfileBox from './Molecules/ProfileBox';
+import Offers from '../../screens/offers/Offers';
 const Drawer = props => {
   const width = useWindowDimensions().width * 0.3;
   const [expanded, setExpanded] = useState(false);
@@ -46,17 +47,21 @@ const Drawer = props => {
         </TouchableOpacity>
       </View>
       {!expanded && <ProfileBox navigation={props.navigation} />}
-
-      <CustomText
+    <TouchableOpacity activeOpacity={0.6} onPress={()=>props.navigation.navigate('Offers')}>
+    <CustomText
         textStyle={styles.drawerText}
         fontFamily={fonts.PoppinsMedium}
         label="Offers"
       />
-      <CustomText
+    </TouchableOpacity>
+     <TouchableOpacity activeOpacity={0.6} onPress={()=>props.navigation.navigate('Documents')}>
+     <CustomText
         textStyle={styles.drawerText}
         fontFamily={fonts.PoppinsMedium}
         label="Documents"
       />
+     </TouchableOpacity>
+    
       <CustomText
         textStyle={styles.drawerText}
         fontFamily={fonts.PoppinsMedium}

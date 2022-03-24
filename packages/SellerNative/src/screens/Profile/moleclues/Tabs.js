@@ -1,29 +1,17 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {CustomButton} from '@SilalApp/common/components/native';
-const Tabs = () => {
+const Tabs = ({onChangeTab,page,tabs,containerStyle}) => {
   return (
-    <View style={{ flexDirection: 'row'}}>
-      <CustomButton
-        onPress={() => {}}
-        text="Profile"
-        type={true ? 'PRIMARY' : 'TERTIARY'}
+    <View style={[{ flexDirection: 'row'},containerStyle]}>
+      {tabs?.map((item,index)=>(
+        <CustomButton
+        key={index}
+        onPress={() => onChangeTab(index)}
+        text={item}
+        type={page==index ? 'PRIMARY' : 'TERTIARY'}
       />
-      <CustomButton
-        onPress={() => onCurrentOrder(1)}
-        text="Opening hours"
-        type={false ? 'PRIMARY' : 'TERTIARY'}
-      />
-      <CustomButton
-        onPress={() => onCurrentOrder(2)}
-        text="Payment history"
-        type={false ? 'PRIMARY' : 'TERTIARY'}
-      />
-      <CustomButton
-        onPress={() => onCurrentOrder(2)}
-        text="Transaction ledger"
-        type={false ? 'PRIMARY' : 'TERTIARY'}
-      />
+      ))}
     </View>
   );
 };

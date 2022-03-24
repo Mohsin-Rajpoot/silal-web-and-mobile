@@ -8,10 +8,13 @@ import TextInput from "../../components/native/TextInput";
 import styles from "./style";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Button from "../../components/native/AuthButton";
-const ChangePassword = () => {
+const ChangePassword = ({navigation}) => {
+  const goBack=()=>{
+    navigation.pop()
+  }
   return (
     <View style={CommonStyle.mainContainer}>
-      <HeaderBack />
+      <HeaderBack onGoBack={goBack} />
       <HeaderHeading headingName="Create a new password" />
       <View style={CommonStyle.CommonView}>
         <CustomText label="Password" textStyle={styles.phoneNumberText} />

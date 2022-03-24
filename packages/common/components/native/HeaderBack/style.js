@@ -19,7 +19,7 @@ const styles = ScaledSheet.create({
   heading: {
     alignSelf: "flex-start",
     color: colors.black,
-    fontSize: "14@ms",
+    fontSize: "13@ms",
     fontFamily:fonts.LatoBold
   },
   icon: {

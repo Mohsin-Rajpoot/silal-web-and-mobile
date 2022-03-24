@@ -8,6 +8,8 @@ import CommonStyle from "../../../styles";
 import colors from "../../../assets/colors";
 const FirstPage = () => {
   const [text, setText] = useState("");
+  
+  
   return (
     <View style={styles.firstPageMainContainer}>
       <View style={{ flexDirection: "row", marginVertical: 15 }}>
@@ -33,7 +35,8 @@ const FirstPage = () => {
         textInputStyle={{ color: colors.gray }}
         codeTextStyle={styles.codeText}
         defaultCode="RU"
-        layout="first"
+        layout="second"
+        
         onChangeText={(value) => setText(value)}
         // onChangeFormattedText={(value) => setText(value)}
         value={text}
