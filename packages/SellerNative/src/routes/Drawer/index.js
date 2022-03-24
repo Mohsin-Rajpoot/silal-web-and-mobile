@@ -47,37 +47,50 @@ const Drawer = props => {
         </TouchableOpacity>
       </View>
       {!expanded && <ProfileBox navigation={props.navigation} />}
-    <TouchableOpacity activeOpacity={0.6} onPress={()=>props.navigation.navigate('Offers')}>
-    <CustomText
-        textStyle={styles.drawerText}
-        fontFamily={fonts.PoppinsMedium}
-        label="Offers"
-      />
-    </TouchableOpacity>
-     <TouchableOpacity activeOpacity={0.6} onPress={()=>props.navigation.navigate('Documents')}>
-     <CustomText
-        textStyle={styles.drawerText}
-        fontFamily={fonts.PoppinsMedium}
-        label="Documents"
-      />
-     </TouchableOpacity>
-    
-      <CustomText
-        textStyle={styles.drawerText}
-        fontFamily={fonts.PoppinsMedium}
-        label="Contact us"
-      />
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('Offers')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label="Offers"
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('Documents')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label="Documents"
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('ContactUs')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label="Contact us"
+        />
+      </TouchableOpacity>
+
       <CustomText
         textStyle={styles.drawerText}
         fontFamily={fonts.PoppinsMedium}
         label="About app"
       />
       <View style={{height: verticalScale(50)}} />
-      <CustomText
-        textStyle={styles.drawerText}
-        fontFamily={fonts.PoppinsMedium}
-        label="Setting"
-      />
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('Setting')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label="Setting"
+        />
+      </TouchableOpacity>
+
       <View style={{height: verticalScale(40)}} />
     </DrawerContentScrollView>
   );

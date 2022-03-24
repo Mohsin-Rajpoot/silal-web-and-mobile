@@ -39,8 +39,8 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
   },
   icon: {
-    width: '20@ms',
-    height: '20@ms',
+    width: '22@ms',
+    height: '22@ms',
     resizeMode: 'contain',
     borderRadius: '100@ms',
   },
