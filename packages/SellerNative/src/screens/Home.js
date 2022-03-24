@@ -3,9 +3,11 @@ import { View, Text, SafeAreaView, TouchableOpacity, Image, StyleSheet, Dimensio
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import { CustomButton, TitleHeading, StatisticWhiteBoxTitle, LockOnLandscape, Graph, Raiting, Calender } from '@SilalApp/common/components/native';
+import { CustomButton, TitleHeading, StatisticWhiteBoxTitle, LockOnLandscape, Graph, Raiting, } from '@SilalApp/common/components/native';
 import Svg, { Path, Rect } from 'react-native-svg';
 import { CheckBox } from 'react-native-elements';
+import OutOfStack from './OutOfStack'
+
 
 const { width, height } = Dimensions.get("window");
 
@@ -139,7 +141,7 @@ const Home = ({ navigation }) => {
       <LockOnLandscape />
       <View style={{ flexDirection: 'row' }}>
         <View style={{ padding: 15 }}>
-          <TouchableOpacity onPress={()=>navigation.openDrawer()}>
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <MaterialCommunityIcons
               name="reorder-horizontal"
               size={20}
@@ -168,12 +170,12 @@ const Home = ({ navigation }) => {
 
 
         </View>
-        
-        <View style={{ position: 'absolute', right: 22, marginVertical: 30, marginHorizontal: 20 }}>
-          <Svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <Rect width="24" height="24" fill="#F4F7F8" />
-            <Path fill-rule="evenodd" clip-rule="evenodd"
-              d="M6.48502 17.67C6.67074 17.8558 6.89126 18.0032 7.13396 18.1038C7.37667 18.2043 7.6368 18.2561 
+        {Statistic ?
+          <View style={{ position: 'absolute', right: 22, marginVertical: 30, marginHorizontal: 20 }}>
+            <Svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <Rect width="24" height="24" fill="#F4F7F8" />
+              <Path fill-rule="evenodd" clip-rule="evenodd"
+                d="M6.48502 17.67C6.67074 17.8558 6.89126 18.0032 7.13396 18.1038C7.37667 18.2043 7.6368 18.2561 
             7.89952 18.2561C8.16223 18.2561 8.42237 18.2043 8.66507 18.1038C8.90777 18.0032 9.12829 17.8558 9.31402 
             17.67L6.48502 14.84C6.29906 15.0257 6.15155 15.2463 6.0509 15.4891C5.95025 15.7319 5.89844 15.9922 5.89844 
             16.255C5.89844 16.5178 5.95025 16.7781 6.0509 17.0209C6.15155 17.2637 6.29906 17.4843 6.48502 17.67ZM11.382 
@@ -186,8 +188,9 @@ const Home = ({ navigation }) => {
             4.48405 18.1453 4.53633C18.0178 4.58862 17.9023 4.66644 17.806 4.765C17.783 4.79 17.76 4.814 17.74 4.84C16.9135 
             4.29196 15.9437 3.99978 14.952 4C14.289 3.99921 13.6323 4.12937 13.0196 4.383C12.407 4.63663 11.8505 5.00875 11.382 
             5.478V5.479Z" fill="#4C6870" />
-          </Svg>
-        </View>
+            </Svg>
+          </View>
+          : null}
       </View>
       {Statistic ?
         <View>
@@ -337,7 +340,7 @@ const Home = ({ navigation }) => {
                   paddingHorizontal: 20,
                 }}>
                   <Text style={{ fontSize: 18, fontFamily: 'Poppins-Bold', color: '#002733', left: -8 }} >Reviews</Text>
-                  <Calender />
+                  {/* <Calender /> */}
                 </View>
                 <FlatList
                   data={data2}
@@ -373,7 +376,6 @@ const Home = ({ navigation }) => {
                   )}
                   keyExtractor={item => item.id}
                 />
-
               </View>
               <View style={{ width: "25%", backgroundColor: '#fff', elevation: 5, borderRadius: 5, height: "26.5%" }}>
                 <Text style={{ color: '#002733', fontFamily: 'Poppins-Bold', textAlign: 'center', fontSize: 18, paddingVertical: 15 }}>Reviews overview</Text>
@@ -394,95 +396,16 @@ const Home = ({ navigation }) => {
                   <Text style={{ fontFamily: 'Lato-Regular', color: '#002733', fontSize: 13 }}>Total raiting </Text>
                   <Text style={{ fontFamily: 'Lato-Bold', color: '#002733', fontSize: 13 }}>4.8</Text>
                 </View>
-
-
-
               </View>
             </View>
-
-
-
-            {/* //////// */}
           </View>
           : null
         }
       </View>
       {Outofstock ?
+
         <View>
-          <View style={{
-            width: width / 100 * 95,
-            elevation: 1,
-            borderRadius: 5,
-            height: height / 100 * 75,
-            backgroundColor: "#fff",
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}>
-
-            <View style={{ backgroundColor: '#F2F4F5', flexDirection: 'row', justifyContent: 'space-around', height: 40, alignItems: 'center', marginHorizontal: 10, marginVertical: 10, elevation: 1 }}>
-              <View />
-              <Text style={styles.HeadingOutofStack}>Photo</Text>
-              <Text style={styles.HeadingOutofStack}>Item name</Text>
-              <Text style={styles.HeadingOutofStack}>Category</Text>
-              <Text style={styles.HeadingOutofStack}>Remaining</Text>
-              <Text style={styles.HeadingOutofStack}>Variant</Text>
-              <Text style={styles.HeadingOutofStack}>Status</Text>
-              <Text style={styles.HeadingOutofStack}>Price</Text>
-              <Text style={styles.HeadingOutofStack}>Action</Text>
-            </View>
-
-            {/* //////////////////////// */}
-
-
-            <View>
-
-              <FlatList
-                data={data3}
-                numColumns={1}
-                style={{ marginBottom: 10, }}
-                showsVerticalScrollIndicator={true}
-                renderItem={({ item }) => (
-                  <View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginLeft: -15, paddingVertical: 15 }}>
-
-                      <View style={{ marginTop: -15 }}>
-                        <CheckBox
-                          checked={checked}
-                          onPress={() => setchecked(!checked)}
-                          checkedColor="#5AB3A8"
-                          uncheckedColor="#CCD4D6"
-                        />
-                      </View>
-                      <Text style={{ marginLeft: -80 }}>{item.Status}</Text>
-                      <Text style={{ marginLeft: -40 }}>{item.Item_name}</Text>
-                      <Text style={{ marginLeft: -23 }}>{item.Category}</Text>
-                      <Text style={{ marginLeft: -20 }}>{item.Item_name}</Text>
-                      <Text>{item.Remaining}</Text>
-                      <View style={{ flexDirection: 'column', }}>
-                        <Text >{item.Variant}</Text>
-                        <Text style={{ fontSize: 8 }}>Variants on: Size, Color </Text>
-                      </View>
-                      <Text style={{}}>{item.Price}</Text>
-                      <Text>{item.Variant}</Text>
-
-                    </View>
-                    <View style={{ borderBottomWidth: width / 100 * 0.09, marginHorizontal: 20, marginVertical: 2, borderBottomColor: '#809399', opacity: 0.1 }} />
-
-
-                  </View>
-
-                )}
-                keyExtractor={item => item.id}
-              />
-            </View>
-          </View>
-          {/* /////////////////// */}
-          <CheckBox
-            checked={checked}
-            onPress={() => setchecked(!checked)}
-            checkedColor="#5AB3A8"
-            uncheckedColor="#CCD4D6"
-          />
+          <OutOfStack />
         </View>
 
         : null

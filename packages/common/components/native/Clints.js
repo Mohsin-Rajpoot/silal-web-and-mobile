@@ -108,8 +108,6 @@ const Clints = () => {
     },
   ];
 
-
-
   const data1 = [
     {
       id: '1',
@@ -137,8 +135,6 @@ const Clints = () => {
     },
 
   ];
-
-  /////////////////// Modal below
 
   const [show_modal_customer_data, set_show_modal_customer_data] = useState(false);
   const [show_modal_driver_data, set_show_modal_driver_data] = useState(false);
@@ -366,10 +362,8 @@ const Clints = () => {
     )
   }
 
-
   return (
     <SafeAreaView style={{ marginHorizontal: 25 }}>
-
       <View style={{ padding: 20 }}>
         <Modal
           animationType="slide"
@@ -378,8 +372,6 @@ const Clints = () => {
           onRequestClose={() => {
             setisModalVisible(!ismodalVisible);
           }}>
-
-
           <View style={styles.centeredView}>
             <ScrollView style={styles.modalView}>
               <View style={styles.modal_header}>
@@ -395,18 +387,16 @@ const Clints = () => {
               </View>
               <View style={{ flexDirection: 'row' }}>
                 <Text style={{ color: '#CCD4D6', fontFamily: 'Lato-Bold', width: 110 }}>CUSTOMER ID</Text>
-
                 <Text style={{ color: '#002733', fontFamily: 'Lato-Bold' }}>#644</Text>
-
               </View>
               {customer_data()}
               {driver_data()}
               {order_details()}
-
             </ScrollView>
           </View>
         </Modal>
       </View>
+
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 15 }}>
         <Text style={styles.ClintPageMainheading}>Clients database</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -425,14 +415,14 @@ const Clints = () => {
         <TouchableOpacity
           onPress={() => changeModalVisibilty(true)}
           style={[styles.modelTextTitle, { backgroundColor: '#fff', elevation: 0.5 }]}>
-          <View style={{ paddingHorizontal: 5 }}>
-            <Svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <Path d="M4.50628 0.576109C4.84799 0.250672 5.40201 0.250672 5.74372 0.576109L9.24372 3.90944C9.58543 4.23488 9.58543 4.76252 9.24372 5.08795C8.90201 5.41339 8.34799 5.41339 8.00628 5.08795L6 3.17721V12.832C6 13.2923 5.60825 13.6654 5.125 13.6654C4.64175 13.6654 4.25 13.2923 4.25 12.832V3.17721L2.24372 5.08795C1.90201 5.41339 1.34799 5.41339 1.00628 5.08795C0.664573 4.76252 0.664573 4.23488 1.00628 3.90944L4.50628 0.576109ZM13 10.8202V1.16536C13 0.705127 13.3918 0.332031 13.875 0.332031C14.3583 0.332031 14.75 0.705127 14.75 1.16536V10.8202L16.7563 8.90944C17.098 8.584 17.652 8.584 17.9937 8.90944C18.3354 9.23488 18.3354 9.76252 17.9937 10.088L14.4937 13.4213C14.3296 13.5776 14.1071 13.6654 13.875 13.6654C13.6429 13.6654 13.4204 13.5776 13.2563 13.4213L9.75628 10.088C9.41457 9.76252 9.41457 9.23488 9.75628 8.90944C10.098 8.584 10.652 8.584 10.9937 8.90944L13 10.8202Z" fill="#4C6870" />
-            </Svg>
-          </View>
+
+          <Svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Path d="M4.50628 0.576109C4.84799 0.250672 5.40201 0.250672 5.74372 0.576109L9.24372 3.90944C9.58543 4.23488 9.58543 4.76252 9.24372 5.08795C8.90201 5.41339 8.34799 5.41339 8.00628 5.08795L6 3.17721V12.832C6 13.2923 5.60825 13.6654 5.125 13.6654C4.64175 13.6654 4.25 13.2923 4.25 12.832V3.17721L2.24372 5.08795C1.90201 5.41339 1.34799 5.41339 1.00628 5.08795C0.664573 4.76252 0.664573 4.23488 1.00628 3.90944L4.50628 0.576109ZM13 10.8202V1.16536C13 0.705127 13.3918 0.332031 13.875 0.332031C14.3583 0.332031 14.75 0.705127 14.75 1.16536V10.8202L16.7563 8.90944C17.098 8.584 17.652 8.584 17.9937 8.90944C18.3354 9.23488 18.3354 9.76252 17.9937 10.088L14.4937 13.4213C14.3296 13.5776 14.1071 13.6654 13.875 13.6654C13.6429 13.6654 13.4204 13.5776 13.2563 13.4213L9.75628 10.088C9.41457 9.76252 9.41457 9.23488 9.75628 8.90944C10.098 8.584 10.652 8.584 10.9937 8.90944L13 10.8202Z" fill="#4C6870" />
+          </Svg>
           <Text style={{ marginVertical: 10, fontSize: 20, fontFamily: 'Lato-Regular', color: '#002733' }}>
 
             {choseData}
+
           </Text>
           <AntDesign name="down" style={{ fontSize: 18, color: '#002733', marginHorizontal: 5, marginTop: 5 }} />
         </TouchableOpacity>
@@ -598,6 +588,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   modalView: {
     height: '100%',
