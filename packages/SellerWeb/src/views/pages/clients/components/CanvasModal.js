@@ -43,7 +43,7 @@ const CanvasModal = ({ show, setShow, type }) => {
       <Offcanvas.Body>
         <DetailText title="Customer ID" detail="#644" classes="mb-3" />
         <ThemeAccordion>
-          <Accordion>
+          <Accordion alwaysOpen>
             <Accordion.Item eventKey="0">
               <Accordion.Header>personal data</Accordion.Header>
               <Accordion.Body>

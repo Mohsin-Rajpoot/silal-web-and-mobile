@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import DatePicker from 'react-date-picker'
+// import DatePicker from 'react-date-picker'
 // import { DateRange } from 'react-date-range'
 // import 'react-date-range/dist/styles.css' // main css file
 // import 'react-date-range/dist/theme/default.css' // theme css file
@@ -19,12 +19,12 @@ import {
 } from '../../components/AllImages'
 
 const Reviews = ({ setSideBar, sideBar }) => {
-    const [dateValue, dateOnChange] = useState(new Date())
+    // const [dateValue, dateOnChange] = useState(new Date())
     // const [rangeState, setRangeState] = useState([
     //     {
     //         startDate: new Date(),
     //         endDate: new Date(),
-    //         key: 'selection'
+    //         key: 'selection',
     //     }
     // ])
 
@@ -33,7 +33,7 @@ const Reviews = ({ setSideBar, sideBar }) => {
             <Nav setSideBar={setSideBar} sideBar={sideBar} />
             <RestaurantHeading
                 heading="Restaurant’s name"
-                hours="Peak Hours 12 AM - 14 PM"
+                hours="Peak Hours 12 AM - 2 PM"
                 location="8502 Preston Rd. Inglewood"
             />
             <Row>
@@ -41,12 +41,12 @@ const Reviews = ({ setSideBar, sideBar }) => {
                     <CardStyled className="review-card-height">
                         <div className="between">
                             <Heading>Reviews</Heading>
-                            <DatePicker
+                            {/* <DatePicker
                                 onChange={dateOnChange}
                                 value={dateValue}
                                 calendarIcon={<CalendarIcon />}
                                 clearIcon={null}
-                            />
+                            /> */}
                             {/* <DateRange
                                 onChange={item => setRangeState([item.selection])}
                                 ranges={rangeState}

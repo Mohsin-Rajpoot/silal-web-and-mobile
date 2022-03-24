@@ -164,6 +164,10 @@ const Database = () => {
 export const DataCard = styled.div`
   box-shadow: 0px 5px 10px -2px rgba(196, 214, 220, 0.25);
   border-radius: 5px;
+  transition: 0.2s all;
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 export const DataCardHeader = styled.div`
   display: flex;

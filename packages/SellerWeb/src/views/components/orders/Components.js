@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
@@ -60,6 +60,7 @@ const AcceptedOrder = ({
     PersonName,
     number,
     distance,
+    btn1F,
 }) => {
     return (
         <AcceptedOrderStyled>
@@ -85,7 +86,7 @@ const AcceptedOrder = ({
                 <h3 className="mt-1 pt-2">{distance}</h3>
             </div>
             <div className="between mb-1">
-                <ButtonText>Change estimation time</ButtonText>
+                <ButtonText onClick={btn1F}>Change estimation time</ButtonText>
                 <Button>Ready</Button>
             </div>
         </AcceptedOrderStyled>
@@ -268,6 +269,10 @@ const ReceivedOrderStyled = styled.div`
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 20px;
+    transition: 0.2s all;
+    &:hover {
+        transform: scale(1.02);
+    }
     a {
         text-decoration: none;
     }
@@ -332,6 +337,10 @@ const AcceptedOrderStyled = styled.div`
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 20px;
+    transition: 0.2s all;
+    &:hover {
+        transform: scale(1.02);
+    }
     a {
         text-decoration: none;
     }
@@ -385,6 +394,10 @@ const PickupOrderStyled = styled.div`
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 15px;
+    transition: 0.2s all;
+    &:hover {
+        transform: scale(1.03);
+    }
     h6 {
         font-weight: 700;
         font-size: 15px;

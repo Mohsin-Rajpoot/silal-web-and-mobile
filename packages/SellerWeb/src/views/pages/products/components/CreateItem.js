@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import {
@@ -26,6 +26,8 @@ import {
     CustomizationCategory,
     CustomizationItem,
     CustomizationTemplate,
+    Box,
+    BoxCol,
 } from '../../../components/products/Components'
 import {
     SearchWindow
@@ -35,10 +37,12 @@ import {
     uploadImgPlaceholder,
     UplaodIcon,
     EditWhite,
+    PlusIcon,
 } from "../../../components/AllImages"
 
 const CreateItem = () => {
     const history = useHistory()
+    const [createNew, setCreateNew] = useState(false)
 
     return (
         <>
@@ -333,128 +337,267 @@ const CreateItem = () => {
                         </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="second">
-                        <CardStyled>
-                            <CustomizationTemplate>
-                                <div className="between">
-                                    <h1 className="mb-15">Toppings: <span>Lettuce, Cheese, Tomatoes, Pickle</span></h1>
-                                    <div className="d-flex align-items-center mb-15">
-                                        <h2>#542399</h2>
-                                        <EditButton className="center">
-                                            <EditWhite />
-                                        </EditButton>
-                                    </div>
+                        {createNew ? '' :
+                            <>
+                                <CardStyled>
+                                    <CustomizationTemplate>
+                                        <div className="between">
+                                            <h1 className="mb-15">Toppings: <span>Lettuce, Cheese, Tomatoes, Pickle</span></h1>
+                                            <div className="d-flex align-items-center mb-15">
+                                                <h2>#542399</h2>
+                                                <EditButton className="center">
+                                                    <EditWhite />
+                                                </EditButton>
+                                            </div>
+                                        </div>
+                                        <div className="d-flex flex-wrap">
+                                            <div className="items-col">
+                                                <div className="box">Lettuce</div>
+                                                <input type="text" value="$ 0.00" disabled />
+                                            </div>
+                                            <div className="items-col">
+                                                <div className="box">Cheese</div>
+                                                <input type="text" value="$ 2.00" />
+                                            </div>
+                                            <div className="items-col">
+                                                <div className="box">Tomatoes</div>
+                                                <input type="text" value="$ 2.00" />
+                                            </div>
+                                            <div className="items-col">
+                                                <div className="box">Pickle</div>
+                                                <input type="text" value="$ 2.00" />
+                                            </div>
+                                            <div className="items-col">
+                                                <div className="box disabled">Onion</div>
+                                                <p>Unavailable</p>
+                                            </div>
+                                        </div>
+                                        <div className="between">
+                                            <h1 className="mb-0">Use for: <span>Sandwiches: Burger, Deli</span></h1>
+                                            <div className="d-flex">
+                                                <Button className="version-btn">Customise new version</Button>
+                                                <Button className="template-btn">Add template as is</Button>
+                                            </div>
+                                        </div>
+                                    </CustomizationTemplate>
+                                </CardStyled>
+                                <CardStyled>
+                                    <CustomizationTemplate>
+                                        <div className="between">
+                                            <h1 className="mb-15">Sauces: <span>Lettuce, Cheese, Tomatoes, Pickle</span></h1>
+                                            <div className="d-flex align-items-center mb-15">
+                                                <h2>#542399</h2>
+                                                <EditButton className="center">
+                                                    <EditWhite />
+                                                </EditButton>
+                                            </div>
+                                        </div>
+                                        <div className="d-flex flex-wrap">
+                                            <div className="items-col">
+                                                <div className="box">Ketchup</div>
+                                                <input type="text" value="$ 0.00" disabled />
+                                            </div>
+                                            <div className="items-col">
+                                                <div className="box">Mayonaise</div>
+                                                <input type="text" value="$ 0.00" disabled />
+                                            </div>
+                                            <div className="items-col">
+                                                <div className="box">BBQ</div>
+                                                <input type="text" value="$ 0.00" disabled />
+                                            </div>
+                                            <div className="items-col">
+                                                <div className="box">1000 Islands</div>
+                                                <input type="text" value="$ 0.00" disabled />
+                                            </div>
+                                        </div>
+                                        <div className="between">
+                                            <h1 className="mb-0">Use for: <span>All meals</span></h1>
+                                            <div className="d-flex">
+                                                <Button className="version-btn">Customise new version</Button>
+                                                <Button className="template-btn">Add template as is</Button>
+                                            </div>
+                                        </div>
+                                    </CustomizationTemplate>
+                                </CardStyled>
+                                <CardStyled>
+                                    <CustomizationTemplate>
+                                        <div className="between">
+                                            <h1 className="mb-15">Drinks: <span>Pepsi, Nestea, Coca-cola, Water, 7UP</span></h1>
+                                            <div className="d-flex align-items-center mb-15">
+                                                <h2>#542399</h2>
+                                                <EditButton className="center">
+                                                    <EditWhite />
+                                                </EditButton>
+                                            </div>
+                                        </div>
+                                        <div className="d-flex flex-wrap">
+                                            <div className="items-col">
+                                                <div className="box">Pepsi</div>
+                                                <input type="text" value="$ 0.00" />
+                                            </div>
+                                            <div className="items-col">
+                                                <div className="box">Nestea</div>
+                                                <input type="text" value="$ 2.00" />
+                                            </div>
+                                            <div className="items-col">
+                                                <div className="box">Coca-Cola</div>
+                                                <input type="text" value="$ 2.00" />
+                                            </div>
+                                            <div className="items-col">
+                                                <div className="box">Water</div>
+                                                <input type="text" value="$ 2.00" />
+                                            </div>
+                                            <div className="items-col">
+                                                <div className="box">7UP</div>
+                                                <input type="text" value="$ 2.00" />
+                                            </div>
+                                        </div>
+                                        <div className="between">
+                                            <h1 className="mb-0">Use for: <span>All meals</span></h1>
+                                            <div className="d-flex">
+                                                <Button className="version-btn">Customise new version</Button>
+                                                <Button className="template-btn">Add template as is</Button>
+                                            </div>
+                                        </div>
+                                    </CustomizationTemplate>
+                                </CardStyled>
+                                <div className="center">
+                                    <Button className="mb-20" onClick={() => setCreateNew(true)}>
+                                        <PlusIcon className="me-2 mb-1" />
+                                        Create new
+                                    </Button>
                                 </div>
-                                <div className="d-flex flex-wrap">
-                                    <div className="items-col">
-                                        <div className="box">Lettuce</div>
-                                        <input type="text" value="$ 0.00" disabled />
-                                    </div>
-                                    <div className="items-col">
-                                        <div className="box">Cheese</div>
-                                        <input type="text" value="$ 2.00" />
-                                    </div>
-                                    <div className="items-col">
-                                        <div className="box">Tomatoes</div>
-                                        <input type="text" value="$ 2.00" />
-                                    </div>
-                                    <div className="items-col">
-                                        <div className="box">Pickle</div>
-                                        <input type="text" value="$ 2.00" />
-                                    </div>
-                                    <div className="items-col">
-                                        <div className="box disabled">Onion</div>
-                                        <p>Unavailable</p>
-                                    </div>
-                                </div>
-                                <div className="between">
-                                    <h1 className="mb-0">Use for: <span>Sandwiches: Burger, Deli</span></h1>
-                                    <div className="d-flex">
-                                        <Button className="version-btn">Customise new version</Button>
-                                        <Button className="template-btn">Add template as is</Button>
-                                    </div>
-                                </div>
-                            </CustomizationTemplate>
-                        </CardStyled>
-                        <CardStyled>
-                            <CustomizationTemplate>
-                                <div className="between">
-                                    <h1 className="mb-15">Sauces: <span>Lettuce, Cheese, Tomatoes, Pickle</span></h1>
-                                    <div className="d-flex align-items-center mb-15">
-                                        <h2>#542399</h2>
-                                        <EditButton className="center">
-                                            <EditWhite />
-                                        </EditButton>
-                                    </div>
-                                </div>
-                                <div className="d-flex flex-wrap">
-                                    <div className="items-col">
-                                        <div className="box">Ketchup</div>
-                                        <input type="text" value="$ 0.00" disabled />
-                                    </div>
-                                    <div className="items-col">
-                                        <div className="box">Mayonaise</div>
-                                        <input type="text" value="$ 0.00" disabled />
-                                    </div>
-                                    <div className="items-col">
-                                        <div className="box">BBQ</div>
-                                        <input type="text" value="$ 0.00" disabled />
-                                    </div>
-                                    <div className="items-col">
-                                        <div className="box">1000 Islands</div>
-                                        <input type="text" value="$ 0.00" disabled />
-                                    </div>
-                                </div>
-                                <div className="between">
-                                    <h1 className="mb-0">Use for: <span>All meals</span></h1>
-                                    <div className="d-flex">
-                                        <Button className="version-btn">Customise new version</Button>
-                                        <Button className="template-btn">Add template as is</Button>
-                                    </div>
-                                </div>
-                            </CustomizationTemplate>
-                        </CardStyled>
-                        <CardStyled>
-                            <CustomizationTemplate>
-                                <div className="between">
-                                    <h1 className="mb-15">Drinks: <span>Pepsi, Nestea, Coca-cola, Water, 7UP</span></h1>
-                                    <div className="d-flex align-items-center mb-15">
-                                        <h2>#542399</h2>
-                                        <EditButton className="center">
-                                            <EditWhite />
-                                        </EditButton>
-                                    </div>
-                                </div>
-                                <div className="d-flex flex-wrap">
-                                    <div className="items-col">
-                                        <div className="box">Pepsi</div>
-                                        <input type="text" value="$ 0.00" />
-                                    </div>
-                                    <div className="items-col">
-                                        <div className="box">Nestea</div>
-                                        <input type="text" value="$ 2.00" />
-                                    </div>
-                                    <div className="items-col">
-                                        <div className="box">Coca-Cola</div>
-                                        <input type="text" value="$ 2.00" />
-                                    </div>
-                                    <div className="items-col">
-                                        <div className="box">Water</div>
-                                        <input type="text" value="$ 2.00" />
-                                    </div>
-                                    <div className="items-col">
-                                        <div className="box">7UP</div>
-                                        <input type="text" value="$ 2.00" />
-                                    </div>
-                                </div>
-                                <div className="between">
-                                    <h1 className="mb-0">Use for: <span>All meals</span></h1>
-                                    <div className="d-flex">
-                                        <Button className="version-btn">Customise new version</Button>
-                                        <Button className="template-btn">Add template as is</Button>
-                                    </div>
-                                </div>
-                            </CustomizationTemplate>
-                        </CardStyled>
+                            </>
+                        }
+                        {createNew &&
+                            <>
+                                <Row className="lato">
+                                    <Col lg={8}>
+                                        <CardStyled>
+                                            <Row>
+                                                <Col xl={2} lg={3}>
+                                                    <Label className="f-regular f-15 mb-20">Customisation name</Label>
+                                                </Col>
+                                                <Col xl={10} lg={9}>
+                                                    <Input type="text" placeholder='Drinks' />
+                                                </Col>
+                                                <Col xl={2} lg={3}>
+                                                    <Label className="f-regular f-15 mb-20">Available customisations</Label>
+                                                </Col>
+                                                <Col xl={10} lg={9}>
+                                                    <Row>
+                                                        <BoxCol>
+                                                            <Box>Pepsi</Box>
+                                                        </BoxCol>
+                                                        <BoxCol>
+                                                            <Box>Nestea</Box>
+                                                        </BoxCol>
+                                                        <BoxCol>
+                                                            <Box>Coca-Cola</Box>
+                                                        </BoxCol>
+                                                        <BoxCol>
+                                                            <Box>Water</Box>
+                                                        </BoxCol>
+                                                        <BoxCol>
+                                                            <Box>7UP</Box>
+                                                        </BoxCol>
+                                                    </Row>
+                                                </Col>
+                                                <Col xl={2} lg={3}>
+                                                    <Label className="f-regular f-15 mb-20">Max quantity</Label>
+                                                </Col>
+                                                <Col xl={10} lg={9}>
+                                                    <Row>
+                                                        <BoxCol>
+                                                            <Input className="text-center number-apperance" value="5" type="number" min="0" />
+                                                        </BoxCol>
+                                                        <BoxCol>
+                                                            <Input className="text-center number-apperance" value="5" type="number" min="0" />
+                                                        </BoxCol>
+                                                        <BoxCol>
+                                                            <Input className="text-center number-apperance" value="5" type="number" min="0" />
+                                                        </BoxCol>
+                                                        <BoxCol>
+                                                            <Input className="text-center number-apperance" value="5" type="number" min="0" />
+                                                        </BoxCol>
+                                                        <BoxCol>
+                                                            <Input className="text-center number-apperance" value="5" type="number" min="0" />
+                                                        </BoxCol>
+                                                    </Row>
+                                                </Col>
+                                                <Col xl={2} lg={3}>
+                                                    <Label className="f-regular f-15 mb-20">Price addition</Label>
+                                                </Col>
+                                                <Col xl={10} lg={9}>
+                                                    <Row>
+                                                        <BoxCol>
+                                                            <Input className="text-center" value="$ 3.00" />
+                                                        </BoxCol>
+                                                        <BoxCol>
+                                                            <Input className="text-center" value="$ 3.00" />
+                                                        </BoxCol>
+                                                        <BoxCol>
+                                                            <Input className="text-center" value="$ 3.00" />
+                                                        </BoxCol>
+                                                        <BoxCol>
+                                                            <Input className="text-center" value="$ 3.00" />
+                                                        </BoxCol>
+                                                        <BoxCol>
+                                                            <Input className="text-center" value="$ 3.00" />
+                                                        </BoxCol>
+                                                    </Row>
+                                                </Col>
+                                                <Col xl={2} lg={3}>
+                                                    <Label className="f-regular f-15 mb-20">Available</Label>
+                                                </Col>
+                                                <Col xl={10} lg={9}>
+                                                    <Row>
+                                                        <BoxCol className="center">
+                                                            <label class="checkbox grey-blue">
+                                                                <input type="checkbox" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </BoxCol>
+                                                        <BoxCol className="center">
+                                                            <label class="checkbox grey-blue">
+                                                                <input type="checkbox" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </BoxCol>
+                                                        <BoxCol className="center">
+                                                            <label class="checkbox grey-blue">
+                                                                <input type="checkbox" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </BoxCol>
+                                                        <BoxCol className="center">
+                                                            <label class="checkbox grey-blue">
+                                                                <input type="checkbox" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </BoxCol>
+                                                        <BoxCol className="center">
+                                                            <label class="checkbox grey-blue">
+                                                                <input type="checkbox" />
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </BoxCol>
+                                                    </Row>
+                                                </Col>
+                                                <Col xl={2} lg={3}>
+                                                    <Label className="f-regular f-15 mb-20">Image</Label>
+                                                </Col>
+                                                <Col xl={10} lg={9}>
+                                                </Col>
+                                            </Row>
+                                        </CardStyled>
+                                    </Col>
+                                    <Col lg={4}>
+                                        <CardStyled></CardStyled>
+                                    </Col>
+                                </Row>
+                            </>
+                        }
                     </Tab.Pane>
                 </Tab.Content>
             </Tab.Container>

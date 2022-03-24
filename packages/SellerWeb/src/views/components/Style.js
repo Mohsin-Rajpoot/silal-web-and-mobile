@@ -36,6 +36,7 @@ const Button = styled.button`
   transition: 0.2s all;
   &:hover {
     background: rgba(90, 179, 169, 0.9);
+    transform: scale(1.02);
   }
   &:disabled {
     background: rgba(90, 179, 168, 0.5);
@@ -115,6 +116,8 @@ const TableStyled = styled.div`
     font-weight: 500;
     font-size: 11px;
     color: white;
+    min-height: 15px;
+    display: block;
     &.low {
       background: #ffab00;
     }
@@ -236,11 +239,12 @@ const ThemeAccordion = styled.div`
 
 const RangeSlider = styled.div`
   width: 100%;
+  font-family: 'lato';
   ul {
     li {
-      margin-right: 15px;
+      margin-right: 20px;
       padding-top: 20px;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 14px;
       color: #002733;
       position: relative;
@@ -256,6 +260,13 @@ const RangeSlider = styled.div`
       }
       &:last-child {
         margin-right: 0;
+      }
+      &.current {
+        color: #CCD4D6;
+        margin: 0 auto;
+        &::before {
+          content: none;
+        }
       }
     }
   }
@@ -340,8 +351,15 @@ const NavStyled = styled.nav`
     font-size: 16px;
     margin-bottom: 15px;
     white-space: nowrap;
-    &.active,
+    transition: background-color 0.2s linear;
     &:hover {
+      background: #b4e1db57;
+      /* color: white;
+      span {
+        color: white;
+      } */
+    }
+    &.active {
       background: var(--theme-clr);
       color: white;
       span {
@@ -379,6 +397,7 @@ const Title = styled.h6`
 `;
 
 const Label = styled.label`
+  font-family: 'lato';
   font-weight: 600;
   font-size: 12px;
   line-height: 120%;

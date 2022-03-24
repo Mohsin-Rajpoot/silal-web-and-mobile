@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import ReactStars from "react-rating-stars-component"
 import styled from "styled-components"
 import { Row, Col } from 'react-bootstrap'
@@ -69,8 +69,9 @@ const Review = ({
     text,
     order,
 }) => {
+    const [textarea, setTextarea] = useState(false)
     const showTextarea = () => {
-        alert()
+        setTextarea(true)
     }
 
     return (
@@ -97,9 +98,16 @@ const Review = ({
                     <div className="order">
                         <h3 className="dark-clr m-0 lato">Order: <span>{order}</span></h3>
                     </div>
-                    <Textarea className="d-none" placeholder="Type here..."></Textarea>
+                    {textarea &&
+                        <Textarea placeholder="Type here..."></Textarea>
+                    }
                     <div className="between">
-                        <Button className="reply" onClick={showTextarea}>Reply</Button>
+                        {textarea &&
+                            <Button className="reply">Submit</Button>
+                        }
+                        {textarea ? '' :
+                            <Button className="reply" onClick={showTextarea}>Reply</Button>
+                        }
                         <button className="contact-support">Contact support</button>
                     </div>
                 </Col>
@@ -117,6 +125,10 @@ const RestaurantCardStyled = styled.div`
     padding: 20px 15px;
     max-height: 100%;
     margin-bottom: 20px;
+    transition: 0.2s all;
+    &:hover {
+        transform: translateY(-8px);
+    }
     .icon {
         height: 40px;
         width: 40px;
@@ -243,6 +255,10 @@ const ReviewStyled = styled.div`
     }
     .reply {
         width: 148px;
+    }
+    textarea {
+        height: 56px;
+        margin-bottom: 0;
     }
 `;
 

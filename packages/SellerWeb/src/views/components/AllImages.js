@@ -34,6 +34,14 @@ import { ReactComponent as EditIcon } from "../../assets/images/svg/edit-icon.sv
 import { ReactComponent as EditWhite } from "../../assets/images/svg/edit-white.svg"
 import { ReactComponent as SearchIcon } from "../../assets/images/svg/search-icon.svg"
 import { ReactComponent as UplaodIcon } from "../../assets/images/svg/uplaod-icon.svg"
+import { ReactComponent as DashboardIcon } from "../../assets/images/svg/dashboard.svg"
+import { ReactComponent as OffersIcon } from "../../assets/images/svg/offers-icon.svg"
+import { ReactComponent as DocumentIcon } from "../../assets/images/svg/document.svg"
+import { ReactComponent as ContactUs } from "../../assets/images/svg/contact-us.svg"
+import { ReactComponent as AboutIcon } from "../../assets/images/svg/about-icon.svg"
+import { ReactComponent as SettingsIcon } from "../../assets/images/svg/settings.svg"
+import { ReactComponent as PlusIcon } from "../../assets/images/svg/plus-icon.svg"
+
 
 export {
     Menu,
@@ -72,4 +80,11 @@ export {
     SearchIcon,
     uploadImgPlaceholder,
     UplaodIcon,
+    DashboardIcon,
+    OffersIcon,
+    DocumentIcon,
+    ContactUs,
+    AboutIcon,
+    SettingsIcon,
+    PlusIcon,
 }

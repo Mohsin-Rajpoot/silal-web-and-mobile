@@ -8,6 +8,7 @@ import {
     Nav,
     Offcanvas,
     Accordion,
+    Dropdown,
 } from 'react-bootstrap'
 import {
     TableSpan,
@@ -29,7 +30,7 @@ const Archive = ({ setSideBar, sideBar }) => {
     const [canvasShow, setCanvasShow] = useState(false)
     const canvasCloseHandler = () => setCanvasShow(false)
     const canvasShowHanler = () => setCanvasShow(true)
-    const [dateValue, dateOnChange] = useState(new Date());
+    const [dateValue, dateOnChange] = useState(new Date())
 
     const customStyles = {
         headCells: {
@@ -77,80 +78,150 @@ const Archive = ({ setSideBar, sideBar }) => {
     const data = [
         {
             id: 1,
-            orderId: "#723DN2",
+            orderId: <div className="cursor-pointer" onClick={canvasShowHanler}>#723DN2</div>,
             customerName: 'Leslie A.',
             customerId: '2327',
             payment: <TableSpan text="Bank wires" classN="bank" />,
             type: <TableSpan text="Delivery" classN="delivery" />,
             status: <TableSpan text="Completed" classN="completed" />,
             price: '$ 120.00',
-            action: <button className="action-btn"><DropdownMenu /></button>,
+            action:
+                <Dropdown>
+                    <Dropdown.Toggle id="dropdown-basic">
+                        <DropdownMenu />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item>Refund</Dropdown.Item>
+                        <Dropdown.Item href="#">Contact</Dropdown.Item>
+                        <Dropdown.Item href="#">Call customer-service</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>,
         },
         {
             id: 2,
-            orderId: "#723DN2",
+            orderId: <div className="cursor-pointer" onClick={canvasShowHanler}>#723DN2</div>,
             customerName: 'Leslie A.',
             customerId: '2327',
             payment: <TableSpan text="Credit card" classN="credit" />,
             type: <TableSpan text="Take away" classN="takeaway" />,
             status: <TableSpan text="Completed" classN="completed" />,
             price: '$ 120.00',
-            action: <button className="action-btn"><DropdownMenu /></button>,
+            action:
+                <Dropdown>
+                    <Dropdown.Toggle id="dropdown-basic">
+                        <DropdownMenu />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#">Refund</Dropdown.Item>
+                        <Dropdown.Item href="#">Contact</Dropdown.Item>
+                        <Dropdown.Item href="#">Call customer-service</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>,
         },
         {
             id: 3,
-            orderId: "#723DN2",
+            orderId: <div className="cursor-pointer" onClick={canvasShowHanler}>#723DN2</div>,
             customerName: 'Leslie A.',
             customerId: '2327',
             payment: <TableSpan text="Cash" classN="cash" />,
             type: <TableSpan text="Delivery" classN="delivery" />,
             status: <TableSpan text="Cancelled" classN="cancelled" />,
             price: '$ 120.00',
-            action: <button className="action-btn"><DropdownMenu /></button>,
+            action:
+                <Dropdown>
+                    <Dropdown.Toggle id="dropdown-basic">
+                        <DropdownMenu />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#">Refund</Dropdown.Item>
+                        <Dropdown.Item href="#">Contact</Dropdown.Item>
+                        <Dropdown.Item href="#">Call customer-service</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>,
         },
         {
             id: 4,
-            orderId: "#723DN2",
+            orderId: <div className="cursor-pointer" onClick={canvasShowHanler}>#723DN2</div>,
             customerName: 'Leslie A.',
             customerId: '2327',
             payment: <TableSpan text="Cash" classN="cash" />,
             type: <TableSpan text="Delivery" classN="delivery" />,
             status: <TableSpan text="Cancelled" classN="cancelled" />,
             price: '$ 120.00',
-            action: <button className="action-btn"><DropdownMenu /></button>,
+            action:
+                <Dropdown>
+                    <Dropdown.Toggle id="dropdown-basic">
+                        <DropdownMenu />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#">Refund</Dropdown.Item>
+                        <Dropdown.Item href="#">Contact</Dropdown.Item>
+                        <Dropdown.Item href="#">Call customer-service</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>,
         },
         {
             id: 5,
-            orderId: "#723DN2",
+            orderId: <div className="cursor-pointer" onClick={canvasShowHanler}>#723DN2</div>,
             customerName: 'Leslie A.',
             customerId: '2327',
             payment: <TableSpan text="Cash" classN="cash" />,
             type: <TableSpan text="Delivery" classN="delivery" />,
             status: <TableSpan text="Cancelled" classN="cancelled" />,
             price: '$ 120.00',
-            action: <button className="action-btn"><DropdownMenu /></button>,
+            action:
+                <Dropdown>
+                    <Dropdown.Toggle id="dropdown-basic">
+                        <DropdownMenu />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#">Refund</Dropdown.Item>
+                        <Dropdown.Item href="#">Contact</Dropdown.Item>
+                        <Dropdown.Item href="#">Call customer-service</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>,
         },
         {
             id: 6,
-            orderId: "#723DN2",
+            orderId: <div className="cursor-pointer" onClick={canvasShowHanler}>#723DN2</div>,
             customerName: 'Leslie A.',
             customerId: '2327',
             payment: <TableSpan text="Cash" classN="cash" />,
             type: <TableSpan text="Delivery" classN="delivery" />,
             status: <TableSpan text="Cancelled" classN="cancelled" />,
             price: '$ 120.00',
-            action: <button className="action-btn"><DropdownMenu /></button>,
+            action:
+                <Dropdown>
+                    <Dropdown.Toggle id="dropdown-basic">
+                        <DropdownMenu />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#">Refund</Dropdown.Item>
+                        <Dropdown.Item href="#">Contact</Dropdown.Item>
+                        <Dropdown.Item href="#">Call customer-service</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>,
         },
         {
             id: 7,
-            orderId: "#723DN2",
+            orderId: <div className="cursor-pointer" onClick={canvasShowHanler}>#723DN2</div>,
             customerName: 'Leslie A.',
             customerId: '2327',
             payment: <TableSpan text="Cash" classN="cash" />,
             type: <TableSpan text="Delivery" classN="delivery" />,
             status: <TableSpan text="Cancelled" classN="cancelled" />,
             price: '$ 120.00',
-            action: <button className="action-btn"><DropdownMenu /></button>,
+            action:
+                <Dropdown>
+                    <Dropdown.Toggle id="dropdown-basic">
+                        <DropdownMenu />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#">Refund</Dropdown.Item>
+                        <Dropdown.Item href="#">Contact</Dropdown.Item>
+                        <Dropdown.Item href="#">Call customer-service</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>,
         },
     ]
 
@@ -174,7 +245,7 @@ const Archive = ({ setSideBar, sideBar }) => {
                             </Nav>
                         </ThemeTabs>
                         <div className="d-flex">
-                            <FilterBtn click={canvasShowHanler} />
+                            <FilterBtn />
                             <DatePicker
                                 onChange={dateOnChange}
                                 value={dateValue}
@@ -229,7 +300,7 @@ const Archive = ({ setSideBar, sideBar }) => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <ThemeAccordion>
-                            <Accordion>
+                            <Accordion alwaysOpen>
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header>customer data</Accordion.Header>
                                     <Accordion.Body>

@@ -59,7 +59,8 @@ const TableSpanStyled = styled.span`
     padding: 3px 10px;
     font-weight: 500;
     font-size: 11px;
-    height: 20px;
+    min-height: 17px;
+    display: block;
     &.bank {
         background: #FFFAE6;
         color: #FF8B00;

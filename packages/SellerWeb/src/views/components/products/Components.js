@@ -36,6 +36,10 @@ const CategoryStyled = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    transition: 0.2s all;
+    &:hover {
+        transform: scale(1.02);
+    }
     a {
         position: absolute;
         width: 100%;
@@ -323,6 +327,32 @@ const CustomizationTemplate = styled.div`
     }
 `;
 
+const Box = styled.div`
+    width: 100%;
+    min-height: 36px;
+    margin-bottom: 10px;
+    padding: 8px 15px;
+    background: rgba(204, 212, 214, 0.5);
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 120%;
+    letter-spacing: -0.408px;
+    color: #002733;
+    word-break: break-word;
+`;
+
+const BoxCol = styled.div`
+    width: 20%;
+    @media (max-width:768px) {
+        width: 33%;
+    }
+`
+
 export {
     Category,
     AddCategory,
@@ -331,4 +361,6 @@ export {
     CustomizationCategory,
     CustomizationItem,
     CustomizationTemplate,
+    Box,
+    BoxCol,
 }
