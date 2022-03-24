@@ -13,7 +13,7 @@ export default () => {
 
   return (
     <>
-      <View style={{width: width(37)}}>
+      <View style={{width: width(37),backgroundColor: "white",}}>
         <Tab
           value={index}
           onChange={e => setIndex(e)}
@@ -22,18 +22,21 @@ export default () => {
             backgroundColor: colors.primary,
           }}>
           <Tab.Item
+          buttonStyle={{backgroundColor: "white",}}
             title="Standard hours"
             titleStyle={[styles.tabText, index == 0 && {color: colors.black}]}
             style={{backgroundColor: colors.profileBackground}}
           />
           <Tab.Item
+          buttonStyle={{backgroundColor: "white",}}
+
             title="Special hours"
             titleStyle={[styles.tabText, index == 1 && {color: colors.black}]}
             style={{backgroundColor: colors.profileBackground}}
           />
         </Tab>
       </View>
-      <View style={{height: '70%', width: '70%'}}>
+      <View style={{height: '80%', width: '70%'}}>
         <TabView value={index} onChange={setIndex} animationType="spring">
           <TabView.Item style={styles.tabViewContainer}>
             <TabItem item={{day: 'Monday'}} />

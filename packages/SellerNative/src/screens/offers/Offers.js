@@ -55,6 +55,7 @@ const Offers = ({navigation}) => {
   const [offerData, setOffferData] = useState(init);
   const [startTime, setStartTime] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
+  const [page, setPage] = useState(0)
   const openCreateOfferModal = () => {
     setCreatePostModal(true);
   };
@@ -95,11 +96,12 @@ const Offers = ({navigation}) => {
       <Tabs
         containerStyle={{marginTop: 10, marginBottom: 20}}
         tabs={['Current', 'Past']}
+        page={page}
       />
       <ScrollView>
         <View style={styles.inputContainer}>
           <View style={styles.inputContainerMian}>
-            <TextInput search={true} inputStyle={styles.inputStyling} />
+            <TextInput search={true} inputStyle={styles.inputStyling} placeholderText='Search' />
           </View>
           <View style={styles.buttonContainer}>
             <CustomButton

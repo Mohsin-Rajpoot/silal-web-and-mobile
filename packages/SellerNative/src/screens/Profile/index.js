@@ -1,30 +1,33 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useRef,useState} from 'react';
+import React, {useRef, useState} from 'react';
 import Header from './moleclues/Header';
 import Tabs from './moleclues/Tabs';
+import {View} from 'react-native';
 import {
-  moderateScale,
   ScaledSheet,
-  verticalScale,
 } from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import PagerView from 'react-native-pager-view';
 import ProfileTab from './Tabs/ProfileTab';
 import OpenTab from './Tabs/OpenTab';
-import PaymentTab from './Tabs/Payment'
-import TransactionTab from './Tabs/Transaction'
+import PaymentTab from './Tabs/Payment';
+import TransactionTab from './Tabs/Transaction';
 const Profile = () => {
   const ref = useRef(null);
-  const tabs=["Profile","Opening hours","Payment history","Transaction ledger"]
-  const [page, setPage] = useState(0)
+  const tabs = [
+    'Profile',
+    'Opening hours',
+    'Payment history',
+    'Transaction ledger',
+  ];
+  const [page, setPage] = useState(0);
   const onChangeTab = page => {
     ref?.current?.setPageWithoutAnimation(page);
-    setPage(page)
+    setPage(page);
   };
   return (
     <View style={styles.mainContainer}>
       <Header />
-      <Tabs tabs={tabs}  page={page} onChangeTab={onChangeTab} />
+      <Tabs tabs={tabs} page={page} onChangeTab={onChangeTab} />
       <PagerView
         style={{flex: 1}}
         initialPage={0}
@@ -37,10 +40,10 @@ const Profile = () => {
           <OpenTab />
         </View>
         <View key={'3'}>
-        <PaymentTab/>
+          <PaymentTab />
         </View>
         <View key={'4'}>
-          <TransactionTab/>
+          <TransactionTab />
         </View>
       </PagerView>
     </View>

@@ -12,26 +12,6 @@ const Tabs = ({onChangeTab,page,tabs,containerStyle}) => {
         type={page==index ? 'PRIMARY' : 'TERTIARY'}
       />
       ))}
-      {/* <CustomButton
-        onPress={() => onChangeTab(0)}
-        text="Profile"
-        type={page==0 ? 'PRIMARY' : 'TERTIARY'}
-      />
-      <CustomButton
-        onPress={() => onChangeTab(1)}
-        text="Opening hours"
-        type={page==1 ? 'PRIMARY' : 'TERTIARY'}
-      />
-      <CustomButton
-        onPress={() => onChangeTab(2)}
-        text="Payment history"
-        type={page==2 ? 'PRIMARY' : 'TERTIARY'}
-      />
-      <CustomButton
-        onPress={() => onChangeTab(3)}
-        text="Transaction ledger"
-        type={page==3 ? 'PRIMARY' : 'TERTIARY'}
-      /> */}
     </View>
   );
 };
