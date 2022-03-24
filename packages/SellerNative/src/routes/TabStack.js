@@ -6,7 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Home from '../screens/Home';
 import Clints from '../screens/Clints';
 import Products from '../screens/Products';
-import Order from '../screens/orders/Order';
+import OrderStack from './OrderStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,8 +30,8 @@ const TabStack = () => {
       }}
     />
     <Tab.Screen
-      name="Order"
-      component={Order}
+      name="OrderStack"
+      component={OrderStack}
       options={{
         tabBarLabel: 'Order',
         tabBarIcon: ({ color, size }) => (

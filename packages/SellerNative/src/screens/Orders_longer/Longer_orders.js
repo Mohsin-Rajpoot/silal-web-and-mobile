@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { View, Text, SafeAreaView, TouchableOpacity, Image, StyleSheet, Dimensions,FlatList } from 'react-native'
-import Current_orders from './Current/Current_orders'
-import Pre_orders from './Pre_orders'
-import Archive_orders from './Archive/Archive_orders'
-import LockOnLandscape from '../../components/Dashboard/LockOnLandscape';
+import Current_orders from './../orders/Current/Current_orders'
+import Pre_orders from './../orders/Pre_orders'
+import Acceptance_orders from '../Orders_longer/Acceptance_orders'
+import Pickup_orders from './Pickup_orders'
+// import LockOnLandscape from '../../components/Dashboard/LockOnLandscape';
 
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -17,20 +18,17 @@ const Home = ({ navigation }) => {
   const [Statistic, setStatistic] = useState(true);
   const [Reviews, setReviews] = useState(false);
   const [Outofstock, setOutofstack] = useState(false);
-  const [order_state, set_order_state] = useState('current');
+  const [order_state, set_order_state] = useState('acceptance');
 
   
 const Header=()=>{
   return(
       <View style={{ paddingVertical: 15,flex:1, flexDirection: 'row',}}>
-        <TouchableOpacity onPress={()=>set_order_state('current')}  style={[styles.order_button,{backgroundColor:order_state=='current'? '#5AB3A8':null,width:200}]}>
-          <Text style={[styles.order_button_text,{color:order_state=='current'?'white':'#4C6870'}]}>Current orders</Text>
+        <TouchableOpacity onPress={()=>set_order_state('acceptance')}  style={[styles.order_button,{backgroundColor:order_state=='acceptance'? '#5AB3A8':null,width:250}]}>
+          <Text style={[styles.order_button_text,{color:order_state=='acceptance'?'white':'#4C6870'}]}>Awaiting acceptance (8)</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>set_order_state('preorder')}  style={[styles.order_button,{backgroundColor:order_state=='preorder'? '#5AB3A8':null,width:200}]}>
-          <Text style={[styles.order_button_text,{color:order_state=='preorder'?'white':'#4C6870'}]}>Pre-orders <Text style={{color:'#CCD4D6',}}>(8)</Text></Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=>set_order_state('archive')}  style={[styles.order_button,{backgroundColor:order_state=='archive'? '#5AB3A8':null,width:120}]}>
-          <Text style={[styles.order_button_text,{color:order_state=='archive'?'white':'#4C6870'}]}>Archive</Text>
+        <TouchableOpacity onPress={()=>set_order_state('pickup')}  style={[styles.order_button,{backgroundColor:order_state=='pickup'? '#5AB3A8':null,width:250}]}>
+          <Text style={[styles.order_button_text,{color:order_state=='pickup'?'white':'#4C6870'}]}>Waiting for pickup (2)</Text>
         </TouchableOpacity>
       </View>
   )
@@ -56,17 +54,14 @@ const Header=()=>{
 
       </View>
 
-      {order_state=='current'?
-        <View style={styles.order_container}>
-          <Current_orders title='Received' navigation={navigation}/>
-          {/* <Current_orders title='Accepted'/> */}
-        </View>
+      {order_state=='acceptance'?
+        <Acceptance_orders navigation={navigation}/>
         :
-        order_state=='preorder'?
-        <Pre_orders />
+        order_state=='pickup'?
+        <Pickup_orders navigation={navigation}/>
         :
-        <Archive_orders />
-      }
+        null
+        }
 
 
     </SafeAreaView>

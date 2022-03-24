@@ -2,10 +2,19 @@ import React,{useState,useRef} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,Dimensions,SafeAreaView ,FlatList, Pressable,Modal, ScrollView,Button} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import { Image, SvgXml } from 'react-native-svg';
 import Svg, { Path ,Defs,LinearGradient,Stop,Rect,Circle, G} from "react-native-svg"
-import Toast from 'react-native-easy-toast';
+import Menu, {
+  MenuProvider,
+  MenuTrigger,
+  MenuOptions,
+  MenuOption,
+  renderers,
+} from 'react-native-popup-menu';
+import DatePicker from './../../../components/DatePicker'
 
 const { width, height } = Dimensions.get("window");
 
@@ -16,7 +25,6 @@ export default function Archive_orders({title, navigation}) {
   const [show_modal_customer_data, set_show_modal_customer_data] = useState(false);
   const [show_modal_driver_data, set_show_modal_driver_data] = useState(false);
   const [show_modal_order_details, set_show_modal_order_details] = useState(false);
-  const toastRef = useRef();
 
 
   const data = [
@@ -100,7 +108,18 @@ export default function Archive_orders({title, navigation}) {
           </View>
 
           <View style={[styles.render_all_order_single,{width:'8%',}]} >
-            <Entypo name='dots-three-vertical' style={[styles.cross_icon,{color:'#4C6870',fontSize:20}]} />
+              <Menu>
+                <MenuTrigger style={styles.trigger}>
+                  <View style={{height:40,width:40,alignItems:'center',justifyContent:'center'}}>
+                    <Entypo name='dots-three-vertical' style={[styles.cross_icon,{color:'#4C6870',fontSize:20}]} />
+                  </View>
+                </MenuTrigger>
+                <MenuOptions customStyles={{ optionText: {padding:5} }}>
+                  <MenuOption value="Normal" text='Refund' />
+                  <MenuOption value="Normal" text='Contact' />
+                  <MenuOption onSelect={() =>console.log('call')} value="Normal" text='Call customer service' />
+                </MenuOptions>
+              </Menu>
           </View>
 
         </TouchableOpacity>
@@ -142,7 +161,7 @@ export default function Archive_orders({title, navigation}) {
     const customer_data=()=>{
       return(
       <>
-        <TouchableOpacity onPress={()=>set_show_modal_customer_data(!show_modal_customer_data)}  style={{flexDirection:'row',padding:12,backgroundColor:'#F2F4F5',borderRadius:5,justifyContent:'space-between',alignItems:'center',marginTop:10}}>
+        <TouchableOpacity onPress={()=>set_show_modal_customer_data(!show_modal_customer_data)}  style={styles.modal_data_heading}>
           <Text>CUSTOMER DATA</Text>
           {show_modal_customer_data==true?
           <Fontisto name='angle-up' style={[styles.cross_icon,{color:'black'}]} />
@@ -178,7 +197,7 @@ export default function Archive_orders({title, navigation}) {
     const driver_data=()=>{
       return(
         <>
-          <TouchableOpacity onPress={()=>set_show_modal_driver_data(!show_modal_driver_data)} style={{flexDirection:'row',padding:12,backgroundColor:'#F2F4F5',borderRadius:5,justifyContent:'space-between',alignItems:'center',marginTop:10}}>
+          <TouchableOpacity onPress={()=>set_show_modal_driver_data(!show_modal_driver_data)} style={styles.modal_data_heading}>
             <Text>DRIVER DATA</Text>
             {show_modal_driver_data==true?
             <Fontisto name='angle-up' style={[styles.cross_icon,{color:'black'}]} />
@@ -219,7 +238,7 @@ export default function Archive_orders({title, navigation}) {
     const order_details=()=>{
       return(
         <>
-          <TouchableOpacity onPress={()=>set_show_modal_order_details(!show_modal_order_details)} style={{flexDirection:'row',padding:12,backgroundColor:'#F2F4F5',borderRadius:5,justifyContent:'space-between',alignItems:'center',marginTop:10}}>
+          <TouchableOpacity onPress={()=>set_show_modal_order_details(!show_modal_order_details)} style={styles.modal_data_heading}>
             <Text>ORDER DETAILS</Text>
             {show_modal_order_details==true?
             <Fontisto name='angle-up' style={[styles.cross_icon,{color:'black',fontSize:16}]} />
@@ -259,119 +278,110 @@ export default function Archive_orders({title, navigation}) {
   return (
         
       <View style={{height:'83%',padding:20}}>
-
-          <View style={{flexDirection:'row'}}>
+        <MenuProvider >
 
             <View style={{flexDirection:'row'}}>
-                <TouchableOpacity onPress={()=>set_order_state('All')} style={[styles.archive_orders_tab,{borderColor:order_state=='All'?'#5AB3A8':'#e8edee'}]}>
-                  <Text style={{color:order_state=='All'?'#002733':'#4C6870',fontWeight:'600',fontFamily:'Poppins-SemiBold'}}>All orders</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={()=>set_order_state('completed')} style={[styles.archive_orders_tab,{borderColor:order_state=='completed'?'#5AB3A8':'#e8edee'}]} >
-                  <Text style={{color:order_state=='completed'?'#002733':'#4C6870',fontWeight:'600',fontFamily:'Poppins-SemiBold'}}>Completed</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={()=>set_order_state('cancelled')} style={[styles.archive_orders_tab,{borderColor:order_state=='cancelled'?'#5AB3A8':'#e8edee'}]} >
-                  <Text style={{color:order_state=='cancelled'?'#002733':'#4C6870',fontWeight:'600',fontFamily:'Poppins-SemiBold'}}>Cancelled</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.filter_box}>
-              <View style={styles.filter}>
-                  <Svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <Rect width="24" height="24" fill="white" fill-opacity="0.01"/>
-                    <Path fill-rule="evenodd" clip-rule="evenodd" d="M6.99951 13H16.9995L17.9995 11H5.99951L6.99951 13ZM3.99251 6C3.44451 6 3.20251 6.405 3.44651 6.895L3.99951 8H19.9995L20.5525 6.895C20.7995 6.4 20.5545 6 20.0065 6H3.99251ZM10.7775 17.556C10.8505 17.6861 10.9556 17.7953 11.0829 17.8731C11.2103 17.9508 11.3554 17.9945 11.5045 18H12.4945C12.7735 18 13.0995 17.8 13.2215 17.556L13.9995 16H9.99951L10.7775 17.556Z" fill="#42526E"/>
-                  </Svg>
-                  <Text style={{fontSize:17}}>Filters</Text>
-                  {/* <Calender /> */}
-              </View>
-              <View style={styles.calndr_date}>
-                <Text>16 NOV</Text>
-              </View>
-            </View>
 
-          </View>
-          <Button title="Show Toast" onPress={() => toastRef.current.show(
               <View style={{flexDirection:'row'}}>
-                <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to Accepted</Text>
-                <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
-                  <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>UNDO</Text>
-                </TouchableOpacity>
+                  <TouchableOpacity onPress={()=>set_order_state('All')} style={[styles.archive_orders_tab,{borderColor:order_state=='All'?'#5AB3A8':'#e8edee'}]}>
+                    <Text style={{color:order_state=='All'?'#002733':'#4C6870',fontWeight:'600',fontFamily:'Poppins-SemiBold'}}>All orders</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={()=>set_order_state('completed')} style={[styles.archive_orders_tab,{borderColor:order_state=='completed'?'#5AB3A8':'#e8edee'}]} >
+                    <Text style={{color:order_state=='completed'?'#002733':'#4C6870',fontWeight:'600',fontFamily:'Poppins-SemiBold'}}>Completed</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={()=>set_order_state('cancelled')} style={[styles.archive_orders_tab,{borderColor:order_state=='cancelled'?'#5AB3A8':'#e8edee'}]} >
+                    <Text style={{color:order_state=='cancelled'?'#002733':'#4C6870',fontWeight:'600',fontFamily:'Poppins-SemiBold'}}>Cancelled</Text>
+                  </TouchableOpacity>
               </View>
-              ,1000
-              )} />
-            <Toast ref={toastRef}
-              style={styles.toast}
-              position='bottom'
-              positionValue={250}
-              fadeInDuration={750}
-              fadeOutDuration={800}
-              opacity={1}
-              textStyle={{color:'red'}}
-            />
+              <View style={styles.filter_box}>
+                <View style={styles.filter}>
+                    <Svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <Rect width="24" height="24" fill="white" fill-opacity="0.01"/>
+                      <Path fill-rule="evenodd" clip-rule="evenodd" d="M6.99951 13H16.9995L17.9995 11H5.99951L6.99951 13ZM3.99251 6C3.44451 6 3.20251 6.405 3.44651 6.895L3.99951 8H19.9995L20.5525 6.895C20.7995 6.4 20.5545 6 20.0065 6H3.99251ZM10.7775 17.556C10.8505 17.6861 10.9556 17.7953 11.0829 17.8731C11.2103 17.9508 11.3554 17.9945 11.5045 18H12.4945C12.7735 18 13.0995 17.8 13.2215 17.556L13.9995 16H9.99951L10.7775 17.556Z" fill="#42526E"/>
+                    </Svg>
+                    <Text style={{fontSize:17}}>Filters</Text>
+                    {/* <Calender /> */}
+                </View>
+                <View style={styles.calndr_date}>
+                  <DatePicker height={40} width={200} color='#4C6870'/>
+                  {/* <Text>16 NOV</Text> */}
+                </View>
+              </View>
 
-          {order_state=='All'?
-          
-          <FlatList
-              ListHeaderComponent={header_alloredrs}
-              keyExtractor={(item, index) => index.toString()}
-              data={data}
-              renderItem={({ item }) => (
-                render_all_oredrs()
-              )}
-          />
-        
+            </View>
+            {header_alloredrs()}
+            {order_state=='All'?
+              <FlatList
+                  // ListHeaderComponent={header_alloredrs}
+                  keyExtractor={(item, index) => index.toString()}
+                  data={data}
+                  renderItem={({ item }) => (
+                    render_all_oredrs()
+                  )}
+              />
               :
               order_state=='completed'?
-                <FlatList
-                  ListHeaderComponent={header_alloredrs}
-                  keyExtractor={(item, index) => index.toString()}
-                  data={data}
-                  renderItem={({ item }) => (
-                    render_all_oredrs()
-                  )}
-                />              
-                :
-                <FlatList
-                  ListHeaderComponent={header_alloredrs}
-                  keyExtractor={(item, index) => index.toString()}
-                  data={data}
-                  renderItem={({ item }) => (
-                    render_all_oredrs()
-                  )}
-                />              
-          }
-
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            onRequestClose={() => {
-              // alert("Modal has been closed.");
-              setModalVisible(!modalVisible);
-            }}
-          >
-            <View style={styles.centeredView}>
-              <ScrollView style={styles.modalView}>
-                <View style={styles.modal_header}>
-                  <View style={{flexDirection:'row',alignItems:'center'}}>
-                    <Text style={styles.orderid_text}>ORDER ID<Text >  #123456</Text></Text>
-                    <View style={styles.modal_recuring}>
-                        <Text style={{color:'white'}}>Recurring client</Text>
-                    </View>
-                  </View>
-                  <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={{padding:7}}>
-                    <Entypo name='cross' style={[styles.cross_icon,{color:'#4C6870',fontSize:25}]} />
-                  </TouchableOpacity>
-                </View>
-
-              {customer_data()}
-              {driver_data()}
-              {order_details()}
-
-                
-                
-              </ScrollView>
+              <FlatList
+                // ListHeaderComponent={header_alloredrs}
+                keyExtractor={(item, index) => index.toString()}
+                data={data}
+                renderItem={({ item }) => (
+                  render_all_oredrs()
+                )}
+              />              
+              :
+              <FlatList
+                // ListHeaderComponent={header_alloredrs}
+                keyExtractor={(item, index) => index.toString()}
+                data={data}
+                renderItem={({ item }) => (
+                  render_all_oredrs()
+                )}
+              />              
+            }
+            <View style={styles.pagination_view}>
+              <Text style={{fontFamily:'Lato-Regular'}}>Showing 1-9 of 86</Text>
+              <View style={styles.pagination_numbring}>
+                <Ionicons name='chevron-back' style={{color:'#d1d8da',fontSize:24}} />
+                <Text style={{fontFamily:'Lato-Regular',color:'black'}}>1</Text>
+                <Text>2</Text>
+                <Text>3</Text>
+                <Text>4</Text>
+                <MaterialCommunityIcons name='chevron-right-circle' style={{color:'#4c6870',fontSize:24}} />
+              </View>
             </View>
-          </Modal>
 
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible}
+              onRequestClose={() => {
+                // alert("Modal has been closed.");
+                setModalVisible(!modalVisible);
+              }}
+            >
+              <View style={styles.centeredView}>
+                <ScrollView style={styles.modalView}>
+                  <View style={styles.modal_header}>
+                    <View style={{flexDirection:'row',alignItems:'center'}}>
+                      <Text style={styles.orderid_text}>ORDER ID<Text >  #123456</Text></Text>
+                      <View style={styles.modal_recuring}>
+                          <Text style={{color:'white'}}>Recurring client</Text>
+                      </View>
+                    </View>
+                    <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={{padding:7}}>
+                      <Entypo name='cross' style={[styles.cross_icon,{color:'#4C6870',fontSize:25}]} />
+                    </TouchableOpacity>
+                  </View>
+
+                  {customer_data()}
+                  {driver_data()}
+                  {order_details()}
+
+                </ScrollView>
+              </View>
+            </Modal>
+        </MenuProvider>
       </View>
 
       );
@@ -391,8 +401,6 @@ const styles = StyleSheet.create({
     borderRadius:5,
     paddingHorizontal:10,
     paddingBottom:10
-    
-
   },
   filter_box:{
     flex:1,
@@ -466,7 +474,6 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     marginTop:20,
     alignItems:'center'
-
   },
   order_recve_loc_view:{
     flexDirection:'row',
@@ -509,7 +516,6 @@ const styles = StyleSheet.create({
     padding:10
   },
   render_all_order_single:{
-    
     height:30,
     alignItems:'center',
     justifyContent:'center'
@@ -525,7 +531,6 @@ const styles = StyleSheet.create({
     alignSelf:'flex-end',
     backgroundColor: "white",
     padding: 20,
-    // alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -580,7 +585,7 @@ const styles = StyleSheet.create({
   calndr_date:{
     backgroundColor:'white',
     height:40,
-    width:200,
+    width:200, 
     borderRadius:5,
     alignItems:'center',
     justifyContent:'center',
@@ -602,6 +607,33 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
     elevation: 6,
+  },
+  trigger: {
+    // padding: 10,
+    // margin: 10,
+    // backgroundColor:'red'
+  },
+  modal_data_heading:{
+    flexDirection:'row',
+    padding:12,
+    backgroundColor:'#F2F4F5',
+    borderRadius:5,
+    justifyContent:'space-between',
+    alignItems:'center',
+    marginTop:10
+  },
+  pagination_view:{
+    flexDirection:'row',
+    alignItems:"center",
+    justifyContent:'space-between',
+    paddingHorizontal:30,
+    marginTop:20
+  },
+  pagination_numbring:{
+    width:200,
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:"center"
   }
 });
 

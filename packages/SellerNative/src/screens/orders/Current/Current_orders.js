@@ -72,9 +72,13 @@ export default function Current_orders({title, navigation}) {
 
     ];
 
+  const navigate_to_fullview=()=>{
+    navigation.navigate('Order_full_view',{status:'from_current'} )
+  }
+
   const render_received=(item)=>{
     return(
-      <TouchableOpacity  style={styles.single_order} >
+      <TouchableOpacity onPress={()=>navigate_to_fullview()}  style={styles.single_order} >
         <View style={styles.order_header}>
             <Text style={styles.orderid_text}>ORDER ID<Text style={[styles.orderid_text,{color:'black'}]}>  #123456</Text></Text>
             <Text style={[styles.orderid_text,{color:'black'}]}>19.43 MIN</Text>
@@ -92,16 +96,26 @@ export default function Current_orders({title, navigation}) {
         <View style={styles.more_order}>
           <Text>3 more</Text>
         </View>
-        <View style={styles.accept_btn}>
+        <TouchableOpacity
+             onPress={() => toastRef.current.show(
+              <View style={{flexDirection:'row'}}>
+                <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to Accepted</Text>
+                <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
+                  <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>UNDO</Text>
+                </TouchableOpacity>
+              </View>
+              ,3000
+              )} 
+          style={styles.accept_btn}>
           <Text style={styles.accept_btn_txt}>Slide to accept order</Text>
-        </View>
+        </TouchableOpacity>
       </TouchableOpacity>
     )
   }
 
   const render_accepted=(item)=>{
     return(
-        <View  style={styles.single_order} >
+        <TouchableOpacity onPress={()=>navigate_to_fullview()}  style={styles.single_order} >
             <View style={styles.order_header}>
                 <Text style={styles.orderid_text}>ORDER ID<Text style={[styles.orderid_text,{color:'black'}]}>  #123456</Text></Text>
                 <Text style={[styles.orderid_text,{color:'black'}]}>19.43 MIN</Text>
@@ -129,16 +143,16 @@ export default function Current_orders({title, navigation}) {
               <TouchableOpacity onPress={()=>set_modal_timer_visible(true)} >
                 <Text style={{marginRight:20,color:'#5AB3A8',fontFamily:"Poppins-Regular"}}>Change estimation time</Text>
               </TouchableOpacity>
-              <View style={styles.ready_btn}>
+              <TouchableOpacity onPress={()=>navigation.navigate('Longer_orders')} style={styles.ready_btn}>
                 <Text style={{color:'white',fontFamily:'Poppins-SemiBold',fontSize:15}}>Ready</Text>
-              </View>
+              </TouchableOpacity>
             </View>
-        </View>
+        </TouchableOpacity>
       )
   }
   const render_ready_pickup=()=>{
     return(
-      <TouchableOpacity  style={[styles.single_order,{paddingVertical:10,marginHorizontal:20,marginVertical:10}]} >
+      <TouchableOpacity  onPress={()=>navigate_to_fullview()} style={[styles.single_order,{paddingVertical:10,marginHorizontal:20,marginVertical:10}]} >
         <Text style={styles.order_recve_name}>#247HW9</Text>
         <Text style={{fontSize:17,fontFamily:'Lato-Regular',}}>21 min ago</Text>
       </TouchableOpacity>
@@ -218,6 +232,8 @@ export default function Current_orders({title, navigation}) {
                   placeholder='+30 min'
                   placeholderTextColor='#CCD4D6'
                   value={manual_time}
+                  keyboardType="decimal-pad"
+                  // keyboardType="phone-pad"
                   onChangeText={(text)=>set_manual_time(text)}
                   style={{borderWidth:1,borderRadius:5,width:120,height:40,borderColor:'#CCD4D6',marginLeft:10}}
                   // style={CommonStyle.inputTextStyle}
@@ -234,7 +250,8 @@ export default function Current_orders({title, navigation}) {
                        toastRef.current.show(
                       <View style={{flexDirection:'row'}}>
                         <FontAwesome name='check-circle' style={{color:'#36b27c',fontSize:20}} />
-                        <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold',marginLeft:10}}>Order #247HW9 was declined</Text>
+                        <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold',marginLeft:10}}>Preperation time is changed </Text>
+                        <Text >(+15 min)</Text>
                         <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
                           <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>UNDO</Text>
                         </TouchableOpacity>
@@ -339,7 +356,7 @@ const styles = StyleSheet.create({
   },
   single_order:{
     backgroundColor:'white',
-    marginHorizontal:10,
+    marginHorizontal:15,
     marginVertical:5,
     borderRadius:5,
     paddingHorizontal:10,
