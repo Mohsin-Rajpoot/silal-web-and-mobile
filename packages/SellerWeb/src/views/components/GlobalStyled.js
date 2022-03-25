@@ -168,13 +168,21 @@ span {
     margin-bottom: 15px;
 }
 .mb-20 {
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
 }
 .mt-20 {
     margin-top: 20px;
 }
 .mb-5px {
     margin-bottom: 5px;
+}
+.px-20 {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.py-15 {
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 .offcanvas-header {
     padding: 30px 20px 18px 20px;
@@ -441,6 +449,33 @@ hr {
     transition: 0.2s all;
     &:hover {
         transform: scale(1.03);
+    }
+}
+.grey-text {
+    color: rgba(76, 104, 112, 0.7);
+}
+.template-footer {
+    padding: 15px 20px;
+    margin: 34px -20px -20px -20px;
+    border-top: 1px solid #E8E8E8;
+    button {
+        height: 28px;
+    }
+    .del {
+        background: rgba(228, 42, 42, 0.15);   
+        color: #E42A2A;
+        margin-right: 13px;
+        width: 84px;
+        min-width: 84px;
+        padding: 0 5px;
+        svg {
+            margin-right: 6px;
+            margin-bottom: 2px;
+        }
+    }
+    button:last-of-type {
+        width: 71px;
+        min-width: 71px;
     }
 }
 `;

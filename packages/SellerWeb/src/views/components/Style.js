@@ -439,6 +439,9 @@ const Textarea = styled.textarea`
   &::placeholder {
     color: #CCD4D6;
   }
+  &.small {
+    height: 60px;
+  }
 `;
 
 const Input = styled.input`
@@ -553,6 +556,64 @@ const UploadImages = styled.div`
   }
 `;
 
+const UsedItemTag = styled.div`
+  padding: 5px 10px;
+  height: 28px;
+  background: #F2A341;
+  border-radius: 5px;
+  font-family: 'Lato';
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 120%;
+  letter-spacing: -0.408px;
+  color: #FFFFFF;
+  margin: 0 5px 10px 0;
+`;
+
+const UploadImageSmallContainer = styled.div`
+  width: 36px;
+  height: 36px;
+  border: 1px solid #CCD4D6;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  input {
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+  }
+`;
+
+const UploadedImageSmallContainer = styled.div`
+  width: 100%;
+  height: 87px;
+  border: 1px solid #C4C4C4;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .close {
+    background-color: transparent;
+    position: absolute;
+    top: -9px;
+    right: -8px;
+  }
+`;
+
 export {
   CardStyled,
   Heading,
@@ -573,4 +634,7 @@ export {
   EditButton,
   ThemeModal,
   UploadImages,
+  UsedItemTag,
+  UploadImageSmallContainer,
+  UploadedImageSmallContainer,
 };

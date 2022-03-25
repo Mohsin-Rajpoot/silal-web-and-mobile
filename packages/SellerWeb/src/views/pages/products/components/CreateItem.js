@@ -21,6 +21,9 @@ import {
     Input,
     UploadImages,
     EditButton,
+    UsedItemTag,
+    UploadImageSmallContainer,
+    UploadedImageSmallContainer,
 } from "../../../components/Style"
 import {
     CustomizationCategory,
@@ -38,11 +41,27 @@ import {
     UplaodIcon,
     EditWhite,
     PlusIcon,
+    uploadIcon2,
+    bottleImg,
+    closeRed,
+    DelIcon,
 } from "../../../components/AllImages"
 
 const CreateItem = () => {
     const history = useHistory()
     const [createNew, setCreateNew] = useState(false)
+    const [customisationI, setCustomisationI] = useState('')
+    const [qty1, setQty1] = useState('5')
+    const [qty2, setQty2] = useState('5')
+    const [qty3, setQty3] = useState('5')
+    const [qty4, setQty4] = useState('5')
+    const [qty5, setQty5] = useState('5')
+    const [price1, setPrice1] = useState('$ 3.00')
+    const [price2, setPrice2] = useState('$ 3.00')
+    const [price3, setPrice3] = useState('$ 3.00')
+    const [price4, setPrice4] = useState('$ 3.00')
+    const [price5, setPrice5] = useState('$ 3.00')
+    const [maxSelected, setMaxSelected] = useState('5')
 
     return (
         <>
@@ -474,13 +493,20 @@ const CreateItem = () => {
                                 <Row className="lato">
                                     <Col lg={8}>
                                         <CardStyled>
-                                            <Row>
+                                            <Row className="align-items-center">
                                                 <Col xl={2} lg={3}>
                                                     <Label className="f-regular f-15 mb-20">Customisation name</Label>
                                                 </Col>
                                                 <Col xl={10} lg={9}>
-                                                    <Input type="text" placeholder='Drinks' />
+                                                    <Input
+                                                        type="text"
+                                                        placeholder='Drinks'
+                                                        value={customisationI}
+                                                        onChange={(e) => setCustomisationI(e.target.value)}
+                                                    />
                                                 </Col>
+                                            </Row>
+                                            <Row className="align-items-center">
                                                 <Col xl={2} lg={3}>
                                                     <Label className="f-regular f-15 mb-20">Available customisations</Label>
                                                 </Col>
@@ -503,50 +529,106 @@ const CreateItem = () => {
                                                         </BoxCol>
                                                     </Row>
                                                 </Col>
+                                            </Row>
+                                            <Row className="align-items-center">
                                                 <Col xl={2} lg={3}>
-                                                    <Label className="f-regular f-15 mb-20">Max quantity</Label>
+                                                    <Label className="f-regular f-15 mb-0">Max quantity</Label>
+                                                    <p className="charac-left text-start">(0 if not quantifiable and customer selects only one)</p>
                                                 </Col>
                                                 <Col xl={10} lg={9}>
                                                     <Row>
                                                         <BoxCol>
-                                                            <Input className="text-center number-apperance" value="5" type="number" min="0" />
+                                                            <Input
+                                                                className="text-center number-apperance"
+                                                                type="number"
+                                                                min="0"
+                                                                value={qty1}
+                                                                onChange={(e) => setQty1(e.target.value)}
+                                                            />
                                                         </BoxCol>
                                                         <BoxCol>
-                                                            <Input className="text-center number-apperance" value="5" type="number" min="0" />
+                                                            <Input
+                                                                className="text-center number-apperance"
+                                                                type="number"
+                                                                min="0"
+                                                                value={qty2}
+                                                                onChange={(e) => setQty2(e.target.value)}
+                                                            />
                                                         </BoxCol>
                                                         <BoxCol>
-                                                            <Input className="text-center number-apperance" value="5" type="number" min="0" />
+                                                            <Input
+                                                                className="text-center number-apperance"
+                                                                type="number"
+                                                                min="0"
+                                                                value={qty3}
+                                                                onChange={(e) => setQty3(e.target.value)}
+                                                            />
                                                         </BoxCol>
                                                         <BoxCol>
-                                                            <Input className="text-center number-apperance" value="5" type="number" min="0" />
+                                                            <Input
+                                                                className="text-center number-apperance"
+                                                                type="number"
+                                                                min="0"
+                                                                value={qty4}
+                                                                onChange={(e) => setQty4(e.target.value)}
+                                                            />
                                                         </BoxCol>
                                                         <BoxCol>
-                                                            <Input className="text-center number-apperance" value="5" type="number" min="0" />
+                                                            <Input
+                                                                className="text-center number-apperance"
+                                                                type="number"
+                                                                min="0"
+                                                                value={qty5}
+                                                                onChange={(e) => setQty5(e.target.value)}
+                                                            />
                                                         </BoxCol>
                                                     </Row>
                                                 </Col>
+                                            </Row>
+                                            <Row className="align-items-center">
                                                 <Col xl={2} lg={3}>
                                                     <Label className="f-regular f-15 mb-20">Price addition</Label>
                                                 </Col>
                                                 <Col xl={10} lg={9}>
                                                     <Row>
                                                         <BoxCol>
-                                                            <Input className="text-center" value="$ 3.00" />
+                                                            <Input
+                                                                className="text-center"
+                                                                value={price1}
+                                                                onChange={(e) => setPrice1(e.target.value)}
+                                                            />
                                                         </BoxCol>
                                                         <BoxCol>
-                                                            <Input className="text-center" value="$ 3.00" />
+                                                            <Input
+                                                                className="text-center"
+                                                                value={price2}
+                                                                onChange={(e) => setPrice2(e.target.value)}
+                                                            />
                                                         </BoxCol>
                                                         <BoxCol>
-                                                            <Input className="text-center" value="$ 3.00" />
+                                                            <Input
+                                                                className="text-center"
+                                                                value={price3}
+                                                                onChange={(e) => setPrice3(e.target.value)}
+                                                            />
                                                         </BoxCol>
                                                         <BoxCol>
-                                                            <Input className="text-center" value="$ 3.00" />
+                                                            <Input
+                                                                className="text-center"
+                                                                value={price4}
+                                                                onChange={(e) => setPrice4(e.target.value)}
+                                                            />
                                                         </BoxCol>
                                                         <BoxCol>
-                                                            <Input className="text-center" value="$ 3.00" />
+                                                            <Input
+                                                                className="text-center"
+                                                                value={price5}
+                                                                onChange={(e) => setPrice5(e.target.value)} />
                                                         </BoxCol>
                                                     </Row>
                                                 </Col>
+                                            </Row>
+                                            <Row className="py-2">
                                                 <Col xl={2} lg={3}>
                                                     <Label className="f-regular f-15 mb-20">Available</Label>
                                                 </Col>
@@ -584,16 +666,93 @@ const CreateItem = () => {
                                                         </BoxCol>
                                                     </Row>
                                                 </Col>
+                                            </Row>
+                                            <Row className="align-items-center">
                                                 <Col xl={2} lg={3}>
                                                     <Label className="f-regular f-15 mb-20">Image</Label>
                                                 </Col>
                                                 <Col xl={10} lg={9}>
+                                                    <Row>
+                                                        <BoxCol className="center">
+                                                            <UploadImageSmallContainer>
+                                                                <img src={uploadIcon2} alt="icon" />
+                                                                <input type="file" />
+                                                            </UploadImageSmallContainer>
+                                                        </BoxCol>
+                                                        <BoxCol className="center">
+                                                            <UploadedImageSmallContainer>
+                                                                <button className="close border-0">
+                                                                    <img src={closeRed} alt="x" />
+                                                                </button>
+                                                                <img src={bottleImg} alt="img" />
+                                                            </UploadedImageSmallContainer>
+                                                        </BoxCol>
+                                                        <BoxCol className="center">
+                                                            <UploadImageSmallContainer>
+                                                                <img src={uploadIcon2} alt="icon" />
+                                                                <input type="file" />
+                                                            </UploadImageSmallContainer>
+                                                        </BoxCol>
+                                                        <BoxCol className="center">
+                                                            <UploadImageSmallContainer>
+                                                                <img src={uploadIcon2} alt="icon" />
+                                                                <input type="file" />
+                                                            </UploadImageSmallContainer>
+                                                        </BoxCol>
+                                                        <BoxCol className="center">
+                                                            <UploadImageSmallContainer>
+                                                                <img src={uploadIcon2} alt="icon" />
+                                                                <input type="file" />
+                                                            </UploadImageSmallContainer>
+                                                        </BoxCol>
+                                                    </Row>
                                                 </Col>
                                             </Row>
+                                            <div className="end template-footer">
+                                                <Button className='del'>
+                                                    <DelIcon />
+                                                    Delete
+                                                </Button>
+                                                <Button>Done</Button>
+                                            </div>
                                         </CardStyled>
                                     </Col>
                                     <Col lg={4}>
-                                        <CardStyled></CardStyled>
+                                        <CardStyled>
+                                            <div className="between">
+                                                <Label className="f-15 f-regular mb-20">Template ID:</Label>
+                                                <Label className="f-15 f-regular mb-20 grey-text">#542399</Label>
+                                            </div>
+                                            <div className="between">
+                                                <Label>Template name</Label>
+                                                <p className="charac-left">14 characters left</p>
+                                            </div>
+                                            <Input type="text" placeholder="Drinks - for salads" />
+                                            <Label>Template tags</Label>
+                                            <Textarea placeholder="Drinks - for salads" className="small"></Textarea>
+                                            <Label>Used for</Label>
+                                            <Textarea placeholder="Soft Drinks (made for all meals expect kids meals)" className="small"></Textarea>
+                                            <Label className="f-15 f-regular">Currently used items</Label>
+                                            <div className="d-flex flex-wrap mb-10">
+                                                <UsedItemTag>Meals (but 2)</UsedItemTag>
+                                                <UsedItemTag>Sandwiche</UsedItemTag>
+                                            </div>
+                                            <Row>
+                                                <Col sm={8}>
+                                                    <Label className="f-15 f-regular">Max selected in total</Label>
+                                                    <p className="charac-left text-start">(0 for unlimited)</p>
+                                                </Col>
+                                                <Col sm={4}>
+                                                    <Input
+                                                        className="text-center number-apperance mb-0"
+                                                        type="number"
+                                                        min="0"
+                                                        value={maxSelected}
+                                                        onChange={(e) => setMaxSelected(e.target.value)}
+                                                    />
+                                                </Col>
+                                            </Row>
+                                        </CardStyled>
                                     </Col>
                                 </Row>
                             </>

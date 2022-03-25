@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import '../../components/rsuite.css'
+import { DateRangePicker } from 'rsuite'
+// import 'rsuite/dist/rsuite.min.css' // or 'rsuite/styles/index.less'
 // import DatePicker from 'react-date-picker'
-// import { DateRange } from 'react-date-range'
-// import 'react-date-range/dist/styles.css' // main css file
-// import 'react-date-range/dist/theme/default.css' // theme css file
 import { Row, Col } from 'react-bootstrap'
 import Nav from "../../components/home/Nav"
 import { RestaurantHeading } from '../../components/UseFullElements'
@@ -20,13 +20,7 @@ import {
 
 const Reviews = ({ setSideBar, sideBar }) => {
     // const [dateValue, dateOnChange] = useState(new Date())
-    // const [rangeState, setRangeState] = useState([
-    //     {
-    //         startDate: new Date(),
-    //         endDate: new Date(),
-    //         key: 'selection',
-    //     }
-    // ])
+    const today = new Date()
 
     return (
         <>
@@ -41,17 +35,18 @@ const Reviews = ({ setSideBar, sideBar }) => {
                     <CardStyled className="review-card-height">
                         <div className="between">
                             <Heading>Reviews</Heading>
+                            <DateRangePicker
+                                showOneCalendar
+                                format="dd MMMM yy"
+                                placeholder="dd mm yy"
+                                character="&#160;&#160;-&#160;&#160;"
+                                caretAs={CalendarIcon}
+                            />
                             {/* <DatePicker
                                 onChange={dateOnChange}
                                 value={dateValue}
                                 calendarIcon={<CalendarIcon />}
                                 clearIcon={null}
-                            /> */}
-                            {/* <DateRange
-                                onChange={item => setRangeState([item.selection])}
-                                ranges={rangeState}
-                                editableDateInputs={false}
-                                showMonthAndYearPickers={false}
                             /> */}
                         </div>
                         <Review

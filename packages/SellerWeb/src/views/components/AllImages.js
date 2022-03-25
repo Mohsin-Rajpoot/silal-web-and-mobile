@@ -17,6 +17,9 @@ import phoneIcon from "../../assets/images/svg/phone-icon.svg"
 import collpaseArrow from "../../assets/images/svg/collpase-arrow.svg"
 import selectArrow from "../../assets/images/svg/select-arrow.svg"
 import uploadImgPlaceholder from "../../assets/images/upload-img-placeholder.png"
+import uploadIcon2 from "../../assets/images/svg/upload-icon2.svg"
+import bottleImg from "../../assets/images/bottle-img.png"
+import closeRed from "../../assets/images/svg/close-red.svg"
 import { ReactComponent as Menu } from "../../assets/images/svg/menu.svg"
 import { ReactComponent as Home } from "../../assets/images/svg/home.svg"
 import { ReactComponent as Order } from "../../assets/images/svg/order.svg"
@@ -41,6 +44,7 @@ import { ReactComponent as ContactUs } from "../../assets/images/svg/contact-us.
 import { ReactComponent as AboutIcon } from "../../assets/images/svg/about-icon.svg"
 import { ReactComponent as SettingsIcon } from "../../assets/images/svg/settings.svg"
 import { ReactComponent as PlusIcon } from "../../assets/images/svg/plus-icon.svg"
+import { ReactComponent as DelIcon } from "../../assets/images/svg/del-icon.svg"
 
 
 export {
@@ -87,4 +91,8 @@ export {
     AboutIcon,
     SettingsIcon,
     PlusIcon,
+    uploadIcon2,
+    bottleImg,
+    closeRed,
+    DelIcon,
 }
