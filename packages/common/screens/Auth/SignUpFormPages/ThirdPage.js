@@ -17,7 +17,10 @@ const ThirdPage = () => {
   ]);
   return (
     <View style={styles.firstPageMainContainer}>
-      <ScrollView>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={{ flexDirection: "row", marginVertical: 15 }}>
           <CustomText label="Select type" textStyle={styles.formTextHeading} />
           <CustomText label="*" textStyle={styles.star} />

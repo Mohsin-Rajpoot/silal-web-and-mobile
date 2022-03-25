@@ -3,7 +3,7 @@ import React from 'react';
 import {CustomButton} from '@SilalApp/common/components/native';
 const Tabs = ({onChangeTab,page,tabs,containerStyle}) => {
   return (
-    <View style={[{ flexDirection: 'row'},containerStyle]}>
+    <View style={[{ flexDirection: 'row', marginTop:5},containerStyle]}>
       {tabs?.map((item,index)=>(
         <CustomButton
         key={index}

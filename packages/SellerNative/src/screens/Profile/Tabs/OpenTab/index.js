@@ -13,7 +13,7 @@ export default () => {
 
   return (
     <>
-      <View style={{width: width(37),backgroundColor: "white",}}>
+      <View style={{width: width(60)}}>
         <Tab
           value={index}
           onChange={e => setIndex(e)}
@@ -22,14 +22,16 @@ export default () => {
             backgroundColor: colors.primary,
           }}>
           <Tab.Item
-          buttonStyle={{backgroundColor: "white",}}
+            containerStyle={{backgroundColor:'transparent'}}
+          variant='primary'
+            buttonStyle={{backgroundColor:'transparent'}}
             title="Standard hours"
             titleStyle={[styles.tabText, index == 0 && {color: colors.black}]}
-            style={{backgroundColor: colors.profileBackground}}
           />
           <Tab.Item
-          buttonStyle={{backgroundColor: "white",}}
-
+          containerStyle={{backgroundColor:'transparent'}}
+          buttonStyle={{backgroundColor:'transparent'}}
+          variant='primary'
             title="Special hours"
             titleStyle={[styles.tabText, index == 1 && {color: colors.black}]}
             style={{backgroundColor: colors.profileBackground}}
@@ -82,6 +84,6 @@ const styles = ScaledSheet.create({
     alignSelf: 'flex-start',
     borderWidth: 2,
     borderColor: colors.primary,
-    marginTop:"10@vs"
+    marginTop: '10@vs',
   },
 });

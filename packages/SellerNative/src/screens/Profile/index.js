@@ -11,7 +11,7 @@ import ProfileTab from './Tabs/ProfileTab';
 import OpenTab from './Tabs/OpenTab';
 import PaymentTab from './Tabs/Payment';
 import TransactionTab from './Tabs/Transaction';
-const Profile = () => {
+const Profile = ({navigation}) => {
   const ref = useRef(null);
   const tabs = [
     'Profile',
@@ -26,7 +26,7 @@ const Profile = () => {
   };
   return (
     <View style={styles.mainContainer}>
-      <Header />
+      <Header label={'Profile'} onPress={()=>navigation.openDrawer()} />
       <Tabs tabs={tabs} page={page} onChangeTab={onChangeTab} />
       <PagerView
         style={{flex: 1}}

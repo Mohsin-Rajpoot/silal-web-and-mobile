@@ -55,7 +55,7 @@ const Offers = ({navigation}) => {
   const [offerData, setOffferData] = useState(init);
   const [startTime, setStartTime] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
-  const [page, setPage] = useState(0)
+  const [page, setPage] = useState(0);
   const openCreateOfferModal = () => {
     setCreatePostModal(true);
   };
@@ -101,7 +101,11 @@ const Offers = ({navigation}) => {
       <ScrollView>
         <View style={styles.inputContainer}>
           <View style={styles.inputContainerMian}>
-            <TextInput search={true} inputStyle={styles.inputStyling} placeholderText='Search' />
+            <TextInput
+              search={true}
+              inputStyle={styles.inputStyling}
+              placeholderText="Search"
+            />
           </View>
           <View style={styles.buttonContainer}>
             <CustomButton
@@ -133,7 +137,10 @@ const Offers = ({navigation}) => {
           justifyContent: 'flex-start',
           borderRadius: 0,
         }}>
-        <ScrollView style={styles.modalMainContainer}>
+        <ScrollView
+          style={styles.modalMainContainer}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}>
           <TouchableOpacity
             activeOpacity={0.6}
             onPress={() => setModalVisible(false)}>

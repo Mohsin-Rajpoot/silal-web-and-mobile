@@ -20,7 +20,11 @@ const Drawer = props => {
   const width = useWindowDimensions().width * 0.3;
   const [expanded, setExpanded] = useState(false);
   return (
-    <DrawerContentScrollView style={styles.mainContainer} {...props}>
+    <DrawerContentScrollView
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
+      style={styles.mainContainer}
+      {...props}>
       <TouchableOpacity onPress={() => props.navigation.closeDrawer()}>
         <Icon
           name="cross"
@@ -102,8 +106,8 @@ const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.sidebar,
-    borderTopRightRadius: '20@vs',
-    borderBottomRightRadius: '20@vs',
+    borderTopRightRadius: '15@vs',
+    borderBottomRightRadius: '15@vs',
     paddingVertical: '23@vs',
     paddingLeft: '10@s',
     paddingRight: '13@s',

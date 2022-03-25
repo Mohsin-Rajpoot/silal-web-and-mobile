@@ -12,14 +12,14 @@ const styles = ScaledSheet.create({
   innerContainer: {
     width: "75%",
     alignSelf: "center",
-    flex: 1,
+    flexGrow: 1,
   },
   phoneNumberText: {
     color: colors.textPrimary,
-    margin: "3@s",
-    marginVertical: "5@s",
+    marginBottom:'5@ms',
     fontSize: "11@ms",
     fontFamily: fonts.LatoBold,
+    marginTop:'5@ms'
   },
   codeText: {
     fontSize: "8@ms",
@@ -39,19 +39,18 @@ const styles = ScaledSheet.create({
     borderBottomWidth: "0.5@s",
     borderTopLeftRadius: "4@s",
     borderBottomLeftRadius: "4@s",
-    color:colors.red,
-    fontSize:12,
-    
+    color: colors.red,
+    fontSize: 12,
   },
   bottomText: {
     fontSize: "11@ms",
     color: colors.textPrimary,
-    fontFamily:fonts.LatoMedium
+    fontFamily: fonts.LatoMedium,
   },
   nestedBottomText: {
     fontSize: "8@s",
     color: colors.primary,
-    fontFamily:fonts.LatoMedium
+    fontFamily: fonts.LatoMedium,
   },
   optStyling: {
     marginVertical: "30@s",
@@ -76,8 +75,8 @@ const styles = ScaledSheet.create({
     alignSelf: "center",
     borderBottomWidth: "1@s",
     borderBottomColor: colors.gray,
-    fontFamily:fonts.LatoMedium,
-    fontSize:"11@ms"
+    fontFamily: fonts.LatoMedium,
+    fontSize: "11@ms",
   },
   passwordWaring: {
     flexDirection: "row",
@@ -108,7 +107,7 @@ const styles = ScaledSheet.create({
     borderRadius: "4@s",
     margin: "5@s",
     borderWidth: "0.5@s",
-    borderColor:colors.primary
+    borderColor: colors.primary,
   },
   choseMainContainer1: {
     width: "125@s",
@@ -237,9 +236,9 @@ const styles = ScaledSheet.create({
   },
   addressContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
     marginTop: "10@s",
     height: "30@s",
+    justifyContent: "space-between",
   },
   formTextHeadingOptional: {
     fontSize: "12@ms",
@@ -247,8 +246,10 @@ const styles = ScaledSheet.create({
     color: colors.black,
     paddingHorizontal: "2@s",
   },
+  addressInputContainer: {
+    width: wp("31.5%"),
+  },
   addressInput: {
-    width: wp("30%"),
     borderColor: colors.borderColor,
     borderWidth: "0.5@s",
     borderRadius: "4@s",
@@ -295,8 +296,14 @@ const styles = ScaledSheet.create({
     borderColor: colors.borderColor,
     height: "40@ms",
   },
+  dropDownStyle1: {
+    backgroundColor: "transparent",
+    borderColor: colors.borderColor,
+    height: "40@ms",
+  },
   dropDownPlaceHolder: {
     color: colors.light_grey,
+    fontSize: "12@ms",
   },
   accountMainContainer: {
     flexDirection: "row",
@@ -313,7 +320,7 @@ const styles = ScaledSheet.create({
     borderRadius: "3@s",
     borderWidth: "1@s",
     borderColor: colors.primary,
-    alignItems:'center'
+    alignItems: "center",
   },
   accountSelectionInActive: {
     backgroundColor: "transparent",
@@ -345,9 +352,8 @@ const styles = ScaledSheet.create({
     justifyContent: "center",
     margin: "5@s",
     marginVertical: "10@s",
-    alignSelf:'flex-start',
-    padding:'2@s'
-   
+    alignSelf: "flex-start",
+    padding: "2@s",
   },
   outerRadiocontainerInactive: {
     backgroundColor: colors.textWhite,
@@ -359,7 +365,7 @@ const styles = ScaledSheet.create({
     justifyContent: "center",
     margin: "5@s",
     marginVertical: "10@s",
-    alignItems:'center'
+    alignItems: "center",
   },
   accountTextContainer: {
     marginVertical: "7@s",
@@ -367,11 +373,10 @@ const styles = ScaledSheet.create({
   },
   customRadio: {
     backgroundColor: colors.primary,
-    width: '5@ms',
-    height: '5@ms',
+    width: "5@ms",
+    height: "5@ms",
     borderRadius: "99@s",
-    alignSelf:'center'
-
+    alignSelf: "center",
   },
   customRadioInactive: {
     backgroundColor: "transparent",
@@ -383,7 +388,7 @@ const styles = ScaledSheet.create({
   paymentMainContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom:'8@s'
+    marginBottom: "8@s",
   },
   paymentInnerContainer: {
     borderColor: colors.borderColor,
@@ -400,31 +405,30 @@ const styles = ScaledSheet.create({
     borderRadius: "2@s",
   },
   checkBackgroundInactive: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     justifyContent: "center",
     alignSelf: "center",
     borderRadius: "2@s",
-    borderColor:colors.borderColor,
-    borderWidth:'0.5@s',
-    width:'12@s',
-    height:"12@s"
+    borderColor: colors.borderColor,
+    borderWidth: "0.5@s",
+    width: "12@s",
+    height: "12@s",
   },
   paymentText: {
     fontSize: "11@ms",
     fontFamily: fonts.LatoMedium,
     marginHorizontal: "5@ms",
     marginVertical: "2@s",
-    
-    marginLeft:'10@ms'
+
+    marginLeft: "10@ms",
   },
-  detailInput:{
+  detailInput: {
     borderWidth: "0.5@s",
     borderColor: colors.borderColor,
     width: "100%",
     borderRadius: "4@s",
-    height:'70@ms'
-
-  }
+    height: "70@ms",
+  },
 });
 
 export default styles;

@@ -8,11 +8,12 @@ const styles = ScaledSheet.create({
     padding: "5@s",
   },
   phoneNumberInput: {
-    height: "30@s",
+    height: "32@s",
     width: "100%",
     backgroundColor: "transparent",
     padding: 0,
     margin: 0,
+
   },
   searchIconContainer:{
     flexDirection:'row',
