@@ -12,7 +12,9 @@ import colors from '@SilalApp/common/assets/colors';
 import CustomButton from '@SilalApp/common/components/native/CustomButton';
 import fonts from '@SilalApp/common/assets/fonts';
 import {Icon} from 'react-native-elements';
+import {useTranslation} from 'react-i18next'
 const Documents = ({navigation}) => {
+  const {t}=useTranslation();
   return (
     <View
       style={{
@@ -20,7 +22,7 @@ const Documents = ({navigation}) => {
         flex: 1,
         paddingHorizontal: scale(15),
       }}>
-      <Header label="Documents" onPress={()=>navigation.openDrawer()} />
+      <Header label={t("Document")} onPress={()=>navigation.openDrawer()} />
 
       <View style={styles.mainContainer}>
         <View style={styles.container}>
@@ -41,7 +43,7 @@ const Documents = ({navigation}) => {
           <View style={{marginTop: verticalScale(20)}}>
             <CustomText
               textStyle={styles.documentTitleText}
-              label="Checking account"
+              label={t("CheckingAccount")}
             />
             <TextInput
               placeholder="2345 5445 7922 2054"
@@ -64,7 +66,7 @@ const Documents = ({navigation}) => {
             size={28}
             style={{transform: [{rotate: '-90deg'}]}}
           />
-          <CustomText label="Export" textStyle={styles.buttonText} />
+          <CustomText label={t("Export")} textStyle={styles.buttonText} />
         </View>
       </View>
     </View>

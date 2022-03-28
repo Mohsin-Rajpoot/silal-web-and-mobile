@@ -1,4 +1,4 @@
-import {View, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity, I18nManager} from 'react-native';
 import {
   moderateScale,
   ScaledSheet,
@@ -18,35 +18,73 @@ import {
   widthPercentageToDP as width,
   heightPercentageToDP as height,
 } from 'react-native-responsive-screen';
+import DropDownPicker from 'react-native-dropdown-picker';
+import {useTranslation} from 'react-i18next';
+import Preference from 'react-native-preference';
+import RNRestart from 'react-native-restart';
+
 const Setting = ({navigation}) => {
+  const getLang = Preference.get('languageValue');
+  const {t, i18n} = useTranslation();
   const [rightArrow, setRightArrow] = useState(false);
   const [leftArrow, setLeftArrow] = useState(false);
   const [check, setCheck] = useState(false);
   const [isVisible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(getLang);
+  const [items, setItems] = useState([
+    {label: t('English'), value: 'en'},
+    {label: t('Arabic'), value: 'ar'},
+  ]);
   return (
     <View style={styles.mainContainer}>
-      <Header label={'Setting'} onPress={()=>navigation.openDrawer()} />
+      <Header label={t('Setting')} onPress={() => navigation.openDrawer()} />
       {rightArrow ? null : (
         <>
           <View style={{width: '35%', marginTop: verticalScale(20)}}>
-            <CustomText textStyle={styles.titleText} label="Title " />
+            <CustomText textStyle={styles.titleText} label={t('title')} />
             <TextWithIcon
-              label="Pre-order settings"
+              label={t('PreOrderSetting')}
               onPress={() => {
                 setRightArrow(true);
                 setLeftArrow(true);
               }}
             />
           </View>
+          <CustomText
+            textStyle={styles.titleText}
+            label={t('ChangeLanguage')}
+          />
+          <DropDownPicker
+            open={open}
+            value={value}
+            items={items}
+            setOpen={setOpen}
+            setValue={setValue}
+            setItems={setItems}
+            placeholder="Select Language"
+            style={styles.dropDownStyle}
+            placeholderStyle={styles.dropDownPlaceHolder}
+            dropDownContainerStyle={styles.dropdownContainer}
+            iconContainerStyle={{backgroundColor: 'red'}}
+            onChangeValue={language => {
+              i18n.changeLanguage(language).then(() => {
+                I18nManager.forceRTL(language === 'ar');
+                RNRestart.Restart();
+              });
+              Preference.setWhiteList([]);
+              Preference.set('languageValue', language);
+            }}
+          />
           <View style={{width: '35%'}}>
-            <CustomText textStyle={styles.titleText} label="Account " />
+            <CustomText textStyle={styles.titleText} label={t('Account')} />
             <TouchableOpacity
               activeOpacity={0.6}
               onPress={() => setVisible(!isVisible)}>
               <TextWithIcon
                 iconDelete={true}
                 textStyle={styles.deleteAcountText}
-                label="Delete account"
+                label={t('DeleteAccount')}
               />
             </TouchableOpacity>
           </View>
@@ -186,6 +224,16 @@ const styles = ScaledSheet.create({
     fontSize: '18@ms',
     marginRight: '10@s',
     color: colors.black,
+  },
+  dropDownStyle: {
+    width: '35%',
+    marginVertical: '5@s',
+    borderColor:colors.light_grey,
+    height:'30@s'
+  },
+  dropdownContainer:{
+    width:'35%',
+    borderColor:colors.light_grey
   },
   preOrderText: {
     fontFamily: fonts.bold,

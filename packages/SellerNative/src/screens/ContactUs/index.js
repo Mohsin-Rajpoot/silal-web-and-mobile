@@ -11,18 +11,23 @@ import Header from '../Profile/moleclues/Header';
 import colors from '@SilalApp/common/assets/colors';
 import CustomButton from '@SilalApp/common/components/native/CustomButton';
 import fonts from '@SilalApp/common/assets/fonts';
+import {useTranslation} from 'react-i18next';
 const ContactUs = ({navigation}) => {
+  const {t} = useTranslation();
   return (
     <ScrollView style={styles.mainContainer}>
-      <Header label="Contact Silal" onPress={()=>navigation.openDrawer()}/>
+      <Header
+        label={t('Contact_Silal')}
+        onPress={() => navigation.openDrawer()}
+      />
       <View style={{marginLeft: scale(24), alignItems: 'flex-start'}}>
         <CustomText
           textStyle={styles.letSolveText}
-          label="Let’s solve the problem"
+          label={t('LetsSolveProblem')}
         />
         <CustomText
           textStyle={styles.letSolveDetailText}
-          label="It looks like you have a problem with our system. We are here to help you, so please get in touch with us."
+          label={t('ContactUsDetailText')}
         />
       </View>
       <View
@@ -34,7 +39,7 @@ const ContactUs = ({navigation}) => {
           <View>
             <CustomText
               textStyle={styles.inputLabel}
-              label="Contact Phone/Email"
+              label={t('ContactPhone_email')}
             />
             <TextInput
               style={{fontSize: moderateScale(17), color: colors.black}}
@@ -47,7 +52,7 @@ const ContactUs = ({navigation}) => {
             />
           </View>
           <View style={{marginTop: verticalScale(20)}}>
-            <CustomText textStyle={styles.inputLabel} label="Subject" />
+            <CustomText textStyle={styles.inputLabel} label={t('Subject')} />
             <TextInput
               style={{fontSize: moderateScale(17), color: colors.black}}
               borderRadius={moderateScale(5)}
@@ -59,7 +64,10 @@ const ContactUs = ({navigation}) => {
             />
           </View>
           <View style={{marginTop: verticalScale(20)}}>
-            <CustomText textStyle={styles.inputLabel} label="Your message" />
+            <CustomText
+              textStyle={styles.inputLabel}
+              label={t('YourMessage')}
+            />
             <TextInput
               style={{
                 fontSize: moderateScale(17),
@@ -80,14 +88,14 @@ const ContactUs = ({navigation}) => {
               styles.inputLabel,
               {marginTop: verticalScale(50), marginBottom: verticalScale(15)},
             ]}
-            label="Add attachments   +"
+            label={t('AddAttachment')}
           />
         </View>
       </View>
       <CustomButton
         textStyle={{fontSize: scale(14)}}
         containerStyle={styles.exportBtn}
-        text="Submit"
+        text={t('Submit')}
       />
     </ScrollView>
   );

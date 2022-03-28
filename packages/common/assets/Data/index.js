@@ -1,3 +1,6 @@
+import { useTranslation } from "react-i18next";
+
+const { t } = useTranslation();
 export const screens = [
   {
     id: 0,
@@ -26,12 +29,12 @@ export const screens = [
 ];
 
 export const days = [
-  "Every day",
-  "Thursday",
-  "Monday",
-  "Friday",
-  "Tuesday",
-  "Saturday",
-  "Wednesday",
-  "Sunday",
+  t("EveryDay"),
+  t("Thursday"),
+  t("Monday"),
+  t("Friday"),
+  t("Tuesday"),
+  t("Saturday"),
+  t("Wednesday"),
+  t("Sunday"),
 ];

@@ -16,6 +16,7 @@ const TabStack = () => {
     screenOptions={{
       headerShown: false,
       tabBarActiveTintColor: '#5AB3A8',
+      unmountOnBlur:true
 
     }}
     initialRouteName="Home">
