@@ -7,6 +7,7 @@ import {
     Row,
     Col,
     Form,
+    Modal,
 } from 'react-bootstrap'
 import {
     FlexContainer,
@@ -24,6 +25,7 @@ import {
     UsedItemTag,
     UploadImageSmallContainer,
     UploadedImageSmallContainer,
+    ThemeModal,
 } from "../../../components/Style"
 import {
     CustomizationCategory,
@@ -51,6 +53,7 @@ const CreateItem = () => {
     const history = useHistory()
     const [createNew, setCreateNew] = useState(false)
     const [customisationI, setCustomisationI] = useState('')
+    const [showDelModal, setShowDelModal] = useState(false)
     const [qty1, setQty1] = useState('5')
     const [qty2, setQty2] = useState('5')
     const [qty3, setQty3] = useState('5')
@@ -62,6 +65,9 @@ const CreateItem = () => {
     const [price4, setPrice4] = useState('$ 3.00')
     const [price5, setPrice5] = useState('$ 3.00')
     const [maxSelected, setMaxSelected] = useState('5')
+
+    const handleCloseDelModal = () => setShowDelModal(false)
+    const handleShowDelModal = () => setShowDelModal(true)
 
     return (
         <>
@@ -76,7 +82,12 @@ const CreateItem = () => {
                 </div>
                 <div className="d-flex align-items-center">
                     <ButtonText className="mb-26">Preview</ButtonText>
-                    <Button disabled className="me-3 ms-4 w-148 mb-26">Save as draft</Button>
+                    <Button
+                        disabled
+                        className="me-3 ms-4 w-148 mb-26"
+                        onClick={handleShowDelModal}>
+                        Save as draft
+                    </Button>
                     <Button className="w-148 mb-26">Publish</Button>
                 </div>
             </FlexContainer>
@@ -268,9 +279,9 @@ const CreateItem = () => {
                                                 <div className="display-img">
                                                     <img src={uploadImgPlaceholder} alt="img" />
                                                     <div className="checkbox-main">
-                                                        <label class="checkbox">
+                                                        <label className="checkbox">
                                                             <input type="checkbox" />
-                                                            <span class="checkmark"></span>
+                                                            <span className="checkmark"></span>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -279,9 +290,9 @@ const CreateItem = () => {
                                                 <div className="display-img">
                                                     <img src={uploadImgPlaceholder} alt="img" />
                                                     <div className="checkbox-main">
-                                                        <label class="checkbox">
+                                                        <label className="checkbox">
                                                             <input type="checkbox" />
-                                                            <span class="checkmark"></span>
+                                                            <span className="checkmark"></span>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -290,9 +301,9 @@ const CreateItem = () => {
                                                 <div className="display-img">
                                                     <img src={uploadImgPlaceholder} alt="img" />
                                                     <div className="checkbox-main">
-                                                        <label class="checkbox">
+                                                        <label className="checkbox">
                                                             <input type="checkbox" />
-                                                            <span class="checkmark"></span>
+                                                            <span className="checkmark"></span>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -301,9 +312,9 @@ const CreateItem = () => {
                                                 <div className="display-img">
                                                     <img src={uploadImgPlaceholder} alt="img" />
                                                     <div className="checkbox-main">
-                                                        <label class="checkbox">
+                                                        <label className="checkbox">
                                                             <input type="checkbox" />
-                                                            <span class="checkmark"></span>
+                                                            <span className="checkmark"></span>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -635,33 +646,33 @@ const CreateItem = () => {
                                                 <Col xl={10} lg={9}>
                                                     <Row>
                                                         <BoxCol className="center">
-                                                            <label class="checkbox grey-blue">
+                                                            <label className="checkbox grey-blue">
                                                                 <input type="checkbox" />
-                                                                <span class="checkmark"></span>
+                                                                <span className="checkmark"></span>
                                                             </label>
                                                         </BoxCol>
                                                         <BoxCol className="center">
-                                                            <label class="checkbox grey-blue">
+                                                            <label className="checkbox grey-blue">
                                                                 <input type="checkbox" />
-                                                                <span class="checkmark"></span>
+                                                                <span className="checkmark"></span>
                                                             </label>
                                                         </BoxCol>
                                                         <BoxCol className="center">
-                                                            <label class="checkbox grey-blue">
+                                                            <label className="checkbox grey-blue">
                                                                 <input type="checkbox" />
-                                                                <span class="checkmark"></span>
+                                                                <span className="checkmark"></span>
                                                             </label>
                                                         </BoxCol>
                                                         <BoxCol className="center">
-                                                            <label class="checkbox grey-blue">
+                                                            <label className="checkbox grey-blue">
                                                                 <input type="checkbox" />
-                                                                <span class="checkmark"></span>
+                                                                <span className="checkmark"></span>
                                                             </label>
                                                         </BoxCol>
                                                         <BoxCol className="center">
-                                                            <label class="checkbox grey-blue">
+                                                            <label className="checkbox grey-blue">
                                                                 <input type="checkbox" />
-                                                                <span class="checkmark"></span>
+                                                                <span className="checkmark"></span>
                                                             </label>
                                                         </BoxCol>
                                                     </Row>
@@ -760,6 +771,31 @@ const CreateItem = () => {
                     </Tab.Pane>
                 </Tab.Content>
             </Tab.Container>
+
+            <Modal show={showDelModal} onHide={handleCloseDelModal} centered>
+                <ThemeModal>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Save as drafts?</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="text">You have not finished creating the item. If you exit, the data will not be saved.</div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="d-flex w-100">
+                            <Col lg={6} className="pe-2">
+                                <Button className="grey w-100" onClick={handleCloseDelModal}>
+                                    Delete
+                                </Button>
+                            </Col>
+                            <Col lg={6} className="ps-2">
+                                <Button className="w-100" onClick={handleCloseDelModal}>
+                                    Save as draft
+                                </Button>
+                            </Col>
+                        </div>
+                    </Modal.Footer>
+                </ThemeModal>
+            </Modal>
         </>
     )
 }

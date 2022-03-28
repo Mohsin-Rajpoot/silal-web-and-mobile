@@ -15,7 +15,7 @@ const loading = (
 
 const Content = ({ setSideBar, sideBar }) => {
   return (
-    <div class="px-3 flex-1">
+    <div className="px-3 flex-1">
       <React.Fragment>
         <Suspense fallback={loading}>
           <Switch>

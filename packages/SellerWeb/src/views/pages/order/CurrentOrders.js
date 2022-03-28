@@ -128,17 +128,17 @@ const CurrentOrder = ({ setSideBar, sideBar }) => {
                 <Modal.Body>
                     <RangeSlider className="mt-4">
                         <input type="range" min="0" max="100" step="14" className="slider-range" />
-                        <ul class="mb-0 p-0 list-unstyled d-flex">
+                        <ul className="mb-0 p-0 list-unstyled d-flex">
                             <li>-15 min</li>
                             <li>-10 min</li>
                             <li>-5 min</li>
                             <li className="current">(19:22 PM)</li>
-                            <li class="ms-auto">+5 min</li>
+                            <li className="ms-auto">+5 min</li>
                             <li>+10 min</li>
                             <li>+15 min</li>
                         </ul>
                     </RangeSlider>
-                    <div class="d-flex mt-4 align-items-center">
+                    <div className="d-flex mt-4 align-items-center">
                         <label className="me-3 f-semibold lato">Add manually</label>
                         <input
                             type="number"

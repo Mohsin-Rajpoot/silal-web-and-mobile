@@ -195,9 +195,9 @@ const CustomizationItem = ({ item, classN }) => {
     return (
     <CustomizationItemStyled className={classN}>
             <div className="checkbox-main">
-                <label class="checkbox">
+                <label className="checkbox">
                     <input type="checkbox" />
-                    <span class="checkmark"></span>
+                    <span className="checkmark"></span>
                 </label>
             </div>
             <h1 className="lato">{item}</h1>

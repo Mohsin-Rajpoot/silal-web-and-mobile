@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import '../../components/rsuite.css'
+import { DateRangePicker } from 'rsuite'
 import NavCustom from '../../components/orders/Nav'
-import DatePicker from 'react-date-picker'
+// import DatePicker from 'react-date-picker'
 // import TableData from "../../components/Table"
 import DataTable from 'react-data-table-component'
 import {
@@ -30,7 +32,7 @@ const Archive = ({ setSideBar, sideBar }) => {
     const [canvasShow, setCanvasShow] = useState(false)
     const canvasCloseHandler = () => setCanvasShow(false)
     const canvasShowHanler = () => setCanvasShow(true)
-    const [dateValue, dateOnChange] = useState(new Date())
+    // const [dateValue, dateOnChange] = useState(new Date())
 
     const customStyles = {
         headCells: {
@@ -246,13 +248,24 @@ const Archive = ({ setSideBar, sideBar }) => {
                         </ThemeTabs>
                         <div className="d-flex">
                             <FilterBtn />
-                            <DatePicker
+                            {/* <DatePicker
                                 onChange={dateOnChange}
                                 value={dateValue}
                                 calendarIcon={<CalendarIcon />}
                                 clearIcon={null}
                                 className="btn-style ms-3"
-                            />
+                            /> */}
+                            <div className="archive-range">
+                                <DateRangePicker
+                                    className="archive-table-range"
+                                    placement='bottomRight'
+                                    showOneCalendar
+                                    format="dd MMMM yy"
+                                    placeholder="dd mm yy"
+                                    character="&#160;&#160;-&#160;&#160;"
+                                    caretAs={CalendarIcon}
+                                />
+                            </div>
                         </div>
                     </div>
                     <Tab.Content>

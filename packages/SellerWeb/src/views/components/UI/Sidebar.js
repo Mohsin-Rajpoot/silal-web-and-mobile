@@ -53,7 +53,7 @@ const Sidebar = ({ sideBar, setSideBar }) => {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion> */}
-        <div class="logo-text text-white">Silal Service</div>
+        <div className="logo-text text-white">Silal Service</div>
         <Link
           to="/"
           className={
@@ -95,11 +95,15 @@ const Sidebar = ({ sideBar, setSideBar }) => {
           <OffersIcon />
           Offers
         </Link>
-        <Link to="#">
+        <Link
+          to="/documents"
+          className={pathname == "/documents" ? "active" : ""}>
           <DocumentIcon />
           Documents
         </Link>
-        <Link to="#">
+        <Link
+          to="/contact-us"
+          className={pathname == "/contact-us" ? "active" : ""}>
           <ContactUs />
           Contact us
         </Link>
@@ -107,7 +111,9 @@ const Sidebar = ({ sideBar, setSideBar }) => {
           <AboutIcon />
           About app
         </Link>
-        <Link to="#">
+        <Link
+          to="/settings"
+          className={pathname == "/settings" ? "active" : ""}>
           <SettingsIcon />
           Settings
         </Link>

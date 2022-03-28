@@ -11,6 +11,9 @@ const ArchiveOrders = React.lazy(() => import('../views/pages/order/Archive'))
 const Products = React.lazy(() => import('../views/pages/products/components/Products'))
 const ProductDetail = React.lazy(() => import('../views/pages/products/components/ProductDetail'))
 const CreateItem = React.lazy(() => import('../views/pages/products/components/CreateItem'))
+const Documents = React.lazy(() => import('../views/pages/Documents'))
+const ContactUs = React.lazy(() => import('../views/pages/ContactUs'))
+const Settings = React.lazy(() => import('../views/pages/Settings'))
 // const notFound = React.lazy(() => import('../views/errorPages/NotFound'))
 
 const routes = [
@@ -26,6 +29,9 @@ const routes = [
     { path: '/product/products', exact: true, name: 'Products', component: Products },
     { path: '/product/product-detail', exact: true, name: 'Products Details', component: ProductDetail },
     { path: '/product/create-new-item', exact: true, name: 'Create Item', component: CreateItem },
+    { path: '/documents', exact: true, name: 'Documents', component: Documents },
+    { path: '/contact-us', exact: true, name: 'Contact Us', component: ContactUs },
+    { path: '/settings', exact: true, name: 'Settings', component: Settings },
 
 ]
 

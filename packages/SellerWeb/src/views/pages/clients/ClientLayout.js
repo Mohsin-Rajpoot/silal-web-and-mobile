@@ -16,7 +16,7 @@ const ClientLayout = () => {
       <div className="main-content d-flex">
         <Sidebar sideBar={sideBar} setSideBar={sideBarToggle} />
         <div className="flex-1">
-          <div class="px-3">
+          <div className="px-3">
             <Nav sideBar={sideBar} setSideBar={setSideBar} />
           </div>
           <Content sideBar={sideBar} setSideBar={sideBarToggle} />

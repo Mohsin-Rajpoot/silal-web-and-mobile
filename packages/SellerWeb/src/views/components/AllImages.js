@@ -45,7 +45,9 @@ import { ReactComponent as AboutIcon } from "../../assets/images/svg/about-icon.
 import { ReactComponent as SettingsIcon } from "../../assets/images/svg/settings.svg"
 import { ReactComponent as PlusIcon } from "../../assets/images/svg/plus-icon.svg"
 import { ReactComponent as DelIcon } from "../../assets/images/svg/del-icon.svg"
-
+import { ReactComponent as ExportIcon } from "../../assets/images/svg/export-icon.svg"
+import { ReactComponent as RightArrow } from "../../assets/images/svg/right-arrow.svg"
+import { ReactComponent as RemoveIcon } from "../../assets/images/svg/remove-icon.svg"
 
 export {
     Menu,
@@ -95,4 +97,7 @@ export {
     bottleImg,
     closeRed,
     DelIcon,
+    ExportIcon,
+    RightArrow,
+    RemoveIcon,
 }

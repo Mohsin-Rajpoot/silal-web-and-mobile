@@ -104,7 +104,7 @@ span {
 }
 .react-calendar {
     width: 292px !important;
-    height: 301px;
+    min-height: 301px;
     padding: 28px 20px;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 32, 51, 0.04), 0px 8px 24px rgba(0, 32, 51, 0.12);

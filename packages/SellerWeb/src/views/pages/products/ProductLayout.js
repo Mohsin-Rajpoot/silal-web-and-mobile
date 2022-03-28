@@ -18,7 +18,7 @@ const ProductLayout = () => {
         <Sidebar sideBar={sideBar} setSideBar={sideBarToggle} />
         <div className="flex-1">
           {pathname == "/product/create-new-item" ? '' :
-            <div class="px-3">
+            <div className="px-3">
               <Nav
                 sideBar={sideBar}
                 setSideBar={setSideBar}

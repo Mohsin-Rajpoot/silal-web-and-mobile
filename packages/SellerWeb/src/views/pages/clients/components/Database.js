@@ -6,20 +6,20 @@ import CanvasModal from "./CanvasModal";
 const Database = () => {
   const [modalShow, setModalShow] = useState(false);
   const [modalType, setModalType] = useState(false);
-  const setModal = (view,type) => {
+  const setModal = (view, type) => {
     setModalShow(view)
     setModalType(type)
   };
   return (
     <>
       <Row className="mt-4 lato">
-        {[...Array(6)].map((x, i) => (
+        {[...Array(12)].map((x, i) => (
           <>
             <Col className="mb-4" xs={12} md={6} lg={4} key={i}>
               <DataCard
                 className="bg-white overflow-hiden"
                 type="button"
-                onClick={() => setModal(true,'reccuring')}
+                onClick={() => setModal(true, 'reccuring')}
               >
                 <DataCardHeader>
                   <HeadingStyled
@@ -84,11 +84,11 @@ const Database = () => {
                 </DataCardBody>
               </DataCard>
             </Col>
-            <Col className="mb-4" xs={12} md={6} lg={4} key={i}>
+            {/* <Col className="mb-4" xs={12} md={6} lg={4} key={i}>
               <DataCard
                 className="bg-white overflow-hiden"
                 type="button"
-                onClick={() => setModal(true,"completed")}
+                onClick={() => setModal(true, "completed")}
               >
                 <DataCardHeader>
                   <HeadingStyled
@@ -152,7 +152,7 @@ const Database = () => {
                   </ul>
                 </DataCardBody>
               </DataCard>
-            </Col>
+            </Col> */}
           </>
         ))}
       </Row>

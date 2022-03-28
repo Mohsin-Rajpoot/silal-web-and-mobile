@@ -52,6 +52,12 @@ const Button = styled.button`
   &.w-148 {
     width: 148px;
   }
+  svg {
+    margin-right: 10px;
+  }
+  &.delete {
+    background-color: #DE350B;
+  }
 `;
 
 const ButtonText = styled.button`
@@ -614,6 +620,72 @@ const UploadedImageSmallContainer = styled.div`
   }
 `;
 
+const SimpleNav = styled.div`
+  margin-top: 19px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 25px;
+  .menu {
+    border: none;
+    background-color: transparent;
+    line-height: 1;
+    svg {
+      width: 19px;
+    }
+  }
+  h1 {
+    margin: 0 0 0 20px;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 25px;
+    letter-spacing: 0.35px;
+    color: #002733;
+  }
+`;
+
+const Description = styled.p`
+  font-family: 'Lato';
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 140%;
+  letter-spacing: -0.408px;
+  color: #002733;
+`;
+
+const ContactButton = styled.button`
+  width: 343px;
+  height: 50px;
+  background: linear-gradient(180deg, #73D5C9 0%, #5AB3A8 100%);
+  box-shadow: 0px 5px 15px -8px rgba(115, 213, 201, 0.4);
+  border-radius: 5px;
+  border: none;
+  font-size: 17px;
+  line-height: 22px;
+  color: #FFFFFF;
+`;
+
+const SettingBtn = styled.button`
+  background: #FFFFFF;
+  border-radius: 5px;
+  border: none;
+  text-align: left;
+  height: 35px;
+  width: 317px;
+  padding: 8px 10px;
+  font-family: 'Lato';
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #002733;
+  margin-bottom: 20px;
+  .icon {
+    margin-right: 10px;
+  }
+  &.red {
+    color: #DE350B;
+  }
+`;
+
 export {
   CardStyled,
   Heading,
@@ -637,4 +709,8 @@ export {
   UsedItemTag,
   UploadImageSmallContainer,
   UploadedImageSmallContainer,
+  SimpleNav,
+  Description,
+  ContactButton,
+  SettingBtn,
 };

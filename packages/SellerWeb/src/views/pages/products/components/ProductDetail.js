@@ -326,7 +326,7 @@ const ProductDetail = () => {
                         <Title>Add-ons</Title>
                         <AddOns>
                             <div className="d-flex justify-content-between">
-                                <div class="mb-15">
+                                <div className="mb-15">
                                     <h1>Toppings: <span>Lettuce, Cheese, Tomatoes, Pickle</span></h1>
                                 </div>
                                 <EditButton>
@@ -342,7 +342,7 @@ const ProductDetail = () => {
                         </AddOns>
                         <AddOns>
                             <div className="d-flex justify-content-between">
-                                <div class="mb-15">
+                                <div className="mb-15">
                                     <h1>Sauces: <span>Ketchup, Maynoaise, BBQ</span></h1>
                                 </div>
                                 <EditButton>
@@ -357,7 +357,7 @@ const ProductDetail = () => {
                         </AddOns>
                         <AddOns>
                             <div className="d-flex justify-content-between">
-                                <div class="mb-15">
+                                <div className="mb-15">
                                     <h1>Drinks: <span>Pepsi, Nestea, Coca-cola, Water, 7UP</span></h1>
                                 </div>
                                 <EditButton>

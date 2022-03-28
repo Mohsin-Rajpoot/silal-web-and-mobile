@@ -996,6 +996,7 @@
   position: relative;
   min-height: 266px;
   overflow: hidden;
+  font-family: 'lato' !important;
 }
 .rs-calendar-bordered .rs-calendar-table {
   border: 1px solid #e5e5ea;
@@ -2479,6 +2480,7 @@ textarea.rs-picker-search-input {
   color: #8e8e93;
   color: var(--rs-text-secondary);
   margin-right: 20px;
+  font-family: 'lato';
 }
 .rs-picker-has-value .rs-btn .rs-picker-toggle-value,
 .rs-picker-has-value .rs-picker-toggle .rs-picker-toggle-value {
@@ -2860,8 +2862,8 @@ textarea.rs-picker-search-input {
 .rs-picker-default .rs-picker-toggle.rs-btn {
   padding-top: 4px;
   padding-bottom: 4px;
-  background: #f2f4f5 !important;
-  height: 30px !important;
+  background: #f2f4f5;
+  height: 30px;
 }
 .rs-picker-toggle.rs-btn-lg {
   font-size: 16px;
@@ -3347,6 +3349,7 @@ textarea.rs-picker-search-input {
   display: none;
 }
 .rs-picker-toggle-value {
+  font-family: 'lato';
   margin-top: 3px;
   margin-right: 15px;
   margin-left: -6px;
@@ -4655,4 +4658,27 @@ textarea.rs-picker-menu .rs-picker-search-bar .rs-picker-search-bar-input {
 }
 button.rs-calendar-header-title.rs-calendar-header-title-date.rs-btn.rs-btn-subtle.rs-btn-xs {
   font-weight: 700;
+}
+.archive-table-range {
+  padding-left: 10px;
+}
+.archive-table-range .rs-btn {
+  padding: 0 27px;
+  height: 40px !important;
+  font-weight: 500;
+  font-size: 15px;
+  color: #4c6870;
+  background-color: white !important;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 0 12px;
+}
+.archive-table-range .rs-picker-toggle .rs-picker-toggle-placeholder {
+  display: block;
+  margin-top: 8px;
+}
+.archive-table-range .rs-picker-toggle-value {
+  margin-top: 8px;
+  font-family: 'lato';
 }
