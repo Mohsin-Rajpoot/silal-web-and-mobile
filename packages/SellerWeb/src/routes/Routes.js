@@ -1,6 +1,5 @@
 import React from 'react'
 import Database from '../views/pages/clients/components/Database'
-
 const Statistics = React.lazy(() => import('../views/pages/home/Statistics'))
 const Reviews = React.lazy(() => import('../views/pages/home/Reviews'))
 const OutOfStock = React.lazy(() => import('../views/pages/home/OutOfStock'))
@@ -11,6 +10,7 @@ const ArchiveOrders = React.lazy(() => import('../views/pages/order/Archive'))
 const Products = React.lazy(() => import('../views/pages/products/components/Products'))
 const ProductDetail = React.lazy(() => import('../views/pages/products/components/ProductDetail'))
 const CreateItem = React.lazy(() => import('../views/pages/products/components/CreateItem'))
+const AllOffers = React.lazy(() => import('../views/pages/offers/AllOffers'))
 const Documents = React.lazy(() => import('../views/pages/Documents'))
 const ContactUs = React.lazy(() => import('../views/pages/ContactUs'))
 const Settings = React.lazy(() => import('../views/pages/Settings'))
@@ -32,6 +32,7 @@ const routes = [
     { path: '/documents', exact: true, name: 'Documents', component: Documents },
     { path: '/contact-us', exact: true, name: 'Contact Us', component: ContactUs },
     { path: '/settings', exact: true, name: 'Settings', component: Settings },
+    { path: '/offers', exact: true, name: 'Settings', component: AllOffers },
 
 ]
 

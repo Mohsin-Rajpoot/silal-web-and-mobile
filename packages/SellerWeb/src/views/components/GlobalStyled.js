@@ -47,8 +47,9 @@ body {
 .f-semibold {
     font-weight: 600;
 }
+
 .f-bold {
-    font-weight: 700;
+    font-weight: 700 !important;
 }
 .f-ubold {
     font-weight: 800;
@@ -477,6 +478,9 @@ hr {
         width: 71px;
         min-width: 71px;
     }
+}
+.radius-0{
+    border-radius:0;
 }
 `;
 

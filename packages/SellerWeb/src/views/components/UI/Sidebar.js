@@ -24,6 +24,7 @@ const Sidebar = ({ sideBar, setSideBar }) => {
   }
   const clientPath = window.location.href.indexOf("client") > -1 ? true : false
   const productPath = window.location.href.indexOf("product") > -1 ? true : false
+  const offersPath = window.location.href.indexOf("offers") > -1 ? true : false
   const { pathname } = useLocation()
 
   return (
@@ -69,7 +70,7 @@ const Sidebar = ({ sideBar, setSideBar }) => {
         <Link
           to="/current-order"
           className={
-            pathname == "/current-order" ||
+              pathname == "/current-order" ||
               pathname == "/pre-order" ||
               pathname == "/archive-order" ||
               pathname == "/order-detail"
@@ -91,7 +92,7 @@ const Sidebar = ({ sideBar, setSideBar }) => {
           <Product />
           Products
         </Link>
-        <Link to="#">
+        <Link to="/offers" className={offersPath && ("active")}>
           <OffersIcon />
           Offers
         </Link>
