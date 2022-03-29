@@ -16,7 +16,9 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import fonts from 'fonts';
 import ProfileBox from './Molecules/ProfileBox';
 import Offers from '../../screens/offers/Offers';
+import {useTranslation} from 'react-i18next';
 const Drawer = props => {
+  const {t} = useTranslation();
   const width = useWindowDimensions().width * 0.3;
   const [expanded, setExpanded] = useState(false);
   return (
@@ -39,7 +41,7 @@ const Drawer = props => {
           fontFamily={fonts.PoppinsMedium}
           fontSize={16}
           color={'#fff'}
-          label="Profile"
+          label={t('Profile')}
         />
         <TouchableOpacity onPress={() => setExpanded(!expanded)}>
           <Icon
@@ -57,7 +59,7 @@ const Drawer = props => {
         <CustomText
           textStyle={styles.drawerText}
           fontFamily={fonts.PoppinsMedium}
-          label="Offers"
+          label={t('offers')}
         />
       </TouchableOpacity>
       <TouchableOpacity
@@ -66,7 +68,7 @@ const Drawer = props => {
         <CustomText
           textStyle={styles.drawerText}
           fontFamily={fonts.PoppinsMedium}
-          label="Documents"
+          label={t('Document')}
         />
       </TouchableOpacity>
       <TouchableOpacity
@@ -75,14 +77,14 @@ const Drawer = props => {
         <CustomText
           textStyle={styles.drawerText}
           fontFamily={fonts.PoppinsMedium}
-          label="Contact us"
+          label={t('contactus')}
         />
       </TouchableOpacity>
 
       <CustomText
         textStyle={styles.drawerText}
         fontFamily={fonts.PoppinsMedium}
-        label="About app"
+        label={t('AboutApp')}
       />
       <View style={{height: verticalScale(50)}} />
       <TouchableOpacity
@@ -91,7 +93,7 @@ const Drawer = props => {
         <CustomText
           textStyle={styles.drawerText}
           fontFamily={fonts.PoppinsMedium}
-          label="Setting"
+          label={t('Setting')}
         />
       </TouchableOpacity>
 

@@ -25,7 +25,9 @@ import {
   widthPercentageToDP as width,
   heightPercentageToDP as height,
 } from 'react-native-responsive-screen';
+import {useTranslation} from 'react-i18next';
 const Profile = () => {
+  const {t} = useTranslation();
   const [isEdit, setIsEdit] = useState(false);
   const [adminModal, setAdminModal] = useState(false);
   const [code, setCode] = useState('');
@@ -71,19 +73,19 @@ const Profile = () => {
                 onPress={() => setIsEdit(!isEdit)}
                 textStyle={{padding: 8, fontSize: 18}}
                 containerStyle={{width: '100%'}}
-                text={'Edit profile'}
+                text={t('EditProfile')}
               />
               <CustomButton
                 onPress={() => setAdminModal(true)}
                 textStyle={{padding: 8, fontSize: 18}}
                 containerStyle={{width: '100%'}}
-                text={'Change admin code'}
+                text={t('ChangeAdminCode')}
               />
               <CustomButton
                 onPress={() => setFreezedModal(true)}
                 textStyle={{padding: 8, fontSize: 18}}
                 containerStyle={{width: '100%'}}
-                text={'Temporary Freezed Modal'}
+                text={t('TemporaryFreezedAccount')}
               />
               <CustomModal
                 isModalVisible={adminModal}
@@ -103,13 +105,13 @@ const Profile = () => {
                   </Pressable>
                   <CustomText
                     fontFamily={fonts.bold}
-                    label="Change admin code for  “Seller’s name”"
+                    label={t('ChangeAdminCode_for_seller')}
                   />
                   <CustomText
                     fontFamily={fonts.LatoRegular}
                     fontSize={13}
                     marginTop={15}
-                    label="Enter your previous code"
+                    label={t('EnterYourPreviousCode')}
                     alignSelf="center"
                   />
                   <OTPInputView
@@ -123,7 +125,7 @@ const Profile = () => {
                     fontFamily={fonts.LatoRegular}
                     fontSize={13}
                     marginTop={15}
-                    label="Repeat code"
+                    label={t('RepeatCode')}
                     alignSelf="center"
                   />
                   <OTPInputView
@@ -139,7 +141,7 @@ const Profile = () => {
                   <CustomButton
                     containerStyle={{alignSelf: 'center'}}
                     textStyle={{marginHorizontal: '23%', paddingVertical: 8}}
-                    text="Submit"
+                    text={t('Submit')}
                   />
                 </ScrollView>
               </CustomModal>
@@ -150,9 +152,12 @@ const Profile = () => {
               <CustomButton
                 onPress={() => setIsEdit(!isEdit)}
                 textStyle={styles.editCancel}
-                text={'Cancel'}
+                text={t('Cancel')}
               />
-              <CustomButton textStyle={styles.editBtn} text={'Save changes'} />
+              <CustomButton
+                textStyle={styles.editBtn}
+                text={t('SaveChanges')}
+              />
             </View>
           )}
         </View>
@@ -173,25 +178,34 @@ const Profile = () => {
               alignItems: 'center',
               marginBottom: verticalScale(20),
             }}>
-            <CustomText fontFamily={fonts.bold} label="Account is freezed" />
+            <CustomText
+              fontFamily={fonts.bold}
+              label={t('Account_is_Freezed')}
+            />
           </View>
           <Text style={styles.freezedMainText}>
-            {' '}
-            It seems that your account was deactivated because {'\n'} it
-            violated the
-            <Text style={{color: colors.primary}}> terms of use </Text> or our
-            <Text style={{color: colors.primary}}> community guideline. </Text>
-            {'\n'} If you believe this was by mistake,{' '}
-            <Text style={{color: colors.primary}}>please contact us.</Text>
+            {t('Account_freezed_detail1') + t('Account_freezed_detail2')}
+            <Text style={{color: colors.primary}}> {t('termOfUse')} </Text>
+            {t('Account_freezed_detail3')}
+            <Text style={{color: colors.primary}}>
+              {' '}
+              {t('community_guideline')}
+            </Text>
+            {'\n'}
+            {t('Account_freezed_detail4')}{' '}
+            <Text style={{color: colors.primary}}>
+              {t('Account_freezed_detail5')}
+            </Text>
           </Text>
           <Text style={[styles.freezedMainTextBottom]}>
-            <Text style={{fontFamily: fonts.LatoBold}}>Note from Silal:</Text>{' '}
-            account freezed for 30 days due to leaving inappropriate reviews on
-            products.
+            <Text style={{fontFamily: fonts.LatoBold}}>
+              {t('NoteForSilal')}
+            </Text>{' '}
+            {t('NoteDetail')}
           </Text>
           <View style={{width: '100%'}}>
             <CustomButton
-              text="Ok"
+              text={t('Ok')}
               textStyle={styles.buttonText}
               containerStyle={styles.buttonContainer}
             />

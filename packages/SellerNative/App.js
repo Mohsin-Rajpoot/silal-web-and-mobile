@@ -10,7 +10,6 @@ import {useTranslation} from 'react-i18next';
 const App = () => {
   const {i18n} = useTranslation();
   const getLang = Preference.get('languageValue');
-  console.log('======getLangaye', getLang);
   useEffect(() => {
     i18n.changeLanguage(getLang ? getLang : 'en');
   }, []);

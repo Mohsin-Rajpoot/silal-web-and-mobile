@@ -4,8 +4,9 @@ import fonts from '@SilalApp/common/assets/fonts';
 import CustomText from '@SilalApp/common/components/CustomText';
 import colors from 'common_colors';
 import React from 'react';
-
+import {useTranslation} from 'react-i18next';
 const ProfileBox = ({navigation}) => {
+  const {t} = useTranslation();
   return (
     <View>
       <View style={styles.mainContainer}>
@@ -27,7 +28,7 @@ const ProfileBox = ({navigation}) => {
           <CustomText
             fontFamily={fonts.PoppinsSemiBold}
             textStyle={styles.btnLogOut}
-            label="Log out"
+            label={t('Logout')}
           />
         </Pressable>
       </View>

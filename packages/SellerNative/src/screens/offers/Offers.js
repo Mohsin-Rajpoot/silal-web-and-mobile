@@ -33,10 +33,10 @@ import DaySelect from '../../components/DaySelection';
 import {days} from '@SilalApp/common/assets/Data';
 import OfferItem from '../../components/OfferItem';
 import {useToast} from 'react-native-toast-notifications';
-import {useTranslation} from 'react-i18next'
+import {useTranslation} from 'react-i18next';
 const Offers = ({navigation}) => {
   const toast = useToast();
-  const {t}=useTranslation()
+  const {t} = useTranslation();
   const init = {
     startDate: '',
     endDate: '',
@@ -92,24 +92,22 @@ const Offers = ({navigation}) => {
     showEndMode('date');
   };
 
-  const DayShower=()=>{
-    var dayAppender=[]
+  const DayShower = () => {
+    var dayAppender = [];
     days.map((item, index) => {
-      dayAppender.push( <DaySelect day={item} />)
+      dayAppender.push(<DaySelect day={item} />);
       // return <DaySelect day={item} />;
-    })
+    });
 
-    return dayAppender
-
-  }
-
+    return dayAppender;
+  };
 
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <Header label={t("offers")} onPress={() => navigation.openDrawer()} />
+      <Header label={t('offers')} onPress={() => navigation.openDrawer()} />
       <Tabs
         containerStyle={{marginTop: 10, marginBottom: 20}}
-        tabs={[t("current"),t("Past")]}
+        tabs={[t('current'), t('Past')]}
         page={page}
       />
       <ScrollView>
@@ -123,7 +121,7 @@ const Offers = ({navigation}) => {
           </View>
           <View style={styles.buttonContainer}>
             <CustomButton
-              text={t("Create_new_offer")}
+              text={t('Create_new_offer')}
               containerStyle={styles.buttonStyle}
               textStyle={styles.buttonText}
               onPress={openCreateOfferModal}
@@ -168,7 +166,7 @@ const Offers = ({navigation}) => {
 
           <View style={{marginVertical: 10}}>
             <CustomButton
-              text={t("SaveChanges")}
+              text={t('SaveChanges')}
               textStyle={styles.modalbutton}
               containerStyle={styles.buttonContainerSaveChanging}
             />
@@ -178,11 +176,11 @@ const Offers = ({navigation}) => {
             source={require('../../Assets/image8.png')}
             style={styles.image}
           />
-          <CustomText label={t("OfferProfile")} textStyle={styles.offerText} />
+          <CustomText label={t('OfferProfile')} textStyle={styles.offerText} />
           <View style={styles.offerNameContainer}>
-            <CustomText label={"Offername"} textStyle={styles.offerName} />
+            <CustomText label={'Offername'} textStyle={styles.offerName} />
             <CustomText
-              label={t("charcterLeft")}
+              label={t('charcterLeft')}
               textStyle={styles.characterLeft}
             />
           </View>
@@ -203,7 +201,7 @@ const Offers = ({navigation}) => {
           </View>
           <View style={styles.offerNameContainer}>
             <CustomText
-              label={t("OfferDescription")}
+              label={t('OfferDescription')}
               textStyle={styles.offerName}
             />
             <CustomText
@@ -223,7 +221,7 @@ const Offers = ({navigation}) => {
             />
           </View>
           <View style={styles.labelContainer}>
-            <CustomText label={t("Duration")} textStyle={styles.offerName} />
+            <CustomText label={t('Duration')} textStyle={styles.offerName} />
           </View>
           <View style={styles.durationContainer}>
             <View style={styles.dateTimeContainer}>
@@ -233,7 +231,7 @@ const Offers = ({navigation}) => {
                     ? moment(offerData.startDate).format('YYYY-MM-DD')
                     : offerData.startDate
                     ? offerData.startDate
-                    : t("start_date")}
+                    : t('start_date')}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -244,13 +242,16 @@ const Offers = ({navigation}) => {
                     ? moment(offerData.endDate).format('YYYY-MM-DD')
                     : offerData.endDate
                     ? offerData.endDate
-                    : t("end_date")}
+                    : t('end_date')}
                 </Text>
               </TouchableOpacity>
             </View>
           </View>
           <View style={styles.labelContainer}>
-            <CustomText label={t("Limited_quantity")} textStyle={styles.offerName} />
+            <CustomText
+              label={t('Limited_quantity')}
+              textStyle={styles.offerName}
+            />
           </View>
           <View>
             <DropDownPicker
@@ -270,32 +271,35 @@ const Offers = ({navigation}) => {
           <View style={styles.checkBoxContainer}>
             <Checkbox>
               <CustomText
-                label={t("TreatOffers")}
+                label={t('TreatOffers')}
                 textStyle={styles.checkboxDetail}
               />
             </Checkbox>
             <Checkbox>
-              <CustomText label={t("Up_sale")} textStyle={styles.checkboxDetail} />
+              <CustomText
+                label={t('Up_sale')}
+                textStyle={styles.checkboxDetail}
+              />
             </Checkbox>
           </View>
           <View style={styles.labelContainer}>
             <CustomText
-              label={t("ActiveDays")}
+              label={t('ActiveDays')}
               textStyle={styles.activeDaysHeading}
             />
           </View>
 
           <View style={styles.daySelectionContainer}>
-             <DayShower/>
+            <DayShower />
             {/* <DaySelect day={"EveryDay"} /> */}
           </View>
           <View style={styles.labelContainer}>
             <CustomText
-              label={t("Active_hours")}
+              label={t('Active_hours')}
               textStyle={styles.activeDaysHeading}
             />
           </View>
-          <DaySelect day={t("all_day")} />
+          <DaySelect day={t('all_day')} />
           <View style={styles.labelContainer}>
             <View
               style={{
@@ -416,7 +420,7 @@ const Offers = ({navigation}) => {
                 </TouchableOpacity>
 
                 <CustomText
-                  label="Create offer"
+                  label={t('createOffer')}
                   textStyle={styles.creareOfferText}
                 />
               </View>
@@ -434,19 +438,22 @@ const Offers = ({navigation}) => {
             <OfferItem />
             <View style={styles.pricingContainer}>
               <View style={styles.innerPricingContainer}>
-                <CustomText label="Old total" textStyle={styles.pricingTitle} />
+                <CustomText
+                  label={t('oldTotal')}
+                  textStyle={styles.pricingTitle}
+                />
                 <CustomText label="$ 3.75" textStyle={styles.price} />
               </View>
               <View style={styles.innerPricingContainer}>
                 <CustomText
-                  label="New total will be"
+                  label={t('newTotal')}
                   textStyle={styles.pricingTitle}
                 />
                 <CustomText label="$ 2.50" textStyle={styles.price} />
               </View>
               <View style={styles.innerPricingContainer}>
                 <CustomText
-                  label="Customer will save"
+                  label={t('customerWillSave')}
                   textStyle={styles.pricingTitle}
                 />
                 <CustomText label="$ 1.25" textStyle={styles.price} />
@@ -463,13 +470,13 @@ const Offers = ({navigation}) => {
                   size={30}
                 />
                 <CustomText
-                  label="Add item to offer"
+                  label={t('AddItemToOffer')}
                   textStyle={styles.addItemText}
                 />
               </TouchableOpacity>
 
               <CustomButton
-                text="Apply"
+                text={t('Apply')}
                 textStyle={styles.applyButtonText}
                 containerStyle={styles.applycontainer}
                 onPress={() => {
