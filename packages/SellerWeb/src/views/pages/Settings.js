@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
-import { Modal, Col } from 'react-bootstrap'
+import { Modal, Row, Col } from 'react-bootstrap'
 import {
     SimpleNav,
     CardStyled,
     HeadingStyled,
     SettingBtn,
     Button,
-    ThemeModal
+    ThemeModal,
+    Radio,
 } from '../components/Style'
 import {
     Menu,
     RightArrow,
     RemoveIcon,
+    BackArrow,
 } from '../components/AllImages'
 
 const Settings = ({
@@ -19,6 +21,7 @@ const Settings = ({
     setSideBar,
 }) => {
     const [showDelModal, setShowDelModal] = useState(false)
+    const [preOrder, setPreOrder] = useState(false)
 
     const sidebarHandler = () => {
         setSideBar(!sideBar)
@@ -35,21 +38,56 @@ const Settings = ({
                 </button>
                 <h1>Settings</h1>
             </SimpleNav>
-            <HeadingStyled size="15" weight="700" className="lato mb-1">Title</HeadingStyled>
-            <SettingBtn className="between">
-                Pre-order settings
-                <RightArrow />
-            </SettingBtn>
-            <HeadingStyled size="15" weight="700" className="lato mb-1">Account</HeadingStyled>
-            <SettingBtn
-                className="between red"
-                onClick={handleShowDelModal}>
-                <div className="d-flex align-items-center">
-                    <RemoveIcon />
-                    Delete account
-                </div>
-                <RightArrow />
-            </SettingBtn>
+            {preOrder ?
+                <>
+                    <div className="d-flex mb-3">
+                        <button
+                            type="button"
+                            className="back-arrow"
+                            onClick={() => setPreOrder(false)}>
+                            <BackArrow />
+                        </button>
+                        <HeadingStyled size="19px" weight="700" className="poppins mb-0">Pre-order settings</HeadingStyled>
+                    </div>
+                    <Row>
+                        <Col xl={4} lg={5} md={6} xs={12}>
+                            <CardStyled>
+                                <HeadingStyled size="15px" weight="700" className="lato mb-1">Allow pre-orders</HeadingStyled>
+                                <Radio>
+                                    Always
+                                    <input type="radio" name="pre-orders" />
+                                    <span className="checkmark"></span>
+                                </Radio>
+                                <Radio>
+                                    Never
+                                    <input type="radio" name="pre-orders" />
+                                    <span className="checkmark"></span>
+                                </Radio>
+                            </CardStyled>
+                        </Col>
+                    </Row>
+                </>
+                :
+                <>
+                    <HeadingStyled size="15px" weight="700" className="lato mb-1">Title</HeadingStyled>
+                    <SettingBtn
+                        className="between"
+                        onClick={() => setPreOrder(true)}>
+                        Pre-order settings
+                        <RightArrow />
+                    </SettingBtn>
+                    <HeadingStyled size="15px" weight="700" className="lato mb-1">Account</HeadingStyled>
+                    <SettingBtn
+                        className="between red"
+                        onClick={handleShowDelModal}>
+                        <div className="d-flex align-items-center">
+                            <RemoveIcon />
+                            Delete account
+                        </div>
+                        <RightArrow />
+                    </SettingBtn>
+                </>
+            }
 
             <Modal show={showDelModal} onHide={handleCloseDelModal} centered>
                 <ThemeModal>

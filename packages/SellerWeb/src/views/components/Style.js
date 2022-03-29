@@ -388,7 +388,7 @@ const FlexContainer = styled.div`
   align-items:center;
 `;
 
-const HeadingStyled = styled.div`
+const HeadingStyled = styled.h1`
   font-size:${(props) => props.size && (props.size)};
   font-weight:${(props) => props.weight && (props.weight)};
   color:${(props) => props.color ? props.color : "inherit"};
@@ -686,6 +686,58 @@ const SettingBtn = styled.button`
   }
 `;
 
+const Radio = styled.label`
+  display: block;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  font-family: 'Lato';
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 120%;
+  letter-spacing: -0.408px;
+  color: #002733;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid #E8E8E8;
+    border-radius: 50%;
+  }
+  &:hover input ~ .checkmark {
+    background-color: #f1f1f1;
+  }
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  input:checked ~ .checkmark:after {
+    display: block;
+  }
+  input:checked ~ .checkmark {
+    border-color: var(--theme-clr);
+  }
+  .checkmark:after {
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--theme-clr);
+  }
+`;
+
 export {
   CardStyled,
   Heading,
@@ -713,4 +765,5 @@ export {
   Description,
   ContactButton,
   SettingBtn,
+  Radio,
 };
