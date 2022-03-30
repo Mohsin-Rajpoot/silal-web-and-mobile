@@ -11,9 +11,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import LockOnLandscape from '../components/Dashboard/LockOnLandscape';
 // import StatisticWhiteBoxTitle from '../components/StatisticWhiteBoxTitle';
+import {useTranslation} from 'react-i18next'
 const { width, height } = Dimensions.get("window");
 
 const Home = ({ navigation }) => {
+  const {t}=useTranslation()
   const [Statistic, setStatistic] = useState(true);
   const [Reviews, setReviews] = useState(false);
   const [Outofstock, setOutofstack] = useState(false);
@@ -24,13 +26,13 @@ const Header=()=>{
   return(
       <View style={{ paddingVertical: 15,flex:1, flexDirection: 'row',}}>
         <TouchableOpacity onPress={()=>set_order_state('current')}  style={[styles.order_button,{backgroundColor:order_state=='current'? '#5AB3A8':null,width:200}]}>
-          <Text style={[styles.order_button_text,{color:order_state=='current'?'white':'#4C6870'}]}>Current orders</Text>
+          <Text style={[styles.order_button_text,{color:order_state=='current'?'white':'#4C6870'}]}>{t("current-order")}</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>set_order_state('preorder')}  style={[styles.order_button,{backgroundColor:order_state=='preorder'? '#5AB3A8':null,width:200}]}>
-          <Text style={[styles.order_button_text,{color:order_state=='preorder'?'white':'#4C6870'}]}>pre-orders (8)</Text>
+          <Text style={[styles.order_button_text,{color:order_state=='preorder'?'white':'#4C6870'}]}>{t("pre-orders")} (8)</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>set_order_state('archive')}  style={[styles.order_button,{backgroundColor:order_state=='archive'? '#5AB3A8':null,width:120}]}>
-          <Text style={[styles.order_button_text,{color:order_state=='archive'?'white':'#4C6870'}]}>Archive</Text>
+          <Text style={[styles.order_button_text,{color:order_state=='archive'?'white':'#4C6870'}]}>{t("Archive")}</Text>
         </TouchableOpacity>
       </View>
   )

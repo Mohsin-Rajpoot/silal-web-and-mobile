@@ -169,12 +169,12 @@ const Home = ({navigation}) => {
           />
           <CustomButton
             onPress={() => onCurrentOrder(1)}
-            text="Reviews"
+            text={t('reviews')}
             type={Reviews ? 'PRIMARY' : 'TERTIARY'}
           />
           <CustomButton
             onPress={() => onCurrentOrder(2)}
-            text="Out-of-stock"
+            text={t('out_of_stock')}
             type={Outofstock ? 'PRIMARY' : 'TERTIARY'}
           />
         </View>
@@ -226,7 +226,7 @@ const Home = ({navigation}) => {
                     style={styles.CurrencyImage}
                   />
                 </View>
-                <StatisticWhiteBoxTitle Title="Total Sales" />
+                <StatisticWhiteBoxTitle Title={t('Total_sales')} />
                 <View
                   style={[
                     styles.PercentageBkgGreen,
@@ -254,7 +254,7 @@ const Home = ({navigation}) => {
                     style={{fontSize: 30, color: '#5AB3A8'}}
                   />
                 </View>
-                <StatisticWhiteBoxTitle Title="Total Orders" />
+                <StatisticWhiteBoxTitle Title={t('Total_orders')} />
                 <View
                   style={[
                     styles.PercentageBkgGreen,
@@ -280,7 +280,7 @@ const Home = ({navigation}) => {
                     style={styles.CurrencyImage}
                   />
                 </View>
-                <StatisticWhiteBoxTitle Title="Out-of-stock items" />
+                <StatisticWhiteBoxTitle Title={t('out_of_stock_item')} />
               </View>
               <Text style={styles.DollorSign}>6</Text>
             </View>
@@ -293,7 +293,7 @@ const Home = ({navigation}) => {
                     style={{fontSize: 30, color: '#5AB3A8'}}
                   />
                 </View>
-                <StatisticWhiteBoxTitle Title="Total Rating" />
+                <StatisticWhiteBoxTitle Title={t('Total_rating')} />
                 <View
                   style={[
                     styles.PercentageBkgGreen,
@@ -323,7 +323,9 @@ const Home = ({navigation}) => {
           {/* ****************************************Hot Products And OverView************************************ */}
           <View style={{flexDirection: 'row', marginHorizontal: 30}}>
             <View style={styles.HotproductMainContainer}>
-              <Text style={styles.headerTitleSecondary}>Hot products</Text>
+              <Text style={styles.headerTitleSecondary}>
+                {t('Hot_products')}
+              </Text>
               <View style={{}}>
                 <FlatList
                   data={data}
@@ -371,7 +373,7 @@ const Home = ({navigation}) => {
               </View>
               <View style={styles.PeackTimeBackground}>
                 <Text style={styles.TextPeackTime}>
-                  PEAK HOURS 12 AM - 14 PM
+                  {t('peakhours')} 12 AM - 14 PM
                 </Text>
               </View>
             </View>
@@ -403,7 +405,7 @@ const Home = ({navigation}) => {
                       color: '#002733',
                       left: -8,
                     }}>
-                    Reviews
+                    {t('reviews')}
                   </Text>
                   <Calender />
                 </View>
@@ -474,7 +476,7 @@ const Home = ({navigation}) => {
                             flexDirection: 'row',
                             justifyContent: 'space-between',
                           }}>
-                          <CustomButton text="Reply" />
+                          <CustomButton text={t('reply')} />
                           <TouchableOpacity
                             style={{
                               justifyContent: 'center',
@@ -486,7 +488,7 @@ const Home = ({navigation}) => {
                                 fontFamily: 'Poppins-SemiBold',
                                 fontSize: 13,
                               }}>
-                              Contact support
+                              {t('contact_support')}
                             </Text>
                           </TouchableOpacity>
                         </View>
@@ -521,7 +523,7 @@ const Home = ({navigation}) => {
                     fontSize: 18,
                     paddingVertical: 15,
                   }}>
-                  Reviews overview
+                  {t('review_overview')}
                 </Text>
                 <View
                   style={{
@@ -535,7 +537,7 @@ const Home = ({navigation}) => {
                       color: '#002733',
                       fontSize: 13,
                     }}>
-                    Total{' '}
+                    {t('Total')}
                   </Text>
                   <Text
                     style={{
@@ -569,7 +571,7 @@ const Home = ({navigation}) => {
                       color: '#002733',
                       fontSize: 13,
                     }}>
-                    Answered{' '}
+                    {t('Answered')}
                   </Text>
                   <Text
                     style={{
@@ -602,7 +604,7 @@ const Home = ({navigation}) => {
                       color: '#002733',
                       fontSize: 13,
                     }}>
-                    Total raiting{' '}
+                    {t('total-rating')}
                   </Text>
                   <Text
                     style={{
@@ -644,14 +646,14 @@ const Home = ({navigation}) => {
                 elevation: 1,
               }}>
               <View />
-              <Text style={styles.HeadingOutofStack}>Photo</Text>
-              <Text style={styles.HeadingOutofStack}>Item name</Text>
-              <Text style={styles.HeadingOutofStack}>Category</Text>
-              <Text style={styles.HeadingOutofStack}>Remaining</Text>
-              <Text style={styles.HeadingOutofStack}>Variant</Text>
-              <Text style={styles.HeadingOutofStack}>Status</Text>
-              <Text style={styles.HeadingOutofStack}>Price</Text>
-              <Text style={styles.HeadingOutofStack}>Action</Text>
+              <Text style={styles.HeadingOutofStack}>{t('photo')}</Text>
+              <Text style={styles.HeadingOutofStack}>{t('item_name')}</Text>
+              <Text style={styles.HeadingOutofStack}>{t('Category')}</Text>
+              <Text style={styles.HeadingOutofStack}>{t('remaining')}</Text>
+              <Text style={styles.HeadingOutofStack}>{t('Variant')}</Text>
+              <Text style={styles.HeadingOutofStack}>{t('Status')}</Text>
+              <Text style={styles.HeadingOutofStack}>{t('price')}</Text>
+              <Text style={styles.HeadingOutofStack}>{t('Action')}</Text>
             </View>
 
             {/* //////////////////////// */}

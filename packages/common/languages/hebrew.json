@@ -1,11 +1,11 @@
 {
     "translation":{
         "hebrew":"Hebrew",
-       "login":"Log in",
+       "login":"התחברות",
        "signup":"Sign up",
        "Setting":"Setting",
        "RestaurantName":"Restaurant Name",
-       "Statistics":"Statistics",
+       "Statistics":"סטָטִיסטִיקָה",
        "title":"Title",
        "PreOrderSetting":"Pre-order settings",
        "ChangeLanguage":"Change Language",
@@ -209,9 +209,6 @@
         "password_length":"8 to 20 characters",
         "Letter_numbers_characters":"Letters, numbers, special characters",
         "Change_password":"Change Password"
-
-
-
 
 
 

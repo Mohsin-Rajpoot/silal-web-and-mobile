@@ -14,6 +14,10 @@ const styles = ScaledSheet.create({
     alignSelf: "center",
     flexGrow: 1,
   },
+  dropDownStyle1:{
+    width:'50%',
+    backgroundColor:"red"
+  },
   phoneNumberText: {
     color: colors.textPrimary,
     marginBottom:'5@ms',

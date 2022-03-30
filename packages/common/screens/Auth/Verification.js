@@ -8,9 +8,10 @@ import styles from "./style";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 import Button from "../../components/native/AuthButton";
 import AuthCustomText from "../../components/native/AuthCustomText";
+import { useTranslation } from "react-i18next";
 const Verification = ({ route, navigation }) => {
   const { params } = route?.params;
-
+  const { t } = useTranslation();
   const [code, setCode] = useState("");
   const detail = "We will email your a code to reset password";
   const goToChangePassword = () => {
@@ -30,7 +31,7 @@ const Verification = ({ route, navigation }) => {
   };
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
-      <HeaderBack name="Verification" onGoBack={goBack} />
+      <HeaderBack name={t("verification")} onGoBack={goBack} />
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
@@ -39,18 +40,20 @@ const Verification = ({ route, navigation }) => {
         <View style={{ flexGrow: 1 }}>
           <HeaderHeading
             headingName={`${
-              params?.active == 3 ? "Enter 6-digit code" : "Verification code"
+              params?.active == 3
+                ? t("enter_6_digit_code")
+                : t("Verification_code")
             }`}
           />
           <AuthCustomText
             fisrtText={
               params?.active == 3
                 ? detail
-                : ` We have sent the code verification to your ${
+                : ` ${t("Verification_email_detail")} ${
                     params?.active == 1
-                      ? "mobile number"
+                      ? t("mobile_number")
                       : params?.active == 2
-                      ? "email"
+                      ? t("email_text")
                       : ""
                   } `
             }
@@ -66,16 +69,27 @@ const Verification = ({ route, navigation }) => {
           {/* <View style={{ flex: 1 }}> */}
           <OTPInputView
             autoFocusOnLoad={true}
-            pinCount={params?.active == 1 ? 5 : params?.active == 2 ? 6 : 5}
+            pinCount={
+              params?.active == 1
+                ? 5
+                : params?.active == 2
+                ? 6
+                : params?.active == 3
+                ? 6
+                : 5
+            }
             style={styles.optStyling}
             codeInputFieldStyle={styles.optContainer}
             handleChange={(value) => setCode(value)}
           />
-          <CustomText label="Resend code 3:23" textStyle={styles.timerCode} />
+          <CustomText
+            label={t("resend_code") + " 3:23"}
+            textStyle={styles.timerCode}
+          />
           {/* </View> */}
           <View style={{ flex: 1 }} />
           <Button
-            name={params?.active == 3 ? "Submit" : "Verify"}
+            name={params?.active == 3 ? t("Submit") : t("Verify")}
             onPress={() => {
               params.active == 3
                 ? goToChangePassword()

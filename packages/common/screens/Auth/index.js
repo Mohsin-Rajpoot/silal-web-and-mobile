@@ -4,6 +4,7 @@ import {
   Image,
   SafeAreaView,
   TouchableOpacity,
+  I18nManager,
 } from "react-native";
 import React, { useRef, useState, useEffect } from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
@@ -14,9 +15,23 @@ import {
   removeOrientationListener as rol,
 } from "react-native-responsive-screen-hooks";
 import AuthButton from "../../components/native/AuthButton";
+import DropDownPicker from "react-native-dropdown-picker";
+import Preference from "react-native-preference";
+import RNRestart from "react-native-restart";
+import { useTranslation } from "react-i18next";
+import colors from "../../assets/colors";
+import fonts from "../../assets/fonts";
 const OnBoarding = ({ navigation }) => {
+  const { t, i18n } = useTranslation();
+  const getLang = Preference.get("languageValue");
   const [orientation, setOrientation] = useState("portrait");
-
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(getLang);
+  const [items, setItems] = useState([
+    { label: t("English"), value: "en" },
+    { label: t("Arabic"), value: "ar" },
+    { label: t("hebrew"), value: "he" },
+  ]);
   const ref = useRef(null);
   const [page, setPage] = useState(1);
   useEffect(() => {
@@ -72,14 +87,45 @@ const OnBoarding = ({ navigation }) => {
               <Text style={styles.body}> {item?.body}</Text>
             </View>
             {page == 3 ? (
-              <View style={{ flex: 0.6, justifyContent: "flex-end" }}>
-                <AuthButton name="Sign up" onPress={goToSignUp} />
-                <AuthButton
-                  name="Login"
-                  changeColor={true}
-                  onPress={goToLogin}
-                />
+              < >
+              <View style={{width:'65%'}}>
+              <Text style={{fontSize:20, color:colors.black, alignSelf:'flex-start', fontFamily:fonts.bold}}>{t("ChangeLanguage")}</Text>
               </View>
+
+              <View style={{width:"65%", alignSelf:'center', marginVertical:10, marginBottom:10}}> 
+                <DropDownPicker
+                  open={open}
+                  value={value}
+                  items={items}
+                  setOpen={setOpen}
+                  setValue={setValue}
+                  setItems={setItems}
+                  placeholder="Select Language"
+                  style={styles.dropDownStyle1}
+                  placeholderStyle={styles.dropDownPlaceHolder}
+                  dropDownContainerStyle={styles.dropdownContainer}
+                  iconContainerStyle={{ backgroundColor: "red" }}
+                  onChangeValue={(language) => {
+                    i18n.changeLanguage(language).then(() => {
+                      I18nManager.forceRTL(
+                        language === "ar" || language === "he"
+                      );
+                      RNRestart.Restart();
+                    });
+                    Preference.setWhiteList([]);
+                    Preference.set("languageValue", language);
+                  }}
+                />
+                </View>
+                <View style={{ flex: 0.6, justifyContent: "flex-end" }}>
+                  <AuthButton name={t("signup")} onPress={goToSignUp} />
+                  <AuthButton
+                    name={t("login")}
+                    changeColor={true}
+                    onPress={goToLogin}
+                  />
+                </View>
+              </>
             ) : (
               <View />
             )}

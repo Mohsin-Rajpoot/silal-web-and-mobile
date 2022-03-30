@@ -15,7 +15,9 @@ import TextInput from "../../components/native/TextInput";
 
 import HeaderBack from "../../components/native/HeaderBack";
 import colors from "../../assets/colors";
+import { useTranslation } from "react-i18next";
 const Login = ({ navigation, route }) => {
+  const { t } = useTranslation();
   const data = route?.params;
   const [active, setActive] = useState(1);
   const [text, setText] = useState("");
@@ -28,7 +30,7 @@ const Login = ({ navigation, route }) => {
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
       <HeaderBack
-        name={data?.params?.signUp ? "Sign Up" : "Login"}
+        name={data?.params?.signUp ? t("signup") : t("login")}
         onGoBack={goBack}
       />
       <ScrollView
@@ -42,18 +44,18 @@ const Login = ({ navigation, route }) => {
         <View style={styles.innerContainer}>
           {active == 2 ? (
             <View>
-              <Text style={styles.phoneNumberText}>Email</Text>
+              <Text style={styles.phoneNumberText}>{t("email")}</Text>
               <TextInput placeholderText="email.example@gmail.com" />
-              <Text style={styles.phoneNumberText}>Password</Text>
+              <Text style={styles.phoneNumberText}>{t("Password")}</Text>
               <TextInput
-                placeholderText="Enter password"
+                placeholderText={t("Enter_password")}
                 secureText={true}
                 password={true}
               />
             </View>
           ) : active == 1 ? (
             <View>
-              <Text style={styles.phoneNumberText}>Phone number</Text>
+              <Text style={styles.phoneNumberText}>{t("phone_number")}</Text>
               <PhoneInput
                 containerStyle={CommonStyle.phoneNumberInput}
                 textContainerStyle={styles.textContainer}
@@ -66,7 +68,7 @@ const Login = ({ navigation, route }) => {
                 onChangeText={(value) => setText(value)}
                 // onChangeFormattedText={(value) => setText(value)}
                 value={text}
-                placeholder="Phone Number"
+                placeholder={t("phone_number")}
               />
             </View>
           ) : (
@@ -76,7 +78,7 @@ const Login = ({ navigation, route }) => {
         <View style={{ flexGrow: 1 }} />
         <Button
           changeColor={true}
-          name={data?.params?.signUp ? "Next" : "Continue"}
+          name={data?.params?.signUp ? t("next") : t("Continue")}
           onPress={() =>
             navigation.navigate("Verification", {
               params: {
@@ -97,19 +99,25 @@ const Login = ({ navigation, route }) => {
             <View style={{ justifyContent: "center" }}>
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Text style={styles.signUpDetailText}>
-                  By signing up, you agree to the
+                  {t("by_signing_up")}
                 </Text>
                 <TouchableOpacity activeOpacity={0.6}>
-                  <Text style={styles.termCondition}> Terms of Service </Text>
+                  <Text style={styles.termCondition}>
+                    {" "}
+                    {t("Terms-of-services")}{" "}
+                  </Text>
                 </TouchableOpacity>
-                <Text style={styles.signUpDetailText}>and</Text>
+                <Text style={styles.signUpDetailText}>{t("and")}</Text>
                 <TouchableOpacity activeOpacity={0.6}>
-                  <Text style={styles.termCondition}> Privacy Policy</Text>
+                  <Text style={styles.termCondition}>
+                    {" "}
+                    {t("Privacy-policy")}
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
           ) : (
-            <Text style={styles.bottomText}>Trouble signing in?</Text>
+            <Text style={styles.bottomText}>{t("trouble_sign_in")}</Text>
           )}
 
           {data?.params?.signUp ? (
@@ -123,7 +131,7 @@ const Login = ({ navigation, route }) => {
             >
               <Text style={styles.nestedBottomText}>
                 {" "}
-                {active == 1 ? "Contact Us" : "Forgot password"}
+                {active == 1 ? t("contactus") : t("forget_password")}
               </Text>
             </TouchableOpacity>
           )}

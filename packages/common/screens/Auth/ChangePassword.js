@@ -8,7 +8,9 @@ import TextInput from "../../components/native/TextInput";
 import styles from "./style";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Button from "../../components/native/AuthButton";
+import { useTranslation } from "react-i18next";
 const ChangePassword = ({ navigation }) => {
+  const { t } = useTranslation();
   const goBack = () => {
     navigation.pop();
   };
@@ -20,18 +22,24 @@ const ChangePassword = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
-        <HeaderHeading headingName="Create a new password" />
+        <HeaderHeading headingName={t("Create_new_password")} />
         <View style={CommonStyle.CommonView}>
-          <CustomText label="Password" textStyle={styles.phoneNumberText} />
-          <TextInput placeholderText="Enter password" secureText={true} />
           <CustomText
-            label="Confirm Password"
+            label={t("Password")}
             textStyle={styles.phoneNumberText}
           />
-          <TextInput placeholderText="Confirm password" secureText={true} />
+          <TextInput placeholderText={t("Enter_password")} secureText={true} />
+          <CustomText
+            label={t("Change_password")}
+            textStyle={styles.phoneNumberText}
+          />
+          <TextInput
+            placeholderText={t("Confirm_password")}
+            secureText={true}
+          />
           <View style={styles.changePassword}>
             <CustomText
-              label="Your password should contain :"
+              label={t("your_password_should_contain")}
               textStyle={styles.phoneNumberText}
             />
 
@@ -40,7 +48,9 @@ const ChangePassword = ({ navigation }) => {
                 name="checkcircleo"
                 style={styles.passwordWarningText}
               />
-              <Text style={styles.passwordWarningText}>8 to 20 characters</Text>
+              <Text style={styles.passwordWarningText}>
+                {t("password_length")}
+              </Text>
             </View>
             <View style={styles.passwordWaring}>
               <AntDesign
@@ -48,12 +58,12 @@ const ChangePassword = ({ navigation }) => {
                 style={styles.passwordWarningText}
               />
               <Text style={styles.passwordWarningText}>
-                Letters, numbers, special characters
+                {t("Letter_numbers_characters")}
               </Text>
             </View>
           </View>
 
-          <Button name="Change Password" />
+          <Button name={t("Change_password")} />
         </View>
       </ScrollView>
     </View>

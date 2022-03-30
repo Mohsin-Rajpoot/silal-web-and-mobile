@@ -7,7 +7,9 @@ import CustomText from "../../components/CustomText";
 import styles from "./style";
 import TextInput from "../../components/native/TextInput";
 import Button from "../../components/native/AuthButton";
+import { useTranslation } from "react-i18next";
 const ForgetPassword = ({ navigation }) => {
+  const { t } = useTranslation();
   const goVerification = () => {
     navigation.navigate("Verification", {
       params: {
@@ -25,18 +27,18 @@ const ForgetPassword = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
-        <HeaderBack name="Reset Password" onGoBack={goBack} />
+        <HeaderBack name={t("Reset_password")} onGoBack={goBack} />
         <View style={{ marginVertical: 20 }}>
           <HeaderHeading
-            headingName="Enter your email"
-            headingDetail="We will email your a code to reset password"
+            headingName={t("enter_your_email")}
+            headingDetail={t("we_will_email_you_code")}
           />
         </View>
         <View style={CommonStyle.CommonView}>
-          <CustomText label="Email" textStyle={styles.phoneNumberText} />
+          <CustomText label={t("email")} textStyle={styles.phoneNumberText} />
           <TextInput placeholderText="email.example@gmail.com" />
         </View>
-        <Button name="Reset" onPress={goVerification} />
+        <Button name={t("Reset")} onPress={goVerification} />
       </ScrollView>
     </SafeAreaView>
   );

@@ -35,6 +35,7 @@ const Setting = ({navigation}) => {
   const [items, setItems] = useState([
     {label: t('English'), value: 'en'},
     {label: t('Arabic'), value: 'ar'},
+    {label: t('hebrew'), value: 'he'},
   ]);
   return (
     <View style={styles.mainContainer}>
@@ -69,7 +70,7 @@ const Setting = ({navigation}) => {
             iconContainerStyle={{backgroundColor: 'red'}}
             onChangeValue={language => {
               i18n.changeLanguage(language).then(() => {
-                I18nManager.forceRTL(language === 'ar');
+                I18nManager.forceRTL(language === 'ar' || language === 'he');
                 RNRestart.Restart();
               });
               Preference.setWhiteList([]);
@@ -228,12 +229,12 @@ const styles = ScaledSheet.create({
   dropDownStyle: {
     width: '35%',
     marginVertical: '5@s',
-    borderColor:colors.light_grey,
-    height:'30@s'
+    borderColor: colors.light_grey,
+    height: '30@s',
   },
-  dropdownContainer:{
-    width:'35%',
-    borderColor:colors.light_grey
+  dropdownContainer: {
+    width: '35%',
+    borderColor: colors.light_grey,
   },
   preOrderText: {
     fontFamily: fonts.bold,

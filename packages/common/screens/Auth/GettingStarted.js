@@ -4,8 +4,9 @@ import HeaderHeading from "../../components/headerHeading";
 import HeaderBack from "../../components/native/HeaderBack";
 import CommonIcon from "../../components/native/AuthCommonIcon";
 import AuthButton from "../../components/native/AuthButton";
-
+import { useTranslation } from "react-i18next";
 const GettingStarted = ({ navigation, route }) => {
+  const { t } = useTranslation();
   const data = route?.params;
   const goToSignUpForm = () => {
     navigation.navigate("SignUpForm");
@@ -23,17 +24,15 @@ const GettingStarted = ({ navigation, route }) => {
         showsVerticalScrollIndicator={false}
       >
         <View style={{ flexGrow: 1 }}>
-          <HeaderBack name={"Registration"} onGoBack={goBack} />
+          <HeaderBack name={t("Registration")} onGoBack={goBack} />
 
           <View style={{ width: "70%", alignSelf: "center" }}>
             {data?.params?.gettingStarted ? (
               <View />
             ) : (
               <HeaderHeading
-                headingName={"Fill out a questionnaire"}
-                headingDetail={
-                  "In order to register on the platform, please tell us in detail about your business and wait till for verification"
-                }
+                headingName={t("Fill_out_questionnaire")}
+                headingDetail={t("questionnaire_detail")}
               />
             )}
             <CommonIcon />
@@ -51,7 +50,7 @@ const GettingStarted = ({ navigation, route }) => {
         </View>
         <View style={{ marginBottom: 30 }}>
           <AuthButton
-            name={data?.params?.gettingStarted ? "How to work" : "Start"}
+            name={data?.params?.gettingStarted ? "How to work" : t("Start")}
             onPress={() => {
               data?.params?.gettingStarted ? goToMainStack() : goToSignUpForm();
             }}
