@@ -3,6 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import styled from "styled-components";
 import { FlexContainer, HeadingStyled } from "../../../components/Style";
 import CanvasModal from "./CanvasModal";
+
 const Database = () => {
   const [modalShow, setModalShow] = useState(false);
   const [modalType, setModalType] = useState(false);
@@ -10,6 +11,7 @@ const Database = () => {
     setModalShow(view)
     setModalType(type)
   };
+
   return (
     <>
       <Row className="mt-4 lato">

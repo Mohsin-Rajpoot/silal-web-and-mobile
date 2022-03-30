@@ -12,7 +12,8 @@ import { ArrowLeft } from "react-bootstrap-icons";
 import { Burger } from "../../../components/AllImages";
 import styled from "styled-components";
 import { BorderSeprator } from "../AllOffers";
-const AddItemModal = ({ show, setShow, type }) => {
+
+const AddItemModal = ({ show, setShow }) => {
   const [canvasShow, setCanvasShow] = useState(false);
   const canvasCloseHandler = () => {
     setCanvasShow(false);
@@ -21,8 +22,9 @@ const AddItemModal = ({ show, setShow, type }) => {
   useEffect(() => {
     setCanvasShow(show);
   }, [show]);
+
   return (
-    <Offcanvas show={false} onHide={canvasCloseHandler} placement="end" style={{width:800}}>
+    <Offcanvas show={canvasShow} onHide={canvasCloseHandler} placement="end" style={{width:800}}>
       <Offcanvas.Header closeButton>
         <Offcanvas.Title className="f-bold">
           <ArrowLeft className="me-2" size={30} />Create offer
