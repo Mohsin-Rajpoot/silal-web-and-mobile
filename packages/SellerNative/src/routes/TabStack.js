@@ -36,10 +36,10 @@ const TabStack = () => {
         }}
       />
       <Tab.Screen
-        name="Order"
+        name="OrderStack"
         component={OrderStack}
         options={{
-          tabBarLabel: 'OrderStack',
+          tabBarLabel: 'Orders',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="bus" color={color} size={size} />
           ),

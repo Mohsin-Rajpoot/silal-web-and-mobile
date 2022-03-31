@@ -235,9 +235,9 @@ export default function Pre_orders({title, navigation}) {
 
   return (
         
-      <View style={{height:'80%',width:'100%'}}>
+      <View style={{flexDirection:'row',justifyContent:'space-evenly',height:'100%'}}>
 
-          <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
+          {/* <View style={{flexDirection:'row',justifyContent:'space-evenly',}}> */}
             <View style={{backgroundColor:'#E5EAEB',width:'48%',borderRadius:5}}>
                 <Text style={styles.title}>For today</Text>
                 <FlatList
@@ -292,7 +292,7 @@ export default function Pre_orders({title, navigation}) {
             {render_modal_view()}
             </Modal>
 
-          </View>
+          {/* </View> */}
 
       </View>
 
