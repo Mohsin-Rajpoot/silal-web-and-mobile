@@ -72,6 +72,7 @@ const Nav = ({ sideBar, setSideBar }) => {
         </Link>
       </FlexContainer>
       <AddItemModal show={modalShow} setShow={setModal} />
+      <EditItemModal show={modalShow} setShow={setModal} />
     </React.Fragment>
   );
 };
