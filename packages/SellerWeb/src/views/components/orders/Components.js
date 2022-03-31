@@ -234,6 +234,7 @@ const OrderHistory = () => {
 const PreOrder = ({
     orderNumber,
     time,
+    modalHandle,
 }) => {
     return (
         <PreOrderStyled className="lato">
@@ -257,7 +258,7 @@ const PreOrder = ({
             </div>
             <span className="more">3 more</span>
             <div className="d-flex">
-                <Button disabled>Decline</Button>
+                <Button onClick={modalHandle}>Decline</Button>
                 <Button>Move to current orders</Button>
             </div>
         </PreOrderStyled>

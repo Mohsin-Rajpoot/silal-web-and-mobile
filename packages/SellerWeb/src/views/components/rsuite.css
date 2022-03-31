@@ -4682,3 +4682,7 @@ button.rs-calendar-header-title.rs-calendar-header-title-date.rs-btn.rs-btn-subt
   margin-top: 8px;
   font-family: 'lato';
 }
+.home-range .rs-picker-toggle {
+  background-color: #F2F4F5 !important;
+  border: none;
+}

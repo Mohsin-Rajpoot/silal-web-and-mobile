@@ -30,7 +30,7 @@ body {
     color: var(--theme-clr);
 }
 .dark-clr {
-    color: var(--dark-clr);
+    color: var(--dark-clr) !important;
 }
 .f-elight {
     font-weight: 200;
@@ -65,7 +65,12 @@ input::placeholder {
 }
 input, textarea, select, button {
     outline: none !important;
+}
+input, textarea, select {
     font-family: 'Lato', sans-serif;
+}
+button {
+    font-family: 'poppins';
 }
 .center {
     display: flex;

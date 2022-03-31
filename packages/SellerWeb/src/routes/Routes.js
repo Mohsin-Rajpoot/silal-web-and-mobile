@@ -14,6 +14,7 @@ const AllOffers = React.lazy(() => import('../views/pages/offers/AllOffers'))
 const Documents = React.lazy(() => import('../views/pages/Documents'))
 const ContactUs = React.lazy(() => import('../views/pages/ContactUs'))
 const Settings = React.lazy(() => import('../views/pages/Settings'))
+const Profile = React.lazy(() => import('../views/pages/profile/Profile'))
 // const notFound = React.lazy(() => import('../views/errorPages/NotFound'))
 
 const routes = [
@@ -32,7 +33,8 @@ const routes = [
     { path: '/documents', exact: true, name: 'Documents', component: Documents },
     { path: '/contact-us', exact: true, name: 'Contact Us', component: ContactUs },
     { path: '/settings', exact: true, name: 'Settings', component: Settings },
-    { path: '/offers', exact: true, name: 'Settings', component: AllOffers },
+    { path: '/offers', exact: true, name: 'Offers', component: AllOffers },
+    { path: '/profile', exact: true, name: 'Profile', component: Profile },
 
 ]
 
