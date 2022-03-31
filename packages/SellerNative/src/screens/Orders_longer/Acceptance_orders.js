@@ -7,13 +7,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 // import { Image, SvgXml } from 'react-native-svg';
 import Svg, { Path ,Defs,LinearGradient,Stop,Rect,Circle, G} from "react-native-svg"
-import Menu, {
-  MenuProvider,
-  MenuTrigger,
-  MenuOptions,
-  MenuOption,
-  renderers,
-} from 'react-native-popup-menu';
 import DatePicker from './../../components/DatePicker'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import { Searchbar } from "react-native-paper";
@@ -381,9 +374,7 @@ const render_order_further_detail=()=>{
 
   return (
         
-      <View style={{height:'83%',padding:20}}>
-        <MenuProvider >
-
+      <View style={{height:'100%',padding:20}}>
             <View style={{flexDirection:'row'}}>
 
               <View>
@@ -543,7 +534,6 @@ const render_order_further_detail=()=>{
                 </ScrollView>
               </View>
             </Modal>
-        </MenuProvider>
       </View>
 
       );

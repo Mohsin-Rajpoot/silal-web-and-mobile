@@ -4,10 +4,17 @@ import {NativeBaseProvider} from 'native-base';
 import {ToastProvider} from 'react-native-toast-notifications';
 import {Icon} from 'react-native-elements';
 import colors from '@SilalApp/common/assets/colors';
+import Menu, {
+  MenuProvider,
+  MenuTrigger,
+  MenuOptions,
+  MenuOption,
+  renderers,
+} from 'react-native-popup-menu';
 const App = () => {
   return (
     <>
-      <NativeBaseProvider>
+      {/* <NativeBaseProvider>
         <ToastProvider
         duration={5000}
           normalColor="#fff"
@@ -32,10 +39,12 @@ const App = () => {
                 <Text>{toast.message}</Text>
               </View>
             ),
-          }}>
-          <Routes />
-        </ToastProvider>
-      </NativeBaseProvider>
+          }}> */}
+          <MenuProvider >
+            <Routes />
+          </MenuProvider>
+        {/* </ToastProvider>
+      </NativeBaseProvider> */}
     </>
   );
 };

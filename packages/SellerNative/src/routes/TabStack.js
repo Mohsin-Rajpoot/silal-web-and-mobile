@@ -5,7 +5,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Home from '../screens/Home';
 import Clints from '../screens/Clints';
+import Products from '../screens/Products';
 import OrderStack from './OrderStack';
+import Order from '../screens/orders/Order';
 import ProductStack from './ProductStack';
 
 
@@ -34,17 +36,17 @@ const TabStack = () => {
         }}
       />
       <Tab.Screen
-        name="Order"
+        name="OrderStack"
         component={OrderStack}
         options={{
-          tabBarLabel: 'Order',
+          tabBarLabel: 'Orders',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="bus" color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name="Clints"
+        name="Clients"
         component={Clints}
         options={{
           tabBarLabel: 'Clients',
