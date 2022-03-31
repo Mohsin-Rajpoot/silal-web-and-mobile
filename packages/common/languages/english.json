@@ -208,7 +208,34 @@
         "your_password_should_contain":"Your password should contain :",
         "password_length":"8 to 20 characters",
         "Letter_numbers_characters":"Letters, numbers, special characters",
-        "Change_password":"Change Password"
+        "Change_password":"Change Password",
+        "Step":"Step",
+        "Basic_information":"Basic information",
+        "Contacts":"Contacts",
+        "Detail":"Detail",
+        "owner_name":"Owner/manager name(private)",
+        "enter_full_name":"Enter full name",
+        "Owner_phone":"Owner/manager phone number",
+        "business_name":"Business name",
+        "back":"Back",
+        "Next_step":"Next step",
+        "office/number":"Office/building number",
+        "zip_code":"ZIP code",
+        "city":"City",
+        "Business_profile":"Business profile on Social media",
+        "Business_website":"Business website",
+        "optional":"(optional)",
+        "select_type":"Select type",
+        "Store":"Store",
+        "Restaurant":"Restaurant",
+        "Service":"Service",
+        "Accept_payment":"Accept payment methods",
+        "Cash_payment":"Cash payment",
+        "bank_wires":"Bank wires",
+        "Card_payment":"Card payment",
+        "Apple_pay":"Apple Pay, Google Pay",
+        "store_description":"Store description"
+
 
 
 

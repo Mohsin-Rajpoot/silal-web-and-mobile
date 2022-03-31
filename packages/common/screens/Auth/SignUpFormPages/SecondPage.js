@@ -7,7 +7,9 @@ import PhoneInput from "react-native-phone-number-input";
 import CommonStyle from "../../../styles";
 import colors from "../../../assets/colors";
 import DropDownPicker from "react-native-dropdown-picker";
+import { useTranslation } from "react-i18next";
 const SecondPage = () => {
+  const {t}=useTranslation();
   const [text, setText] = useState("");
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -23,7 +25,7 @@ const SecondPage = () => {
       >
         <View style={{ flexDirection: "row", marginVertical: 15 }}>
           <CustomText
-            label="Owner/manager phone number"
+            label={t("Owner_phone")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />
@@ -40,27 +42,27 @@ const SecondPage = () => {
           onChangeText={(value) => setText(value)}
           // onChangeFormattedText={(value) => setText(value)}
           value={text}
-          placeholder="Phone Number"
+          placeholder={t("phone_number")}
         />
         <View style={{ flexDirection: "row", marginVertical: 15 }}>
           <CustomText
-            label="Business address"
+            label={t("business_name")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
-        <TextInput placeholderText={"Street name"} />
+        <TextInput placeholderText={t("Street_name")} />
         <View style={styles.addressContainer}>
           <View style={styles.addressInputContainer}>
             <TextInput
-              placeholderText={"Office/building number"}
+              placeholderText={t("office/number")}
               inputStyle={styles.addressInput}
             />
           </View>
           <View>
             <View style={styles.addressInputContainer}>
               <TextInput
-                placeholderText={"ZIP code"}
+                placeholderText={t("zip_code")}
                 inputStyle={styles.addressInput}
               />
             </View>
@@ -73,7 +75,7 @@ const SecondPage = () => {
             setOpen={setOpen}
             setValue={setValue}
             setItems={setItems}
-            placeholder="City"
+            placeholder={t("city")}
             style={styles.dropDownStyle1}
             placeholderStyle={styles.dropDownPlaceHolder}
             dropDownContainerStyle={styles.dropdownContainer}
@@ -83,20 +85,20 @@ const SecondPage = () => {
         </View>
         <View style={{ flexDirection: "row", marginVertical: 20 }}>
           <CustomText
-            label="Business profile on social media"
+            label={t("Business_profile")}
             textStyle={styles.formTextHeadingOptional}
           />
-          <CustomText label="(optional)" textStyle={styles.optionalText} />
+          <CustomText label={t("optional")} textStyle={styles.optionalText} />
         </View>
         <TextInput
           placeholderText={"https://www.instagram.com/business_profile.com"}
         />
         <View style={{ flexDirection: "row", marginVertical: 15 }}>
           <CustomText
-            label="Business website "
+            label={t("Business_website")}
             textStyle={styles.formTextHeadingOptional}
           />
-          <CustomText label="(optional)" textStyle={styles.optionalText} />
+          <CustomText label={t("optional")} textStyle={styles.optionalText} />
         </View>
         <TextInput placeholderText={"https://www.iselectrics.com"} />
       </ScrollView>

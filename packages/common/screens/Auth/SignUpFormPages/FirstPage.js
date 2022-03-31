@@ -6,7 +6,9 @@ import TextInput from "../../../components/native/TextInput";
 import PhoneInput from "react-native-phone-number-input";
 import CommonStyle from "../../../styles";
 import colors from "../../../assets/colors";
+import { useTranslation } from "react-i18next";
 const FirstPage = () => {
+  const { t } = useTranslation();
   const [text, setText] = useState("");
 
   return (
@@ -17,15 +19,15 @@ const FirstPage = () => {
       >
         <View style={{ flexDirection: "row", marginVertical: 15 }}>
           <CustomText
-            label="Owner/manager name (private)"
+            label={t("owner_name")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
-        <TextInput placeholderText={"Enter full name"} />
+        <TextInput placeholderText={t("enter_full_name")} />
         <View style={{ flexDirection: "row", marginVertical: 15 }}>
           <CustomText
-            label="Owner/manager phone number"
+            label={t("Owner_phone")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />
@@ -42,16 +44,16 @@ const FirstPage = () => {
           onChangeText={(value) => setText(value)}
           // onChangeFormattedText={(value) => setText(value)}
           value={text}
-          placeholder="Phone Number"
+          placeholder={t("phone_number")}
         />
         <View style={{ flexDirection: "row", marginVertical: 15 }}>
           <CustomText
-            label="Business name"
+            label={t("business_name")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
-        <TextInput placeholderText={"Enter full name"} />
+        <TextInput placeholderText={t("enter_full_name")} />
       </ScrollView>
     </View>
   );
