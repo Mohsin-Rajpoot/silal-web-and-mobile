@@ -3,9 +3,6 @@ import { SafeAreaView, StyleSheet, Text, View, FlatList, TouchableOpacity } from
 import { CustomButton, LockOnLandscape, SearchBox } from '@SilalApp/common/components/native';
 import Svg, { Path } from "react-native-svg";
 
-
-
-
 const Products = ({ navigation }) => {
   const data = [
     {
@@ -91,10 +88,11 @@ const Products = ({ navigation }) => {
   ];
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={{backgroundColor: '#E5E5E5'}}>
+      <View style={styles.container}>
       <View style={styles.Header_View}>
         <Text style={styles.Title_Header}>Products</Text>
-        <SearchBox placeholder="Search by orders #, phone or name..." />
+        <SearchBox placeholder="Search" />
         <View style={{ right: 17 }}>
           <CustomButton
             text="Add new item"
@@ -168,6 +166,7 @@ const Products = ({ navigation }) => {
           keyExtractor={item => item.id}
         />
       </View>
+      </View>
     </SafeAreaView>
   );
 };
@@ -176,7 +175,7 @@ export default Products;
 
 const styles = StyleSheet.create({
   container: {
-    width: '94%', alignSelf: 'center', flex: 1, backgroundColor: '#fff'
+    width: '94%', alignSelf: 'center', backgroundColor: '#E5E5E5'
   },
   Header_View: {
     justifyContent: 'space-between', flexDirection: 'row', marginVertical: 15, alignItems: 'center'

@@ -16,7 +16,7 @@ const Camera  = props => {
   const [filePath, setFilePath] = useState({});
 
   React.useEffect(()=>{
-    captureImage()
+   
   },[])
 
   const requestCameraPermission = async () => {

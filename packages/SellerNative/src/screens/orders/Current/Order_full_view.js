@@ -294,7 +294,7 @@ const App = ({navigation,route}) => {
           <View style={styles.modalView}>
             <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
               <Text style={styles.modal_heading}>Indicate the reason for cancelation</Text>
-              <TouchableOpacity onPress={() => setmodal_cancel(!modal_timer_visible)} >
+              <TouchableOpacity onPress={() => setmodal_cancel(!modal_cancel)} >
                 <Entypo name='cross' style={[styles.cross_icon,{color:'#4C6870',fontSize:25}]} />
               </TouchableOpacity>
             </View>

@@ -1,11 +1,11 @@
-import {View, TouchableOpacity, useWindowDimensions} from 'react-native';
-import React, {useState} from 'react';
+import { View, TouchableOpacity, useWindowDimensions } from 'react-native';
+import React, { useState } from 'react';
 import {
   DrawerContentScrollView,
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
-import {Icon, ListItem} from 'react-native-elements';
+import { Icon, ListItem } from 'react-native-elements';
 import {
   moderateScale,
   ScaledSheet,
@@ -47,21 +47,21 @@ const Drawer = props => {
         </TouchableOpacity>
       </View>
       {!expanded && <ProfileBox navigation={props.navigation} />}
-    <TouchableOpacity activeOpacity={0.6} onPress={()=>props.navigation.navigate('Offers')}>
-    <CustomText
-        textStyle={styles.drawerText}
-        fontFamily={fonts.PoppinsMedium}
-        label="Offers"
-      />
-    </TouchableOpacity>
-     <TouchableOpacity activeOpacity={0.6} onPress={()=>props.navigation.navigate('Documents')}>
-     <CustomText
-        textStyle={styles.drawerText}
-        fontFamily={fonts.PoppinsMedium}
-        label="Documents"
-      />
-     </TouchableOpacity>
-    
+      <TouchableOpacity activeOpacity={0.6} onPress={() => props.navigation.navigate('Offers')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label="Offers"
+        />
+      </TouchableOpacity>
+      <TouchableOpacity activeOpacity={0.6} onPress={() => props.navigation.navigate('Documents')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label="Documents"
+        />
+      </TouchableOpacity>
+
       <CustomText
         textStyle={styles.drawerText}
         fontFamily={fonts.PoppinsMedium}
@@ -72,13 +72,13 @@ const Drawer = props => {
         fontFamily={fonts.PoppinsMedium}
         label="About app"
       />
-      <View style={{height: verticalScale(50)}} />
+      <View style={{ height: verticalScale(50) }} />
       <CustomText
         textStyle={styles.drawerText}
         fontFamily={fonts.PoppinsMedium}
         label="Setting"
       />
-      <View style={{height: verticalScale(40)}} />
+      <View style={{ height: verticalScale(40) }} />
     </DrawerContentScrollView>
   );
 };

@@ -8,6 +8,7 @@ import Calender from "./Calender";
 import Raiting from "./Raiting";
 import SearchBox from './SearchBox';
 import Camera from './Camera';
+import CustomGraph from './CustomGraph'
 export {
     basic,
     CustomButton,
@@ -18,5 +19,6 @@ export {
     Calender,
     Raiting,
     SearchBox,
-    Camera
+    Camera,
+    CustomGraph,
 }

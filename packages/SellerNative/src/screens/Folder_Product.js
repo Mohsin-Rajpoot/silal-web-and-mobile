@@ -1,8 +1,8 @@
 
 import React, { useState, useRef } from 'react';
 import {
-    StyleSheet, Text, View, TouchableOpacity, Dimensions,
-    SafeAreaView, FlatList, Pressable, Modal, ScrollView, Image
+    StyleSheet, Text, View, TouchableOpacity,
+    TextInput, FlatList, Modal, ScrollView, Image, TextInputBase
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo'
@@ -14,13 +14,22 @@ import Menu, {
     MenuOption,
 } from 'react-native-popup-menu';
 import { CheckBox } from 'react-native-elements';
-import { CustomButton, LockOnLandscape, SearchBox } from '@SilalApp/common/components/native';
+import { CustomButton, LockOnLandscape, SearchBox } from '@SilalApp/common/components/native'
+import { SwipeListView } from 'react-native-swipe-list-view'
+import Octicons from 'react-native-vector-icons/Octicons'
+import { Picker } from '@react-native-picker/picker';
+// import SearchableDropdown from "searchable-dropdown-react-native";
+const Secondary = "#002733";
+
 
 export default function Archive_orders({ title, navigation }) {
-
+    const [selectedCategory, setselectedCategory] = useState();
+    const [selectedCategoryItem, setselectedCategoryItem] = useState();
+    const [selectedValues, setSelectedValues] = useState([]);
     const [checked, setchecked] = useState(false);
     const [loader, setLoader] = useState(false);
-
+    const [Openmodal, setOpenmodal] = useState(false)
+    const [Showmodal, setShowmodal] = useState(false)
     const setcheck = (index) => {
         const val = data[index]
         val.checked = !val.checked
@@ -32,14 +41,14 @@ export default function Archive_orders({ title, navigation }) {
             }, 100);
         }, 200);
     }
-    var [data,setData] = useState([
+    var [data, setData] = useState([
         {
             id: '1',
             Title: 'Embedded Software Engineer',
             SubTitle: 'Newyork',
             year: "22/03/2022",
             image: require('../Assets/image8.png'),
-            checked:false
+            checked: false
 
         },
         {
@@ -47,7 +56,7 @@ export default function Archive_orders({ title, navigation }) {
             Title: 'Web Developer',
             SubTitle: 'Lahore',
             year: "22/03/2022",
-            checked:false
+            checked: false
 
         },
         {
@@ -55,109 +64,300 @@ export default function Archive_orders({ title, navigation }) {
             Title: 'Embedded Software Engineer',
             SubTitle: 'USA',
             year: '22/03 /2022',
-            checked:false
-
+            checked: false
         },
         {
             id: '4',
             Title: 'Embedded Software Engineer',
             SubTitle: 'USA',
             year: '22/03/2022',
-            checked:false
-
+            checked: false
         },
         {
             id: '5',
             Title: 'Embedded Software last',
             SubTitle: 'USA',
             year: '22/03/2022',
-            checked:false
-
+            checked: false
         },
         {
             id: '6',
             Title: 'Embedded Software last',
             SubTitle: 'USA',
             year: '22/03/2022',
-            checked:false
-
+            checked: false
         },
         {
             id: '7',
             Title: 'Embedded Software full last',
             SubTitle: 'USA',
             year: '22/03/2022',
-            checked:false
-
+            checked: false
         },
         {
             id: '8',
             Title: 'Embedded Software full last',
             SubTitle: 'USA',
             year: '22/03/2022',
-            checked:false
-
+            checked: false
         },
 
     ]);
-  
-    const render_all_oredrs = (item,index) => {
+    const data3 = [
+        {
+            id: '1',
+            title: 'Slide to accept order',
+        },
+    ];
+
+    let items = [
+        {
+            id: 1,
+            name: "JavaScript",
+            value: "JavaScript"
+        },
+        {
+            id: 2,
+            name: "Java",
+            value: "Java"
+        },
+        {
+            id: 3,
+            name: "Ruby",
+            value: "Ruby"
+        },
+        {
+            id: 4,
+            name: "React Native",
+            value: "React Native"
+        },
+        {
+            id: 5,
+            name: "PHP",
+            value: "PHP"
+        },
+        {
+            id: 6,
+            name: "Python",
+            value: "Python"
+        },
+        {
+            id: 7,
+            name: "Go",
+            value: "Go"
+        },
+        {
+            id: 8,
+            name: "Swift",
+            value: "Swift"
+        }
+    ];
+
+
+
+
+
+
+
+
+
+
+
+    const render_all_oredrs = (item, index) => {
 
         return (
             <View>
+                {/* //////////// */}
+                <View style={{ marginHorizontal: 5, marginVertical: 4 }}>
+                    <Modal visible={Showmodal}
+                        animationType="slideInRight"
+                        transparent={true} >
 
-                <View style={[styles.render_all_orders, { paddingTop: 5 }]}>
-                    <View>
-                    <CheckBox
-                                                    checked={item.checked == true || item.checked == 'true' ? true : false}
-                                                    onPress={() => setcheck(index)}
-                                                    checkedColor="#5AB3A8"
-                                                    uncheckedColor="#CCD4D6"
-                                                />
-                    </View>
-                    <View style={[styles.render_all_order_single, { width: '10%', marginTop: 5 }]}>
-                        <Image source={require('../Assets/image12.png')} style={{ height: 45, width: 45, resizeMode: 'contain', borderRadius: 5 }} />
-                    </View>
-                    <View style={[styles.render_all_order_single, { width: '10%', }]}>
-                        <Text style={{ fontFamily: 'Lato-Regular', }}>Cheesecakes with sour cream and citrus hon</Text>
-                    </View>
-                    <View style={[styles.render_all_order_single, { width: '15%', justifyContent: 'flex-start', flexDirection: 'row', left: 20 }]}>
-                        <Text style={{ fontFamily: 'Lato-Regular' }}>723DN2</Text>
-                    </View>
-                    <View style={[styles.render_all_order_single, { width: '10%', justifyContent: 'flex-start', flexDirection: 'row' }]}>
-                        <Text style={{ marginLeft: -15 }}>11.14.2021</Text>
-                    </View>
-                    <View style={[styles.render_all_order_single, { width: '13%', }]}>
-                        <Text style={{ fontFamily: 'Lato-Regular', alignSelf: 'flex-start', paddingHorizontal: 25 }}>230 g</Text>
+                        <View
+                            style={styles.ModalContainerPreview}>
 
-                    </View>
-                    <View style={[styles.render_all_order_single, {
-                        width: '10%',
+                            <TouchableOpacity style={{ position: 'absolute', right: 10, top: 5 }}>
+                                <Entypo name="cross" style={{ fontSize: 30, color: '#002733', }} onPress={() => setShowmodal(false)} />
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{
+                                backgroundColor: '#5AB3A8', marginTop: 40,
+                                width: '80%', justifyContent: 'center',
+                                alignItems: 'center', alignSelf: 'center',
+                                height: 40, borderRadius: 5
+                            }}>
+                                <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Poppins-SemiBold' }}>Save</Text>
+                            </TouchableOpacity>
 
-
-                    }]}>
-                        <Text style={{ fontFamily: 'Lato-Regular', }}>18 portions</Text>
-                    </View>
-                    <View style={[styles.render_all_order_single, { width: '14%', }]}>
-                        <Text style={{ fontFamily: 'Lato-Regular', }}>$ 2.50</Text>
-                    </View>
-                    <View style={[styles.render_all_order_single, { width: '8%', }]} >
-                        <Menu>
-                            <MenuTrigger style={styles.trigger}>
-                                <View style={{ height: 40, width: 40, alignItems: 'center', justifyContent: 'center' }}>
-                                    <Entypo name='dots-three-vertical' style={[styles.cross_icon, { color: '#4C6870', fontSize: 20 }]} />
+                            <Image source={require('../Assets/image134.png')} style={{ height: 200, width: 330, justifyContent: 'center', alignSelf: 'center', resizeMode: 'contain', zIndex: 0, borderRadius: 5 }} />
+                            <View style={{ flexDirection: 'row', position: 'absolute', right: 0, top: 220, right: 50, elevation: 1 }}>
+                                <View style={{ backgroundColor: '#fff', height: 35, width: 35, justifyContent: 'center', alignItems: 'center', borderRadius: 5 }}>
+                                    <Octicons name="pencil" style={{ fontSize: 20, color: '#4C6870' }} />
                                 </View>
-                            </MenuTrigger>
-                            <MenuOptions customStyles={{ optionText: { padding: 5 } }}>
-                                <MenuOption value="Normal" text='Edit' />
-                                <MenuOption value="Normal" text='Freeze Listing' />
-                                <MenuOption value="Normal" text='Delete' />
-                            </MenuOptions>
-                        </Menu>
-                    </View>
-                </View>
-                <View style={{ borderBottomWidth: 0.9, borderColor: '#00273314' }} />
+                            </View>
+                            <View style={{ marginHorizontal: 40 }}>
+                                <Text style={{ color: '#002733', fontSize: 17, fontFamily: 'Poppins-SemiBold' }}>Item</Text>
+                                <View>
+                                    <Text style={{ fontSize: 12, fontFamily: 'Lato-Semibold', color: '#002733', paddingVertical: 4 }}>Category</Text>
+                                </View>
 
+
+                                <View style={styles.dropdownbox}>
+                                    <Picker
+                                        selectedValue={selectedCategory}
+                                        onValueChange={(itemValue, itemIndex) =>
+                                            setselectedCategory(itemValue)}>
+                                        <Picker.Item label="Salad" value="java" />
+                                        <Picker.Item label="Salad Special" value="js" />
+                                    </Picker>
+                                </View>
+
+                                <View style={{ marginVertical: 5 }}>
+                                    <Text style={{ fontSize: 12, fontFamily: 'Lato-Semibold', color: '#002733', paddingVertical: 4 }}>Item name</Text>
+                                    <View style={styles.dropdownbox}>
+                                        <Picker
+                                            animated={false}
+                                            selectedValue={selectedCategoryItem}
+                                            onValueChange={(itemValue, itemIndex) =>
+                                                setselectedCategoryItem(itemValue)}>
+                                            <Picker.Item label="Salad" value="java" />
+                                            <Picker.Item label="Salad Special" value="js" />
+                                        </Picker>
+                                    </View>
+                                </View>
+
+                                <View>
+                                    <Text style={{ fontSize: 12, fontFamily: 'Lato-Semibold', color: '#002733', paddingVertical: 4 }}>Item description</Text>
+                                    <TextInput placeholder="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
+                                     duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
+                                        placeholderTextColor='#002733' style={{
+                                            fontFamily: 'Lato-Regular', fontSize: 17,
+                                            width: '100%', height: 120, borderWidth: 1, borderColor: '#f1f1f1'
+                                        }}
+                                    />
+                                </View>
+
+                            </View>
+
+
+                        </View>
+                    </Modal>
+                </View>
+
+
+
+
+                {/* ////////////////// Delet Modal /////////////////// */}
+                <View style={{ marginHorizontal: 5, marginVertical: 4 }}>
+                    <Modal visible={Openmodal}
+                        animationType="slideInRight"
+                        transparent={true} >
+                        <View
+                            style={styles.ModalContainer}>
+                            <View style={styles.ModeView}>
+                                <View style={styles.ModalTitle}>
+                                    <Text style={styles.ModalHeading}>Delete this item from folder?</Text>
+                                    <Entypo onPress={() => setOpenmodal(false)} name='cross' style={{ fontSize: 25, color: '#CCD4D6' }} />
+                                </View>
+                                <Text style={styles.ModalParagraph}>
+                                    Are you sure you want to delete the <Text style={{ fontFamily: 'Lato-Bold', color: '#002733' }}>#723DN2 </Text> item from Salads folder?</Text>
+                                <View style={styles.ModalButtonContainer}>
+                                    <TouchableOpacity
+                                        onPress={() => setOpenmodal(false)}
+                                        style={[{ backgroundColor: '#CCD4D6', }, styles.Buttonss]}>
+                                        <Text style={styles.DeleteModal}>Cancel</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+
+                                        style={[{ backgroundColor: '#5AB3A8' }, styles.Buttonss]}>
+                                        <Text style={[{ color: '#fff' }, styles.DeleteModal]}>Delete</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </View>
+                    </Modal>
+                </View>
+
+
+                <View style={{ justifyContent: 'center', alignSelf: 'center' }}>
+                    <SwipeListView
+                        data={data3}
+                        renderItem={(data, rowMap) => (
+                            <View>
+
+                                <View style={[styles.render_all_orders, { paddingTop: 5 }]}>
+                                    <View>
+                                        <CheckBox
+                                            checked={item.checked == true || item.checked == 'true' ? true : false}
+                                            onPress={() => setcheck(index)}
+                                            checkedColor="#5AB3A8"
+                                            uncheckedColor="#CCD4D6"
+                                        />
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '10%', marginTop: 5 }]}>
+                                        <Image source={require('../Assets/image12.png')} style={{ height: 45, width: 45, resizeMode: 'contain', borderRadius: 5 }} />
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '10%', height: 40 }]}>
+                                        <Text style={{ fontFamily: 'Lato-Regular', }}>Cheesecakes with sour cream and citrus hon</Text>
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '15%', justifyContent: 'flex-start', flexDirection: 'row', left: 20 }]}>
+                                        <Text style={{ fontFamily: 'Lato-Regular' }}>723DN2</Text>
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '10%', justifyContent: 'flex-start', flexDirection: 'row' }]}>
+                                        <Text style={{ marginLeft: -15 }}>11.14.2021</Text>
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '13%', }]}>
+                                        <Text style={{ fontFamily: 'Lato-Regular', alignSelf: 'flex-start', paddingHorizontal: 25 }}>230 g</Text>
+
+                                    </View>
+                                    <View style={[styles.render_all_order_single, {
+                                        width: '10%',
+
+
+                                    }]}>
+                                        <Text style={{ fontFamily: 'Lato-Regular', }}>18 portions</Text>
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '14%', }]}>
+                                        <Text style={{ fontFamily: 'Lato-Regular', }}>$ 2.50</Text>
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '8%', }]} >
+                                        <Menu>
+                                            <MenuTrigger style={styles.trigger}>
+                                                <View style={{ height: 40, width: 40, alignItems: 'center', justifyContent: 'center' }}>
+                                                    <Entypo name='dots-three-vertical' style={[styles.cross_icon, { color: '#4C6870', fontSize: 20 }]} />
+                                                </View>
+                                            </MenuTrigger>
+                                            <MenuOptions customStyles={{ optionText: { padding: 5 } }}>
+                                                <MenuOption value="Normal" text='Edit' />
+                                                <MenuOption value="Normal" text='Freeze Listing' />
+                                                <MenuOption value="Normal" text='Delete' />
+                                            </MenuOptions>
+                                        </Menu>
+                                    </View>
+                                </View>
+                            </View>
+                        )}
+                        renderHiddenItem={(data, rowMap) => (
+                            <View style={styles.rowBack}>
+                                <View style={{ position: 'absolute', right: 2, flexDirection: 'row' }}>
+                                    <TouchableOpacity onPress={() => setShowmodal(true)} style={styles.BackButtons}>
+                                        <Text style={styles.BackButtonsText}>Edit</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={[styles.BackButtons, { backgroundColor: '#0065FF', }]}>
+                                        <Text style={styles.BackButtonsText}>Freeze</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                        onPress={() => setOpenmodal(true)}
+                                        style={[styles.BackButtons, { backgroundColor: '#FF5630', }]}>
+                                        <Text style={styles.BackButtonsText}>Delete</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        )}
+                        rightOpenValue={-220}
+                    />
+                </View>
+
+                <View style={{ borderBottomWidth: 0.9, borderColor: '#00273314' }} />
             </View>
 
         )
@@ -204,7 +404,7 @@ export default function Archive_orders({ title, navigation }) {
 
 
 
-                <View style={{ width: '100%', alignSelf: 'center' }}>                    
+                <View style={{ width: '100%', alignSelf: 'center' }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5, alignItems: 'center', }}>
                         <TouchableOpacity onPress={() => navigation.goBack()} style={{ flexDirection: 'row' }}>
                             <MaterialCommunityIcons name='keyboard-backspace' style={{ fontSize: 40, color: '#002733', fontFamily: 'Poppins-Bold' }} />
@@ -229,10 +429,10 @@ export default function Archive_orders({ title, navigation }) {
                         <FlatList
                             keyExtractor={(item, index) => index.toString()}
                             data={data}
-                            
-                            style={{ height: 450 }}
-                            renderItem={({ item,index }) => (
-                                render_all_oredrs(item,index)
+
+                            style={{ height: 470 }}
+                            renderItem={({ item, index }) => (
+                                render_all_oredrs(item, index)
                             )}
                         />
                     </View>
@@ -248,9 +448,6 @@ export default function Archive_orders({ title, navigation }) {
                         <MaterialCommunityIcons name='chevron-right-circle' style={{ color: '#4c6870', fontSize: 24 }} />
                     </View>
                 </View>
-
-
-
             </MenuProvider>
 
 
@@ -508,6 +705,73 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: "center"
-    }
+    },
+
+    SwiperTextfg: {
+        textAlign: 'center',
+        paddingVertical: 3,
+        color: '#002733',
+        // borderRadius: 5,
+    },
+    SwiperTextbg: {
+        textAlign: 'center',
+        // paddingVertical: 3,
+        color: '#FFFFFF',
+        paddingHorizontal: 5,
+        paddingVertical: 8,
+        fontSize: 16,
+    },
+    rowBack: {
+        height: 55,
+        backgroundColor: '#fff'
+    },
+    BackButtons: {
+        backgroundColor: '#FF8B00', height: 55, width: 72, justifyContent: 'center', alignItems: 'center', borderRadius: 5
+    },
+    BackButtonsText: {
+        color: '#fff', fontSize: 15, fontFamily: 'Lato-Medium'
+    },
+    ModalContainer: {
+        justifyContent: 'center', alignItems: 'center', width: '100%',
+        height: '100%',
+        // backgroundColor: 'rgba(0,0,0,0.8)'
+    },
+    ModeView: {
+        height: 180, width: 410, backgroundColor: '#fff', borderRadius: 5, elevation: 0.2
+    },
+    ModalTitle: {
+        flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, marginTop: 13
+    },
+    ModalHeading: {
+        color: '#414342', fontSize: 17, fontFamily: 'Poppins-SemiBold'
+    },
+    ModalParagraph: {
+        color: '#4C6870', fontFamily: 'Lato-Regular', paddingHorizontal: 20, fontSize: 15, marginVertical: 15
+    },
+    ModalButtonContainer: {
+        flexDirection: 'row', justifyContent: 'space-between', width: '96%', alignSelf: 'center', marginVertical: 5
+    },
+    Buttonss: {
+        width: '45%', height: 45, borderRadius: 5, alignItems: 'center', justifyContent: 'center', marginHorizontal: 10
+    },
+    DeleteModal: {
+        fontFamily: 'Poppins-SemiBold', fontSize: 15,
+    },
+    ModalContainerPreview: {
+        width: '40%',
+        height: '100%',
+        backgroundColor: '#fff',
+        position: 'absolute',
+        right: 0,
+        // backgroundColor: 'rgba(0,0,0,0.5)'
+
+    },
+    CrossPreview: {
+        fontSize: 25, color: '#000000', position: 'absolute', right: 15, top: 20
+    },
+    dropdownbox: {
+        height: 50, width: '100%', borderWidth: 1, borderRadius: 5, marginVertical: 5, borderColor: '#f1f1f1'
+    },
+
 });
 

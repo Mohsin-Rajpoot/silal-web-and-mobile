@@ -12,7 +12,7 @@ const styles = ScaledSheet.create({
     flex: 1,
     backgroundColor: colors.backGround,
     paddingHorizontal: '10@ms',
-  },
+  }, 
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
