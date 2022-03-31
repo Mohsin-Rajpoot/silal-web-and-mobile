@@ -5,7 +5,10 @@ import LockOnLandscape from "./LockOnLandscape";
 import StatisticWhiteBoxTitle from "./StatisticWhiteBoxTitle";
 import Graph from "./Graph";
 import Calender from "./Calender";
-import Raiting from "./Raiting"
+import Raiting from "./Raiting";
+import SearchBox from './SearchBox';
+import Camera from './Camera';
+import CustomGraph from './CustomGraph'
 export {
     basic,
     CustomButton,
@@ -14,5 +17,8 @@ export {
     StatisticWhiteBoxTitle,
     Graph,
     Calender,
-    Raiting
+    Raiting,
+    SearchBox,
+    Camera,
+    CustomGraph,
 }

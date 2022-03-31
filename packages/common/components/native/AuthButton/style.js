@@ -14,8 +14,8 @@ const styles = ScaledSheet.create({
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
-    borderRadius: "5@s",
-    margin:'5@s',
+    borderRadius: "4@s",
+    margin:'5@s'
     
   },
   button1: {
@@ -24,16 +24,17 @@ const styles = ScaledSheet.create({
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
-    borderRadius: "5@s",
+    borderRadius: "4@s",
     margin:'5@s'
   },
   buttonText: {
-    fontSize: "12@ms",
+    fontSize: "11@ms",
     color: colors.textWhite,
-    fontFamily:fonts.PoppinsSemiBold
+    fontFamily:fonts.PoppinsSemiBold,
+
   },
   buttonText1: {
-    fontSize: "12@ms",
+    fontSize: "11@ms",
     color: colors.primary,
     fontFamily:fonts.PoppinsSemiBold
   },

@@ -16,9 +16,12 @@ const Login = ({ navigation, route }) => {
   const goForgerPassword = () => {
     navigation.navigate("ForgetPassword");
   };
+  const goBack=()=>{
+    navigation.pop()
+  }
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
-      <HeaderBack name={data?.params?.signUp ? "Sign Up" : "Login"} />
+      <HeaderBack name={data?.params?.signUp ? "Sign Up" : "Login"}  onGoBack={goBack}/>
 
       <LoginSignUpButton active={active} setActive={setActive} />
       <View style={styles.innerContainer}>
@@ -27,7 +30,7 @@ const Login = ({ navigation, route }) => {
             <Text style={styles.phoneNumberText}>Email</Text>
             <TextInput placeholderText="email.example@gmail.com" />
             <Text style={styles.phoneNumberText}>Password</Text>
-            <TextInput placeholderText="Enter password" />
+            <TextInput placeholderText="Enter password" secureText={true} password={true}/>
           </View>
         ) : active == 1 ? (
           <View>
@@ -37,10 +40,11 @@ const Login = ({ navigation, route }) => {
               textContainerStyle={styles.textContainer}
               textInputProps={{ fontSize: 12, padding: 0, marginTop: 0 }}
               countryPickerButtonStyle={styles.countyPickerContainer}
-              textInputStyle={{ color: colors.gray }}
+              textInputStyle={{ color: colors.black}}
               codeTextStyle={styles.codeText}
               defaultCode="RU"
-              layout="first"
+              layout='second'
+              
               onChangeText={(value) => setText(value)}
               // onChangeFormattedText={(value) => setText(value)}
               value={text}
@@ -53,34 +57,44 @@ const Login = ({ navigation, route }) => {
       </View>
 
       <Button
-        name="Continue"
+        changeColor={true}
+        name={data?.params?.signUp ? "Next" : "Continue"}
         onPress={() =>
           navigation.navigate("Verification", {
             params: {
-              active: active,
+              activeTab: data?.params?.signUp?4:null,
+              active:active
+
             },
           })
         }
       />
       <View
-        style={{ flexDirection: "row", alignSelf: "center", marginVertical: 5 }}
+        style={{
+          flexDirection: "row",
+          alignSelf: "center",
+          marginVertical: 15,
+        }}
       >
         {data?.params?.signUp ? (
-          <View style={{justifyContent:'center'}}>
-            <Text style={styles.signUpDetailText}>
-              By signing up, you agree to the
-              <TouchableOpacity activeOpacity={0.6} style={{margin:5}}>
+          <View style={{ justifyContent: "center" }}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Text style={styles.signUpDetailText}>
+                By signing up, you agree to the
+              </Text>
+              <TouchableOpacity activeOpacity={0.6}>
                 <Text style={styles.termCondition}> Terms of Service </Text>
               </TouchableOpacity>
-              and
+              <Text style={styles.signUpDetailText}>and</Text>
               <TouchableOpacity activeOpacity={0.6}>
                 <Text style={styles.termCondition}> Privacy Policy</Text>
               </TouchableOpacity>
-            </Text>
+            </View>
           </View>
         ) : (
-          <Text style={styles.bottomText}> Signing in?</Text>
+          <Text style={styles.bottomText}>Trouble signing in?</Text>
         )}
+
         {data?.params?.signUp ? (
           <View />
         ) : (

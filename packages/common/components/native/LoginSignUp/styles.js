@@ -6,11 +6,13 @@ const styles = ScaledSheet.create({
     width: '75%',
     alignSelf: "center",
     flexDirection: "row",
-    backgroundColor: colors.grayLight,
+    backgroundColor: colors.garyDark,
     borderRadius: "5@s",
     overflow: "hidden",
     marginVertical: "10@s",
     padding: "1@s",
+    borderWidth:'1@ms',
+    borderColor:colors.borderColor
   },
   activeTabContainer: {
     alignItems: "center",

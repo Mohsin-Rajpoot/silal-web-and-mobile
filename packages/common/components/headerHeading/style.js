@@ -3,14 +3,14 @@ import colors from "../../assets/colors";
 import fonts from "../../assets/fonts";
 const styles = ScaledSheet.create({
   headingName: {
-    fontSize: "22@ms",
-    lineHeight: "38@s",
+    fontSize: "20@ms",
+    lineHeight: "30@s",
     fontFamily:fonts.bold,
     color: colors.black,
     textAlign:"center"
   },
   headingDetail: {
-    fontSize: "14@ms",
+    fontSize: "13@ms",
     color: colors.black,
     fontFamily:fonts.LatoRegular,
     alignSelf:"center",
