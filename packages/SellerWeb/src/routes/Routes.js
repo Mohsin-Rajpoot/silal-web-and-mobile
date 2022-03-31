@@ -1,6 +1,5 @@
 import React from 'react'
-import Database from '../views/pages/clients/Database'
-
+import Database from '../views/pages/clients/components/Database'
 const Statistics = React.lazy(() => import('../views/pages/home/Statistics'))
 const Reviews = React.lazy(() => import('../views/pages/home/Reviews'))
 const OutOfStock = React.lazy(() => import('../views/pages/home/OutOfStock'))
@@ -8,7 +7,13 @@ const CurrentOrder = React.lazy(() => import('../views/pages/order/CurrentOrders
 const OrderDetail = React.lazy(() => import('../views/pages/order/OrderDetail'))
 const PreOrders = React.lazy(() => import('../views/pages/order/PreOrders'))
 const ArchiveOrders = React.lazy(() => import('../views/pages/order/Archive'))
-const Products = React.lazy(() => import('../views/pages/products/Products'))
+const Products = React.lazy(() => import('../views/pages/products/components/Products'))
+const ProductDetail = React.lazy(() => import('../views/pages/products/components/ProductDetail'))
+const CreateItem = React.lazy(() => import('../views/pages/products/components/CreateItem'))
+const AllOffers = React.lazy(() => import('../views/pages/offers/AllOffers'))
+const Documents = React.lazy(() => import('../views/pages/Documents'))
+const ContactUs = React.lazy(() => import('../views/pages/ContactUs'))
+const Settings = React.lazy(() => import('../views/pages/Settings'))
 // const notFound = React.lazy(() => import('../views/errorPages/NotFound'))
 
 const routes = [
@@ -22,6 +27,12 @@ const routes = [
     { path: '/archive-order', exact: true, name: 'Archive Orders', component: ArchiveOrders },
     { path: '/client/database', exact: true, name: 'Client Database', component: Database },
     { path: '/product/products', exact: true, name: 'Products', component: Products },
+    { path: '/product/product-detail', exact: true, name: 'Products Details', component: ProductDetail },
+    { path: '/product/create-new-item', exact: true, name: 'Create Item', component: CreateItem },
+    { path: '/documents', exact: true, name: 'Documents', component: Documents },
+    { path: '/contact-us', exact: true, name: 'Contact Us', component: ContactUs },
+    { path: '/settings', exact: true, name: 'Settings', component: Settings },
+    { path: '/offers', exact: true, name: 'Settings', component: AllOffers },
 
 ]
 

@@ -1,5 +1,5 @@
 import React from "react"
-import ProductLayout from "./routes/ProductLayout"
+import ProductLayout from "./views/pages/products/ProductLayout"
 import "bootstrap/dist/css/bootstrap.min.css"
 import GlobalStyle from "./views/components/GlobalStyled"
 

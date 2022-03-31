@@ -1,25 +1,27 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import styled from "styled-components";
-import { FlexContainer, HeadingStyled } from "../../components/Style";
-import CanvasModal from "./components/CanvasModal";
+import { FlexContainer, HeadingStyled } from "../../../components/Style";
+import CanvasModal from "./CanvasModal";
+
 const Database = () => {
   const [modalShow, setModalShow] = useState(false);
   const [modalType, setModalType] = useState(false);
-  const setModal = (view,type) => {
+  const setModal = (view, type) => {
     setModalShow(view)
     setModalType(type)
   };
+
   return (
     <>
-      <Row className="mt-4">
-        {[...Array(6)].map((x, i) => (
+      <Row className="mt-4 lato">
+        {[...Array(12)].map((x, i) => (
           <>
             <Col className="mb-4" xs={12} md={6} lg={4} key={i}>
               <DataCard
                 className="bg-white overflow-hiden"
                 type="button"
-                onClick={() => setModal(true,'reccuring')}
+                onClick={() => setModal(true, 'reccuring')}
               >
                 <DataCardHeader>
                   <HeadingStyled
@@ -84,11 +86,11 @@ const Database = () => {
                 </DataCardBody>
               </DataCard>
             </Col>
-            <Col className="mb-4" xs={12} md={6} lg={4} key={i}>
+            {/* <Col className="mb-4" xs={12} md={6} lg={4} key={i}>
               <DataCard
                 className="bg-white overflow-hiden"
                 type="button"
-                onClick={() => setModal(true,"completed")}
+                onClick={() => setModal(true, "completed")}
               >
                 <DataCardHeader>
                   <HeadingStyled
@@ -152,7 +154,7 @@ const Database = () => {
                   </ul>
                 </DataCardBody>
               </DataCard>
-            </Col>
+            </Col> */}
           </>
         ))}
       </Row>
@@ -164,6 +166,10 @@ const Database = () => {
 export const DataCard = styled.div`
   box-shadow: 0px 5px 10px -2px rgba(196, 214, 220, 0.25);
   border-radius: 5px;
+  transition: 0.2s all;
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 export const DataCardHeader = styled.div`
   display: flex;

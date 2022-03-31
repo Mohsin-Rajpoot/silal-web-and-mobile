@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import ReactStars from "react-rating-stars-component"
 import styled from "styled-components"
 import { Row, Col } from 'react-bootstrap'
 import {
-    Button
+    Button,
+    Textarea,
 } from '../../components/Style'
 import {
     star
@@ -24,7 +25,7 @@ const RestaurantCard = ({
             </div>
             <div>
                 <div className="d-flex align-items-start">
-                    <h2 className="f-medium">{heading}</h2>
+                    <h2 className="f-medium lato">{heading}</h2>
                     {rate &&
                         <span className={`percentage f-medium ${rateStatus ? "green" : "red"}`}>{rate}</span>
                     }
@@ -52,7 +53,7 @@ const HotProduct = ({
             <img src={img} alt="dish" />
             <div className="d-flex justify-content-between align-items-center w-100">
                 <div className="flex-1">
-                    <h2 className="dark-clr">{pName}</h2>
+                    <h2 className="dark-clr lato">{pName}</h2>
                     <h3 className="dark-clr f-semibold">{price}</h3>
                 </div>
                 <span className="center">{number}</span>
@@ -68,11 +69,16 @@ const Review = ({
     text,
     order,
 }) => {
+    const [textarea, setTextarea] = useState(false)
+    const showTextarea = () => {
+        setTextarea(true)
+    }
+
     return (
         <ReviewStyled>
             <Row>
                 <Col lg={2} md={3} sm={12}>
-                    <h1 className="dark-clr">{reviewBy}</h1>
+                    <h1 className="dark-clr lato">{reviewBy}</h1>
                 </Col>
                 <Col lg={10} md={9} sm={12}>
                     <div className="between">
@@ -81,19 +87,27 @@ const Review = ({
                             <ReactStars
                                 size={24}
                                 count={5}
-                                value={rating}
-                                edit={false}
+                                // value={rating}
+                                edit={true}
                                 activeColor="#FFC400"
                             />
                         </div>
                         <h6 className="time">{time}</h6>
                     </div>
-                    <p className="dark-clr">{text}</p>
+                    <p className="dark-clr lato f-regular ">{text}</p>
                     <div className="order">
-                        <h3 className="dark-clr m-0">Order: <span>{order}</span></h3>
+                        <h3 className="dark-clr m-0 lato">Order: <span>{order}</span></h3>
                     </div>
+                    {textarea &&
+                        <Textarea placeholder="Type here..."></Textarea>
+                    }
                     <div className="between">
-                        <Button>Reply</Button>
+                        {textarea &&
+                            <Button className="reply">Submit</Button>
+                        }
+                        {textarea ? '' :
+                            <Button className="reply" onClick={showTextarea}>Reply</Button>
+                        }
                         <button className="contact-support">Contact support</button>
                     </div>
                 </Col>
@@ -111,6 +125,10 @@ const RestaurantCardStyled = styled.div`
     padding: 20px 15px;
     max-height: 100%;
     margin-bottom: 20px;
+    transition: 0.2s all;
+    &:hover {
+        transform: translateY(-8px);
+    }
     .icon {
         height: 40px;
         width: 40px;
@@ -194,7 +212,7 @@ const ReviewStyled = styled.div`
         width: 100%;
     }
     h1 {
-        font-weight: bold;
+        font-weight: 700;
         font-size: 13px;
     }
     h2 {
@@ -220,7 +238,7 @@ const ReviewStyled = styled.div`
         margin-bottom: 10px;
         padding: 10px 15px;
         h3 {
-            font-weight: 500;
+            font-weight: 600;
             font-size: 13px;
             line-height: 1.3;
         }
@@ -235,6 +253,13 @@ const ReviewStyled = styled.div`
         font-size: 13px;
         color: #4C6870;
     }
+    .reply {
+        width: 148px;
+    }
+    textarea {
+        height: 56px;
+        margin-bottom: 0;
+    }
 `;
 
 const ReviewOverviewText = styled.div`
@@ -244,13 +269,15 @@ const ReviewOverviewText = styled.div`
     padding: 10px 0;
     border-bottom: 1px solid rgba(0, 39, 51, 0.08);
     h2 {
+        font-family: 'Lato', sans-serif;
         font-weight: normal;
         font-size: 13px;
         color: #002733;
         margin: 0;
     }
     h3 {
-        font-weight: bold;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
         font-size: 13px;
         text-align: right;
         color: #000000;

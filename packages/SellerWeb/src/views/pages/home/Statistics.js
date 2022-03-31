@@ -25,7 +25,7 @@ const Statistics = ({ setSideBar, sideBar }) => {
             <div className="d-flex">
                 <RestaurantHeading
                     heading="Restaurant’s name"
-                    hours="Peak Hours 12 AM - 14 PM"
+                    hours="Peak Hours 12 AM - 2 PM"
                     location="8502 Preston Rd. Inglewood"
                 />
             </div>
@@ -58,7 +58,7 @@ const Statistics = ({ setSideBar, sideBar }) => {
                 <Col lg={3} md={6}>
                     <RestaurantCard
                         icon={ratingIcon}
-                        heading="Total Raiting"
+                        heading="Total Rating"
                         number="4.8"
                         rate="+ 0.9%"
                         rateStatus={true}

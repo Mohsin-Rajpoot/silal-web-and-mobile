@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ClientContainer from "./ClientContainer";
 import ProductContainer from "./ProductContainer";
+import OffersContainer from "./views/OffersContainer";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,6 +13,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/client" component={ClientContainer} />
         <Route path="/product" component={ProductContainer} />
+        <Route path="/offers" component={OffersContainer} />
         <Route path="/" component={App} />
       </Switch>
     </BrowserRouter>

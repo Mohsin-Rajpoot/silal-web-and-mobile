@@ -4,7 +4,7 @@ import { Plus } from 'react-bootstrap-icons'
 import {
     Category,
     AddCategory,
-} from '../../components/products/Components'
+} from '../../../components/products/Components'
 
 const Products = () => {
     return (

@@ -2,44 +2,59 @@ import React from "react";
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import { Accordion } from "react-bootstrap";
-import { Close, arrowDown, avatar, avatar2 } from "../AllImages";
+import {
+  Close,
+  arrowDown,
+  avatar,
+  avatar2,
+  DashboardIcon,
+  Clients,
+  Order,
+  Product,
+  OffersIcon,
+  DocumentIcon,
+  ContactUs,
+  AboutIcon,
+  SettingsIcon,
+} from "../AllImages";
 
 const Sidebar = ({ sideBar, setSideBar }) => {
   const closeSidebar = () => {
-    setSideBar(false);
-  };
-  const clientPath = window.location.href.indexOf("client") > -1 ? true : false;
-  const productPath = window.location.href.indexOf("product") > -1 ? true : false;
-  const { pathname } = useLocation();
+    setSideBar(false)
+  }
+  const clientPath = window.location.href.indexOf("client") > -1 ? true : false
+  const productPath = window.location.href.indexOf("product") > -1 ? true : false
+  const offersPath = window.location.href.indexOf("offers") > -1 ? true : false
+  const { pathname } = useLocation()
 
   return (
     <>
       <SidebarStyled className={sideBar ? "active" : ""}>
         {/* <Close
-                    className="sidebar-close"
-                    onClick={closeSidebar}
-                /> */}
+          className="sidebar-close"
+          onClick={closeSidebar}
+        /> */}
         {/* <Accordion>
-                    <Accordion.Item eventKey="0">
-                        <Accordion.Header>Profile</Accordion.Header>
-                        <Accordion.Body>
-                            <div className="body">
-                                <img src={avatar} alt="avatar" className="avatar" />
-                                <h1 className="dark-clr">Account’s name</h1>
-                                <p>debra.holt@example.com</p>
-                                <button className="theme-clr f-medium">Logout</button>
-                            </div>
-                            <div className="footer">
-                                <img src={avatar2} alt="avatar" />
-                                <div>
-                                    <h1 className="dark-clr">Account’s name 2</h1>
-                                    <p>debra.holt@example.com</p>
-                                </div>
-                            </div>
-                        </Accordion.Body>
-                    </Accordion.Item>
-                </Accordion> */}
-        <div class="logo-text text-white">Silal Service</div>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>Profile</Accordion.Header>
+            <Accordion.Body>
+            <div className="body">
+              <img src={avatar} alt="avatar" className="avatar" />
+              <h1 className="dark-clr">Account’s name</h1>
+              <p>debra.holt@example.com</p>
+              <button className="theme-clr f-medium">Logout</button>
+            </div>
+            <div className="footer">
+              <img src={avatar2} alt="avatar" />
+              <div>
+                <h1 className="dark-clr">Account’s name 2</h1>
+                <p>debra.holt@example.com</p>
+              </div>
+            </div>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion> */}
+        <div className="logo-text text-white">Silal Service</div>
         <Link
           to="/"
           className={
@@ -49,35 +64,60 @@ const Sidebar = ({ sideBar, setSideBar }) => {
               ? "active" : ""
           }
         >
+          <DashboardIcon />
           Dashboard
         </Link>
         <Link
           to="/current-order"
           className={
-            pathname == "/current-order" ||
+              pathname == "/current-order" ||
               pathname == "/pre-order" ||
               pathname == "/archive-order" ||
               pathname == "/order-detail"
               ? "active" : ""
           }
         >
+          <Order />
           Orders
         </Link>
         <Link
           to="/client/database"
           className={clientPath && ("active")}>
+          <Clients />
           Clients
         </Link>
         <Link
           to="/product/products"
           className={productPath && ("active")}>
+          <Product />
           Products
         </Link>
-        <Link to="#">Offers</Link>
-        <Link to="#">Documents</Link>
-        <Link to="#">Contact us</Link>
-        <Link to="#">About app</Link>
-        <Link to="#">Settings</Link>
+        <Link to="/offers" className={offersPath && ("active")}>
+          <OffersIcon />
+          Offers
+        </Link>
+        <Link
+          to="/documents"
+          className={pathname == "/documents" ? "active" : ""}>
+          <DocumentIcon />
+          Documents
+        </Link>
+        <Link
+          to="/contact-us"
+          className={pathname == "/contact-us" ? "active" : ""}>
+          <ContactUs />
+          Contact us
+        </Link>
+        <Link to="#">
+          <AboutIcon />
+          About app
+        </Link>
+        <Link
+          to="/settings"
+          className={pathname == "/settings" ? "active" : ""}>
+          <SettingsIcon />
+          Settings
+        </Link>
       </SidebarStyled>
       {/* <BackDrop className={sideBar ? "active" : ""} /> */}
     </>
@@ -189,8 +229,19 @@ const SidebarStyled = styled.aside`
     font-weight: 500;
     font-size: 13px;
     display: block;
-    padding:15px 18px;
+    padding: 15px 18px;
     text-decoration: none;
+    svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      fill: white;
+      fill-opacity: 1;
+      path {
+        fill: white;
+        fill-opacity: 1;
+      }
+    }
     &.active,
     &:hover {
       background-color: var(--theme-clr);
