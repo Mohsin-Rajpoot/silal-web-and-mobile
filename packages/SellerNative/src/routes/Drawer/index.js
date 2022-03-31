@@ -16,11 +16,17 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import fonts from 'fonts';
 import ProfileBox from './Molecules/ProfileBox';
 import Offers from '../../screens/offers/Offers';
+import {useTranslation} from 'react-i18next';
 const Drawer = props => {
+  const {t} = useTranslation();
   const width = useWindowDimensions().width * 0.3;
   const [expanded, setExpanded] = useState(false);
   return (
-    <DrawerContentScrollView style={styles.mainContainer} {...props}>
+    <DrawerContentScrollView
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
+      style={styles.mainContainer}
+      {...props}>
       <TouchableOpacity onPress={() => props.navigation.closeDrawer()}>
         <Icon
           name="cross"
@@ -35,7 +41,7 @@ const Drawer = props => {
           fontFamily={fonts.PoppinsMedium}
           fontSize={16}
           color={'#fff'}
-          label="Profile"
+          label={t('Profile')}
         />
         <TouchableOpacity onPress={() => setExpanded(!expanded)}>
           <Icon
@@ -47,38 +53,51 @@ const Drawer = props => {
         </TouchableOpacity>
       </View>
       {!expanded && <ProfileBox navigation={props.navigation} />}
-      <TouchableOpacity activeOpacity={0.6} onPress={() => props.navigation.navigate('Offers')}>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('Offers')}>
         <CustomText
           textStyle={styles.drawerText}
           fontFamily={fonts.PoppinsMedium}
-          label="Offers"
+          label={t('offers')}
         />
       </TouchableOpacity>
-      <TouchableOpacity activeOpacity={0.6} onPress={() => props.navigation.navigate('Documents')}>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('Documents')}>
         <CustomText
           textStyle={styles.drawerText}
           fontFamily={fonts.PoppinsMedium}
-          label="Documents"
+          label={t('Document')}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('ContactUs')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label={t('contactus')}
         />
       </TouchableOpacity>
 
       <CustomText
         textStyle={styles.drawerText}
         fontFamily={fonts.PoppinsMedium}
-        label="Contact us"
+        label={t('AboutApp')}
       />
-      <CustomText
-        textStyle={styles.drawerText}
-        fontFamily={fonts.PoppinsMedium}
-        label="About app"
-      />
-      <View style={{ height: verticalScale(50) }} />
-      <CustomText
-        textStyle={styles.drawerText}
-        fontFamily={fonts.PoppinsMedium}
-        label="Setting"
-      />
-      <View style={{ height: verticalScale(40) }} />
+      <View style={{height: verticalScale(50)}} />
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('Setting')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label={t('Setting')}
+        />
+      </TouchableOpacity>
+
+      <View style={{height: verticalScale(40)}} />
     </DrawerContentScrollView>
   );
 };
@@ -89,8 +108,8 @@ const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.sidebar,
-    borderTopRightRadius: '20@vs',
-    borderBottomRightRadius: '20@vs',
+    borderTopRightRadius: '15@vs',
+    borderBottomRightRadius: '15@vs',
     paddingVertical: '23@vs',
     paddingLeft: '10@s',
     paddingRight: '13@s',

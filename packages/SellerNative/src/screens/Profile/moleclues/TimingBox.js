@@ -5,12 +5,14 @@ import CustomText from '@SilalApp/common/components/CustomText'
 import fonts from 'fonts'
 import { CustomButton } from '@SilalApp/common/components/native'
 import colors from '@SilalApp/common/assets/colors'
+import { useTranslation } from 'react-i18next'
 const TimingBox = () => {
+    const {t}=useTranslation();
   return (
     <View style={styles.container}>
-        <CustomText fontFamily={fonts.PoppinsSemiBold} label="Opening hours" fontSize={17} />
+        <CustomText fontFamily={fonts.PoppinsSemiBold} label={t("Opening_hours")} fontSize={17} />
         <CustomText marginTop={6} fontFamily={fonts.LatoRegular} label="Mon - Fri 10:00 - 22:00, Sat, Sun - Closed" fontSize={13} />
-        <CustomText marginTop={10} fontFamily={fonts.PoppinsSemiBold} label="Tags" fontSize={17} />
+        <CustomText marginTop={10} fontFamily={fonts.PoppinsSemiBold} label={t("Tags")} fontSize={17} />
        <View style={{flexDirection:'row',marginTop:6,}}>
         <CustomButton textStyle={styles.tagButtonText} containerStyle={styles.tagButtonContainer} text="Sushi"  />
         <CustomButton textStyle={styles.tagButtonText} containerStyle={[styles.tagButtonContainer,{marginHorizontal:scale(6)}]}   text="Burgers"  />

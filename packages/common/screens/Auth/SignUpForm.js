@@ -11,7 +11,9 @@ import AuthButton from "../../components/native/AuthButton";
 import { Icon } from "react-native-elements";
 import colors from "../../assets/colors";
 import ThirdPage from "./SignUpFormPages/ThirdPage";
+import { useTranslation } from "react-i18next";
 const SignUpForm = ({ navigation }) => {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const [page, setPage] = useState(0);
 
@@ -29,41 +31,43 @@ const SignUpForm = ({ navigation }) => {
       }, 400);
     }
   };
-  const moveForward=()=>{
+  const moveForward = () => {
     const nextStep = Math.min(4, page + 1);
 
-        if (nextStep === 3) {
-          goToGettingStarted()
-        } else {
-          ref.current?.setPageWithoutAnimation(nextStep);
-          setPage(nextStep);
-        }
-  }
-  const goToGettingStarted=()=>{
-    navigation.navigate('GettingStarted',{params:{
-      gettingStarted:true
-    }})
-  }
+    if (nextStep === 3) {
+      goToGettingStarted();
+    } else {
+      ref.current?.setPageWithoutAnimation(nextStep);
+      setPage(nextStep);
+    }
+  };
+  const goToGettingStarted = () => {
+    navigation.navigate("GettingStarted", {
+      params: {
+        gettingStarted: true,
+      },
+    });
+  };
   return (
     <>
-      <HeaderBack name={`Step ${page + 1}/3`} />
+      <HeaderBack name={`${t("Step")} ${page + 1}/3`} />
       <View style={styles.headerContainer}>
         <Header
-          label={"Basic information"}
+          label={t("Basic_information")}
           textStyle={styles.headerText}
           textStyleInActive={styles.headerTextInactive}
           page={0}
           active={page}
         />
         <Header
-          label={"Contacts"}
+          label={t("Contacts")}
           textStyleInActive={styles.headerTextInactive}
           textStyle={styles.headerText}
           page={1}
           active={page}
         />
         <Header
-          label={"Detail"}
+          label={t("Detail")}
           textStyleInActive={styles.headerTextInactive}
           textStyle={styles.headerText}
           page={2}
@@ -95,11 +99,11 @@ const SignUpForm = ({ navigation }) => {
         >
           <Icon name="arrowleft" type="antdesign" color={colors.black} />
 
-          <CustomText label="Back" textStyle={styles.backText} />
+          <CustomText label={t("back")} textStyle={styles.backText} />
         </TouchableOpacity>
 
         <AuthButton
-          name={page == 2 ? "Submit" : "Next step"}
+          name={page == 2 ? t("Submit") : t("Next_step")}
           changeColor={true}
           buttonStyling={styles.formButton}
           onPress={moveForward}

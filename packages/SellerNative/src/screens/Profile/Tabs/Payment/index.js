@@ -4,8 +4,9 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import TextInput from '@SilalApp/common/components/native/TextInput';
 import colors from '@SilalApp/common/assets/colors';
 import fonts from '@SilalApp/common/assets/fonts';
-
+import {useTranslation} from 'react-i18next';
 export default function Archive_orders({title, navigation}) {
+  const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
 
   const data = [
@@ -77,7 +78,7 @@ export default function Archive_orders({title, navigation}) {
           <Text style={styles.tableDetailText}>12.12.2022</Text>
         </View>
         <View style={[styles.render_all_order_single1, {width: '10%'}]}>
-          <Text style={styles.bankDetail}>Bank wires</Text>
+          <Text style={styles.bankDetail}>{t("BankWire")}</Text>
         </View>
         <View style={[styles.render_all_order_single, {width: '12%'}]}>
           <Text style={styles.tableDetailText}>$ 13.90</Text>
@@ -100,28 +101,28 @@ export default function Archive_orders({title, navigation}) {
     return (
       <View style={styles.all_orders_header}>
         <View style={[styles.all_orders, {width: '8%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Order ID</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('orderId')}</Text>
         </View>
         {/* <View style={[styles.all_orders, {width: '18%'}]}>
           <Text style={styles.all_orders_heading_txt}>Customer name</Text>
         </View> */}
         <View style={[styles.all_orders, {width: '14%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Customer ID</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('CustomerId')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '12%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Order Date</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Order_date')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '10%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Payment</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Payment')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '12%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Amount</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Amount')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '14%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Balance</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Balance')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '8%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Action</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Action')}</Text>
         </View>
       </View>
     );
@@ -132,7 +133,7 @@ export default function Archive_orders({title, navigation}) {
       <View style={{flexDirection: 'row'}}>
         <TextInput
           search={true}
-          placeholderText="Search"
+          placeholderText={t('Search')}
           inputStyle={styles.input}
         />
         <View style={styles.filter_box}>
@@ -279,8 +280,8 @@ const styles = StyleSheet.create({
     height: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:colors.bluish,
-    borderRadius:10
+    backgroundColor: colors.bluish,
+    borderRadius: 10,
   },
   all_orders_heading_txt: {
     fontFamily: 'Lato-Bold',

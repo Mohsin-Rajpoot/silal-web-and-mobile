@@ -13,6 +13,7 @@ import java.util.List;
 import com.horcrux.svg.SvgPackage;
  import com.facebook.react.bridge.JSIModulePackage; // <- add
   import com.swmansion.reanimated.ReanimatedJSIModulePackage; // <- add
+import com.facebook.react.modules.i18nmanager.I18nUtil;
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -51,6 +52,8 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    I18nUtil sharedI18nUtilInstance = I18nUtil.getInstance();
+    sharedI18nUtilInstance.allowRTL(getApplicationContext(), true);
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }

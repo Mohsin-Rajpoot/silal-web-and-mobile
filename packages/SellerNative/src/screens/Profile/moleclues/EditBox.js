@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import React from 'react';
 import {scale, ScaledSheet} from 'react-native-size-matters';
 import CustomText from '@SilalApp/common/components/CustomText';
@@ -7,81 +7,91 @@ import DropDown from '@SilalApp/common/components/native/DropDown';
 
 import fonts from 'fonts';
 import colors from '@SilalApp/common/assets/colors';
+import { useTranslation } from 'react-i18next';
 const EditBox = () => {
+  const {t}=useTranslation();
   return (
     <View style={styles.container}>
       <CustomText
         marginBottom={8}
         fontSize={10}
         fontFamily={fonts.LatoRegular}
-        label="Cuisine"
+        label={t("Cuisine")}
       />
       {/* <TextInput
         inputStyle={styles.inputContainer}
         placeholderText="Europian"
       /> */}
-      <DropDown placeholder={"City"} />
+      <DropDown placeholder={'Europian'} />
       <CustomText
         marginTop={20}
         marginBottom={8}
         fontSize={10}
         fontFamily={fonts.LatoRegular}
-        label="Restaurant name"
+        label={t("Restaurant_name")}
       />
       <TextInput
         inputStyle={styles.inputContainer}
         placeholderText="Rastaurant’s name"
+        placeholderTextColor={colors.black}
       />
       <View style={styles.inputTextWrapper}>
         <CustomText
           marginBottom={8}
           fontSize={10}
           fontFamily={fonts.LatoRegular}
-          label="Description"
+          label={t("description")}
         />
         <CustomText
           color={colors.light_grey}
           marginBottom={8}
           fontSize={10}
           fontFamily={fonts.LatoRegular}
-          label="13 characters left"
+          label={t("charcterLeft")}
         />
       </View>
 
       <TextInput
         inputStyle={styles.inputContainer}
         placeholderText="The slogan will be here mх 40 characters"
+        placeholderTextColor={colors.black}
       />
-
-      <CustomText
-        marginTop={20}
-        marginBottom={8}
-        fontSize={10}
-        fontFamily={fonts.LatoRegular}
-        label="Business address * "
-      />
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <CustomText
+          marginTop={20}
+          marginBottom={8}
+          fontSize={10}
+          fontFamily={fonts.LatoRegular}
+          label={t("Business_address")}
+        />
+        <CustomText label="*" textStyle={{color: colors.red, marginTop: 10}} />
+      </View>
 
       <View style={[styles.inputTextWrapper, {marginTop: 0}]}>
         <TextInput
-          inputStyle={[styles.inputContainer, {width: '58%', borderRadius: 5}]}
-          placeholderText="Street name"
+          inputStyle={[styles.inputContainer, {width: '66%', borderRadius: 8}]}
+          placeholderText={t("Street_name")}
+          placeholderTextColor={colors.black}
         />
         <TextInput
-          inputStyle={[styles.inputContainer, {width: '38%', borderRadius: 5}]}
-          placeholderText="Location via GPS"
+          inputStyle={[styles.inputContainer, {width: '32%', borderRadius: 8}]}
+          placeholderText={t("Location_via_Gps")}
+          placeholderTextColor={colors.black}
         />
       </View>
       <View style={[styles.inputTextWrapper, {marginTop: 20}]}>
         <TextInput
-          inputStyle={[styles.inputContainer, {width: '31%', borderRadius: 5}]}
-          placeholderText="Number"
+          inputStyle={[styles.inputContainer, {width: '32%', borderRadius: 8}]}
+          placeholderText="24/3"
+          placeholderTextColor={colors.black}
         />
         <TextInput
-          inputStyle={[styles.inputContainer, {width: '31%', borderRadius: 5}]}
-          placeholderText="Postal Address"
+          inputStyle={[styles.inputContainer, {width: '32%', borderRadius: 8}]}
+          placeholderText="233 344"
+          placeholderTextColor={colors.black}
         />
-        <View style={{width: '31%', borderRadius: 5}}>
-          <DropDown placeholder={"City"} />
+        <View style={{width: '32%', borderRadius: 8}}>
+          <DropDown placeholder={'New York'} />
         </View>
       </View>
     </View>
@@ -109,7 +119,7 @@ const styles = ScaledSheet.create({
   },
   inputContainer: {
     height: null,
-    borderRadius: 5,
+    borderRadius: 10,
   },
   inputTextWrapper: {
     flexDirection: 'row',

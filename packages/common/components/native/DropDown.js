@@ -25,7 +25,7 @@ const DropDown = (props) => {
       placeholderStyle={[
         styles.textStyle,
         {
-          color: colors.light_grey,
+          color: colors.black,
         },
       ]}
       dropDownContainerStyle={{
@@ -34,6 +34,7 @@ const DropDown = (props) => {
       style={{
         borderColor: colors.borderColor,
         borderRadius: 5,
+        height:60
       }}
     />
   );

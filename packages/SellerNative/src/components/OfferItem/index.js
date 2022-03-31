@@ -6,7 +6,9 @@ import fonts from '@SilalApp/common/assets/fonts';
 import colors from '@SilalApp/common/assets/colors';
 import DropDownPicker from 'react-native-dropdown-picker';
 import TextInput from '@SilalApp/common/components/native/TextInput';
+import {useTranslation} from 'react-i18next';
 const index = () => {
+  const {t} = useTranslation();
   const [value, setValue] = useState(null);
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState([
@@ -15,7 +17,7 @@ const index = () => {
   ]);
   return (
     <View style={styles.outerMainContainer}>
-      <CustomText label="Main item" textStyle={styles.title} />
+      <CustomText label={t('mainItem')} textStyle={styles.title} />
       <View style={styles.itemMainContainer}>
         <Image
           source={require('../../Assets/image11.png')}
@@ -42,7 +44,10 @@ const index = () => {
           </View>
           <View style={{flexDirection: 'row'}}>
             <View style={styles.quantityContainer}>
-              <CustomText label="Min quantity" textStyle={styles.quantity} />
+              <CustomText
+                label={t('MinQuantity')}
+                textStyle={styles.quantity}
+              />
               <TextInput
                 inputStyle={styles.input}
                 placeholderText={'2'}
@@ -50,7 +55,10 @@ const index = () => {
               />
             </View>
             <View style={styles.quantityContainer}>
-              <CustomText label="Initial price" textStyle={styles.quantity} />
+              <CustomText
+                label={t('initialPrice')}
+                textStyle={styles.quantity}
+              />
               <TextInput
                 inputStyle={styles.input1}
                 placeholderText={'$ 1.50'}
@@ -60,7 +68,10 @@ const index = () => {
           </View>
           <View style={{flexDirection: 'row'}}>
             <View style={styles.quantityContainer}>
-              <CustomText label="Price effect" textStyle={styles.quantity} />
+              <CustomText
+                label={t('priceEffect')}
+                textStyle={styles.quantity}
+              />
               <TextInput
                 inputStyle={styles.input}
                 placeholderText={'-33%'}
@@ -68,7 +79,7 @@ const index = () => {
               />
             </View>
             <View style={styles.quantityContainer}>
-              <CustomText label="New price" textStyle={styles.quantity} />
+              <CustomText label={t('NewPrice')} textStyle={styles.quantity} />
               <TextInput
                 inputStyle={styles.input1}
                 placeholderText={'$ 1.00'}
@@ -85,9 +96,9 @@ const index = () => {
 export default index;
 
 const styles = ScaledSheet.create({
-  outerMainContainer:{
-    borderBottomColor:colors.light_grey,
-    borderBottomWidth:'0.6@s'
+  outerMainContainer: {
+    borderBottomColor: colors.light_grey,
+    borderBottomWidth: '0.6@s',
   },
   itemMainContainer: {
     flexDirection: 'row',
@@ -104,7 +115,7 @@ const styles = ScaledSheet.create({
     borderRadius: '3@s',
     height: '180@ms',
     width: '25%',
-    alignSelf:"center"
+    alignSelf: 'center',
   },
   quantityContainer: {
     marginHorizontal: '10@ms',
