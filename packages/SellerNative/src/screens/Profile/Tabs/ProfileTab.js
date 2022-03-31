@@ -4,7 +4,7 @@ import {
   ScrollView,
   ImageBackground,
   Pressable,
-  Text
+  Text,
 } from 'react-native';
 import {
   moderateScale,
@@ -25,7 +25,9 @@ import {
   widthPercentageToDP as width,
   heightPercentageToDP as height,
 } from 'react-native-responsive-screen';
+import {useTranslation} from 'react-i18next';
 const Profile = () => {
+  const {t} = useTranslation();
   const [isEdit, setIsEdit] = useState(false);
   const [adminModal, setAdminModal] = useState(false);
   const [code, setCode] = useState('');
@@ -33,8 +35,6 @@ const Profile = () => {
   const [freezedModal, setFreezedModal] = useState(false);
   return (
     <ScrollView style={styles.mainContainer}>
-     
-
       <View style={styles.container}>
         <View style={{width: '59%'}}>
           <ImageBackground
@@ -73,66 +73,77 @@ const Profile = () => {
                 onPress={() => setIsEdit(!isEdit)}
                 textStyle={{padding: 8, fontSize: 18}}
                 containerStyle={{width: '100%'}}
-                text={'Edit profile'}
+                text={t('EditProfile')}
               />
               <CustomButton
                 onPress={() => setAdminModal(true)}
                 textStyle={{padding: 8, fontSize: 18}}
                 containerStyle={{width: '100%'}}
-                text={'Change admin code'}
+                text={t('ChangeAdminCode')}
               />
               <CustomButton
                 onPress={() => setFreezedModal(true)}
                 textStyle={{padding: 8, fontSize: 18}}
                 containerStyle={{width: '100%'}}
-                text={'Temporary Freezed Modal'}
+                text={t('TemporaryFreezedAccount')}
               />
               <CustomModal
                 isModalVisible={adminModal}
-                setModalVisible={setAdminModal}>
-                <Pressable
-                  onPress={() => setAdminModal(false)}
-                  style={styles.iconContainer}>
-                  <Icon name="cross" type="entypo" size={moderateScale(19)} />
-                </Pressable>
-                <CustomText
-                  fontFamily={fonts.bold}
-                  label="Change admin code for  “Seller’s name”"
-                />
-                <CustomText
-                  fontFamily={fonts.LatoRegular}
-                  fontSize={13}
-                  marginTop={15}
-                  label="Enter your previous code"
-                />
-                <OTPInputView
-                  autoFocusOnLoad={true}
-                  pinCount={4}
-                  style={styles.optStyling}
-                  codeInputFieldStyle={styles.optContainer}
-                  handleChange={value => setCode(value)}
-                />
-                <CustomText
-                  fontFamily={fonts.LatoRegular}
-                  fontSize={13}
-                  marginTop={15}
-                  label="Repeat code"
-                />
-                <OTPInputView
-                  autoFocusOnLoad={true}
-                  pinCount={4}
-                  style={[
-                    styles.optStyling,
-                    {marginVertical: verticalScale(12)},
-                  ]}
-                  codeInputFieldStyle={styles.optContainer}
-                  handleChange={value => setConfirmCode(value)}
-                />
-                <CustomButton
-                  containerStyle={{alignSelf: 'center'}}
-                  textStyle={{marginHorizontal: '23%', paddingVertical: 8}}
-                  text="Submit"
-                />
+                setModalVisible={setAdminModal}
+                modalWrapperStyle={{
+                  marginHorizontal: width(20),
+                  marginVertical: height(8),
+                  borderRadius: 10,
+                  backgroundColor: '#fff',
+                }}>
+                <ScrollView
+                  contentContainerStyle={{flexGrow: 1, width: '130%'}}>
+                  <Pressable
+                    onPress={() => setAdminModal(false)}
+                    style={styles.iconContainer}>
+                    <Icon name="cross" type="entypo" size={moderateScale(19)} />
+                  </Pressable>
+                  <CustomText
+                    fontFamily={fonts.bold}
+                    label={t('ChangeAdminCode_for_seller')}
+                  />
+                  <CustomText
+                    fontFamily={fonts.LatoRegular}
+                    fontSize={13}
+                    marginTop={15}
+                    label={t('EnterYourPreviousCode')}
+                    alignSelf="center"
+                  />
+                  <OTPInputView
+                    autoFocusOnLoad={true}
+                    pinCount={4}
+                    style={styles.optStyling}
+                    codeInputFieldStyle={styles.optContainer}
+                    handleChange={value => setCode(value)}
+                  />
+                  <CustomText
+                    fontFamily={fonts.LatoRegular}
+                    fontSize={13}
+                    marginTop={15}
+                    label={t('RepeatCode')}
+                    alignSelf="center"
+                  />
+                  <OTPInputView
+                    autoFocusOnLoad={true}
+                    pinCount={4}
+                    style={[
+                      styles.optStyling,
+                      {marginVertical: verticalScale(12)},
+                    ]}
+                    codeInputFieldStyle={styles.optContainer}
+                    handleChange={value => setConfirmCode(value)}
+                  />
+                  <CustomButton
+                    containerStyle={{alignSelf: 'center'}}
+                    textStyle={{marginHorizontal: '23%', paddingVertical: 8}}
+                    text={t('Submit')}
+                  />
+                </ScrollView>
               </CustomModal>
             </>
           ) : (
@@ -140,36 +151,65 @@ const Profile = () => {
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <CustomButton
                 onPress={() => setIsEdit(!isEdit)}
-                textStyle={styles.editBtn}
-                text={'Cancel'}
+                textStyle={styles.editCancel}
+                text={t('Cancel')}
               />
-              <CustomButton textStyle={{padding: 8}} text={'Save changes'} />
+              <CustomButton
+                textStyle={styles.editBtn}
+                text={t('SaveChanges')}
+              />
             </View>
           )}
         </View>
 
         <CustomModal
           isModalVisible={freezedModal}
-          modalContainerStyle={{alignItems:'flex-start'}}
-          modalWrapperStyle={{marginVertical:height(26)}}
+          modalContainerStyle={{alignItems: 'flex-start'}}
+          modalWrapperStyle={{marginVertical: height(10)}}
           setModalVisible={setFreezedModal}>
-             <Pressable
-                  onPress={() => setFreezedModal(false)}
-                  style={[styles.iconContainer,{zIndex:99}]}>
-                  <Icon name="cross" type="entypo" size={moderateScale(19)} />
-                </Pressable>
-            <View style={{width:"100%",alignItems:"center",marginBottom:verticalScale(20),}}>
-          <CustomText  fontFamily={fonts.bold} label="Account is freezed" />
+          <Pressable
+            onPress={() => setFreezedModal(false)}
+            style={[styles.iconContainer, {zIndex: 99}]}>
+            <Icon name="cross" type="entypo" size={moderateScale(19)} />
+          </Pressable>
+          <View
+            style={{
+              width: '100%',
+              alignItems: 'center',
+              marginBottom: verticalScale(20),
+            }}>
+            <CustomText
+              fontFamily={fonts.bold}
+              label={t('Account_is_Freezed')}
+            />
           </View>
           <Text style={styles.freezedMainText}>
-            {" "}It seems that your account was deactivated because {"\n"} it violated the
-            <Text style={{color:colors.primary}}> terms of use </Text> or our<Text style={{color:colors.primary}}> community guideline. </Text>{"\n"} If you believe this was by
-            mistake, <Text style={{color:colors.primary}}>please contact us.</Text>
+            {t('Account_freezed_detail1') + t('Account_freezed_detail2')}
+            <Text style={{color: colors.primary}}> {t('termOfUse')} </Text>
+            {t('Account_freezed_detail3')}
+            <Text style={{color: colors.primary}}>
+              {' '}
+              {t('community_guideline')}
+            </Text>
+            {'\n'}
+            {t('Account_freezed_detail4')}{' '}
+            <Text style={{color: colors.primary}}>
+              {t('Account_freezed_detail5')}
+            </Text>
           </Text>
-          <Text style={[styles.freezedMainText,{marginTop:verticalScale(43)}]}>
-          <Text style={{fontFamily:fonts.LatoBold}}>Note from Silal:</Text> account freezed for 30 days due to leaving inappropriate reviews on products.
-
+          <Text style={[styles.freezedMainTextBottom]}>
+            <Text style={{fontFamily: fonts.LatoBold}}>
+              {t('NoteForSilal')}
+            </Text>{' '}
+            {t('NoteDetail')}
           </Text>
+          <View style={{width: '100%'}}>
+            <CustomButton
+              text={t('Ok')}
+              textStyle={styles.buttonText}
+              containerStyle={styles.buttonContainer}
+            />
+          </View>
         </CustomModal>
       </View>
     </ScrollView>
@@ -188,6 +228,10 @@ const styles = ScaledSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
+  },
+  buttonContainer: {
+    alignSelf: 'center',
+    marginTop: '10@s',
   },
   imgContainer: {
     width: '100%',
@@ -212,8 +256,12 @@ const styles = ScaledSheet.create({
     marginTop: '25@vs',
   },
   editBtn: {
-    paddingHorizontal: '20@s',
-    paddingVertical: 8,
+    paddingHorizontal: '15@s',
+    paddingVertical: '5@s',
+  },
+  editCancel: {
+    paddingHorizontal: '22@s',
+    paddingVertical: '5@s',
   },
   optStyling: {
     marginVertical: '10@s',
@@ -239,11 +287,21 @@ const styles = ScaledSheet.create({
     top: '22@ms',
     marginEnd: '10@ms',
   },
-  freezedMainText:{
-    fontFamily:fonts.LatoRegular,
-    fontSize:moderateScale(15),
-    marginHorizontal:"13@s",
-    marginTop:'10@s',
-    textAlign:'left',
-  }
+  freezedMainText: {
+    fontFamily: fonts.LatoMedium,
+    fontSize: moderateScale(15),
+    marginHorizontal: '13@s',
+    textAlign: 'left',
+  },
+  freezedMainTextBottom: {
+    fontFamily: fonts.LatoMedium,
+    fontSize: moderateScale(15),
+    marginHorizontal: '13@s',
+    textAlign: 'left',
+    marginTop: '15@ms',
+  },
+  buttonText: {
+    paddingHorizontal: '120@ms',
+    paddingVertical: '5@ms',
+  },
 });

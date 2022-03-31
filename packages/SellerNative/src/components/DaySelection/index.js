@@ -5,11 +5,13 @@ import ToggleSwitch from 'toggle-switch-react-native';
 import fonts from '@SilalApp/common/assets/fonts';
 import colors from '@SilalApp/common/assets/colors';
 import { ScaledSheet } from 'react-native-size-matters';
+import {useTranslation} from 'react-i18next'
 const index = ({day}) => {
+  const {t}=useTranslation();
   const [active, setActive] = useState(false);
   return (
     <View style={styles.daySelectContainer}>
-      <CustomText label={day} textStyle={[active ? styles.dayTextActive : styles.dayText]} />
+      <CustomText label={t(day)} textStyle={[active ? styles.dayTextActive : styles.dayText]} />
       <ToggleSwitch
         isOn={active}
         onColor={colors.light_green}

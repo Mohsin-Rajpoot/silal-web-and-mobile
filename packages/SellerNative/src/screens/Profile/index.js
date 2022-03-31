@@ -11,13 +11,15 @@ import ProfileTab from './Tabs/ProfileTab';
 import OpenTab from './Tabs/OpenTab';
 import PaymentTab from './Tabs/Payment';
 import TransactionTab from './Tabs/Transaction';
-const Profile = () => {
+import {useTranslation} from 'react-i18next'
+const Profile = ({navigation}) => {
+  const {t}=useTranslation();
   const ref = useRef(null);
   const tabs = [
     'Profile',
-    'Opening hours',
-    'Payment history',
-    'Transaction ledger',
+    'Opening_hours',
+    'payment_history',
+    'Transaction_ledger',
   ];
   const [page, setPage] = useState(0);
   const onChangeTab = page => {
@@ -26,7 +28,7 @@ const Profile = () => {
   };
   return (
     <View style={styles.mainContainer}>
-      <Header />
+      <Header label={t("Profile")} onPress={()=>navigation.openDrawer()} />
       <Tabs tabs={tabs} page={page} onChangeTab={onChangeTab} />
       <PagerView
         style={{flex: 1}}

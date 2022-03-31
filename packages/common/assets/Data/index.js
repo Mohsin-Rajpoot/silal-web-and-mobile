@@ -1,3 +1,4 @@
+
 export const screens = [
   {
     id: 0,
@@ -26,7 +27,7 @@ export const screens = [
 ];
 
 export const days = [
-  "Every day",
+  "EveryDay",
   "Thursday",
   "Monday",
   "Friday",

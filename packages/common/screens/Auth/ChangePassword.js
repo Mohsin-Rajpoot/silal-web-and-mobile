@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import HeaderBack from "../../components/native/HeaderBack";
 import CommonStyle from "../../styles";
@@ -8,42 +8,64 @@ import TextInput from "../../components/native/TextInput";
 import styles from "./style";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Button from "../../components/native/AuthButton";
-const ChangePassword = ({navigation}) => {
-  const goBack=()=>{
-    navigation.pop()
-  }
+import { useTranslation } from "react-i18next";
+const ChangePassword = ({ navigation }) => {
+  const { t } = useTranslation();
+  const goBack = () => {
+    navigation.pop();
+  };
   return (
     <View style={CommonStyle.mainContainer}>
       <HeaderBack onGoBack={goBack} />
-      <HeaderHeading headingName="Create a new password" />
-      <View style={CommonStyle.CommonView}>
-        <CustomText label="Password" textStyle={styles.phoneNumberText} />
-        <TextInput placeholderText="Enter password" />
-        <CustomText
-          label="Confirm Password"
-          textStyle={styles.phoneNumberText}
-        />
-        <TextInput placeholderText="Confirm password" />
-        <View style={styles.changePassword}>
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
+        <HeaderHeading headingName={t("Create_new_password")} />
+        <View style={CommonStyle.CommonView}>
           <CustomText
-            label="Your password should contain :"
+            label={t("Password")}
             textStyle={styles.phoneNumberText}
           />
+          <TextInput placeholderText={t("Enter_password")} secureText={true} />
+          <CustomText
+            label={t("Change_password")}
+            textStyle={styles.phoneNumberText}
+          />
+          <TextInput
+            placeholderText={t("Confirm_password")}
+            secureText={true}
+          />
+          <View style={styles.changePassword}>
+            <CustomText
+              label={t("your_password_should_contain")}
+              textStyle={styles.phoneNumberText}
+            />
 
-          <View style={styles.passwordWaring}>
-            <AntDesign name="checkcircleo" style={styles.passwordWarningText} />
-            <Text style={styles.passwordWarningText}>8 to 20 characters</Text>
+            <View style={styles.passwordWaring}>
+              <AntDesign
+                name="checkcircleo"
+                style={styles.passwordWarningText}
+              />
+              <Text style={styles.passwordWarningText}>
+                {t("password_length")}
+              </Text>
+            </View>
+            <View style={styles.passwordWaring}>
+              <AntDesign
+                name="checkcircleo"
+                style={styles.passwordWarningText}
+              />
+              <Text style={styles.passwordWarningText}>
+                {t("Letter_numbers_characters")}
+              </Text>
+            </View>
           </View>
-          <View style={styles.passwordWaring}>
-            <AntDesign name="checkcircleo" style={styles.passwordWarningText} />
-            <Text style={styles.passwordWarningText}>
-              Letters, numbers, special characters
-            </Text>
-          </View>
+
+          <Button name={t("Change_password")} />
         </View>
-
-        <Button name="Change Password" />
-      </View>
+      </ScrollView>
     </View>
   );
 };
