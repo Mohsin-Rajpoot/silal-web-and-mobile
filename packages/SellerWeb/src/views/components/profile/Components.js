@@ -1,16 +1,24 @@
 import styled from 'styled-components'
+import { BannerEditIcon } from '../AllImages'
 
 const ProfileBanner = ({
+    edit,
     bgImg,
     location,
     rName,
     slogan,
 }) => {
     return (
-        <ProfileBannerStyled style={{ backgroundImage: `url(${bgImg})` }}>
+        <ProfileBannerStyled style={{ backgroundImage: `url(${bgImg})` }} className={edit && 'edit'}>
             <span className="location lato">{location}</span>
             <h1 className="poppins">{rName}</h1>
             <p className="lato">{slogan}</p>
+            {edit &&
+                <div className="edit-button-container">
+                    <BannerEditIcon />
+                    <input type="file" />
+                </div>
+            }
         </ProfileBannerStyled>
     )
 }
@@ -71,6 +79,27 @@ const ProfileBannerStyled = styled.div`
         line-height: 120%;
         color: #FFFFFF;
         margin: 0;
+    }
+    &.edit {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    .edit-button-container {
+        position: relative;
+        z-index: 10;
+        width: max-content;
+        input {
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+        }
     }
 `;
 

@@ -487,6 +487,28 @@ hr {
 .radius-0{
     border-radius:0;
 }
+.refusal-modal {
+    .modal-dialog {
+        max-width: 546px;
+    }
+}
+.modal-title-center {
+    .modal-title {
+        margin-left: auto !important;
+    }
+}
+.pincode-input-container
+{
+  .pincode-input-text
+  {
+    padding:0 !important;
+    margin:0 5px !important;
+    width: 45px !important;
+    height: 55px !important;
+    border-radius: 5px;
+    background: transparent;
+  }
+}
 `;
 
 export default GlobalStyle;

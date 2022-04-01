@@ -28,6 +28,7 @@ const Button = styled.button`
   border: none;
   padding: 0 20px;
   min-width: 100px;
+  width: ${props => props.width};
   height: 40px;
   white-space: nowrap;
   color: white;
@@ -35,6 +36,7 @@ const Button = styled.button`
   font-size: 15px;
   transition: 0.2s all;
   margin-bottom: ${props => props.mb};
+  margin-top: ${props => props.mt};
   &:hover {
     background: rgba(90, 179, 169, 0.9);
     transform: scale(1.02);
@@ -396,6 +398,10 @@ const HeadingStyled = styled.h1`
   font-weight:${(props) => props.weight && (props.weight)};
   color:${(props) => props.color ? props.color : "inherit"};
   margin:${(props) => props.margin ? props.margin : "0"};
+  a {
+    color: var(--theme-clr);
+    text-decoration: none;
+  }
 `;
 
 const Title = styled.h6`
@@ -407,9 +413,9 @@ const Title = styled.h6`
 `;
 
 const Label = styled.label`
-  font-family: 'lato';
+  font-family: 'lato', sans-serif;
   font-weight: 600;
-  font-size: 12px;
+  font-size: ${(props) => props.size ? props.size : "12px"};
   line-height: 120%;
   color: #002733;
   margin-bottom: 7px;
@@ -515,11 +521,6 @@ const ThemeModal = styled.div`
     background: #F2F4F5;
     height: 126px;
     border: none;
-  }
-  .refusal-modal {
-    .modal-dialog {
-      max-width: 546px;
-    }
   }
 `;
 
@@ -767,6 +768,18 @@ const Suggestions = styled.div`
   margin-right: 5px;
 `;
 
+const Tag = styled.div`
+  font-family: 'lato', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 130%;
+  color: #0052CC;
+  background-color: #DEEBFF;
+  padding: 8px 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+`;
+
 export {
   CardStyled,
   Heading,
@@ -796,4 +809,5 @@ export {
   SettingBtn,
   Radio,
   Suggestions,
+  Tag,
 };

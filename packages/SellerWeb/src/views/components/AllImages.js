@@ -50,6 +50,7 @@ import { ReactComponent as ExportIcon } from "../../assets/images/svg/export-ico
 import { ReactComponent as RightArrow } from "../../assets/images/svg/right-arrow.svg"
 import { ReactComponent as RemoveIcon } from "../../assets/images/svg/remove-icon.svg"
 import { ReactComponent as ProfileIcon } from "../../assets/images/svg/profile.svg"
+import { ReactComponent as BannerEditIcon } from "../../assets/images/svg/banner-edit-icon.svg"
 
 export {
     Menu,
@@ -104,4 +105,5 @@ export {
     RemoveIcon,
     ProfileIcon,
     restaurantBg,
+    BannerEditIcon,
 }
