@@ -78,7 +78,13 @@ const Login = ({ navigation, route }) => {
         <View style={{ flexGrow: 1 }} />
         <Button
           changeColor={true}
-          name={data?.params?.signUp ? t("next") : t("Continue")}
+          name={
+            data?.params?.signUp
+              ? t("next")
+              : active == 2
+              ? t("login")
+              : t("Continue")
+          }
           onPress={() =>
             navigation.navigate("Verification", {
               params: {

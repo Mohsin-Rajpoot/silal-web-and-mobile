@@ -9,7 +9,7 @@ import colors from "../../../assets/colors";
 import DropDownPicker from "react-native-dropdown-picker";
 import { useTranslation } from "react-i18next";
 const SecondPage = () => {
-  const {t}=useTranslation();
+  const { t } = useTranslation();
   const [text, setText] = useState("");
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -23,7 +23,7 @@ const SecondPage = () => {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       >
-        <View style={{ flexDirection: "row", marginVertical: 15 }}>
+        <View style={{ flexDirection: "row", marginTop: 30 }}>
           <CustomText
             label={t("Owner_phone")}
             textStyle={styles.formTextHeading}
@@ -44,7 +44,7 @@ const SecondPage = () => {
           value={text}
           placeholder={t("phone_number")}
         />
-        <View style={{ flexDirection: "row", marginVertical: 15 }}>
+        <View style={{ flexDirection: "row", marginTop: 30 }}>
           <CustomText
             label={t("business_name")}
             textStyle={styles.formTextHeading}
@@ -67,22 +67,31 @@ const SecondPage = () => {
               />
             </View>
           </View>
+
           <View style={styles.addressInputContainer}>
-          <DropDownPicker
-            open={open}
-            value={value}
-            items={items}
-            setOpen={setOpen}
-            setValue={setValue}
-            setItems={setItems}
-            placeholder={t("city")}
-            style={styles.dropDownStyle1}
-            placeholderStyle={styles.dropDownPlaceHolder}
-            dropDownContainerStyle={styles.dropdownContainer}
-            iconContainerStyle={{ backgroundColor: "red" }}
-          />
+            <DropDownPicker
+              open={open}
+              value={value}
+              items={items}
+              setOpen={setOpen}
+              setValue={setValue}
+              setItems={setItems}
+              placeholder={t("city")}
+              style={styles.dropDownStyle1}
+              placeholderStyle={styles.dropDownPlaceHolder}
+              dropDownContainerStyle={styles.dropdownContainer}
+              iconContainerStyle={{ backgroundColor: "red" }}
+            />
           </View>
         </View>
+        <View style={{ flexDirection: "row", marginTop: 30 }}>
+          <CustomText
+            label={t("business_email")}
+            textStyle={styles.formTextHeading}
+          />
+          <CustomText label="*" textStyle={styles.star} />
+        </View>
+        <TextInput placeholderText={t("email_address")} />
         <View style={{ flexDirection: "row", marginVertical: 20 }}>
           <CustomText
             label={t("Business_profile")}

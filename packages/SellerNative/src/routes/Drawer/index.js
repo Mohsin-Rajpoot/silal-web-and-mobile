@@ -39,7 +39,7 @@ const Drawer = props => {
       <View style={styles.accordianContainer}>
         <CustomText
           fontFamily={fonts.PoppinsMedium}
-          fontSize={16}
+          fontSize={13}
           color={'#fff'}
           label={t('Profile')}
         />
@@ -125,7 +125,7 @@ const styles = ScaledSheet.create({
   },
   drawerText: {
     color: colors.textWhite,
-    fontSize: '16@ms',
+    fontSize: '13@ms',
     marginBottom: '20@vs',
   },
 });

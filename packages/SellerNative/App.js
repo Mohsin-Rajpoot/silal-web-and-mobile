@@ -22,7 +22,7 @@ const App = () => {
   }, []);
   return (
     <>
-      {/* <NativeBaseProvider>
+      <NativeBaseProvider>
         <ToastProvider
           duration={5000}
           normalColor="#fff"
@@ -47,12 +47,12 @@ const App = () => {
                 <Text>{toast.message}</Text>
               </View>
             ),
-          }}> */}
-          <MenuProvider >
+          }}>
+          <MenuProvider>
             <Routes />
           </MenuProvider>
-        {/* </ToastProvider>
-      </NativeBaseProvider> */}
+        </ToastProvider>
+      </NativeBaseProvider>
     </>
   );
 };

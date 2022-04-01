@@ -14,16 +14,16 @@ const styles = ScaledSheet.create({
     alignSelf: "center",
     flexGrow: 1,
   },
-  dropDownStyle1:{
-    width:'50%',
-    backgroundColor:"red"
+  dropDownStyle1: {
+    width: "50%",
+    backgroundColor: "red",
   },
   phoneNumberText: {
     color: colors.textPrimary,
-    marginBottom:'5@ms',
+    marginBottom: "5@ms",
     fontSize: "11@ms",
     fontFamily: fonts.LatoBold,
-    marginTop:'5@ms'
+    marginTop: "5@ms",
   },
   codeText: {
     fontSize: "8@ms",
@@ -266,7 +266,7 @@ const styles = ScaledSheet.create({
   optionalText: {
     fontSize: "12@ms",
     fontFamily: fonts.LatoBold,
-    color: colors.gray,
+    color: colors.light_grey,
     textAlign: "center",
     alignSelf: "center",
   },
@@ -278,17 +278,19 @@ const styles = ScaledSheet.create({
   backIconInnerContainer: {
     flexDirection: "row",
     alignSelf: "center",
+    alignItems: "center",
   },
   backText: {
-    fontSize: "12@ms",
+    fontSize: "14@ms",
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.black,
     marginRight: "10@s",
     marginLeft: "5@s",
+    marginTop: "2@s",
   },
   formButton: {
-    backgroundColor: "rgba(90, 179, 168, 0.2)",
-    width: wp("35%"),
+    backgroundColor: "rgba(90, 179, 168, 0.5)",
+    width: wp("38%"),
     alignSelf: "center",
     alignItems: "center",
     padding: "6@s",
@@ -321,8 +323,8 @@ const styles = ScaledSheet.create({
     backgroundColor: colors.primaryBlur,
     width: wp("31%"),
     flexDirection: "row",
-    borderRadius: "3@s",
-    borderWidth: "1@s",
+    borderRadius: "4@s",
+    borderWidth: "0.5@s",
     borderColor: colors.primary,
     alignItems: "center",
   },
@@ -330,7 +332,7 @@ const styles = ScaledSheet.create({
     backgroundColor: "transparent",
     width: wp("31%"),
     flexDirection: "row",
-    borderRadius: "3@s",
+    borderRadius: "4@s",
     borderWidth: "1@s",
     borderColor: colors.borderColor,
   },
@@ -432,6 +434,25 @@ const styles = ScaledSheet.create({
     width: "100%",
     borderRadius: "4@s",
     height: "70@ms",
+  },
+  headingDetail: {
+    fontSize: "17@ms",
+    color: colors.black,
+    fontFamily: fonts.bold,
+    alignSelf: "center",
+    textAlign: "center",
+    lineHeight: "13@s",
+  },
+  checkout_text: {
+    fontSize: "11@ms",
+    fontFamily: fonts.LatoMedium,
+    color: colors.black,
+    alignSelf: "center",
+  },
+  checkoutInnerText: {
+    fontSize: "11@ms",
+    fontFamily: fonts.LatoMedium,
+    color: colors.primary,
   },
 });
 

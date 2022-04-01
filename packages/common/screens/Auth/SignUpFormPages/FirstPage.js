@@ -17,7 +17,7 @@ const FirstPage = () => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
-        <View style={{ flexDirection: "row", marginVertical: 15 }}>
+        <View style={{ flexDirection: "row", marginTop: 5 }}>
           <CustomText
             label={t("owner_name")}
             textStyle={styles.formTextHeading}
@@ -25,7 +25,8 @@ const FirstPage = () => {
           <CustomText label="*" textStyle={styles.star} />
         </View>
         <TextInput placeholderText={t("enter_full_name")} />
-        <View style={{ flexDirection: "row", marginVertical: 15 }}>
+        <View style={{ height: 30 }} />
+        <View style={{ flexDirection: "row", marginTop: 5 }}>
           <CustomText
             label={t("Owner_phone")}
             textStyle={styles.formTextHeading}
@@ -46,14 +47,15 @@ const FirstPage = () => {
           value={text}
           placeholder={t("phone_number")}
         />
-        <View style={{ flexDirection: "row", marginVertical: 15 }}>
+
+        <View style={{ flexDirection: "row", marginTop: 25 }}>
           <CustomText
             label={t("business_name")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
-        <TextInput placeholderText={t("enter_full_name")} />
+        <TextInput placeholderText={t("Enter_name")} />
       </ScrollView>
     </View>
   );

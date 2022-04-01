@@ -41,7 +41,8 @@ const Offers = ({navigation}) => {
     startDate: '',
     endDate: '',
   };
-  const [modalVisible, setModalVisible] = useState(false);
+
+  const [modal, setModal]=useState(false)
   const [createPostModal, setCreatePostModal] = useState(false);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -129,7 +130,7 @@ const Offers = ({navigation}) => {
           </View>
         </View>
         <View style={styles.offerContainer}>
-          <OfferComponent isModal={modalVisible} setModal={setModalVisible} />
+          <OfferComponent isModal={modal} setModal={setModal} />
 
           <OfferComponent />
           <OfferComponent />
@@ -140,8 +141,8 @@ const Offers = ({navigation}) => {
         </View>
       </ScrollView>
       <CustomModal
-        isModalVisible={modalVisible}
-        setModalVisible={setModalVisible}
+        isModalVisible={modal}
+        setModalVisible={setModal}
         modalWrapperStyle={{
           marginHorizontal: width(0),
           marginVertical: height(0),
@@ -155,7 +156,7 @@ const Offers = ({navigation}) => {
           showsVerticalScrollIndicator={false}>
           <TouchableOpacity
             activeOpacity={0.6}
-            onPress={() => setModalVisible(false)}>
+            onPress={() => setModal(false)}>
             <Icon
               name="close"
               type="antdesign"

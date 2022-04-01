@@ -212,7 +212,7 @@
         "Step":"Step",
         "Basic_information":"Basic information",
         "Contacts":"Contacts",
-        "Detail":"Detail",
+        "Detail":"Details",
         "owner_name":"Owner/manager name(private)",
         "enter_full_name":"Enter full name",
         "Owner_phone":"Owner/manager phone number",
@@ -234,7 +234,10 @@
         "bank_wires":"Bank wires",
         "Card_payment":"Card payment",
         "Apple_pay":"Apple Pay, Google Pay",
-        "store_description":"Store description"
+        "store_description":"Store description",
+        "Enter_name":"Enter name",
+        "business_email":"Business email",
+        "email_address":"Email address"
 
 
 
