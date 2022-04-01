@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,12 +14,13 @@ import {
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import Svg, {Path, Rect} from 'react-native-svg';
-
+import Svg, { Path, Rect } from 'react-native-svg';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {ModalView} from '../components/ModalView';
-const {width, height} = Dimensions.get('window');
+import { ModalView } from '../../components/ModalView';
+import styles from './styles';
+
+
 const Clints = () => {
   const [choseData, setchoseData] = useState('Sort by');
   const [ModalVisible, setModalVisible] = useState(false);
@@ -145,13 +146,10 @@ const Clints = () => {
     },
   ];
 
-  /////////////////// Modal below
-
-  const [show_modal_customer_data, set_show_modal_customer_data] =
-    useState(false);
+  const [show_modal_customer_data, set_show_modal_customer_data] = useState(false);
   const [show_modal_driver_data, set_show_modal_driver_data] = useState(false);
-  const [show_modal_order_details, set_show_modal_order_details] =
-    useState(false);
+  const [show_modal_order_details, set_show_modal_order_details] = useState(false);
+
 
   const customer_data = () => {
     return (
@@ -174,17 +172,17 @@ const Clints = () => {
           {show_modal_customer_data == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, { color: 'black' }]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, { color: 'black' }]}
             />
           )}
         </TouchableOpacity>
         {show_modal_customer_data == true ? (
-          <View style={{marginTop: 10}}>
+          <View style={{ marginTop: 10 }}>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>Total orders</Text>
               <Text style={styles.modal_title_second}>43</Text>
@@ -227,26 +225,26 @@ const Clints = () => {
           {show_modal_driver_data == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, { color: 'black' }]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, { color: 'black' }]}
             />
           )}
         </TouchableOpacity>
         {show_modal_driver_data == true ? (
-          <View style={{marginTop: 10}}>
+          <View style={{ marginTop: 10 }}>
             <FlatList
               data={data}
               numColumns={2}
-              style={{marginBottom: 5, height: 320}}
+              style={{ marginBottom: 5, height: 320 }}
               showsVerticalScrollIndicator={true}
-              renderItem={({item}) => (
+              renderItem={({ item }) => (
                 <View style={styles.FlatListMainView2}>
                   <Image
-                    source={require('../Assets/image12.png')}
+                    source={require('../../Assets/image12.png')}
                     style={{
                       height: 190,
                       width: 190,
@@ -301,17 +299,17 @@ const Clints = () => {
           {show_modal_order_details == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black', fontSize: 16}]}
+              style={[styles.cross_icon, { color: 'black', fontSize: 16 }]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black', fontSize: 16}]}
+              style={[styles.cross_icon, { color: 'black', fontSize: 16 }]}
             />
           )}
         </TouchableOpacity>
         {show_modal_order_details == true ? (
-          <View style={{marginTop: 10}}>
+          <View style={{ marginTop: 10 }}>
             <View
               style={{
                 flexDirection: 'row',
@@ -324,19 +322,19 @@ const Clints = () => {
                 placeholder="Search by order #"
                 placeholderTextColor="#B3BEC2"
                 paddingHorizontal={32}
-                style={[styles.Input, {width: '97%'}]}
+                style={[styles.Input, { width: '97%' }]}
               />
             </View>
             <FlatList
               data={data1}
               numColumns={1}
-              style={{marginBottom: 90}}
+              style={{ marginBottom: 90 }}
               showsVerticalScrollIndicator={false}
-              renderItem={({item}) => (
+              renderItem={({ item }) => (
                 <View>
                   <View style={styles.whiteDive}>
                     <View style={styles.SpaceBetweenTitleWhite}>
-                      <View style={{flexDirection: 'row'}}>
+                      <View style={{ flexDirection: 'row' }}>
                         <Text
                           style={{
                             fontSize: 18,
@@ -366,7 +364,7 @@ const Clints = () => {
                         <Entypo
                           name="cross"
                           size={17}
-                          style={{paddingTop: 3, paddingHorizontal: 4}}
+                          style={{ paddingTop: 3, paddingHorizontal: 4 }}
                           color={'#CCD4D6'}
                         />
                       </TouchableOpacity>
@@ -392,7 +390,7 @@ const Clints = () => {
                       <Entypo
                         name="cross"
                         size={17}
-                        style={{paddingTop: 3, paddingHorizontal: 4}}
+                        style={{ paddingTop: 3, paddingHorizontal: 4 }}
                         color={'#CCD4D6'}
                       />
                       <Text
@@ -407,14 +405,14 @@ const Clints = () => {
                     </View>
 
                     <TouchableOpacity style={styles.MoreOrderShow}>
-                      <Text style={{color: '#5AB3A8'}}>3 more</Text>
+                      <Text style={{ color: '#5AB3A8' }}>3 more</Text>
                     </TouchableOpacity>
 
-                    <View style={{flexDirection: 'row'}}>
+                    <View style={{ flexDirection: 'row' }}>
                       <Text style={styles.paymentMethod}>PAYMENT METHOD</Text>
                       <Text style={[styles.CreditCard]}>CREADIT CARD</Text>
                     </View>
-                    <View style={{flexDirection: 'row'}}>
+                    <View style={{ flexDirection: 'row' }}>
                       <Text style={[styles.paymentMethod]}>CARD DATA</Text>
                       <Text style={styles.CreditCard}>**** **** **** 3782</Text>
                     </View>
@@ -430,8 +428,8 @@ const Clints = () => {
   };
 
   return (
-    <SafeAreaView style={{marginHorizontal: 25}}>
-      <View style={{padding: 20}}>
+    <SafeAreaView style={{ marginHorizontal: 25 }}>
+      <View style={{ padding: 20 }}>
         <Modal
           animationType="slide"
           transparent={true}
@@ -442,27 +440,27 @@ const Clints = () => {
           <View style={styles.centeredView}>
             <ScrollView style={styles.modalView}>
               <View style={styles.modal_header}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Text style={styles.orderid_text}>Cameron Williamson</Text>
                   <View style={styles.modal_recuring}>
-                    <Text style={{color: 'white', fontFamily: 'Lato-Regular'}}>
+                    <Text style={{ color: 'white', fontFamily: 'Lato-Regular' }}>
                       Recurring client
                     </Text>
                   </View>
                 </View>
                 <TouchableOpacity
                   onPress={() => setisModalVisible(!ismodalVisible)}
-                  style={{padding: 7}}>
+                  style={{ padding: 7 }}>
                   <Entypo
                     name="cross"
                     style={[
                       styles.cross_icon,
-                      {color: '#4C6870', fontSize: 25},
+                      { color: '#4C6870', fontSize: 25 },
                     ]}
                   />
                 </TouchableOpacity>
               </View>
-              <View style={{flexDirection: 'row'}}>
+              <View style={{ flexDirection: 'row' }}>
                 <Text
                   style={{
                     color: '#CCD4D6',
@@ -472,7 +470,7 @@ const Clints = () => {
                   CUSTOMER ID
                 </Text>
 
-                <Text style={{color: '#002733', fontFamily: 'Lato-Bold'}}>
+                <Text style={{ color: '#002733', fontFamily: 'Lato-Bold' }}>
                   #644
                 </Text>
               </View>
@@ -485,7 +483,7 @@ const Clints = () => {
       </View>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 15 }}>
         <Text style={styles.ClintPageMainheading}>Clients database</Text>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <EvilIcons name="search" style={styles.SearchIcon} />
           <TextInput
             placeholder="Search by orders #, phone or name..."
@@ -504,7 +502,6 @@ const Clints = () => {
             </Svg>
           </View>
           <Text style={{ marginVertical: 10, fontSize: 20, fontFamily: 'Lato-Regular', color: '#002733' }}>
-
             {choseData}
           </Text>
           <AntDesign
@@ -528,13 +525,13 @@ const Clints = () => {
           />
         </Modal>
       </View>
-      <View style={{marginTop: 5, marginBottom: 10}}>
+      <View style={{ marginTop: 5, marginBottom: 10 }}>
         <FlatList
           data={data}
           numColumns={3}
-          style={{marginBottom: 30, height: 550}}
+          style={{ marginBottom: 30, height: 550 }}
           showsVerticalScrollIndicator={false}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <View style={styles.FlatListMainView}>
               <TouchableOpacity onPress={() => setisModalVisible(true)}>
                 <View style={styles.GreenBkgFlat}>
@@ -575,218 +572,4 @@ const Clints = () => {
 
 export default Clints;
 
-const styles = StyleSheet.create({
-  Input: {
-    height: 46,
-    alignSelf: 'center',
-    elevation: 0.5,
-    width: 442,
-    borderRadius: 5,
-  },
-  FlatListMainView: {
-    width: '31%',
-    backgroundColor: '#F4F7F8',
-    borderRadius: 5,
-    marginVertical: 10,
-    justifyContent: 'space-between',
-    marginHorizontal: 10,
-  },
-  FlatListMainView2: {
-    width: '45%',
-    marginVertical: 10,
-    justifyContent: 'space-between',
-    marginHorizontal: 5,
-  },
-  ClintDataBaseDate: {
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-  },
-  OrderFlat: {
-    color: '#002733',
-    fontSize: 13,
-    fontFamily: 'Lato-Bold',
-  },
-  FlatIdDynamic: {
-    width: 100,
-    color: '#CCD4D6',
-    fontFamily: 'Lato-Regular',
-    fontSize: 13,
-  },
-  TitleMainTextFlat: {
-    color: '#fff',
-    fontFamily: 'Lato-Regular',
-    fontSize: 15,
-    paddingTop: 4,
-  },
-  GreenBkgFlat: {
-    paddingVertical: 15,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: '#5AB3A8',
-    width: '100%',
-    paddingHorizontal: 15,
-    borderTopRightRadius: 5,
-    borderTopLeftRadius: 5,
-    elevation: 1,
-  },
-  ButtonFlatList: {
-    color: '#fff',
-    fontFamily: 'Lato-Regular',
-    fontSize: 11,
-    backgroundColor: '#88cbc5',
-    padding: 5,
-    borderRadius: 3,
-  },
-  SearchIcon: {
-    fontSize: 20,
-    marginRight: -24,
-    color: '#B3BEC2',
-  },
-  ClintPageMainheading: {
-    fontFamily: 'Poppins-Bold',
-    fontSize: 25,
-    color: '#002733',
-    paddingTop: 5,
-  },
-  modelTextTitle: {
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 8,
-    flexDirection: 'row',
-    height: 60,
-    width: 190,
-    marginHorizontal: 14,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: '700',
-    fontFamily: 'Poppins-Light',
-    margin: 10,
-  },
-  cross_icon: {
-    color: '#CCD4D6',
-    fontSize: 16,
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalView: {
-    height: '100%',
-    width: '50%',
-    alignSelf: 'flex-end',
-    backgroundColor: 'white',
-    padding: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  orderid_text: {
-    fontSize: 15,
-    color: '#002733',
-    fontFamily: 'Poppins-SemiBold',
-  },
-  modal_header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  modal_recuring: {
-    backgroundColor: '#5AB3A8',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 5,
-    marginLeft: 20,
-  },
-  modal_fields: {
-    flexDirection: 'row',
-    marginVertical: 5,
-    alignItems: 'center',
-  },
-
-  modal_title_second: {
-    color: 'black',
-    fontSize: 15,
-  },
-  modal_title_first: {
-    color: '#CCD4D6',
-    fontSize: 15,
-    width: 150,
-  },
-
-  whiteDive: {
-    backgroundColor: '#CCD4D61A',
-    width: '98%',
-    borderRadius: 5,
-    marginVertical: 5,
-    elevation: 0.3,
-    alignSelf: 'center',
-    justifyContent: 'center',
-  },
-  SpaceBetweenTitleWhite: {
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    paddingHorizontal: 10,
-  },
-  OrderIdentityCode: {
-    fontSize: 15,
-    paddingVertical: 7,
-    color: '#002733',
-    fontWeight: 'bold',
-    paddingHorizontal: 5,
-  },
-  TimeBar: {
-    fontSize: 15,
-    color: '#002733',
-    paddingVertical: 10,
-    fontFamily: 'Lato-Bold',
-  },
-  FlatStyle: {
-    paddingVertical: 10,
-
-    flexDirection: 'row',
-  },
-  FlatStyle1: {
-    flexDirection: 'row',
-  },
-  MoreOrderShow: {
-    backgroundColor: '#E6F4F2',
-    height: 25,
-    width: 60,
-    borderRadius: 5,
-    marginLeft: 50,
-    marginVertical: 13,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  paymentMethod: {
-    width: '50%',
-    paddingVertical: 10,
-    fontSize: 15,
-    fontFamily: 'Lato-Bold',
-    color: '#CCD4D6',
-    paddingHorizontal: 25,
-  },
-  CreditCard: {
-    // width: "30%",
-    paddingVertical: 10,
-    textAlign: 'right',
-    color: '#002733',
-    fontFamily: 'Lato-Bold',
-    fontSize: 15,
-  },
-  ModalDropdown: {
-    color: '#002733',
-    fontFamily: 'Lato-Bold',
-    fontSize: 13,
-  },
-});
+ 

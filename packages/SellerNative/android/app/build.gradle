@@ -138,6 +138,25 @@ android {
         versionCode 1
         versionName "1.0"
     }
+// Apk
+signingConfigs
+    {
+        release
+        {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE'))
+            {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+
+
+
+
+
     splits {
         abi {
             reset()
@@ -157,6 +176,8 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            // Apk
+             signingConfig signingConfigs.release
             if (nativeArchitectures) {
                 ndk {
                     abiFilters nativeArchitectures.split(',')

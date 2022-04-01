@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, TextInput, ScrollView, FlatList } from 'react-native'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { CustomButton, LockOnLandscape, Camera } from '@SilalApp/common/components/native';
+import { CustomButton, LockOnLandscape, } from '@SilalApp/common/components/native';
 import { Picker } from '@react-native-picker/picker';
 import { CheckBox } from 'react-native-elements';
 import Svg, { Path } from "react-native-svg"
 import Feather from "react-native-vector-icons/Feather"
+// import Camera from "../../components/Camera"
+import Tooltip from "react-native-walkthrough-tooltip";
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const Secondary = "#002733";
 let Primary = "#5AB3A8";
@@ -17,7 +19,17 @@ const AddItem = ({ navigation }) => {
     const [checked, setchecked] = useState(false);
     const [loader, setLoader] = useState(false);
     const [order_state, set_order_state] = useState('All');
+    const [showTip, setTip] = useState(false);
+    //     const CameraPicker = () => {
+    //         // alert('fhfhfh')
+    // return(
+    //     <>
+    //     <Camera />
+    // {console.log('haris')}
+    //     </>
+    //     )
 
+    //     }
 
     const setcheck = (index) => {
         const val = data[index]
@@ -133,18 +145,57 @@ const AddItem = ({ navigation }) => {
     ];
 
     return (
-        <SafeAreaView style={{ width: '100%', alignSelf: 'center' }}>
+        <SafeAreaView style={{ width: '100%', alignSelf: 'center', backgroundColor: '#f1f1f1' }}>
             <ScrollView showsVerticalScrollIndicator={false} >
                 <View style={{ width: '100%', alignSelf: 'center' }}>
                     {order_state == 'All' ?
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 5, marginTop: 5 }}>
                             <View style={{ width: '60%', }}>
 
-
                                 <View style={{ backgroundColor: '#fff', elevation: 0.7, borderRadius: 5, }}>
                                     <View style={{ flexDirection: 'row', }}>
                                         <Text style={styles.TextfieldTitle}>Category (!)</Text>
-                                        <Text style={styles.TextfieldTitle}>Cuisine (!)</Text>
+                                        <View style={{ width: "44%", marginHorizontal: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
+                                            <Text style={[styles.TextfieldTitle, { marginLeft: -1 }]}>Cuisine (!)</Text>
+                                            <View style={styles.container} >
+                                                <Tooltip
+                                                    contentStyle={styles.ContainerToolTip}
+                                                    isVisible={showTip}
+                                                    content={
+                                                        <Text style={{
+                                                            color: '#fff', fontSize: 13,
+                                                            fontFamily: 'Lato-Regular'
+                                                        }}>
+                                                            Didn't find an appropriate Category ?
+
+                                                            <Text style={{
+                                                                color: '#5AB3A8', fontSize: 13,
+                                                                lineHeight: 20,
+                                                                fontFamily: 'Poppins-SemiBold',
+                                                                marginHorizontal: 5,
+
+                                                            }}>
+                                                                Contact Us
+                                                            </Text>
+
+                                                            and we'll add it!</Text>
+
+                                                    }
+                                                    onClose={() => setTip(false)}
+                                                    placement="bottom"
+                                                    showChildInTooltip={false}
+                                                    accessible={false}
+                                                >
+                                                    <TouchableOpacity
+                                                        style={[{ marginTop: 10 }, styles.button]}
+                                                        onPress={() => setTip(true)}
+                                                    >
+                                                        <AntDesign name="questioncircle" style={{ color: '#5AB3A8', fontSize: 19 }} />
+                                                    </TouchableOpacity>
+                                                </Tooltip>
+                                            </View>
+
+                                        </View>
                                     </View>
                                     <View style={{ flexDirection: 'row' }}>
                                         <View style={styles.dropdownbox}>
@@ -184,14 +235,11 @@ const AddItem = ({ navigation }) => {
                                         <TextInput placeholder='Fats' style={styles.IngrediantsTextInput} />
                                         <TextInput placeholder='Carbohydrates' style={styles.IngrediantsTextInput} />
                                     </View>
-
                                 </View>
-
                                 <View style={{
                                     backgroundColor: '#fff', borderRadius: 5, marginVertical: 20,
                                     paddingHorizontal: 20, elevation: 1, borderColor: '#CCD4D6', borderWidth: 0.3
                                 }}>
-
                                     <Text style={{
                                         paddingTop: 17,
                                         color: Secondary,
@@ -344,14 +392,14 @@ const AddItem = ({ navigation }) => {
                                     </View>
                                 </View>
                             </View>
-                            <View style={{ width: '38%',marginTop:-10  }}>
+                            <View style={{ width: '38%', marginTop: -10 }}>
                                 <View style={{ alignSelf: 'center', elevation: 2, height: 110, width: '97%', backgroundColor: '#fff', marginVertical: 10, borderRadius: 5, paddingVertical: 10 }}>
                                     <Text style={[styles.TextfieldTitle, { left: -4, }]}>Set the price  (!)</Text>
                                     <TextInput placeholder='$' style={[styles.IngrediantsTextInput, { marginLeft: -4, fontSize: 15, fontFamily: 'Lato-Regular', backgroundColor: '#fff', width: '90%', marginHorizontal: 10, alignSelf: 'center' }]} />
                                 </View>
                                 <View style={{
                                     backgroundColor: '#fff', width: '95%',
-                                    alignSelf: 'center', borderRadius: 5, elevation: 1, alignItems: 'center', height: 415, 
+                                    alignSelf: 'center', borderRadius: 5, elevation: 1, alignItems: 'center', height: 440, paddingVertical: 17
                                 }}>
                                     <View>
                                         <FlatList
@@ -391,16 +439,20 @@ const AddItem = ({ navigation }) => {
                                             }}>2 mb max</Text>
                                         </View>
                                         <View style={{ alignItems: 'center', marginBottom: 20, }}>
-                                            <TouchableOpacity style={{ backgroundColor: '#4C6870', height: 50, width: '90%', borderRadius: 5, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', }}>
+                                            <TouchableOpacity
+                                                // onPress={() => navigation.navigate('Camera')}
+                                                // <Camera/>
+                                                style={{ backgroundColor: '#4C6870', height: 50, width: '90%', borderRadius: 5, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', }}>
                                                 <Feather name="upload" style={{ color: '#fff', fontSize: 25 }} />
                                                 <Text style={{ fontSize: 15, fontFamily: 'Poppins-Medium', color: '#fff', paddingHorizontal: 5, paddingTop: 10 }}>Upload</Text>
                                             </TouchableOpacity>
+
                                         </View>
                                     </View>
 
 
                                     <View style={{
-                                        backgroundColor: '#fff', borderRadius: 5, marginVertical: 25,
+                                        backgroundColor: '#fff', borderRadius: 5, marginVertical: 38,
                                         elevation: 1, borderColor: '#CCD4D6', borderWidth: 0.3, width: '100%'
                                     }}>
 
@@ -438,8 +490,7 @@ const AddItem = ({ navigation }) => {
                                             keyExtractor={item => item.id}
                                         />
                                     </View>
-                                    {/* ddd */}
-                                    <View style={{ alignSelf: 'center', elevation: 2, height: 110, width: '97%', backgroundColor: '#fff', marginVertical: 10, borderRadius: 5, paddingVertical: 10 }}>
+                                    <View style={{ alignSelf: 'center', elevation: 2, height: 110, width: '97%', backgroundColor: '#fff', borderRadius: 5, paddingVertical: 10 }}>
                                         <Text style={[styles.TextfieldTitle, { width: "80%" }]}>Estimated preparing time</Text>
                                         <View style={{ flexDirection: 'row', alignItems: 'center', }}>
                                             <TextInput placeholder='30' style={[styles.IngrediantsTextInput, { fontSize: 15, fontFamily: 'Lato-Regular', backgroundColor: '#fff', width: '50%', marginHorizontal: 14 }]} />
@@ -457,7 +508,8 @@ const AddItem = ({ navigation }) => {
                         </View>
                         : null}
                     {order_state == 'completed' ?
-                        <Text>Harris</Text> : null
+                        <Text>Harris</Text>
+                        : null
                     }
 
                 </View>
@@ -524,4 +576,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 5
     },
+    ContainerToolTip: {
+        flex: 1,
+        backgroundColor: '#173b42',
+        width: 200
+    }
 })

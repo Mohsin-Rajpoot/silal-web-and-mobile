@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   mainbutton: {
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 12,
+    paddingHorizontal: 25,
     paddingVertical: 6,
     marginVertical: 5,
     alignSelf: "center",

@@ -20,11 +20,11 @@ const ModalView = (props) => {
   return (
     <TouchableOpacity
       onPress={() => props.changeModalVisibilty(false)}>
-      <View style={styles.OptionsText}>
-        <ScrollView>
-          {option}
-        </ScrollView>
-      </View>
+
+      <ScrollView style={styles.OptionsText}>
+        {option}
+      </ScrollView>
+
     </TouchableOpacity>
   )
 }
@@ -39,18 +39,18 @@ const styles = StyleSheet.create({
     fontSize: 15,
     padding: 14,
     fontFamily: 'Lato-Regular',
-    // backgroundColor:'red'
-    color:'#002733',
-    fontFamily:'Lato-Regular'
+    color: '#002733',
+    fontFamily: 'Lato-Regular',
+
   },
   OptionsText: {
     backgroundColor: '#fff',
     borderRadius: 5,
-    width: 140,
-    height: 230,
+    width: 160,
     position: 'absolute',
-    right: 29,
+    right: 40,
     marginVertical: 115,
-    elevation: 2
+    elevation: 2,
+    marginBottom: 20,
   }
 })

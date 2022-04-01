@@ -1,11 +1,11 @@
-import {View, TouchableOpacity, useWindowDimensions} from 'react-native';
-import React, {useState} from 'react';
+import { View, TouchableOpacity, useWindowDimensions } from 'react-native';
+import React, { useState } from 'react';
 import {
   DrawerContentScrollView,
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
-import {Icon, ListItem} from 'react-native-elements';
+import { Icon, ListItem } from 'react-native-elements';
 import {
   moderateScale,
   ScaledSheet,
