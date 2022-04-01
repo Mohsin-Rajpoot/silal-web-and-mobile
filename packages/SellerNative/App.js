@@ -7,6 +7,13 @@ import colors from '@SilalApp/common/assets/colors';
 import Preference from 'react-native-preference';
 import {useTranslation} from 'react-i18next';
 
+import Menu, {
+  MenuProvider,
+  MenuTrigger,
+  MenuOptions,
+  MenuOption,
+  renderers,
+} from 'react-native-popup-menu';
 const App = () => {
   const {i18n} = useTranslation();
   const getLang = Preference.get('languageValue');
@@ -15,7 +22,7 @@ const App = () => {
   }, []);
   return (
     <>
-      <NativeBaseProvider>
+      {/* <NativeBaseProvider>
         <ToastProvider
           duration={5000}
           normalColor="#fff"
@@ -40,10 +47,12 @@ const App = () => {
                 <Text>{toast.message}</Text>
               </View>
             ),
-          }}>
-          <Routes />
-        </ToastProvider>
-      </NativeBaseProvider>
+          }}> */}
+          <MenuProvider >
+            <Routes />
+          </MenuProvider>
+        {/* </ToastProvider>
+      </NativeBaseProvider> */}
     </>
   );
 };

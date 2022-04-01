@@ -29,21 +29,15 @@ const ChooseAccount = () => {
             style={{ width: 90, height: 90 }}
             resizeMode="center"
           /> */}
-              <View style={styles.choseAccountShopping} />
-              <Text style={styles.accountTitle}>Restaurant’s name</Text>
-              <Text style={styles.accountDetail}>bill.sanders@example.com</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity activeOpacity={0.6} onPress={() => setActive(2)}>
-            <View
-              style={[
-                active == 2
-                  ? styles.choseMainContainer
-                  : styles.choseMainContainer1,
-              ]}
-            >
-              {/* <Image
+          <View style={styles.choseAccountShopping} />
+          <Text style={styles.accountTitle}>Restaurant’s name</Text>
+          <Text style={styles.accountDetail}>bill.sanders@example.com</Text>
+        </View>
+        </TouchableOpacity>
+  
+        <TouchableOpacity  activeOpacity={0.6} onPress={()=>setActive(2)}>
+        <View style={[active==2? styles.choseMainContainer: styles.choseMainContainer1]}>
+          {/* <Image
             source={Images?.Image11}
             style={{ width: 90, height: 90 }}
             resizeMode="center"
@@ -56,7 +50,7 @@ const ChooseAccount = () => {
         </View>
       </View>
       <View style={{ flex: 0.95 }} />
-      <AuthButton name={t("Continue")} />
+      <AuthButton onPress={()=>navigation.navigate('MainStack')} name={t("Continue")} />
     </>
   );
 };

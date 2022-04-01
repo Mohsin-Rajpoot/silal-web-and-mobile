@@ -6,9 +6,16 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Home from '../screens/Home';
 import Clints from '../screens/Clints';
 import Products from '../screens/Products';
+import OrderStack from './OrderStack';
 import Order from '../screens/orders/Order';
 import {useTranslation} from 'react-i18next';
+import ProductStack from './ProductStack';
+
+
+
 const Tab = createBottomTabNavigator();
+
+
 
 const TabStack = () => {
   const {t} = useTranslation();
@@ -31,31 +38,31 @@ const TabStack = () => {
         }}
       />
       <Tab.Screen
-        name="Order"
-        component={Order}
+        name="OrderStack"
+        component={OrderStack}
         options={{
           tabBarLabel: t('Order'),
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="bus" color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name="Clints"
+        name="Clients"
         component={Clints}
         options={{
           tabBarLabel: t('client'),
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <Ionicons name="people-sharp" color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
         name="Products"
-        component={Products}
+        component={ProductStack}
         options={{
           tabBarLabel: t('products'),
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <Ionicons name="pricetag" color={color} size={size} />
           ),
         }}

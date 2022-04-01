@@ -13,19 +13,13 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import {
-  CustomButton,
-  TitleHeading,
-  StatisticWhiteBoxTitle,
-  LockOnLandscape,
-  Graph,
-  Raiting,
-  Calender,
-} from '@SilalApp/common/components/native';
-import Svg, {Path, Rect} from 'react-native-svg';
-import {CheckBox} from 'react-native-elements';
-import {useTranslation} from 'react-i18next';
-const {width, height} = Dimensions.get('window');
+import { CustomButton, TitleHeading, StatisticWhiteBoxTitle, LockOnLandscape, Graph, Raiting, } from '@SilalApp/common/components/native';
+import Svg, { Path, Rect } from 'react-native-svg';
+import { CheckBox } from 'react-native-elements';
+import OutOfStack from './OutOfStack'
+
+
+const { width, height } = Dimensions.get("window");
 
 const data = [
   {
@@ -150,8 +144,8 @@ const Home = ({navigation}) => {
   return (
     <SafeAreaView>
       <LockOnLandscape />
-      <View style={{flexDirection: 'row'}}>
-        <View style={{padding: 15}}>
+      <View style={{ flexDirection: 'row' }}>
+        <View style={{ padding: 15 }}>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <MaterialCommunityIcons
               name="reorder-horizontal"
@@ -178,25 +172,12 @@ const Home = ({navigation}) => {
             type={Outofstock ? 'PRIMARY' : 'TERTIARY'}
           />
         </View>
-
-        <View
-          style={{
-            position: 'absolute',
-            right: 22,
-            marginVertical: 30,
-            marginHorizontal: 20,
-          }}>
-          <Svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <Rect width="24" height="24" fill="#F4F7F8" />
-            <Path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M6.48502 17.67C6.67074 17.8558 6.89126 18.0032 7.13396 18.1038C7.37667 18.2043 7.6368 18.2561 
+        {Statistic ?
+          <View style={{ position: 'absolute', right: 22, marginVertical: 30, marginHorizontal: 20 }}>
+            <Svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <Rect width="24" height="24" fill="#F4F7F8" />
+              <Path fill-rule="evenodd" clip-rule="evenodd"
+                d="M6.48502 17.67C6.67074 17.8558 6.89126 18.0032 7.13396 18.1038C7.37667 18.2043 7.6368 18.2561 
             7.89952 18.2561C8.16223 18.2561 8.42237 18.2043 8.66507 18.1038C8.90777 18.0032 9.12829 17.8558 9.31402 
             17.67L6.48502 14.84C6.29906 15.0257 6.15155 15.2463 6.0509 15.4891C5.95025 15.7319 5.89844 15.9922 5.89844 
             16.255C5.89844 16.5178 5.95025 16.7781 6.0509 17.0209C6.15155 17.2637 6.29906 17.4843 6.48502 17.67ZM11.382 
@@ -208,11 +189,10 @@ const Home = ({navigation}) => {
             4.69046 19.0719 4.60837 18.9464 4.55134C18.821 4.49432 18.6852 4.46357 18.5474 4.46099C18.4096 4.45841 18.2728 
             4.48405 18.1453 4.53633C18.0178 4.58862 17.9023 4.66644 17.806 4.765C17.783 4.79 17.76 4.814 17.74 4.84C16.9135 
             4.29196 15.9437 3.99978 14.952 4C14.289 3.99921 13.6323 4.12937 13.0196 4.383C12.407 4.63663 11.8505 5.00875 11.382 
-            5.478V5.479Z"
-              fill="#4C6870"
-            />
-          </Svg>
-        </View>
+            5.478V5.479Z" fill="#4C6870" />
+            </Svg>
+          </View>
+          : null}
       </View>
       {Statistic ? (
         <View>
@@ -391,23 +371,8 @@ const Home = ({navigation}) => {
                   elevation: 5,
                   borderRadius: 5,
                 }}>
-                <View
-                  style={{
-                    justifyContent: 'space-between',
-                    flexDirection: 'row',
-                    marginVertical: 20,
-                    paddingHorizontal: 20,
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 18,
-                      fontFamily: 'Poppins-Bold',
-                      color: '#002733',
-                      left: -8,
-                    }}>
-                    {t('reviews')}
-                  </Text>
-                  <Calender />
+                  <Text style={{ fontSize: 18, fontFamily: 'Poppins-Bold', color: '#002733', left: -8 }} >Reviews</Text>
+                  {/* <Calender /> */}
                 </View>
                 <FlatList
                   data={data2}
@@ -617,108 +582,15 @@ const Home = ({navigation}) => {
                 </View>
               </View>
             </View>
-
-            {/* //////// */}
-          </View>
+        
         ) : null}
       </View>
-      {Outofstock ? (
+      {Outofstock ?
+
         <View>
-          <View
-            style={{
-              width: (width / 100) * 95,
-              elevation: 1,
-              borderRadius: 5,
-              height: (height / 100) * 75,
-              backgroundColor: '#fff',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-            }}>
-            <View
-              style={{
-                backgroundColor: '#F2F4F5',
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                height: 40,
-                alignItems: 'center',
-                marginHorizontal: 10,
-                marginVertical: 10,
-                elevation: 1,
-              }}>
-              <View />
-              <Text style={styles.HeadingOutofStack}>{t('photo')}</Text>
-              <Text style={styles.HeadingOutofStack}>{t('item_name')}</Text>
-              <Text style={styles.HeadingOutofStack}>{t('Category')}</Text>
-              <Text style={styles.HeadingOutofStack}>{t('remaining')}</Text>
-              <Text style={styles.HeadingOutofStack}>{t('Variant')}</Text>
-              <Text style={styles.HeadingOutofStack}>{t('Status')}</Text>
-              <Text style={styles.HeadingOutofStack}>{t('price')}</Text>
-              <Text style={styles.HeadingOutofStack}>{t('Action')}</Text>
-            </View>
-
-            {/* //////////////////////// */}
-
-            <View>
-              <FlatList
-                data={data3}
-                numColumns={1}
-                style={{marginBottom: 10}}
-                showsVerticalScrollIndicator={true}
-                renderItem={({item}) => (
-                  <View>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-around',
-                        marginLeft: -15,
-                        paddingVertical: 15,
-                      }}>
-                      <View style={{marginTop: -15}}>
-                        <CheckBox
-                          checked={checked}
-                          onPress={() => setchecked(!checked)}
-                          checkedColor="#5AB3A8"
-                          uncheckedColor="#CCD4D6"
-                        />
-                      </View>
-                      <Text style={{marginLeft: -80}}>{item.Status}</Text>
-                      <Text style={{marginLeft: -40}}>{item.Item_name}</Text>
-                      <Text style={{marginLeft: -23}}>{item.Category}</Text>
-                      <Text style={{marginLeft: -20}}>{item.Item_name}</Text>
-                      <Text>{item.Remaining}</Text>
-                      <View style={{flexDirection: 'column'}}>
-                        <Text>{item.Variant}</Text>
-                        <Text style={{fontSize: 8}}>
-                          Variants on: Size, Color{' '}
-                        </Text>
-                      </View>
-                      <Text style={{}}>{item.Price}</Text>
-                      <Text>{item.Variant}</Text>
-                    </View>
-                    <View
-                      style={{
-                        borderBottomWidth: (width / 100) * 0.09,
-                        marginHorizontal: 20,
-                        marginVertical: 2,
-                        borderBottomColor: '#809399',
-                        opacity: 0.1,
-                      }}
-                    />
-                  </View>
-                )}
-                keyExtractor={item => item.id}
-              />
-            </View>
-          </View>
-          {/* /////////////////// */}
-          <CheckBox
-            checked={checked}
-            onPress={() => setchecked(!checked)}
-            checkedColor="#5AB3A8"
-            uncheckedColor="#CCD4D6"
-          />
+          <OutOfStack />
         </View>
-      ) : null}
+      : null}
     </SafeAreaView>
   );
 };
