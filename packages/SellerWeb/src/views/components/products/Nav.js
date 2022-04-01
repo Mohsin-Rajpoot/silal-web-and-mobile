@@ -1,4 +1,5 @@
 import React from "react"
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { Form } from "react-bootstrap"
 import styled from "styled-components"
 import { Menu } from "../AllImages"
@@ -9,11 +10,17 @@ import {
   HeadingStyled,
   Button,
 } from "../Style"
+import { BackArrow } from "../AllImages"
 
-const Nav = ({ sideBar, setSideBar }) => {
+const Nav = ({
+  sideBar,
+  setSideBar,
+}) => {
   const sidebarHandler = () => {
     setSideBar(!sideBar)
   }
+  const history = useHistory()
+  const { pathname } = useLocation()
 
   return (
     <>
@@ -25,6 +32,11 @@ const Nav = ({ sideBar, setSideBar }) => {
         </div>
       </NavStyled>
       <FlexContainer>
+        {pathname == '/product/products' ? '' :
+          <button onClick={history.goBack} className="back-arrow mb-26">
+            <BackArrow />
+          </button>
+        }
         <HeadingStyled size="25px" weight="700" className="mb-26">
           Products
         </HeadingStyled>
@@ -37,7 +49,9 @@ const Nav = ({ sideBar, setSideBar }) => {
           />
           <Search className="icon-label position-absolute" size={17} />
         </SearchBar>
-        <Button className="w-230 ms-auto mb-26">Add new item</Button>
+        <Link to="/product/create-new-item" className="ms-auto mb-26 d-block">
+          <Button className="w-230">Add new item</Button>
+        </Link>
       </FlexContainer>
     </>
   )
