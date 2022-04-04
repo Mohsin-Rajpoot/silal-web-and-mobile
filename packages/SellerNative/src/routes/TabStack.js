@@ -11,11 +11,7 @@ import Order from '../screens/orders/Order';
 import {useTranslation} from 'react-i18next';
 import ProductStack from './ProductStack';
 
-
-
 const Tab = createBottomTabNavigator();
-
-
 
 const TabStack = () => {
   const {t} = useTranslation();
@@ -42,7 +38,7 @@ const TabStack = () => {
         component={OrderStack}
         options={{
           tabBarLabel: t('Order'),
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="bus" color={color} size={size} />
           ),
         }}
@@ -52,7 +48,7 @@ const TabStack = () => {
         component={Clints}
         options={{
           tabBarLabel: t('client'),
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({color, size}) => (
             <Ionicons name="people-sharp" color={color} size={size} />
           ),
         }}
@@ -62,7 +58,7 @@ const TabStack = () => {
         component={ProductStack}
         options={{
           tabBarLabel: t('products'),
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({color, size}) => (
             <Ionicons name="pricetag" color={color} size={size} />
           ),
         }}

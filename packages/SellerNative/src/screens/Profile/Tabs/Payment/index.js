@@ -78,7 +78,7 @@ export default function Archive_orders({title, navigation}) {
           <Text style={styles.tableDetailText}>12.12.2022</Text>
         </View>
         <View style={[styles.render_all_order_single1, {width: '10%'}]}>
-          <Text style={styles.bankDetail}>{t("BankWire")}</Text>
+          <Text style={styles.bankDetail}>{t('BankWire')}</Text>
         </View>
         <View style={[styles.render_all_order_single, {width: '12%'}]}>
           <Text style={styles.tableDetailText}>$ 13.90</Text>

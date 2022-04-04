@@ -8,7 +8,7 @@ import colors from '@SilalApp/common/assets/colors';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import { CustomButton } from '@SilalApp/common/components/native';
+import {CustomButton} from '@SilalApp/common/components/native';
 const SpecialTabItem = ({item}) => {
   const [checked, setChecked] = useState(false);
   const [startTime, setStartTime] = useState(new Date());
@@ -125,7 +125,6 @@ const SpecialTabItem = ({item}) => {
               size={moderateScale(14)}
             />
           </TouchableOpacity>
-
         </>
       ) : (
         <>

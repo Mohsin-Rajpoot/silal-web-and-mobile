@@ -42,7 +42,7 @@ const Offers = ({navigation}) => {
     endDate: '',
   };
 
-  const [modal, setModal]=useState(false)
+  const [modal, setModal] = useState(false);
   const [createPostModal, setCreatePostModal] = useState(false);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -154,9 +154,7 @@ const Offers = ({navigation}) => {
           style={styles.modalMainContainer}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => setModal(false)}>
+          <TouchableOpacity activeOpacity={0.6} onPress={() => setModal(false)}>
             <Icon
               name="close"
               type="antdesign"
@@ -173,10 +171,10 @@ const Offers = ({navigation}) => {
             />
           </View>
 
-          <Image
+          {/* <Image
             source={require('../../Assets/image8.png')}
             style={styles.image}
-          />
+          /> */}
           <CustomText label={t('OfferProfile')} textStyle={styles.offerText} />
           <View style={styles.offerNameContainer}>
             <CustomText label={'Offername'} textStyle={styles.offerName} />

@@ -118,23 +118,48 @@ export default function Pre_orders({title, navigation}) {
         <View style={styles.more_order}>
           <Text style={{color: '#5AB3A8'}}>3 more</Text>
         </View>
-        <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
-            <TouchableOpacity onPress={()=>set_modal_timer_visible(true)} style={[styles.accept_btn,{width:'30%',backgroundColor:'#acd9d3'}]}>
-                <Text style={styles.accept_btn_txt}>Decline</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-                onPress={() => toastRef.current.show(
-                  <View style={{flexDirection:'row'}}>
-                    <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to current orders</Text>
-                    <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
-                      <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>UNDO</Text>
-                    </TouchableOpacity>
-                  </View>
-                  ,3000
-                  )} 
-                style={[styles.accept_btn,{width:'60%'}]}>
-                <Text style={styles.accept_btn_txt}>Move to current orders</Text>
-            </TouchableOpacity>
+        <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+          <TouchableOpacity
+            onPress={() => set_modal_timer_visible(true)}
+            style={[
+              styles.accept_btn,
+              {width: '30%', backgroundColor: '#acd9d3'},
+            ]}>
+            <Text style={styles.accept_btn_txt}>Decline</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              toastRef.current.show(
+                <View style={{flexDirection: 'row'}}>
+                  <Text
+                    style={{
+                      color: '#002733',
+                      fontSize: 15,
+                      fontFamily: 'Lato-Bold',
+                    }}>
+                    The order #247HW9 has been moved to current orders
+                  </Text>
+                  <TouchableOpacity
+                    onPress={() => {
+                      toastRef.current.close(), alert('undo');
+                    }}>
+                    <Text
+                      style={{
+                        color: '#018FFB',
+                        fontSize: 15,
+                        fontFamily: 'Lato-Bold',
+                        marginLeft: 20,
+                      }}>
+                      UNDO
+                    </Text>
+                  </TouchableOpacity>
+                </View>,
+                3000,
+              )
+            }
+            style={[styles.accept_btn, {width: '60%'}]}>
+            <Text style={styles.accept_btn_txt}>Move to current orders</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -172,26 +197,49 @@ export default function Pre_orders({title, navigation}) {
         <View style={styles.more_order}>
           <Text style={{color: '#5AB3A8'}}>3 more</Text>
         </View>
-        
-        <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
-            <TouchableOpacity       
-                  onPress={()=>set_modal_timer_visible(true)}
-                  style={[styles.accept_btn,{width:'30%',backgroundColor:'#acd9d3'}]}>
-                <Text style={styles.accept_btn_txt}>Decline</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-             onPress={() => toastRef.current.show(
-              <View style={{flexDirection:'row'}}>
-                <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to current orders</Text>
-                <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
-                  <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>UNDO</Text>
-                </TouchableOpacity>
-              </View>
-              ,3000
-              )} 
-              style={[styles.accept_btn,{width:'60%'}]}>
-                <Text style={styles.accept_btn_txt}>Move to current orders</Text>
-            </TouchableOpacity>
+
+        <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+          <TouchableOpacity
+            onPress={() => set_modal_timer_visible(true)}
+            style={[
+              styles.accept_btn,
+              {width: '30%', backgroundColor: '#acd9d3'},
+            ]}>
+            <Text style={styles.accept_btn_txt}>Decline</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              toastRef.current.show(
+                <View style={{flexDirection: 'row'}}>
+                  <Text
+                    style={{
+                      color: '#002733',
+                      fontSize: 15,
+                      fontFamily: 'Lato-Bold',
+                    }}>
+                    The order #247HW9 has been moved to current orders
+                  </Text>
+                  <TouchableOpacity
+                    onPress={() => {
+                      toastRef.current.close(), alert('undo');
+                    }}>
+                    <Text
+                      style={{
+                        color: '#018FFB',
+                        fontSize: 15,
+                        fontFamily: 'Lato-Bold',
+                        marginLeft: 20,
+                      }}>
+                      UNDO
+                    </Text>
+                  </TouchableOpacity>
+                </View>,
+                3000,
+              )
+            }
+            style={[styles.accept_btn, {width: '60%'}]}>
+            <Text style={styles.accept_btn_txt}>Move to current orders</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -270,44 +318,91 @@ export default function Pre_orders({title, navigation}) {
                   </View>
                 )}
               />
-              <View style={{flexDirection:'row',alignItems:'center',marginTop:10}}>
-                <Text style={[styles.modal_heading,{fontWeight:'200',fontSize:15}]}>Suggestions:</Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginTop: 10,
+                }}>
+                <Text
+                  style={[
+                    styles.modal_heading,
+                    {fontWeight: '200', fontSize: 15},
+                  ]}>
+                  Suggestions:
+                </Text>
                 <FlatList
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    keyExtractor={(item, index) => index.toString()}
-                    data={data}
-                    renderItem={({ item }) => (
-                      <View style={{paddingVertical:5,paddingHorizontal:10,backgroundColor:'#E6F4F2',marginLeft:10,borderRadius:5}}>
-                        <Text>{item.SubTitle}</Text>
-                      </View>
-                    )}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  keyExtractor={(item, index) => index.toString()}
+                  data={data}
+                  renderItem={({item}) => (
+                    <View
+                      style={{
+                        paddingVertical: 5,
+                        paddingHorizontal: 10,
+                        backgroundColor: '#E6F4F2',
+                        marginLeft: 10,
+                        borderRadius: 5,
+                      }}>
+                      <Text>{item.SubTitle}</Text>
+                    </View>
+                  )}
                 />
               </View>
-              <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
-                <TouchableOpacity onPress={()=>set_modal_timer_visible(!modal_timer_visible)} style={[styles.modal_save_btn,{backgroundColor:'#CCD4D6'}]}>
-                  <Text style={{color:'black'}}>Cancel</Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginTop: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() => set_modal_timer_visible(!modal_timer_visible)}
+                  style={[styles.modal_save_btn, {backgroundColor: '#CCD4D6'}]}>
+                  <Text style={{color: 'black'}}>Cancel</Text>
                 </TouchableOpacity>
-                <TouchableOpacity 
+                <TouchableOpacity
                   onPress={() => {
-                    set_modal_timer_visible(false)
+                    set_modal_timer_visible(false);
                     toastRef.current.show(
-                    <View style={{flexDirection:'row'}}>
-                      <FontAwesome name='check-circle' style={{color:'#36b27c',fontSize:20}} />
-                      <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold',marginLeft:10}}>Order #247HW9 was declined</Text>
-                      <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
-                        <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>UNDO</Text>
-                      </TouchableOpacity>
-                    </View>
-                    ,3000
-                    )
+                      <View style={{flexDirection: 'row'}}>
+                        <FontAwesome
+                          name="check-circle"
+                          style={{color: '#36b27c', fontSize: 20}}
+                        />
+                        <Text
+                          style={{
+                            color: '#002733',
+                            fontSize: 15,
+                            fontFamily: 'Lato-Bold',
+                            marginLeft: 10,
+                          }}>
+                          Order #247HW9 was declined
+                        </Text>
+                        <TouchableOpacity
+                          onPress={() => {
+                            toastRef.current.close(), alert('undo');
+                          }}>
+                          <Text
+                            style={{
+                              color: '#018FFB',
+                              fontSize: 15,
+                              fontFamily: 'Lato-Bold',
+                              marginLeft: 20,
+                            }}>
+                            UNDO
+                          </Text>
+                        </TouchableOpacity>
+                      </View>,
+                      3000,
+                    );
                   }}
-                // onPress={()=>{
-                //     set_modal_timer_visible(false)
-                //     ToastAndroid.showWithGravityAndOffset('Preperation time is changed',ToastAndroid.LONG,ToastAndroid.BOTTOM,25,50);
-                //     }}
-                    style={styles.modal_save_btn}>
-                  <Text style={{color:'white'}}>Submit</Text>
+                  // onPress={()=>{
+                  //     set_modal_timer_visible(false)
+                  //     ToastAndroid.showWithGravityAndOffset('Preperation time is changed',ToastAndroid.LONG,ToastAndroid.BOTTOM,25,50);
+                  //     }}
+                  style={styles.modal_save_btn}>
+                  <Text style={{color: 'white'}}>Submit</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -318,37 +413,37 @@ export default function Pre_orders({title, navigation}) {
   };
 
   return (
-        
-      <View style={{flexDirection:'row',justifyContent:'space-evenly',height:'100%'}}>
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        height: '100%',
+      }}>
+      {/* <View style={{flexDirection:'row',justifyContent:'space-evenly',}}> */}
+      <View style={{backgroundColor: '#E5EAEB', width: '48%', borderRadius: 5}}>
+        <Text style={styles.title}>For today</Text>
+        <FlatList
+          keyExtractor={(item, index) => index.toString()}
+          data={data}
+          renderItem={({item}) => render_today()}
+        />
+      </View>
 
-          {/* <View style={{flexDirection:'row',justifyContent:'space-evenly',}}> */}
-            <View style={{backgroundColor:'#E5EAEB',width:'48%',borderRadius:5}}>
-                <Text style={styles.title}>For today</Text>
-                <FlatList
-                    keyExtractor={(item, index) => index.toString()}
-                    data={data}
-                    renderItem={({ item }) => (
-                      render_today()
-                    )}
-                />
-            </View>
-
-
-        <View
-          style={{
-            backgroundColor: '#E5EAEB',
-            width: '48%',
-            marginLeft: 10,
-            borderRadius: 5,
-          }}>
-          <Text style={styles.title}>{t('this_week')}</Text>
-          <FlatList
-            keyExtractor={(item, index) => index.toString()}
-            data={data}
-            renderItem={({item}) => render_this_week()}
-          />
-        </View>
-        {/* <Button title="Show Toast" onPress={() => toastRef.current.show(
+      <View
+        style={{
+          backgroundColor: '#E5EAEB',
+          width: '48%',
+          marginLeft: 10,
+          borderRadius: 5,
+        }}>
+        <Text style={styles.title}>{t('this_week')}</Text>
+        <FlatList
+          keyExtractor={(item, index) => index.toString()}
+          data={data}
+          renderItem={({item}) => render_this_week()}
+        />
+      </View>
+      {/* <Button title="Show Toast" onPress={() => toastRef.current.show(
               <View style={{flexDirection:'row'}}>
                 <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to Accepted</Text>
                 <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
@@ -357,29 +452,28 @@ export default function Pre_orders({title, navigation}) {
               </View>
               ,1000
               )} /> */}
-            <Toast 
-              ref={toastRef}
-              style={styles.toast}
-              position='bottom'
-              positionValue={250}
-              fadeInDuration={750}
-              fadeOutDuration={800}
-              opacity={1}
-              textStyle={{color:'red'}}
-            />
+      <Toast
+        ref={toastRef}
+        style={styles.toast}
+        position="bottom"
+        positionValue={250}
+        fadeInDuration={750}
+        fadeOutDuration={800}
+        opacity={1}
+        textStyle={{color: 'red'}}
+      />
 
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={modal_timer_visible}
-              onRequestClose={() => {
-                // Alert.alert("Modal has been closed.");
-                set_modal_timer_visible(!modal_timer_visible);
-              }}
-            >
-            {render_modal_view()}
-            </Modal>
-      </View>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modal_timer_visible}
+        onRequestClose={() => {
+          // Alert.alert("Modal has been closed.");
+          set_modal_timer_visible(!modal_timer_visible);
+        }}>
+        {render_modal_view()}
+      </Modal>
+    </View>
   );
 }
 const styles = StyleSheet.create({

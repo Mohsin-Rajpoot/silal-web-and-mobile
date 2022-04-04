@@ -7,16 +7,16 @@ import DropDown from '@SilalApp/common/components/native/DropDown';
 
 import fonts from 'fonts';
 import colors from '@SilalApp/common/assets/colors';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 const EditBox = () => {
-  const {t}=useTranslation();
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <CustomText
         marginBottom={8}
         fontSize={10}
         fontFamily={fonts.LatoRegular}
-        label={t("Cuisine")}
+        label={t('Cuisine')}
       />
       {/* <TextInput
         inputStyle={styles.inputContainer}
@@ -28,7 +28,7 @@ const EditBox = () => {
         marginBottom={8}
         fontSize={10}
         fontFamily={fonts.LatoRegular}
-        label={t("Restaurant_name")}
+        label={t('Restaurant_name')}
       />
       <TextInput
         inputStyle={styles.inputContainer}
@@ -40,14 +40,14 @@ const EditBox = () => {
           marginBottom={8}
           fontSize={10}
           fontFamily={fonts.LatoRegular}
-          label={t("description")}
+          label={t('description')}
         />
         <CustomText
           color={colors.light_grey}
           marginBottom={8}
           fontSize={10}
           fontFamily={fonts.LatoRegular}
-          label={t("charcterLeft")}
+          label={t('charcterLeft')}
         />
       </View>
 
@@ -62,7 +62,7 @@ const EditBox = () => {
           marginBottom={8}
           fontSize={10}
           fontFamily={fonts.LatoRegular}
-          label={t("Business_address")}
+          label={t('Business_address')}
         />
         <CustomText label="*" textStyle={{color: colors.red, marginTop: 10}} />
       </View>
@@ -70,12 +70,12 @@ const EditBox = () => {
       <View style={[styles.inputTextWrapper, {marginTop: 0}]}>
         <TextInput
           inputStyle={[styles.inputContainer, {width: '66%', borderRadius: 8}]}
-          placeholderText={t("Street_name")}
+          placeholderText={t('Street_name')}
           placeholderTextColor={colors.black}
         />
         <TextInput
           inputStyle={[styles.inputContainer, {width: '32%', borderRadius: 8}]}
-          placeholderText={t("Location_via_Gps")}
+          placeholderText={t('Location_via_Gps')}
           placeholderTextColor={colors.black}
         />
       </View>

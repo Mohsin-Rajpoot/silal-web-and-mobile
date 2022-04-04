@@ -14,8 +14,10 @@ const MainStack = () => {
     <Drawer.Navigator
       initialRouteName="TabStack"
       drawerContent={props => <CustomDrawerContent {...props} />}
-      screenOptions={{headerShown: false, drawerStyle: {width: '40%', backgroundColor:'transparent'}}}>
-      
+      screenOptions={{
+        headerShown: false,
+        drawerStyle: {width: '40%', backgroundColor: 'transparent'},
+      }}>
       <Drawer.Screen name="TabStack" component={TabStack} />
       <Drawer.Screen name="Profile" component={Profile} />
       {/* <Drawer.Screen name="Documents" component={Documents} /> */}

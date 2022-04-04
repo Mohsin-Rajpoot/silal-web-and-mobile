@@ -26,6 +26,7 @@ import {
   heightPercentageToDP as height,
 } from 'react-native-responsive-screen';
 import {useTranslation} from 'react-i18next';
+import images from '../../../Assets';
 const Profile = () => {
   const {t} = useTranslation();
   const [isEdit, setIsEdit] = useState(false);
@@ -39,7 +40,7 @@ const Profile = () => {
         <View style={{width: '59%'}}>
           <ImageBackground
             resizeMode="cover"
-            source={require('../../../Assets/image8.png')}
+            source={images.image12}
             style={styles.imgContainer}>
             <CustomText
               fontFamily={fonts.LatoRegular}

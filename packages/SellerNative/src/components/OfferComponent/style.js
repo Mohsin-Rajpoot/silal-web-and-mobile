@@ -7,8 +7,7 @@ const styles = ScaledSheet.create({
     borderRadius: '5@ms',
     marginVertical: '7@ms',
     width: '32%',
-    marginRight:'10@ms'
-    
+    marginRight: '10@ms',
   },
   headerContainer: {
     flexDirection: 'row',

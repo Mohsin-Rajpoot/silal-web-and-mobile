@@ -26,7 +26,9 @@ const styles = ScaledSheet.create({
     marginTop: "5@ms",
   },
   codeText: {
-    fontSize: "8@ms",
+    fontSize: "12@ms",
+    fontFamily:fonts.LatoRegular,
+    color:colors.black
   },
   textContainer: {
     backgroundColor: "transparent",

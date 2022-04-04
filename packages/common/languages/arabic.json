@@ -237,7 +237,12 @@
         "store_description":"Store description",
         "Enter_name":"Enter name",
         "business_email":"Business email",
-        "email_address":"Email address"
+        "email_address":"Email address",
+        "Client_database":"Clients database",
+        "Client_id":"Client ID",
+        "Sumof_order":"Sum of orders",
+        "Sort by":"Sort by",
+        "search_by_orders":"Search by orders # phone or name"
        
     }
 }

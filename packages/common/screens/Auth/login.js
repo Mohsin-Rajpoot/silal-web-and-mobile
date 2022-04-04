@@ -12,7 +12,7 @@ import styles from "./style";
 import Button from "../../components/native/AuthButton";
 import PhoneInput from "react-native-phone-number-input";
 import TextInput from "../../components/native/TextInput";
-
+import PhoneNumber from "../../components/native/PhoneNumberInput";
 import HeaderBack from "../../components/native/HeaderBack";
 import colors from "../../assets/colors";
 import { useTranslation } from "react-i18next";
@@ -59,7 +59,12 @@ const Login = ({ navigation, route }) => {
               <PhoneInput
                 containerStyle={CommonStyle.phoneNumberInput}
                 textContainerStyle={styles.textContainer}
-                textInputProps={{ fontSize: 12, padding: 0, marginTop: 0 }}
+                textInputProps={{
+                  fontSize: 12,
+                  padding: 0,
+                  marginTop: 0,
+                  maxLength: 10,
+                }}
                 countryPickerButtonStyle={styles.countyPickerContainer}
                 textInputStyle={{ color: colors.black }}
                 codeTextStyle={styles.codeText}
