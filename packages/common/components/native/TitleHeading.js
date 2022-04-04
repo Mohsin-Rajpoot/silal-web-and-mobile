@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     },
     PeackTimeBackground: {
         backgroundColor: '#8777D9',
-        width: 171,
+        width: 173,
         height: 34,
         borderRadius: 5,
         marginHorizontal: 15,

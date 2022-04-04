@@ -248,8 +248,12 @@ const styles = ScaledSheet.create({
         flexDirection: 'row',
         alignItems: "center",
         justifyContent: 'space-between',
-        paddingHorizontal: 30,
-        marginTop: 20
+        paddingHorizontal: 5,
+        position:'absolute',
+        bottom:-35,
+        
+        width:'105%'
+      
     },
     pagination_numbring: {
         width: 200,

@@ -17,8 +17,8 @@ import { CheckBox } from 'react-native-elements';
 import { CustomButton, LockOnLandscape, SearchBox } from '@SilalApp/common/components/native'
 import { SwipeListView } from 'react-native-swipe-list-view'
 import Octicons from 'react-native-vector-icons/Octicons'
-import { Picker } from '@react-native-picker/picker';
-// import SearchableDropdown from "searchable-dropdown-react-native";
+import { Picker } from '@react-native-picker/picker'
+import Foundation from 'react-native-vector-icons/Foundation'
 const Secondary = "#002733";
 
 
@@ -109,65 +109,28 @@ export default function Archive_orders({ title, navigation }) {
             title: 'Slide to accept order',
         },
     ];
+    const data4 = [
+        {
+            id: '1',
 
-    let items = [
-        {
-            id: 1,
-            name: "JavaScript",
-            value: "JavaScript"
         },
         {
-            id: 2,
-            name: "Java",
-            value: "Java"
+            id: '2',
+
+        }, {
+            id: '3',
+
+        }, {
+            id: '4',
+
         },
-        {
-            id: 3,
-            name: "Ruby",
-            value: "Ruby"
-        },
-        {
-            id: 4,
-            name: "React Native",
-            value: "React Native"
-        },
-        {
-            id: 5,
-            name: "PHP",
-            value: "PHP"
-        },
-        {
-            id: 6,
-            name: "Python",
-            value: "Python"
-        },
-        {
-            id: 7,
-            name: "Go",
-            value: "Go"
-        },
-        {
-            id: 8,
-            name: "Swift",
-            value: "Swift"
-        }
     ];
-
-
-
-
-
-
-
-
-
-
 
     const render_all_oredrs = (item, index) => {
 
         return (
             <View>
-                {/* //////////// */}
+
                 <View style={{ marginHorizontal: 5, marginVertical: 4 }}>
                     <Modal visible={Showmodal}
                         animationType="slideInRight"
@@ -176,69 +139,161 @@ export default function Archive_orders({ title, navigation }) {
                         <View
                             style={styles.ModalContainerPreview}>
 
-                            <TouchableOpacity style={{ position: 'absolute', right: 10, top: 5 }}>
-                                <Entypo name="cross" style={{ fontSize: 30, color: '#002733', }} onPress={() => setShowmodal(false)} />
+                            <TouchableOpacity style={styles.ShowmodalOpenButton}>
+                                <Entypo name="cross" style={styles.closeShowmodalicon} onPress={() => setShowmodal(false)} />
                             </TouchableOpacity>
-                            <TouchableOpacity style={{
-                                backgroundColor: '#5AB3A8', marginTop: 40,
-                                width: '80%', justifyContent: 'center',
-                                alignItems: 'center', alignSelf: 'center',
-                                height: 40, borderRadius: 5
-                            }}>
-                                <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Poppins-SemiBold' }}>Save</Text>
-                            </TouchableOpacity>
+                            <ScrollView>
+                                <TouchableOpacity style={styles.SaveButton}>
+                                    <Text style={styles.Savetext}>Save</Text>
+                                </TouchableOpacity>
 
-                            <Image source={require('../Assets/image134.png')} style={{ height: 200, width: 330, justifyContent: 'center', alignSelf: 'center', resizeMode: 'contain', zIndex: 0, borderRadius: 5 }} />
-                            <View style={{ flexDirection: 'row', position: 'absolute', right: 0, top: 220, right: 50, elevation: 1 }}>
-                                <View style={{ backgroundColor: '#fff', height: 35, width: 35, justifyContent: 'center', alignItems: 'center', borderRadius: 5 }}>
-                                    <Octicons name="pencil" style={{ fontSize: 20, color: '#4C6870' }} />
+                                <Image source={require('../Assets/image134.png')} style={styles.ImageMoadalMain} />
+                                <View style={styles.IconOnMainImageView}>
+                                    <View style={styles.InnerViewMainImage}>
+                                        <Octicons name="pencil" style={styles.IconePencilMain} />
+                                    </View>
                                 </View>
-                            </View>
-                            <View style={{ marginHorizontal: 40 }}>
-                                <Text style={{ color: '#002733', fontSize: 17, fontFamily: 'Poppins-SemiBold' }}>Item</Text>
-                                <View>
-                                    <Text style={{ fontSize: 12, fontFamily: 'Lato-Semibold', color: '#002733', paddingVertical: 4 }}>Category</Text>
-                                </View>
-
-
-                                <View style={styles.dropdownbox}>
-                                    <Picker
-                                        selectedValue={selectedCategory}
-                                        onValueChange={(itemValue, itemIndex) =>
-                                            setselectedCategory(itemValue)}>
-                                        <Picker.Item label="Salad" value="java" />
-                                        <Picker.Item label="Salad Special" value="js" />
-                                    </Picker>
-                                </View>
-
-                                <View style={{ marginVertical: 5 }}>
-                                    <Text style={{ fontSize: 12, fontFamily: 'Lato-Semibold', color: '#002733', paddingVertical: 4 }}>Item name</Text>
+                                <View style={{ marginHorizontal: 40 }}>
+                                    <Text style={styles.ModalSubTitle}>Item</Text>
+                                    <View>
+                                        <Text style={styles.dropDownModalTitle}>Category</Text>
+                                    </View>
                                     <View style={styles.dropdownbox}>
                                         <Picker
-                                            animated={false}
-                                            selectedValue={selectedCategoryItem}
+                                            selectedValue={selectedCategory}
                                             onValueChange={(itemValue, itemIndex) =>
-                                                setselectedCategoryItem(itemValue)}>
+                                                setselectedCategory(itemValue)}>
                                             <Picker.Item label="Salad" value="java" />
                                             <Picker.Item label="Salad Special" value="js" />
                                         </Picker>
                                     </View>
+
+                                    <View style={{ marginVertical: 5 }}>
+                                        <Text style={styles.dropDownModalTitle}>Item name</Text>
+                                        <View style={styles.dropdownbox}>
+                                            <Picker
+                                                animated={false}
+                                                selectedValue={selectedCategoryItem}
+                                                onValueChange={(itemValue, itemIndex) =>
+                                                    setselectedCategoryItem(itemValue)}>
+                                                <Picker.Item label="Salad" value="java" />
+                                                <Picker.Item label="Salad Special" value="js" />
+                                            </Picker>
+                                        </View>
+                                    </View>
+                                    <View>
+                                        <Text style={styles.dropDownModalTitle}>Item description</Text>
+                                        <TextInput multiline={true} textAlignVertical='top' placeholder="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
+                                                  duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
+                                            placeholderTextColor='#002733' style={styles.TextInputMAinView}
+                                        />
+                                    </View>
+                                    <View style={{ marginTop: 15 }}>
+                                        <Text style={styles.dropDownModalTitle}>Nutritional value</Text>
+                                        <FlatList
+                                            data={data4}
+                                            numColumns={2}
+                                            style={{ marginBottom: 10, }}
+                                            showsVerticalScrollIndicator={false}
+                                            renderItem={({ item }) => (
+                                                <View style={styles.CalViewFaltModal}>
+                                                    <TextInput placeholder='313 cal' placeholderTextColor="#002733" style={styles.CalInputFaltModal} />
+                                                </View>
+                                            )}
+                                            keyExtractor={item => item.id}
+                                        />
+                                    </View>
+                                    <View style={{ marginVertical: 5 }}>
+                                        <Text style={styles.dropDownModalTitle}>Allergies</Text>
+                                        <View style={styles.dropdownbox}>
+                                            <Picker
+                                                animated={false}
+                                                selectedValue={selectedCategoryItem}
+                                                onValueChange={(itemValue, itemIndex) =>
+                                                    setselectedCategoryItem(itemValue)}>
+                                                <Picker.Item label="Salad" value="java" />
+                                                <Picker.Item label="Salad Special" value="js" />
+                                            </Picker>
+                                        </View>
+                                    </View>
+                                    <Text style={styles.AddViewModal}>Add-ons</Text>
+                                    <View style={styles.grayViewContainer}>
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Text style={styles.ToppingTitle}>
+                                                Toppings: <Text style={{ color: '#4C6870', fontSize: 13 }}>Lettuce, Cheese, Tomatoes, Pickle</Text>
+                                            </Text>
+                                            <View style={styles.WhitePencilBkgView}>
+                                                <Foundation name="pencil" style={{ fontSize: 20, color: '#fff' }} />
+                                            </View>
+                                        </View>
+                                        <FlatList
+                                            data={data4}
+                                            numColumns={3}
+                                            style={{ marginBottom: 10, }}
+                                            showsVerticalScrollIndicator={false}
+                                            renderItem={({ item }) => (
+                                                <TouchableOpacity style={styles.FlatLettuce}>
+                                                    <Text style={{ color: '#4C6870', fontFamily: 'Lato-Regular', }}>Lettuce</Text>
+                                                </TouchableOpacity>
+                                            )}
+                                            keyExtractor={item => item.id}
+                                        />
+                                    </View>
+                                    <View style={styles.grayViewContainer}>
+
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Text style={styles.ToppingTitle}>
+                                                Sauces: <Text style={{ color: '#4C6870', fontSize: 13 }}>Ketchup, Maynoaise, BBQ</Text>
+                                            </Text>
+                                            <View style={styles.WhitePencilBkgView}>
+                                                <Foundation name="pencil" style={{ fontSize: 20, color: '#fff' }} />
+                                            </View>
+                                        </View>
+
+                                        <FlatList
+                                            data={data4}
+                                            numColumns={3}
+                                            style={{ marginBottom: 10, }}
+                                            showsVerticalScrollIndicator={false}
+                                            renderItem={({ item }) => (
+                                                <TouchableOpacity style={styles.FlatLettuce}>
+                                                    <Text style={styles.TextStyleFlatModal}>Ketchup</Text>
+                                                </TouchableOpacity>
+                                            )}
+                                            keyExtractor={item => item.id}
+                                        />
+                                    </View>
+                                    <View style={[styles.grayViewContainer, { marginBottom: 20 }]}>
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Text style={styles.ToppingTitle}>
+                                                Drinks: <Text style={{ color: '#4C6870', fontSize: 13 }}>Pepsi, Nestea, Coca-cola, Water, 7UP</Text>
+                                            </Text>
+                                            <View style={styles.WhitePencilBkgView}>
+                                                <Foundation name="pencil" style={{ fontSize: 20, color: '#fff' }} />
+                                            </View>
+                                        </View>
+
+                                        <FlatList
+                                            data={data4}
+                                            numColumns={3}
+                                            style={{ marginBottom: 10, }}
+                                            showsVerticalScrollIndicator={false}
+                                            renderItem={({ item }) => (
+                                                <TouchableOpacity style={styles.FlatLettuce}>
+                                                    <Text style={styles.TextStyleFlatModal}>Nestea</Text>
+                                                </TouchableOpacity>
+                                            )}
+                                            keyExtractor={item => item.id}
+                                        />
+                                    </View>
+                                    <View style={{ marginBottom: 40 }}>
+                                        <View style={styles.BottomButtonModal}>
+                                            <CustomButton text="Edit listing" />
+                                        </View>
+                                    </View>
                                 </View>
 
-                                <View>
-                                    <Text style={{ fontSize: 12, fontFamily: 'Lato-Semibold', color: '#002733', paddingVertical: 4 }}>Item description</Text>
-                                    <TextInput placeholder="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-                                     duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-                                        placeholderTextColor='#002733' style={{
-                                            fontFamily: 'Lato-Regular', fontSize: 17,
-                                            width: '100%', height: 120, borderWidth: 1, borderColor: '#f1f1f1'
-                                        }}
-                                    />
-                                </View>
-
-                            </View>
-
-
+                            </ScrollView>
                         </View>
                     </Modal>
                 </View>
@@ -401,9 +456,6 @@ export default function Archive_orders({ title, navigation }) {
 
         <View style={{ height: '90%', padding: 20 }}>
             <MenuProvider >
-
-
-
                 <View style={{ width: '100%', alignSelf: 'center' }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5, alignItems: 'center', }}>
                         <TouchableOpacity onPress={() => navigation.goBack()} style={{ flexDirection: 'row' }}>
@@ -415,7 +467,6 @@ export default function Archive_orders({ title, navigation }) {
                             <CustomButton
                                 text="Add new item"
                                 onPress={() => navigation.navigate('ItemCreaterFirstStep')}
-
                             />
                         </View>
                     </View>
@@ -679,11 +730,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4.65,
         elevation: 6,
     },
-    trigger: {
-        // padding: 10,
-        // margin: 10,
-        // backgroundColor:'red'
-    },
+
     modal_data_heading: {
         flexDirection: 'row',
         padding: 12,
@@ -772,6 +819,73 @@ const styles = StyleSheet.create({
     dropdownbox: {
         height: 50, width: '100%', borderWidth: 1, borderRadius: 5, marginVertical: 5, borderColor: '#f1f1f1'
     },
+    ShowmodalOpenButton: {
+        position: 'absolute', right: 10, top: 5
+    },
+    closeShowmodalicon: {
+        fontSize: 30, color: '#002733',
+    },
+    SaveButton: {
+        backgroundColor: '#5AB3A8', marginTop: 40,
+        width: '80%', justifyContent: 'center',
+        alignItems: 'center', alignSelf: 'center',
+        height: 40, borderRadius: 5
+    },
+    Savetext: {
+        color: '#fff', fontSize: 16, fontFamily: 'Poppins-SemiBold'
+    },
+    ImageMoadalMain: {
+        height: 200, width: 330, justifyContent: 'center', alignSelf: 'center', resizeMode: 'contain', zIndex: 0, borderRadius: 5
+    },
+    IconOnMainImageView: {
+        flexDirection: 'row', position: 'absolute', right: 0, top: 220, right: 50, elevation: 1
+    },
+    InnerViewMainImage: {
+        backgroundColor: '#fff', height: 35, width: 35, justifyContent: 'center', alignItems: 'center', borderRadius: 5
+    },
+    IconePencilMain: {
+        fontSize: 20, color: '#4C6870'
+    },
+    ModalSubTitle: {
+        color: '#002733', fontSize: 17, fontFamily: 'Poppins-SemiBold'
+    },
+    dropDownModalTitle: {
+        fontSize: 12, fontFamily: 'Lato-Semibold', color: '#002733', paddingVertical: 4
+    },
+    TextInputMAinView: {
+
+        fontFamily: 'Lato-Regular', fontSize: 17,
+        width: '100%', height: 150, borderWidth: 1,
+        borderColor: '#f1f1f1', color: '#002733', borderRadius: 5, paddingVertical: 15, paddingHorizontal: 10
+    },
+    CalViewFaltModal: {
+        width: "45%", marginHorizontal: 10, marginVertical: 10, borderRadius: 5, borderWidth: 1, borderColor: '#f1f1f1'
+    },
+    CalInputFaltModal: {
+        fontSize: 17, fontFamily: 'Lato-Regular', paddingHorizontal: 8
+    },
+    AddViewModal: {
+        color: '#002733', fontSize: 17, fontFamily: 'Poppins-SemiBold', marginVertical: 15
+    },
+    grayViewContainer: {
+        width: '100%', justifyContent: 'center', alignSelf: 'center',
+        backgroundColor: '#F2F4F5', borderRadius: 5, marginBottom: 20, paddingTop: 10, paddingHorizontal: 8
+    },
+    ToppingTitle: {
+        fontSize: 14, color: '#002733', paddingHorizontal: 5, width: 280, paddingVertical: 4
+    },
+    WhitePencilBkgView: {
+        backgroundColor: '#4C6870', height: 30, width: 30, justifyContent: 'center', alignItems: 'center', borderRadius: 5
+    },
+    FlatLettuce: {
+        width: "27%", marginHorizontal: 3, marginVertical: 5, borderRadius: 5, borderWidth: 1, backgroundColor: '#CCD4D6', justifyContent: 'center', alignItems: 'center', padding: 10, borderColor: "#CCD4D6"
+    },
+    TextStyleFlatModal: {
+        color: '#4C6870', fontFamily: 'Lato-Regular',
+    },
+    BottomButtonModal: {
+        position: 'absolute', right: 1, bottom: -40
+    }
 
 });
 

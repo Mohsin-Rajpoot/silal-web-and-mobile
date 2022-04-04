@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { View, Text, SafeAreaView, TouchableOpacity, Image, StyleSheet, Dimensions, FlatList, ScrollView } from 'react-native';
+import React, { useState,useEffect } from 'react'
+import { View, SafeAreaView, TouchableOpacity,LogBox} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   CustomButton,
@@ -11,7 +11,9 @@ import StatisticsView from '../../components/Statistics';
 import ReviewView from '../../components/Reviews';
 
 const Home = ({ navigation }) => {
-
+  useEffect(() => {
+    LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
+}, [])
   const [Statistic, setStatistic] = useState(true);
   const [Reviews, setReviews] = useState(false);
   const [Outofstock, setOutofstack] = useState(false);
@@ -34,9 +36,9 @@ const Home = ({ navigation }) => {
 
   };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor:'#E5E5E5'}}>
       <LockOnLandscape />
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row',backgroundColor:'#E5E5E5' }}>
         <View style={{ padding: 15 }}>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <MaterialCommunityIcons
@@ -103,8 +105,9 @@ const Home = ({ navigation }) => {
         }
       </View>
       {Outofstock ?
-        <View>
+        <View style={{marginBottom:110}}>
           <OutOfStack/>
+          
         </View>
         : null
       }

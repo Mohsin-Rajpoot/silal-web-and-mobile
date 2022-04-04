@@ -37,7 +37,7 @@ const TabStack = () => {
         name="Order"
         component={OrderStack}
         options={{
-          tabBarLabel: 'Order',
+          tabBarLabel: 'Orders',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="bus" color={color} size={size} />
           ),

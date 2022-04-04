@@ -410,7 +410,7 @@ const Clints = () => {
 
                     <View style={{ flexDirection: 'row' }}>
                       <Text style={styles.paymentMethod}>PAYMENT METHOD</Text>
-                      <Text style={[styles.CreditCard]}>CREADIT CARD</Text>
+                      <Text style={[styles.CreditCard]}>CREDIT CARD</Text>
                     </View>
                     <View style={{ flexDirection: 'row' }}>
                       <Text style={[styles.paymentMethod]}>CARD DATA</Text>

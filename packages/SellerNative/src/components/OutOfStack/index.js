@@ -13,16 +13,41 @@ import { CheckBox } from 'react-native-elements';
 import styles from './styles';
 export default function Archive_orders({ title, navigation }) {
 
+
     const [checked, setchecked] = useState(false);
+    const [loader, setLoader] = useState(false);
+
+    const setcheck = (index) => {
+        const val = data[index]
+        val.checked = !val.checked
+        data[index] = val
+        setTimeout(() => {
+            setData(data)
+            setTimeout(() => {
+                setLoader(!loader)
+            }, 100);
+        }, 200);
+    }
 
 
-    const data = [
+
+
+
+
+
+
+
+
+    var [data, setData] = useState([
+
         {
             id: '1',
             Title: 'Embedded Software Engineer',
             SubTitle: 'Newyork',
             year: "22/03/2022",
             image: require('../../Assets/image8.png'),
+            checked: false
+
 
         },
         {
@@ -30,59 +55,90 @@ export default function Archive_orders({ title, navigation }) {
             Title: 'Web Developer',
             SubTitle: 'Lahore',
             year: "22/03/2022",
+            checked: false
+
         },
         {
             id: '3',
             Title: 'Embedded Software Engineer',
             SubTitle: 'USA',
             year: '22/03 /2022',
+            checked: false
+
         },
         {
             id: '4',
             Title: 'Embedded Software Engineer',
             SubTitle: 'USA',
             year: '22/03/2022',
+            checked: false
+
         },
         {
             id: '5',
             Title: 'Embedded Software last',
             SubTitle: 'USA',
             year: '22/03/2022',
+            checked: false
+
         },
         {
             id: '6',
             Title: 'Embedded Software last',
             SubTitle: 'USA',
             year: '22/03/2022',
+            checked: false
+
         },
         {
             id: '7',
             Title: 'Embedded Software full last',
             SubTitle: 'USA',
             year: '22/03/2022',
+            checked: false
+
         },
         {
             id: '8',
             Title: 'Embedded Software full last',
             SubTitle: 'USA',
             year: '22/03/2022',
+            checked: false
+
+        },
+        {
+            id: '9',
+            Title: 'Embedded Software full last',
+            SubTitle: 'USA',
+            year: '22/03/2022',
+            checked: false
+
+        },
+        {
+            id: '10',
+            Title: 'Embedded Software full last',
+            SubTitle: 'USA',
+            year: '22/03/2022',
+            checked: false
+
         },
 
-    ];
+    ]);
 
-    const render_all_oredrs = () => {
+
+    const render_all_oredrs = (item,index) => {
 
         return (
             <View>
                 <View style={[styles.render_all_orders, { paddingTop: 5 }]}>
-                    <View>
-                        <CheckBox
-                            checked={checked}
-                            onPress={() => setchecked(!checked)}
-                            checkedColor="#5AB3A8"
-                            uncheckedColor="#CCD4D6"
-                        />
-                    </View>
+                <View>
+                                        <CheckBox
+                                            checked={item.checked == true || item.checked == 'true' ? true : false}
+                                            onPress={() => setcheck(index)}
+                                            checkedColor="#5AB3A8"
+                                            uncheckedColor="#CCD4D6"
+                                        />
+                                    </View>
                     <View style={[styles.render_all_order_single, { width: '10%', marginTop: 5 }]}>
                         <Image source={require('../../Assets/Dress.png')} style={{ height: 40, width: 40, resizeMode: 'contain' }} />
                     </View>
@@ -105,7 +161,7 @@ export default function Archive_orders({ title, navigation }) {
                         borderRadius: 5,
 
                     }]}>
-                        <Text style={{ fontFamily: 'Lato-Regular', color: "#fff" }}>Out of stock</Text>
+                        <Text style={{ fontFamily: 'Lato-Regular', color: "#fff" }}>Low of stock</Text>
                     </View>
                     <View style={[styles.render_all_order_single, { width: '14%', }]}>
                         <Text style={{ fontFamily: 'Lato-Regular', }}>$ 120.00</Text>
@@ -154,7 +210,7 @@ export default function Archive_orders({ title, navigation }) {
                     <Text style={styles.all_orders_heading_txt}>Variant</Text>
                 </View>
                 <View style={[styles.all_orders, { width: '12%' }]} >
-                    <Text>Status</Text>
+                    <Text style={styles.all_orders_heading_txt}>Status</Text>
                 </View>
                 <View style={[styles.all_orders, { width: '14%' }]} >
                     <Text style={styles.all_orders_heading_txt}>Price</Text>
@@ -171,19 +227,19 @@ export default function Archive_orders({ title, navigation }) {
 
     return (
 
-        <View style={{ height: '90%', padding: 20 }}>
+        <View style={{ height: '93%', padding: 5,backgroundColor:'#fff',margin:8,elevation:1,borderWidth:1,borderColor:"#fff",paddingHorizontal:40 }}>
             <MenuProvider >
 
                 {header_alloredrs()}
                 <FlatList
                     keyExtractor={(item, index) => index.toString()}
                     data={data}
-                    renderItem={({ item }) => (
-                        render_all_oredrs()
+                    renderItem={({ item,index }) => (
+                        render_all_oredrs(item,index)
                     )}
                 />
-
-                <View style={styles.pagination_view}>
+            </MenuProvider>
+            <View style={styles.pagination_view}>
                     <Text style={{ fontFamily: 'Lato-Regular' }}>Showing 1-9 of 86</Text>
                     <View style={styles.pagination_numbring}>
                         <Ionicons name='chevron-back' style={{ color: '#d1d8da', fontSize: 24 }} />
@@ -194,9 +250,6 @@ export default function Archive_orders({ title, navigation }) {
                         <MaterialCommunityIcons name='chevron-right-circle' style={{ color: '#4c6870', fontSize: 24 }} />
                     </View>
                 </View>
-
-
-            </MenuProvider>
         </View>
 
     );

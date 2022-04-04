@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, Image, StyleSheet, FlatList, TextInput, } from 'react-native';
-import { CustomButton, Raiting } from '@SilalApp/common/components/native';
+import { Calender, CustomButton, Raiting } from '@SilalApp/common/components/native';
 import styles from './Styles';
 
 const data2 = [
@@ -37,8 +37,13 @@ const data2 = [
 
 
 const Reviews = () => {
+
+
+    const [isReply, setisReply] = useState(false)
+
+
     return (
-        <View>
+        <View style={{backgroundColor:'#E5E5E5'}}>
             <View style={{ flexDirection: 'row', marginHorizontal: 25 }}>
                 <View>
                     <Text style={styles.Title}>Restaurant’s name</Text>
@@ -53,11 +58,13 @@ const Reviews = () => {
                 <View style={styles.DividerFirstView}>
                     <View style={styles.firstViewInerStyle}>
                         <Text style={styles.firstViewTitle} >Reviews</Text>
+                        <Calender/>
+
                     </View>
                     <FlatList
                         data={data2}
                         numColumns={1}
-                        style={{ marginBottom: 100, height: 450 }}
+                        style={{ marginBottom: 5, height: 500 }}
                         renderItem={({ item }) => (
                             <View>
                                 <View style={styles.FlatListParagraphTitle}>
@@ -75,13 +82,13 @@ const Reviews = () => {
                                 <View style={styles.TextParagraphFlat}>
                                     <Text style={styles.FirstParagraphContent}>{item.Paragraph}</Text>
                                     <Text style={styles.ParagraphSecond}> <Text style={{ fontFamily: 'Poppins-Medium', color: '#002733' }}>Order : </Text> {item.aboutOrder}</Text>
-
-                                    <View style={{ borderColor: '#E8E8E8', borderWidth: 1, marginVertical: 10, borderRadius: 5 }}>
-                                        <TextInput placeholder='Type here' multiline={true} textAlignVertical='top' style={{ height: 80, }} />
-                                    </View>
-
-                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                        <CustomButton text="Reply" />
+                                    {isReply == true ?
+                                        <View style={{ borderColor: '#E8E8E8', borderWidth: 1, marginVertical: 10, borderRadius: 5 }}>
+                                            <TextInput placeholder='Type here' multiline={true} textAlignVertical='top' style={{ height: 80, }} />
+                                        </View>
+                                         : null}  
+                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between',marginVertical:5 }}>
+                                        <CustomButton text={isReply== true ? "Submit": 'Reply'} onPress={()=> setisReply(true)}  />
                                         <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center', }}>
                                             <Text style={styles.ContactButton}>Contact support</Text>
                                         </TouchableOpacity>
@@ -96,7 +103,7 @@ const Reviews = () => {
                 <View style={styles.SecondViewMainContainer}>
                     <Text style={styles.SecondViewTitle}>Reviews overview</Text>
                     <View style={styles.LineSecondView}>
-                        <Text style={styles.TitleView}>Total </Text>
+                        <Text style={styles.TitleView}>Total</Text>
                         <Text style={styles.oneEightNine}>189</Text>
                     </View>
                     <View style={styles.SecondViewBorderLine} />
@@ -106,7 +113,7 @@ const Reviews = () => {
                     </View>
                     <View style={styles.SecondViewBorderLine} />
                     <View style={styles.LineSecondView}>
-                        <Text style={styles.TitleView}>Total raiting </Text>
+                        <Text style={styles.TitleView}>Total rating </Text>
                         <Text style={styles.oneEightNine}>4.8</Text>
                     </View>
                 </View>
