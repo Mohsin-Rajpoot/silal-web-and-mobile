@@ -8,12 +8,13 @@ import {widthPercentageToDP as width} from 'react-native-responsive-screen';
 import TabItem from './TabItem';
 import SpecialTabItem from './SpecialTabItem';
 import {CustomButton} from '@SilalApp/common/components/native';
+import {useTranslation} from 'react-i18next';
 export default () => {
   const [index, setIndex] = React.useState(0);
-
+  const {t} = useTranslation();
   return (
     <>
-      <View style={{width: width(37),backgroundColor: "white",}}>
+      <View style={{width: width(60)}}>
         <Tab
           value={index}
           onChange={e => setIndex(e)}
@@ -22,15 +23,17 @@ export default () => {
             backgroundColor: colors.primary,
           }}>
           <Tab.Item
-          buttonStyle={{backgroundColor: "white",}}
-            title="Standard hours"
+            containerStyle={{backgroundColor: 'transparent'}}
+            variant="primary"
+            buttonStyle={{backgroundColor: 'transparent'}}
+            title={t('StandardHours')}
             titleStyle={[styles.tabText, index == 0 && {color: colors.black}]}
-            style={{backgroundColor: colors.profileBackground}}
           />
           <Tab.Item
-          buttonStyle={{backgroundColor: "white",}}
-
-            title="Special hours"
+            containerStyle={{backgroundColor: 'transparent'}}
+            buttonStyle={{backgroundColor: 'transparent'}}
+            variant="primary"
+            title={t('SPECIAL_HOURS')}
             titleStyle={[styles.tabText, index == 1 && {color: colors.black}]}
             style={{backgroundColor: colors.profileBackground}}
           />
@@ -39,7 +42,7 @@ export default () => {
       <View style={{height: '80%', width: '70%'}}>
         <TabView value={index} onChange={setIndex} animationType="spring">
           <TabView.Item style={styles.tabViewContainer}>
-            <TabItem item={{day: 'Monday'}} />
+            <TabItem item={{day: t('Monday')}} />
           </TabView.Item>
           <TabView.Item style={styles.tabViewContainer}>
             <>
@@ -56,7 +59,7 @@ export default () => {
         <CustomButton
           textStyle={{paddingVertical: scale(4), paddingHorizontal: scale(10)}}
           containerStyle={{alignSelf: 'flex-end', marginTop: verticalScale(10)}}
-          text={'Save standard hours'}
+          text={t('Save_standard_hours')}
         />
       </View>
     </>
@@ -82,6 +85,6 @@ const styles = ScaledSheet.create({
     alignSelf: 'flex-start',
     borderWidth: 2,
     borderColor: colors.primary,
-    marginTop:"10@vs"
+    marginTop: '10@vs',
   },
 });

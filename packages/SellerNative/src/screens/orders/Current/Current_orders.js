@@ -7,6 +7,7 @@ import { Image, SvgXml } from 'react-native-svg';
 import Svg, { Path ,Defs,LinearGradient,Stop,Rect,Circle, G} from "react-native-svg"
 import { Slider ,Icon} from 'react-native-elements';
 import Toast from 'react-native-easy-toast';
+import SwipeButton from 'rn-swipe-button';
 
 const { width, height } = Dimensions.get("window");
 
@@ -16,43 +17,46 @@ export default function Current_orders({title, navigation}) {
   const [modal_timer_visible, set_modal_timer_visible] = useState(false);
   const [values, set_values] = useState(0);
   const [manual_time, set_manual_time] = useState('');
+  const [zoom, setZoom] = useState(0);
+  const [accepted, set_accepted] = useState(false);
+
   const toastRef = useRef();
 
 
     const data = [
         {
             id: '1',
-            Title: 'Embedded Software Engineer',
+            Title: 'first',
             SubTitle: 'Newyork',
             year: "22/03/2022",
         },
         {
             id: '2',
-            Title: 'Web Developer',
+            Title: 'second',
             SubTitle: 'Lahore',
             year: "22/03/2022",
         },
         {
             id: '3',
-            Title: 'Embedded Software Engineer',
+            Title: 'third',
             SubTitle: 'USA',
             year: '22/03 /2022',
         },
         {
             id: '4',
-            Title: 'Embedded Software Engineer',
+            Title: 'fourth',
             SubTitle: 'USA',
             year: '22/03/2022',
         },
         {
             id: '5',
-            Title: 'Embedded Software last',
+            Title: 'fifth',
             SubTitle: 'USA',
             year: '22/03/2022',
         },
         {
           id: '6',
-          Title: 'Embedded Software last',
+          Title: 'sixth',
           SubTitle: 'USA',
           year: '22/03/2022',
       },
@@ -87,6 +91,8 @@ export default function Current_orders({title, navigation}) {
             <Text style={{fontSize:17}}>2</Text>
             <Entypo name='cross' style={styles.cross_icon} />
             <Text style={styles.order_title}>French Fries </Text>
+            <Text style={styles.order_title}>{item.id}</Text>
+
         </View>
         <View style={[styles.order_item,{marginTop:5}]}>
             <Text style={{fontSize:17}}>2</Text>
@@ -96,7 +102,63 @@ export default function Current_orders({title, navigation}) {
         <View style={styles.more_order}>
           <Text>3 more</Text>
         </View>
-        <TouchableOpacity
+     
+        <SwipeButton
+          disabled={false}
+          //disable the button by doing true (Optional)
+          swipeSuccessThreshold={70}
+          height={40}
+          //height of the button (Optional)
+          width={330}
+          shouldResetAfterSuccess={true}
+          //width of the button (Optional)
+          title="Slide to accept order"
+          //Text inside the button (Optional)
+          //thumbIconImageSource={thumbIcon}
+          //You can also set your own icon for the button (Optional)
+          onSwipeSuccess={() => {
+            toastRef.current.show(
+              <View style={{flexDirection:'row'}}>
+                <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to Accepted</Text>
+                <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
+                  <Text style={{color:'#018FFB',fontSize:15,fontFamily:'Lato-Bold',marginLeft:20}}>UNDO</Text>
+                </TouchableOpacity>
+              </View>
+              ,3000
+              )
+            // alert('Submitted Successfully!');
+          }}
+          
+          thumbIconComponent={()=>{
+            return(
+              <View  >
+                <Svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <Path d="M7.34171 1.17374C7.79732 0.718128 8.53601 0.718128 8.99162 1.17374L15.9916 8.17374C16.4472 8.62935 16.4472 9.36805 15.9916 9.82366L8.99162 16.8237C8.53601 17.2793 7.79732 17.2793 7.34171 16.8237C6.8861 16.368 6.8861 15.6294 7.34171 15.1737L13.5167 8.9987L7.34171 2.82366C6.8861 2.36804 6.8861 1.62935 7.34171 1.17374ZM0.34171 1.17374C0.797322 0.718128 1.53601 0.718128 1.99163 1.17374L8.99162 8.17374C9.21042 8.39253 9.33333 8.68928 9.33333 8.9987C9.33333 9.30812 9.21042 9.60487 8.99162 9.82366L1.99162 16.8237C1.53601 17.2793 0.79732 17.2793 0.341709 16.8237C-0.113903 16.368 -0.113903 15.6294 0.341709 15.1737L6.51675 8.9987L0.34171 2.82366C-0.113902 2.36804 -0.113902 1.62935 0.34171 1.17374Z" fill="white"/>
+                </Svg>
+                {/* <Text>jnkjn</Text> */}
+              </View>
+            )
+          }}
+          
+          
+          containerStyles={{borderRadius:5,height:40}}
+          railStyles={{backgroundColor:'#5AB3A8',borderRadius:5,opacity:0.6,height:45,marginLeft:-5,}}
+          // disabledRailBackgroundColor={true}
+          //After the completion of swipe (Optional)
+          
+          railFillBackgroundColor="red" //(Optional)
+          
+          railFillBorderColor="transparent" //(Optional)
+          thumbIconWidth={100}
+
+          // thumbIconStyles={{width:130,height:120,marginLeft:7}}
+          thumbIconBackgroundColor="transparent" //(Optional)
+          thumbIconBorderColor="transparent" //(Optional)
+          railBackgroundColor="#F2F2F2" //(Optional)
+          railBorderColor="transparent" //(Optional)
+        />
+        {/* <TouchableOpacity
+              // onPress={()=>alert('fcghvjhb')}
              onPress={() => toastRef.current.show(
               <View style={{flexDirection:'row'}}>
                 <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to Accepted</Text>
@@ -105,10 +167,10 @@ export default function Current_orders({title, navigation}) {
                 </TouchableOpacity>
               </View>
               ,3000
-              )} 
+              )}
           style={styles.accept_btn}>
           <Text style={styles.accept_btn_txt}>Slide to accept order</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </TouchableOpacity>
     )
   }
@@ -270,8 +332,8 @@ export default function Current_orders({title, navigation}) {
 
   return (
         
-      <View style={{height:'82%',width:'100%'}}>
-          <View style={{flexDirection:'row'}}>
+      <View style={{flexDirection:'row',height:'100%',width:'100%'}}>
+          {/* <View style={{flexDirection:'row'}}> */}
             <View style={{backgroundColor:'#E5EAEB',width:'40%',marginLeft:10,borderRadius:5}}>
                 <Text style={styles.title}>Received</Text>
                 <FlatList
@@ -314,7 +376,7 @@ export default function Current_orders({title, navigation}) {
                 </View>
               </View>
 
-            </View>
+            {/* </View> */}
 
           </View>
 
@@ -487,3 +549,109 @@ const styles = StyleSheet.create({
   }
 });
 
+
+
+
+
+// import React, {useState} from 'react';
+// import {SafeAreaView, View, Text, StatusBar, Button} from 'react-native';
+
+// import Icon from 'react-native-vector-icons/FontAwesome';
+
+// // import thumbIcon from './assets/thumbIcon.png';
+// // import arrowRight from './assets/arrow-right.png';
+// import styles from './styles';
+
+// import SwipeButton from 'rn-swipe-button';
+
+
+// const App= () =>  () => {
+//   const [disableCBButton, setDisableCBButton] = useState(false)
+//   const defaultStatusMessage = 'swipe status appears here';
+//   const [swipeStatusMessage, setSwipeStatusMessage] = useState(
+//     defaultStatusMessage,
+//   );
+
+//   setInterval(() => setSwipeStatusMessage(defaultStatusMessage), 5000);
+//   const updateSwipeStatusMessage = (message) => setSwipeStatusMessage(message);
+//   const renderSubHeading = (heading) => (
+//     <Text style={styles.subHeading}>{heading}</Text>
+//   );
+//   let forceResetLastButton = null;
+
+//   const CheckoutButton = () => {
+//     return(
+//         <View style={{width: 100, height: 30, backgroundColor: '#C70039', borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
+//             <Text style={{color: '#ffffff'}}>Checkout</Text>
+//         </View>
+//     );
+//   } 
+
+
+//   return (
+//     <>
+//       <StatusBar barStyle="dark-content" />
+//       <SafeAreaView>
+//         <View style={styles.container}>
+//           <Text style={styles.title}>React Native Swipe Button</Text>
+//           <Text style={styles.swipeStatus}>{swipeStatusMessage}</Text>
+//           {renderSubHeading('Disabled')}
+//           <SwipeButton thumbIconImageSource={arrowRight} disabled />
+//           {renderSubHeading('Swipe status callbacks')}
+//           <SwipeButton
+//             containerStyles={{borderRadius: 5}}
+//             height={30}
+//             onSwipeFail={() => updateSwipeStatusMessage('Incomplete swipe!')}
+//             onSwipeStart={() => updateSwipeStatusMessage('Swipe started!')}
+//             onSwipeSuccess={() =>
+//               updateSwipeStatusMessage('Submitted successfully!')
+//             }
+//             railBackgroundColor="#31a57c"
+//             railStyles={{borderRadius: 5}}
+//             thumbIconComponent={CheckoutButton}
+//             thumbIconImageSource={arrowRight}
+//             thumbIconStyles={{borderRadius: 5}}
+//             thumbIconWidth={100} 
+//             title="Submit order"
+//           />
+//           {renderSubHeading('Reverse swipe enabled')}
+//           <SwipeButton
+//             enableReverseSwipe
+//             onSwipeSuccess={() => updateSwipeStatusMessage('Slide success!')}
+//             railBackgroundColor="#a493d6"
+//             thumbIconBackgroundColor="#FFFFFF"
+//             title="Slide to unlock"
+//           />
+//           {renderSubHeading('Set a component as thumb icon & use forceReset')}
+//           <SwipeButton
+//             disableResetOnTap
+//             forceReset={ reset => {
+//               forceResetLastButton = reset
+//             }}
+//             railBackgroundColor="#9fc7e8"  
+//             railStyles={{
+//               backgroundColor: '#44000088',
+//               borderColor: '#880000FF',
+//             }}
+//             thumbIconBackgroundColor="#FFFFFF"
+//             title="Slide to unlock"
+//           />
+//           <View style={{ alignItems: 'center', marginBottom: 5 }}>
+//             <Button onPress={() => forceResetLastButton && forceResetLastButton()} title="Force reset" />
+//           </View>  
+//           {renderSubHeading('Set .png image as thumb icon')}
+//           <SwipeButton thumbIconImageSource={thumbIcon} railBackgroundColor="#cfb0dd"/>
+//           {renderSubHeading('Set height & reset after successful swipe')}
+//           <SwipeButton height={25} shouldResetAfterSuccess={true} resetAfterSuccessAnimDelay={1000} />
+//           {renderSubHeading('Set height and width')}
+//           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+//             <SwipeButton height={35} width={200} title="Swipe" disabled={disableCBButton} />
+//             <View style={{ marginLeft: 15, width: 150, height: 32 }}><Button onPress={() => setDisableCBButton(!disableCBButton)} title="Toggle disable" /></View>
+//           </View>  
+//         </View>
+//       </SafeAreaView>
+//     </>
+//   );
+// };
+
+// export default App

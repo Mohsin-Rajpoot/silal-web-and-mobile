@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { View, Text, SafeAreaView, TouchableOpacity, Image, StyleSheet, Dimensions,FlatList } from 'react-native'
+import React, { useState,useRef } from 'react'
+import { View, Text, SafeAreaView, TouchableOpacity, Image, StyleSheet, Dimensions,ScrollView } from 'react-native'
 import Current_orders from './../orders/Current/Current_orders'
 import Pre_orders from './../orders/Pre_orders'
 import Acceptance_orders from '../Orders_longer/Acceptance_orders'
@@ -10,6 +10,7 @@ import Pickup_orders from './Pickup_orders'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 // import TitleHeading from '../components/TitleHeading';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { acc } from 'react-native-reanimated'
 // import LockOnLandscape from '../components/Dashboard/LockOnLandscape';
 // import StatisticWhiteBoxTitle from '../components/StatisticWhiteBoxTitle';
 const { width, height } = Dimensions.get("window");
@@ -18,17 +19,32 @@ const Home = ({ navigation }) => {
   const [Statistic, setStatistic] = useState(true);
   const [Reviews, setReviews] = useState(false);
   const [Outofstock, setOutofstack] = useState(false);
-  const [order_state, set_order_state] = useState('acceptance');
+  const [acceptance_order_state, set_acceptance_order_state] = useState(true);
+  const [pickup_order_state, set_pickup_order_state] = useState(false);
+
+  const scrollref=useRef()
 
   
+  
+  const tabclick=(x_value,state)=>{
+    scrollref.current.scrollTo({ x: width*x_value })
+    if(x_value=='0'){
+      set_acceptance_order_state(true)
+      set_pickup_order_state(false)
+    }
+    else if(x_value=='1'){
+      set_acceptance_order_state(false)
+      set_pickup_order_state(true)
+    }
+  }
 const Header=()=>{
   return(
       <View style={{ paddingVertical: 15,flex:1, flexDirection: 'row',}}>
-        <TouchableOpacity onPress={()=>set_order_state('acceptance')}  style={[styles.order_button,{backgroundColor:order_state=='acceptance'? '#5AB3A8':null,width:250}]}>
-          <Text style={[styles.order_button_text,{color:order_state=='acceptance'?'white':'#4C6870'}]}>Awaiting acceptance (8)</Text>
+        <TouchableOpacity onPress={()=>tabclick('0')}  style={[styles.order_button,{backgroundColor:acceptance_order_state==true? '#5AB3A8':null,width:250}]}>
+          <Text style={[styles.order_button_text,{color:acceptance_order_state==true?'white':'#4C6870'}]}>Awaiting acceptance (8)</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>set_order_state('pickup')}  style={[styles.order_button,{backgroundColor:order_state=='pickup'? '#5AB3A8':null,width:250}]}>
-          <Text style={[styles.order_button_text,{color:order_state=='pickup'?'white':'#4C6870'}]}>Waiting for pickup (2)</Text>
+        <TouchableOpacity onPress={()=>tabclick('1')}  style={[styles.order_button,{backgroundColor:pickup_order_state==true? '#5AB3A8':null,width:250}]}>
+          <Text style={[styles.order_button_text,{color:pickup_order_state==true?'white':'#4C6870'}]}>Waiting for pickup (2)</Text>
         </TouchableOpacity>
       </View>
   )
@@ -36,7 +52,7 @@ const Header=()=>{
 
 
   return (
-    <SafeAreaView style={{backgroundColor:'#f4f7f8'}}>
+    <SafeAreaView style={{backgroundColor:'#f4f7f8',flex:1}}>
       {/* <LockOnLandscape /> */}
       <View style={{ flexDirection: 'row',alignItems:'center',height:'15%' }}>
         <View style={{ padding: 15 }}>
@@ -54,14 +70,28 @@ const Header=()=>{
 
       </View>
 
-      {order_state=='acceptance'?
+      {/* {order_state=='acceptance'?
         <Acceptance_orders navigation={navigation}/>
         :
         order_state=='pickup'?
         <Pickup_orders navigation={navigation}/>
         :
         null
-        }
+        } */}
+        <ScrollView
+            showsHorizontalScrollIndicator={false}
+            ref={scrollref} 
+            horizontal
+            scrollEnabled={false}
+            >
+          <View style={{width:width,height:'100%'}}>
+            <Acceptance_orders navigation={navigation}/>
+          </View>
+          <View style={{width:width}}>
+            <Pickup_orders navigation={navigation}/>
+          </View>
+
+        </ScrollView>
 
 
     </SafeAreaView>

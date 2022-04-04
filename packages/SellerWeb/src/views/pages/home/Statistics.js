@@ -1,4 +1,6 @@
 import React from 'react'
+import '../../components/rsuite.css'
+import { DateRangePicker } from 'rsuite'
 import Nav from "../../components/home/Nav"
 import { Row, Col } from 'react-bootstrap'
 import { RestaurantHeading } from '../../components/UseFullElements'
@@ -16,17 +18,27 @@ import {
     bellIcon,
     ratingIcon,
     dish,
+    CalendarIcon,
 } from '../../components/AllImages'
 
 const Statistics = ({ setSideBar, sideBar }) => {
     return (
         <>
             <Nav setSideBar={setSideBar} sideBar={sideBar} />
-            <div className="d-flex">
+            <div className="between">
                 <RestaurantHeading
                     heading="Restaurant’s name"
-                    hours="Peak Hours 12 AM - 14 PM"
+                    hours="Peak Hours 12 AM - 2 PM"
                     location="8502 Preston Rd. Inglewood"
+                />
+                <DateRangePicker
+                    className="home-range"
+                    showOneCalendar
+                    placement='bottomRight'
+                    format="dd MMMM yy"
+                    placeholder="dd mm yy"
+                    character="&#160;&#160;-&#160;&#160;"
+                    caretAs={CalendarIcon}
                 />
             </div>
             <Row>
@@ -58,7 +70,7 @@ const Statistics = ({ setSideBar, sideBar }) => {
                 <Col lg={3} md={6}>
                     <RestaurantCard
                         icon={ratingIcon}
-                        heading="Total Raiting"
+                        heading="Total Rating"
                         number="4.8"
                         rate="+ 0.9%"
                         rateStatus={true}

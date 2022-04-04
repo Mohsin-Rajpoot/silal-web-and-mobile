@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { View, Text, SafeAreaView, TouchableOpacity, Image, StyleSheet, Dimensions,FlatList } from 'react-native'
+
+import React, { useRef, useState } from 'react'
+import { View, Text, SafeAreaView, TouchableOpacity, ScrollView, StyleSheet, Dimensions,FlatList } from 'react-native'
 import Current_orders from './Current/Current_orders'
 import Pre_orders from './Pre_orders'
 import Archive_orders from './Archive/Archive_orders'
@@ -11,34 +12,74 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import LockOnLandscape from '../components/Dashboard/LockOnLandscape';
 // import StatisticWhiteBoxTitle from '../components/StatisticWhiteBoxTitle';
+import {useTranslation} from 'react-i18next'
 const { width, height } = Dimensions.get("window");
 
 const Home = ({ navigation }) => {
+  const {t}=useTranslation()
   const [Statistic, setStatistic] = useState(true);
   const [Reviews, setReviews] = useState(false);
   const [Outofstock, setOutofstack] = useState(false);
+  // const [order_state, set_order_state] = useState('current');
+  const [current_order_state, set_current_order_state] = useState(true);
+  const [pre_order_state, set_pre_order_state] = useState(false);
+  const [archive_order_state, set_archive_order_state] = useState(false);
+
   const [order_state, set_order_state] = useState('current');
 
-  
+
+  const scrollref=useRef()
+
+  const tabclick=(x_value,state)=>{
+    scrollref.current.scrollTo({ x: width*x_value })
+    if(x_value=='0'){
+      set_current_order_state(true)
+      set_archive_order_state(false)
+      set_pre_order_state(false)
+    }
+    else if(x_value=='1'){
+      set_current_order_state(false)
+      set_pre_order_state(true)
+      set_archive_order_state(false)
+    }
+    else if(x_value=='2'){
+      set_current_order_state(false)
+      set_pre_order_state(false)
+      set_archive_order_state(true)
+    }
+
+
+  }
 const Header=()=>{
   return(
-      <View style={{ paddingVertical: 15,flex:1, flexDirection: 'row',}}>
-        <TouchableOpacity onPress={()=>set_order_state('current')}  style={[styles.order_button,{backgroundColor:order_state=='current'? '#5AB3A8':null,width:200}]}>
-          <Text style={[styles.order_button_text,{color:order_state=='current'?'white':'#4C6870'}]}>Current orders</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=>set_order_state('preorder')}  style={[styles.order_button,{backgroundColor:order_state=='preorder'? '#5AB3A8':null,width:200}]}>
-          <Text style={[styles.order_button_text,{color:order_state=='preorder'?'white':'#4C6870'}]}>Pre-orders <Text style={{color:'#CCD4D6',}}>(8)</Text></Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=>set_order_state('archive')}  style={[styles.order_button,{backgroundColor:order_state=='archive'? '#5AB3A8':null,width:120}]}>
-          <Text style={[styles.order_button_text,{color:order_state=='archive'?'white':'#4C6870'}]}>Archive</Text>
-        </TouchableOpacity>
-      </View>
+      // <View style={{ paddingVertical: 15,flex:1, flexDirection: 'row',}}>
+      //   <TouchableOpacity onPress={()=>set_order_state('current')}  style={[styles.order_button,{backgroundColor:order_state=='current'? '#5AB3A8':null,width:200}]}>
+      //     <Text style={[styles.order_button_text,{color:order_state=='current'?'white':'#4C6870'}]}>Current orders</Text>
+      //   </TouchableOpacity>
+      //   <TouchableOpacity onPress={()=>set_order_state('preorder')}  style={[styles.order_button,{backgroundColor:order_state=='preorder'? '#5AB3A8':null,width:200}]}>
+      //     <Text style={[styles.order_button_text,{color:order_state=='preorder'?'white':'#4C6870'}]}>Pre-orders <Text style={{color:'#CCD4D6',}}>(8)</Text></Text>
+      //   </TouchableOpacity>
+      //   <TouchableOpacity onPress={()=>set_order_state('archive')}  style={[styles.order_button,{backgroundColor:order_state=='archive'? '#5AB3A8':null,width:120}]}>
+      //     <Text style={[styles.order_button_text,{color:order_state=='archive'?'white':'#4C6870'}]}>Archive</Text>
+      //   </TouchableOpacity>
+      // </View>
+    <View style={{ paddingVertical: 15,flex:1, flexDirection: 'row',}}>
+      <TouchableOpacity onPress={()=>tabclick('0','current')}  style={[styles.order_button,{backgroundColor:current_order_state==true? '#5AB3A8':null,width:200}]}>
+        <Text style={[styles.order_button_text,{color:current_order_state==true?'white':'#4C6870'}]}>{t("current-order")}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>tabclick('1','preorder')}  style={[styles.order_button,{backgroundColor:pre_order_state==true? '#5AB3A8':null,width:200}]}>
+        <Text style={[styles.order_button_text,{color:pre_order_state==true?'white':'#4C6870'}]}>{t("pre-orders")} <Text style={{color:'#CCD4D6',}}>(8)</Text></Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>tabclick('2','archive')}  style={[styles.order_button,{backgroundColor:archive_order_state==true? '#5AB3A8':null,width:120}]}>
+        <Text style={[styles.order_button_text,{color:archive_order_state==true?'white':'#4C6870'}]}>{t("Archive")}</Text>
+      </TouchableOpacity>
+    </View>
   )
 }
 
 
   return (
-    <SafeAreaView style={{backgroundColor:'#f4f7f8'}}>
+    <SafeAreaView style={{backgroundColor:'#f4f7f8',flex:1}}>
       {/* <LockOnLandscape /> */}
       <View style={{ flexDirection: 'row',alignItems:'center',height:'15%' }}>
         <View style={{ padding: 15 }}>
@@ -56,17 +97,53 @@ const Header=()=>{
 
       </View>
 
-      {order_state=='current'?
+      {/* {order_state=='current'?
         <View style={styles.order_container}>
           <Current_orders title='Received' navigation={navigation}/>
-          {/* <Current_orders title='Accepted'/> */}
         </View>
         :
         order_state=='preorder'?
         <Pre_orders />
         :
         <Archive_orders />
-      }
+      } */}
+        <ScrollView
+            showsHorizontalScrollIndicator={false}
+            ref={scrollref} 
+            horizontal
+            scrollEnabled={false}
+            
+            >
+          <View style={{width:width,height:'100%'}}>
+            <Current_orders title='Received' navigation={navigation}/>
+          </View>
+          <View style={{width:width,height:'100%'}}>
+            <Pre_orders />
+          </View>
+          <View style={{width:width,height:'100%'}}>
+            <Archive_orders />
+          </View>
+
+        </ScrollView>
+       {/* {order_state=='current'?
+        <View style={styles.order_container}>
+          <Current_orders title='Received' navigation={navigation}/>
+        </View>
+        :
+        <>
+        {order_state=='preorder'?
+        <Pre_orders />
+        :
+        <>
+        {order_state=='archive'?
+        <Archive_orders />
+        :
+        null
+        }
+        </>
+        }
+        </>
+      } */}
 
 
     </SafeAreaView>
@@ -131,5 +208,7 @@ const styles = StyleSheet.create({
   },
   order_container:{
     // flexDirection:'row',
+    // backgroundColor:'red',
+    padding:10
   }
 })

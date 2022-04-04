@@ -34,12 +34,12 @@ const OrderDetail = () => {
                 <h1>
                   Order list <span>(6 items)</span>
                 </h1>
-                <span className="method card">Credit card</span>
+                <span className="method card lato">Credit card</span>
               </div>
-              <h2>14:58:15</h2>
+              <h2 className="lato">14:58:15</h2>
             </div>
             <OrderList>
-              <div className="head">
+              <div className="head lato">
                 <h3 className="item-width">Item</h3>
                 <h3 className="col-width">Q-ty</h3>
                 <h3 className="col-width">Price</h3>
@@ -109,33 +109,34 @@ const OrderDetail = () => {
         </Modal.Header>
         <Modal.Body>
           <RangeSlider className="mt-4">
-            <input type="range" min="1" max="100" className="slider-range" />
-            <ul class="mb-0 p-0 list-unstyled d-flex">
+            <input type="range" min="0" max="100" step="14" className="slider-range" />
+            <ul className="mb-0 p-0 list-unstyled d-flex">
               <li>-15 min</li>
               <li>-10 min</li>
               <li>-5 min</li>
-              <li class="ms-auto">+5 min</li>
+              <li className="current">(19:22 PM)</li>
+              <li className="ms-auto">+5 min</li>
               <li>+10 min</li>
               <li>+15 min</li>
             </ul>
           </RangeSlider>
-          <div class="d-flex mt-4 align-items-center">
-            <label className="me-3">Add manually</label>
+          <div className="d-flex mt-4 align-items-center">
+            <label className="me-3 f-semibold lato">Add manually</label>
             <input
-              type="text"
-              placeholder="+300"
-              className="border px-3"
-              style={{ height: "40px", width: "100px" }}
+              type="number"
+              placeholder="+30 min"
+              className="border px-3 number-apperance"
+              style={{ height: "34px", width: "100px", borderRadius: "5px" }}
             />
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <div className="w-50 m-0 pe-2 mt-4">
-            <Button className="w-100 m-0" style={{background:"#CCD4D6",color:"rgba(0, 39, 51, 0.5)"}} onClick={() => setModalShow(false)}>
+          <div className="w-50 m-0 pe-2">
+            <Button className="w-100 m-0" style={{ background: "#CCD4D6", color: "rgba(0, 39, 51, 0.5)" }} onClick={() => setModalShow(false)}>
               Cancel
             </Button>
           </div>
-          <Button className="w-50 m-0 mt-4" onClick={() => setModalShow(false)}>
+          <Button className="w-50 m-0" onClick={() => setModalShow(false)}>
             Save
           </Button>
         </Modal.Footer>

@@ -25,6 +25,10 @@ export default function Archive_orders({title, navigation}) {
   const [show_modal_customer_data, set_show_modal_customer_data] = useState(false);
   const [show_modal_driver_data, set_show_modal_driver_data] = useState(false);
   const [show_modal_order_details, set_show_modal_order_details] = useState(false);
+  const [selected_order_menu, set_selected_order_menu] = useState();
+  
+
+  const scrollref=useRef()
 
 
   const data = [
@@ -82,9 +86,9 @@ export default function Archive_orders({title, navigation}) {
 
 
 
-    const render_all_oredrs=()=>{
+    const render_all_oredrs=(item,index)=>{
       return(
-        <TouchableOpacity onPress={()=>setModalVisible(true)} style={styles.render_all_orders}>
+        <TouchableOpacity onPress={()=>setModalVisible(true)} style={[styles.render_all_orders,{backgroundColor:index==selected_order_menu?'#E6F4F2':'white'}]}>
           <View style={[styles.render_all_order_single,{width:'12%',}]}>
             <Text style={{fontFamily:'Lato-Regular',}}>#723DN2</Text>
           </View>
@@ -108,8 +112,8 @@ export default function Archive_orders({title, navigation}) {
           </View>
 
           <View style={[styles.render_all_order_single,{width:'8%',}]} >
-              <Menu>
-                <MenuTrigger style={styles.trigger}>
+              <Menu >
+                <MenuTrigger   onPress={() => set_selected_order_menu(index)} style={styles.trigger}>
                   <View style={{height:40,width:40,alignItems:'center',justifyContent:'center'}}>
                     <Entypo name='dots-three-vertical' style={[styles.cross_icon,{color:'#4C6870',fontSize:20}]} />
                   </View>
@@ -181,7 +185,7 @@ export default function Archive_orders({title, navigation}) {
           </View>
           <View style={styles.modal_fields}>
             <Text style={styles.modal_title_first}>Phone</Text>
-            <Text style={styles.modal_title_second}>*** *** **** 112</Text>
+            <Text style={styles.modal_title_second}>* * ** 112</Text>
           </View>
           <View style={styles.modal_fields}>
             <Text style={styles.modal_title_first}>Address</Text>
@@ -213,7 +217,7 @@ export default function Archive_orders({title, navigation}) {
             </View>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>Phone</Text>
-              <Text style={styles.modal_title_second}>*** *** **** 112</Text>
+              <Text style={styles.modal_title_second}>* * ** 112</Text>
             </View>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>Delivery time</Text>
@@ -258,7 +262,7 @@ export default function Archive_orders({title, navigation}) {
             </View>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>Credit card</Text>
-              <Text style={styles.modal_title_second}>**** **** **** 3782</Text>
+              <Text style={styles.modal_title_second}>** ** ** 3782</Text>
             </View>
             <View style={{height:2,backgroundColor:'#ebeeef',marginTop:10}}></View>
 
@@ -275,21 +279,23 @@ export default function Archive_orders({title, navigation}) {
       )
     }
 
+    
+
   return (
         
-      <View style={{height:'83%',padding:20}}>
-        <MenuProvider >
+      <View style={{height:'100%',padding:20}}>
+        {/* <MenuProvider > */}
 
             <View style={{flexDirection:'row'}}>
 
               <View style={{flexDirection:'row'}}>
-                  <TouchableOpacity onPress={()=>set_order_state('All')} style={[styles.archive_orders_tab,{borderColor:order_state=='All'?'#5AB3A8':'#e8edee'}]}>
+                  <TouchableOpacity onPress={()=>{set_order_state('All'),scrollref.current.scrollTo({ x: (width-20)*0 })}} style={[styles.archive_orders_tab,{borderColor:order_state=='All'?'#5AB3A8':'#e8edee'}]}>
                     <Text style={{color:order_state=='All'?'#002733':'#4C6870',fontWeight:'600',fontFamily:'Poppins-SemiBold'}}>All orders</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={()=>set_order_state('completed')} style={[styles.archive_orders_tab,{borderColor:order_state=='completed'?'#5AB3A8':'#e8edee'}]} >
+                  <TouchableOpacity onPress={()=>{set_order_state('completed'),scrollref.current.scrollTo({ x: (width-40)*1 })}} style={[styles.archive_orders_tab,{borderColor:order_state=='completed'?'#5AB3A8':'#e8edee'}]} >
                     <Text style={{color:order_state=='completed'?'#002733':'#4C6870',fontWeight:'600',fontFamily:'Poppins-SemiBold'}}>Completed</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={()=>set_order_state('cancelled')} style={[styles.archive_orders_tab,{borderColor:order_state=='cancelled'?'#5AB3A8':'#e8edee'}]} >
+                  <TouchableOpacity onPress={()=>{set_order_state('cancelled'),scrollref.current.scrollTo({ x: (width-20)*2 })}} style={[styles.archive_orders_tab,{borderColor:order_state=='cancelled'?'#5AB3A8':'#e8edee'}]} >
                     <Text style={{color:order_state=='cancelled'?'#002733':'#4C6870',fontWeight:'600',fontFamily:'Poppins-SemiBold'}}>Cancelled</Text>
                   </TouchableOpacity>
               </View>
@@ -309,8 +315,51 @@ export default function Archive_orders({title, navigation}) {
               </View>
 
             </View>
-            {header_alloredrs()}
-            {order_state=='All'?
+            <View>
+              {header_alloredrs()}
+            </View>
+
+            <ScrollView
+              showsHorizontalScrollIndicator={false}
+              ref={scrollref} 
+              horizontal
+              scrollEnabled={false}
+              
+              >
+              <View style={{width:width-40}}>
+                <FlatList
+                        // ListHeaderComponent={header_alloredrs}
+                        keyExtractor={(item, index) => index.toString()}
+                        data={data}
+                        renderItem={({ item,index }) => (
+                          render_all_oredrs(item,index)
+                        )}
+                    />
+              </View>
+              <View style={{width:width-40}}>
+                <FlatList
+                      // ListHeaderComponent={header_alloredrs}
+                      keyExtractor={(item, index) => index.toString()}
+                      data={data}
+                      renderItem={({ item,index }) => (
+                        render_all_oredrs(item,index)
+                      )}
+                  />
+              </View>
+              <View style={{width:width-40}} >
+                <FlatList
+                      // ListHeaderComponent={header_alloredrs}
+                      keyExtractor={(item, index) => index.toString()}
+                      data={data}
+                      renderItem={({ item,index }) => (
+                        render_all_oredrs(item,index)
+                      )}
+                  />
+              </View>
+
+        </ScrollView>
+            {/* {order_state=='All'?
+
               <FlatList
                   // ListHeaderComponent={header_alloredrs}
                   keyExtractor={(item, index) => index.toString()}
@@ -338,7 +387,7 @@ export default function Archive_orders({title, navigation}) {
                   render_all_oredrs()
                 )}
               />              
-            }
+            } */}
             <View style={styles.pagination_view}>
               <Text style={{fontFamily:'Lato-Regular'}}>Showing 1-9 of 86</Text>
               <View style={styles.pagination_numbring}>
@@ -381,7 +430,7 @@ export default function Archive_orders({title, navigation}) {
                 </ScrollView>
               </View>
             </Modal>
-        </MenuProvider>
+        {/* </MenuProvider> */}
       </View>
 
       );
@@ -512,7 +561,6 @@ const styles = StyleSheet.create({
   render_all_orders:{
     flexDirection:'row',
     justifyContent:'space-evenly',
-    backgroundColor:'white',
     padding:10
   },
   render_all_order_single:{
@@ -636,4 +684,3 @@ const styles = StyleSheet.create({
     alignItems:"center"
   }
 });
-

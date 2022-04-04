@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
-import DatePicker from 'react-date-picker'
+import '../../components/rsuite.css'
+import { DateRangePicker } from 'rsuite'
+// import 'rsuite/dist/rsuite.min.css' // or 'rsuite/styles/index.less'
+// import DatePicker from 'react-date-picker'
 import { Row, Col } from 'react-bootstrap'
 import Nav from "../../components/home/Nav"
 import { RestaurantHeading } from '../../components/UseFullElements'
@@ -9,21 +12,22 @@ import {
 } from '../../components/home/Components'
 import {
     CardStyled,
-    Heading
+    Heading,
 } from '../../components/Style'
 import {
     CalendarIcon
 } from '../../components/AllImages'
 
 const Reviews = ({ setSideBar, sideBar }) => {
-    const [dateValue, dateOnChange] = useState(new Date());
+    // const [dateValue, dateOnChange] = useState(new Date())
+    const today = new Date()
 
     return (
         <>
             <Nav setSideBar={setSideBar} sideBar={sideBar} />
             <RestaurantHeading
                 heading="Restaurant’s name"
-                hours="Peak Hours 12 AM - 14 PM"
+                hours="Peak Hours 12 AM - 2 PM"
                 location="8502 Preston Rd. Inglewood"
             />
             <Row>
@@ -31,30 +35,37 @@ const Reviews = ({ setSideBar, sideBar }) => {
                     <CardStyled className="review-card-height">
                         <div className="between">
                             <Heading>Reviews</Heading>
-                            <DatePicker
+                            <DateRangePicker
+                                showOneCalendar
+                                format="dd MMMM yy"
+                                placeholder="dd mm yy"
+                                character="&#160;&#160;-&#160;&#160;"
+                                caretAs={CalendarIcon}
+                            />
+                            {/* <DatePicker
                                 onChange={dateOnChange}
                                 value={dateValue}
                                 calendarIcon={<CalendarIcon />}
                                 clearIcon={null}
-                            />
+                            /> */}
                         </div>
                         <Review
                             reviewBy="Ursula Landerskape"
-                            rating={4.0}
+                            // rating={4.0}
                             time="14:38"
                             text="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
                             order="Big Tasty Big McCombo, Chicken McNuggets (18 pcs.), Chicken Wings (3 pcs.), Shrimp Roll, Cheese Sauce, Coca-Cola Zero, Cherry Pie"
                         />
                         <Review
                             reviewBy="Ursula Landerskape"
-                            rating={4.0}
+                            // rating={4.0}
                             time="14:38"
                             text="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
                             order="Big Tasty Big McCombo, Chicken McNuggets (18 pcs.), Chicken Wings (3 pcs.), Shrimp Roll, Cheese Sauce, Coca-Cola Zero, Cherry Pie"
                         />
                         <Review
                             reviewBy="Ursula Landerskape"
-                            rating={4.0}
+                            // rating={4.0}
                             time="14:38"
                             text="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
                             order="Big Tasty Big McCombo, Chicken McNuggets (18 pcs.), Chicken Wings (3 pcs.), Shrimp Roll, Cheese Sauce, Coca-Cola Zero, Cherry Pie"
@@ -63,7 +74,7 @@ const Reviews = ({ setSideBar, sideBar }) => {
                 </Col>
                 <Col md={3} sm={12}>
                     <CardStyled>
-                        <Heading>Reviews overview</Heading>
+                        <Heading className="lato">Reviews overview</Heading>
                         <ReviewOverviewText>
                             <h2>Total </h2>
                             <h3>189</h3>

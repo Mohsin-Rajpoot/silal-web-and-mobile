@@ -6,7 +6,9 @@ import TextInput from "../../../components/native/TextInput";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Icon } from "react-native-elements";
 import colors from "../../../assets/colors";
+import { useTranslation } from "react-i18next";
 const ThirdPage = () => {
+  const { t } = useTranslation();
   const [active, setActive] = useState(0);
   const [payment, setPayment] = useState(0);
   const [open, setOpen] = useState(false);
@@ -17,9 +19,15 @@ const ThirdPage = () => {
   ]);
   return (
     <View style={styles.firstPageMainContainer}>
-      <ScrollView>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={{ flexDirection: "row", marginVertical: 15 }}>
-          <CustomText label="Select type" textStyle={styles.formTextHeading} />
+          <CustomText
+            label={t("select_type")}
+            textStyle={styles.formTextHeading}
+          />
           <CustomText label="*" textStyle={styles.star} />
         </View>
         <View style={styles.accountMainContainer}>
@@ -47,7 +55,10 @@ const ThirdPage = () => {
                 />
               </View>
               <View style={styles.accountTextContainer}>
-                <CustomText label="Store" textStyle={styles.accountTitles} />
+                <CustomText
+                  label={t("Store")}
+                  textStyle={styles.accountTitles}
+                />
                 <CustomText
                   label="Some text for clarification to distinguish the concepts"
                   textStyle={styles.accountSelectionDec}
@@ -80,7 +91,7 @@ const ThirdPage = () => {
               </View>
               <View style={styles.accountTextContainer}>
                 <CustomText
-                  label="Restaurant"
+                  label={t("Restaurant")}
                   textStyle={styles.accountTitles}
                 />
                 <CustomText
@@ -115,7 +126,10 @@ const ThirdPage = () => {
                 />
               </View>
               <View style={styles.accountTextContainer}>
-                <CustomText label="Service" textStyle={styles.accountTitles} />
+                <CustomText
+                  label={t("Service")}
+                  textStyle={styles.accountTitles}
+                />
                 <CustomText
                   label="Some text for clarification to distinguish the concepts"
                   textStyle={styles.accountSelectionDec}
@@ -125,7 +139,10 @@ const ThirdPage = () => {
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", marginVertical: 15 }}>
-          <CustomText label="Category" textStyle={styles.formTextHeading} />
+          <CustomText
+            label={t("Category")}
+            textStyle={styles.formTextHeading}
+          />
           <CustomText label="*" textStyle={styles.star} />
         </View>
         <DropDownPicker
@@ -143,7 +160,7 @@ const ThirdPage = () => {
         />
         <View style={{ flexDirection: "row", marginVertical: 15 }}>
           <CustomText
-            label="Accepted payment methods"
+            label={t("Accept_payment")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />
@@ -173,7 +190,10 @@ const ThirdPage = () => {
                   <View style={styles.checkBackgroundInactive} />
                 )}
               </View>
-              <CustomText label="Cash payment" textStyle={styles.paymentText} />
+              <CustomText
+                label={t("Cash_payment")}
+                textStyle={styles.paymentText}
+              />
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -199,7 +219,10 @@ const ThirdPage = () => {
                   <View style={styles.checkBackgroundInactive} />
                 )}
               </View>
-              <CustomText label="Bank wires" textStyle={styles.paymentText} />
+              <CustomText
+                label={t("bank_wires")}
+                textStyle={styles.paymentText}
+              />
             </TouchableOpacity>
           </View>
           <View style={styles.paymentMainContainer}>
@@ -226,7 +249,10 @@ const ThirdPage = () => {
                   <View style={styles.checkBackgroundInactive} />
                 )}
               </View>
-              <CustomText label="Card payment" textStyle={styles.paymentText} />
+              <CustomText
+                label={t("Card_payment")}
+                textStyle={styles.paymentText}
+              />
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -253,7 +279,7 @@ const ThirdPage = () => {
                 )}
               </View>
               <CustomText
-                label="Apple Pay, Google Pay"
+                label={t("Apple_pay")}
                 textStyle={styles.paymentText}
               />
             </TouchableOpacity>
@@ -261,7 +287,7 @@ const ThirdPage = () => {
         </View>
         <View style={{ flexDirection: "row", marginVertical: 15 }}>
           <CustomText
-            label=" Store description"
+            label={t("store_description")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />

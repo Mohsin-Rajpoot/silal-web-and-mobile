@@ -1,97 +1,122 @@
-import React ,{useState,useRef} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity,Dimensions,SafeAreaView ,ToastAndroid,FlatList, TextInput,Modal} from 'react-native';
+import React, {useState, useRef} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Dimensions,
+  SafeAreaView,
+  ToastAndroid,
+  FlatList,
+  TextInput,
+  Modal,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Entypo from 'react-native-vector-icons/Entypo'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-import { Image, SvgXml } from 'react-native-svg';
-import Svg, { Path ,Defs,LinearGradient,Stop,Rect,Circle, G} from "react-native-svg"
+import {Image, SvgXml} from 'react-native-svg';
+import Svg, {
+  Path,
+  Defs,
+  LinearGradient,
+  Stop,
+  Rect,
+  Circle,
+  G,
+} from 'react-native-svg';
 import Toast from 'react-native-easy-toast';
-
-const { width, height } = Dimensions.get("window");
-
+import {useTranslation} from 'react-i18next';
+const {width, height} = Dimensions.get('window');
 
 export default function Pre_orders({title, navigation}) {
-
+  const {t} = useTranslation();
   const [modal_timer_visible, set_modal_timer_visible] = useState(false);
   const [refusal_text, set_refusal_text] = useState('');
   const toastRef = useRef();
 
-
-    const data = [
-        {
-            id: '1',
-            Title: 'Embedded Software Engineer',
-            SubTitle: 'Newyork',
-            year: "22/03/2022",
-        },
-        {
-            id: '2',
-            Title: 'Web Developer',
-            SubTitle: 'Lahore',
-            year: "22/03/2022",
-        },
-        {
-            id: '3',
-            Title: 'Embedded Software Engineer',
-            SubTitle: 'USA',
-            year: '22/03 /2022',
-        },
-        {
-            id: '4',
-            Title: 'Embedded Software Engineer',
-            SubTitle: 'USA',
-            year: '22/03/2022',
-        },
-        {
-            id: '5',
-            Title: 'Embedded Software last',
-            SubTitle: 'USA',
-            year: '22/03/2022',
-        },
-        {
-          id: '6',
-          Title: 'Embedded Software last',
-          SubTitle: 'USA',
-          year: '22/03/2022',
-      },
-      {
-        id: '7',
-        Title: 'Embedded Software full last',
-        SubTitle: 'USA',
-        year: '22/03/2022',
+  const data = [
+    {
+      id: '1',
+      Title: 'Embedded Software Engineer',
+      SubTitle: 'Newyork',
+      year: '22/03/2022',
+    },
+    {
+      id: '2',
+      Title: 'Web Developer',
+      SubTitle: 'Lahore',
+      year: '22/03/2022',
+    },
+    {
+      id: '3',
+      Title: 'Embedded Software Engineer',
+      SubTitle: 'USA',
+      year: '22/03 /2022',
+    },
+    {
+      id: '4',
+      Title: 'Embedded Software Engineer',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+    },
+    {
+      id: '5',
+      Title: 'Embedded Software last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+    },
+    {
+      id: '6',
+      Title: 'Embedded Software last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+    },
+    {
+      id: '7',
+      Title: 'Embedded Software full last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
     },
     {
       id: '8',
       Title: 'Embedded Software full last',
       SubTitle: 'USA',
       year: '22/03/2022',
-  },
+    },
+  ];
 
-
-    ];
-
-  const render_today=()=>{
-    return(
-      <View  style={styles.single_order} >
+  const render_today = () => {
+    return (
+      <View style={styles.single_order}>
         <View style={styles.order_header}>
-            <Text style={styles.orderid_text}>ORDER ID<Text style={[styles.orderid_text,{color:'black'}]}>  #123456</Text></Text>
-            <View style={styles.delivryby_btn}>
-                <Text style={styles.delivryby_btn_txt}>DELIVERY BY 13:30 PM</Text>
-            </View>
+          <Text style={styles.orderid_text}>
+            {t('orderId')}
+            <Text style={[styles.orderid_text, {color: 'black'}]}>
+              {' '}
+              #123456
+            </Text>
+          </Text>
+          <View style={styles.delivryby_btn}>
+            <Text style={styles.delivryby_btn_txt}>
+              {t('Delivery_by')} 13:30 PM
+            </Text>
+          </View>
         </View>
         <View style={styles.order_item}>
-            <Text style={{fontSize:17}}>2</Text>
-            <Entypo name='cross' style={styles.cross_icon} />
-            <Text style={styles.order_title}>French Fries </Text>
+          <Text style={{fontSize: 17}}>2</Text>
+          <Entypo name="cross" style={styles.cross_icon} />
+          <Text style={styles.order_title}>French Fries </Text>
         </View>
-        <View style={[styles.order_item,{marginTop:5}]}>
-            <Text style={{fontSize:17}}>2</Text>
-            <Entypo name='cross' style={styles.cross_icon} />
-            <Text style={styles.order_title}>Cheesecakes with sour cream and citrus </Text>
+        <View style={[styles.order_item, {marginTop: 5}]}>
+          <Text style={{fontSize: 17}}>2</Text>
+          <Entypo name="cross" style={styles.cross_icon} />
+          <Text style={styles.order_title}>
+            Cheesecakes with sour cream and citrus{' '}
+          </Text>
         </View>
         <View style={styles.more_order}>
-          <Text style={{color:'#5AB3A8'}}>3 more</Text>
+          <Text style={{color: '#5AB3A8'}}>3 more</Text>
         </View>
         <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
             <TouchableOpacity onPress={()=>set_modal_timer_visible(true)} style={[styles.accept_btn,{width:'30%',backgroundColor:'#acd9d3'}]}>
@@ -112,30 +137,40 @@ export default function Pre_orders({title, navigation}) {
             </TouchableOpacity>
         </View>
       </View>
-    )
-  }
+    );
+  };
 
-  const render_this_week=()=>{
-    return(
-      <View  style={styles.single_order} >
+  const render_this_week = () => {
+    return (
+      <View style={styles.single_order}>
         <View style={styles.order_header}>
-            <Text style={styles.orderid_text}>ORDER ID<Text style={[styles.orderid_text,{color:'black'}]}>  #123456</Text></Text>
-            <View style={styles.delivryby_btn}>
-                <Text style={styles.delivryby_btn_txt}>DELIVERY BY 13:30 PM</Text>
-            </View>
+          <Text style={styles.orderid_text}>
+            {t('orderId')}
+            <Text style={[styles.orderid_text, {color: 'black'}]}>
+              {' '}
+              #123456
+            </Text>
+          </Text>
+          <View style={styles.delivryby_btn}>
+            <Text style={styles.delivryby_btn_txt}>
+              {t('Delivery_by')}13:30 PM
+            </Text>
+          </View>
         </View>
         <View style={styles.order_item}>
-            <Text style={{fontSize:17}}>2</Text>
-            <Entypo name='cross' style={styles.cross_icon} />
-            <Text style={styles.order_title}>French Fries </Text>
+          <Text style={{fontSize: 17}}>2</Text>
+          <Entypo name="cross" style={styles.cross_icon} />
+          <Text style={styles.order_title}>French Fries </Text>
         </View>
-        <View style={[styles.order_item,{marginTop:5}]}>
-            <Text style={{fontSize:17}}>2</Text>
-            <Entypo name='cross' style={styles.cross_icon} />
-            <Text style={styles.order_title}>Cheesecakes with sour cream and citrus </Text>
+        <View style={[styles.order_item, {marginTop: 5}]}>
+          <Text style={{fontSize: 17}}>2</Text>
+          <Entypo name="cross" style={styles.cross_icon} />
+          <Text style={styles.order_title}>
+            Cheesecakes with sour cream and citrus{' '}
+          </Text>
         </View>
         <View style={styles.more_order}>
-          <Text style={{color:'#5AB3A8'}}>3 more</Text>
+          <Text style={{color: '#5AB3A8'}}>3 more</Text>
         </View>
         
         <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
@@ -159,33 +194,81 @@ export default function Pre_orders({title, navigation}) {
             </TouchableOpacity>
         </View>
       </View>
-      )
-  }
+    );
+  };
 
+  const render_modal_view = () => {
+    return (
+      <View style={styles.centeredView}>
+        <View style={styles.modalView}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <Text style={styles.modal_heading}>{t('Indicate_the_Reason')}</Text>
+            <TouchableOpacity
+              onPress={() => set_modal_timer_visible(!modal_timer_visible)}>
+              <Entypo
+                name="cross"
+                style={[styles.cross_icon, {color: '#4C6870', fontSize: 25}]}
+              />
+            </TouchableOpacity>
+          </View>
+          <Text style={{color: '#002733', fontSize: 15, marginTop: 5}}>
+            {t('Indicate_detail')}
+          </Text>
 
-  
-  const render_modal_view=()=>{
-    return(
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
-              <Text style={styles.modal_heading}>Indicate the reason for refusal</Text>
-              <TouchableOpacity onPress={() => set_modal_timer_visible(!modal_timer_visible)} >
-                <Entypo name='cross' style={[styles.cross_icon,{color:'#4C6870',fontSize:25}]} />
-              </TouchableOpacity>
-            </View>
-            <Text style={{color:'#002733',fontSize:15,marginTop:5}}>We will notify the client about it</Text>
-
-            <View style={{marginTop:20,width:450}}>
-              <TextInput
-                  multiline={true}
-                  style={{marginVertical:5,lineHeight:22,fontSize:15,color:'#4C6870',backgroundColor:'#F2F4F5',padding:10,height:120}} 
-                  value={refusal_text}
-                  textAlignVertical='top'
-                  numberOfLines={3}
-                  onChangeText={n => set_refusal_text(n)}
-                  placeholder="Type here..."
-                  placeholderTextColor='#4C6870'
+          <View style={{marginTop: 20, width: 450}}>
+            <TextInput
+              multiline={true}
+              style={{
+                marginVertical: 5,
+                lineHeight: 22,
+                fontSize: 15,
+                color: '#4C6870',
+                backgroundColor: '#F2F4F5',
+                padding: 10,
+                height: 120,
+              }}
+              value={refusal_text}
+              textAlignVertical="top"
+              numberOfLines={3}
+              onChangeText={n => set_refusal_text(n)}
+              placeholder="Type here..."
+              placeholderTextColor="#4C6870"
+            />
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 10,
+              }}>
+              <Text
+                style={[
+                  styles.modal_heading,
+                  {fontWeight: '200', fontSize: 15},
+                ]}>
+                {t('suggestions')}
+              </Text>
+              <FlatList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item, index) => index.toString()}
+                data={data}
+                renderItem={({item}) => (
+                  <View
+                    style={{
+                      paddingVertical: 5,
+                      paddingHorizontal: 10,
+                      backgroundColor: '#E6F4F2',
+                      marginLeft: 10,
+                      borderRadius: 5,
+                    }}>
+                    <Text>{item.SubTitle}</Text>
+                  </View>
+                )}
               />
               <View style={{flexDirection:'row',alignItems:'center',marginTop:10}}>
                 <Text style={[styles.modal_heading,{fontWeight:'200',fontSize:15}]}>Suggestions:</Text>
@@ -230,14 +313,15 @@ export default function Pre_orders({title, navigation}) {
             </View>
           </View>
         </View>
-    )
-  }
+      </View>
+    );
+  };
 
   return (
         
-      <View style={{height:'80%',width:'100%'}}>
+      <View style={{flexDirection:'row',justifyContent:'space-evenly',height:'100%'}}>
 
-          <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
+          {/* <View style={{flexDirection:'row',justifyContent:'space-evenly',}}> */}
             <View style={{backgroundColor:'#E5EAEB',width:'48%',borderRadius:5}}>
                 <Text style={styles.title}>For today</Text>
                 <FlatList
@@ -249,18 +333,22 @@ export default function Pre_orders({title, navigation}) {
                 />
             </View>
 
-            <View style={{backgroundColor:'#E5EAEB',width:'48%',marginLeft:10,borderRadius:5}}>
-              <Text style={styles.title}>This week</Text>
-              <FlatList
-                  keyExtractor={(item, index) => index.toString()}
-                  data={data}
-                  renderItem={({ item }) => (
-                    render_this_week()
 
-                  )}
-              />
-            </View>
-            {/* <Button title="Show Toast" onPress={() => toastRef.current.show(
+        <View
+          style={{
+            backgroundColor: '#E5EAEB',
+            width: '48%',
+            marginLeft: 10,
+            borderRadius: 5,
+          }}>
+          <Text style={styles.title}>{t('this_week')}</Text>
+          <FlatList
+            keyExtractor={(item, index) => index.toString()}
+            data={data}
+            renderItem={({item}) => render_this_week()}
+          />
+        </View>
+        {/* <Button title="Show Toast" onPress={() => toastRef.current.show(
               <View style={{flexDirection:'row'}}>
                 <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to Accepted</Text>
                 <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
@@ -291,155 +379,144 @@ export default function Pre_orders({title, navigation}) {
             >
             {render_modal_view()}
             </Modal>
-
-          </View>
-
       </View>
-
-
-
-      );
+  );
 }
 const styles = StyleSheet.create({
-
   title: {
-    fontSize:18,
-    fontFamily:'Poppins-Bold',
-    margin:10,
-    color:'black'
+    fontSize: 18,
+    fontFamily: 'Poppins-Bold',
+    margin: 10,
+    color: 'black',
   },
-  single_order:{
-    backgroundColor:'white',
-    marginHorizontal:10,
-    marginVertical:5,
-    borderRadius:5,
-    paddingHorizontal:10,
-    paddingBottom:10
-    
-
+  single_order: {
+    backgroundColor: 'white',
+    marginHorizontal: 10,
+    marginVertical: 5,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    paddingBottom: 10,
   },
-  order_header:{
-    flex:1,
-    marginTop:10,
-    flexDirection:'row',
-    justifyContent:'space-between',
-    },
-  orderid_text:{
-    fontSize:15,
-    color:'#CCD4D6',
-    fontFamily:'Lato-Bold'
-  },
-  order_timer:{
-    backgroundColor:'#F2A341',
-    borderRadius:'0 0 5 5'
-  },
-  order_title:{
-    width:'70%',
-    fontSize:17,
-    fontFamily:'Lato-Bold'
-  },
-  order_item:{
+  order_header: {
+    flex: 1,
+    marginTop: 10,
     flexDirection: 'row',
-     marginTop: 20, 
+    justifyContent: 'space-between',
   },
-  cross_icon:{
-    color: "#CCD4D6",
-     fontSize: 20,
+  orderid_text: {
+    fontSize: 15,
+    color: '#CCD4D6',
+    fontFamily: 'Lato-Bold',
   },
-  more_order:{
-    width:60,
-    backgroundColor:'#E6F4F2',
-    padding:3,
-    borderRadius:4,
-    alignItems:'center',
-    justifyContent:'center',
-    marginLeft:30,
-    marginTop:5
+  order_timer: {
+    backgroundColor: '#F2A341',
+    borderRadius: '0 0 5 5',
   },
-  accept_btn:{
-    backgroundColor:'#5AB3A8',
-    padding:10,
-    borderRadius:5,
-    marginTop:10,
-    alignItems:'center'
+  order_title: {
+    width: '70%',
+    fontSize: 17,
+    fontFamily: 'Lato-Bold',
   },
-  accept_btn_txt:{
-    color:'white',
-    fontSize:15,
-    fontFamily:'Poppins-SemiBold'
+  order_item: {
+    flexDirection: 'row',
+    marginTop: 20,
   },
-  order_recve_name:{
-    fontSize:17,
-    fontWeight:'400',
-    color:'black'
+  cross_icon: {
+    color: '#CCD4D6',
+    fontSize: 20,
   },
-  order_recve_phone_view:{
-    flexDirection:'row',
-    marginTop:20,
-    alignItems:'center'
-
+  more_order: {
+    width: 60,
+    backgroundColor: '#E6F4F2',
+    padding: 3,
+    borderRadius: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 30,
+    marginTop: 5,
   },
-  order_recve_loc_view:{
-    flexDirection:'row',
-    marginTop:10,
-    alignItems:'center',
+  accept_btn: {
+    backgroundColor: '#5AB3A8',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+    alignItems: 'center',
   },
-  ready_btn:{
-    flex:1,
-    backgroundColor:'#5AB3A8',
-    borderRadius:5,
-    alignItems:'center',
-    paddingVertical:10,
-    justifyContent:'center'
+  accept_btn_txt: {
+    color: 'white',
+    fontSize: 15,
+    fontFamily: 'Poppins-SemiBold',
   },
-  delivryby_btn:{
-      backgroundColor:'#fdf1e3',
-      padding:5,
-      borderRadius:5
+  order_recve_name: {
+    fontSize: 17,
+    fontWeight: '400',
+    color: 'black',
   },
-  delivryby_btn_txt:{
-      color:'#F2A341',
-      fontFamily:'Lato-Bold'
+  order_recve_phone_view: {
+    flexDirection: 'row',
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  order_recve_loc_view: {
+    flexDirection: 'row',
+    marginTop: 10,
+    alignItems: 'center',
+  },
+  ready_btn: {
+    flex: 1,
+    backgroundColor: '#5AB3A8',
+    borderRadius: 5,
+    alignItems: 'center',
+    paddingVertical: 10,
+    justifyContent: 'center',
+  },
+  delivryby_btn: {
+    backgroundColor: '#fdf1e3',
+    padding: 5,
+    borderRadius: 5,
+  },
+  delivryby_btn_txt: {
+    color: '#F2A341',
+    fontFamily: 'Lato-Bold',
   },
   centeredView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   modalView: {
-
-    backgroundColor: "white",
+    backgroundColor: 'white',
     padding: 20,
-    borderRadius:10,
-    shadowColor: "#000",
+    borderRadius: 10,
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 5
+    elevation: 5,
   },
-  modal_save_btn:{
-    alignItems:'center',
-    justifyContent:'center',
-    backgroundColor:'#5AB3A8',
-    width:210,
-    padding:10,
-    borderRadius:5
+  modal_save_btn: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#5AB3A8',
+    width: 210,
+    padding: 10,
+    borderRadius: 5,
   },
-  modal_heading:{
-    fontSize:18,
-    fontWeight:'700',
-    color:'black'
+  modal_heading: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: 'black',
   },
-  
-  toast:{
-    backgroundColor:'#FFFFFF',
+
+  toast: {
+    backgroundColor: '#FFFFFF',
     // marginHorizontal:30,
-    paddingVertical:10,
-    paddingHorizontal:20,
-    shadowColor: "#000",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 3,
@@ -447,6 +524,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
     elevation: 6,
-  }
+  },
 });
-

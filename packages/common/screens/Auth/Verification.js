@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import React, { useState } from "react";
 import HeaderBack from "../../components/native/HeaderBack";
 import CommonStyle from "../../styles/index";
@@ -8,9 +8,10 @@ import styles from "./style";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 import Button from "../../components/native/AuthButton";
 import AuthCustomText from "../../components/native/AuthCustomText";
+import { useTranslation } from "react-i18next";
 const Verification = ({ route, navigation }) => {
   const { params } = route?.params;
-  
+  const { t } = useTranslation();
   const [code, setCode] = useState("");
   const detail = "We will email your a code to reset password";
   const goToChangePassword = () => {
@@ -25,63 +26,84 @@ const Verification = ({ route, navigation }) => {
   const goToSignUpForm = () => {
     navigation.navigate("SignUpForm");
   };
-  const goBack=()=>{
-    navigation.pop()
-  }
+  const goBack = () => {
+    navigation.pop();
+  };
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
-      <HeaderBack name="Verification" onGoBack={goBack} />
+      <HeaderBack name={t("verification")} onGoBack={goBack} />
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
+        <View style={{ flexGrow: 1 }}>
+          <HeaderHeading
+            headingName={`${
+              params?.active == 3
+                ? t("enter_6_digit_code")
+                : t("Verification_code")
+            }`}
+          />
+          <AuthCustomText
+            fisrtText={
+              params?.active == 3
+                ? detail
+                : ` ${t("Verification_email_detail")} ${
+                    params?.active == 1
+                      ? t("mobile_number")
+                      : params?.active == 2
+                      ? t("email_text")
+                      : ""
+                  } `
+            }
+            SecondText={
+              params?.active == 1
+                ? "+7(934) 455 34 45"
+                : params?.active == 2
+                ? "willie.jennings@example.com"
+                : ""
+            }
+          />
 
-      <HeaderHeading
-        headingName={`${
-          params?.active == 3 ? "Enter 6-digit code" : "Verification code"
-        }`}
-      />
-      <AuthCustomText
-        fisrtText={
-          params?.active == 3
-            ? detail
-            : ` We have sent the code verification to your ${
-                params?.active == 1
-                  ? "mobile number"
-                  : params?.active == 2
-                  ? "email"
-                  : ""
-              } `
-        }
-        SecondText={
-          params?.active == 1
-            ? "+7(934) 455 34 45"
-            : params?.active == 2
-            ? "willie.jennings@example.com"
-            : ""
-        }
-      />
-
-      <View style={{ flex: 1 }}>
-        <OTPInputView
-          autoFocusOnLoad={true}
-          pinCount={params?.active == 1 ? 5 : params?.active == 2 ? 6 : 5}
-          style={styles.optStyling}
-          codeInputFieldStyle={styles.optContainer}
-          handleChange={(value) => setCode(value)}
-        />
-        <CustomText label="Resend code 3:23" textStyle={styles.timerCode} />
-      </View>
-      <Button
-        name={params?.active == 3 ? "Submit" : "Verify"}
-        onPress={() => {
-          params.active == 3
-            ? goToChangePassword()
-            : params?.active == 2
-            ? goChooseAccount()
-            : params?.activeTab == 4
-            ? goGettingStarted()
-            : params?.active ==1
-            ? goChooseAccount()
-            :goToSignUpForm()
-        }}
-      />
+          {/* <View style={{ flex: 1 }}> */}
+          <OTPInputView
+            autoFocusOnLoad={true}
+            pinCount={
+              params?.active == 1
+                ? 5
+                : params?.active == 2
+                ? 6
+                : params?.active == 3
+                ? 6
+                : 5
+            }
+            style={styles.optStyling}
+            codeInputFieldStyle={styles.optContainer}
+            handleChange={(value) => setCode(value)}
+          />
+          <CustomText
+            label={t("resend_code") + " 3:23"}
+            textStyle={styles.timerCode}
+          />
+          {/* </View> */}
+          <View style={{ flex: 1 }} />
+          <Button
+            name={params?.active == 3 ? t("Submit") : t("Verify")}
+            onPress={() => {
+              params.active == 3
+                ? goToChangePassword()
+                : params?.active == 2
+                ? goChooseAccount()
+                : params?.activeTab == 4
+                ? goGettingStarted()
+                : params?.active == 1
+                ? goChooseAccount()
+                : goToSignUpForm();
+            }}
+          />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
