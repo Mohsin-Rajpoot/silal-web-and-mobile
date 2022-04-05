@@ -13,8 +13,9 @@ import {
   SearchBox,
 } from '@SilalApp/common/components/native';
 import Svg, {Path} from 'react-native-svg';
-
+import {useTranslation} from 'react-i18next';
 const Products = ({navigation}) => {
+  const {t} = useTranslation();
   const data = [
     {
       id: '1',
@@ -79,18 +80,18 @@ const Products = ({navigation}) => {
     {
       id: '1',
       Quantity: '5 items',
-      Title: 'Drafts',
+      Title: t('Drafts'),
     },
 
     {
       id: '2',
       Quantity: '5 items',
-      Title: 'Listing Template',
+      Title: t('listing_template'),
     },
     {
       id: '3',
       Quantity: '5 items',
-      Title: 'Customisations Templates',
+      Title: t('customization_temp'),
     },
   ];
 
@@ -98,10 +99,10 @@ const Products = ({navigation}) => {
     <SafeAreaView style={{backgroundColor: '#E5E5E5'}}>
       <View style={styles.container}>
         <View style={styles.Header_View}>
-          <Text style={styles.Title_Header}>Products</Text>
-          <SearchBox placeholder="Search" />
+          <Text style={styles.Title_Header}>{t('products')}</Text>
+          <SearchBox placeholder={t('Search')} />
           <View style={{right: 17}}>
-            <CustomButton text="Add new item" />
+            <CustomButton text={t('add_new_item')} />
           </View>
         </View>
         <View>
@@ -136,8 +137,8 @@ const Products = ({navigation}) => {
                   </Svg>
                 </View>
                 <View style={styles.containerText}>
-                  <Text style={styles.BoxTitleText}>Burgers</Text>
-                  <Text style={styles.TotleItem}>8 items</Text>
+                  <Text style={styles.BoxTitleText}>{t('Burger')}</Text>
+                  <Text style={styles.TotleItem}>8 {t('items')}</Text>
                 </View>
               </TouchableOpacity>
             )}
@@ -175,7 +176,7 @@ const Products = ({navigation}) => {
               </Svg>
               <Text
                 style={{color: '#CCD4D6', fontSize: 20, paddingVertical: 10}}>
-                Add category
+                {t('Add_category')}
               </Text>
             </View>
           </TouchableOpacity>

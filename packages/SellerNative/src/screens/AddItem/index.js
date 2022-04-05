@@ -20,10 +20,11 @@ import Feather from 'react-native-vector-icons/Feather';
 // import Camera from "../../components/Camera"
 import Tooltip from 'react-native-walkthrough-tooltip';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
+import {useTranslation} from 'react-i18next';
 const Secondary = '#002733';
 let Primary = '#5AB3A8';
 const AddItem = ({navigation}) => {
+  const {t} = useTranslation();
   const [selectedCategory, setselectedCategory] = useState();
   const [Cusine, setCusine] = useState();
   const [checked, setchecked] = useState(false);
@@ -55,44 +56,44 @@ const AddItem = ({navigation}) => {
   const [data, setData] = useState([
     {
       id: '1',
-      Text: 'Glutten',
+      Text: t('Glutten'),
       checked: false,
     },
 
     {
       id: '2',
-      Text: 'Cow’s milk',
+      Text: t('Cow_milk'),
       checked: false,
     },
     {
       id: '3',
-      Text: 'Eggs',
+      Text: t('Eggs'),
       checked: false,
     },
     {
       id: '4',
-      Text: 'True nuts',
+      Text: t('True_nuts'),
       checked: false,
     },
     {
       id: '5',
-      Text: 'Meat',
+      Text: t('Meat'),
       checked: false,
     },
 
     {
       id: '2',
-      Text: 'Fish',
+      Text: t('Fish'),
       checked: false,
     },
     {
       id: '3',
-      Text: 'Peanut',
+      Text: t('Peanut'),
       checked: false,
     },
     {
       id: '4',
-      Text: 'Shellfish',
+      Text: t('Shellfish'),
       checked: false,
     },
   ]);
@@ -100,23 +101,23 @@ const AddItem = ({navigation}) => {
   const [data2, setData2] = useState([
     {
       id: '1',
-      SecondListText: 'Spicy',
+      SecondListText: t('Spicy'),
       checked: false,
     },
 
     {
       id: '2',
-      SecondListText: 'Organic',
+      SecondListText: t('Organic'),
       checked: false,
     },
     {
       id: '3',
-      SecondListText: 'Vegan',
+      SecondListText: t('Vegan'),
       checked: false,
     },
     {
       id: '4',
-      SecondListText: 'Vegeterian',
+      SecondListText: t('Vegetarian'),
       checked: false,
     },
   ]);
@@ -124,23 +125,23 @@ const AddItem = ({navigation}) => {
   const data3 = [
     {
       id: '1',
-      Text: 'Glutten',
+      Text: t('Glutten'),
       checked: false,
     },
 
     {
       id: '2',
-      Text: 'Cow’s milk',
+      Text: t('Cow_milk'),
       checked: false,
     },
     {
       id: '3',
-      Text: 'Eggs',
+      Text: t('Eggs'),
       checked: false,
     },
     {
       id: '4',
-      Text: 'True nuts',
+      Text: t('True_nuts'),
       checked: false,
     },
   ];
@@ -167,7 +168,9 @@ const AddItem = ({navigation}) => {
                     borderRadius: 5,
                   }}>
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={styles.TextfieldTitle}>Category (!)</Text>
+                    <Text style={styles.TextfieldTitle}>
+                      {t('Category')} (!)
+                    </Text>
                     <View
                       style={{
                         width: '44%',
@@ -176,7 +179,7 @@ const AddItem = ({navigation}) => {
                         flexDirection: 'row',
                       }}>
                       <Text style={[styles.TextfieldTitle, {marginLeft: -1}]}>
-                        Cuisine (!)
+                        {t('Cusine')} (!)
                       </Text>
                       <View style={styles.container}>
                         <Tooltip
@@ -226,8 +229,8 @@ const AddItem = ({navigation}) => {
                         onValueChange={(itemValue, itemIndex) =>
                           setselectedCategory(itemValue)
                         }>
-                        <Picker.Item label="Salad" value="java" />
-                        <Picker.Item label="Salad Special" value="js" />
+                        <Picker.Item label={t('Salads')} value="java" />
+                        <Picker.Item label={t('Salad_special')} value="js" />
                       </Picker>
                     </View>
                     <View style={styles.dropdownbox}>
@@ -236,19 +239,23 @@ const AddItem = ({navigation}) => {
                         onValueChange={(itemValue, itemIndex) =>
                           setCusine(itemValue)
                         }>
-                        <Picker.Item label="Cusine" value="java" />
-                        <Picker.Item label="Cusine Special" value="js" />
+                        <Picker.Item label={t('Cusine')} value="java" />
+                        <Picker.Item label={t('Cuisine_special')} value="js" />
                       </Picker>
                     </View>
                   </View>
 
-                  <Text style={styles.TextfieldTitle}>Item name (!)</Text>
+                  <Text style={styles.TextfieldTitle}>
+                    {t('item_name')} (!)
+                  </Text>
                   <TextInput
                     placeholder="Salad with shrimps and avocado"
                     placeholderTextColor="#CCD4D6"
                     style={styles.TextInput}
                   />
-                  <Text style={styles.TextfieldTitle}>Item description</Text>
+                  <Text style={styles.TextfieldTitle}>
+                    {t('item_description')}
+                  </Text>
                   <TextInput
                     placeholder="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
                     multiline={true}
@@ -256,7 +263,7 @@ const AddItem = ({navigation}) => {
                     placeholderTextColor="#CCD4D6"
                     style={[styles.TextInput, {height: 95}]}
                   />
-                  <Text style={styles.TextfieldTitle}>Ingredients</Text>
+                  <Text style={styles.TextfieldTitle}>{t('Ingredients')}</Text>
                   <TextInput
                     placeholder="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
                     multiline={true}
@@ -264,7 +271,7 @@ const AddItem = ({navigation}) => {
                     placeholderTextColor="#CCD4D6"
                     style={[styles.TextInput, {height: 95}]}
                   />
-                  <Text style={styles.TextfieldTitle}>Ingredients</Text>
+                  <Text style={styles.TextfieldTitle}>{t('Ingredients')}</Text>
                   <View
                     style={{
                       flexDirection: 'row',
@@ -273,19 +280,19 @@ const AddItem = ({navigation}) => {
                       marginBottom: 15,
                     }}>
                     <TextInput
-                      placeholder="Calories"
+                      placeholder={t('calories')}
                       style={styles.IngrediantsTextInput}
                     />
                     <TextInput
-                      placeholder="Protein"
+                      placeholder={t('Protein')}
                       style={styles.IngrediantsTextInput}
                     />
                     <TextInput
-                      placeholder="Fats"
+                      placeholder={t('Fats')}
                       style={styles.IngrediantsTextInput}
                     />
                     <TextInput
-                      placeholder="Carbohydrates"
+                      placeholder={t('Carbohydrates')}
                       style={styles.IngrediantsTextInput}
                     />
                   </View>
@@ -307,7 +314,7 @@ const AddItem = ({navigation}) => {
                       fontSize: 17,
                       fontFamily: 'Lato-Regular',
                     }}>
-                    Allergies
+                    {t('Allergies')}
                   </Text>
                   <FlatList
                     data={data}
@@ -346,7 +353,7 @@ const AddItem = ({navigation}) => {
                       fontSize: 17,
                       fontFamily: 'Lato-Regular',
                     }}>
-                    Food preferences
+                    {t('food_Preferences')}
                   </Text>
                   <FlatList
                     data={data2}
@@ -392,7 +399,7 @@ const AddItem = ({navigation}) => {
                       fontFamily: 'Poppins-SemiBold',
                       paddingVertical: 15,
                     }}>
-                    Select customisations
+                    {t('Select_customisations')}
                   </Text>
                   <View
                     style={{
@@ -400,7 +407,7 @@ const AddItem = ({navigation}) => {
                       justifyContent: 'space-between',
                     }}>
                     <TextInput
-                      placeholder="Toppings"
+                      placeholder={t('topping')}
                       placeholderTextColor={Secondary}
                       style={[
                         styles.IngrediantsTextInput,
@@ -415,7 +422,7 @@ const AddItem = ({navigation}) => {
                       ]}
                     />
                     <TextInput
-                      placeholder="Sauces"
+                      placeholder={t('Sauces')}
                       placeholderTextColor={Secondary}
                       style={[
                         styles.IngrediantsTextInput,
@@ -429,7 +436,7 @@ const AddItem = ({navigation}) => {
                       ]}
                     />
                     <TextInput
-                      placeholder="Drink"
+                      placeholder={t('Drink')}
                       placeholderTextColor={Secondary}
                       style={[
                         styles.IngrediantsTextInput,
@@ -478,7 +485,7 @@ const AddItem = ({navigation}) => {
                             fontFamily: 'Lato-Bold',
                             fontSize: 17,
                           }}>
-                          Sandwiches Toppings
+                          {t('Sandwiches_topping')}
                         </Text>
                       </View>
                     </View>
@@ -510,7 +517,7 @@ const AddItem = ({navigation}) => {
                             fontFamily: 'Lato-Bold',
                             fontSize: 17,
                           }}>
-                          Sauces
+                          {t('Sauces')}
                         </Text>
                       </View>
                     </View>
@@ -542,7 +549,7 @@ const AddItem = ({navigation}) => {
                             fontFamily: 'Lato-Bold',
                             fontSize: 17,
                           }}>
-                          Soft Drinks
+                          {t('Soft_drinks')}
                         </Text>
                       </View>
                     </View>
@@ -569,7 +576,7 @@ const AddItem = ({navigation}) => {
                         </Svg>
                       </View>
                       <TextInput
-                        placeholder="Search"
+                        placeholder={t('Search')}
                         placeholderTextColor="#B3BEC2"
                         paddingHorizontal={42}
                         style={styles.Input}
@@ -612,7 +619,7 @@ const AddItem = ({navigation}) => {
                           fontFamily: 'Lato-Bold',
                           fontSize: 17,
                         }}>
-                        Toppings for salads
+                        {t('topping_for_salad')}
                       </Text>
                     </View>
                   </View>
@@ -631,7 +638,7 @@ const AddItem = ({navigation}) => {
                     paddingVertical: 10,
                   }}>
                   <Text style={[styles.TextfieldTitle, {left: -4}]}>
-                    Set the price (!)
+                    {t('set_price')} (!)
                   </Text>
                   <TextInput
                     placeholder="$"
@@ -769,7 +776,7 @@ const AddItem = ({navigation}) => {
                             paddingHorizontal: 5,
                             paddingTop: 10,
                           }}>
-                          Upload
+                          {t('upload')}
                         </Text>
                       </TouchableOpacity>
                     </View>
@@ -793,7 +800,7 @@ const AddItem = ({navigation}) => {
                         fontFamily: 'Lato-Regular',
                         marginHorizontal: 10,
                       }}>
-                      Imen qualities (!)
+                      {t('Imen_qualities')} (!)
                     </Text>
                     <FlatList
                       data={data3}
@@ -837,7 +844,7 @@ const AddItem = ({navigation}) => {
                       paddingVertical: 10,
                     }}>
                     <Text style={[styles.TextfieldTitle, {width: '80%'}]}>
-                      Estimated preparing time
+                      {t('Estimate_preparing_time')}
                     </Text>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
                       <TextInput
@@ -859,7 +866,7 @@ const AddItem = ({navigation}) => {
                           fontSize: 17,
                           fontFamily: 'Lato-Regular',
                         }}>
-                        minutes
+                        {t('minutes')}
                       </Text>
                     </View>
                   </View>

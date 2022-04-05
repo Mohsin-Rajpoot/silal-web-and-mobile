@@ -10,7 +10,9 @@ import {
 import styles from './styles';
 import Entypo from 'react-native-vector-icons/Entypo';
 import images from '../../Assets';
+import {useTranslation} from 'react-i18next';
 const Customisation_Templete = () => {
+  const {t} = useTranslation();
   const data = [
     {
       id: '1',
@@ -41,9 +43,9 @@ const Customisation_Templete = () => {
                     color: '#002733',
                     fontFamily: 'Lato-Regular',
                   }}>
-                  Toppings:
+                  {t('topping')}:
                 </Text>{' '}
-                Lettuce, Cheese, Tomatoes, Pickle
+                {t('Lettuce')}, {t('Cheese')}, {t('Tomatoes')}, {t('Pickle')}
               </Text>
               <View style={{flexDirection: 'row', paddingHorizontal: 15}}>
                 <Text style={styles.Code}>#542399</Text>
@@ -58,7 +60,7 @@ const Customisation_Templete = () => {
             <View style={{flexDirection: 'row', paddingHorizontal: 10}}>
               <View style={{marginHorizontal: 10, marginVertical: 2}}>
                 <TouchableOpacity style={styles.HeadingButton}>
-                  <Text style={styles.headingTextButton}>Lettuce</Text>
+                  <Text style={styles.headingTextButton}>{t('Lettuce')}</Text>
                 </TouchableOpacity>
                 <TextInput placeholder="$ 2.00" style={styles.TextInputView} />
               </View>
@@ -85,7 +87,7 @@ const Customisation_Templete = () => {
                 <TouchableOpacity style={styles.HeadingButton}>
                   <Text style={styles.headingTextButton}>Lettuce</Text>
                 </TouchableOpacity>
-                <Text style={styles.Unavaiable}>Unavailable</Text>
+                <Text style={styles.Unavaiable}>{t('unavailable')}</Text>
               </View>
             </View>
             <View
@@ -106,20 +108,20 @@ const Customisation_Templete = () => {
                     color: '#002733',
                     fontFamily: 'Lato-Regular',
                   }}>
-                  Use for:
+                  {t('Use_for')}:
                 </Text>{' '}
                 Sandwiches: Burger, Deli
               </Text>
               <View style={styles.ButtonsView}>
                 <TouchableOpacity style={styles.TertiaryButton}>
                   <Text style={styles.TertiaryButtonText}>
-                    Customise new version
+                    {t('Customise_new_verison')}
                   </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[styles.PrimaryButton, {paddingHorizontal: 15}]}>
                   <Text style={styles.TertiaryButtonText}>
-                    Add template as is
+                    {t('Add_template_as')}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -131,7 +133,7 @@ const Customisation_Templete = () => {
 
       <TouchableOpacity style={styles.CreateButton}>
         <Entypo name="plus" style={{fontSize: 20, color: '#fff'}} />
-        <Text style={styles.CreatebuttonText}>Create new </Text>
+        <Text style={styles.CreatebuttonText}>{t('create_new')} </Text>
       </TouchableOpacity>
     </View>
   );

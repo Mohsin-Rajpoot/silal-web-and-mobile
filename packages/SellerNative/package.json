@@ -43,8 +43,8 @@
     "react-native-pager-view": "^5.4.15",
     "react-native-paper": "^4.11.2",
     "react-native-phone-number-input": "^2.1.0",
-    "react-native-preference": "^2.2.3",
     "react-native-popup-menu": "^0.15.12",
+    "react-native-preference": "^2.2.3",
     "react-native-reanimated": "^2.4.1",
     "react-native-responsive-screen-hooks": "^1.4.2",
     "react-native-restart": "^0.0.24",
@@ -59,8 +59,11 @@
     "react-native-toast-message": "^2.1.1",
     "react-native-toast-notifications": "^3.2.3",
     "react-native-vector-icons": "^9.1.0",
-    "rn-swipe-button": "^1.3.6",
     "react-native-walkthrough-tooltip": "^1.3.1",
+    "react-redux": "^7.2.8",
+    "redux": "^4.1.2",
+    "redux-saga": "^1.1.3",
+    "rn-swipe-button": "^1.3.6",
     "toggle-switch-react-native": "^3.3.0"
   },
   "devDependencies": {

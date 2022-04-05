@@ -30,10 +30,12 @@ import {SwipeListView} from 'react-native-swipe-list-view';
 import Octicons from 'react-native-vector-icons/Octicons';
 import {Picker} from '@react-native-picker/picker';
 import images from '../Assets';
+import {useTranslation} from 'react-i18next';
 // import SearchableDropdown from "searchable-dropdown-react-native";
 const Secondary = '#002733';
 
 export default function Archive_orders({title, navigation}) {
+  const {t} = useTranslation();
   const [selectedCategory, setselectedCategory] = useState();
   const [selectedCategoryItem, setselectedCategoryItem] = useState();
   const [selectedValues, setSelectedValues] = useState([]);
@@ -447,7 +449,7 @@ export default function Archive_orders({title, navigation}) {
                       },
                     ]}>
                     <Text style={{fontFamily: 'Lato-Regular'}}>
-                      18 portions
+                      18 {t('Portions')}
                     </Text>
                   </View>
                   <View
@@ -474,9 +476,9 @@ export default function Archive_orders({title, navigation}) {
                         </View>
                       </MenuTrigger>
                       <MenuOptions customStyles={{optionText: {padding: 5}}}>
-                        <MenuOption value="Normal" text="Edit" />
-                        <MenuOption value="Normal" text="Freeze Listing" />
-                        <MenuOption value="Normal" text="Delete" />
+                        <MenuOption value="Normal" text={t('edit')} />
+                        <MenuOption value="Normal" text={t('Freeze_listing')} />
+                        <MenuOption value="Normal" text={t('delete')} />
                       </MenuOptions>
                     </Menu>
                   </View>
@@ -524,28 +526,30 @@ export default function Archive_orders({title, navigation}) {
           <Text style={styles.all_orders_heading_txt}></Text>
         </View>
         <View style={[styles.all_orders, {width: '12%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Photo</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('photo')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '8%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Item name</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('item_name')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '14%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Item ID</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Item_id')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '12%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Last purchase</Text>
+          <Text style={styles.all_orders_heading_txt}>
+            {t('Last_purchase')}
+          </Text>
         </View>
         <View style={[styles.all_orders, {width: '15%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Weight</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Weight')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '12%'}]}>
-          <Text>On stock</Text>
+          <Text>{t('on_stock')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '14%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Price</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('price')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '8%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Action</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Action')}</Text>
         </View>
       </View>
     );
@@ -578,13 +582,13 @@ export default function Archive_orders({title, navigation}) {
                   color: '#002733',
                   fontFamily: 'Poppins-Bold',
                 }}>
-                Salads
+                {t('Salads')}
               </Text>
             </TouchableOpacity>
             <SearchBox placeholder="Search" />
             <View style={{right: 10, position: 'relative'}}>
               <CustomButton
-                text="Add new item"
+                text={t('add_new_item')}
                 onPress={() => navigation.navigate('ItemCreaterFirstStep')}
               />
             </View>
@@ -615,7 +619,9 @@ export default function Archive_orders({title, navigation}) {
           </View>
         </View>
         <View style={styles.pagination_view}>
-          <Text style={{fontFamily: 'Lato-Regular'}}>Showing 1-9 of 86</Text>
+          <Text style={{fontFamily: 'Lato-Regular'}}>
+            {t('showing')} 1-9 of 86
+          </Text>
           <View style={styles.pagination_numbring}>
             <Ionicons
               name="chevron-back"

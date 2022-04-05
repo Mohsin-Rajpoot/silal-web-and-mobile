@@ -22,10 +22,11 @@ import styles from './styles';
 import images from '../../Assets';
 import {useTranslation} from 'react-i18next';
 const Clints = () => {
-  const [choseData, setchoseData] = useState('Sort by');
+  const {t} = useTranslation();
+  const [choseData, setchoseData] = useState(t('Sort_by'));
   const [ModalVisible, setModalVisible] = useState(false);
   const [ismodalVisible, setisModalVisible] = useState(false);
-  const {t} = useTranslation();
+
   const changeModalVisibilty = bool => {
     setModalVisible(bool);
   };
@@ -168,7 +169,7 @@ const Clints = () => {
             alignItems: 'center',
             marginTop: 10,
           }}>
-          <Text style={styles.ModalDropdown}>CUSTOMER DATA</Text>
+          <Text style={styles.ModalDropdown}>{t('Customer_data')}</Text>
 
           {show_modal_customer_data == true ? (
             <Fontisto
@@ -185,19 +186,21 @@ const Clints = () => {
         {show_modal_customer_data == true ? (
           <View style={{marginTop: 10}}>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Total orders</Text>
+              <Text style={styles.modal_title_first}>{t('Total_orders')}</Text>
               <Text style={styles.modal_title_second}>43</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Sum of orders</Text>
+              <Text style={styles.modal_title_first}>{t('Sumof_order')}</Text>
               <Text style={styles.modal_title_second}>$ 423.90</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Average amount</Text>
+              <Text style={styles.modal_title_first}>
+                {t('Average_amount')}
+              </Text>
               <Text style={styles.modal_title_second}>$ 13</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Credit card</Text>
+              <Text style={styles.modal_title_first}>{t('credit_card')}</Text>
               <Text style={styles.modal_title_second}>
                 **** **** **** 4543{' '}
               </Text>
@@ -221,7 +224,7 @@ const Clints = () => {
             alignItems: 'center',
             marginTop: 10,
           }}>
-          <Text style={styles.ModalDropdown}>DRIVER DATA</Text>
+          <Text style={styles.ModalDropdown}>{t('driver_data')}</Text>
 
           {show_modal_driver_data == true ? (
             <Fontisto
@@ -296,7 +299,7 @@ const Clints = () => {
             alignItems: 'center',
             marginTop: 10,
           }}>
-          <Text style={styles.ModalDropdown}>ORDER DETAILS</Text>
+          <Text style={styles.ModalDropdown}>{t('order_details')}</Text>
           {show_modal_order_details == true ? (
             <Fontisto
               name="angle-up"
@@ -320,7 +323,7 @@ const Clints = () => {
               }}>
               <EvilIcons name="search" style={[styles.SearchIcon]} />
               <TextInput
-                placeholder="Search by order #"
+                placeholder={t('Search_by_order')}
                 placeholderTextColor="#B3BEC2"
                 paddingHorizontal={32}
                 style={[styles.Input, {width: '97%'}]}
@@ -342,7 +345,7 @@ const Clints = () => {
                             paddingTop: 5,
                             color: '#CCD4D6',
                           }}>
-                          ORDER ID
+                          {t('orderId')}
                         </Text>
                         <Text style={styles.OrderIdentityCode}>
                           {item.Identity}
@@ -406,15 +409,21 @@ const Clints = () => {
                     </View>
 
                     <TouchableOpacity style={styles.MoreOrderShow}>
-                      <Text style={{color: '#5AB3A8'}}>3 more</Text>
+                      <Text style={{color: '#5AB3A8'}}>3 {t('more')}</Text>
                     </TouchableOpacity>
 
                     <View style={{flexDirection: 'row'}}>
-                      <Text style={styles.paymentMethod}>PAYMENT METHOD</Text>
-                      <Text style={[styles.CreditCard]}>CREADIT CARD</Text>
+                      <Text style={styles.paymentMethod}>
+                        {t('payment_method')}
+                      </Text>
+                      <Text style={[styles.CreditCard]}>
+                        {t('credit_card')}
+                      </Text>
                     </View>
                     <View style={{flexDirection: 'row'}}>
-                      <Text style={[styles.paymentMethod]}>CARD DATA</Text>
+                      <Text style={[styles.paymentMethod]}>
+                        {t('card_data')}
+                      </Text>
                       <Text style={styles.CreditCard}>**** **** **** 3782</Text>
                     </View>
                   </View>
@@ -445,7 +454,7 @@ const Clints = () => {
                   <Text style={styles.orderid_text}>Cameron Williamson</Text>
                   <View style={styles.modal_recuring}>
                     <Text style={{color: 'white', fontFamily: 'Lato-Regular'}}>
-                      Recurring client
+                      {t('reccuring_Client')}
                     </Text>
                   </View>
                 </View>
@@ -468,7 +477,7 @@ const Clints = () => {
                     fontFamily: 'Lato-Bold',
                     width: 110,
                   }}>
-                  CUSTOMER ID
+                  {t('CustomerId')}
                 </Text>
 
                 <Text style={{color: '#002733', fontFamily: 'Lato-Bold'}}>
@@ -492,7 +501,7 @@ const Clints = () => {
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <EvilIcons name="search" style={styles.SearchIcon} />
           <TextInput
-            placeholder="Search by orders #, phone or name..."
+            placeholder={t('search_by_orders')}
             placeholderTextColor="#B3BEC2"
             paddingHorizontal={32}
             style={styles.Input}
@@ -525,7 +534,7 @@ const Clints = () => {
               fontFamily: 'Lato-Regular',
               color: '#002733',
             }}>
-            {choseData}
+            {t(choseData)}
           </Text>
           <AntDesign
             name="down"
@@ -559,15 +568,19 @@ const Clints = () => {
               <TouchableOpacity onPress={() => setisModalVisible(true)}>
                 <View style={styles.GreenBkgFlat}>
                   <Text style={styles.TitleMainTextFlat}>{item.Title}</Text>
-                  <Text style={styles.ButtonFlatList}>Reccuring client</Text>
+                  <Text style={styles.ButtonFlatList}>
+                    {t('reccuring_Client')}
+                  </Text>
                 </View>
                 <View style={styles.OrderFlat}>
                   <View style={styles.ClintDataBaseDate}>
-                    <Text style={styles.FlatIdDynamic}>Client ID :</Text>
+                    <Text style={styles.FlatIdDynamic}>{t('Client_id')} :</Text>
                     <Text style={styles.OrderFlat}>{item.ID}</Text>
                   </View>
                   <View style={styles.ClintDataBaseDate}>
-                    <Text style={styles.FlatIdDynamic}>Total orders:</Text>
+                    <Text style={styles.FlatIdDynamic}>
+                      {t('Total_orders')}:
+                    </Text>
                     <Text style={styles.OrderFlat}>{item.TotalOrders}</Text>
                   </View>
                   <View
@@ -579,7 +592,9 @@ const Clints = () => {
                         elevation: 0.4,
                       },
                     ]}>
-                    <Text style={styles.FlatIdDynamic}>Sum of orders:</Text>
+                    <Text style={styles.FlatIdDynamic}>
+                      {t('Sumof_order')}:
+                    </Text>
                     <Text style={styles.OrderFlat}> {item.Sum_of_orders}</Text>
                   </View>
                 </View>

@@ -6,7 +6,8 @@ import {Icon} from 'react-native-elements';
 import colors from '@SilalApp/common/assets/colors';
 import Preference from 'react-native-preference';
 import {useTranslation} from 'react-i18next';
-
+import {store} from './src/store/store';
+import {Provider} from 'react-redux';
 import Menu, {
   MenuProvider,
   MenuTrigger,
@@ -49,7 +50,9 @@ const App = () => {
             ),
           }}>
           <MenuProvider>
-            <Routes />
+            <Provider store={store}>
+              <Routes />
+            </Provider>
           </MenuProvider>
         </ToastProvider>
       </NativeBaseProvider>

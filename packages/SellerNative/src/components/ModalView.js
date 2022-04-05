@@ -6,15 +6,17 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 const OPTIONS = [
-  'Oldest first',
-  'Newest first',
-  'Most revenue',
-  'Less revenue',
-  'Recurring first',
-  'Top buyers first',
+  'oldest_first',
+  'Newest_first',
+  'Most_revenue',
+  'Less_revenue',
+  'Recurring_first',
+  'total_buyer_first',
 ];
 const ModalView = props => {
+  const {t}=useTranslation();
   const onPressItems = option => {
     props.changeModalVisibilty(false);
     props.setData(option);
@@ -22,7 +24,7 @@ const ModalView = props => {
   const option = OPTIONS.map((item, index) => {
     return (
       <TouchableOpacity key={index} onPress={() => onPressItems(item)}>
-        <Text style={styles.TextItems}>{item}</Text>
+        <Text style={styles.TextItems}>{t(item)}</Text>
       </TouchableOpacity>
     );
   });

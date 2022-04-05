@@ -21,8 +21,9 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Toast from 'react-native-easy-toast';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
+import {useTranslation} from 'react-i18next';
 const ItemCreaterFirstStep = ({navigation}) => {
+  const {t} = useTranslation();
   const [order_state, set_order_state] = useState('All');
   const [Showmodal, setShowmodal] = useState(false);
   const [Openmodal, setOpenmodal] = useState(false);
@@ -42,7 +43,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                   name="keyboard-backspace"
                   style={styles.BackArrow}
                 />
-                <Text style={styles.backTitle}>Create new item</Text>
+                <Text style={styles.backTitle}>{t('create_new_item')}</Text>
               </TouchableOpacity>
               <View style={{marginHorizontal: 5, marginVertical: 4}}>
                 <Modal
@@ -92,7 +93,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
 
                       <View style={styles.ParagraphPadingHorizontal}>
                         <Text style={styles.TitleModalPreview}>
-                          Ingrediants
+                          {t('Ingredients')}
                         </Text>
                         <Text style={styles.paragaphPreview}>
                           The release of Letraset sheets containing Lorem Ipsum
@@ -105,30 +106,36 @@ const ItemCreaterFirstStep = ({navigation}) => {
                         style={{flexDirection: 'row', marginHorizontal: 40}}>
                         <View style={{width: 60}}>
                           <Text style={styles.Cal}>221 cal</Text>
-                          <Text style={{color: '#4C6870'}}>Calories</Text>
+                          <Text style={{color: '#4C6870'}}>
+                            {t('calories')}
+                          </Text>
                         </View>
 
                         <View style={{width: 60}}>
                           <Text style={styles.Cal}>11g</Text>
-                          <Text style={{color: '#4C6870'}}>Protiens</Text>
+                          <Text style={{color: '#4C6870'}}>{t('Protein')}</Text>
                         </View>
                         <View style={{width: 60, paddingLeft: 5}}>
                           <Text style={styles.Cal}>11g</Text>
-                          <Text style={{color: '#4C6870'}}>Fats</Text>
+                          <Text style={{color: '#4C6870'}}>{t('Fats')}</Text>
                         </View>
 
                         <View style={{width: 90}}>
                           <Text style={styles.Cal}>221 cal</Text>
-                          <Text style={{color: '#4C6870'}}>Carbohydrats</Text>
+                          <Text style={{color: '#4C6870'}}>
+                            {t('Carbohydrates')}
+                          </Text>
                         </View>
                       </View>
                       <Text style={styles.AlertModal}>
-                        Allergies (!): Eggs, Glutten.
+                        {t('Allergies')} (!): Eggs, Glutten.
                       </Text>
                       <View
                         style={{flexDirection: 'row', marginHorizontal: 42}}>
                         <TouchableOpacity style={styles.ModalTertiaryButton}>
-                          <Text style={styles.ButtonText}>Save As Draft</Text>
+                          <Text style={styles.ButtonText}>
+                            {t('Save_as_draft')}
+                          </Text>
                         </TouchableOpacity>
                         <TouchableOpacity
                           onPress={() =>
@@ -154,7 +161,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                           }
                           style={styles.PrimaryButtonModal}>
                           <Text style={styles.TextPrimaryButton}>
-                            Request to publish
+                            {t('Request_to_publish')}
                           </Text>
                         </TouchableOpacity>
                       </View>
@@ -167,7 +174,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                   <TouchableOpacity
                     onPress={() => setOpenmodal(true)}
                     style={{width: 70}}>
-                    <Text style={styles.PreviewHeader}>Preview</Text>
+                    <Text style={styles.PreviewHeader}>{t('Preview')}</Text>
                   </TouchableOpacity>
                 </View>
                 <View style={{marginHorizontal: 5, marginVertical: 4}}>
@@ -179,7 +186,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                       <View style={styles.ModeView}>
                         <View style={styles.ModalTitle}>
                           <Text style={styles.ModalHeading}>
-                            Save as drafts?
+                            {t('Save_as_draft')}
                           </Text>
                           <Entypo
                             onPress={() => setShowmodal(false)}
@@ -188,8 +195,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                           />
                         </View>
                         <Text style={styles.ModalParagraph}>
-                          You have not finished creating the item. If you exit,
-                          the data will not be saved.
+                          {t('you_have_not_fished')}
                         </Text>
                         <View style={styles.ModalButtonContainer}>
                           <TouchableOpacity
@@ -217,7 +223,9 @@ const ItemCreaterFirstStep = ({navigation}) => {
                               {backgroundColor: '#CCD4D6'},
                               styles.Buttonss,
                             ]}>
-                            <Text style={styles.DeleteModal}>Delete</Text>
+                            <Text style={styles.DeleteModal}>
+                              {t('delete')}
+                            </Text>
                           </TouchableOpacity>
                           <TouchableOpacity
                             onPress={() =>
@@ -245,7 +253,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                               styles.Buttonss,
                             ]}>
                             <Text style={[{color: '#fff'}, styles.DeleteModal]}>
-                              Save as draft
+                              {t('Save_as_draft')}
                             </Text>
                           </TouchableOpacity>
                         </View>
@@ -255,7 +263,9 @@ const ItemCreaterFirstStep = ({navigation}) => {
                   <TouchableOpacity
                     onPress={() => setShowmodal(true)}
                     style={[styles.HeaderButton, {backgroundColor: '#A7D5D0'}]}>
-                    <Text style={styles.HeaderButtonText}>Save as draft</Text>
+                    <Text style={styles.HeaderButtonText}>
+                      {t('Save_as_draft')}
+                    </Text>
                   </TouchableOpacity>
                 </View>
                 <View style={{marginHorizontal: 5, marginVertical: 4}}>
@@ -281,7 +291,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                       )
                     }
                     style={[styles.HeaderButton, {backgroundColor: '#5AB3A8'}]}>
-                    <Text style={styles.HeaderButtonText}>Publish</Text>
+                    <Text style={styles.HeaderButtonText}>{t('Publish')}</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -299,7 +309,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                     fontFamily: 'Poppins-SemiBold',
                     paddingHorizontal: 20,
                   }}>
-                  Add item
+                  {t('add_item')}
                 </Text>
                 <View
                   style={[
@@ -315,7 +325,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                     fontFamily: 'Poppins-SemiBold',
                     paddingHorizontal: 20,
                   }}>
-                  Customisations Templates
+                  {t('customization_temp')}
                 </Text>
                 <View
                   style={[
