@@ -1,4 +1,10 @@
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import React, { useState } from "react";
 import CustomText from "../../../components/CustomText";
 import styles from "../style";
@@ -7,16 +13,27 @@ import DropDownPicker from "react-native-dropdown-picker";
 import { Icon } from "react-native-elements";
 import colors from "../../../assets/colors";
 import { useTranslation } from "react-i18next";
+import { ScaledSheet, moderateScale, scale } from "react-native-size-matters";
+import moment from "moment";
+import fonts from "../../../assets/fonts";
+import DateTimePicker from "@react-native-community/datetimepicker";
 const ThirdPage = () => {
   const { t } = useTranslation();
   const [active, setActive] = useState(0);
   const [payment, setPayment] = useState(0);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
+  const [show, setShow] = useState(false);
+  const [startTime, setStartTime] = useState(new Date());
   const [items, setItems] = useState([
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
   ]);
+  const onStartChange = (event, selectedDate, setTime, time) => {
+    const currentDate = selectedDate || time;
+    setShow(Platform.OS === "ios");
+    setTime(currentDate);
+  };
   return (
     <View style={styles.firstPageMainContainer}>
       <ScrollView
@@ -299,6 +316,83 @@ const ThirdPage = () => {
           inputStyle={styles.detailInput}
           multiLine={true}
         />
+        <View style={{ flexDirection: "row", marginVertical: 15 }}>
+          <CustomText
+            label={t("working_hours")}
+            textStyle={styles.formTextHeading}
+          />
+          <CustomText label="*" textStyle={styles.star} />
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <>
+            <CustomText
+              fontSize={12}
+              textStyle={styles.fromText}
+              fontFamily={fonts.LatoRegular}
+              label={t("From")}
+            />
+            <Pressable
+              style={styles.dropDownContainer}
+              onPress={() => setShow(true)}
+            >
+              <CustomText
+                fontSize={10}
+                label={
+                  startTime ? moment(startTime).format("h:mm A") : "Start Time"
+                }
+              />
+              <Icon type="antdesign" name="caretdown" size={moderateScale(7)} />
+            </Pressable>
+          </>
+          {show && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={startTime ? new Date(startTime) : new Date()}
+              mode={"time"}
+              display="default"
+              onChange={(event, selectedDate) =>
+                onStartChange(event, selectedDate, setStartTime, startTime)
+              }
+            />
+          )}
+          <CustomText
+            fontSize={12}
+            textStyle={styles.fromText}
+            marginLeft={4}
+            fontFamily={fonts.LatoRegular}
+            label={t("To")}
+          />
+          <View />
+          <Pressable
+            style={styles.dropDownContainer}
+            onPress={() => setShow(true)}
+          >
+            <CustomText
+              fontSize={10}
+              label={
+                startTime ? moment(startTime).format("h:mm A") : "Start Time"
+              }
+            />
+            <Icon type="antdesign" name="caretdown" size={moderateScale(10)} />
+          </Pressable>
+          {show && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={startTime ? new Date(startTime) : new Date()}
+              mode={"time"}
+              display="default"
+              onChange={(event, selectedDate) =>
+                onStartChange(event, selectedDate, setStartTime, startTime)
+              }
+            />
+          )}
+        </View>
       </ScrollView>
     </View>
   );

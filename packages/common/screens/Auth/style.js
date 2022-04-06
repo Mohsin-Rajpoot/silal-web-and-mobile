@@ -27,8 +27,8 @@ const styles = ScaledSheet.create({
   },
   codeText: {
     fontSize: "12@ms",
-    fontFamily:fonts.LatoRegular,
-    color:colors.black
+    fontFamily: fonts.LatoRegular,
+    color: colors.black,
   },
   textContainer: {
     backgroundColor: "transparent",
@@ -455,6 +455,49 @@ const styles = ScaledSheet.create({
     fontSize: "11@ms",
     fontFamily: fonts.LatoMedium,
     color: colors.primary,
+  },
+  dropDownContainer: {
+    width: "43%",
+    alignItems: "center",
+    flexDirection: "row",
+    padding: "5@s",
+    borderColor: colors.light_grey,
+    borderWidth: "0.5@s",
+    borderRadius: "3@s",
+    justifyContent: "space-between",
+  },
+  fromText: {
+    marginRight: "5@s",
+  },
+  ToastMainView: {
+    flexDirection: 'row',
+    marginVertical: 0,
+  },
+  IconToast: {
+    color: 'green',
+    fontSize: 20,
+    paddingHorizontal: 4,
+  },
+  ToastParagraph: {
+    color: '#002733',
+    fontSize: 15,
+    fontFamily: 'Lato-Bold',
+  },
+  ActionToast: {
+    color: '#018FFB',
+    fontSize: 15,
+    fontFamily: 'Lato-Bold',
+    marginLeft: 20,
+  },
+  Tost: {
+    backgroundColor: '#FFFFFF',
+    top:-100,
+    shadowColor: '#000',
+    position: 'absolute',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
   },
 });
 

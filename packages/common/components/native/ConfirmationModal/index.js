@@ -22,35 +22,47 @@ const CustomModal = (props) => {
           style={[styles.modalWrapper, props.modalWrapperStyle]}
         >
           <View>
-            <View style={styles.header}>
+            {props.logoutDetail ? (
               <CustomText
-                label="Are you sure?"
-                textStyle={styles.areYouSureText}
+                label={props.logoutDetail}
+                textStyle={styles.areYouSureText1}
               />
-              <TouchableOpacity
-                activeOpacity={0.6}
-                onPress={() => props.setModalVisible(false)}
-              >
-                <Icon
-                  name="cross"
-                  type="entypo"
-                  color={colors.light_grey}
-                  size={40}
+            ) : (
+              <View style={styles.header}>
+                <CustomText
+                  label="Are you sure?"
+                  textStyle={styles.areYouSureText}
                 />
-              </TouchableOpacity>
-            </View>
+                <TouchableOpacity
+                  activeOpacity={0.6}
+                  onPress={() => props.setModalVisible(false)}
+                >
+                  <Icon
+                    name="cross"
+                    type="entypo"
+                    color={colors.light_grey}
+                    size={40}
+                  />
+                </TouchableOpacity>
+              </View>
+            )}
             <CustomText label={props?.detail} textStyle={styles.detailText} />
             <View style={styles.buttonContainer}>
               <CustomButton
                 textStyle={styles.cancelButton}
                 text="Cancel"
-                containerStyle={styles.buttonContainerMain}
-                onPress={()=>props.setModalVisible(false)}
+                containerStyle={
+                  props.logoutDetail
+                    ? styles.buttonContainerMainActive
+                    : styles.buttonContainerMain
+                }
+                onPress={() => props.setModalVisible(false)}
               />
               <CustomButton
                 containerStyle={styles.buttonContainerActive}
                 text={props.Active}
                 textStyle={styles.activeButton}
+                onPress={props.onPress}
               />
             </View>
           </View>
@@ -65,6 +77,11 @@ export default CustomModal;
 const styles = ScaledSheet.create({
   buttonContainerMain: {
     backgroundColor: colors.light_grey,
+    marginTop: "10@s",
+    margin: "10@ms",
+  },
+  buttonContainerMainActive: {
+    backgroundColor: colors.primary,
     marginTop: "10@s",
     margin: "10@ms",
   },
@@ -100,7 +117,7 @@ const styles = ScaledSheet.create({
     padding: 10,
   },
   detailText: {
-    fontSize: "15@ms",
+    fontSize: "14@ms",
     fontFamily: fonts.LatoRegular,
     color: colors.textPrimary,
     padding: "10@ms",
@@ -116,6 +133,12 @@ const styles = ScaledSheet.create({
   areYouSureText: {
     fontSize: "18@ms",
     fontFamily: fonts.PoppinsSemiBold,
+  },
+  areYouSureText1: {
+    fontSize: "18@ms",
+    fontFamily: fonts.PoppinsSemiBold,
+    alignSelf: "center",
+    marginTop: "10@s",
   },
   buttonContainer: {
     flexDirection: "row",

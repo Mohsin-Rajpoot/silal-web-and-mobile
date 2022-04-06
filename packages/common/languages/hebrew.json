@@ -83,7 +83,7 @@
     "Account_is_Freezed": "Account is freezed",
     "Account_freezed_detail1": " It seems that your account was deactivated because",
     "Account_freezed_detail2": "it violated the",
-    "termOfUse": "terms of use",
+    "termOfUse": "Terms of use",
     "Account_freezed_detail3": " or our",
     "community_guideline": "coummunity guideline",
     "Account_freezed_detail4": "If you believe this was by mistake",
@@ -321,7 +321,12 @@
     "Customise_new_verison": "Customise new version",
     "Add_template_as": "Add template as",
     "create_new": "Create new",
-    "you_have_not_fished":"You have not finished creating the item. If you exit,the data will not be saved.",
-    "Request_to_publish":"Request to publish"
+    "you_have_not_fished": "You have not finished creating the item. If you exit,the data will not be saved.",
+    "Request_to_publish": "Request to publish",
+    "working_hours": "Working hours",
+    "From": "from",
+    "To": "till",
+    "language": "Language",
+    "Attach": "Attach"
   }
 }

@@ -26,6 +26,7 @@ const colors = {
   lightRed:"#DE350B",
   red50:"#FFEBE6",
   bluish:"#E6FCFF",
+  textPrimaryBlur:'rgba(76, 104, 112, 0.5)'
 
 };
 export default colors;
