@@ -12,6 +12,7 @@ import colors from '@SilalApp/common/assets/colors';
 import CustomButton from '@SilalApp/common/components/native/CustomButton';
 import fonts from '@SilalApp/common/assets/fonts';
 import {useTranslation} from 'react-i18next';
+import {Icon} from 'react-native-elements';
 const ContactUs = ({navigation}) => {
   const {t} = useTranslation();
   return (
@@ -20,22 +21,23 @@ const ContactUs = ({navigation}) => {
         label={t('Contact_Silal')}
         onPress={() => navigation.openDrawer()}
       />
-      <View style={{marginLeft: scale(24), alignItems: 'flex-start'}}>
-        <CustomText
-          textStyle={styles.letSolveText}
-          label={t('LetsSolveProblem')}
-        />
-        <CustomText
-          textStyle={styles.letSolveDetailText}
-          label={t('ContactUsDetailText')}
-        />
-      </View>
       <View
         style={{
-          paddingHorizontal: scale(25),
+          width: '70%',
           paddingVertical: verticalScale(20),
         }}>
         <View style={styles.container}>
+          <View style={{alignItems: 'flex-start'}}>
+            <CustomText
+              textStyle={styles.letSolveText}
+              label={t('LetsSolveProblem')}
+            />
+            <CustomText
+              textStyle={styles.letSolveDetailText}
+              label={t('ContactUsDetailText')}
+            />
+          </View>
+          <View style={{height: 20}} />
           <View>
             <CustomText
               textStyle={styles.inputLabel}
@@ -83,20 +85,28 @@ const ContactUs = ({navigation}) => {
               multiline={true}
             />
           </View>
-          <CustomText
-            textStyle={[
-              styles.inputLabel,
-              {marginTop: verticalScale(50), marginBottom: verticalScale(15)},
-            ]}
-            label={t('AddAttachment')}
-          />
+          <View
+            style={{
+              flexDirection: 'row',
+              marginTop: 12,
+              justifyContent: 'space-between',
+            }}>
+            <View style={{width: '30%'}}>
+              <View style={styles.attachContainer}>
+                <Icon name="attachment" type="entypo" color={colors.primary} />
+                <CustomText label="Attach" textStyle={styles.attachText} />
+              </View>
+            </View>
+            <View style={{width: '69%'}}>
+              <CustomButton
+                textStyle={{fontSize: scale(14)}}
+                containerStyle={styles.exportBtn}
+                text={t('Submit')}
+              />
+            </View>
+          </View>
         </View>
       </View>
-      <CustomButton
-        textStyle={{fontSize: scale(14)}}
-        containerStyle={styles.exportBtn}
-        text={t('Submit')}
-      />
     </ScrollView>
   );
 };
@@ -108,6 +118,15 @@ const styles = ScaledSheet.create({
     paddingHorizontal: '15@s',
     backgroundColor: colors.white,
   },
+  attachContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.primaryBlur,
+    padding: '9@s',
+    justifyContent: 'center',
+    width: '100%',
+    borderRadius: '4@s',
+  },
   container: {
     width: '100%',
     backgroundColor: colors.textWhite,
@@ -118,6 +137,14 @@ const styles = ScaledSheet.create({
     fontSize: '18@ms',
     fontFamily: fonts.bold,
     color: colors.black,
+  },
+  attachText: {
+    fontSize: '16@ms',
+    fontFamily: fonts.LatoSemiBold,
+    color: colors.primary,
+    margin: '3@s',
+    marginLeft: '10@s',
+    fontWeight: '600',
   },
   letSolveDetailText: {
     fontSize: '14@ms',
@@ -134,7 +161,16 @@ const styles = ScaledSheet.create({
     marginVertical: 0,
     alignSelf: 'flex-end',
     paddingVertical: '5@s',
-    paddingHorizontal: '80@s',
+    width: '100%',
+    marginBottom: '15@vs',
+    shadowColor: 'rgba(115, 213, 201, 1)',
+  },
+  exportBtn1: {
+    marginVertical: 0,
+    alignSelf: 'flex-end',
+    paddingVertical: '5@s',
+    paddingHorizontal: '10@s',
+    width: '100%',
     marginBottom: '15@vs',
     marginRight: '15@s',
     shadowColor: 'rgba(115, 213, 201, 1)',

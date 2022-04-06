@@ -80,12 +80,15 @@ const Drawer = props => {
           label={t('contactus')}
         />
       </TouchableOpacity>
-
-      <CustomText
-        textStyle={styles.drawerText}
-        fontFamily={fonts.PoppinsMedium}
-        label={t('AboutApp')}
-      />
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('AboutApp')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label={t('AboutApp')}
+        />
+      </TouchableOpacity>
       <View style={{height: verticalScale(50)}} />
       <TouchableOpacity
         activeOpacity={0.6}

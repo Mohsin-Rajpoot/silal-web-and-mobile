@@ -30,6 +30,7 @@ const Setting = ({navigation}) => {
   const [leftArrow, setLeftArrow] = useState(false);
   const [check, setCheck] = useState(false);
   const [isVisible, setVisible] = useState(false);
+  const [isVisibleLogout, setVisibleLogout] = useState(false);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(getLang);
   const [items, setItems] = useState([
@@ -40,30 +41,40 @@ const Setting = ({navigation}) => {
   return (
     <View style={styles.mainContainer}>
       <Header label={t('Setting')} onPress={() => navigation.openDrawer()} />
-      {rightArrow ? null : (
+      {rightArrow ? (
+        <View />
+      ) : (
         <>
-          <View style={{width: '35%', marginTop: verticalScale(20)}}>
-            <CustomText textStyle={styles.titleText} label={t('title')} />
+          <View style={{width: '35%', marginTop: 30, marginBottom: 0}}>
             <TextWithIcon
               label={t('PreOrderSetting')}
               onPress={() => {
                 setRightArrow(true);
                 setLeftArrow(true);
               }}
+              customStyle={styles.PreOrder}
             />
           </View>
-          <CustomText
-            textStyle={styles.titleText}
-            label={t('ChangeLanguage')}
-          />
-          <DropDownPicker
+          <View style={styles.langaugeContainer}>
+            <CustomText label={t('language')} textStyle={styles.logoutText} />
+            <TextWithIcon
+              textStyle={styles.langaugeTet}
+              label={'Englsih'}
+              onPress={() => {
+                setRightArrow(true);
+                setLeftArrow(true);
+              }}
+              customStyle={styles.languageChildren}
+            />
+          </View>
+          {/* <DropDownPicker
             open={open}
             value={value}
             items={items}
             setOpen={setOpen}
             setValue={setValue}
             setItems={setItems}
-            placeholder="Select Language"
+            placeholder="Language"
             style={styles.dropDownStyle}
             placeholderStyle={styles.dropDownPlaceHolder}
             dropDownContainerStyle={styles.dropdownContainer}
@@ -76,9 +87,15 @@ const Setting = ({navigation}) => {
               Preference.setWhiteList([]);
               Preference.set('languageValue', language);
             }}
-          />
+          /> */}
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => setVisibleLogout(!isVisibleLogout)}>
+            <View style={styles.logoutContainer}>
+              <CustomText label={t('Logout')} textStyle={styles.logoutText} />
+            </View>
+          </TouchableOpacity>
           <View style={{width: '35%'}}>
-            <CustomText textStyle={styles.titleText} label={t('Account')} />
             <TouchableOpacity
               activeOpacity={0.6}
               onPress={() => setVisible(!isVisible)}>
@@ -198,7 +215,22 @@ const Setting = ({navigation}) => {
           borderRadius: 15,
         }}
         detail={'This action is irrevocable. You can’t restore your account.'}
-        Active="Yes, delete"></ConfirmationModal>
+        Active="Yes, delete"
+      />
+      <ConfirmationModal
+        isModalVisible={isVisibleLogout}
+        setModalVisible={setVisibleLogout}
+        modalWrapperStyle={{
+          marginHorizontal: width(27),
+          marginVertical: height(32),
+          justifyContent: 'flex-start',
+          borderRadius: 15,
+        }}
+        logoutDetail="Log out from Silal Seller?"
+        detail={'Are you sure you want to log out of your Silal account?'}
+        Active={t('Logout')}
+        onPress={() => navigation.navigate('AuthStack')}
+      />
     </View>
   );
 };
@@ -228,13 +260,53 @@ const styles = ScaledSheet.create({
   },
   dropDownStyle: {
     width: '35%',
-    marginVertical: '5@s',
     borderColor: colors.light_grey,
     height: '30@s',
   },
   dropdownContainer: {
     width: '35%',
     borderColor: colors.light_grey,
+  },
+  langaugeContainer: {
+    backgroundColor: colors.textWhite,
+    width: '35%',
+    padding: '9@s',
+    borderRadius: '4@s',
+    marginBottom: '5@s',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  logoutContainer: {
+    backgroundColor: colors.textWhite,
+    width: '35%',
+    padding: '9@s',
+    borderRadius: '4@s',
+    marginTop: '10@s',
+    marginBottom: '5@s',
+  },
+  logoutText: {
+    fontSize: '12@ms',
+    fontFamily: fonts.LatoMedium,
+    color: colors.black,
+  },
+  PreOrder: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    backgroundColor: colors.textWhite,
+    padding: '10@ms',
+    borderRadius: '5@ms',
+    marginBottom: '5@s',
+  },
+  languageChildren: {
+    flexDirection: 'row',
+  },
+  langaugeTet: {
+    fontSize: '12@ms',
+    fontFamily: fonts.LatoMedium,
+    color: colors.textPrimaryBlur,
   },
   preOrderText: {
     fontFamily: fonts.bold,

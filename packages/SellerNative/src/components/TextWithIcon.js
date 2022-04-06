@@ -7,16 +7,32 @@ import colors from '@SilalApp/common/assets/colors';
 import fonts from '@SilalApp/common/assets/fonts';
 import images from '../Assets';
 
-const TextWithIcon = ({label, iconDelete, textStyle, onPress}) => {
+const TextWithIcon = ({
+  label,
+  iconDelete,
+  textStyle,
+  onPress,
+  iconStyle,
+  customStyle,
+}) => {
   return (
-    <View style={styles.mainContainer}>
+    <View style={[customStyle ? customStyle : styles.mainContainer]}>
       <View style={styles.container}>
-        {iconDelete && <Image style={styles.icon} source={images.deleteIcon} />}
+        {iconDelete && (
+          <Image style={styles.icon} source={require('../Assets/remove.png')} />
+        )}
         <CustomText textStyle={[styles.text, textStyle]} label={label} />
       </View>
-      <TouchableOpacity onPress={onPress}>
-        <Entypo style={styles.rightIcon} name="chevron-right" />
-      </TouchableOpacity>
+      {iconDelete ? (
+        <View />
+      ) : (
+        <TouchableOpacity onPress={onPress}>
+          <Entypo
+            style={[iconStyle ? iconStyle : styles.rightIcon]}
+            name="chevron-right"
+          />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
