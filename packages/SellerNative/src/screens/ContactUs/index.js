@@ -99,7 +99,7 @@ const ContactUs = ({navigation}) => {
             </View>
             <View style={{width: '69%'}}>
               <CustomButton
-                textStyle={{fontSize: scale(14)}}
+                textStyle={styles.submitbutton}
                 containerStyle={styles.exportBtn}
                 text={t('Submit')}
               />
@@ -117,6 +117,12 @@ const styles = ScaledSheet.create({
   mainContainer: {
     paddingHorizontal: '15@s',
     backgroundColor: colors.white,
+  },
+  submitbutton:{
+    fontSize:'14@ms',
+    fontFamily:fonts.PoppinsSemiBold,
+    color:colors.textWhite,
+    margin:'2.7@s'
   },
   attachContainer: {
     flexDirection: 'row',

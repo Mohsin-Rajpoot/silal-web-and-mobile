@@ -111,6 +111,7 @@ const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.sidebar,
+    width:'90%',
     borderTopRightRadius: '15@vs',
     borderBottomRightRadius: '15@vs',
     paddingVertical: '23@vs',
@@ -129,6 +130,6 @@ const styles = ScaledSheet.create({
   drawerText: {
     color: colors.textWhite,
     fontSize: '13@ms',
-    marginBottom: '20@vs',
+    marginBottom: '10@vs',
   },
 });

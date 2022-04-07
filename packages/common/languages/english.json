@@ -327,6 +327,10 @@
     "From":"from",
     "To":"till",
     "language":"Language",
-    "Attach":"Attach"
+    "Attach":"Attach",
+    "Save_Language":"Save Language",
+    "Location":"Location",
+    "Submit_newCode":"Submit new admin code"
+  
   }
 }

@@ -33,8 +33,8 @@ const DropDown = (props) => {
       }}
       style={{
         borderColor: colors.borderColor,
-        borderRadius: 5,
-        height:60
+        borderRadius: 8,
+        height:62
       }}
     />
   );

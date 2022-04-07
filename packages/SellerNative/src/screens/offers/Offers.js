@@ -146,7 +146,7 @@ const Offers = ({navigation}) => {
         modalWrapperStyle={{
           marginHorizontal: width(0),
           marginVertical: height(0),
-          marginLeft: width(100),
+          marginLeft: width(95),
           justifyContent: 'flex-start',
           borderRadius: 0,
         }}>

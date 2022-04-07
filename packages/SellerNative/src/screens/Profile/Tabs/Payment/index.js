@@ -87,12 +87,12 @@ export default function Archive_orders({title, navigation}) {
           <Text style={styles.tableDetailText}>$ 1272.20</Text>
         </View>
 
-        <View style={[styles.render_all_order_single, {width: '8%'}]}>
+        {/* <View style={[styles.render_all_order_single, {width: '8%'}]}>
           <Entypo
             name="dots-three-vertical"
             style={[styles.cross_icon, {color: '#4C6870', fontSize: 20}]}
           />
-        </View>
+        </View> */}
       </TouchableOpacity>
     );
   };
@@ -121,9 +121,9 @@ export default function Archive_orders({title, navigation}) {
         <View style={[styles.all_orders, {width: '14%'}]}>
           <Text style={styles.all_orders_heading_txt}>{t('Balance')}</Text>
         </View>
-        <View style={[styles.all_orders, {width: '8%'}]}>
+        {/* <View style={[styles.all_orders, {width: '8%'}]}>
           <Text style={styles.all_orders_heading_txt}>{t('Action')}</Text>
-        </View>
+        </View> */}
       </View>
     );
   };
