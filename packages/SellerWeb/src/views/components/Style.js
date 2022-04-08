@@ -88,6 +88,7 @@ const TableStyled = styled.div`
   .rdt_TableHeadRow {
     background: #f2f4f5;
     box-shadow: 0px 1px 1px rgba(0, 39, 51, 0.25);
+  }
   .rdt_TableRow {
     border-color: rgba(0, 39, 51, 0.08);
     &:hover {
@@ -105,6 +106,7 @@ const TableStyled = styled.div`
     font-weight: 400;
   }
   .rdt_Pagination {
+    justify-content: inherit;
     background-color: #f4f7f8;
     border-top: 0;
     font-size: 15px;
@@ -119,6 +121,9 @@ const TableStyled = styled.div`
           fill: white;
         }
       }
+    }
+    & > *:last-child {
+      margin-left: auto;
     }
   }
   .stock-status {

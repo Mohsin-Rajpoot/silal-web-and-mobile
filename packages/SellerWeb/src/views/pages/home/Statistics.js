@@ -79,7 +79,20 @@ const Statistics = ({ setSideBar, sideBar }) => {
                 </Col>
                 <Col lg={4} md={12}>
                     <CardStyled className="dasboard-card-height">
-                        <Heading>Hot products</Heading>
+                        <div className="between">
+                            <Heading>Hot products</Heading>
+                            <div className="mb-3">
+                                <DateRangePicker
+                                    className="home-range"
+                                    showOneCalendar
+                                    placement='bottomRight'
+                                    format="dd MMMM yy"
+                                    placeholder="dd mm yy"
+                                    character="&#160;&#160;-&#160;&#160;"
+                                    caretAs={CalendarIcon}
+                                />
+                            </div>
+                        </div>
                         <HotProduct
                             img={dish}
                             pName="Udon tom yum with shrimps and mussels"

@@ -7,7 +7,9 @@ import {
     Textarea,
 } from '../../components/Style'
 import {
-    star
+    star,
+    Close,
+    Clock,
 } from '../AllImages'
 
 const RestaurantCard = ({
@@ -81,7 +83,7 @@ const Review = ({
                     <h1 className="dark-clr lato">{reviewBy}</h1>
                 </Col>
                 <Col lg={10} md={9} sm={12}>
-                    <div className="between">
+                    <div className="between pb-2">
                         <div className="d-flex">
                             <h2>4.0</h2>
                             <ReactStars
@@ -285,9 +287,191 @@ const ReviewOverviewText = styled.div`
     }
 `;
 
+const NotificationMenu = styled.div`
+    position: absolute;
+    top: 40px;
+    right: 0;
+    z-index: 200;
+    width: 351px;
+    max-height: calc(100vh - 50px);
+    overflow-y: auto;
+    background: #FFFFFF;
+    box-shadow: 0px 21px 50px -7px rgba(0, 39, 51, 0.14);
+    border-radius: 5px;
+    padding: 30px 20px 0 20px;
+    transition: 0.2s ease-in;
+    transform: translateY(50px);
+    opacity: 0;
+    pointer-events: none;
+    &.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+    .head {
+        display: flex;
+        align-items: center;
+        font-family: 'Lato';
+        span {
+            padding: 5px 10px;
+            height: 24px;
+            background: #5AB3A8;
+            border-radius: 5px;
+            margin: 0 0 0 8px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 120%;
+            letter-spacing: -0.408px;
+        }
+    }
+    h6 {
+        font-family: 'Lato';
+        font-size: 13px;
+        line-height: 150%;
+        letter-spacing: 0.35px;
+        color: #4C6870;
+    }
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+`;
+
+const NotificationBtn = styled.button`
+    position: relative;
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    &.active {
+        background: #4C6870;
+        svg {
+            path {
+                fill: white;
+            }
+        }
+    }
+    &.new {
+        &::after {
+            content: "";
+            position: absolute;
+            top: 9px;
+            right: 12px;
+            background: #5AB3A8;
+            border-radius: 50%;
+            width: 6px;
+            height: 6px;
+        }
+    }
+`;
+
+const Notification = ({
+    Icon,
+    iconClr,
+    status,
+    title,
+    descp,
+    time,
+}) => {
+    return (
+        <NotificationStyled className={status}>
+            <div className={`center icon ${iconClr}`}>
+                <Icon />
+            </div>
+            <div className="flex-1">
+                <div className="between">
+                    <h1 className="poppins f-semibold mb-0 mr-1">{title}</h1>
+                    <button className="del border-0 bg-transparent">
+                        <Close />
+                    </button>
+                </div>
+                <p className="lato f-medium">{descp}</p>
+                <div className="d-flex align-items-center">
+                    <Clock className="clock" />
+                    <span className="lato f-medium">{time}</span>
+                </div>
+            </div>
+        </NotificationStyled>
+    )
+}
+
+const NotificationStyled = styled.div`
+    display: flex;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0, 39, 51, 0.08);
+    &:last-of-type {
+        border-bottom: 0;
+    }
+    .icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 8px;
+        &.blue {
+            background: rgba(0, 101, 255, 0.2);
+        }
+        &.purple {
+            background: #8777D9;
+        }
+    }
+    .between {
+        margin-bottom: 4px;
+    }
+    h1 {
+        font-size: 13px;
+        line-height: 130%;
+        color: #002733;
+    }
+    .del {
+        svg {
+            width: 10px;
+            path {
+                fill: #CCD4D6;
+            }
+        }
+    }
+    p {
+        font-size: 13px;
+        line-height: 130%;
+        color: #002733;
+        margin: 0 0 10px 0;
+    }
+    .clock {
+        margin-right: 3px;
+        width: 17px;
+        height: 17px;
+        path {
+            fill: #CCD4D6;
+        }
+    }
+    span {
+        font-size: 11px;
+        line-height: 130%;
+        letter-spacing: 0.35px;
+        color: #CCD4D6;
+    }
+    &.old {
+        .icon {
+            background-color: #F1F2F3;
+            svg {
+                path {
+                    fill: #4C687080;
+                }
+            }
+        }   
+    }
+`;
+
 export {
     RestaurantCard,
     HotProduct,
     Review,
     ReviewOverviewText,
+    NotificationMenu,
+    NotificationBtn,
+    Notification,
 }
