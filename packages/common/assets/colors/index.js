@@ -29,7 +29,8 @@ const colors = {
   textPrimaryBlur:'rgba(76, 104, 112, 0.5)',
   dullWhite:"#F1F2F3",
   noteBackground:"rgba(90, 179, 168, 0.1)",
-  primaryLight:'rgba(90, 179, 168, 0.3)'
+  primaryLight:'rgba(90, 179, 168, 0.3)',
+  parrot:"#00B728"
 
 };
 export default colors;

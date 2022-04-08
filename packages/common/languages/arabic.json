@@ -330,6 +330,34 @@
     "Attach":"Attach",
     "Save_Language":"Save Language",
     "Location":"Location",
-    "Submit_newCode":"Submit new admin code"
+    "Submit_newCode":"Submit new admin code",
+    "Awaiting_acceptence":"Awaiting acceptance",
+    "preparing":"Preparing",
+    "waiting_for_pickup":"Waiting for pickup",
+    "Date":"Date",
+    "Delivery_method":"Delivery method",
+    "pickup_time":"Pickup time",
+    "all_method":"All Methods",
+    "all_category":"All Categories",
+    "all":"All",
+    "Quantity":"Quantity",
+    "In_stock":"In Stock",
+    "Item":"Item",
+    "Note":"Note",
+    "Delivery":"Delivery",
+    "Order_total":"Order total",
+    "Customer":"Customer",
+    "History":"History",
+    "Order_Preperation":"Order preparation",
+    "order_picked":"Order picked",
+    "order_Delivered":"Order delivered",
+    "Driver":"Driver",
+    "Indicate_reason":"Indicate the reason for cancelation",
+    "we_notify_client":"We will notify the client about it",
+    "typeHere":"Type here",
+    "Pickup":"Pick up",
+    "Pending":"Pending"
+
+    
   }
 }

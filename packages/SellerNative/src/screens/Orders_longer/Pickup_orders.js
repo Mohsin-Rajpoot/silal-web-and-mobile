@@ -20,6 +20,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import {useTranslation} from 'react-i18next';
 // import { Image, SvgXml } from 'react-native-svg';
 import Svg, {
   Path,
@@ -38,6 +39,7 @@ import {Picker} from '@react-native-picker/picker';
 const {width, height} = Dimensions.get('window');
 
 export default function Archive_orders({title, navigation}) {
+  const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
   const [show_modal_customer_data, set_show_modal_customer_data] =
     useState(false);
@@ -49,6 +51,7 @@ export default function Archive_orders({title, navigation}) {
   const [search_value, set_search_value] = useState('');
   const [search_filters, set_search_filters] = useState('');
   const [keyboardStatus, setKeyboardStatus] = useState(undefined);
+  const [refresher, setRefresh] = useState(false);
 
   const [delivery_method, setdelivery_method] = useState();
   const [category, setcategory] = useState();
@@ -56,6 +59,7 @@ export default function Archive_orders({title, navigation}) {
   const [status, setstatus] = useState();
   const [date1, setdate1] = useState();
   const [date2, setdate2] = useState();
+  const [active, setActive] = useState(false);
 
   const InputRef = useRef();
 
@@ -167,7 +171,7 @@ export default function Archive_orders({title, navigation}) {
           </Text>
         </View>
         <View style={{width: '12%'}}>
-          <Text style={styles.order_further_item_title}>Quantity</Text>
+          <Text style={styles.order_further_item_title}>{t('Quantity')}</Text>
           <Text style={styles.order_further_item_value}>1</Text>
         </View>
         <View style={{width: '12%'}}>
@@ -175,46 +179,50 @@ export default function Archive_orders({title, navigation}) {
           <Text style={styles.order_further_item_value}>Black, Big</Text>
         </View>
         <View style={{width: '12%'}}>
-          <Text style={styles.order_further_item_title}>Item ID</Text>
+          <Text style={styles.order_further_item_title}>{t('Item_id')}</Text>
           <Text style={styles.order_further_item_value}>#7DG8098</Text>
         </View>
         <View style={{width: '12%'}}>
-          <Text style={styles.order_further_item_title}>In stock</Text>
+          <Text style={styles.order_further_item_title}>{t('In_stock')}</Text>
           <Text style={styles.order_further_item_value}>52</Text>
         </View>
         <View style={{width: '12%'}}>
-          <Text style={styles.order_further_item_title}>Price</Text>
+          <Text style={styles.order_further_item_title}>{t('price')}</Text>
           <Text style={styles.order_further_item_value}>$ 50.00</Text>
+        </View>
+        <View style={{width: '12%'}}>
+          <Text style={styles.order_further_item_title}>{t('Pickup')}</Text>
+          <Text style={styles.order_further_item_value}>10:20 - 12:30</Text>
         </View>
       </TouchableOpacity>
     );
   };
-  const footer_pickup = () => {
-    return (
-      <View
-        style={{
-          backgroundColor: '#1a3d47',
-          marginRight: -20,
-          borderRadius: 3,
-          height: 25,
-          width: 150,
-          alignSelf: 'flex-end',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'row',
-        }}>
-        <Text
-          style={{color: 'white', fontSize: 11, fontFamily: 'Lato-Regular'}}>
-          Pickup:
-        </Text>
-        <Text
-          style={{color: '#52a49c', fontSize: 11, fontFamily: 'Lato-Regular'}}>
-          {' '}
-          10.30-12.30
-        </Text>
-      </View>
-    );
-  };
+  // const footer_pickup = () => {
+  //   return (
+  //     <View
+  //       style={{
+  //         backgroundColor: '#1a3d47',
+  //         marginRight: -20,
+  //         borderRadius: 3,
+  //         height: 25,
+  //         width: 150,
+  //         alignSelf: 'flex-end',
+  //         alignItems: 'center',
+  //         justifyContent: 'center',
+  //         flexDirection: 'row',
+  //       }}>
+  //       <Text
+  //         style={{color: 'white', fontSize: 11, fontFamily: 'Lato-Regular'}}>
+  //         {t("Pickup")}:
+  //       </Text>
+  //       <Text
+  //         style={{color: '#52a49c', fontSize: 11, fontFamily: 'Lato-Regular'}}>
+  //         {' '}
+  //         10.30-12.30
+  //       </Text>
+  //     </View>
+  //   );
+  // };
 
   const render_all_oredrs = index => {
     return (
@@ -258,7 +266,7 @@ export default function Archive_orders({title, navigation}) {
                   fontFamily: 'Lato-Regular',
                   fontSize: 11,
                 }}>
-                Waiting for pickup
+                {t('waiting_for_pickup')}
               </Text>
             </View>
           </View>
@@ -299,15 +307,17 @@ export default function Archive_orders({title, navigation}) {
           </TouchableOpacity>
         </TouchableOpacity>
         {show_order_detail_view == true && index == selected_index ? (
-          <View style={{backgroundColor: 'white'}}>
+          <View style={{backgroundColor: 'white', marginHorizontal: 10}}>
             <FlatList
               // ListHeaderComponent={header_alloredrs}
-              ListFooterComponent={footer_pickup}
+
               ItemSeparatorComponent={item_seperator}
               style={{
-                marginHorizontal: 10,
                 borderRadius: 5,
-                borderWidth: 1,
+                borderTopWidth: 1,
+                borderBottomWidth: 1,
+                borderRightWidth: 1,
+                borderLeftWidth: 6,
                 borderColor: '#5AB3A8',
                 paddingHorizontal: 20,
               }}
@@ -325,25 +335,27 @@ export default function Archive_orders({title, navigation}) {
     return (
       <View style={styles.all_orders_header}>
         <View style={[styles.all_orders, {width: '14%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Order ID</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('orderId')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '18%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Customer name</Text>
+          <Text style={styles.all_orders_heading_txt}>
+            {t('customer_name')}
+          </Text>
         </View>
         <View style={[styles.all_orders, {width: '18%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Date</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Date')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '8%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Items</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('items')}</Text>
         </View>
         {/* <View style={[styles.all_orders,{width:'10%'}]} >
               <Text style={styles.all_orders_heading_txt}>Status</Text>
             </View> */}
         <View style={[styles.all_orders, {width: '17%'}]}>
-          <Text>Status</Text>
+          <Text>{t('Status')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '15%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Total price</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('total-price')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '10%'}]}>
           <Text style={styles.all_orders_heading_txt}></Text>
@@ -360,7 +372,7 @@ export default function Archive_orders({title, navigation}) {
     <View style={{height: '100%', padding: 20}}>
       <View style={{flexDirection: 'row'}}>
         <View>
-          <Text style={styles.heading}>Orders</Text>
+          <Text style={styles.heading}>{t('orders')}</Text>
         </View>
         <TouchableOpacity style={styles.searchSection}>
           <EvilIcons
@@ -373,36 +385,85 @@ export default function Archive_orders({title, navigation}) {
           <TextInput
             ref={InputRef}
             style={styles.input}
-            placeholder="Search"
+            placeholder={'Search'}
             placeholderTextColor={'#B3BEC2'}
-            onChangeText={searchString => set_search_value(searchString)}
+            onChangeText={searchString => {
+              set_search_value(searchString);
+              setRefresh(!refresher);
+              setActive(true);
+            }}
             value={search_value}
             onFocus={() => set_search_filters(true)}
             onBlur={() => set_search_filters(false)}
             // underlineColorAndroid="transparent"
           />
         </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            backgroundColor: '#5AB3A8',
-            width: 150,
-            height: 40,
-            marginLeft: 20,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 5,
-          }}>
-          <Text style={{fontFamily: 'Poppins-SemiBold', color: 'white'}}>
-            Search
-          </Text>
-        </TouchableOpacity>
+        {active && (
+          <TouchableOpacity
+            style={{
+              backgroundColor: '#5AB3A8',
+              width: 150,
+              height: 40,
+              marginLeft: 20,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 5,
+            }}>
+            <Text style={{fontFamily: 'Poppins-SemiBold', color: 'white'}}>
+              {t('Search')}
+            </Text>
+          </TouchableOpacity>
+        )}
+        <View
+          style={{flexDirection: 'row', width: '20%', alignItems: 'center'}}>
+          <TouchableOpacity
+            style={[
+              styles.modelTextTitle,
+              {backgroundColor: '#fff', elevation: 0.5, alignItems: 'center'},
+            ]}>
+            <View style={{alignSelf: 'center'}}>
+              <Svg
+                width="19"
+                height="14"
+                viewBox="0 0 19 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <Path
+                  d="M4.50628 0.576109C4.84799 0.250672 5.40201 0.250672 5.74372 0.576109L9.24372 3.90944C9.58543 4.23488 9.58543 4.76252 9.24372 5.08795C8.90201 5.41339 8.34799 5.41339 8.00628 5.08795L6 3.17721V12.832C6 13.2923 5.60825 13.6654 5.125 13.6654C4.64175 13.6654 4.25 13.2923 4.25 12.832V3.17721L2.24372 5.08795C1.90201 5.41339 1.34799 5.41339 1.00628 5.08795C0.664573 4.76252 0.664573 4.23488 1.00628 3.90944L4.50628 0.576109ZM13 10.8202V1.16536C13 0.705127 13.3918 0.332031 13.875 0.332031C14.3583 0.332031 14.75 0.705127 14.75 1.16536V10.8202L16.7563 8.90944C17.098 8.584 17.652 8.584 17.9937 8.90944C18.3354 9.23488 18.3354 9.76252 17.9937 10.088L14.4937 13.4213C14.3296 13.5776 14.1071 13.6654 13.875 13.6654C13.6429 13.6654 13.4204 13.5776 13.2563 13.4213L9.75628 10.088C9.41457 9.76252 9.41457 9.23488 9.75628 8.90944C10.098 8.584 10.652 8.584 10.9937 8.90944L13 10.8202Z"
+                  fill="#4C6870"
+                />
+              </Svg>
+            </View>
+          </TouchableOpacity>
+          <View style={styles.filter_box}>
+            <View style={styles.filter}>
+              <Svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <Rect width="24" height="24" fill="white" fill-opacity="0.01" />
+                <Path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M6.99951 13H16.9995L17.9995 11H5.99951L6.99951 13ZM3.99251 6C3.44451 6 3.20251 6.405 3.44651 6.895L3.99951 8H19.9995L20.5525 6.895C20.7995 6.4 20.5545 6 20.0065 6H3.99251ZM10.7775 17.556C10.8505 17.6861 10.9556 17.7953 11.0829 17.8731C11.2103 17.9508 11.3554 17.9945 11.5045 18H12.4945C12.7735 18 13.0995 17.8 13.2215 17.556L13.9995 16H9.99951L10.7775 17.556Z"
+                  fill="#42526E"
+                />
+              </Svg>
+              <Text style={{fontSize: 17}}>{t('filters')}</Text>
+              {/* <Calender /> */}
+            </View>
+          </View>
+        </View>
       </View>
+
       {search_filters == true ? (
         <View style={{flexDirection: 'row', marginTop: 15}}>
           <View style={{width: '15%'}}>
             <Text
               style={{fontFamily: 'Lato-Bold', fontSize: 12, color: '#002733'}}>
-              Delivery method
+              {t('Delivery_method')}
             </Text>
             <View
               style={{
@@ -423,7 +484,7 @@ export default function Archive_orders({title, navigation}) {
                 onValueChange={(itemValue, itemIndex) =>
                   setdelivery_method(itemValue)
                 }>
-                <Picker.Item label="All methods" value="java" />
+                <Picker.Item label={t('all_method')} value="java" />
                 <Picker.Item label="JavaScript" value="js" />
               </Picker>
             </View>
@@ -431,7 +492,7 @@ export default function Archive_orders({title, navigation}) {
           <View style={{marginLeft: 10, width: '15%'}}>
             <Text
               style={{fontFamily: 'Lato-Bold', fontSize: 12, color: '#002733'}}>
-              Category
+              {t('Category')}
             </Text>
             <View
               style={{
@@ -450,7 +511,7 @@ export default function Archive_orders({title, navigation}) {
                 onValueChange={(itemValue, itemIndex) =>
                   setcategory(itemValue)
                 }>
-                <Picker.Item label="All categories" value="java" />
+                <Picker.Item label={t('all_category')} value="java" />
                 <Picker.Item label="JavaScript" value="js" />
               </Picker>
             </View>
@@ -458,7 +519,7 @@ export default function Archive_orders({title, navigation}) {
           <View style={{marginLeft: 10, width: '15%'}}>
             <Text
               style={{fontFamily: 'Lato-Bold', fontSize: 12, color: '#002733'}}>
-              Pickup time
+              {t('pickup_time')}
             </Text>
             <View
               style={{
@@ -477,7 +538,7 @@ export default function Archive_orders({title, navigation}) {
                 onValueChange={(itemValue, itemIndex) =>
                   setpickup_time(itemValue)
                 }>
-                <Picker.Item label="All" value="java" />
+                <Picker.Item label={t('all')} value="java" />
                 <Picker.Item label="JavaScript" value="js" />
               </Picker>
             </View>
@@ -485,7 +546,7 @@ export default function Archive_orders({title, navigation}) {
           <View style={{marginLeft: 10, width: '15%'}}>
             <Text
               style={{fontFamily: 'Lato-Bold', fontSize: 12, color: '#002733'}}>
-              Status
+              {t('Status')}
             </Text>
             <View
               style={{
@@ -502,7 +563,7 @@ export default function Archive_orders({title, navigation}) {
                 mode="dropdown"
                 selectedValue={status}
                 onValueChange={(itemValue, itemIndex) => setstatus(itemValue)}>
-                <Picker.Item label="All orders" value="java" />
+                <Picker.Item label={t('all-orders')} value="java" />
                 <Picker.Item label="JavaScript" value="js" />
               </Picker>
             </View>
@@ -510,7 +571,7 @@ export default function Archive_orders({title, navigation}) {
           <View style={{marginLeft: 10, flex: 1}}>
             <Text
               style={{fontFamily: 'Lato-Bold', fontSize: 12, color: '#002733'}}>
-              Date
+              {t('Date')}
             </Text>
             <View
               style={{
@@ -616,6 +677,15 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginTop: 5,
   },
+  modelTextTitle: {
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    height: 40,
+    width: 40,
+    marginLeft: 30,
+  },
   accept_btn: {
     backgroundColor: '#5AB3A8',
     padding: 10,
@@ -677,6 +747,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     backgroundColor: 'white',
     padding: 10,
+    marginHorizontal: 10,
   },
   render_all_order_single: {
     height: 30,
@@ -837,6 +908,21 @@ const styles = StyleSheet.create({
   searchBar: {
     marginLeft: 10,
     marginRight: 10,
+  },
+  filter_box: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  filter: {
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    height: 40,
+    width: 150,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

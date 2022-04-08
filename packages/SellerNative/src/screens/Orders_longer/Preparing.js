@@ -20,6 +20,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import {useTranslation} from 'react-i18next';
 // import { Image, SvgXml } from 'react-native-svg';
 import Svg, {
   Path,
@@ -34,10 +35,11 @@ import DatePicker from './../../components/DatePicker';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {Searchbar} from 'react-native-paper';
 import {Picker} from '@react-native-picker/picker';
-import {useTranslation} from 'react-i18next';
+import colors from '@SilalApp/common/assets/colors';
+
 const {width, height} = Dimensions.get('window');
 
-export default function Archive_orders({title, navigation}) {
+export default function PreparingOrders({title, navigation}) {
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
   const [show_modal_customer_data, set_show_modal_customer_data] =
@@ -49,8 +51,8 @@ export default function Archive_orders({title, navigation}) {
   const [selected_index, set_selected_index] = useState('');
   const [search_value, set_search_value] = useState('');
   const [search_filters, set_search_filters] = useState('');
-  const [refresher, setRefresh] = useState(false);
   const [keyboardStatus, setKeyboardStatus] = useState(undefined);
+  const [refresher, setRefresh] = useState(false);
 
   const [delivery_method, setdelivery_method] = useState();
   const [category, setcategory] = useState();
@@ -189,15 +191,41 @@ export default function Archive_orders({title, navigation}) {
           <Text style={styles.order_further_item_title}>{t('price')}</Text>
           <Text style={styles.order_further_item_value}>$ 50.00</Text>
         </View>
+
       </TouchableOpacity>
     );
   };
+  // const footer_pickup = () => {
+  //   return (
+  //     <View
+  //       style={{
+  //         backgroundColor: '#1a3d47',
+  //         marginRight: -20,
+  //         borderRadius: 3,
+  //         height: 25,
+  //         width: 150,
+  //         alignSelf: 'flex-end',
+  //         alignItems: 'center',
+  //         justifyContent: 'center',
+  //         flexDirection: 'row',
+  //       }}>
+  //       <Text
+  //         style={{color: 'white', fontSize: 11, fontFamily: 'Lato-Regular'}}>
+  //         {t("Pickup")}:
+  //       </Text>
+  //       <Text
+  //         style={{color: '#52a49c', fontSize: 11, fontFamily: 'Lato-Regular'}}>
+  //         {' '}
+  //         10.30-12.30
+  //       </Text>
+  //     </View>
+  //   );
+  // };
 
   const render_all_oredrs = index => {
     return (
       <>
         <TouchableOpacity
-          onPress={() => setModalVisible(true)}
           style={[
             styles.render_all_orders,
             {
@@ -216,19 +244,19 @@ export default function Archive_orders({title, navigation}) {
           <View style={[styles.render_all_order_single, {width: '18%'}]}>
             <Text style={{fontFamily: 'Lato-Regular'}}>12.11.2021</Text>
           </View>
-          <View style={[styles.render_all_order_single, {width: '12%'}]}>
+          <View style={[styles.render_all_order_single, {width: '8%'}]}>
             <Text style={{fontFamily: 'Lato-Regular'}}>2</Text>
           </View>
-          <View style={[styles.render_all_order_single, {width: '13%'}]}>
+          <View style={[styles.render_all_order_single, {width: '17%'}]}>
             <View
               style={{
-                backgroundColor: '#FF8B00',
+                backgroundColor: colors.parrot,
                 borderRadius: 5,
                 alignSelf: 'flex-start',
                 height: 23,
-                width: 60,
                 alignItems: 'center',
                 justifyContent: 'center',
+                paddingHorizontal: 10,
               }}>
               <Text
                 style={{
@@ -236,7 +264,7 @@ export default function Archive_orders({title, navigation}) {
                   fontFamily: 'Lato-Regular',
                   fontSize: 11,
                 }}>
-                Pending
+                {t('Pending')}
               </Text>
             </View>
           </View>
@@ -280,6 +308,7 @@ export default function Archive_orders({title, navigation}) {
           <View style={{backgroundColor: 'white', marginHorizontal: 10}}>
             <FlatList
               // ListHeaderComponent={header_alloredrs}
+
               ItemSeparatorComponent={item_seperator}
               style={{
                 borderRadius: 5,
@@ -314,13 +343,13 @@ export default function Archive_orders({title, navigation}) {
         <View style={[styles.all_orders, {width: '18%'}]}>
           <Text style={styles.all_orders_heading_txt}>{t('Date')}</Text>
         </View>
-        <View style={[styles.all_orders, {width: '12%'}]}>
+        <View style={[styles.all_orders, {width: '8%'}]}>
           <Text style={styles.all_orders_heading_txt}>{t('items')}</Text>
         </View>
         {/* <View style={[styles.all_orders,{width:'10%'}]} >
               <Text style={styles.all_orders_heading_txt}>Status</Text>
             </View> */}
-        <View style={[styles.all_orders, {width: '13%'}]}>
+        <View style={[styles.all_orders, {width: '17%'}]}>
           <Text>{t('Status')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '15%'}]}>
@@ -333,149 +362,6 @@ export default function Archive_orders({title, navigation}) {
     );
   };
 
-  const customer_data = () => {
-    return (
-      <>
-        <TouchableOpacity
-          onPress={() =>
-            set_show_modal_customer_data(!show_modal_customer_data)
-          }
-          style={styles.modal_data_heading}>
-          <Text>{t('Customer_data')}</Text>
-          {show_modal_customer_data == true ? (
-            <Fontisto
-              name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
-            />
-          ) : (
-            <Fontisto
-              name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
-            />
-          )}
-        </TouchableOpacity>
-        {show_modal_customer_data == true ? (
-          <View style={{marginTop: 10}}>
-            <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>{t('customer_name')}</Text>
-              <Text style={styles.modal_title_second}>Willson Genemal</Text>
-            </View>
-            <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>{t('CustomerId')}</Text>
-              <Text style={styles.modal_title_second}>133</Text>
-            </View>
-            <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>{t('phone')}</Text>
-              <Text style={styles.modal_title_second}>*** *** **** 112</Text>
-            </View>
-            <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>{t('address')}</Text>
-              <Text style={styles.modal_title_second}>
-                2715 Ash Dr. San Jose
-              </Text>
-            </View>
-          </View>
-        ) : null}
-      </>
-    );
-  };
-  const driver_data = () => {
-    return (
-      <>
-        <TouchableOpacity
-          onPress={() => set_show_modal_driver_data(!show_modal_driver_data)}
-          style={styles.modal_data_heading}>
-          <Text>{t('driver_data')}</Text>
-          {show_modal_driver_data == true ? (
-            <Fontisto
-              name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
-            />
-          ) : (
-            <Fontisto
-              name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
-            />
-          )}
-        </TouchableOpacity>
-        {show_modal_driver_data == true ? (
-          <View style={{marginTop: 10}}>
-            <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>{t('Driver_name')}</Text>
-              <Text style={styles.modal_title_second}>Willson Genemal</Text>
-            </View>
-            <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>{t('phone')}</Text>
-              <Text style={styles.modal_title_second}>*** *** **** 112</Text>
-            </View>
-            <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>{t('Delivery_time')}</Text>
-              <Text style={styles.modal_title_second}>37 minutes</Text>
-            </View>
-          </View>
-        ) : null}
-      </>
-    );
-  };
-  const render_order_details_items = (item, index) => {
-    return (
-      <View key={index} style={styles.order_item}>
-        <Text style={{fontSize: 17}}>2</Text>
-        <Entypo name="cross" style={[styles.cross_icon, {fontSize: 20}]} />
-        <Text style={styles.order_title}>French Fries </Text>
-      </View>
-    );
-  };
-  const order_details = () => {
-    return (
-      <>
-        <TouchableOpacity
-          onPress={() =>
-            set_show_modal_order_details(!show_modal_order_details)
-          }
-          style={styles.modal_data_heading}>
-          <Text>{t('order_details')}</Text>
-          {show_modal_order_details == true ? (
-            <Fontisto
-              name="angle-up"
-              style={[styles.cross_icon, {color: 'black', fontSize: 16}]}
-            />
-          ) : (
-            <Fontisto
-              name="angle-down"
-              style={[styles.cross_icon, {color: 'black', fontSize: 16}]}
-            />
-          )}
-        </TouchableOpacity>
-        {show_modal_order_details == true ? (
-          <View style={{marginTop: 10}}>
-            <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>{t('Order_created')}</Text>
-              <Text style={styles.modal_title_second}>11.13.2021 17.33</Text>
-            </View>
-            <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>{t('Payment')}</Text>
-              <Text style={styles.modal_title_second}>$ 13.00</Text>
-            </View>
-            <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>{t('credit_card')}</Text>
-              <Text style={styles.modal_title_second}>**** **** **** 3782</Text>
-            </View>
-            <View
-              style={{
-                height: 2,
-                backgroundColor: '#ebeeef',
-                marginTop: 10,
-              }}></View>
-
-            {data.map((item, index) => {
-              return render_order_details_items(item, index);
-            })}
-          </View>
-        ) : null}
-      </>
-    );
-  };
   const item_seperator = () => {
     return <View style={{height: 1, backgroundColor: '#EBEEEF'}}></View>;
   };
@@ -497,24 +383,19 @@ export default function Archive_orders({title, navigation}) {
           <TextInput
             ref={InputRef}
             style={styles.input}
-            placeholder={t('Search')}
+            placeholder={'Search'}
             placeholderTextColor={'#B3BEC2'}
             onChangeText={searchString => {
               set_search_value(searchString);
               setRefresh(!refresher);
-              searchString && setActive(true);
+              setActive(true);
             }}
             value={search_value}
-            onFocus={() => {
-              set_search_filters(true);
-            }}
-            onBlur={() => {
-              set_search_filters(false);
-            }}
+            onFocus={() => set_search_filters(true)}
+            onBlur={() => set_search_filters(false)}
             // underlineColorAndroid="transparent"
           />
         </TouchableOpacity>
-
         {active && (
           <TouchableOpacity
             style={{
@@ -574,12 +455,13 @@ export default function Archive_orders({title, navigation}) {
           </View>
         </View>
       </View>
+
       {search_filters == true ? (
         <View style={{flexDirection: 'row', marginTop: 15}}>
           <View style={{width: '15%'}}>
             <Text
               style={{fontFamily: 'Lato-Bold', fontSize: 12, color: '#002733'}}>
-              {t('Delivery_time')}
+              {t('Delivery_method')}
             </Text>
             <View
               style={{
@@ -737,43 +619,6 @@ export default function Archive_orders({title, navigation}) {
           />
         </View>
       </View>
-
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          // alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
-        }}>
-        <View style={styles.centeredView}>
-          <ScrollView style={styles.modalView}>
-            <View style={styles.modal_header}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Text style={styles.orderid_text}>
-                  {t('orderId')}
-                  <Text> #123456</Text>
-                </Text>
-                <View style={styles.modal_recuring}>
-                  <Text style={{color: 'white'}}>{t('recurring_client')}</Text>
-                </View>
-              </View>
-              <TouchableOpacity
-                onPress={() => setModalVisible(!modalVisible)}
-                style={{padding: 7}}>
-                <Entypo
-                  name="cross"
-                  style={[styles.cross_icon, {color: '#4C6870', fontSize: 25}]}
-                />
-              </TouchableOpacity>
-            </View>
-
-            {customer_data()}
-            {driver_data()}
-            {order_details()}
-          </ScrollView>
-        </View>
-      </Modal>
     </View>
   );
 }
@@ -830,6 +675,15 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginTop: 5,
   },
+  modelTextTitle: {
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    height: 40,
+    width: 40,
+    marginLeft: 30,
+  },
   accept_btn: {
     backgroundColor: '#5AB3A8',
     padding: 10,
@@ -885,15 +739,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginTop: 10,
     padding: 10,
-  },
-  modelTextTitle: {
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    height: 40,
-    width: 40,
-    marginLeft: 30,
   },
   render_all_orders: {
     flexDirection: 'row',
@@ -982,21 +827,6 @@ const styles = StyleSheet.create({
   all_orders_heading_txt: {
     fontFamily: 'Lato-Bold',
   },
-  filter_box: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  filter: {
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    height: 40,
-    width: 150,
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   toast: {
     backgroundColor: '#FFFFFF',
     // marginHorizontal:30,
@@ -1076,6 +906,21 @@ const styles = StyleSheet.create({
   searchBar: {
     marginLeft: 10,
     marginRight: 10,
+  },
+  filter_box: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  filter: {
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    height: 40,
+    width: 150,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
