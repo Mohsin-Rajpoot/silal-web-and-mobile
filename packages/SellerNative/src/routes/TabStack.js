@@ -68,6 +68,4 @@ const TabStack = () => {
 
 export default TabStack;
 
-export default TabStack
-
 const styles = StyleSheet.create({})
