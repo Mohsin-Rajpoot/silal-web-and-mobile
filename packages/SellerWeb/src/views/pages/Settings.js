@@ -28,6 +28,7 @@ const Settings = ({
     }
     const handleCloseDelModal = () => setShowDelModal(false)
     const handleShowDelModal = () => setShowDelModal(true)
+    
     return (
         <>
             <SimpleNav>

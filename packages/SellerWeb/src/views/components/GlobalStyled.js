@@ -47,7 +47,6 @@ body {
 .f-semibold {
     font-weight: 600;
 }
-
 .f-bold {
     font-weight: 700 !important;
 }
@@ -247,21 +246,21 @@ hr {
     border-radius:5px;
 
 }
-.modal-546{
+.modal-546 {
     width:546px;
     max-width: inherit;
-    .modal-header{
+    .modal-header {
         border-bottom:0;
         padding-bottom:0;
     }
-    .modal-title{
+    .modal-title {
         font-size: 17px;
         font-weight:700;
-        span{
+        span {
             color:var(--theme-clr);
         }
     }
-    .modal-footer{
+    .modal-footer {
         padding-top:0px;
         border-top:0;
     }
@@ -484,8 +483,30 @@ hr {
         min-width: 71px;
     }
 }
-.radius-0{
+.radius-0 {
     border-radius:0;
+}
+.refusal-modal {
+    .modal-dialog {
+        max-width: 546px;
+    }
+}
+.modal-title-center {
+    .modal-title {
+        margin-left: auto !important;
+    }
+}
+.pincode-input-container
+{
+  .pincode-input-text
+  {
+    padding:0 !important;
+    margin:0 5px !important;
+    width: 45px !important;
+    height: 55px !important;
+    border-radius: 5px;
+    background: transparent;
+  }
 }
 `;
 

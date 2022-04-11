@@ -8,7 +8,10 @@ import {
     Menu,
 } from '../AllImages'
 
-const Nav = ({ setSideBar, sideBar }) => {
+const Nav = ({
+    sideBar,
+    setSideBar,
+}) => {
     const { pathname } = useLocation()
     const sidebarHandler = () => {
         setSideBar(!sideBar)

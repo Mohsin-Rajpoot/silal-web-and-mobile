@@ -26,7 +26,7 @@ import { ReactComponent as Home } from "../../assets/images/svg/home.svg"
 import { ReactComponent as Order } from "../../assets/images/svg/order.svg"
 import { ReactComponent as Clients } from "../../assets/images/svg/clients.svg"
 import { ReactComponent as Product } from "../../assets/images/svg/products.svg"
-import { ReactComponent as Notification } from "../../assets/images/svg/notification.svg"
+import { ReactComponent as NotificationIcon } from "../../assets/images/svg/notification.svg"
 import { ReactComponent as Close } from "../../assets/images/svg/close.svg"
 import { ReactComponent as CalendarIcon } from "../../assets/images/svg/calendar.svg"
 import { ReactComponent as DropdownMenu } from "../../assets/images/svg/dropdown-menu.svg"
@@ -50,6 +50,10 @@ import { ReactComponent as ExportIcon } from "../../assets/images/svg/export-ico
 import { ReactComponent as RightArrow } from "../../assets/images/svg/right-arrow.svg"
 import { ReactComponent as RemoveIcon } from "../../assets/images/svg/remove-icon.svg"
 import { ReactComponent as ProfileIcon } from "../../assets/images/svg/profile.svg"
+import { ReactComponent as BannerEditIcon } from "../../assets/images/svg/banner-edit-icon.svg"
+import { ReactComponent as PeakHoursIcon } from "../../assets/images/svg/peak-hours-icon.svg"
+import { ReactComponent as NotifiMsgIcon } from "../../assets/images/svg/notifi-msg-icon.svg"
+import { ReactComponent as Clock } from "../../assets/images/svg/clock.svg"
 
 export {
     Menu,
@@ -57,7 +61,7 @@ export {
     Order,
     Clients,
     Product,
-    Notification,
+    NotificationIcon,
     salesIcon,
     cartIcon,
     bellIcon,
@@ -104,4 +108,8 @@ export {
     RemoveIcon,
     ProfileIcon,
     restaurantBg,
+    BannerEditIcon,
+    PeakHoursIcon,
+    NotifiMsgIcon,
+    Clock,
 }

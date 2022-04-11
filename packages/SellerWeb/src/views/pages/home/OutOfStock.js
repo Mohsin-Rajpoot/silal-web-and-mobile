@@ -74,7 +74,7 @@ const OutOfStock = ({ setSideBar, sideBar }) => {
             price: '$ 120.00',
             action:
                 <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic">
+                    <Dropdown.Toggle>
                         <DropdownMenu />
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -94,7 +94,7 @@ const OutOfStock = ({ setSideBar, sideBar }) => {
             price: '$ 120.00',
             action:
                 <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic">
+                    <Dropdown.Toggle>
                         <DropdownMenu />
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -114,7 +114,7 @@ const OutOfStock = ({ setSideBar, sideBar }) => {
             price: '$ 120.00',
             action:
                 <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic">
+                    <Dropdown.Toggle>
                         <DropdownMenu />
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -134,7 +134,7 @@ const OutOfStock = ({ setSideBar, sideBar }) => {
             price: '$ 120.00',
             action:
                 <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic">
+                    <Dropdown.Toggle>
                         <DropdownMenu />
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -154,7 +154,7 @@ const OutOfStock = ({ setSideBar, sideBar }) => {
             price: '$ 120.00',
             action:
                 <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic">
+                    <Dropdown.Toggle>
                         <DropdownMenu />
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -174,7 +174,7 @@ const OutOfStock = ({ setSideBar, sideBar }) => {
             price: '$ 120.00',
             action:
                 <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic">
+                    <Dropdown.Toggle>
                         <DropdownMenu />
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -194,7 +194,7 @@ const OutOfStock = ({ setSideBar, sideBar }) => {
             price: '$ 120.00',
             action:
                 <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic">
+                    <Dropdown.Toggle>
                         <DropdownMenu />
                     </Dropdown.Toggle>
                     <Dropdown.Menu>

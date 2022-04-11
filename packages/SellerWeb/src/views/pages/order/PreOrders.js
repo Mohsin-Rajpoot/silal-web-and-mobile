@@ -63,8 +63,8 @@ const PreOrders = ({ setSideBar, sideBar }) => {
                 </Col>
             </Row>
 
-            <Modal show={showDelModal} onHide={handleCloseDelModal} centered>
-                <ThemeModal className="refusal-modal">
+            <Modal show={showDelModal} onHide={handleCloseDelModal} centered className="refusal-modal">
+                <ThemeModal>
                     <Modal.Header closeButton className="pb-1">
                         <Modal.Title>Indicate the reason for refusal</Modal.Title>
                     </Modal.Header>
