@@ -13,7 +13,7 @@ const Verification = ({ route, navigation }) => {
   const { params } = route?.params;
   const { t } = useTranslation();
   const [code, setCode] = useState("");
-  const detail = "We will email your a code to reset password";
+
   const goToChangePassword = () => {
     navigation.navigate("ChangePassword");
   };
@@ -48,7 +48,7 @@ const Verification = ({ route, navigation }) => {
           <AuthCustomText
             fisrtText={
               params?.active == 3
-                ? detail
+                ? t("we_will_email_you_code")
                 : ` ${t("Verification_email_detail")} ${
                     params?.active == 1
                       ? t("mobile_number")

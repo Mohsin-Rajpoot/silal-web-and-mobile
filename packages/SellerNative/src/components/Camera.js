@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,14 +10,12 @@ import {
   PermissionsAndroid,
 } from 'react-native';
 
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
-const Camera  = props => {
+const Camera = props => {
   const [filePath, setFilePath] = useState({});
 
-  React.useEffect(()=>{
-   
-  },[])
+  React.useEffect(() => {}, []);
 
   const requestCameraPermission = async () => {
     if (Platform.OS === 'android') {
@@ -134,7 +132,7 @@ const Camera  = props => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }} {...props}>
+    <SafeAreaView style={{flex: 1}} {...props}>
       <View
         style={{
           justifyContent: 'center',
@@ -143,7 +141,7 @@ const Camera  = props => {
           flex: 1,
         }}>
         <View>
-          <View style={{ marginVertical: 10 }}>
+          <View style={{marginVertical: 10}}>
             <TouchableOpacity
               onPress={() => captureImage('photo')}
               style={styles.mainViewCamraButton}>

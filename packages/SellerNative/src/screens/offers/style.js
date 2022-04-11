@@ -17,25 +17,27 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
+    justifyContent:'space-between'
   },
   inputContainerMian: {
-    width: '80%',
+    width: '75%',
   },
   buttonContainer: {
     width: '20%',
-    alignSelf: 'center',
+    marginRight:'10@ms'
   },
   inputStyling: {
     backgroundColor: colors.textWhite,
     height: '35@ms',
   },
   buttonStyle: {
-    height: '38@ms',
+    height: '35@ms',
+    width:"100%"
   },
   buttonText: {
     fontFamily: fonts.PoppinsSemiBold,
-    fontSize: '10@ms',
-    marginHorizontal: '13@ms',
+    fontSize: '8@ms',
+    paddingHorizontal:'20@ms'
   },
   offerContainer: {
     flexDirection: 'row',

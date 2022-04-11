@@ -97,14 +97,15 @@ const SignUpForm = ({ navigation }) => {
           onPress={goprev}
           style={styles.backIconInnerContainer}
         >
-          <Icon name="arrowleft" type="antdesign" color={colors.black} />
+          <Icon name="arrowleft" type="antdesign" color={colors.black} size={28}/>
 
           <CustomText label={t("back")} textStyle={styles.backText} />
         </TouchableOpacity>
 
         <AuthButton
+  
           name={page == 2 ? t("Submit") : t("Next_step")}
-          changeColor={true}
+     
           buttonStyling={styles.formButton}
           onPress={moveForward}
         />

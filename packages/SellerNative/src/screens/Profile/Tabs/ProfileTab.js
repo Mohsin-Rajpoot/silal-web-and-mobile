@@ -16,7 +16,7 @@ import React, {useState} from 'react';
 import colors from '@SilalApp/common/assets/colors';
 import TimingBox from '../moleclues/TimingBox';
 import EditBox from '../moleclues/EditBox';
-import fonts from 'fonts';
+import fonts from '@SilalApp/common/assets/fonts';
 import {CustomButton} from '@SilalApp/common/components/native';
 import CustomModal from '@SilalApp/common/components/native/CustomModal';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
@@ -26,6 +26,7 @@ import {
   heightPercentageToDP as height,
 } from 'react-native-responsive-screen';
 import {useTranslation} from 'react-i18next';
+
 const Profile = () => {
   const {t} = useTranslation();
   const [isEdit, setIsEdit] = useState(false);
@@ -33,37 +34,39 @@ const Profile = () => {
   const [code, setCode] = useState('');
   const [confirmCode, setConfirmCode] = useState('');
   const [freezedModal, setFreezedModal] = useState(false);
+  const [active, setActive] = useState(0);
   return (
-    <ScrollView style={styles.mainContainer}>
+    <ScrollView
+      style={styles.mainContainer}
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <View style={{width: '59%'}}>
+        <View style={styles.profileMainContainer}>
           <ImageBackground
             resizeMode="cover"
             source={require('../../../Assets/image8.png')}
-            style={styles.imgContainer}>
-            <CustomText
-              fontFamily={fonts.LatoRegular}
-              label="8502 Preston Rd. Inglewood"
-              color="#fff"
-              fontSize={10}
-              textStyle={styles.addressBox}
-            />
-            <View style={{margin: moderateScale(10)}}>
-              <CustomText
-                fontFamily={fonts.bold}
-                label="Restaurant’s name"
-                color="#fff"
-                fontSize={20}
-              />
-              <CustomText
-                fontFamily={fonts.LatoRegular}
-                fontSize={13}
-                label="The slogan will be here mх 40 characters"
-                color="#fff"
-              />
+            style={styles.imgContainer}
+          />
+
+          <View style={{top: -90}}>
+            <View style={styles.imageborderRadius}>
+              <ImageBackground
+                source={require('../../../Assets/profile.png')}
+                style={styles.profileImage}>
+                {isEdit ? (
+                  <Icon
+                    name="camera-plus-outline"
+                    type="material-community"
+                    size={moderateScale(40)}
+                    color={colors.textWhite}
+                  />
+                ) : (
+                  <View />
+                )}
+              </ImageBackground>
             </View>
-          </ImageBackground>
-          {isEdit ? <EditBox /> : <TimingBox />}
+            {isEdit ? <EditBox /> : <TimingBox />}
+          </View>
         </View>
 
         <View style={styles.updateButtonContainer}>
@@ -71,91 +74,133 @@ const Profile = () => {
             <>
               <CustomButton
                 onPress={() => setIsEdit(!isEdit)}
-                textStyle={{padding: 8, fontSize: 18}}
-                containerStyle={{width: '100%'}}
+                textStyle={styles.buttonTextStyle}
+                containerStyle={styles.buttonContainerStyle}
                 text={t('EditProfile')}
               />
               <CustomButton
                 onPress={() => setAdminModal(true)}
-                textStyle={{padding: 8, fontSize: 18}}
-                containerStyle={{width: '100%'}}
+                textStyle={styles.buttonTextStyle1}
+                containerStyle={styles.buttonContainerStyle1}
                 text={t('ChangeAdminCode')}
               />
               <CustomButton
                 onPress={() => setFreezedModal(true)}
-                textStyle={{padding: 8, fontSize: 18}}
-                containerStyle={{width: '100%'}}
+                textStyle={styles.buttonTextStyle}
+                containerStyle={styles.buttonContainerStyle}
                 text={t('TemporaryFreezedAccount')}
               />
+
               <CustomModal
                 isModalVisible={adminModal}
                 setModalVisible={setAdminModal}
                 modalWrapperStyle={{
-                  marginHorizontal: width(20),
-                  marginVertical: height(8),
+                  marginHorizontal: active == 0 ? '26%' : '26%',
+                  marginVertical: active == 0 ? height(17) : height(11),
                   borderRadius: 10,
                   backgroundColor: '#fff',
                 }}>
+                <Pressable
+                  onPress={() => setAdminModal(false)}
+                  style={styles.iconContainer}>
+                  <Icon name="cross" type="entypo" size={moderateScale(19)} />
+                </Pressable>
                 <ScrollView
-                  contentContainerStyle={{flexGrow: 1, width: '130%'}}>
-                  <Pressable
-                    onPress={() => setAdminModal(false)}
-                    style={styles.iconContainer}>
-                    <Icon name="cross" type="entypo" size={moderateScale(19)} />
-                  </Pressable>
+                  contentContainerStyle={{
+                    flexGrow: 1,
+                    width: '130%',
+                  }}>
                   <CustomText
-                    fontFamily={fonts.bold}
+                    textStyle={styles.changeAdminCode}
                     label={t('ChangeAdminCode_for_seller')}
                   />
-                  <CustomText
-                    fontFamily={fonts.LatoRegular}
-                    fontSize={13}
-                    marginTop={15}
-                    label={t('EnterYourPreviousCode')}
-                    alignSelf="center"
-                  />
-                  <OTPInputView
-                    autoFocusOnLoad={true}
-                    pinCount={4}
-                    style={styles.optStyling}
-                    codeInputFieldStyle={styles.optContainer}
-                    handleChange={value => setCode(value)}
-                  />
-                  <CustomText
-                    fontFamily={fonts.LatoRegular}
-                    fontSize={13}
-                    marginTop={15}
-                    label={t('RepeatCode')}
-                    alignSelf="center"
-                  />
-                  <OTPInputView
-                    autoFocusOnLoad={true}
-                    pinCount={4}
-                    style={[
-                      styles.optStyling,
-                      {marginVertical: verticalScale(12)},
-                    ]}
-                    codeInputFieldStyle={styles.optContainer}
-                    handleChange={value => setConfirmCode(value)}
-                  />
+                  {active == 0 ? (
+                    <>
+                      <CustomText
+                        fontFamily={fonts.LatoRegular}
+                        fontSize={13}
+                        marginTop={15}
+                        label={t('EnterYourPreviousCode')}
+                        alignSelf="center"
+                      />
+                      <OTPInputView
+                        autoFocusOnLoad={true}
+                        pinCount={4}
+                        style={styles.optStyling}
+                        codeInputFieldStyle={styles.optContainer}
+                        handleChange={value => setCode(value)}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <CustomText
+                        fontFamily={fonts.LatoRegular}
+                        fontSize={13}
+                        marginTop={15}
+                        label={t('EnterYourPreviousCode')}
+                        alignSelf="center"
+                      />
+                      <OTPInputView
+                        autoFocusOnLoad={true}
+                        pinCount={4}
+                        style={styles.optStyling}
+                        codeInputFieldStyle={styles.optContainer}
+                        handleChange={value => setCode(value)}
+                      />
+                      <CustomText
+                        fontFamily={fonts.LatoRegular}
+                        fontSize={13}
+                        marginTop={15}
+                        label={t('RepeatCode')}
+                        alignSelf="center"
+                      />
+                      <OTPInputView
+                        autoFocusOnLoad={true}
+                        pinCount={4}
+                        style={[
+                          styles.optStyling,
+                          {marginVertical: verticalScale(12)},
+                        ]}
+                        codeInputFieldStyle={styles.optContainer}
+                        handleChange={value => setConfirmCode(value)}
+                      />
+                    </>
+                  )}
+
                   <CustomButton
-                    containerStyle={{alignSelf: 'center'}}
-                    textStyle={{marginHorizontal: '23%', paddingVertical: 8}}
-                    text={t('Submit')}
+                    containerStyle={styles.changeAdminCodeButton}
+                    textStyle={styles.changeAdminCodeButtonText}
+                    text={active == 0 ? t('Submit') : t('Submit_newCode')}
+                    onPress={() => {
+                      active == 1
+                        ? setActive(0) & setAdminModal(false)
+                        : setActive(1);
+                    }}
                   />
+                  {active == 0 ? (
+                    <CustomButton
+                      containerStyle={styles.changeAdminCodeButtonCancel}
+                      textStyle={styles.changeAdminCodeButtonTextCancel}
+                      text={t('Cancel')}
+                      onPress={() => setAdminModal(false)}
+                    />
+                  ) : (
+                    <View />
+                  )}
                 </ScrollView>
               </CustomModal>
             </>
           ) : (
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <CustomButton
                 onPress={() => setIsEdit(!isEdit)}
                 textStyle={styles.editCancel}
                 text={t('Cancel')}
+                containerStyle={styles.cancelButton}
               />
               <CustomButton
                 textStyle={styles.editBtn}
+                containerStyle={styles.editButtonContainer}
                 text={t('SaveChanges')}
               />
             </View>
@@ -165,21 +210,23 @@ const Profile = () => {
         <CustomModal
           isModalVisible={freezedModal}
           modalContainerStyle={{alignItems: 'flex-start'}}
-          modalWrapperStyle={{marginVertical: height(10)}}
+          modalWrapperStyle={{
+            marginVertical: height(3),
+            marginHorizontal: width(29),
+          }}
           setModalVisible={setFreezedModal}>
-          <Pressable
-            onPress={() => setFreezedModal(false)}
-            style={[styles.iconContainer, {zIndex: 99}]}>
-            <Icon name="cross" type="entypo" size={moderateScale(19)} />
-          </Pressable>
           <View
             style={{
               width: '100%',
               alignItems: 'center',
               marginBottom: verticalScale(20),
             }}>
+            <Image
+              source={require('../../../Assets/Warning.png')}
+              style={styles.warningImage}
+            />
             <CustomText
-              fontFamily={fonts.bold}
+              textStyle={styles.accountFreeze}
               label={t('Account_is_Freezed')}
             />
           </View>
@@ -192,17 +239,20 @@ const Profile = () => {
               {t('community_guideline')}
             </Text>
             {'\n'}
+          </Text>
+          <Text style={styles.freezedMainText1}>
             {t('Account_freezed_detail4')}{' '}
             <Text style={{color: colors.primary}}>
               {t('Account_freezed_detail5')}
             </Text>
           </Text>
-          <Text style={[styles.freezedMainTextBottom]}>
-            <Text style={{fontFamily: fonts.LatoBold}}>
-              {t('NoteForSilal')}
-            </Text>{' '}
-            {t('NoteDetail')}
-          </Text>
+          <View style={styles.noteContainer}>
+            <Text style={[styles.freezedMainTextBottom]}>
+              <Text style={styles.noteFromSilal}>{t('NoteForSilal')}</Text>{' '}
+              {t('NoteDetail')}
+            </Text>
+          </View>
+
           <View style={{width: '100%'}}>
             <CustomButton
               text={t('Ok')}
@@ -212,6 +262,7 @@ const Profile = () => {
           </View>
         </CustomModal>
       </View>
+      <View style={{width: '100%', height: 100}} />
     </ScrollView>
   );
 };
@@ -220,8 +271,124 @@ export default Profile;
 
 const styles = ScaledSheet.create({
   mainContainer: {
-    paddingHorizontal: '15@s',
     backgroundColor: colors.profileBackground,
+    flex: 1,
+  },
+  changeAdminCode: {
+    fontSize: '15@ms',
+    fontFamily: fonts.bold,
+    color: colors.black,
+    marginTop: '20@s',
+  },
+  noteContainer: {
+    backgroundColor: colors.noteBackground,
+    alignSelf: 'center',
+    borderRadius: '4@s',
+    borderColor: colors.primaryLight,
+    borderWidth: '1@s',
+    padding: '4@s',
+    justifyContent: 'center',
+    marginHorizontal: '8@s',
+    marginTop: '10@s',
+  },
+  changeAdminCodeButton: {
+    width: '100%',
+    backgroundColor: colors.primary,
+    borderRadius: '4@s',
+    marginBottom: '5@s',
+  },
+  changeAdminCodeButtonCancel: {
+    width: '100%',
+    backgroundColor: colors.light_grey,
+    borderRadius: '4@s',
+  },
+  changeAdminCodeButtonText: {
+    fontSize: '14@ms',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.textWhite,
+    margin: '2@s',
+  },
+  changeAdminCodeButtonTextCancel: {
+    fontSize: '14@ms',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.sidebar,
+    margin: '2@s',
+  },
+  noteFromSilal: {
+    fontFamily: fonts.LatoSemiBold,
+    color: colors.primary,
+    fontSize: '12@ms',
+  },
+  accountFreeze: {
+    fontFamily: fonts.bold,
+    fontSize: '15@ms',
+    color: colors.black,
+  },
+  warningImage: {
+    opacity: 0.2,
+    marginVertical: '20@s',
+    width: '55@s',
+    height: '55@s',
+  },
+  buttonContainerStyle: {
+    backgroundColor: colors.primary,
+    width: '85%',
+    borderRadius: '4@s',
+    marginRight: '12@s',
+    marginBottom: '5@s',
+  },
+  cancelButton: {
+    backgroundColor: colors.light_grey,
+    borderRadius: '4@s',
+  },
+  editButtonContainer: {
+    backgroundColor: colors.primary,
+    borderRadius: '4@s',
+    marginLeft: '7@s',
+  },
+  buttonContainerStyle1: {
+    backgroundColor: colors.primaryBlur,
+    width: '85%',
+    borderRadius: '4@s',
+    marginRight: '12@s',
+    marginBottom: '5@s',
+  },
+  profileMainContainer: {
+    width: '62%',
+    backgroundColor: '#fff',
+    marginTop: '10@s',
+    marginRight: '10@s',
+  },
+  imageborderRadius: {
+    width: '80@s',
+    height: '80@s',
+    borderRadius: '99@s',
+    borderColor: colors.textWhite,
+    borderWidth: '3@s',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: '10@s',
+  },
+  profileImage: {
+    borderRadius: '99@s',
+    resizeMode: 'contain',
+    width: '75@s',
+    height: '75@s',
+    marginHorizontal: '10@s',
+    overflow: 'hidden',
+    justifyContent: 'center',
+  },
+  buttonTextStyle: {
+    fontFamily: fonts.PoppinsSemiBold,
+    fontSize: '12@ms',
+    color: colors.textWhite,
+    margin: '4@s',
+  },
+  buttonTextStyle1: {
+    fontFamily: fonts.PoppinsSemiBold,
+    fontSize: '12@ms',
+    color: colors.primary,
+    margin: '4@s',
   },
   container: {
     flexDirection: 'row',
@@ -236,9 +403,8 @@ const styles = ScaledSheet.create({
   imgContainer: {
     width: '100%',
     height: '150@vs',
-    borderRadius: '5@ms',
+    borderRadius: '4@s',
     overflow: 'hidden',
-    marginTop: '15@vs',
     justifyContent: 'space-between',
   },
   addressBox: {
@@ -256,16 +422,22 @@ const styles = ScaledSheet.create({
     marginTop: '25@vs',
   },
   editBtn: {
-    paddingHorizontal: '15@s',
-    paddingVertical: '5@s',
+    paddingHorizontal: '5@s',
+    paddingVertical: '4@s',
+    fontSize: '12@ms',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.textWhite,
   },
   editCancel: {
-    paddingHorizontal: '22@s',
-    paddingVertical: '5@s',
+    paddingHorizontal: '15@s',
+    paddingVertical: '4@s',
+    color: colors.textPrimaryBlur,
+    fontSize: '12@ms',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   optStyling: {
     marginVertical: '10@s',
-    width: '47%',
+    width: '40%',
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
@@ -276,7 +448,7 @@ const styles = ScaledSheet.create({
     borderWidth: '1@s',
     borderColor: colors.light_grey,
     borderRadius: '5@s',
-    height: '35@s',
+    height: '30@s',
     width: '30@s',
     fontSize: '12@ms',
     color: colors.black,
@@ -289,19 +461,31 @@ const styles = ScaledSheet.create({
   },
   freezedMainText: {
     fontFamily: fonts.LatoMedium,
-    fontSize: moderateScale(15),
+    fontSize: '12@ms',
     marginHorizontal: '13@s',
-    textAlign: 'left',
+    textAlign: 'center',
+    lineHeight: '15@s',
+    width: '80%',
+  },
+  freezedMainText1: {
+    fontFamily: fonts.LatoMedium,
+    fontSize: '12@ms',
+    marginHorizontal: '13@s',
+    textAlign: 'center',
+    lineHeight: '15@s',
+    width: '65%',
+    alignSelf: 'center',
   },
   freezedMainTextBottom: {
     fontFamily: fonts.LatoMedium,
-    fontSize: moderateScale(15),
-    marginHorizontal: '13@s',
+    fontSize: '12@ms',
     textAlign: 'left',
-    marginTop: '15@ms',
+    lineHeight: '15@s',
   },
   buttonText: {
     paddingHorizontal: '120@ms',
-    paddingVertical: '5@ms',
+    paddingVertical: '4@ms',
+    fontSize: '14@ms',
+    fontFamily: fonts.PoppinsSemiBold,
   },
 });

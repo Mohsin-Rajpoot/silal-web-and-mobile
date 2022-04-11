@@ -4,6 +4,10 @@ import {NativeBaseProvider} from 'native-base';
 import {ToastProvider} from 'react-native-toast-notifications';
 import {Icon} from 'react-native-elements';
 import colors from '@SilalApp/common/assets/colors';
+import Preference from 'react-native-preference';
+import {useTranslation} from 'react-i18next';
+import {store} from './src/store/store';
+import {Provider} from 'react-redux';
 import Menu, {
   MenuProvider,
   MenuTrigger,
@@ -11,9 +15,6 @@ import Menu, {
   MenuOption,
   renderers,
 } from 'react-native-popup-menu';
-import Preference from 'react-native-preference';
-import {useTranslation} from 'react-i18next';
-
 const App = () => {
   const {i18n} = useTranslation();
   const getLang = Preference.get('languageValue');
@@ -22,7 +23,7 @@ const App = () => {
   }, []);
   return (
     <>
-      {/* <NativeBaseProvider>
+      <NativeBaseProvider>
         <ToastProvider
           duration={5000}
           normalColor="#fff"
@@ -47,12 +48,14 @@ const App = () => {
                 <Text>{toast.message}</Text>
               </View>
             ),
-          }}> */}
-          <MenuProvider >
-            <Routes />
+          }}>
+          <MenuProvider>
+            <Provider store={store}>
+              <Routes />
+            </Provider>
           </MenuProvider>
-        {/* </ToastProvider>
-      </NativeBaseProvider> */}
+        </ToastProvider>
+      </NativeBaseProvider>
     </>
   );
 };

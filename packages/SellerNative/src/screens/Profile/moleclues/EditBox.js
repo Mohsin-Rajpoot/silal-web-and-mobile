@@ -5,18 +5,17 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import TextInput from '@SilalApp/common/components/native/TextInput';
 import DropDown from '@SilalApp/common/components/native/DropDown';
 
-import fonts from 'fonts';
+import fonts from '@SilalApp/common/assets/fonts';
 import colors from '@SilalApp/common/assets/colors';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 const EditBox = () => {
-  const {t}=useTranslation();
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <CustomText
         marginBottom={8}
-        fontSize={10}
-        fontFamily={fonts.LatoRegular}
-        label={t("Cuisine")}
+        textStyle={styles.textInputTitle}
+        label={t('Cuisine')}
       />
       {/* <TextInput
         inputStyle={styles.inputContainer}
@@ -24,11 +23,10 @@ const EditBox = () => {
       /> */}
       <DropDown placeholder={'Europian'} />
       <CustomText
-        marginTop={20}
-        marginBottom={8}
-        fontSize={10}
-        fontFamily={fonts.LatoRegular}
-        label={t("Restaurant_name")}
+        marginTop={8}
+        marginBottom={5}
+        textStyle={styles.textInputTitle}
+        label={t('Restaurant_name')}
       />
       <TextInput
         inputStyle={styles.inputContainer}
@@ -37,20 +35,16 @@ const EditBox = () => {
       />
       <View style={styles.inputTextWrapper}>
         <CustomText
-          marginBottom={8}
-          fontSize={10}
+          textStyle={styles.textInputTitle}
           fontFamily={fonts.LatoRegular}
-          label={t("description")}
+          label={t('description')}
         />
         <CustomText
-          color={colors.light_grey}
-          marginBottom={8}
-          fontSize={10}
+          textStyle={styles.characterLeft}
           fontFamily={fonts.LatoRegular}
-          label={t("charcterLeft")}
+          label={t('charcterLeft')}
         />
       </View>
-
       <TextInput
         inputStyle={styles.inputContainer}
         placeholderText="The slogan will be here mх 40 characters"
@@ -58,11 +52,10 @@ const EditBox = () => {
       />
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <CustomText
-          marginTop={20}
-          marginBottom={8}
-          fontSize={10}
-          fontFamily={fonts.LatoRegular}
-          label={t("Business_address")}
+        marginTop={8}
+        marginBottom={5}
+         textStyle={styles.textInputTitle}
+          label={t('Business_address')}
         />
         <CustomText label="*" textStyle={{color: colors.red, marginTop: 10}} />
       </View>
@@ -70,12 +63,12 @@ const EditBox = () => {
       <View style={[styles.inputTextWrapper, {marginTop: 0}]}>
         <TextInput
           inputStyle={[styles.inputContainer, {width: '66%', borderRadius: 8}]}
-          placeholderText={t("Street_name")}
+          placeholderText={t('Street_name')}
           placeholderTextColor={colors.black}
         />
         <TextInput
           inputStyle={[styles.inputContainer, {width: '32%', borderRadius: 8}]}
-          placeholderText={t("Location_via_Gps")}
+          placeholderText={t('Location_via_Gps')}
           placeholderTextColor={colors.black}
         />
       </View>
@@ -108,6 +101,16 @@ const styles = ScaledSheet.create({
     padding: '15@ms',
     marginTop: '10@s',
   },
+  characterLeft: {
+    fontSize: '12@ms',
+    fontFamily: fonts.LatoMedium,
+    color: colors.light_grey,
+  },
+  textInputTitle: {
+    fontSize: '12@ms',
+    fontFamily: fonts.LatoMedium,
+    color: colors.black,
+  },
   tagButtonContainer: {
     backgroundColor: colors.light_blue,
   },
@@ -120,10 +123,14 @@ const styles = ScaledSheet.create({
   inputContainer: {
     height: null,
     borderRadius: 10,
+    borderColor: colors.borderColor,
+    borderWidth: '0.5@s',
   },
   inputTextWrapper: {
     flexDirection: 'row',
-    marginTop: '20@vs',
+    marginTop: '8@s',
+    marginBottom: '5@s',
     justifyContent: 'space-between',
+    alignItems:"center"
   },
 });

@@ -1,11 +1,11 @@
-import { View, TouchableOpacity, useWindowDimensions } from 'react-native';
-import React, { useState } from 'react';
+import {View, TouchableOpacity, useWindowDimensions} from 'react-native';
+import React, {useState} from 'react';
 import {
   DrawerContentScrollView,
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
-import { Icon, ListItem } from 'react-native-elements';
+import {Icon, ListItem} from 'react-native-elements';
 import {
   moderateScale,
   ScaledSheet,
@@ -39,7 +39,7 @@ const Drawer = props => {
       <View style={styles.accordianContainer}>
         <CustomText
           fontFamily={fonts.PoppinsMedium}
-          fontSize={16}
+          fontSize={13}
           color={'#fff'}
           label={t('Profile')}
         />
@@ -80,12 +80,24 @@ const Drawer = props => {
           label={t('contactus')}
         />
       </TouchableOpacity>
-
-      <CustomText
-        textStyle={styles.drawerText}
-        fontFamily={fonts.PoppinsMedium}
-        label={t('AboutApp')}
-      />
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('longerOrder')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label={'longer orders'}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('AboutApp')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label={t('AboutApp')}
+        />
+      </TouchableOpacity>
       <View style={{height: verticalScale(50)}} />
       <TouchableOpacity
         activeOpacity={0.6}
@@ -108,6 +120,7 @@ const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.sidebar,
+    width:'90%',
     borderTopRightRadius: '15@vs',
     borderBottomRightRadius: '15@vs',
     paddingVertical: '23@vs',
@@ -125,7 +138,7 @@ const styles = ScaledSheet.create({
   },
   drawerText: {
     color: colors.textWhite,
-    fontSize: '16@ms',
-    marginBottom: '20@vs',
+    fontSize: '13@ms',
+    marginBottom: '10@vs',
   },
 });

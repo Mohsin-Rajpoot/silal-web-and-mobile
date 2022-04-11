@@ -20,6 +20,7 @@ import uploadImgPlaceholder from "../../assets/images/upload-img-placeholder.png
 import uploadIcon2 from "../../assets/images/svg/upload-icon2.svg"
 import bottleImg from "../../assets/images/bottle-img.png"
 import closeRed from "../../assets/images/svg/close-red.svg"
+import restaurantBg from "../../assets/images/restaurant-bg.png"
 import { ReactComponent as Menu } from "../../assets/images/svg/menu.svg"
 import { ReactComponent as Home } from "../../assets/images/svg/home.svg"
 import { ReactComponent as Order } from "../../assets/images/svg/order.svg"
@@ -48,6 +49,7 @@ import { ReactComponent as DelIcon } from "../../assets/images/svg/del-icon.svg"
 import { ReactComponent as ExportIcon } from "../../assets/images/svg/export-icon.svg"
 import { ReactComponent as RightArrow } from "../../assets/images/svg/right-arrow.svg"
 import { ReactComponent as RemoveIcon } from "../../assets/images/svg/remove-icon.svg"
+import { ReactComponent as ProfileIcon } from "../../assets/images/svg/profile.svg"
 
 export {
     Menu,
@@ -100,4 +102,6 @@ export {
     ExportIcon,
     RightArrow,
     RemoveIcon,
+    ProfileIcon,
+    restaurantBg,
 }

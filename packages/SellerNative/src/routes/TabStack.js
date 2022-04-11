@@ -8,13 +8,10 @@ import Clints from '../screens/Clints';
 import Products from '../screens/Products';
 import OrderStack from './OrderStack';
 import Order from '../screens/orders/Order';
+import {useTranslation} from 'react-i18next';
 import ProductStack from './ProductStack';
 
-
-
 const Tab = createBottomTabNavigator();
-
-
 
 const TabStack = () => {
   return (
@@ -22,15 +19,15 @@ const TabStack = () => {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#5AB3A8',
-
+        unmountOnBlur: true,
       }}
       initialRouteName="Home">
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({ color, size }) => (
+          tabBarLabel: t('home'),
+          tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),
         }}
@@ -39,8 +36,8 @@ const TabStack = () => {
         name="OrderStack"
         component={OrderStack}
         options={{
-          tabBarLabel: 'Orders',
-          tabBarIcon: ({ color, size }) => (
+          tabBarLabel: t('Order'),
+          tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="bus" color={color} size={size} />
           ),
         }}
@@ -49,8 +46,8 @@ const TabStack = () => {
         name="Clients"
         component={Clints}
         options={{
-          tabBarLabel: 'Clients',
-          tabBarIcon: ({ color, size }) => (
+          tabBarLabel: t('client'),
+          tabBarIcon: ({color, size}) => (
             <Ionicons name="people-sharp" color={color} size={size} />
           ),
         }}
@@ -59,15 +56,17 @@ const TabStack = () => {
         name="Products"
         component={ProductStack}
         options={{
-          tabBarLabel: 'Products',
-          tabBarIcon: ({ color, size }) => (
+          tabBarLabel: t('products'),
+          tabBarIcon: ({color, size}) => (
             <Ionicons name="pricetag" color={color} size={size} />
           ),
         }}
       />
     </Tab.Navigator>
-  )
-}
+  );
+};
+
+export default TabStack;
 
 export default TabStack
 

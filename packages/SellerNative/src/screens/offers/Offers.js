@@ -41,7 +41,8 @@ const Offers = ({navigation}) => {
     startDate: '',
     endDate: '',
   };
-  const [modalVisible, setModalVisible] = useState(false);
+
+  const [modal, setModal] = useState(false);
   const [createPostModal, setCreatePostModal] = useState(false);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -129,7 +130,7 @@ const Offers = ({navigation}) => {
           </View>
         </View>
         <View style={styles.offerContainer}>
-          <OfferComponent isModal={modalVisible} setModal={setModalVisible} />
+          <OfferComponent isModal={modal} setModal={setModal} />
 
           <OfferComponent />
           <OfferComponent />
@@ -140,12 +141,12 @@ const Offers = ({navigation}) => {
         </View>
       </ScrollView>
       <CustomModal
-        isModalVisible={modalVisible}
-        setModalVisible={setModalVisible}
+        isModalVisible={modal}
+        setModalVisible={setModal}
         modalWrapperStyle={{
           marginHorizontal: width(0),
           marginVertical: height(0),
-          marginLeft: width(100),
+          marginLeft: width(95),
           justifyContent: 'flex-start',
           borderRadius: 0,
         }}>
@@ -153,9 +154,7 @@ const Offers = ({navigation}) => {
           style={styles.modalMainContainer}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => setModalVisible(false)}>
+          <TouchableOpacity activeOpacity={0.6} onPress={() => setModal(false)}>
             <Icon
               name="close"
               type="antdesign"
@@ -172,10 +171,10 @@ const Offers = ({navigation}) => {
             />
           </View>
 
-          <Image
+          {/* <Image
             source={require('../../Assets/image8.png')}
             style={styles.image}
-          />
+          /> */}
           <CustomText label={t('OfferProfile')} textStyle={styles.offerText} />
           <View style={styles.offerNameContainer}>
             <CustomText label={'Offername'} textStyle={styles.offerName} />

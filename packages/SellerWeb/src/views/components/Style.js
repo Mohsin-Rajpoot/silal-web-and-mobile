@@ -34,6 +34,7 @@ const Button = styled.button`
   font-weight: 600;
   font-size: 15px;
   transition: 0.2s all;
+  margin-bottom: ${props => props.mb};
   &:hover {
     background: rgba(90, 179, 169, 0.9);
     transform: scale(1.02);
@@ -41,6 +42,9 @@ const Button = styled.button`
   &:disabled {
     background: rgba(90, 179, 168, 0.5);
     cursor: inherit;
+    &:hover {
+      transform: scale(1);
+    }
   }
   &.grey {
     background: #CCD4D6;
@@ -82,7 +86,6 @@ const TableStyled = styled.div`
   .rdt_TableHeadRow {
     background: #f2f4f5;
     box-shadow: 0px 1px 1px rgba(0, 39, 51, 0.25);
-  }
   .rdt_TableRow {
     border-color: rgba(0, 39, 51, 0.08);
     &:hover {
@@ -392,6 +395,7 @@ const HeadingStyled = styled.h1`
   font-size:${(props) => props.size && (props.size)};
   font-weight:${(props) => props.weight && (props.weight)};
   color:${(props) => props.color ? props.color : "inherit"};
+  margin:${(props) => props.margin ? props.margin : "0"};
 `;
 
 const Title = styled.h6`
@@ -496,6 +500,7 @@ const ThemeModal = styled.div`
     border: none;
   }
   .text {
+    font-family: 'lato';
     font-weight: 400;
     font-size: 15px;
     line-height: 150%;
@@ -504,6 +509,16 @@ const ThemeModal = styled.div`
     span {
       color: #002733;
       font-weight: 500;
+    }
+  }
+  .refusal-textarea {
+    background: #F2F4F5;
+    height: 126px;
+    border: none;
+  }
+  .refusal-modal {
+    .modal-dialog {
+      max-width: 546px;
     }
   }
 `;
@@ -738,6 +753,20 @@ const Radio = styled.label`
   }
 `;
 
+const Suggestions = styled.div`
+  font-family: 'lato';
+  padding: 5px;
+  height: 26px;
+  background: #E6F4F2;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 120%;
+  color: #4C6870;
+  margin-bottom: 8px;
+  margin-right: 5px;
+`;
+
 export {
   CardStyled,
   Heading,
@@ -766,4 +795,5 @@ export {
   ContactButton,
   SettingBtn,
   Radio,
+  Suggestions,
 };

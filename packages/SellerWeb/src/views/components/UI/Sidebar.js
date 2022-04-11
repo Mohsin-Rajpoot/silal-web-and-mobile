@@ -16,6 +16,7 @@ import {
   ContactUs,
   AboutIcon,
   SettingsIcon,
+  ProfileIcon,
 } from "../AllImages";
 
 const Sidebar = ({ sideBar, setSideBar }) => {
@@ -25,6 +26,7 @@ const Sidebar = ({ sideBar, setSideBar }) => {
   const clientPath = window.location.href.indexOf("client") > -1 ? true : false
   const productPath = window.location.href.indexOf("product") > -1 ? true : false
   const offersPath = window.location.href.indexOf("offers") > -1 ? true : false
+  const profilePath = window.location.href.indexOf("profile") > -1 ? true : false
   const { pathname } = useLocation()
 
   return (
@@ -91,6 +93,12 @@ const Sidebar = ({ sideBar, setSideBar }) => {
           className={productPath && ("active")}>
           <Product />
           Products
+        </Link>
+        <Link
+          to="/profile"
+          className={profilePath && 'active'}>
+          <ProfileIcon />
+          Profile
         </Link>
         <Link to="/offers" className={offersPath && ("active")}>
           <OffersIcon />

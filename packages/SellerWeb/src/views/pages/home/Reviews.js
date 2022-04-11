@@ -74,7 +74,7 @@ const Reviews = ({ setSideBar, sideBar }) => {
                 </Col>
                 <Col md={3} sm={12}>
                     <CardStyled>
-                        <Heading>Reviews overview</Heading>
+                        <Heading className="lato">Reviews overview</Heading>
                         <ReviewOverviewText>
                             <h2>Total </h2>
                             <h3>189</h3>

@@ -7,6 +7,7 @@ import colors from '@SilalApp/common/assets/colors';
 import DropDownPicker from 'react-native-dropdown-picker';
 import TextInput from '@SilalApp/common/components/native/TextInput';
 import {useTranslation} from 'react-i18next';
+import images from '../../Assets';
 const index = () => {
   const {t} = useTranslation();
   const [value, setValue] = useState(null);
@@ -20,7 +21,7 @@ const index = () => {
       <CustomText label={t('mainItem')} textStyle={styles.title} />
       <View style={styles.itemMainContainer}>
         <Image
-          source={require('../../Assets/image11.png')}
+          source={images.image12}
           style={styles.itemImage}
           resizeMode="cover"
         />
