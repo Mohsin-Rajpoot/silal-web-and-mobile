@@ -508,6 +508,10 @@ hr {
     background: transparent;
   }
 }
+.save-note-hover:hover {
+    background: rgba(90, 179, 168, 0.2);
+    color: #5AB3A8;
+}
 `;
 
 export default GlobalStyle;

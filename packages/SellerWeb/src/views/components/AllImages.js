@@ -54,6 +54,11 @@ import { ReactComponent as BannerEditIcon } from "../../assets/images/svg/banner
 import { ReactComponent as PeakHoursIcon } from "../../assets/images/svg/peak-hours-icon.svg"
 import { ReactComponent as NotifiMsgIcon } from "../../assets/images/svg/notifi-msg-icon.svg"
 import { ReactComponent as Clock } from "../../assets/images/svg/clock.svg"
+import { ReactComponent as AddIcon } from "../../assets/images/svg/add-icon.svg"
+import { ReactComponent as TimeIcon } from "../../assets/images/svg/time-icon.svg"
+import { ReactComponent as InfoIcon } from "../../assets/images/svg/info-icon.svg"
+import { ReactComponent as BgEmailIcon } from "../../assets/images/svg/bg-email-icon.svg"
+import { ReactComponent as BgPhoneIcon } from "../../assets/images/svg/bg-phone-icon.svg"
 
 export {
     Menu,
@@ -112,4 +117,9 @@ export {
     PeakHoursIcon,
     NotifiMsgIcon,
     Clock,
+    AddIcon,
+    TimeIcon,
+    InfoIcon,
+    BgEmailIcon,
+    BgPhoneIcon,
 }

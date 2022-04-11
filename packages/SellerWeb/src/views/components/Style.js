@@ -23,7 +23,7 @@ const Heading = styled.h1`
 `;
 
 const Button = styled.button`
-  background: #5ab3a8;
+  background: ${props => props.bg ? props.bg : '#5AB3A8'};
   border-radius: 5px;
   border: none;
   padding: 0 20px;
@@ -31,7 +31,7 @@ const Button = styled.button`
   width: ${props => props.width};
   height: 40px;
   white-space: nowrap;
-  color: white;
+  color: ${props => props.color ? props.color : 'white'};
   font-weight: 600;
   font-size: 15px;
   transition: 0.2s all;
@@ -785,6 +785,56 @@ const Tag = styled.div`
   border-radius: 5px;
 `;
 
+const Switch = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 32px;
+  input { 
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #5AB3A8;
+    border: 0.5px solid rgba(204, 212, 214, 0.5);
+    border-radius: 34px;
+    transition: .4s;
+    z-index: -1;
+    cursor: pointer;
+    &::before {
+      position: absolute;
+      content: "";
+      height: 27px;
+      width: 27px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      box-shadow: -2px 2px 7px rgba(0, 39, 51, 0.14), -4px 4px 4px rgba(0, 39, 51, 0.02);
+      border-radius: 50%;
+      transition: .4s;
+    }
+  }
+  input:checked + .slider {
+    background-color: #CACFD0;
+  }
+  input:focus + .slider {
+    box-shadow: 0 0 1px #CACFD0;
+  }
+  input:checked + .slider:before {
+    transform: translateX(28px);
+  }
+`;
+const Margin = styled.div`
+  margin: ${props => props.margin};
+`;
+
 export {
   CardStyled,
   Heading,
@@ -815,4 +865,6 @@ export {
   Radio,
   Suggestions,
   Tag,
+  Switch,
+  Margin,
 };

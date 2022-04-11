@@ -765,6 +765,89 @@ const ArchiveOrderHead = styled.div`
     
 `;
 
+const Notes = ({ date, note }) => {
+    return (
+        <NotesStyled>
+            <h1>{date}</h1>
+            <p>{note}</p>
+        </NotesStyled>
+    )
+}
+
+const NotesStyled = styled.div`
+    font-family: 'Lato';
+    border-bottom: 1px solid #EBEEEF;
+    background-color: #FAFAFA;
+    padding: 14px 0;
+    &:last-of-type {
+        border-bottom: none;
+        border-radius: 0 0 5px 5px;
+    }
+    &:first-of-type {
+        border-radius: 5px 5px 0 0;
+    }
+    h1 {
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 120%;
+        letter-spacing: -0.408px;
+        color: #002733;
+        margin: 0 20px 4px 20px;
+    }
+    p {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 120%;
+        letter-spacing: -0.408px;
+        color: rgba(0, 39, 51, 0.5);
+        margin: 0 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+`;
+
+const AddNoteButton = styled.button`
+    position: absolute;
+    bottom: 20px;
+    right: 16px;
+    background: #5AB3A8;
+    border: 0;
+    box-shadow: 0px 15px 20px -8px rgba(115, 213, 201, 0.4);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    svg {
+        width: 25px;
+        height: 25px;
+    }
+`;
+
+const CheckNote = styled.div`
+    display: flex;
+    .checkbox-main {
+        margin: 5px 8px 0 0;
+        .checkmark {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(76, 104, 112, 0.5);
+            &::after {
+                left: 4px;
+                top: 1px;
+                width: 4px;
+                height: 8px;
+            }
+        }
+    }
+    .note {
+        border: none;
+        flex: 1;
+        caret-color: var(--theme-clr);
+        resize: none;
+        height: 200px;
+    }
+`;
+
 export {
     ReceivedOrder,
     AcceptedOrder,
@@ -778,4 +861,7 @@ export {
     OrderIdMain,
     OrderList,
     ArchiveOrderHead,
+    Notes,
+    AddNoteButton,
+    CheckNote,
 }
