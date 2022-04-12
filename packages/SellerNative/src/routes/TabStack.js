@@ -11,6 +11,7 @@ import Order from '../screens/orders/Order';
 import {useTranslation} from 'react-i18next';
 import ProductStack from './ProductStack';
 import { NavigationContainer } from '@react-navigation/native';
+import colors from '@SilalApp/common/assets/colors';
 const Tab = createBottomTabNavigator();
 
 const TabStack = () => {
@@ -21,14 +22,14 @@ const TabStack = () => {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#5AB3A8',
-      
+        
       }}
       initialRouteName="Home">
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarLabel: 'home',
+          tabBarLabel: t('home'),
           unmountOnBlur: true,
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />

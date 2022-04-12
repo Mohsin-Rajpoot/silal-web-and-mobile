@@ -63,7 +63,7 @@ const Home = ({navigation}) => {
             <MaterialCommunityIcons
               name="reorder-horizontal"
               size={20}
-              style={styles.BambergIcon}
+              // style={styles.BambergIcon}
               
             />
           </TouchableOpacity>

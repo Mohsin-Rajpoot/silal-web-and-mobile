@@ -1,4 +1,3 @@
-
 import React, {useRef, useState} from 'react';
 import {
   View,
@@ -19,15 +18,15 @@ import {useTranslation} from 'react-i18next';
 import CommonTab from '../../components/CommonTab';
 const {width, height} = Dimensions.get('window');
 
-const Home = ({navigation}) => {
+const Order = ({navigation}) => {
   const {t} = useTranslation();
-  const [Statistic, setStatistic] = useState(true);
-  const [Reviews, setReviews] = useState(false);
-  const [Outofstock, setOutofstack] = useState(false);
+  // const [Statistic, setStatistic] = useState(true);
+  // const [Reviews, setReviews] = useState(false);
+  // const [Outofstock, setOutofstack] = useState(false);
   // const [order_state, set_order_state] = useState('current');
-  const [current_order_state, set_current_order_state] = useState(true);
-  const [pre_order_state, set_pre_order_state] = useState(false);
-  const [archive_order_state, set_archive_order_state] = useState(false);
+  // const [current_order_state, set_current_order_state] = useState(true);
+  // const [pre_order_state, set_pre_order_state] = useState(false);
+  // const [archive_order_state, set_archive_order_state] = useState(false);
 
   const [order_state, set_order_state] = useState('current');
   const ref = useRef(null);
@@ -38,24 +37,22 @@ const Home = ({navigation}) => {
     setPage(page);
   };
 
-
-
-  const tabclick = (x_value, state) => {
-    scrollref.current.scrollTo({x: width * x_value});
-    if (x_value == '0') {
-      set_current_order_state(true);
-      set_archive_order_state(false);
-      set_pre_order_state(false);
-    } else if (x_value == '1') {
-      set_current_order_state(false);
-      set_pre_order_state(true);
-      set_archive_order_state(false);
-    } else if (x_value == '2') {
-      set_current_order_state(false);
-      set_pre_order_state(false);
-      set_archive_order_state(true);
-    }
-  };
+  // const tabclick = (x_value, state) => {
+  //   scrollref.current.scrollTo({x: width * x_value});
+  //   if (x_value == '0') {
+  //     set_current_order_state(true);
+  //     set_archive_order_state(false);
+  //     set_pre_order_state(false);
+  //   } else if (x_value == '1') {
+  //     set_current_order_state(false);
+  //     set_pre_order_state(true);
+  //     set_archive_order_state(false);
+  //   } else if (x_value == '2') {
+  //     set_current_order_state(false);
+  //     set_pre_order_state(false);
+  //     set_archive_order_state(true);
+  //   }
+  // };
   const Header = () => {
     return (
       // <View style={{ paddingVertical: 15,flex:1, flexDirection: 'row',}}>
@@ -70,7 +67,7 @@ const Home = ({navigation}) => {
       //   </TouchableOpacity>
       // </View>
       <View style={{paddingVertical: 15, flex: 1, flexDirection: 'row'}}>
-       <CommonTab tabs={tabs} page={page} onChangeTab={onChangeTab} />
+        <CommonTab tabs={tabs} page={page} onChangeTab={onChangeTab} />
         {/* <TouchableOpacity
           onPress={() => tabclick('0', 'current')}
           style={[
@@ -128,7 +125,6 @@ const Home = ({navigation}) => {
 
   return (
     <SafeAreaView style={{backgroundColor: '#f4f7f8', flex: 1}}>
-      {/* <LockOnLandscape /> */}
       <View style={{flexDirection: 'row', alignItems: 'center', height: '15%'}}>
         <View style={{padding: 15}}>
           <TouchableOpacity>
@@ -143,82 +139,27 @@ const Home = ({navigation}) => {
 
         {Header()}
       </View>
-{/* 
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        ref={scrollref}
-        horizontal
-        scrollEnabled={false}
-
-      >
-        <View style={{ width: width, height: '100%' }}>
-          <Current_orders title='Received' navigation={navigation} />
-        </View>
-        <View style={{ width: width, height: '100%' }}>
-          <Pre_orders />
-        </View>
-        :
-        order_state=='preorder'?
-        <Pre_orders />
-        :
-        <Archive_orders />
-      } */} */
-
-    <View style={{flex:1}}>
+      <View style={{flex: 1}}>
         <PagerView
           style={{flex: 1}}
           initialPage={0}
           scrollEnabled={true}
           ref={ref}>
-          <View key={'1'} >
-          <Current_orders title="Received" navigation={navigation} />
+          <View key={'1'}>
+            <Current_orders title="Received" navigation={navigation} />
           </View>
           <View key={'2'}>
-          <Pre_orders />
+            <Pre_orders />
           </View>
           <View key={'3'}>
-          <Archive_orders />
+            <Archive_orders />
           </View>
         </PagerView>
       </View>
-      {/* <ScrollView
-        showsHorizontalScrollIndicator={false}
-    
-        contentContainerStyle={{flex:1, width:'100%'}}
-        scrollEnabled={false}>
-        <View style={{width: '100%', height: '100%'}}>
-          <Current_orders title="Received" navigation={navigation} />
-        </View>
-        <View style={{width: width, height: '100%'}}>
-          <Pre_orders />
-        </View>
-        <View style={{width: width, height: '100%'}}>
-          <Archive_orders />
-        </View>
-      </ScrollView> */}
-      {/* {order_state=='current'?
-        <View style={styles.order_container}>
-          <Current_orders title='Received' navigation={navigation}/>
-        </View>
-        :
-        <>
-        {order_state=='preorder'?
-        <Pre_orders />
-        :
-        <>
-        {order_state=='archive'?
-        <Archive_orders />
-        :
-        null
-        }
-        </>
-        }
-        </>
-      } */}
     </SafeAreaView>
   );
 };
-export default Home;
+export default Order;
 const styles = StyleSheet.create({
   WhiteDive: {
     flexDirection: 'row',
