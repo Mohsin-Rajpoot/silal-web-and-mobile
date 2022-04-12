@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {
   View,
   Text,
@@ -16,33 +16,24 @@ import {
   LockOnLandscape,
 } from '@SilalApp/common/components/native';
 import Svg, {Path, Rect} from 'react-native-svg';
-import OutOfStack from '../../components/OutOfStack';
-import StatisticsView from '../../components/Statistics';
-import ReviewView from '../../components/Reviews';
-
+import OutOfStack from './molecules/OutOfStack';
+import StatisticsView from './molecules/Statistics';
+import ReviewView from './molecules/Reviews';
+import CommonTab from '../../components/CommonTab';
+import PagerView from 'react-native-pager-view';
 const Home = ({navigation}) => {
   const [Statistic, setStatistic] = useState(true);
   const [Reviews, setReviews] = useState(false);
   const [Outofstock, setOutofstack] = useState(false);
-
-  const onCurrentOrder = index => {
-    console.log(index);
-    if (index == 0) {
-      setStatistic(true);
-      setReviews(false);
-      setOutofstack(false);
-    } else if (index == 1) {
-      setStatistic(false);
-      setReviews(true);
-      setOutofstack(false);
-    } else if (index == 2) {
-      setStatistic(false);
-      setReviews(false);
-      setOutofstack(true);
-    }
+  const ref = useRef(null);
+  const tabs = ['Statistics', 'Reviews', 'Out-of-Stock'];
+  const [page, setPage] = useState(0);
+  const onChangeTab = page => {
+    ref?.current?.setPageWithoutAnimation(page);
+    setPage(page);
   };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
       <LockOnLandscape />
       <View style={{flexDirection: 'row'}}>
         <View style={{padding: 15}}>
@@ -55,7 +46,8 @@ const Home = ({navigation}) => {
             />
           </TouchableOpacity>
         </View>
-        <View style={{padding: 15, flexDirection: 'row'}}>
+        <CommonTab tabs={tabs} page={page} onChangeTab={onChangeTab} />
+        {/* <View style={{padding: 15, flexDirection: 'row'}}>
           <CustomButton
             onPress={() => onCurrentOrder(0)}
             text="Statistics"
@@ -71,8 +63,8 @@ const Home = ({navigation}) => {
             text="Out-of-stock"
             type={Outofstock ? 'PRIMARY' : 'TERTIARY'}
           />
-        </View>
-        {Statistic ? (
+        </View> */}
+        {/* {Statistic ? (
           <View
             style={{
               position: 'absolute',
@@ -107,25 +99,25 @@ const Home = ({navigation}) => {
               />
             </Svg>
           </View>
-        ) : null}
+        ) : null} */}
       </View>
-      {Statistic ? (
-        <View>
-          <StatisticsView />
-        </View>
-      ) : null}
-      <View>
-        {Reviews ? (
-          <View>
+      <View style={{flex:1}}>
+        <PagerView
+          style={{flex: 1}}
+          initialPage={0}
+          scrollEnabled={true}
+          ref={ref}>
+          <View key={'1'} >
+            <StatisticsView />
+          </View>
+          <View key={'2'}>
             <ReviewView />
           </View>
-        ) : null}
+          <View key={'3'}>
+            <OutOfStack />
+          </View>
+        </PagerView>
       </View>
-      {Outofstock ? (
-        <View>
-          <OutOfStack />
-        </View>
-      ) : null}
     </SafeAreaView>
   );
 };

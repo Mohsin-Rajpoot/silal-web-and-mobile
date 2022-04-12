@@ -50,7 +50,8 @@ export default function CustomGraph() {
     const animateFun = (value, value2) => {
         Animated.timing(value2, {
             toValue: value,
-            duration: 1800
+            duration: 1800,
+          
         }).start();
         return value2
     }

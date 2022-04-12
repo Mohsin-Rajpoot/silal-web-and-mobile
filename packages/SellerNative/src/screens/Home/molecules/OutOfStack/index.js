@@ -10,7 +10,7 @@ import Menu, {
   MenuOption,
 } from 'react-native-popup-menu';
 import {CheckBox} from 'react-native-elements';
-import images from '../../Assets';
+import images from '../../../../Assets';
 import styles from './styles';
 export default function Archive_orders({title, navigation}) {
   const [checked, setchecked] = useState(false);

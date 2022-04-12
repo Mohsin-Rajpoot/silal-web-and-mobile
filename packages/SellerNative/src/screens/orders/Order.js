@@ -12,14 +12,10 @@ import {
 import Current_orders from './Current/Current_orders';
 import Pre_orders from './Pre_orders';
 import Archive_orders from './Archive/Archive_orders';
-import LockOnLandscape from '../../components/Dashboard/LockOnLandscape';
-
+import PagerView from 'react-native-pager-view';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-// import TitleHeading from '../components/TitleHeading';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-// import LockOnLandscape from '../components/Dashboard/LockOnLandscape';
-// import StatisticWhiteBoxTitle from '../components/StatisticWhiteBoxTitle';
 import {useTranslation} from 'react-i18next';
+import CommonTab from '../../components/CommonTab';
 const {width, height} = Dimensions.get('window');
 
 const Home = ({navigation}) => {
@@ -33,8 +29,15 @@ const Home = ({navigation}) => {
   const [archive_order_state, set_archive_order_state] = useState(false);
 
   const [order_state, set_order_state] = useState('current');
+  const ref = useRef(null);
+  const tabs = ['Current orders', 'Pre-orders', 'Archive'];
+  const [page, setPage] = useState(0);
+  const onChangeTab = page => {
+    ref?.current?.setPageWithoutAnimation(page);
+    setPage(page);
+  };
 
-  const scrollref = useRef();
+
 
   const tabclick = (x_value, state) => {
     scrollref.current.scrollTo({x: width * x_value});
@@ -66,7 +69,8 @@ const Home = ({navigation}) => {
       //   </TouchableOpacity>
       // </View>
       <View style={{paddingVertical: 15, flex: 1, flexDirection: 'row'}}>
-        <TouchableOpacity
+       <CommonTab tabs={tabs} page={page} onChangeTab={onChangeTab} />
+        {/* <TouchableOpacity
           onPress={() => tabclick('0', 'current')}
           style={[
             styles.order_button,
@@ -116,7 +120,7 @@ const Home = ({navigation}) => {
             ]}>
             {t('Archive')}
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     );
   };
@@ -149,12 +153,30 @@ const Home = ({navigation}) => {
         :
         <Archive_orders />
       } */}
-      <ScrollView
+
+    <View style={{flex:1}}>
+        <PagerView
+          style={{flex: 1}}
+          initialPage={0}
+          scrollEnabled={true}
+          ref={ref}>
+          <View key={'1'} >
+          <Current_orders title="Received" navigation={navigation} />
+          </View>
+          <View key={'2'}>
+          <Pre_orders />
+          </View>
+          <View key={'3'}>
+          <Archive_orders />
+          </View>
+        </PagerView>
+      </View>
+      {/* <ScrollView
         showsHorizontalScrollIndicator={false}
-        ref={scrollref}
-        horizontal
+    
+        contentContainerStyle={{flex:1, width:'100%'}}
         scrollEnabled={false}>
-        <View style={{width: width, height: '100%'}}>
+        <View style={{width: '100%', height: '100%'}}>
           <Current_orders title="Received" navigation={navigation} />
         </View>
         <View style={{width: width, height: '100%'}}>
@@ -163,7 +185,7 @@ const Home = ({navigation}) => {
         <View style={{width: width, height: '100%'}}>
           <Archive_orders />
         </View>
-      </ScrollView>
+      </ScrollView> */}
       {/* {order_state=='current'?
         <View style={styles.order_container}>
           <Current_orders title='Received' navigation={navigation}/>

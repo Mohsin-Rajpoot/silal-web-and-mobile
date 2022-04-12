@@ -10,12 +10,13 @@ import OrderStack from './OrderStack';
 import Order from '../screens/orders/Order';
 import {useTranslation} from 'react-i18next';
 import ProductStack from './ProductStack';
-
+import { NavigationContainer } from '@react-navigation/native';
 const Tab = createBottomTabNavigator();
 
 const TabStack = () => {
   const {t} = useTranslation();
   return (
+  
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
@@ -54,7 +55,7 @@ const TabStack = () => {
         }}
       />
       <Tab.Screen
-        name="Products"
+        name="ProductsStack"
         component={ProductStack}
         options={{
           tabBarLabel: t('products'),
@@ -64,6 +65,7 @@ const TabStack = () => {
         }}
       />
     </Tab.Navigator>
+  
   );
 };
 

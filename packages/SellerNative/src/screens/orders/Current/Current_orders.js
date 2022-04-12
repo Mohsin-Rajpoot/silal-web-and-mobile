@@ -653,6 +653,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     paddingBottom: 10,
+ 
   },
   order_header: {
     flex: 1,

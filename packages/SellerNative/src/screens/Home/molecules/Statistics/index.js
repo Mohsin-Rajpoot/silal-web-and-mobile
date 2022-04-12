@@ -8,7 +8,7 @@ import {
   StatisticWhiteBoxTitle,
   CustomGraph,
 } from '@SilalApp/common/components/native';
-import images from '../../Assets';
+import images from '../../../../Assets/index';
 import styles from './Styles';
 const Statistics = () => {
   const data = [
@@ -44,7 +44,7 @@ const Statistics = () => {
   ];
 
   return (
-    <View>
+    <View style={{flex:1}}>
       <TitleHeading />
       <View style={styles.MainWhiteDiv}>
         <View style={styles.One}>
