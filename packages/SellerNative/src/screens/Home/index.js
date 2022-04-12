@@ -1,3 +1,4 @@
+
 import React, {useState, useRef} from 'react';
 import {
   View,
@@ -32,6 +33,27 @@ const Home = ({navigation}) => {
     ref?.current?.setPageWithoutAnimation(page);
     setPage(page);
   };
+
+  const data2 = [
+    {
+      id: '1',
+    },
+    {
+      id: '2',
+    },
+    {
+      id: '3',
+    },
+    {
+      id: '4',
+    },
+    {
+      id: '5',
+    },
+  ];
+
+
+
   return (
     <SafeAreaView style={{flex:1}}>
       <LockOnLandscape />
@@ -41,8 +63,8 @@ const Home = ({navigation}) => {
             <MaterialCommunityIcons
               name="reorder-horizontal"
               size={20}
-              style={{marginLeft: 10, marginTop: 10}}
-              color={'#000000'}
+              style={styles.BambergIcon}
+              
             />
           </TouchableOpacity>
         </View>

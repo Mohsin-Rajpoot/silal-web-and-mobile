@@ -1,3 +1,4 @@
+
 import React, {useRef, useState} from 'react';
 import {
   View,
@@ -142,17 +143,26 @@ const Home = ({navigation}) => {
 
         {Header()}
       </View>
+{/* 
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        ref={scrollref}
+        horizontal
+        scrollEnabled={false}
 
-      {/* {order_state=='current'?
-        <View style={styles.order_container}>
-          <Current_orders title='Received' navigation={navigation}/>
+      >
+        <View style={{ width: width, height: '100%' }}>
+          <Current_orders title='Received' navigation={navigation} />
+        </View>
+        <View style={{ width: width, height: '100%' }}>
+          <Pre_orders />
         </View>
         :
         order_state=='preorder'?
         <Pre_orders />
         :
         <Archive_orders />
-      } */}
+      } */} */
 
     <View style={{flex:1}}>
         <PagerView
@@ -256,17 +266,17 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     alignSelf: 'center',
     borderRadius: 5,
-    marginLeft: 10,
+    marginLeft: 10
   },
   order_button_text: {
     color: 'white',
     fontFamily: 'Poppins-SemiBold',
     fontSize: 16,
-    letterSpacing: 1,
+    letterSpacing: 1
   },
   order_container: {
     // flexDirection:'row',
     // backgroundColor:'red',
-    padding: 10,
-  },
-});
+    padding: 10
+  }
+})

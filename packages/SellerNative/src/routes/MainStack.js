@@ -1,18 +1,66 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import TabStack from './TabStack';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+import {Dimensions} from 'react-native'
 import CustomDrawerContent from './Drawer';
 import Profile from '../screens/Profile';
 import Documents from '../screens/Documents';
 import Offers from '../screens/offers/Offers';
+<<<<<<< HEAD
 import ContactUs from '../screens/ContactUs';
 import Setting from '../screens/Setting';
 import AboutApp from '../screens/AboutApp';
 import LongerOrder from '../screens/Orders_longer/Longer_orders'
 import Order_full_view from '../screens/orders/Current/Order_full_view'
+=======
+// import ContactUs from '../screens/ContactUs';
+// import Setting from '../screens/Setting';
+import {
+    OrientationLocker,
+    LANDSCAPE,
+    PORTRAIT
+  } from 'react-native-orientation-locker';
+
+
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
 const Drawer = createDrawerNavigator();
 
 const MainStack = () => {
+
+  const [orientation, setOrientation] = useState(LANDSCAPE);
+  const determineAndSetOrientation = () => {
+      let width = Dimensions.get('window').width;
+      let height = Dimensions.get('window').height;
+  
+      if (Dimensions == PORTRAIT) {
+          setOrientation(LANDSCAPE);
+          console.log(orientation,"orientation fff");
+        } else {
+          setOrientation(LANDSCAPE);
+          console.log(orientation,'LANDSCAPE eeeeee');
+        }
+    }
+  
+    useEffect(() => {
+  
+      determineAndSetOrientation();
+      Dimensions.addEventListener('change', determineAndSetOrientation);
+  
+      return () => {
+        Dimensions.addEventListener('change', determineAndSetOrientation)
+      }
+    }, []);
+
+
+
+
+
+
+
+
+
+
+
   return (
     <Drawer.Navigator
       initialRouteName="TabStack"

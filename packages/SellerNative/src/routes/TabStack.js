@@ -21,14 +21,15 @@ const TabStack = () => {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#5AB3A8',
-        unmountOnBlur: true,
+      
       }}
       initialRouteName="Home">
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarLabel: t('home'),
+          tabBarLabel: 'home',
+          unmountOnBlur: true,
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),
@@ -39,6 +40,7 @@ const TabStack = () => {
         component={OrderStack}
         options={{
           tabBarLabel: t('Order'),
+          unmountOnBlur:true,
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="bus" color={color} size={size} />
           ),
@@ -49,6 +51,7 @@ const TabStack = () => {
         component={Clints}
         options={{
           tabBarLabel: t('client'),
+          unmountOnBlur:true,
           tabBarIcon: ({color, size}) => (
             <Ionicons name="people-sharp" color={color} size={size} />
           ),
@@ -59,6 +62,7 @@ const TabStack = () => {
         component={ProductStack}
         options={{
           tabBarLabel: t('products'),
+          unmountOnBlur:true,
           tabBarIcon: ({color, size}) => (
             <Ionicons name="pricetag" color={color} size={size} />
           ),

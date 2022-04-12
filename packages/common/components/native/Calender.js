@@ -1,123 +1,76 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import moment from "moment";
+import React, { useState } from 'react'
+import { View, TouchableOpacity, Text, Button } from 'react-native'
+import DatePicker from 'react-native-neat-date-picker'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import moment from "moment";
 
-const Calender = () => {
-    const [date, setDate] = useState(new Date());
-    const [dateSecond, setDateSecond] = useState(new Date());
+const Calender = ({ bg_Calender }) => {
+    React.useEffect(() => {
+        console.log(bg_Calender, "fsdsfasfadsadsafdadsfdas")
+    }, [])
+    const [showDatePicker, setShowDatePicker] = useState(false)
+    const [start_date, set_start_date] = useState();
+    const [end_date, set_end_date] = useState();
 
-    const [mode, setMode] = useState('date');
-    const [show, setShow] = useState(false);
+    const openDatePicker = () => {
+        setShowDatePicker(true)
+    }
+    const onCancel = () => {
+        setShowDatePicker(false)
+    }
+    const onConfirm = (output) => {
+        const { startDateString, endDateString } = output
+        set_start_date(startDateString)
+        set_end_date(endDateString)
+        console.log(startDateString)
+        console.log(endDateString)
+        setShowDatePicker(false)
+    }
+    const colorOptions = {
+        headerColor: '#5AB3A8',
+        weekDaysColor: '#5AB3A8',
+        selectedDateColor: '#5AB3A8',
+        confirmButtonColor: '#5AB3A8',
+        selectedDateBackgroundColor: '#5AB3A8'
 
-    const onChange = (event, selectedDate) => {
-        if (selectedDate != undefined) {
-            var currentDate = selectedDate || date;
-            setDate(currentDate)
-        }
-        else if (selectedDate != undefined) {
-            var currentDate = selecteddateSecond || dateSecond;
-            setDateSecond(currentDate)
-        }
-        setDate(currentDate);
-        setShow(false);
-        setDate(currentDate);
-        setShow(false);
-
-    };
-
-    const showMode = currentMode => {
-        setShow(true);
-        setMode(currentMode);
-    };
-
-    const showDatepicker = () => {
-        showMode('date');
-    };
+    }
 
     return (
         <View>
-            <View
-                style={{
-                    justifyContent: 'center',
-                    color: '#000000',
-                    flexDirection: 'row',
-                    backgroundColor: '#F2F4F5',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    borderRadius: 5,
-                    padding: 5,
-                    paddingHorizontal: 10,
-                }}>
-                <Text style={{ color: '#4C6870', textAlign: 'center' }} onPress={showDatepicker}>{moment(date).format('MMM DD YYYY')} - </Text>
+            <TouchableOpacity style={{
+                flexDirection: 'row', backgroundColor: bg_Calender == 'Default' ? null : '#E5E5E5',
+                marginTop: 8, width: 140, height: 40, justifyContent: 'center', alignItems: 'center', borderRadius: 5
+            }} onPress={openDatePicker} >
+
+                <Text style={{ color: '#4C6870', }}>
+                    {moment(start_date).format('MMM DD -')}
+                    {moment(end_date).format(' MMM DD')}
+
+                </Text>
                 <MaterialCommunityIcons name="calendar-month-outline"
                     style={{ fontSize: 17, color: '#4C6870', paddingHorizontal: 3, }} />
-            </View>
-            {show && (
-                <DateTimePicker
-                    testID="dateTimePicker"
-                    timeZoneOffsetInMinutes={0}
-                    value={new Date()}
-                    mode={mode}
-                    is24Hour={true}
-                    display="default"
-                    onChange={onChange}
-                />
-            )}
+            </TouchableOpacity>
+            {/* <Button title={'open'} onPress={openDatePicker} /> */}
+            <DatePicker
+                isVisible={showDatePicker}
+                mode={'range'}
+                onCancel={onCancel}
+                onConfirm={onConfirm}
+                colorOptions={colorOptions}
+
+
+
+
+            >
+
+
+
+
+
+            </DatePicker>
         </View>
-    );
-};
+    )
+}
 
-export default Calender;
+export default Calender
 
-
-// import React from "react";
-// import { StyleSheet, View, Text } from "react-native";
-// import moment from "moment";
-// import DateRangePicker from "react-native-daterange-picker";
-
-// export default class Calender extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             startDate: null,
-//             endDate: null,
-//             displayedDate: moment(),
-//         };
-//     }
-
-//     setDates = (dates) => {
-//         this.setState({
-//             ...dates,
-//         });
-//     };
-
-//     render() {
-//         const { startDate, endDate, displayedDate } = this.state;
-//         return (
-//             <View style={styles.container}>
-//                 <DateRangePicker
-//                     onChange={this.setDates}
-//                     endDate={endDate}
-//                     startDate={startDate}
-//                     displayedDate={displayedDate}
-//                     range
-//                 >
-//                     <Text style={{ color: '#4C6870', }}>
-//                         {moment(this.displayedDat).format('MMM DD')}
-//                     </Text>
-//                 </DateRangePicker>
-//             </View>
-//         );
-//     }
-// }
-
-// const styles = StyleSheet.create({
-//     container: {
-//         // flex: 1,
-//         backgroundColor: "#fff",
-//         alignItems: "center",
-//         justifyContent: "center",
-//     },
-// });

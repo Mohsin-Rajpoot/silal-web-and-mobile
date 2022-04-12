@@ -8,10 +8,11 @@ import {
   TextInput,
   FlatList,
   TouchableOpacity,
-  Modal,
   ScrollView,
   Image,
+  Modal
 } from 'react-native';
+import ModalViewS from "react-native-modal";
 import Entypo from 'react-native-vector-icons/Entypo';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import Svg, {Path, Rect} from 'react-native-svg';
@@ -19,8 +20,13 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {ModalView} from '../../components/ModalView';
 import styles from './styles';
+<<<<<<< HEAD
 import images from '../../Assets';
 import {useTranslation} from 'react-i18next';
+=======
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
+
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
 const Clints = () => {
   const {t} = useTranslation();
   const [choseData, setchoseData] = useState(t('Sort_by'));
@@ -146,20 +152,62 @@ const Clints = () => {
       Code: '14.11.2021 13:38',
     },
   ];
+  const data01 = [
+    {
+      id: '1',
+      Title: 'French fries',
+      ID: '2',
 
+<<<<<<< HEAD
   const [show_modal_customer_data, set_show_modal_customer_data] =
     useState(false);
   const [show_modal_driver_data, set_show_modal_driver_data] = useState(false);
   const [show_modal_order_details, set_show_modal_order_details] =
     useState(false);
+=======
+    },
 
-  const customer_data = () => {
+    {
+      id: '2',
+      Title: 'Cheesecakes with sour cream and citrus hone',
+      ID: '1',
+
+    },
+    {
+      id: '3',
+      Title: 'Cheesecakes with sour cream and citrus hone',
+      ID: '2',
+
+    },
+    {
+      id: '4',
+      Title: 'Cheesecakes with sour cream and citrus hone',
+      ID: '3',
+
+    },
+
+
+
+  ];
+
+  const [show_modal_Customer_Data, set_show_modal_Customer_Data] = useState(false);
+  const [show_modal_Personal_data, set_show_modal_Personal_data] = useState(false);
+  const [show_modal_Favourite_item, set_show_modal_Favourite_item] = useState(false);
+  const [show_modal_order_details, set_show_modal_order_details] = useState(false);
+  const [show_modal_Driver_Data, set_show_modal_Driver_Data] = useState(false);
+  const [show_modal_SecondModal_order_details, set_show_modal_SecondModal_order_details] = useState(false);
+
+  const [SecondModalVisible, setSecondModalVisible] = useState(false);
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
+
+  const Customer_Data = () => {
     return (
       <>
         <TouchableOpacity
           onPress={() =>
-            set_show_modal_customer_data(!show_modal_customer_data)
+            set_show_modal_Customer_Data(!show_modal_Customer_Data)
           }
+<<<<<<< HEAD
           style={{
             flexDirection: 'row',
             padding: 12,
@@ -170,8 +218,103 @@ const Clints = () => {
             marginTop: 10,
           }}>
           <Text style={styles.ModalDropdown}>{t('Customer_data')}</Text>
+=======
+          style={styles.CustomerMainTitle}>
+          <Text style={styles.ModalDropdown}>CUSTOMER DATA</Text>
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
 
-          {show_modal_customer_data == true ? (
+          {show_modal_Customer_Data == true ? (
+            <Fontisto
+              name="angle-up"
+              style={[styles.cross_icon, { color: 'black' }]}
+            />
+          ) : (
+            <Fontisto
+              name="angle-down"
+              style={[styles.cross_icon, { color: 'black' }]}
+            />
+          )}
+        </TouchableOpacity>
+        {show_modal_Customer_Data == true ? (
+          <View style={{ marginTop: 10 }}>
+            <View style={styles.modal_fields}>
+              <Text style={styles.modal_title_first}>Customer name</Text>
+              <Text style={styles.modal_title_second}>Willson Genemal</Text>
+            </View>
+            <View style={styles.modal_fields}>
+              <Text style={styles.modal_title_first}>Customer ID</Text>
+              <Text style={styles.modal_title_second}>133</Text>
+            </View>
+            <View style={styles.modal_fields}>
+              <Text style={styles.modal_title_first}>Phone</Text>
+              <Text style={styles.modal_title_second}>*** *** **** 112</Text>
+            </View>
+            <View style={styles.modal_fields}>
+              <Text style={styles.modal_title_first}>Address</Text>
+              <Text style={styles.modal_title_second}>
+                2715 Ash Dr. San Jose
+              </Text>
+            </View>
+          </View>
+        ) : null}
+      </>
+    );
+  };
+
+  const Driver_Data = () => {
+    return (
+      <>
+        <TouchableOpacity
+          onPress={() =>
+            set_show_modal_Driver_Data(!show_modal_Driver_Data)
+          }
+          style={styles.CustomerMainTitle}>
+          <Text style={styles.ModalDropdown}>DRIVER DATA</Text>
+
+          {show_modal_Driver_Data == true ? (
+            <Fontisto
+              name="angle-up"
+              style={[styles.cross_icon, { color: 'black' }]}
+            />
+          ) : (
+            <Fontisto
+              name="angle-down"
+              style={[styles.cross_icon, { color: 'black' }]}
+            />
+          )}
+        </TouchableOpacity>
+        {show_modal_Driver_Data == true ? (
+          <View style={{ marginTop: 10 }}>
+            <View style={styles.modal_fields}>
+              <Text style={styles.modal_title_first}>Driver name</Text>
+              <Text style={styles.modal_title_second}>Willson Genemal</Text>
+            </View>
+            <View style={styles.modal_fields}>
+              <Text style={styles.modal_title_first}>Delivery time</Text>
+              <Text style={styles.modal_title_second}>37 minutes</Text>
+            </View>
+            <View style={styles.modal_fields}>
+              <Text style={styles.modal_title_first}>Phone</Text>
+              <Text style={styles.modal_title_second}>*** *** **** 112</Text>
+            </View>
+          </View>
+        ) : null}
+      </>
+    );
+  };
+
+
+  const SecondModal_order_details = () => {
+    return (
+      <>
+        <TouchableOpacity
+          onPress={() =>
+            set_show_modal_SecondModal_order_details(!show_modal_SecondModal_order_details)
+          }
+          style={styles.CustomerMainTitle}>
+          <Text style={styles.ModalDropdown}>ORDER DETAILS</Text>
+
+          {show_modal_SecondModal_order_details == true ? (
             <Fontisto
               name="angle-up"
               style={[styles.cross_icon, {color: 'black'}]}
@@ -183,8 +326,71 @@ const Clints = () => {
             />
           )}
         </TouchableOpacity>
+<<<<<<< HEAD
         {show_modal_customer_data == true ? (
           <View style={{marginTop: 10}}>
+=======
+        {show_modal_SecondModal_order_details == true ? (
+          <View style={{ marginTop: 10 }}>
+            <View style={styles.modal_fields}>
+              <Text style={styles.modal_title_first}>Order created</Text>
+              <Text style={styles.modal_title_second}>13.11.2021</Text>
+            </View>
+            <View style={styles.modal_fields}>
+              <Text style={styles.modal_title_first}>Payment</Text>
+              <Text style={styles.modal_title_second}>$ 13.00</Text>
+            </View>
+            <View style={styles.modal_fields}>
+              <Text style={styles.modal_title_first}>Credit card</Text>
+              <Text style={styles.modal_title_second}>**** **** **** 3782</Text>
+            </View>
+
+
+            <FlatList
+              data={data01}
+              numColumns={1}
+              style={{ marginBottom: 90, marginVertical: 30 }}
+              showsVerticalScrollIndicator={false}
+              renderItem={({ item }) => (
+                <View style={{ flexDirection: 'row', width: "90%", }}>
+                  <Text style={styles.IdSecondModal}>{item.ID}</Text>
+                  <Entypo style={styles.CrossIconSecondModal} name="cross" />
+                  <Text style={styles.SecondModalTile}>{item.Title}</Text>
+                </View>
+              )}
+              keyExtractor={item => item.id}
+            />
+          </View>
+        ) : null}
+      </>
+    );
+  };
+
+  const Personal_data = () => {
+    return (
+      <>
+        <TouchableOpacity
+          onPress={() =>
+            set_show_modal_Personal_data(!show_modal_Personal_data)
+          }
+          style={styles.CustomerMainTitle}>
+          <Text style={styles.ModalDropdown}>PERSONAL DATA</Text>
+
+          {show_modal_Personal_data == true ? (
+            <Fontisto
+              name="angle-up"
+              style={[styles.cross_icon, { color: 'black' }]}
+            />
+          ) : (
+            <Fontisto
+              name="angle-down"
+              style={[styles.cross_icon, { color: 'black' }]}
+            />
+          )}
+        </TouchableOpacity>
+        {show_modal_Personal_data == true ? (
+          <View style={{ marginTop: 10 }}>
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>{t('Total_orders')}</Text>
               <Text style={styles.modal_title_second}>43</Text>
@@ -202,7 +408,7 @@ const Clints = () => {
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>{t('credit_card')}</Text>
               <Text style={styles.modal_title_second}>
-                **** **** **** 4543{' '}
+                **** **** **** 4543
               </Text>
             </View>
           </View>
@@ -210,10 +416,11 @@ const Clints = () => {
       </>
     );
   };
-  const driver_data = () => {
+  const Favourite_item = () => {
     return (
       <>
         <TouchableOpacity
+<<<<<<< HEAD
           onPress={() => set_show_modal_driver_data(!show_modal_driver_data)}
           style={{
             flexDirection: 'row',
@@ -225,8 +432,13 @@ const Clints = () => {
             marginTop: 10,
           }}>
           <Text style={styles.ModalDropdown}>{t('driver_data')}</Text>
+=======
+          onPress={() => set_show_modal_Favourite_item(!show_modal_Favourite_item)}
+          style={styles.CustomerMainTitle}>
+          <Text style={styles.ModalDropdown}>FAVOURITE ITEMS (3)</Text>
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
 
-          {show_modal_driver_data == true ? (
+          {show_modal_Favourite_item == true ? (
             <Fontisto
               name="angle-up"
               style={[styles.cross_icon, {color: 'black'}]}
@@ -238,12 +450,21 @@ const Clints = () => {
             />
           )}
         </TouchableOpacity>
+<<<<<<< HEAD
         {show_modal_driver_data == true ? (
           <View style={{marginTop: 10}}>
             <FlatList
               data={data}
               numColumns={2}
               style={{marginBottom: 5, height: 320}}
+=======
+        {show_modal_Favourite_item == true ? (
+          <View style={{ marginTop: 10 }}>
+            <FlatList
+              data={data}
+              numColumns={2}
+              style={{ marginBottom: 5, }}
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
               showsVerticalScrollIndicator={true}
               renderItem={({item}) => (
                 <View style={styles.FlatListMainView2}>
@@ -290,6 +511,7 @@ const Clints = () => {
           onPress={() =>
             set_show_modal_order_details(!show_modal_order_details)
           }
+<<<<<<< HEAD
           style={{
             flexDirection: 'row',
             padding: 12,
@@ -300,6 +522,10 @@ const Clints = () => {
             marginTop: 10,
           }}>
           <Text style={styles.ModalDropdown}>{t('order_details')}</Text>
+=======
+          style={styles.CustomerMainTitle}>
+          <Text style={styles.ModalDropdown}>ORDER DETAILS</Text>
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
           {show_modal_order_details == true ? (
             <Fontisto
               name="angle-up"
@@ -313,14 +539,13 @@ const Clints = () => {
           )}
         </TouchableOpacity>
         {show_modal_order_details == true ? (
+<<<<<<< HEAD
           <View style={{marginTop: 10}}>
+=======
+          <View>
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
             <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                alignSelf: 'center',
-                marginVertical: 10,
-              }}>
+              style={styles.SearchMainViewModal}>
               <EvilIcons name="search" style={[styles.SearchIcon]} />
               <TextInput
                 placeholder={t('Search_by_order')}
@@ -334,6 +559,7 @@ const Clints = () => {
               numColumns={1}
               style={{marginBottom: 90}}
               showsVerticalScrollIndicator={false}
+<<<<<<< HEAD
               renderItem={({item}) => (
                 <View>
                   <View style={styles.whiteDive}>
@@ -356,14 +582,21 @@ const Clints = () => {
                       </View>
                     </View>
                     <View style={styles.FlatStyle}>
+=======
+              renderItem={({ item }) => (
+                <TouchableOpacity onPress={() => setSecondModalVisible(true)} style={styles.whiteDive}>
+                  <View style={styles.SpaceBetweenTitleWhite}>
+                    <View style={{ flexDirection: 'row' }}>
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
                       <Text
                         style={{
-                          color: '#002733',
-                          fontSize: 17,
-                          paddingHorizontal: 4,
+                          fontSize: 18,
+                          paddingTop: 5,
+                          color: '#CCD4D6',
                         }}>
-                        2
+                        ORDER ID
                       </Text>
+<<<<<<< HEAD
                       <TouchableOpacity>
                         <Entypo
                           name="cross"
@@ -379,24 +612,33 @@ const Clints = () => {
                           paddingHorizontal: 4,
                         }}>
                         {item.order1}
+=======
+                      <Text style={styles.OrderIdentityCode}>
+                        {item.Identity}
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
                       </Text>
                     </View>
-
-                    <View style={styles.FlatStyle1}>
-                      <Text
-                        style={{
-                          color: '#002733',
-                          fontSize: 17,
-                          paddingHorizontal: 4,
-                        }}>
-                        1
-                      </Text>
+                    <View>
+                      <Text style={styles.TimeBar}>{item.Code}</Text>
+                    </View>
+                  </View>
+                  <View style={styles.FlatStyle}>
+                    <Text
+                      style={{
+                        color: '#002733',
+                        fontSize: 17,
+                        paddingHorizontal: 4,
+                      }}>
+                      2
+                    </Text>
+                    <TouchableOpacity>
                       <Entypo
                         name="cross"
                         size={17}
                         style={{paddingTop: 3, paddingHorizontal: 4}}
                         color={'#CCD4D6'}
                       />
+<<<<<<< HEAD
                       <Text
                         style={{
                           color: '#002733',
@@ -410,8 +652,20 @@ const Clints = () => {
 
                     <TouchableOpacity style={styles.MoreOrderShow}>
                       <Text style={{color: '#5AB3A8'}}>3 {t('more')}</Text>
+=======
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
                     </TouchableOpacity>
+                    <Text
+                      style={{
+                        color: '#002733',
+                        fontSize: 17,
+                        paddingHorizontal: 4,
+                      }}>
+                      {item.order1}
+                    </Text>
+                  </View>
 
+<<<<<<< HEAD
                     <View style={{flexDirection: 'row'}}>
                       <Text style={styles.paymentMethod}>
                         {t('payment_method')}
@@ -426,11 +680,51 @@ const Clints = () => {
                       </Text>
                       <Text style={styles.CreditCard}>**** **** **** 3782</Text>
                     </View>
+=======
+                  <View style={styles.FlatStyle}>
+                    <Text
+                      style={{
+                        color: '#002733',
+                        fontSize: 17,
+                        paddingHorizontal: 4,
+                      }}>
+                      1
+                    </Text>
+                    <Entypo
+                      name="cross"
+                      size={17}
+                      style={{ paddingTop: 3, paddingHorizontal: 4 }}
+                      color={'#CCD4D6'}
+                    />
+                    <Text
+                      style={{
+                        color: '#002733',
+                        fontSize: 17,
+                        width: 250,
+                        paddingHorizontal: 4,
+                      }}>
+                      {item.order2}
+                    </Text>
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
                   </View>
-                </View>
+
+                  <TouchableOpacity style={styles.MoreOrderShow}>
+                    <Text style={{ color: '#5AB3A8' }}>3 more</Text>
+                  </TouchableOpacity>
+
+                  <View style={{ flexDirection: 'row' }}>
+                    <Text style={styles.paymentMethod}>PAYMENT METHOD</Text>
+                    <Text style={[styles.CreditCard]}>CREDIT CARD</Text>
+                  </View>
+                  <View style={{ flexDirection: 'row' }}>
+                    <Text style={[styles.paymentMethod]}>CARD DATA</Text>
+                    <Text style={styles.CreditCard}>**** **** **** 3782</Text>
+                  </View>
+                </TouchableOpacity>
               )}
               keyExtractor={item => item.id}
             />
+
           </View>
         ) : null}
       </>
@@ -438,16 +732,23 @@ const Clints = () => {
   };
 
   return (
+<<<<<<< HEAD
     <SafeAreaView style={{marginHorizontal: 25}}>
       <View style={{padding: 20}}>
+=======
+    <SafeAreaView style={{ backgroundColor: '#E5E5E5', paddingHorizontal: 25 }}>
+      <View style={{ padding: 20 }}>
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
         <Modal
           animationType="slide"
           transparent={true}
+          onBackdropPress={() => ismodalVisible(false)}
           visible={ismodalVisible}
           onRequestClose={() => {
             setisModalVisible(!ismodalVisible);
           }}>
           <View style={styles.centeredView}>
+<<<<<<< HEAD
             <ScrollView style={styles.modalView}>
               <View style={styles.modal_header}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -488,6 +789,76 @@ const Clints = () => {
               {driver_data()}
               {order_details()}
             </ScrollView>
+=======
+            <View style={styles.modalView}>
+              <ScrollView>
+                <View>
+                  <TouchableOpacity
+                    onPress={() => setisModalVisible(!ismodalVisible)}
+                    style={{ position: 'absolute', right: 0, height: 40, width: 40, }}>
+                    <Entypo
+                      name="cross"
+                      style={[
+                        { color: '#4C6870', fontSize: 30, },
+                      ]}
+                    />
+                  </TouchableOpacity>
+                </View>
+
+                {SecondModalVisible == false ?
+                  <View>
+                    <View style={styles.modal_header}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={styles.orderid_text}>Cameron Williamson</Text>
+                        <View style={styles.modal_recuring}>
+                          <Text style={{ color: 'white', fontFamily: 'Lato-Regular' }}>
+                            Recurring client
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                      <Text
+                        style={{
+                          color: '#CCD4D6',
+                          fontFamily: 'Lato-Bold',
+                          width: 110,
+                        }}>
+                        CUSTOMER ID
+                      </Text>
+
+                      <Text style={{ color: '#002733', fontFamily: 'Lato-Bold' }}>
+                        #644
+                      </Text>
+                    </View>
+                  </View>
+                  :
+                  null}
+                {SecondModalVisible == true ?
+                  <View>
+                    <View style={{ flexDirection: 'row', width: 340 }}>
+                      <TouchableOpacity onPress={() => setSecondModalVisible(!SecondModalVisible)} style={styles.SecondModalContainer}>
+                        <MaterialCommunityIcons name='keyboard-backspace' style={styles.SecondModalIcon} />
+                        <Text style={styles.SecondModalText} >Order #723DN8</Text>
+                      </TouchableOpacity>
+                      <View style={styles.SecondModalCompleteView}>
+                        <Text style={styles.SecondViewCompleteText}>Completed</Text>
+                      </View>
+                    </View>
+                    {Customer_Data()}
+                    {Driver_Data()}
+                    {SecondModal_order_details()}
+                  </View>
+                  :
+                  <>
+                    {Personal_data()}
+                    {Favourite_item()}
+                    {order_details()}
+                  </>
+                }
+              </ScrollView>
+            </View>
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
           </View>
         </Modal>
       </View>
@@ -538,24 +909,20 @@ const Clints = () => {
           </Text>
           <AntDesign
             name="down"
-            style={{
-              fontSize: 18,
-              color: '#002733',
-              marginHorizontal: 5,
-              marginTop: 5,
-            }}
+            style={styles.SortBy}
           />
         </TouchableOpacity>
-        <Modal
+        <ModalViewS
           transparent={true}
           animationType="fade"
+          onBackdropPress={() => changeModalVisibilty(false)}
           visible={ModalVisible}
           nRequestClose={() => changeModalVisibilty(false)}>
           <ModalView
             changeModalVisibilty={changeModalVisibilty}
             setData={setData}
           />
-        </Modal>
+        </ModalViewS>
       </View>
       <View style={{marginTop: 5, marginBottom: 10}}>
         <FlatList
@@ -565,7 +932,7 @@ const Clints = () => {
           showsVerticalScrollIndicator={false}
           renderItem={({item}) => (
             <View style={styles.FlatListMainView}>
-              <TouchableOpacity onPress={() => setisModalVisible(true)}>
+              <TouchableOpacity onPress={() => { setSecondModalVisible(false), setisModalVisible(true) }}>
                 <View style={styles.GreenBkgFlat}>
                   <Text style={styles.TitleMainTextFlat}>{item.Title}</Text>
                   <Text style={styles.ButtonFlatList}>
@@ -609,3 +976,8 @@ const Clints = () => {
 };
 
 export default Clints;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 99015916a62a2d47a2cff67e32204d0e13140b54
