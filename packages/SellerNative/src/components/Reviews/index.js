@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, Image, StyleSheet, FlatList, TextInput, } from 'react-native';
-import { Calender, CustomButton, Raiting } from '@SilalApp/common/components/native';
+import { Calender, CustomButton, Raiting, TitleHeading } from '@SilalApp/common/components/native';
 import styles from './Styles';
 
 const data2 = [
@@ -43,22 +43,13 @@ const Reviews = () => {
 
 
     return (
-        <View style={{backgroundColor:'#E5E5E5'}}>
-            <View style={{ flexDirection: 'row', marginHorizontal: 25 }}>
-                <View>
-                    <Text style={styles.Title}>Restaurant’s name</Text>
-                    <Text style={styles.subTitle}>8502 Preston Rd. Inglewood</Text>
-                </View>
-                <View style={styles.PeackTimeBackground}>
-                    <Text style={styles.TextPeackTime}>PEAK HOURS 12 AM - 14 PM</Text>
-                </View>
-            </View>
-
+        <View style={{ backgroundColor: '#E5E5E5' }}>
+            <TitleHeading />
             <View style={styles.DividerRow}>
                 <View style={styles.DividerFirstView}>
                     <View style={styles.firstViewInerStyle}>
                         <Text style={styles.firstViewTitle} >Reviews</Text>
-                        <Calender/>
+                        <Calender />
 
                     </View>
                     <FlatList
@@ -73,7 +64,7 @@ const Reviews = () => {
                                         marginLeft: -20,
                                         marginTop: -3,
                                     }}>
-                                        <Text style={{ paddingRight: 20 }}>{item.time}</Text>
+                                        <Text style={{ paddingRight: 20,marginVertical:12 }}>{item.time}</Text>
                                     </View>
                                 </View>
                                 <View style={{ marginHorizontal: 138, marginTop: -50 }}>
@@ -86,9 +77,9 @@ const Reviews = () => {
                                         <View style={{ borderColor: '#E8E8E8', borderWidth: 1, marginVertical: 10, borderRadius: 5 }}>
                                             <TextInput placeholder='Type here' multiline={true} textAlignVertical='top' style={{ height: 80, }} />
                                         </View>
-                                         : null}  
-                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between',marginVertical:5 }}>
-                                        <CustomButton text={isReply== true ? "Submit": 'Reply'} onPress={()=> setisReply(true)}  />
+                                        : null}
+                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5 }}>
+                                        <CustomButton text={isReply == true ? "Submit" : 'Reply'} onPress={() => setisReply(true)} />
                                         <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center', }}>
                                             <Text style={styles.ContactButton}>Contact support</Text>
                                         </TouchableOpacity>

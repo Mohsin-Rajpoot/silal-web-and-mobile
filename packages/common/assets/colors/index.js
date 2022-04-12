@@ -26,6 +26,6 @@ const colors = {
   lightRed:"#DE350B",
   red50:"#FFEBE6",
   bluish:"#E6FCFF",
-
+ 
 };
 export default colors;

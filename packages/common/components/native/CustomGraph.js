@@ -3,7 +3,11 @@
 import React, { Component, useEffect, useState, useRef } from 'react';
 import { View, Text, StyleSheet, Dimensions, Image, FlatList, StatusBar, Animated } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient'
-
+import {
+    OrientationLocker,
+    LANDSCAPE,
+    PORTRAIT
+  } from 'react-native-orientation-locker';
 import * as Animatable from 'react-native-animatable';
 
 const windowWidthF = Dimensions.get("window").height
@@ -26,7 +30,35 @@ var values = [
 ]
 
 export default function CustomGraph() {
-    const [showDurationPicker, setshowDurationPicker] = useState(false)
+ 
+    // const [orientation, setOrientation] = useState(LANDSCAPE);
+    // const determineAndSetOrientation = () => {
+    //     let width = Dimensions.get('window').width;
+    //     let height = Dimensions.get('window').height;
+    
+    //     if (Dimensions == PORTRAIT) {
+    //         setOrientation(LANDSCAPE);
+    //         console.log(orientation,"orientation fff");
+    //       } else {
+    //         setOrientation(LANDSCAPE);
+    //         console.log(orientation,'LANDSCAPE eeeeee');
+    //       }
+    //   }
+    
+    //   useEffect(() => {
+    
+    //     determineAndSetOrientation();
+    //     Dimensions.addEventListener('change', determineAndSetOrientation);
+    
+    //     return () => {
+    //       Dimensions.addEventListener('change', determineAndSetOrientation)
+    //     }
+    //   }, []);
+
+
+
+
+
 
 
     const fadeAnim16 = useRef(new Animated.Value(0)).current;
@@ -80,13 +112,13 @@ export default function CustomGraph() {
                                 <View style={styles.horizontalLine} />
                             </View>
                             <View style={styles.graphHorizontalLinesView}>
-                            <Text style={styles.digits}>${((ValueFirst / 1000) / 2).toFixed(1)}</Text>
+                                <Text style={styles.digits}>${((ValueFirst / 1000) / 2).toFixed(1)}</Text>
 
                                 <View style={styles.horizontalLine} />
                             </View>
                             <View style={styles.graphHorizontalLinesView}>
-                               
-                            <Text style={styles.digits}>${((ValueFirst / 1000) / 2).toFixed(1)}</Text>
+
+                                <Text style={styles.digits}>${((ValueFirst / 1000) / 2).toFixed(1)}</Text>
 
                                 <View style={styles.horizontalLine} />
                             </View>
@@ -128,13 +160,13 @@ export default function CustomGraph() {
                                         </View>
                                         <View style={styles.durationListTextView}>
                                             <Text style={[styles.quarterlySepText]}>28 PM</Text>
-                                        {/* <Text style={[styles.quarterlySepText2, {  backgroundColor:'red',marginTop:90 }]}>29</Text> */}
+                                            <Text style={{ position: 'absolute', bottom: -15, paddingHorizontal: 5, fontFamily: 'Lato-Semibold', fontSize: 13, color: '#002733' }}>$ 230</Text>
 
                                         </View>
 
                                     </View>
-                                    
-                                
+
+
                                 }
 
 
@@ -181,8 +213,6 @@ const styles = StyleSheet.create({
         letterSpacing: 1,
         // paddingLeft: windowHeightF / 1.2,
         width: 60,
-
-
     },
     horizontalLine: {
         width: "69.1%",
@@ -216,18 +246,11 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         textAlignVertical: "center",
         width: 80,
-        fontFamily:'Lato-Medium'
+        fontFamily: 'Lato-Medium'
 
 
     },
-    quarterlySepText2: {
-        // color: "#fff",
-        fontSize: 14,
-        paddingHorizontal: "25%",
-        height: 30,
-        alignSelf: "center",
-        textAlignVertical: "center",
-    },
+
 
 
 

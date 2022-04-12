@@ -197,7 +197,7 @@ const render_order_further_detail=()=>{
 
           <TouchableOpacity onPress={()=>{set_show_order_detail_view(!show_order_detail_view),set_selected_index(index)}} style={[styles.render_all_order_single,{width:'10%',}]} >
               <View style={{backgroundColor:'#F2F4F5',height:30,width:30,borderRadius:50,alignItems:'center',justifyContent:'center'}}>
-              {show_order_detail_view==true && index==selected_index?
+              {show_order_detail_view==true && index==selected_index ?
                 <Fontisto name='angle-up' style={{color:'#4C6870',fontSize: 14,}} />
                 :
                 <Fontisto name='angle-down' style={{color:'#4C6870',fontSize: 14,}} />

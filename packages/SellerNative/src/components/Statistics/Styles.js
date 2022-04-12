@@ -60,6 +60,7 @@ const styles = ScaledSheet.create({
         paddingHorizontal: 20,
         justifyContent: 'space-evenly',
         marginHorizontal: 3,
+        zIndex:0
 
     },
     One: {
@@ -122,7 +123,7 @@ const styles = ScaledSheet.create({
         fontSize: 18,
         color: '#002733',
         fontFamily: 'Poppins-Bold',
-        paddingHorizontal: 30,
+        // paddingHorizontal: 30,
         paddingVertical: 15,
     },
     Title: {
@@ -138,8 +139,27 @@ const styles = ScaledSheet.create({
         borderRadius: 5,
         elevation: 5,
     },
-
-
+    colorgreen:{
+        backgroundColor: '#E3FCEF',
+    },
+    TotalData:{
+        color: '#36B37E', textAlign: 'center'
+    },
+    WhihteDiveIcon:{
+        fontSize: 30, color: '#5AB3A8'
+    },
+    BackgroundLightRed:{
+        backgroundColor: '#FFEBE6',
+    },
+    raitingIcon:{
+        fontSize: 22, color: '#FFC400', 
+    },
+    HotProductPart:{
+        flexDirection: 'row', paddingHorizontal: 20, justifyContent: 'space-between' 
+    },
+    graphView:{
+        width: '64%', backgroundColor: '#fff', elevation: 2, marginHorizontal: 10 ,borderRadius:5
+    }
 
 });
 export default styles;

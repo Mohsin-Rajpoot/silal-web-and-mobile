@@ -48,7 +48,7 @@ const styles = ScaledSheet.create({
         flexDirection: 'row', justifyContent: 'space-evenly', marginVertical: 10,
     },
     DividerFirstView: {
-        width: "68%", backgroundColor: '#fff', elevation: 1, borderRadius: 5,height:"94%"
+        width: "68%", backgroundColor: '#fff', elevation: 1, borderRadius: 5, height: "94%"
     },
     firstViewInerStyle: {
         justifyContent: 'space-between',
@@ -78,7 +78,7 @@ const styles = ScaledSheet.create({
         borderBottomWidth: 1, marginHorizontal: 20, marginVertical: 10, borderBottomColor: '#809399', opacity: 0.1
     },
     SecondViewMainContainer: {
-        width: "25%", backgroundColor: '#fff', elevation: 5, borderRadius: 5,paddingVertical:5,height:"30%"
+        width: "25%", backgroundColor: '#fff', elevation: 5, borderRadius: 5, paddingVertical: 5, height: "33%"
     },
     SecondViewTitle: {
         color: '#002733', fontFamily: 'Poppins-Bold', textAlign: 'center', fontSize: 18, paddingVertical: 15

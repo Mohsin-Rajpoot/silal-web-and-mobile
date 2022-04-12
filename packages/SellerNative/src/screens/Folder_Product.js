@@ -19,6 +19,8 @@ import { SwipeListView } from 'react-native-swipe-list-view'
 import Octicons from 'react-native-vector-icons/Octicons'
 import { Picker } from '@react-native-picker/picker'
 import Foundation from 'react-native-vector-icons/Foundation'
+import MultiSelectDropDown from '../components/MultiSelectDropDown';
+
 const Secondary = "#002733";
 
 
@@ -135,10 +137,8 @@ export default function Archive_orders({ title, navigation }) {
                     <Modal visible={Showmodal}
                         animationType="slideInRight"
                         transparent={true} >
-
                         <View
                             style={styles.ModalContainerPreview}>
-
                             <TouchableOpacity style={styles.ShowmodalOpenButton}>
                                 <Entypo name="cross" style={styles.closeShowmodalicon} onPress={() => setShowmodal(false)} />
                             </TouchableOpacity>
@@ -183,8 +183,10 @@ export default function Archive_orders({ title, navigation }) {
                                     </View>
                                     <View>
                                         <Text style={styles.dropDownModalTitle}>Item description</Text>
-                                        <TextInput multiline={true} textAlignVertical='top' placeholder="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-                                                  duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
+                                        <TextInput multiline={true} textAlignVertical='top'
+                                            placeholder="Amet minim mollit non 
+                                        deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
+                                        duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
                                             placeholderTextColor='#002733' style={styles.TextInputMAinView}
                                         />
                                     </View>
@@ -203,18 +205,23 @@ export default function Archive_orders({ title, navigation }) {
                                             keyExtractor={item => item.id}
                                         />
                                     </View>
-                                    <View style={{ marginVertical: 5 }}>
+                                    <View style={{ }}>
                                         <Text style={styles.dropDownModalTitle}>Allergies</Text>
-                                        <View style={styles.dropdownbox}>
-                                            <Picker
+                                    
+                                    
+                                    
+                                        <MultiSelectDropDown />
+                                      
+
+                                        {/* <Picker
                                                 animated={false}
                                                 selectedValue={selectedCategoryItem}
                                                 onValueChange={(itemValue, itemIndex) =>
                                                     setselectedCategoryItem(itemValue)}>
                                                 <Picker.Item label="Salad" value="java" />
                                                 <Picker.Item label="Salad Special" value="js" />
-                                            </Picker>
-                                        </View>
+                                            </Picker> */}
+                                      
                                     </View>
                                     <Text style={styles.AddViewModal}>Add-ons</Text>
                                     <View style={styles.grayViewContainer}>
@@ -297,11 +304,6 @@ export default function Archive_orders({ title, navigation }) {
                         </View>
                     </Modal>
                 </View>
-
-
-
-
-                {/* ////////////////// Delet Modal /////////////////// */}
                 <View style={{ marginHorizontal: 5, marginVertical: 4 }}>
                     <Modal visible={Openmodal}
                         animationType="slideInRight"
@@ -382,9 +384,9 @@ export default function Archive_orders({ title, navigation }) {
                                                 </View>
                                             </MenuTrigger>
                                             <MenuOptions customStyles={{ optionText: { padding: 5 } }}>
-                                                <MenuOption value="Normal" text='Edit' />
+                                                <MenuOption onSelect={() => setShowmodal(true)} value="Normal" text='Edit' />
                                                 <MenuOption value="Normal" text='Freeze Listing' />
-                                                <MenuOption value="Normal" text='Delete' />
+                                                <MenuOption onSelect={() => setOpenmodal(true)} value="Normal" text='Delete' />
                                             </MenuOptions>
                                         </Menu>
                                     </View>
@@ -394,15 +396,15 @@ export default function Archive_orders({ title, navigation }) {
                         renderHiddenItem={(data, rowMap) => (
                             <View style={styles.rowBack}>
                                 <View style={{ position: 'absolute', right: 2, flexDirection: 'row' }}>
-                                    <TouchableOpacity onPress={() => setShowmodal(true)} style={styles.BackButtons}>
-                                        <Text style={styles.BackButtonsText}>Edit</Text>
+                                    <TouchableOpacity onPress={() => setShowmodal(true)} style={[styles.BackButtons, { backgroundColor: '#F2F4F5' }]}>
+                                        <Text style={[styles.BackButtonsText, { color: '#000' }]}>Edit</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={[styles.BackButtons, { backgroundColor: '#0065FF', }]}>
-                                        <Text style={styles.BackButtonsText}>Freeze</Text>
+                                    <TouchableOpacity style={[styles.BackButtons, { backgroundColor: '#DEEBFF', }]}>
+                                        <Text style={[styles.BackButtonsText, { color: '#000' }]}>Freeze</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity
                                         onPress={() => setOpenmodal(true)}
-                                        style={[styles.BackButtons, { backgroundColor: '#FF5630', }]}>
+                                        style={[styles.BackButtons, { backgroundColor: '#FB5C5C', }]}>
                                         <Text style={styles.BackButtonsText}>Delete</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -455,7 +457,7 @@ export default function Archive_orders({ title, navigation }) {
     return (
 
         <View style={{ height: '90%', padding: 20 }}>
-            <MenuProvider >
+            <MenuProvider>
                 <View style={{ width: '100%', alignSelf: 'center' }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5, alignItems: 'center', }}>
                         <TouchableOpacity onPress={() => navigation.goBack()} style={{ flexDirection: 'row' }}>
@@ -468,6 +470,7 @@ export default function Archive_orders({ title, navigation }) {
                                 text="Add new item"
                                 onPress={() => navigation.navigate('ItemCreaterFirstStep')}
                             />
+                            {/* <MultiSelectDropDown/> */}
                         </View>
                     </View>
                 </View>
@@ -773,7 +776,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     BackButtons: {
-        backgroundColor: '#FF8B00', height: 55, width: 72, justifyContent: 'center', alignItems: 'center', borderRadius: 5
+        height: 60, width: 72, justifyContent: 'center', alignItems: 'center',
     },
     BackButtonsText: {
         color: '#fff', fontSize: 15, fontFamily: 'Lato-Medium'
@@ -820,13 +823,13 @@ const styles = StyleSheet.create({
         height: 50, width: '100%', borderWidth: 1, borderRadius: 5, marginVertical: 5, borderColor: '#f1f1f1'
     },
     ShowmodalOpenButton: {
-        position: 'absolute', right: 10, top: 5
+        height: 30, width: 40, flexDirection: 'row-reverse', width: '100%', marginVertical: 5, marginRight: -24
     },
     closeShowmodalicon: {
         fontSize: 30, color: '#002733',
     },
     SaveButton: {
-        backgroundColor: '#5AB3A8', marginTop: 40,
+        backgroundColor: '#5AB3A8',
         width: '80%', justifyContent: 'center',
         alignItems: 'center', alignSelf: 'center',
         height: 40, borderRadius: 5
@@ -865,7 +868,7 @@ const styles = StyleSheet.create({
         fontSize: 17, fontFamily: 'Lato-Regular', paddingHorizontal: 8
     },
     AddViewModal: {
-        color: '#002733', fontSize: 17, fontFamily: 'Poppins-SemiBold', marginVertical: 15
+        color: '#002733', fontSize: 17, fontFamily: 'Poppins-SemiBold',
     },
     grayViewContainer: {
         width: '100%', justifyContent: 'center', alignSelf: 'center',

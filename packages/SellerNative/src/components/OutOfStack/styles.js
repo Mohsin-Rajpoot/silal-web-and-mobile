@@ -9,7 +9,7 @@ import {
 import fonts from '@SilalApp/common/assets/fonts';
 const styles = ScaledSheet.create({
 
-   
+
     title: {
         fontSize: 18,
         fontWeight: '700',
@@ -134,13 +134,13 @@ const styles = ScaledSheet.create({
     render_all_orders: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        backgroundColor: '#fff',
+         
     },
     render_all_order_single: {
         height: 30,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 5
+        marginTop: 5,
     },
     centeredView: {
         flex: 1,
@@ -249,11 +249,10 @@ const styles = ScaledSheet.create({
         alignItems: "center",
         justifyContent: 'space-between',
         paddingHorizontal: 5,
-        position:'absolute',
-        bottom:-35,
-        
-        width:'105%'
-      
+        position: 'absolute',
+        bottom: -40,
+        width: '102%'
+
     },
     pagination_numbring: {
         width: 200,

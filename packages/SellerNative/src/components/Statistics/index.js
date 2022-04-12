@@ -1,11 +1,44 @@
-import React, { useState } from 'react'
-import { View, Text, Image, FlatList, } from 'react-native';
+import React, { useState,useEffect } from 'react'
+import { View, Text, Image, FlatList,Dimensions } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import { TitleHeading, StatisticWhiteBoxTitle, CustomGraph } from '@SilalApp/common/components/native';
+import { TitleHeading, StatisticWhiteBoxTitle, CustomGraph, Calender } from '@SilalApp/common/components/native';
 import styles from './Styles';
 const Statistics = () => {
+    // const [orientation, setOrientation] = useState('LANDSCAPE');
+
+    // const determineAndSetOrientation = () => {
+    //     let width = Dimensions.get('window').width;
+    //     let height = Dimensions.get('window').height;
+    
+    //     if (width < height) {
+    //         setOrientation('LANDSCAPE');
+    //         console.log(orientation,"orientation");
+    //       } else {
+    //         setOrientation('LANDSCAPE');
+    //         console.log(orientation,'LANDSCAPE');
+    //       }
+    //   }
+    
+    //   useEffect(() => {
+    
+    //     determineAndSetOrientation();
+    //     Dimensions.addEventListener('change', determineAndSetOrientation);
+    
+    //     return () => {
+    //       Dimensions.addEventListener('change', determineAndSetOrientation)
+    //     }
+    //   }, []);
+
+
+
+
+
+
+
+
+
 
     const data = [
         {
@@ -41,7 +74,9 @@ const Statistics = () => {
 
     return (
         <View>
-            <TitleHeading />
+            <View style={{ zIndex: 1 }}>
+                <TitleHeading Date="Date" />
+            </View>
             <View style={styles.MainWhiteDiv}>
                 <View style={styles.One}>
                     <View style={styles.WhiteDive}>
@@ -49,10 +84,10 @@ const Statistics = () => {
                             <Image source={require('../../Assets/Currency.png')} style={styles.CurrencyImage} />
                         </View>
                         <StatisticWhiteBoxTitle Title="Total Sales" />
-                        <View style={[styles.PercentageBkgGreen, { backgroundColor: '#E3FCEF', }]}>
+                        <View style={[styles.PercentageBkgGreen,  styles.colorgreen ]}>
                             <View style={styles.TextInGreenDiv}>
-                                <Text style={{ color: '#36B37E', textAlign: 'center' }}>+11.7% </Text>
-                                <Ionicons name='arrow-up' style={{ color: '#36B37E', textAlign: 'center' }} />
+                                <Text style={styles.TotalData}>+11.7% </Text>
+                                <Ionicons name='arrow-up' style={styles.TotalData} />
                             </View>
                         </View>
                     </View>
@@ -64,12 +99,12 @@ const Statistics = () => {
                 <View style={styles.One}>
                     <View style={styles.WhiteDive}>
                         <View style={styles.ImgeViewBKG}>
-                            <Ionicons name='cart-outline' style={{ fontSize: 30, color: '#5AB3A8' }} />
+                            <Ionicons name='cart-outline' style={styles.WhihteDiveIcon} />
                         </View>
                         <StatisticWhiteBoxTitle Title="Total Orders" />
-                        <View style={[styles.PercentageBkgGreen, { backgroundColor: '#FFEBE6', }]}>
+                        <View style={[styles.PercentageBkgGreen,styles.BackgroundLightRed]}>
                             <View style={styles.TextInGreenDiv}>
-                                <Text style={[styles.PercentageTextColor, { color: '#FF5630', }]}>- 4 %</Text>
+                                <Text style={[styles.PercentageTextColor,styles.VectorIconView]}>- 4 %</Text>
                                 <Ionicons name='arrow-down' style={styles.VectorIconView} />
                             </View>
                         </View>
@@ -95,18 +130,18 @@ const Statistics = () => {
                 <View style={[styles.One, { paddingHorizontal: 8 }]}>
                     <View style={styles.WhiteDive}>
                         <View style={styles.ImgeViewBKG}>
-                            <MaterialCommunityIcons name='medal-outline' style={{ fontSize: 30, color: '#5AB3A8' }} />
+                            <MaterialCommunityIcons name='medal-outline' style={styles.WhihteDiveIcon} />
                         </View>
                         <StatisticWhiteBoxTitle Title="Total Rating" />
-                        <View style={[styles.PercentageBkgGreen, { backgroundColor: '#E3FCEF', }]}>
+                        <View style={[styles.PercentageBkgGreen, styles.colorgreen]}>
                             <View style={styles.TextInGreenDiv}>
-                                <Text style={{ color: '#36B37E', textAlign: 'center' }}>+11.7% </Text>
-                                <Ionicons name='arrow-up' style={{ color: '#36B37E', textAlign: 'center' }} />
+                                <Text style={styles.TotalData}>+11.7% </Text>
+                                <Ionicons name='arrow-up' style={styles.TotalData} />
                             </View>
                         </View>
                     </View>
                     <Text style={[styles.DollorSign]}>
-                        <Fontisto name="star" style={{ fontSize: 22, color: '#FFC400', }} />
+                        <Fontisto name="star" style={styles.raitingIcon} />
                         4.8
                     </Text>
                 </View>
@@ -114,11 +149,15 @@ const Statistics = () => {
 
             <View style={{ flexDirection: 'row', marginHorizontal: 30 }}>
                 <View style={styles.HotproductMainContainer}>
-                    <Text
-                        style={styles.headerTitleSecondary}>
-                        Hot products
-                    </Text>
-                    <View style={{}}>
+                    <View style={styles.HotProductPart}>
+                        <Text style={styles.headerTitleSecondary}>
+                            Hot products
+                        </Text>
+                        <View >
+                            <Calender bg_Calender='done' />
+                        </View>
+                    </View>
+                    <View>
                         <FlatList
                             data={data}
                             numColumns={1}
@@ -153,7 +192,7 @@ const Statistics = () => {
                         />
                     </View>
                 </View>
-                <View style={{ width: '64%',backgroundColor:'#fff',elevation:2,marginHorizontal:10 }}>
+                <View style={styles.graphView}>
                     <CustomGraph />
                 </View>
             </View>

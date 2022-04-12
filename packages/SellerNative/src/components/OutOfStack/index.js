@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { Text, View, FlatList, Image } from 'react-native';
+import React, { useState, useRef,useEffect } from 'react';
+import { Text, View, FlatList, Image, TouchableHighlight } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -11,13 +11,17 @@ import Menu, {
 } from 'react-native-popup-menu';
 import { CheckBox } from 'react-native-elements';
 import styles from './styles';
+// import { useFocusEffect } from '@react-navigation/native';
 export default function Archive_orders({ title, navigation }) {
 
 
     const [checked, setchecked] = useState(false);
     const [loader, setLoader] = useState(false);
+    const [ShowModal, setShowModal] = useState(false);
+    const [selected_index, set_selected_index] = useState('');
 
     const setcheck = (index) => {
+        console.log(index, "Harris Saleem")
         const val = data[index]
         val.checked = !val.checked
         data[index] = val
@@ -29,13 +33,13 @@ export default function Archive_orders({ title, navigation }) {
         }, 200);
     }
 
+   
+//   useFocusEffect(
+//     React.useCallback(() => {
+//         selected_index== '';
 
-
-
-
-
-
-
+//     },[])
+//   );
 
 
     var [data, setData] = useState([
@@ -125,20 +129,22 @@ export default function Archive_orders({ title, navigation }) {
 
     ]);
 
-
-    const render_all_oredrs = (item,index) => {
+    const render_all_oredrs = (item, index) => {
 
         return (
             <View>
-                <View style={[styles.render_all_orders, { paddingTop: 5 }]}>
-                <View>
-                                        <CheckBox
-                                            checked={item.checked == true || item.checked == 'true' ? true : false}
-                                            onPress={() => setcheck(index)}
-                                            checkedColor="#5AB3A8"
-                                            uncheckedColor="#CCD4D6"
-                                        />
-                                    </View>
+                <View
+                    //    style={}
+                    style={[styles.render_all_orders, { backgroundColor: index == selected_index ? '#E6F4F2' : 'white' }]}
+                >
+                    <View>
+                        <CheckBox
+                            checked={item.checked == true || item.checked == 'true' ? true : false}
+                            onPress={() => setcheck(index)}
+                            checkedColor="#5AB3A8"
+                            uncheckedColor="#CCD4D6"
+                        />
+                    </View>
                     <View style={[styles.render_all_order_single, { width: '10%', marginTop: 5 }]}>
                         <Image source={require('../../Assets/Dress.png')} style={{ height: 40, width: 40, resizeMode: 'contain' }} />
                     </View>
@@ -151,7 +157,7 @@ export default function Archive_orders({ title, navigation }) {
                     <View style={[styles.render_all_order_single, { width: '10%', justifyContent: 'flex-start', flexDirection: 'row' }]}>
                         <Text style={{}}>0</Text>
                     </View>
-                    <View style={[styles.render_all_order_singlee, { width: '14%', }]}>
+                    <View style={[{ width: '14%', }]}>
                         <Text style={{ fontFamily: 'Lato-Regular', textAlign: 'left', justifyContent: 'flex-start', }}>2</Text>
                         <Text style={{ fontFamily: 'Lato-Regular', fontSize: 10, }}>Variants on: Size, Color</Text>
                     </View>
@@ -168,7 +174,7 @@ export default function Archive_orders({ title, navigation }) {
                     </View>
                     <View style={[styles.render_all_order_single, { width: '8%', }]} >
                         <Menu>
-                            <MenuTrigger style={styles.trigger}>
+                            <MenuTrigger onPress={() => { set_selected_index(index) }} style={styles.trigger}>
                                 <View style={{ height: 40, width: 40, alignItems: 'center', justifyContent: 'center' }}>
                                     <Entypo name='dots-three-vertical' style={[styles.cross_icon, { color: '#4C6870', fontSize: 20 }]} />
                                 </View>
@@ -176,7 +182,6 @@ export default function Archive_orders({ title, navigation }) {
                             <MenuOptions customStyles={{ optionText: { padding: 5 } }}>
                                 <MenuOption value="Normal" text='Update current stack' />
                                 <MenuOption value="Normal" text='Delete' />
-
                             </MenuOptions>
                         </Menu>
                     </View>
@@ -227,29 +232,32 @@ export default function Archive_orders({ title, navigation }) {
 
     return (
 
-        <View style={{ height: '93%', padding: 5,backgroundColor:'#fff',margin:8,elevation:1,borderWidth:1,borderColor:"#fff",paddingHorizontal:40 }}>
-            <MenuProvider >
-
-                {header_alloredrs()}
-                <FlatList
-                    keyExtractor={(item, index) => index.toString()}
-                    data={data}
-                    renderItem={({ item,index }) => (
-                        render_all_oredrs(item,index)
-                    )}
-                />
-            </MenuProvider>
+        <View style={{
+            height: 570, paddingVertical: 10, paddingHorizontal: 10,
+            backgroundColor: '#fff', elevation: 1, borderWidth: 1,
+            borderColor: "#fff", borderRadius: 5, width: "95%", padding: 20,
+            justifyContent: 'center', alignSelf: 'center'
+        }}>
+            {header_alloredrs()}
+            <FlatList
+                keyExtractor={(item, index) => index.toString()}
+                data={data}
+                renderItem={({ item, index }) => (
+                    render_all_oredrs(item, index)
+                )}
+            />
             <View style={styles.pagination_view}>
-                    <Text style={{ fontFamily: 'Lato-Regular' }}>Showing 1-9 of 86</Text>
-                    <View style={styles.pagination_numbring}>
-                        <Ionicons name='chevron-back' style={{ color: '#d1d8da', fontSize: 24 }} />
-                        <Text style={{ fontFamily: 'Lato-Regular', color: 'black' }}>1</Text>
-                        <Text>2</Text>
-                        <Text>3</Text>
-                        <Text>4</Text>
-                        <MaterialCommunityIcons name='chevron-right-circle' style={{ color: '#4c6870', fontSize: 24 }} />
-                    </View>
+                <Text style={{ fontFamily: 'Lato-Regular' }}>Showing 1-9 of 86</Text>
+                <View style={styles.pagination_numbring}>
+                    <Ionicons name='chevron-back' style={{ color: '#d1d8da', fontSize: 24 }} />
+                    <Text style={{ fontFamily: 'Lato-Regular', color: 'black' }}>1</Text>
+                    <Text>2</Text>
+                    <Text>3</Text>
+                    <Text>4</Text>
+                    <MaterialCommunityIcons name='chevron-right-circle' style={{ color: '#4c6870', fontSize: 24 }} />
                 </View>
+            </View>
+
         </View>
 
     );
