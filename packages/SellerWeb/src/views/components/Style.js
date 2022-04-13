@@ -5,7 +5,7 @@ const CardStyled = styled.div`
   background: #ffffff;
   box-shadow: 0px 5px 10px -2px rgba(196, 214, 220, 0.25);
   border-radius: 5px;
-  padding: 20px;
+  padding: ${props => props.padding ? props.padding : '20px'};
   margin-bottom: 20px;
   &.bg-grey {
     background-color: #e5eaeb;
@@ -29,7 +29,7 @@ const Button = styled.button`
   padding: 0 20px;
   min-width: 100px;
   width: ${props => props.width};
-  height: 40px;
+  height: ${props => props.height ? props.height : '40px'};
   white-space: nowrap;
   color: ${props => props.color ? props.color : 'white'};
   font-weight: 600;
@@ -73,13 +73,31 @@ const ButtonText = styled.button`
   height: 40px;
   white-space: nowrap;
   color: var(--theme-clr);
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: ${props => props.weight ? props.weight : '600'};
+  font-size: ${props => props.size ? props.size : '15px'};
   transition: 0.2s all;
 `;
 
 const TableStyled = styled.div`
   font-family: 'Lato', sans-serif;
+  &.modal-table {
+    background: #FAFAFA;
+    max-height: 228px;
+    overflow-y: auto;
+    padding: 14px;
+    border-radius: 8px;
+    .rdt_Table {
+      padding: 0;
+    }
+    .rdt_TableHeadRow {
+      min-height: 30px;
+      height: 30px;
+    }
+    .rdt_TableRow {
+      background: #FAFAFA;
+      min-height: 42px;
+    }
+  }
   .rdt_Table {
     padding: 20px;
     background: #ffffff;

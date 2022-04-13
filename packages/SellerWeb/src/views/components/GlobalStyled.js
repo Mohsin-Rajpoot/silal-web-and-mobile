@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import { collpaseArrow } from "./AllImages";
+import { createGlobalStyle } from "styled-components"
+import { collpaseArrow } from "./AllImages"
 
 const GlobalStyle = createGlobalStyle`
 :root {
@@ -512,6 +512,14 @@ hr {
     background: rgba(90, 179, 168, 0.2);
     color: #5AB3A8;
 }
+.detail-modal {
+    .modal-dialog {
+        max-width: 700px;
+    }
+    .modal-content {
+        background-color: #FAFAFA;
+    }
+}
 `;
 
-export default GlobalStyle;
+export default GlobalStyle

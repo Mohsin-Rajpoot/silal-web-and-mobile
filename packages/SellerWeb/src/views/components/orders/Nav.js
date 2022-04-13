@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import styled from "styled-components"
 import NotesCanvas from "./NotesCanvas"
+import DetailModal from "./DetailModal"
 import {
     Modal,
     Col,
@@ -30,14 +31,17 @@ const Nav = ({
 }) => {
     const location = useLocation()
     const [shift, setShift] = useState(true)
-    const [showSupportModal, setShowSupportModal] = useState(false)
     const [showNotes, setShowNotes] = useState(false)
+    const [showSupportModal, setShowSupportModal] = useState(false)
+    const [showDetailModal, setShowDetailModal] = useState(false)
 
     const sidebarHandler = () => {
         setSideBar(!sideBar)
     }
     const handleCloseSupportModal = () => setShowSupportModal(false)
     const handleShowSupportModal = () => setShowSupportModal(true)
+    const handleCloseDetailModal = () => setShowDetailModal(false)
+    const handleShowDetailModal = () => setShowDetailModal(true)
     const handleCloseNotes = () => setShowNotes(false)
     const handleShowNotes = () => setShowNotes(true)
 
@@ -79,7 +83,7 @@ const Nav = ({
                     </ModalButton>
                     <ModalButton
                         type="button"
-                        onClick={handleShowSupportModal}>
+                        onClick={handleShowDetailModal}>
                         <InfoIcon />
                     </ModalButton>
                     <FlexContainer>
@@ -133,6 +137,10 @@ const Nav = ({
             <NotesCanvas
                 handleCloseNotes={handleCloseNotes}
                 showNotes={showNotes}
+            />
+            <DetailModal
+                handleCloseDetailModal={handleCloseDetailModal}
+                showDetailModal={showDetailModal}
             />
         </>
     )

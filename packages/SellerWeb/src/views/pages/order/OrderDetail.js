@@ -77,22 +77,19 @@ const OrderDetail = () => {
             <Button
               type="button"
               onClick={() => setModalShow(true)}
-              className="w-100 mb-2 f-medium"
-              style={{
-                background: "#ADD9D3",
-                color: "inherit",
-                fontSize: "15px",
-              }}
-            >
+              className="w-100 mb-2 f-medium theme-clr" bg="#5AB3A833">
               Change estimation time
             </Button>
-            <Button
-              type="button"
-              className="w-100 f-medium"
-              style={{ fontSize: "15px" }}
-            >
-              Ready for pickup
-            </Button>
+            <div className="d-flex">
+              <Button type="button" className="me-2" width="129px" bg="#CCD4D680" color="#4C6870">
+                Cancel order
+              </Button>
+              <Button
+                type="button"
+                className="w-100 f-medium flex-1">
+                Ready for pickup
+              </Button>
+            </div>
           </CardStyled>
         </Col>
       </Row>

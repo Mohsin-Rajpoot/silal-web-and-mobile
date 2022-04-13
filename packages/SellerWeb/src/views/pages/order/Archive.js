@@ -3,7 +3,7 @@ import '../../components/rsuite.css'
 import { DateRangePicker } from 'rsuite'
 import NavCustom from '../../components/orders/Nav'
 // import DatePicker from 'react-date-picker'
-// import TableData from "../../components/Table"
+// import Table from "../../components/Table"
 import DataTable from 'react-data-table-component'
 import {
     Tab,
