@@ -16,10 +16,22 @@ import PagerView from 'react-native-pager-view';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useTranslation} from 'react-i18next';
 import CommonTab from '../../components/CommonTab';
-const {width, height} = Dimensions.get('window');
+import {Icon} from 'react-native-elements';
+import {
+  widthPercentageToDP as width,
+  heightPercentageToDP as height,
+} from 'react-native-responsive-screen';
 
+import colors from '@SilalApp/common/assets/colors/index';
+import fonts from '@SilalApp/common/assets/fonts/index';
+import DaySelect from '../../components/DaySelection';
+import CustomModal from '@SilalApp/common/components/native/CustomModal';
+import Timer from '../../components/Timer';
+import Toast from 'react-native-easy-toast';
+import CustomText from '@SilalApp/common/components/CustomText';
 const Order = ({navigation}) => {
   const {t} = useTranslation();
+  const toastRef = useRef();
   // const [Statistic, setStatistic] = useState(true);
   // const [Reviews, setReviews] = useState(false);
   // const [Outofstock, setOutofstack] = useState(false);
@@ -27,8 +39,11 @@ const Order = ({navigation}) => {
   // const [current_order_state, set_current_order_state] = useState(true);
   // const [pre_order_state, set_pre_order_state] = useState(false);
   // const [archive_order_state, set_archive_order_state] = useState(false);
-
+  const [modal, setModal] = useState(false);
+  const [contactModal, setContactModal] = useState(false);
   const [order_state, set_order_state] = useState('current');
+  const [activeShift, setActiveShift] = useState(false);
+  const [shiftModal, setShiftModal] = useState(activeShift);
   const ref = useRef(null);
   const tabs = ['Current orders', 'Pre-orders', 'Archive'];
   const [page, setPage] = useState(0);
@@ -66,8 +81,60 @@ const Order = ({navigation}) => {
       //     <Text style={[styles.order_button_text,{color:order_state=='archive'?'white':'#4C6870'}]}>Archive</Text>
       //   </TouchableOpacity>
       // </View>
-      <View style={{paddingVertical: 15, flex: 1, flexDirection: 'row'}}>
+      <View
+        style={{
+          paddingVertical: 15,
+          flex: 1,
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}>
         <CommonTab tabs={tabs} page={page} onChangeTab={onChangeTab} />
+        <View style={styles.sideTabContainer}>
+          <View style={styles.tabNewItemsContainer}>
+            <Icon
+              name="pluscircle"
+              type="antdesign"
+              size={18}
+              color={colors.primary}
+            />
+            <Text style={styles.noteText}>{t('Note')}</Text>
+          </View>
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => setModal(!modal)}>
+            <View style={styles.tabNewItemsContainer}>
+              <Icon
+                name="timer"
+                type="material-community"
+                size={18}
+                color={colors.primary}
+              />
+              <Text style={styles.noteText}>40 MIN</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => setContactModal(!contactModal)}>
+            <View style={styles.tabNewItemsContainer}>
+              <Icon
+                name="exclamationcircle"
+                type="antdesign"
+                size={18}
+                color={colors.textPrimaryBlur}
+                style={styles.cautionIcon}
+              />
+            </View>
+          </TouchableOpacity>
+          <DaySelect
+            day={t('Start_shift')}
+            containerStyle={styles.shiftContainer}
+            buttonSize={'large'}
+            textStyle={styles.textStyleShift}
+            activelabel={t('End_shift')}
+            state={activeShift}
+            setState={setActiveShift}
+          />
+        </View>
         {/* <TouchableOpacity
           onPress={() => tabclick('0', 'current')}
           style={[
@@ -127,7 +194,9 @@ const Order = ({navigation}) => {
     <SafeAreaView style={{backgroundColor: '#f4f7f8', flex: 1}}>
       <View style={{flexDirection: 'row', alignItems: 'center', height: '15%'}}>
         <View style={{padding: 15}}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => navigation.openDrawer()}>
             <MaterialCommunityIcons
               name="reorder-horizontal"
               size={20}
@@ -156,6 +225,109 @@ const Order = ({navigation}) => {
           </View>
         </PagerView>
       </View>
+      <CustomModal
+        isModalVisible={modal}
+        setModalVisible={setModal}
+        modalWrapperStyle={{
+          marginHorizontal: width(30),
+          marginVertical: height(30),
+          justifyContent: 'center',
+        }}
+        modalContainerStyle={{
+          borderRadius: 2,
+          backgroundColor: 'white',
+        }}>
+        <Timer label={t('deliveryEstimateTime')} />
+      </CustomModal>
+      <CustomModal
+        isModalVisible={contactModal}
+        setModalVisible={setContactModal}
+        modalWrapperStyle={{
+          marginHorizontal: width(30),
+          marginVertical: height(32),
+        }}
+        modalContainerStyle={{
+          borderRadius: 2,
+          backgroundColor: 'white',
+        }}>
+        <View style={{marginHorizontal: 10}}>
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => setContactModal(false)}>
+            <Icon
+              name="cross"
+              type="entypo"
+              size={24}
+              style={{alignSelf: 'flex-end'}}
+            />
+          </TouchableOpacity>
+          <View>
+            <CustomText
+              label={t('Customer_Support')}
+              textStyle={styles.headingCustomerSupport}
+            />
+            <CustomText
+              label={t('Customer_SupportDetail')}
+              textStyle={styles.headingCustomerSupportDetail}
+            />
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <View style={{flexDirection: 'row', marginTop: 25}}>
+              <View style={styles.maiLContainer}>
+                <Icon
+                  name="mail"
+                  type="entypo"
+                  size={26}
+                  color={colors.primary}
+                />
+              </View>
+              <View style={{marginHorizontal: 10}}>
+                <CustomText label={t('email')} textStyle={styles.mailText} />
+                <CustomText
+                  label={'customer.suppor@silal.com'}
+                  textStyle={styles.mail}
+                />
+              </View>
+            </View>
+            <View>
+              <View style={{flexDirection: 'row', marginTop: 25}}>
+                <View style={styles.maiLContainer}>
+                  <Icon
+                    name="phone"
+                    type="fontawesome"
+                    size={26}
+                    color={colors.primary}
+                  />
+                </View>
+                <View style={{marginHorizontal: 10}}>
+                  <CustomText
+                    label={t('Contact_number')}
+                    textStyle={styles.mailText}
+                  />
+                  <CustomText
+                    label={'(202) 398 0202'}
+                    textStyle={styles.mail}
+                  />
+                  <CustomText
+                    label={'(202) 398 0202'}
+                    textStyle={styles.mail}
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </CustomModal>
+      <CustomModal
+        isModalVisible={activeShift}
+        setModalVisible={setActiveShift}>
+        <Text>EHllo wjkhadbj</Text>
+      </CustomModal>
     </SafeAreaView>
   );
 };
@@ -166,6 +338,24 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     justifyContent: 'space-evenly',
     paddingTop: 10,
+  },
+  maiLContainer: {
+    width: 45,
+    height: 45,
+    backgroundColor: colors.primaryBlur,
+    justifyContent: 'center',
+    borderRadius: 5,
+  },
+  mailText: {
+    fontSize: 13,
+    fontFamily: fonts.bold,
+    color: colors.black,
+    textTransform: 'uppercase',
+  },
+  mail: {
+    fontSize: 13,
+    fontFamily: fonts.LatoMedium,
+    color: colors.sidebar,
   },
   ImgeViewBKG: {
     height: 50,
@@ -180,11 +370,60 @@ const styles = StyleSheet.create({
     width: 30,
     resizeMode: 'contain',
   },
+  cautionIcon: {
+    transform: [{rotate: '180deg'}],
+  },
+  headingCustomerSupport: {
+    fontSize: 18,
+    fontFamily: fonts.bold,
+    color: colors.black,
+  },
+  headingCustomerSupportDetail: {
+    fontSize: 16,
+    fontFamily: fonts.LatoMedium,
+    color: colors.black,
+  },
+  shiftContainer: {
+    width: '20%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 5,
+  },
+  sideTabContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '61%',
+    justifyContent: 'flex-end',
+  },
+  noteText: {
+    fontSize: 13,
+    fontFamily: fonts.LatoBold,
+    color: colors.primary,
+    marginHorizontal: 8,
+    textTransform: 'uppercase',
+  },
+  tabNewItemsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.textWhite,
+    borderRadius: 8,
+    padding: 5,
+    marginHorizontal: 5,
+    borderColor: colors.borderColor1,
+    borderWidth: 1,
+  },
   titleInWhiteDiv: {
     fontFamily: 'Poppins-Medium',
     color: '#4C6870',
     paddingHorizontal: 10,
     paddingTop: 10,
+  },
+  textStyleShift: {
+    fontSize: 16,
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.black,
+    width: '100%',
+    marginHorizontal: 15,
   },
   PercentageBkgGreen: {
     backgroundColor: '#E3FCEF',
@@ -207,17 +446,17 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     alignSelf: 'center',
     borderRadius: 5,
-    marginLeft: 10
+    marginLeft: 10,
   },
   order_button_text: {
     color: 'white',
     fontFamily: 'Poppins-SemiBold',
     fontSize: 16,
-    letterSpacing: 1
+    letterSpacing: 1,
   },
   order_container: {
     // flexDirection:'row',
     // backgroundColor:'red',
-    padding: 10
-  }
-})
+    padding: 10,
+  },
+});

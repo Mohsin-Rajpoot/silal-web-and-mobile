@@ -28,15 +28,17 @@ import Svg, {
 } from 'react-native-svg';
 import {ScrollView} from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
+import colors from '@SilalApp/common/assets/colors';
 const {width, height} = Dimensions.get('window');
 
 const App = ({navigation, route}) => {
   const {t}=useTranslation();
-  const status = route.params.status;
+  const status = route?.params?.status;
   const [color, setColor] = useState('green');
   const [cancel_text, set_cancel_text] = useState('');
   const [modal_cancel, setmodal_cancel] = useState(false);
   const toastRef = useRef();
+  console.log('--Status', status)
 
   useEffect(() => {
     const detectLogin = async () => {
@@ -484,30 +486,17 @@ const App = ({navigation, route}) => {
           </View>
           <TouchableOpacity
             style={{
-              backgroundColor: '#ADD9D3',
+              backgroundColor:colors.primaryBlur,
               borderRadius: 5,
               padding: 10,
               alignItems: 'center',
               marginTop: 15,
             }}>
-            <Text style={{color: '#4C6870', fontFamily: 'Poppins-SemiBold'}}>
+            <Text style={{color: colors.primary, fontFamily: 'Poppins-SemiBold'}}>
               Change estimation time
             </Text>
           </TouchableOpacity>
           {status == 'from_current' ? (
-            <TouchableOpacity
-              style={{
-                backgroundColor: '#5AB3A8',
-                borderRadius: 5,
-                padding: 10,
-                alignItems: 'center',
-                marginTop: 10,
-              }}>
-              <Text style={{color: 'white', fontFamily: 'Poppins-SemiBold'}}>
-                {t("ready_for_pickup")}
-              </Text>
-            </TouchableOpacity>
-          ) : (
             <View
               style={{
                 flexDirection: 'row',
@@ -524,7 +513,7 @@ const App = ({navigation, route}) => {
                   width: '38%',
                 }}>
                 <Text style={{color: 'white', fontFamily: 'Poppins-SemiBold'}}>
-                 {t("Cancel")}
+                 {t("Cancel_order")}
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -540,6 +529,19 @@ const App = ({navigation, route}) => {
                 </Text>
               </TouchableOpacity>
             </View>
+          ):(
+            <TouchableOpacity
+            style={{
+              backgroundColor: '#5AB3A8',
+              borderRadius: 5,
+              padding: 10,
+              alignItems: 'center',
+              marginTop: 10,
+            }}>
+            <Text style={{color: 'white', fontFamily: 'Poppins-SemiBold'}}>
+              {t("ready_for_pickup")}
+            </Text>
+          </TouchableOpacity>
           )}
         </View>
       </ScrollView>

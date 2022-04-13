@@ -356,7 +356,18 @@
     "we_notify_client":"We will notify the client about it",
     "typeHere":"Type here",
     "Pickup":"Pick up",
-    "Pending":"Pending"
+    "Pending":"Pending",
+    "Start_shift":"Start shift",
+    "End_shift":"End shift",
+    "deliveryEstimateTime":"Delivery estimate time",
+    "Cancel_order":"Cancel order",
+    "Drag_card_back_ToReceive":"Drag the card back to Received?",
+    "Drag_card_detail":"Please confirm that you want to move the card to the previous column.",
+    "Confirm":"Confirm",
+    "Customer_Support":"Customer Support",
+    "Customer_SupportDetail":"If you have questions that require our intervention, please contact us by mail or phone. Every day until 8 p.m.",
+    "Contact_number":"Contact number"
+
 
     
   }
