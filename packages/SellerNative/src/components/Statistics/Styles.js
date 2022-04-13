@@ -60,7 +60,7 @@ const styles = ScaledSheet.create({
         paddingHorizontal: 20,
         justifyContent: 'space-evenly',
         marginHorizontal: 3,
-        zIndex:0
+        zIndex: 0
 
     },
     One: {
@@ -139,27 +139,43 @@ const styles = ScaledSheet.create({
         borderRadius: 5,
         elevation: 5,
     },
-    colorgreen:{
+    colorgreen: {
         backgroundColor: '#E3FCEF',
     },
-    TotalData:{
+    TotalData: {
         color: '#36B37E', textAlign: 'center'
     },
-    WhihteDiveIcon:{
+    WhihteDiveIcon: {
         fontSize: 30, color: '#5AB3A8'
     },
-    BackgroundLightRed:{
+    BackgroundLightRed: {
         backgroundColor: '#FFEBE6',
     },
-    raitingIcon:{
-        fontSize: 22, color: '#FFC400', 
+    raitingIcon: {
+        fontSize: 22, color: '#FFC400',
     },
-    HotProductPart:{
-        flexDirection: 'row', paddingHorizontal: 20, justifyContent: 'space-between' 
+    HotProductPart: {
+        flexDirection: 'row', paddingHorizontal: 20, justifyContent: 'space-between'
     },
-    graphView:{
-        width: '64%', backgroundColor: '#fff', elevation: 2, marginHorizontal: 10 ,borderRadius:5
+    graphView: {
+        width: '64%', backgroundColor: '#fff', elevation: 2, marginHorizontal: 10, borderRadius: 5, marginBottom: 20
+    },
+    GraphButtonText: {
+        fontFamily: 'Poppins-Medium', fontSize: 13, textAlignVertical: 'center', color: '#5AB3A8',
+    },
+    GraphButton: {
+        backgroundColor: '#5AB3A826', justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5, width: 120, height: 40
+    },
+    GraphHeading:{
+        height:50, justifyContent:'center',color:'#002733',
+                    alignItems:'center',textAlignVertical:'center',fontSize:18,fontFamily:'Poppins-Bold'
+    },
+    GraphHeaderView:{
+        justifyContent:'space-between',flexDirection:'row',paddingHorizontal:15,paddingVertical:10
     }
+
 
 });
 export default styles;

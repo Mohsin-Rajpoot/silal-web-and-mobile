@@ -13,42 +13,14 @@ import LongerOrder from '../screens/Orders_longer/Longer_orders'
 import Order_full_view from '../screens/orders/Current/Order_full_view'
 // import ContactUs from '../screens/ContactUs';
 // import Setting from '../screens/Setting';
-import {
-    OrientationLocker,
-    LANDSCAPE,
-    PORTRAIT
-  } from 'react-native-orientation-locker';
+
 
 
 const Drawer = createDrawerNavigator();
 
 const MainStack = () => {
 
-  const [orientation, setOrientation] = useState(LANDSCAPE);
-  const determineAndSetOrientation = () => {
-      let width = Dimensions.get('window').width;
-      let height = Dimensions.get('window').height;
   
-      if (Dimensions == PORTRAIT) {
-          setOrientation(LANDSCAPE);
-          console.log(orientation,"orientation fff");
-        } else {
-          setOrientation(LANDSCAPE);
-          console.log(orientation,'LANDSCAPE eeeeee');
-        }
-    }
-  
-    useEffect(() => {
-  
-      determineAndSetOrientation();
-      Dimensions.addEventListener('change', determineAndSetOrientation);
-  
-      return () => {
-        Dimensions.addEventListener('change', determineAndSetOrientation)
-      }
-    }, []);
-
-
 
 
 

@@ -15,10 +15,10 @@ const LockOnLandscape = ( ) => {
   
       if (Dimensions == PORTRAIT ) {
           setOrientation(LANDSCAPE);
-          console.log(orientation,"orientation jjjjjjjjjjj");
+          console.log(orientation,"orientation  ");
         } else {
           setOrientation('LANDSCAPE');
-          console.log(orientation,'LANDSCAPE jjjjjjjjjjjjjj');
+          console.log(orientation,'LANDSCAPE  ');
         }
     }
   
@@ -43,7 +43,7 @@ const LockOnLandscape = ( ) => {
     // onPress={onPress}
       orientation={orientation}
       onChange={orientation => console.log('onChange', orientation)}
-      onDeviceChange={orientation => {console.log('onDeviceChange', orientation)}}
+      // onDeviceChange={orientation => {console.log('onDeviceChange////////////', orientation)}}
     />
   );
 };

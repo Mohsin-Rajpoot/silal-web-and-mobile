@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import { TitleHeading, StatisticWhiteBoxTitle, CustomGraph, Calender } from '@SilalApp/common/components/native';
 import styles from './Styles';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const Statistics = () => {
     // const [orientation, setOrientation] = useState('LANDSCAPE');
 
@@ -193,6 +194,13 @@ const Statistics = () => {
                     </View>
                 </View>
                 <View style={styles.graphView}>
+                    <View style={styles.GraphHeaderView}>
+                    <Text style={styles.GraphHeading}>Revenue overview</Text>
+                   <TouchableOpacity style={styles.GraphButton}>
+                    <Text style={ styles.GraphButtonText
+                     }>Detailed info</Text>
+                    </TouchableOpacity>
+                    </View>
                     <CustomGraph />
                 </View>
             </View>
