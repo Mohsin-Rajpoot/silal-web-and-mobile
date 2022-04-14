@@ -366,7 +366,13 @@
     "Confirm":"Confirm",
     "Customer_Support":"Customer Support",
     "Customer_SupportDetail":"If you have questions that require our intervention, please contact us by mail or phone. Every day until 8 p.m.",
-    "Contact_number":"Contact number"
+    "Contact_number":"Contact number",
+    "Out_of_Stock":"Out of stock items",
+    "selectALL":"Select all",
+    "update":"Update",
+    "Notes":"Notes",
+    "today":"Today",
+    "gotoPreOrder":"Go to pre-orders"
 
 
     

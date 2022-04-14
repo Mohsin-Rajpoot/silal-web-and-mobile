@@ -32,7 +32,11 @@ const colors = {
   primaryLight:'rgba(90, 179, 168, 0.3)',
   parrot:"#00B728",
   borderColor1:"rgba(204, 212, 214, 0.3)",
-  textPrime:"rgba(0, 39, 51, 0.5)"
+  textPrime:"rgba(0, 39, 51, 0.5)",
+  background:"#FAFAFA",
+  background1:"rgba(229, 234, 235, 0.7)",
+  orange:'#FFAB00',
+  borderColor2:"#EBEEEF"
 
 };
 export default colors;
