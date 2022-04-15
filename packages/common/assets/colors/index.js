@@ -36,7 +36,10 @@ const colors = {
   background:"#FAFAFA",
   background1:"rgba(229, 234, 235, 0.7)",
   orange:'#FFAB00',
-  borderColor2:"#EBEEEF"
+  borderColor2:"#EBEEEF",
+  background2:'rgba(0, 39, 51, 0.1)',
+  textColor:"rgba(0, 39, 51, 0.3)",
+  textColorPrime:"rgba(0, 39, 51, 0.2)"
 
 };
 export default colors;

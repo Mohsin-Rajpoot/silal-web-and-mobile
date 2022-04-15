@@ -372,7 +372,22 @@
     "update":"Update",
     "Notes":"Notes",
     "today":"Today",
-    "gotoPreOrder":"Go to pre-orders"
+    "gotoPreOrder":"Go to pre-orders",
+    "Save_as_template":"Save as template",
+    "item_information":"Item information",
+    "specification":"Specification",
+    "media":"Media",
+    "Shipping":"Shipping",
+    "Character_left":"Character left",
+    "ItemSecondLanguage":"Item name (2nd language)",
+    "Barcode":"Barcode",
+    "About_this_item":"About this item",
+    "Choosecategory":"Choose category",
+    "select_item_category":"Select the item’s category",
+    "Select_item_detial":"Select the category in which you are going to sell the product.",
+    "SlectItemDeail": "Contact us and we'll add it!",
+    "Search_by_category":"Search by сategory",
+    "SearchBy":"Didn’t find an appropriate category?"
 
 
     

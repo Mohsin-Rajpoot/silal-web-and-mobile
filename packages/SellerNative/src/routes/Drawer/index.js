@@ -91,6 +91,15 @@ const Drawer = props => {
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('CreateItem')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label={'Create item'}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.6}
         onPress={() => props.navigation.navigate('AboutApp')}>
         <CustomText
           textStyle={styles.drawerText}
