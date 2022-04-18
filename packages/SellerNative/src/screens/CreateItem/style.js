@@ -4,7 +4,7 @@ import {ScaledSheet} from 'react-native-size-matters';
 
 const styles = ScaledSheet.create({
   mainContainer: {
-    backgroundColor:colors.white,
+    backgroundColor:colors.profileBackground,
     flex:1,
     paddingHorizontal:"5@s"
   },
@@ -12,6 +12,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginTop:"5@s"
   },
   createnewItemContainer: {
     flexDirection: 'row',
@@ -54,8 +55,9 @@ const styles = ScaledSheet.create({
     borderRadius:"4@s",
     marginHorizontal:"5@s",
     marginVertical:"10@s",
-    paddingVertical:"5@s",
-    justifyContent:"center"
+    paddingVertical:"4@s",
+    justifyContent:"center",
+   
   },
   tabTitleContainer: {
     flexDirection: 'row',

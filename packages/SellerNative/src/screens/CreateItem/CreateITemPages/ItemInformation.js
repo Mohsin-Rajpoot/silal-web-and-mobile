@@ -140,7 +140,16 @@ const ItemInformation = ({onPress}) => {
               />
               <CustomText label="*" textStyle={styles.star} />
             </View>
-            <CustomTextInput placeholderText={t('Barcode')} />
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={() => setBarCodeModal(!barcodeModal)}>
+              <View style={styles.barcodeContainer}>
+                <CustomText
+                  label={t('Barcode')}
+                  textStyle={styles.barcodeText}
+                />
+              </View>
+            </TouchableOpacity>
             <View
               style={{
                 flexDirection: 'row',
@@ -288,7 +297,51 @@ const ItemInformation = ({onPress}) => {
           </View>
         </View>
       </CustomModal>
-      <CustomModal></CustomModal>
+      <CustomModal
+        isModalVisible={barcodeModal}
+        setModalVisible={setBarCodeModal}
+        modalWrapperStyle={{
+          marginHorizontal: 0,
+          marginVertical: 0,
+          marginLeft: '65%',
+          justifyContent: 'flex-start',
+        }}>
+        <View style={styles.barCodeModalContainer}>
+          <View style={styles.barcodeModalHeader}>
+            <CustomText
+              label={t('add_barcode')}
+              textStyle={styles.borderCodeHeaderText}
+            />
+            <TouchableOpacity activeOpacity={0.6} onPress={()=>setBarCodeModal(false)}>
+            <Icon name="cross" type="entypo" size={30} />
+            </TouchableOpacity>
+
+          </View>
+
+          <CustomText label={t('ChooseWays')} textStyle={styles.chooseWays} />
+          <View style={{height: 25}} />
+          <CustomText
+            label={t('manually')}
+            textStyle={styles.borderCodeHeaderText}
+          />
+          <CustomText label={t('Barcode')} textStyle={styles.chooseWays} />
+          <View style={{height: 10}} />
+          <View style={styles.barcodeContainer}>
+            <CustomText label={t('Barcode')} textStyle={styles.barcodeText} />
+          </View>
+          <View style={{height: 20}} />
+          <CustomText
+            label={t('Scan')}
+            textStyle={styles.borderCodeHeaderText}
+          />
+          <View style={styles.click_to_ScanContainer}>
+            <CustomText
+              label={t('Click_to_Scan')}
+              textStyle={styles.click_to_Scan_text}
+            />
+          </View>
+        </View>
+      </CustomModal>
     </>
   );
 };
@@ -327,6 +380,50 @@ const styles = ScaledSheet.create({
     fontSize: '12@ms',
     fontFamily: fonts.LatoRegular,
     color: colors.black,
+  },
+  chooseWays: {
+    fontSize: '12@ms',
+    fontFamily: fonts.LatoRegular,
+    color: colors.textColorSec,
+  },
+  barcodeModalHeader: {
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  barCodeModalContainer: {
+    width: '100%',
+    padding: '5@s',
+  },
+  barcodeContainer: {
+    borderColor: colors.borderColor,
+    borderWidth: '1@s',
+    borderRadius: '4@s',
+    padding: '5@s',
+  },
+  borderCodeHeaderText: {
+    fontSize: '17@ms',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.black,
+  },
+  barcodeText: {
+    fontSize: '14@ms',
+    fontFamily: fonts.LatoRegular,
+    color: colors.borderColor,
+  },
+  click_to_ScanContainer: {
+    borderColor: colors.primary,
+    borderWidth: '1@s',
+    borderRadius: '4@s',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '5@s',
+  },
+  click_to_Scan_text: {
+    fontSize: '12@ms',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.primary,
   },
   scrollViewCon: {
     width: '32%',

@@ -387,7 +387,28 @@
     "Select_item_detial":"Select the category in which you are going to sell the product.",
     "SlectItemDeail": "Contact us and we'll add it!",
     "Search_by_category":"Search by сategory",
-    "SearchBy":"Didn’t find an appropriate category?"
+    "SearchBy":"Didn’t find an appropriate category?",
+    "add_barcode":"Add barcode",
+    "ChooseWays":"Choose one of the ways",
+    "manually":"Manually",
+    "Scan":"Scan",
+    "Click_to_Scan":"Click to Scan",
+    "Category_Required":"Category Required Attributes",
+    "Brand":"Brand",
+    "Color":"Color",
+    "Capacity":"Capacity (GB)",
+    "Screen_size":"Screen Size (inch)",
+    "StorageType":"Storage Type",
+    "display":"HDR Display",
+    "yes":"yes",
+    "no":"no",
+    "Both":"Both",
+    "Add_custom_field":"Add custom field",
+    "Custom_field":"Custom field",
+    "the_filed_will_be":"The field will be",
+    "boolean":"Boolean",
+    "Add_one_more_option":"Add one more option",
+    "add_field":"Add field"
 
   
   }

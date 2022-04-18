@@ -39,7 +39,10 @@ const colors = {
   borderColor2:"#EBEEEF",
   background2:'rgba(0, 39, 51, 0.1)',
   textColor:"rgba(0, 39, 51, 0.3)",
-  textColorPrime:"rgba(0, 39, 51, 0.2)"
+  textColorPrime:"rgba(0, 39, 51, 0.2)",
+  textColorSec:"rgba(0, 39, 51, 0.8)",
+
+  borderColor3:'rgba(76, 104, 112, 0.15)'
 
 };
 export default colors;

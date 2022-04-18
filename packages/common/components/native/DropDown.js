@@ -36,6 +36,7 @@ const DropDown = (props) => {
         borderRadius: 8,
         height:62
       }}
+      onChangeValue={()=> props.setActive(true)}
     />
   );
 };
