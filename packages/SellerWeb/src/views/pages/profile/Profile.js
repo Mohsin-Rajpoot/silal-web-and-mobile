@@ -14,7 +14,7 @@ import {
     ThemeModal,
 } from '../../components/Style'
 import { ProfileBanner } from '../../components/profile/Components'
-import { restaurantBg } from '../../components/AllImages'
+import { restaurantBg, avatar } from '../../components/AllImages'
 
 const Profile = () => {
     const [editState, setEditState] = useState(false)
@@ -39,11 +39,12 @@ const Profile = () => {
                 <Col md={8}>
                     {editState ?
                         <>
-                            <ProfileBanner
-                                edit={true}
-                                bgImg={restaurantBg}
-                            />
                             <CardStyled>
+                                <ProfileBanner
+                                    edit={true}
+                                    bgImg={restaurantBg}
+                                    avatar={avatar}
+                                />
                                 <Label size="15px">Cuisine</Label>
                                 <Select>
                                     <option value="">Europian</option>
@@ -102,16 +103,23 @@ const Profile = () => {
                         </>
                         :
                         <>
-                            <ProfileBanner
-                                bgImg={restaurantBg}
-                                location="8502 Preston Rd. Inglewood"
-                                rName="Restaurant’s name"
-                                slogan="The slogan will be here mх 40 characters"
-                            />
                             <CardStyled>
-                                <HeadingStyled size="19px" weight="600" className="dark-clr" margin="0 0 11px 0">Opening hours</HeadingStyled>
-                                <HeadingStyled size="15px" weight="400" className="dark-clr" margin="0 0 20px 0">Mon - Fri 10:00 - 22:00, Sat, Sun - Closed</HeadingStyled>
-                                <HeadingStyled size="19px" weight="600" color="#002733" margin="0 0 11px 0">Tags</HeadingStyled>
+                                <ProfileBanner
+                                    bgImg={restaurantBg}
+                                    avatar={avatar}
+                                />
+                                <HeadingStyled size="25px" weight="700" className="dark-clr poppins" margin="0">Restaurant’s name</HeadingStyled>
+                                <HeadingStyled size="15px" weight="400" className="dark-clr" margin="0 0 20px 0">The slogan will be here mх 40 characters</HeadingStyled>
+                                <Row>
+                                    <Col sm={6}>
+                                        <HeadingStyled size="16px" weight="600" className="dark-clr poppins" margin="0 0 6px 0">Opening hours</HeadingStyled>
+                                        <HeadingStyled size="15px" weight="400" className="dark-clr" margin="0 0 20px 0">Mon - Fri 10:00 - 22:00, Sat, Sun - Closed</HeadingStyled>
+                                    </Col>
+                                    <Col sm={6}>
+                                        <HeadingStyled size="16px" weight="600" className="dark-clr poppins" margin="0 0 6px 0">Location</HeadingStyled>
+                                        <HeadingStyled size="15px" weight="400" className="dark-clr" margin="0 0 20px 0">8502 Preston Rd. Inglewood</HeadingStyled>
+                                    </Col>
+                                </Row>
                                 <div className="d-flex flex-wrap">
                                     <Tag>Sushi</Tag>
                                     <Tag>Burgers</Tag>
@@ -127,7 +135,7 @@ const Profile = () => {
                             <Row>
                                 <Col xs={6}>
                                     <Button
-                                        className="w-100"
+                                        className="w-100 grey"
                                         onClick={() => setEditState(false)}>
                                         Cancel
                                     </Button>
@@ -149,7 +157,9 @@ const Profile = () => {
                                 Edit profile
                             </Button>
                             <Button
-                                className="w-100"
+                                bg="#5AB3A833"
+                                color="#5AB3A8"
+                                className="w-100 hover-fill"
                                 onClick={handleShowDelModal}>
                                 Change admin code
                             </Button>

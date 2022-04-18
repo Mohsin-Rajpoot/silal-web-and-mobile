@@ -301,6 +301,7 @@ const Archive = ({ setSideBar, sideBar }) => {
                         </Tab.Pane>
                     </Tab.Content>
                 </Tab.Container>
+                
                 <Offcanvas show={canvasShow} onHide={canvasCloseHandler} placement="end">
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>

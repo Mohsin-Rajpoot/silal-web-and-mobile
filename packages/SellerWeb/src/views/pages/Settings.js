@@ -8,6 +8,7 @@ import {
     Button,
     ThemeModal,
     Radio,
+    Margin,
 } from '../components/Style'
 import {
     Menu,
@@ -21,6 +22,7 @@ const Settings = ({
     setSideBar,
 }) => {
     const [showDelModal, setShowDelModal] = useState(false)
+    const [showLogoutModal, setShowLogoutModal] = useState(false)
     const [preOrder, setPreOrder] = useState(false)
 
     const sidebarHandler = () => {
@@ -28,7 +30,8 @@ const Settings = ({
     }
     const handleCloseDelModal = () => setShowDelModal(false)
     const handleShowDelModal = () => setShowDelModal(true)
-    
+    const handleCloseLogoutModal = () => setShowLogoutModal(false)
+
     return (
         <>
             <SimpleNav>
@@ -70,14 +73,25 @@ const Settings = ({
                 </>
                 :
                 <>
-                    <HeadingStyled size="15px" weight="700" className="lato mb-1">Title</HeadingStyled>
                     <SettingBtn
                         className="between"
                         onClick={() => setPreOrder(true)}>
                         Pre-order settings
-                        <RightArrow />
+                        <RightArrow className="arrow" />
                     </SettingBtn>
-                    <HeadingStyled size="15px" weight="700" className="lato mb-1">Account</HeadingStyled>
+                    <SettingBtn
+                        className="between"
+                        onClick={() => setPreOrder(true)}>
+                        Language
+                        <RightArrow className="arrow" />
+                    </SettingBtn>
+                    <Margin margin="0 0 30px 0" />
+                    <SettingBtn
+                        className="between"
+                        onClick={() => setShowLogoutModal(true)}>
+                        Log out
+                        <RightArrow className="arrow" />
+                    </SettingBtn>
                     <SettingBtn
                         className="between red"
                         onClick={handleShowDelModal}>
@@ -85,7 +99,7 @@ const Settings = ({
                             <RemoveIcon />
                             Delete account
                         </div>
-                        <RightArrow />
+                        <RightArrow className="arrow" />
                     </SettingBtn>
                 </>
             }
@@ -108,6 +122,30 @@ const Settings = ({
                             <Col lg={6} className="ps-2">
                                 <Button className="w-100 delete" onClick={handleCloseDelModal}>
                                     Yes, delete
+                                </Button>
+                            </Col>
+                        </div>
+                    </Modal.Footer>
+                </ThemeModal>
+            </Modal>
+            <Modal show={showLogoutModal} onHide={handleCloseLogoutModal} centered>
+                <ThemeModal>
+                    <Modal.Header className="justify-content-center">
+                        <Modal.Title>Log out from Silal Seller?</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="text text-center">Are you sure you want to log out of your Silal account?</div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="d-flex w-100">
+                            <Col lg={6} className="pe-2">
+                                <Button className="w-100" onClick={handleCloseLogoutModal}>
+                                    Cancel
+                                </Button>
+                            </Col>
+                            <Col lg={6} className="ps-2">
+                                <Button className="w-100 delete">
+                                    Log out
                                 </Button>
                             </Col>
                         </div>

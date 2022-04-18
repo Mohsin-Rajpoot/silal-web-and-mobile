@@ -59,6 +59,9 @@ import { ReactComponent as TimeIcon } from "../../assets/images/svg/time-icon.sv
 import { ReactComponent as InfoIcon } from "../../assets/images/svg/info-icon.svg"
 import { ReactComponent as BgEmailIcon } from "../../assets/images/svg/bg-email-icon.svg"
 import { ReactComponent as BgPhoneIcon } from "../../assets/images/svg/bg-phone-icon.svg"
+import { ReactComponent as AddPhoto } from "../../assets/images/svg/add-photo.svg"
+import { ReactComponent as AttachmentIcon } from "../../assets/images/svg/attachment-icon.svg"
+import { ReactComponent as ImgIcon } from "../../assets/images/svg/img-icon.svg"
 
 export {
     Menu,
@@ -122,4 +125,7 @@ export {
     InfoIcon,
     BgEmailIcon,
     BgPhoneIcon,
+    AddPhoto,
+    AttachmentIcon,
+    ImgIcon,
 }

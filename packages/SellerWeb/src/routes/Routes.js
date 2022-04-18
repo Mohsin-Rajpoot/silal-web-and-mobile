@@ -12,7 +12,7 @@ const ProductDetail = React.lazy(() => import('../views/pages/products/component
 const CreateItem = React.lazy(() => import('../views/pages/products/components/CreateItem'))
 const AllOffers = React.lazy(() => import('../views/pages/offers/AllOffers'))
 const Documents = React.lazy(() => import('../views/pages/Documents'))
-const ContactUs = React.lazy(() => import('../views/pages/ContactUs'))
+const ContactUs = React.lazy(() => import('../views/pages/contact-us/ContactUs'))
 const Settings = React.lazy(() => import('../views/pages/Settings'))
 const Profile = React.lazy(() => import('../views/pages/profile/Profile'))
 // const notFound = React.lazy(() => import('../views/errorPages/NotFound'))

@@ -39,7 +39,7 @@ const Button = styled.button`
   margin-top: ${props => props.mt};
   &:hover {
     background: rgba(90, 179, 169, 0.9);
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
   &:disabled {
     background: rgba(90, 179, 168, 0.5);
@@ -63,6 +63,17 @@ const Button = styled.button`
   }
   &.delete {
     background-color: #DE350B;
+  }
+  &.hover-fill {
+    &:hover {
+      background-color: #5AB3A8;
+      color: white !important;
+      svg {
+        path {
+          fill: white;
+        }
+      }
+    }
   }
 `;
 
@@ -691,18 +702,6 @@ const Description = styled.p`
   color: #002733;
 `;
 
-const ContactButton = styled.button`
-  width: 343px;
-  height: 50px;
-  background: linear-gradient(180deg, #73D5C9 0%, #5AB3A8 100%);
-  box-shadow: 0px 5px 15px -8px rgba(115, 213, 201, 0.4);
-  border-radius: 5px;
-  border: none;
-  font-size: 17px;
-  line-height: 22px;
-  color: #FFFFFF;
-`;
-
 const SettingBtn = styled.button`
   background: #FFFFFF;
   border-radius: 5px;
@@ -712,16 +711,21 @@ const SettingBtn = styled.button`
   width: 317px;
   padding: 8px 10px;
   font-family: 'Lato';
-  font-weight: 400;
-  font-size: 15px;
+  font-weight: 500;
+  font-size: 14px;
   line-height: 18px;
   color: #002733;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   .icon {
     margin-right: 10px;
   }
   &.red {
     color: #DE350B;
+  }
+  .arrow {
+    path {
+      fill: #4C687080;
+    }
   }
 `;
 
@@ -786,7 +790,7 @@ const Suggestions = styled.div`
   font-weight: 500;
   font-size: 13px;
   line-height: 120%;
-  color: #4C6870;
+  color: #5AB3A8;
   margin-bottom: 8px;
   margin-right: 5px;
 `;
@@ -878,7 +882,6 @@ export {
   UploadedImageSmallContainer,
   SimpleNav,
   Description,
-  ContactButton,
   SettingBtn,
   Radio,
   Suggestions,

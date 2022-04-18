@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom"
 import styled from "styled-components"
 import NotesCanvas from "./NotesCanvas"
 import DetailModal from "./DetailModal"
+import TimeModal from "./TimeModal"
 import {
     Modal,
     Col,
@@ -34,6 +35,7 @@ const Nav = ({
     const [showNotes, setShowNotes] = useState(false)
     const [showSupportModal, setShowSupportModal] = useState(false)
     const [showDetailModal, setShowDetailModal] = useState(false)
+    const [showPeakTimeModal, setShowPeakTimeModal] = useState(false)
 
     const sidebarHandler = () => {
         setSideBar(!sideBar)
@@ -44,6 +46,8 @@ const Nav = ({
     const handleShowDetailModal = () => setShowDetailModal(true)
     const handleCloseNotes = () => setShowNotes(false)
     const handleShowNotes = () => setShowNotes(true)
+    const handleClosePeakTimeModal = () => setShowPeakTimeModal(false)
+    const handleShowPeakTimeModal = () => setShowPeakTimeModal(true)
 
     return (
         <>
@@ -77,7 +81,8 @@ const Nav = ({
                         <AddIcon />
                         <span>NOTE</span>
                     </ModalButton>
-                    <ModalButton>
+                    <ModalButton
+                        onClick={handleShowPeakTimeModal}>
                         <TimeIcon />
                         <span>40 MIN</span>
                     </ModalButton>
@@ -141,6 +146,10 @@ const Nav = ({
             <DetailModal
                 handleCloseDetailModal={handleCloseDetailModal}
                 showDetailModal={showDetailModal}
+            />
+            <TimeModal
+                handleClosePeakTimeModal={handleClosePeakTimeModal}
+                showPeakTimeModal={showPeakTimeModal}
             />
         </>
     )
