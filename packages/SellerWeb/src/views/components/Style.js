@@ -702,33 +702,6 @@ const Description = styled.p`
   color: #002733;
 `;
 
-const SettingBtn = styled.button`
-  background: #FFFFFF;
-  border-radius: 5px;
-  border: none;
-  text-align: left;
-  height: 35px;
-  width: 317px;
-  padding: 8px 10px;
-  font-family: 'Lato';
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-  color: #002733;
-  margin-bottom: 10px;
-  .icon {
-    margin-right: 10px;
-  }
-  &.red {
-    color: #DE350B;
-  }
-  .arrow {
-    path {
-      fill: #4C687080;
-    }
-  }
-`;
-
 const Radio = styled.label`
   display: block;
   position: relative;
@@ -772,8 +745,9 @@ const Radio = styled.label`
     border-color: var(--theme-clr);
   }
   .checkmark:after {
-    top: 3px;
-    left: 3px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -882,7 +856,6 @@ export {
   UploadedImageSmallContainer,
   SimpleNav,
   Description,
-  SettingBtn,
   Radio,
   Suggestions,
   Tag,

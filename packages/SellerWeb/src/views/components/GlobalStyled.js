@@ -20,6 +20,10 @@ body {
     font-weight: 400;
     font-size: 14px;
 }
+.main-content {
+    /* height: calc(100vh + 55px); */
+    padding-bottom: 55px;
+}
 .lato {
     font-family: 'Lato', sans-serif;
 }

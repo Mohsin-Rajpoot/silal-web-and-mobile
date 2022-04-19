@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
+import LanguageCanvas from '../components/settings/LanguageCanvas'
+import { Wrapper, SettingBtn } from '../components/settings/Styled'
 import { Modal, Row, Col } from 'react-bootstrap'
 import {
     SimpleNav,
     CardStyled,
     HeadingStyled,
-    SettingBtn,
     Button,
     ThemeModal,
     Radio,
@@ -24,6 +25,8 @@ const Settings = ({
     const [showDelModal, setShowDelModal] = useState(false)
     const [showLogoutModal, setShowLogoutModal] = useState(false)
     const [preOrder, setPreOrder] = useState(false)
+    const [canvasShow, setCanvasShow] = useState(false)
+    const [language, setLanguage] = useState('English')
 
     const sidebarHandler = () => {
         setSideBar(!sideBar)
@@ -33,7 +36,7 @@ const Settings = ({
     const handleCloseLogoutModal = () => setShowLogoutModal(false)
 
     return (
-        <>
+        <Wrapper>
             <SimpleNav>
                 <button
                     className="menu"
@@ -81,9 +84,12 @@ const Settings = ({
                     </SettingBtn>
                     <SettingBtn
                         className="between"
-                        onClick={() => setPreOrder(true)}>
+                        onClick={() => setCanvasShow(true)}>
                         Language
-                        <RightArrow className="arrow" />
+                        <div>
+                            <span>{language}</span>
+                            <RightArrow className="arrow" />
+                        </div>
                     </SettingBtn>
                     <Margin margin="0 0 30px 0" />
                     <SettingBtn
@@ -152,7 +158,13 @@ const Settings = ({
                     </Modal.Footer>
                 </ThemeModal>
             </Modal>
-        </>
+            <LanguageCanvas
+                canvasShow={canvasShow}
+                setCanvasShow={setCanvasShow}
+                language={language}
+                setLanguage={setLanguage}
+            />
+        </Wrapper>
     )
 }
 

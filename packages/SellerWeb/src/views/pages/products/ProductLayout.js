@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useLocation } from "react-router-dom"
 import { Content } from "../../index"
 import Sidebar from "../../components/UI/Sidebar"
+import Menu from "../../components/UI/Menu"
 import Nav from "../../components/products/Nav"
 
 const ProductLayout = () => {
@@ -14,7 +15,7 @@ const ProductLayout = () => {
 
   return (
     <React.Fragment>
-      <div className="main-content d-flex">
+      <div className="d-flex">
         <Sidebar sideBar={sideBar} setSideBar={sideBarToggle} />
         <div className="flex-1">
           {pathname == "/product/create-new-item" ? '' :
@@ -27,6 +28,7 @@ const ProductLayout = () => {
           }
           <Content sideBar={sideBar} setSideBar={sideBarToggle} />
         </div>
+        <Menu sideBar={sideBar} />
       </div>
     </React.Fragment>
   )
