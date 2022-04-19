@@ -101,9 +101,9 @@ export default function CustomGraph() {
         <>
 
             <View style={styles.container}>
-                <View style={styles.innercontainer}>
+                <View style={[styles.innercontainer,{height: windowWidthF / 1.2,}]}>
                     <View style={{ height: windowHeightF / 1.21, width: windowHeightF, flexDirection: "row" }}>
-                        <View style={{ marginTop: 30 }}>
+                        <View style={{ marginTop: 2 }}>
                             <View style={styles.graphHorizontalLinesView}>
                                 <Text style={styles.digits}>${ValueFirst > 999999 ? 1 + "M" : (ValueFirst / 1000).toFixed(1)}</Text>
                                 <View style={styles.horizontalLine} />
@@ -127,19 +127,20 @@ export default function CustomGraph() {
                                 <Text style={styles.digits}>${ValueFirst * 0}</Text>
                                 <View style={styles.horizontalLine} />
                             </View>
-                            <View style={styles.graphHorizontalLinesView}>
+                            {/* <View style={styles.graphHorizontalLinesView}>
                                 <Text style={styles.digits}>${ValueFirst * 0}</Text>
                                 <View style={styles.horizontalLine} />
-                            </View>
+                            </View> */}
                         </View>
-                        <View style={styles.monthNameView}>
+
+                        <View style={[styles.monthNameView,{left: windowHeightF / 12,height: windowHeightF / 1.3,}]}>
                             <FlatList
                                 horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                                 data={graphValue}
                                 renderItem={({ item, index }) =>
                                     <View style={{
-                                        width: windowHeightF / 20, height: 299, marginRight: 25,
+                                        width: windowHeightF / 20, height: 226, marginRight: 25,
                                         // backgroundColor:'yellow',
                                         justifyContent: 'flex-end',
                                     }}>
@@ -194,7 +195,7 @@ const styles = StyleSheet.create({
         // height:120,
         // backgroundColor: '#045bd1',
 
-        height: windowWidthF / 1.2,
+        
     },
 
 
@@ -202,11 +203,11 @@ const styles = StyleSheet.create({
     graphHorizontalLinesView: {
         flexDirection: "row",
         alignItems: "center",
-        marginTop: 40,
+        marginTop: 35,
         width: "100%",
         // backgroundColor: 'pink',
         marginHorizontal: 10,
-        marginBottom: 10
+        marginBottom: 5
     },
     digits: {
         // color: "#FFF",
@@ -225,16 +226,14 @@ const styles = StyleSheet.create({
     monthNameView: {
         // width: "100%",
         position: "absolute",
-        left: windowHeightF / 12,
         alignSelf: "flex-end",
         bottom: -12,
-        height: windowHeightF / 1.3,
     },
 
 
     durationListTextView: {
         position: "absolute",
-        bottom: -27,
+        bottom: -30,
         height: 44,
     },
 
@@ -261,3 +260,4 @@ const styles = StyleSheet.create({
 });
 
 
+// //////

@@ -19,8 +19,9 @@ import CustomModal from '@SilalApp/common/components/native/CustomModal';
 const Specification = () => {
   const {t} = useTranslation();
   const init = {
-    tags: '',
-    tagsArray: [],
+    tag:{
+      
+    }
   };
   const [tag, setTag] = useState(init);
   const [active, setActive] = useState(false);

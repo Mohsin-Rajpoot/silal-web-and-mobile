@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity , SafeAreaView} from "react-native";
 import React, { useState } from "react";
 import HeaderBack from "../../components/native/HeaderBack";
 import HeaderHeading from "../../components/headerHeading";

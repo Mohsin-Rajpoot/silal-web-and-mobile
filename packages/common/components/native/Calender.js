@@ -6,7 +6,7 @@ import moment from "moment";
 
 const Calender = ({ bg_Calender }) => {
     React.useEffect(() => {
-        console.log(bg_Calender, "fsdsfasfadsadsafdadsfdas")
+        console.log(bg_Calender, "Calender Background Prop")
     }, [])
     const [showDatePicker, setShowDatePicker] = useState(false)
     const [start_date, set_start_date] = useState();
