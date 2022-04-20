@@ -13,9 +13,12 @@ const CreateItem = React.lazy(() => import('../views/pages/products/components/C
 const AllOffers = React.lazy(() => import('../views/pages/offers/AllOffers'))
 const Documents = React.lazy(() => import('../views/pages/Documents'))
 const ContactUs = React.lazy(() => import('../views/pages/contact-us/ContactUs'))
-const Settings = React.lazy(() => import('../views/pages/Settings'))
-const Profile = React.lazy(() => import('../views/pages/profile/Profile'))
+const Settings = React.lazy(() => import('../views/pages/settings/Settings'))
 const AboutUs = React.lazy(() => import('../views/pages/AboutUs'))
+const Profile = React.lazy(() => import('../views/pages/profile/Profile'))
+const OpeningHours = React.lazy(() => import('../views/pages/profile/OpeningHours'))
+const PaymentHistory = React.lazy(() => import('../views/pages/profile/PaymentHistory'))
+const TransactionLedger = React.lazy(() => import('../views/pages/profile/TransactionLedger'))
 // const notFound = React.lazy(() => import('../views/errorPages/NotFound'))
 
 const routes = [
@@ -35,8 +38,11 @@ const routes = [
     { path: '/contact-us', exact: true, name: 'Contact Us', component: ContactUs },
     { path: '/settings', exact: true, name: 'Settings', component: Settings },
     { path: '/offers', exact: true, name: 'Offers', component: AllOffers },
-    { path: '/profile', exact: true, name: 'Profile', component: Profile },
     { path: '/about-us', exact: true, name: 'About Us', component: AboutUs },
+    { path: '/profile/profile', exact: true, name: 'Profile', component: Profile },
+    { path: '/profile/opening-hours', exact: true, name: 'Pening Hours', component: OpeningHours },
+    { path: '/profile/payment-history', exact: true, name: 'Payment History', component: PaymentHistory },
+    { path: '/profile/transaction-ledger', exact: true, name: 'Transaction Ledger', component: TransactionLedger },
 
 ]
 

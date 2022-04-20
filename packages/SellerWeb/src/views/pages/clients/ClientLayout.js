@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { Content } from "../../index"
 import Sidebar from "../../components/UI/Sidebar"
-import Menu from "../../components/UI/Menu"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import Nav from "../../components/clients/Nav"
@@ -22,9 +21,6 @@ const ClientLayout = () => {
           </div>
           <Content sideBar={sideBar} setSideBar={sideBarToggle} />
         </div>
-        <Menu
-          sideBar={sideBar}
-        />
       </div>
     </React.Fragment>
   )

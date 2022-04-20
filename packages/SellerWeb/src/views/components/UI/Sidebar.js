@@ -57,7 +57,7 @@ const Sidebar = ({ sideBar, setSideBar }) => {
           </Accordion.Item>
         </Accordion> */}
         <div className="logo-text text-white">Silal Service</div>
-        {/* <Link
+        <Link
           to="/"
           className={
             pathname == "/" ||
@@ -93,9 +93,9 @@ const Sidebar = ({ sideBar, setSideBar }) => {
           className={productPath && ("active")}>
           <Product />
           Products
-        </Link> */}
+        </Link>
         <Link
-          to="/profile"
+          to="/profile/profile"
           className={profilePath && 'active'}>
           <ProfileIcon />
           Profile

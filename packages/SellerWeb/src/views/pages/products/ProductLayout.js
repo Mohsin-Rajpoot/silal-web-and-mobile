@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { useLocation } from "react-router-dom"
 import { Content } from "../../index"
 import Sidebar from "../../components/UI/Sidebar"
-import Menu from "../../components/UI/Menu"
 import Nav from "../../components/products/Nav"
 
 const ProductLayout = () => {
@@ -28,7 +27,6 @@ const ProductLayout = () => {
           }
           <Content sideBar={sideBar} setSideBar={sideBarToggle} />
         </div>
-        <Menu sideBar={sideBar} />
       </div>
     </React.Fragment>
   )

@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { Content } from "../../index"
 import Sidebar from "../../components/UI/Sidebar"
-import Menu from "../../components/UI/Menu"
 import Nav from "./components/Nav"
 
 const OffersLayout = () => {
@@ -20,9 +19,6 @@ const OffersLayout = () => {
           </div>
           <Content sideBar={sideBar} setSideBar={sideBarToggle} />
         </div>
-        <Menu
-          sideBar={sideBar}
-        />
       </div>
     </React.Fragment>
   )

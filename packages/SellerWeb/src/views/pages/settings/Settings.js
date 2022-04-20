@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import LanguageCanvas from '../components/settings/LanguageCanvas'
-import { Wrapper, SettingBtn } from '../components/settings/Styled'
+import LanguageCanvas from '../../components/settings/LanguageCanvas'
+import { Wrapper, SettingBtn } from '../../components/settings/Styled'
 import { Modal, Row, Col } from 'react-bootstrap'
 import {
     SimpleNav,
@@ -10,13 +10,13 @@ import {
     ThemeModal,
     Radio,
     Margin,
-} from '../components/Style'
+} from '../../components/Style'
 import {
     Menu,
     RightArrow,
     RemoveIcon,
     BackArrow,
-} from '../components/AllImages'
+} from '../../components/AllImages'
 
 const Settings = ({
     sideBar,

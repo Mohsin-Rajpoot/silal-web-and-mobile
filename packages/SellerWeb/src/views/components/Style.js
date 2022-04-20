@@ -169,6 +169,14 @@ const TableStyled = styled.div`
     &.out {
       background: #ff5630;
     }
+    &.bank {
+      background: #FFFAE6;
+      color: #FF8B00;
+    }
+    &.credit {
+      background: #E6FCFF;
+      color: #008DA6;
+    }
   }
   .action-btn {
     border: none;
@@ -430,7 +438,7 @@ const FlexContainer = styled.div`
 const HeadingStyled = styled.h1`
   font-size:${(props) => props.size && (props.size)};
   font-weight:${(props) => props.weight && (props.weight)};
-  color:${(props) => props.color ? props.color : "inherit"};
+  color:${(props) => props.color ? props.color : "#002733"};
   margin:${(props) => props.margin ? props.margin : "0"};
   a {
     color: var(--theme-clr);
