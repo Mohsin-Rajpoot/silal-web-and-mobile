@@ -92,16 +92,16 @@ const CreateItem = () => {
           <ItemInformation onPress={moveForward} />
         </View>
         <View key="2">
-          <Specification />
+          <Specification moveForward={moveForward} goPrev={goprev} />
         </View>
         <View key="3">
-          <Media />
+          <Media moveForward={moveForward} goPrev={goprev} />
         </View>
         <View key="4">
-          <Shipping />
+          <Shipping moveForward={moveForward} goPrev={goprev} />
         </View>
         <View key="5">
-          <Preview />
+          <Preview moveForward={moveForward} goPrev={goprev} />
         </View>
       </PagerView>
     </SafeAreaView>

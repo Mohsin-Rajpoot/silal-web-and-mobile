@@ -16,6 +16,7 @@ const DropDown = (props) => {
       open={open}
       value={value}
       items={items}
+      multiple={props.multiple}
       setOpen={setOpen}
       setValue={setValue}
       setItems={setItems}
@@ -36,7 +37,7 @@ const DropDown = (props) => {
         borderRadius: 8,
         height:62
       }}
-      onChangeValue={()=> props.setActive(true)}
+      // onChangeValue={()=> se}
     />
   );
 };

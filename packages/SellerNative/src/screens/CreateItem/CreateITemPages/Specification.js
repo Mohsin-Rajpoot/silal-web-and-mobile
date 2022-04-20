@@ -16,21 +16,19 @@ import {CustomButton} from '@SilalApp/common/components/native';
 import DropDown from '@SilalApp/common/components/native/DropDown';
 import TagInput from 'react-native-tags-input';
 import CustomModal from '@SilalApp/common/components/native/CustomModal';
-const Specification = () => {
+import MultiSelectDropDown from '@SilalApp/common/components/native/MultipleSelectDrop';
+
+const Specification = ({moveForward, goPrev}) => {
   const {t} = useTranslation();
-  const init = {
-    tag:{
-      
-    }
-  };
-  const [tag, setTag] = useState(init);
+
   const [active, setActive] = useState(false);
   const [customField, setCustomField] = useState(false);
-  updateTagState = state => {
-    setTag({
-      tags: state,
-    });
-  };
+  // const [open, setOpen] = useState(false);
+  // const [value, setValue] = useState(null);
+  // const [items, setItems] = useState([
+  //   {label: 'Apple', value: 'apple'},
+  //   {label: 'Banana', value: 'banana'},
+  // ]);
   return (
     <>
       <ScrollView
@@ -77,8 +75,40 @@ const Specification = () => {
               </View>
             </View>
             <CustomText label={t('Color')} textStyle={styles.inputTitle} />
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={{width: '90%'}}>
+                <MultiSelectDropDown />
+                {/* <DropDown multiple={true}/> */}
+                {/* <CustomDropDown multiple={true}  /> */}
+              </View>
+
+              <View style={styles.plusContainer}>
+                <Icon
+                  name="plus"
+                  type="antdesign"
+                  size={26}
+                  color={colors.primary}
+                />
+              </View>
+            </View>
 
             <CustomText label={t('Capacity')} textStyle={styles.inputTitle} />
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={{width: '90%'}}>
+                <MultiSelectDropDown />
+                {/* <DropDown multiple={true}/> */}
+                {/* <CustomDropDown multiple={true}  /> */}
+              </View>
+
+              <View style={styles.plusContainer}>
+                <Icon
+                  name="plus"
+                  type="antdesign"
+                  size={26}
+                  color={colors.primary}
+                />
+              </View>
+            </View>
             <CustomText
               label={t('Screen_size')}
               textStyle={styles.inputTitle}
@@ -101,6 +131,7 @@ const Specification = () => {
               label={t('StorageType')}
               textStyle={styles.inputTitle}
             />
+
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <View style={{width: '90%'}}>
                 <DropDown placeholder="SSD" />
@@ -115,7 +146,7 @@ const Specification = () => {
                 />
               </View>
             </View>
-            <View style={{flexDirection: 'row', alignItems:'flex-end'}}>
+            <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
               <CustomText label={t('display')} textStyle={styles.inputTitle} />
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <View style={styles.customRadioOne} />
@@ -132,12 +163,29 @@ const Specification = () => {
             </View>
 
             <CustomText label={t('Capacity')} textStyle={styles.inputTitle} />
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={{width: '90%',marginTop:3}}>
+                <MultiSelectDropDown />
+                {/* <DropDown multiple={true}/> */}
+                {/* <CustomDropDown multiple={true}  /> */}
+              </View>
+
+              <View style={styles.plusContainer}>
+                <Icon
+                  name="plus"
+                  type="antdesign"
+                  size={26}
+                  color={colors.primary}
+                />
+              </View>
+            </View>
           </View>
           <View style={styles.buttonContainer}>
             <CustomButton
               text={t('back')}
               containerStyle={styles.backContainer}
               textStyle={styles.backText}
+              onPress={goPrev}
             />
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <TouchableOpacity
@@ -155,7 +203,7 @@ const Specification = () => {
                   textStyle={styles.customText}
                 />
               </TouchableOpacity>
-              <CustomButton text={t('Next_step')} textStyle={styles.nextStep} />
+              <CustomButton text={t('Next_step')} textStyle={styles.nextStep} onPress={moveForward} />
             </View>
           </View>
         </View>
@@ -275,7 +323,7 @@ const styles = ScaledSheet.create({
     marginRight: '5@s',
     marginLeft: '7@s',
   },
-  customRadioInActive:{
+  customRadioInActive: {
     borderColor: colors.borderColor3,
     borderWidth: '1@s',
     padding: '5@s',
@@ -338,7 +386,7 @@ const styles = ScaledSheet.create({
   plusContainer: {
     backgroundColor: colors.primaryBlur,
     marginHorizontal: '10@s',
-    padding: '5@s',
+    padding: '8@s',
     borderRadius: '4@s',
   },
   backText: {
