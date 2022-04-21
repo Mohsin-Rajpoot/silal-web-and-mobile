@@ -11,6 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		27FEDFC92811541C0023A09F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FEDFC82811541C0023A09F /* File.swift */; };
 		450752C8D3B36DD23BC25168 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5863AD42E0BCC7BE8D26EF98 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */; };
 		4B85A67C7B640639849EC205 /* libPods-Seller_App_Silal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E240F582F5D58AD30B9BF9F0 /* libPods-Seller_App_Silal.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -65,6 +66,8 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Seller_App_Silal/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Seller_App_Silal/main.m; sourceTree = "<group>"; };
 		27FEDFC6280EE7DA0023A09F /* Seller_App_Silal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Seller_App_Silal.entitlements; path = Seller_App_Silal/Seller_App_Silal.entitlements; sourceTree = "<group>"; };
+		27FEDFC72811541C0023A09F /* Seller_App_Silal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Seller_App_Silal-Bridging-Header.h"; sourceTree = "<group>"; };
+		27FEDFC82811541C0023A09F /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		528DF25206173876DE702D7F /* Pods-Seller_App_Silal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal.release.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal.release.xcconfig"; sourceTree = "<group>"; };
 		5863AD42E0BCC7BE8D26EF98 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seller_App_Silal-Seller_App_SilalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Seller_App_Silal/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				27FEDFC6280EE7DA0023A09F /* Seller_App_Silal.entitlements */,
+				27FEDFC82811541C0023A09F /* File.swift */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -192,6 +196,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				32C5ADC0B9539448E4BBC0B4 /* Pods */,
+				27FEDFC72811541C0023A09F /* Seller_App_Silal-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -301,7 +306,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1330;
 					};
 				};
 			};
@@ -533,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				27FEDFC92811541C0023A09F /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,6 +558,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E8D4F311B3842A2D84ACCD89 /* Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				EXCLUDED_ARCHS = i386;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
@@ -587,6 +594,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BA87E990B8978E415F64A937 /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				EXCLUDED_ARCHS = i386;
@@ -644,6 +652,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Seller_App_Silal;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Seller_App_Silal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -680,6 +689,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Seller_App_Silal;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Seller_App_Silal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 x86_64";
@@ -820,7 +830,7 @@
 				00E356F71AD99517003FC87E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Seller_App_Silal" */ = {
 			isa = XCConfigurationList;
@@ -829,7 +839,7 @@
 				13B07F951A680F5B00A75B9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Seller_App_Silal" */ = {
 			isa = XCConfigurationList;
@@ -838,7 +848,7 @@
 				83CBBA211A601CBA00E9B192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

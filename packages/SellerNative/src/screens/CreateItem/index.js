@@ -31,9 +31,9 @@ const CreateItem = () => {
     }
   };
   const moveForward = () => {
-    const nextStep = Math.min(4, page + 1);
+    const nextStep = Math.min(5, page + 1);
 
-    if (nextStep === 3) {
+    if (nextStep === 4) {
       goToGettingStarted();
     } else {
       ref.current?.setPageWithoutAnimation(nextStep);

@@ -42,7 +42,8 @@ const colors = {
   textColorPrime:"rgba(0, 39, 51, 0.2)",
   textColorSec:"rgba(0, 39, 51, 0.8)",
 
-  borderColor3:'rgba(76, 104, 112, 0.15)'
+  borderColor3:'rgba(76, 104, 112, 0.15)',
+  ImageBack:"#F4F7F8"
 
 };
 export default colors;

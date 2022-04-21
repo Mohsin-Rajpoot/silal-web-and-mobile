@@ -408,7 +408,20 @@
     "the_filed_will_be":"The field will be",
     "boolean":"Boolean",
     "Add_one_more_option":"Add one more option",
-    "add_field":"Add field"
+    "add_field":"Add field",
+    "Add_photo":"Add photo",
+    "requirement_forPhoto":"Requirements for photos",
+    "upTo":"up to",
+    "Format":"Format",
+    "Resolution":"Resolution",
+    "Size":"Size",
+    "Background":"Background",
+    "SomethingElse":"Something else",
+    "add_photo_to_item":"Add photos to the item",
+    "drag_drop":"Drag and drop images or",
+    "uplad":"upload",
+    "files":"files",
+    "Supported_Formats":"Supported formats"
 
   
   }
