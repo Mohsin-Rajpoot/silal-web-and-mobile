@@ -1,6 +1,8 @@
 import React from 'react'
 import Select from "react-select"
 import TopNav from '../../components/profile/Nav'
+import { DatePicker } from 'rsuite'
+import '../../components/rsuite.css'
 import { Wrapper, ToLabel } from '../../components/profile/OpeninHoursStyled'
 import { Row, Col, Tab, Nav } from 'react-bootstrap'
 import { ToggleBtn } from '../../components/profile/Components'
@@ -10,6 +12,7 @@ import {
     CardStyled,
     Button,
 } from '../../components/Style'
+import { DelIcon, CalendarIcon2 } from '../../components/AllImages'
 
 const OpeningHours = () => {
     const timeOptions = [
@@ -200,21 +203,99 @@ const OpeningHours = () => {
                                 <CardStyled>
                                     <Row className="align-items-center mb-20">
                                         <Col md={4}>
-                                            <div className="between">
-                                                <HeadingStyled
-                                                    size="16px"
-                                                    weight="16px"
-                                                    className="lato">
-                                                    Monday
-                                                </HeadingStyled>
+                                            <div className="d-flex">
+                                                <DatePicker
+                                                    className="home-range openings-datepicker"
+                                                    format="dd MMMM yy"
+                                                    placeholder="dd mm yy"
+                                                    character="&#160;&#160;-&#160;&#160;"
+                                                    caretAs={CalendarIcon2}
+                                                />
                                                 <ToggleBtn
-                                                    name="OHours"
+                                                    name="SHours"
                                                     checked={true}
                                                     label="Open"
                                                 />
                                             </div>
                                         </Col>
-                                        <Col md={8}></Col>
+                                        <Col md={8} className="d-flex align-items-center justify-content-md-end">
+                                            <Select options={timeOptions} placeholder="10:00 AM" className="hours-select" />
+                                            <ToLabel>TO</ToLabel>
+                                            <Select options={timeOptions} placeholder="10:00 AM" className="hours-select" />
+                                            <button className="del-btn center"><DelIcon /></button>
+                                        </Col>
+                                    </Row>
+                                    <Row className="align-items-center mb-20">
+                                        <Col md={4}>
+                                            <div className="d-flex">
+                                                <DatePicker
+                                                    className="home-range openings-datepicker"
+                                                    format="dd MMMM yy"
+                                                    placeholder="dd mm yy"
+                                                    character="&#160;&#160;-&#160;&#160;"
+                                                    caretAs={CalendarIcon2}
+                                                />
+                                                <ToggleBtn
+                                                    name="SHours"
+                                                    checked={false}
+                                                    label="Closed"
+                                                />
+                                            </div>
+                                        </Col>
+                                        <Col md={8} className="d-flex align-items-center justify-content-md-end">
+                                            <Select options={timeOptions} placeholder="10:00 AM" className="hours-select closed" />
+                                            <ToLabel>TO</ToLabel>
+                                            <Select options={timeOptions} placeholder="10:00 AM" className="hours-select closed" />
+                                            <button className="del-btn center"><DelIcon /></button>
+                                        </Col>
+                                    </Row>
+                                    <Row className="align-items-center mb-20">
+                                        <Col md={4}>
+                                            <div className="d-flex">
+                                                <DatePicker
+                                                    className="home-range openings-datepicker"
+                                                    format="dd MMMM yy"
+                                                    placeholder="dd mm yy"
+                                                    character="&#160;&#160;-&#160;&#160;"
+                                                    caretAs={CalendarIcon2}
+                                                />
+                                                <ToggleBtn
+                                                    name="SHours"
+                                                    checked={false}
+                                                    label="Closed"
+                                                />
+                                            </div>
+                                        </Col>
+                                        <Col md={8} className="d-flex align-items-center justify-content-md-end">
+                                            <Select options={timeOptions} placeholder="10:00 AM" className="hours-select closed" />
+                                            <ToLabel>TO</ToLabel>
+                                            <Select options={timeOptions} placeholder="10:00 AM" className="hours-select closed" />
+                                            <button className="del-btn center"><DelIcon /></button>
+                                        </Col>
+                                    </Row>
+                                    <Row className="align-items-center mb-20">
+                                        <Col md={4}>
+                                            <div className="d-flex">
+                                                <DatePicker
+                                                    className="home-range openings-datepicker"
+                                                    format="dd MMMM yy"
+                                                    placeholder="dd mm yy"
+                                                    character="&#160;&#160;-&#160;&#160;"
+                                                    caretAs={CalendarIcon2}
+                                                />
+                                                <ToggleBtn
+                                                    name="SHours"
+                                                    checked={true}
+                                                    label="Open"
+                                                />
+                                            </div>
+                                        </Col>
+                                        <Col md={8} className="d-flex align-items-center justify-content-md-end">
+                                            <Select options={timeOptions} placeholder="10:00 AM" className="hours-select" />
+                                            <ToLabel>TO</ToLabel>
+                                            <Select options={timeOptions} placeholder="10:00 AM" className="hours-select" />
+                                            <button className="del-btn center"><DelIcon /></button>
+                                        </Col>
                                     </Row>
                                 </CardStyled>
                                 <div className="end">

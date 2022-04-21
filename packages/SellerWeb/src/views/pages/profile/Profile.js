@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import PinInput from "react-pin-input"
 import Nav from '../../components/profile/Nav'
-import { Row, Col, Modal } from 'react-bootstrap'
+import AccountFreezedModal from '../../components/profile/AccountFreezedModal'
+import CodeModal from '../../components/profile/CodeModal'
+import { Row, Col } from 'react-bootstrap'
 import {
     HeadingStyled,
     CardStyled,
@@ -11,14 +11,13 @@ import {
     Select,
     Button,
     Tag,
-    ThemeModal,
 } from '../../components/Style'
 import { ProfileBanner } from '../../components/profile/Components'
 import { restaurantBg, avatar } from '../../components/AllImages'
 
 const Profile = () => {
     const [editState, setEditState] = useState(false)
-    const [showDelModal, setShowDelModal] = useState(false)
+    const [showCodeModal, setShowCodeModal] = useState(false)
     const [showFreezeModal, setFreezeModal] = useState(true)
     const [restName, setRestName] = useState('Rastaurant’s name')
     const [slogan, setSlogan] = useState('The slogan will be here mх 40 characters')
@@ -27,10 +26,9 @@ const Profile = () => {
     const [streetNumber, setStreetNumber] = useState('24/3')
     const [postal, setPostal] = useState('233 344')
 
-    const handleCloseDelModal = () => setShowDelModal(false)
-    const handleShowDelModal = () => setShowDelModal(true)
+    const handleCloseCodeModal = () => setShowCodeModal(false)
+    const handleShowCodeModal = () => setShowCodeModal(true)
     const handleCloseFreezeModal = () => setFreezeModal(false)
-    const handleShowFreezeModal = () => setFreezeModal(true)
 
     return (
         <>
@@ -160,96 +158,21 @@ const Profile = () => {
                                 bg="#5AB3A833"
                                 color="#5AB3A8"
                                 className="w-100 hover-fill"
-                                onClick={handleShowDelModal}>
+                                onClick={handleShowCodeModal}>
                                 Change admin code
                             </Button>
                         </>
                     }
                 </Col>
             </Row>
-
-            <Modal show={showDelModal} onHide={handleCloseDelModal} centered className="refusal-modal modal-title-center">
-                <ThemeModal>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Change admin code for  “Seller’s name”</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <HeadingStyled
-                            className="text-center lato"
-                            size="15px"
-                            weight="500"
-                            color="#4C6870"
-                            margin="8px 0 20px 0">
-                            Enter your previous code
-                        </HeadingStyled>
-                        <div className="center">
-                            <PinInput
-                                length={4}
-                                // initialValue=""
-                                // secret
-                                // onChange={(value, index) => { }}
-                                type="numeric"
-                                inputMode="number"
-                                inputStyle={{ borderColor: '#CDCDD0' }}
-                                inputFocusStyle={{ borderColor: '#5AB3A8' }}
-                                // onComplete={(value, index) => { }}
-                                autoSelect={true}
-                                regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
-                            />
-                        </div>
-                        <HeadingStyled
-                            className="text-center lato"
-                            size="15px"
-                            weight="500"
-                            color="#4C6870"
-                            margin="25px 0 20px 0">
-                            Repeat code
-                        </HeadingStyled>
-                        <div className="center">
-                            <PinInput
-                                length={4}
-                                // initialValue=""
-                                // secret
-                                // onChange={(value, index) => { }}
-                                type="numeric"
-                                inputMode="number"
-                                inputStyle={{ borderColor: '#CDCDD0' }}
-                                inputFocusStyle={{ borderColor: '#5AB3A8' }}
-                                // onComplete={(value, index) => { }}
-                                autoSelect={true}
-                                regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
-                            />
-                        </div>
-                    </Modal.Body>
-                    <Modal.Footer className="justify-content-center">
-                        <Button mt="40px" width="329px" onClick={handleCloseDelModal}>
-                            Submit
-                        </Button>
-                    </Modal.Footer>
-                </ThemeModal>
-            </Modal>
-            <Modal show={showFreezeModal} onHide={handleCloseFreezeModal} centered className="refusal-modal modal-title-center">
-                <ThemeModal>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Account is freezed</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <HeadingStyled color="#4C6870" size="18px" margin="0 0 43px 0" weight="500" className="lato">
-                            It seems that your account was deactivated because
-                            it violated the <Link to="#">terms of use</Link> or our <Link to="#">community guidline</Link>.
-                            If you believe this was by mistake, please <Link to="#">contact us</Link>.
-                        </HeadingStyled>
-                        <HeadingStyled color="#4C6870" size="18px" margin="0" weight="500" className="lato">
-                            <b>Note from Silal:</b> account freezed for 30 days due to leaving inappropriate reviews on products.
-                        </HeadingStyled>
-                    </Modal.Body>
-                    <Modal.Footer className="justify-content-center">
-                        <Button width="329px" onClick={handleCloseFreezeModal}>
-                            Ok
-                        </Button>
-                    </Modal.Footer>
-                </ThemeModal>
-            </Modal>
+            <CodeModal
+                showCodeModal={showCodeModal}
+                handleClose={handleCloseCodeModal}
+            />
+            <AccountFreezedModal
+                showModal={showFreezeModal}
+                handleClose={handleCloseFreezeModal}
+            />
         </>
     )
 }

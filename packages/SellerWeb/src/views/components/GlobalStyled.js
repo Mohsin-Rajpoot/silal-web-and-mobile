@@ -20,10 +20,6 @@ body {
     font-weight: 400;
     font-size: 14px;
 }
-.main-content {
-    /* height: calc(100vh + 55px); */
-    padding-bottom: 55px;
-}
 .lato {
     font-family: 'Lato', sans-serif;
 }
@@ -498,19 +494,8 @@ hr {
 .modal-title-center {
     .modal-title {
         margin-left: auto !important;
+        text-align: center;
     }
-}
-.pincode-input-container
-{
-  .pincode-input-text
-  {
-    padding:0 !important;
-    margin:0 5px !important;
-    width: 45px !important;
-    height: 55px !important;
-    border-radius: 5px;
-    background: transparent;
-  }
 }
 .save-note-hover:hover {
     background: rgba(90, 179, 168, 0.2);
@@ -533,6 +518,11 @@ hr {
     bottom: 0;
     width: 100%;
     height: 100%;
+}
+.modal-width-420 {
+    .modal-dialog {
+        max-width: 420px;
+    }
 }
 `;
 

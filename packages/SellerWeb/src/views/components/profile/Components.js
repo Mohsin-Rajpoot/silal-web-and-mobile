@@ -123,7 +123,7 @@ const ToggleBtn = ({ name, onchange, checked, label }) => {
 }
 
 const ToggleBtnStyled = styled(Switch)`
-    z-index: 10;
+    z-index: 1;
     width: 51px;
     height: 31px;
     .slider {

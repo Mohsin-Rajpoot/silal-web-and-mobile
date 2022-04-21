@@ -32,6 +32,7 @@ import { ReactComponent as Product } from "../../assets/images/svg/products.svg"
 import { ReactComponent as NotificationIcon } from "../../assets/images/svg/notification.svg"
 import { ReactComponent as Close } from "../../assets/images/svg/close.svg"
 import { ReactComponent as CalendarIcon } from "../../assets/images/svg/calendar.svg"
+import { ReactComponent as CalendarIcon2 } from "../../assets/images/svg/calendar-icon2.svg"
 import { ReactComponent as DropdownMenu } from "../../assets/images/svg/dropdown-menu.svg"
 import { ReactComponent as CycleIcon } from "../../assets/images/svg/cycle-icon.svg"
 import { ReactComponent as BackArrow } from "../../assets/images/svg/back-arrow.svg"
@@ -66,6 +67,7 @@ import { ReactComponent as AddPhoto } from "../../assets/images/svg/add-photo.sv
 import { ReactComponent as AttachmentIcon } from "../../assets/images/svg/attachment-icon.svg"
 import { ReactComponent as ImgIcon } from "../../assets/images/svg/img-icon.svg"
 import { ReactComponent as LogoS } from "../../assets/images/svg/logo-s.svg"
+import { ReactComponent as DangerVector } from "../../assets/images/svg/danger-vector.svg"
 
 export {
     Menu,
@@ -136,4 +138,6 @@ export {
     arabicFlag,
     jewFlag,
     LogoS,
+    CalendarIcon2,
+    DangerVector,
 }
