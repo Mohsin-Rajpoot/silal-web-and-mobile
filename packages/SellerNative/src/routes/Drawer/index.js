@@ -129,9 +129,11 @@ const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.sidebar,
-    width:'90%',
+    // width:'100%',
     borderTopRightRadius: '15@vs',
     borderBottomRightRadius: '15@vs',
+    // borderTopRightRadius: 30,
+    //     borderBottomRightRadius: 30,
     paddingVertical: '23@vs',
     paddingLeft: '10@s',
     paddingRight: '13@s',

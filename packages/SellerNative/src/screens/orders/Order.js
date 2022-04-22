@@ -266,7 +266,7 @@ const Order = ({navigation}) => {
         <PagerView
           style={{flex: 1}}
           initialPage={0}
-          scrollEnabled={true}
+          scrollEnabled={false}
           ref={ref}>
           <View key={'1'}>
             <Current_orders title="Received" navigation={navigation} />

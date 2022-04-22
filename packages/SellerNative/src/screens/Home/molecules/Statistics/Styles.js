@@ -55,7 +55,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 20,
     justifyContent: 'space-evenly',
-    marginHorizontal: 3,
+    marginHorizontal: 3, 
   },
   One: {
     backgroundColor: '#fff',

@@ -140,7 +140,7 @@ export default function CustomGraph() {
                                 data={graphValue}
                                 renderItem={({ item, index }) =>
                                     <View style={{
-                                        width: windowHeightF / 20, height: 226, marginRight: 25,
+                                        width: windowHeightF / 20, height: 218, marginRight: 25,
                                         // backgroundColor:'yellow',
                                         justifyContent: 'flex-end',
                                     }}>
@@ -162,7 +162,7 @@ export default function CustomGraph() {
                                         </View>
                                         <View style={styles.durationListTextView}>
                                             <Text style={[styles.quarterlySepText]}>28 PM</Text>
-                                            <Text style={{ position: 'absolute', bottom: -15, paddingHorizontal: 5, fontFamily: 'Lato-Semibold', fontSize: 13, color: '#002733' }}>$ 230</Text>
+                                            <Text style={{ position: 'absolute', bottom: -10, paddingHorizontal: 5, fontFamily: 'Lato-Semibold', fontSize: 13, color: '#002733' }}>$ 230</Text>
 
                                         </View>
 
@@ -241,8 +241,8 @@ const styles = StyleSheet.create({
         color: "#809399",
         fontSize: 13,
         paddingHorizontal: "10%",
-        height: 60,
-        // marginTop: -4,
+        height: 30,
+        marginTop: 20,
         alignSelf: "center",
         textAlignVertical: "center",
         width: 80,

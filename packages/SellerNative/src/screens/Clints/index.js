@@ -10,7 +10,8 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
-  Modal
+  Modal,
+  KeyboardAvoidingView
 } from 'react-native';
 import ModalViewS from "react-native-modal";
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -583,6 +584,7 @@ const Clints = () => {
 
   return (
     <SafeAreaView style={{ backgroundColor: '#E5E5E5', paddingHorizontal: 25 }}>
+      <KeyboardAvoidingView>
       <View style={{ padding: 20 }}>
         <Modal
           animationType="slide"
@@ -598,7 +600,7 @@ const Clints = () => {
                 <View>
                   <TouchableOpacity
                     onPress={() => setisModalVisible(!ismodalVisible)}
-                    style={{ position: 'absolute', right: 0, height: 40, width: 40, }}>
+                    style={{ height: 60,justifyContent:'flex-end',flexDirection:'row',paddingTop:25}}>
                     <Entypo
                       name="cross"
                       style={[
@@ -664,7 +666,7 @@ const Clints = () => {
           </View>
         </Modal>
       </View>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 15 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5,marginHorizontal:15 }}>
         <Text style={styles.ClintPageMainheading}>Clients database</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <EvilIcons name="search" style={styles.SearchIcon} />
@@ -745,6 +747,7 @@ const Clints = () => {
           keyExtractor={item => item.id}
         />
       </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

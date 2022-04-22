@@ -4,7 +4,7 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
-  StatusBar,
+  KeyboardAvoidingView,
   ScrollView,
   Modal,
 } from 'react-native';
@@ -33,7 +33,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
   return (
     <View style={styles.MainContainer}>
       <SafeAreaView style={styles.Container}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+      <KeyboardAvoidingView  behavior='padding'>
           <View style={{width: '100%', alignSelf: 'center'}}>
             <View style={styles.Header}>
               <TouchableOpacity
@@ -356,7 +356,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
             opacity={1}
             textStyle={{color: 'red'}}
           />
-        </ScrollView>
+        </KeyboardAvoidingView>
       </SafeAreaView>
     </View>
   );

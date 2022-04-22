@@ -3,7 +3,6 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Home from '../screens/Home';
 import Clints from '../screens/Clints';
 import Products from '../screens/Products';
 import OrderStack from './OrderStack';
@@ -12,6 +11,7 @@ import {useTranslation} from 'react-i18next';
 import ProductStack from './ProductStack';
 import { NavigationContainer } from '@react-navigation/native';
 import colors from '@SilalApp/common/assets/colors';
+import HomeStack from './HomeStack';
 const Tab = createBottomTabNavigator();
 
 const TabStack = () => {
@@ -24,10 +24,10 @@ const TabStack = () => {
         tabBarActiveTintColor: '#5AB3A8',
         
       }}
-      initialRouteName="Home">
+      initialRouteName="HomeStack">
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="HomeStack"
+        component={HomeStack}
         options={{
           tabBarLabel: t('home'),
           unmountOnBlur: true,

@@ -221,6 +221,10 @@ const styles = ScaledSheet.create({
   ToastMainView: {
     flexDirection: 'row',
     marginVertical: 0,
+    position:'absolute',
+    left:-420,
+    backgroundColor:'#fff',
+    elevation:2
   },
   IconToast: {
     color: 'green',

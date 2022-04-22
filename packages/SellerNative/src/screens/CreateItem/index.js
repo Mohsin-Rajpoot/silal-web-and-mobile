@@ -12,7 +12,7 @@ import Specification from './CreateITemPages/Specification';
 import Media from './CreateITemPages/Media';
 import Shipping from './CreateITemPages/Shipping';
 import Preview from './CreateITemPages/Preview';
-const CreateItem = () => {
+const CreateItem = ({navigation}) => {
   const {t} = useTranslation();
   const ref = useRef(null);
   const [page, setPage] = useState(0);
@@ -33,7 +33,7 @@ const CreateItem = () => {
   const moveForward = () => {
     const nextStep = Math.min(5, page + 1);
 
-    if (nextStep === 4) {
+    if (nextStep === 5) {
       goToGettingStarted();
     } else {
       ref.current?.setPageWithoutAnimation(nextStep);

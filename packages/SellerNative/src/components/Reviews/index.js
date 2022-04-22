@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, Image, StyleSheet, FlatList, TextInput, } from 'react-native';
+import { View, Text, TouchableOpacity, Image, FlatList, TextInput, KeyboardAvoidingView, } from 'react-native';
 import { Calender, CustomButton, Raiting, TitleHeading } from '@SilalApp/common/components/native';
 import styles from './Styles';
 
@@ -43,7 +43,9 @@ const Reviews = () => {
 
 
     return (
-        <View style={{ backgroundColor: '#E5E5E5' }}>
+        <KeyboardAvoidingView style={{ backgroundColor: '#E5E5E5',flex:1 }}   behavior={Platform.OS === 'ios' ? 'position' : 'height'}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? -75 : 120} enabled>
+            
             <TitleHeading />
             <View style={styles.DividerRow}>
                 <View style={styles.DividerFirstView}>
@@ -109,7 +111,7 @@ const Reviews = () => {
                     </View>
                 </View>
             </View>
-        </View>
+        </KeyboardAvoidingView>
     )
 }
 

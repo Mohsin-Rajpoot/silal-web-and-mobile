@@ -56,17 +56,7 @@ const Calender = ({ bg_Calender }) => {
                 mode={'range'}
                 onCancel={onCancel}
                 onConfirm={onConfirm}
-                colorOptions={colorOptions}
-
-
-
-
-            >
-
-
-
-
-
+                colorOptions={colorOptions}>
             </DatePicker>
         </View>
     )

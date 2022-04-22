@@ -37,7 +37,8 @@ const MainStack = () => {
       drawerContent={props => <CustomDrawerContent {...props} />}
       screenOptions={{
         headerShown: false,
-        drawerStyle: {width: '40%', backgroundColor: 'transparent'},
+        drawerType: 'front',
+        drawerStyle:{backgroundColor:'transparent',width:"35%",borderRadius:20}
       }}>
       <Drawer.Screen name="TabStack" component={TabStack} />
       <Drawer.Screen name="Profile" component={Profile} />

@@ -15,7 +15,7 @@ const Statistics = () => {
     {
       id: '1',
       Identity: '12',
-      image: images.image12,
+      image: require('../../../../../src/Assets/image12.png'),
       Text: 'Udon tom yum with shrimps and mussels',
       price: '$ 2.90',
     },
@@ -23,21 +23,21 @@ const Statistics = () => {
     {
       id: '2',
       Identity: '9',
-      image: images.image11,
+      image: require('../../../../../src/Assets/image11.png'),
       Text: 'Chicken burger in cheese sauce',
       price: '$ 3.10',
     },
     {
       id: '3',
       Identity: '9',
-      image: images.image13,
+      image: require('../../../../../src/Assets/image13.png'),
       Text: 'Cheesecakes with sour cream and fresh stra...',
       price: '$ 2.50',
     },
     {
       id: '4',
       Identity: '7',
-      image: images.image13,
+      image: require('../../../../../src/Assets/image11.png'),
       Text: 'Cheesecakes with sour cream and fresh stra...',
       price: '$ 2.50',
     },
@@ -60,7 +60,7 @@ const Statistics = () => {
               style={[styles.PercentageBkgGreen, {backgroundColor: '#E3FCEF'}]}>
               <View style={styles.TextInGreenDiv}>
                 <Text style={{color: '#36B37E', textAlign: 'center'}}>
-                  +11.7%{' '}
+                  +11.7%
                 </Text>
                 <Ionicons
                   name="arrow-up"
@@ -85,7 +85,7 @@ const Statistics = () => {
               style={[styles.PercentageBkgGreen, {backgroundColor: '#FFEBE6'}]}>
               <View style={styles.TextInGreenDiv}>
                 <Text style={[styles.PercentageTextColor, {color: '#FF5630'}]}>
-                  - 4 %
+                  - 4 % 
                 </Text>
                 <Ionicons name="arrow-down" style={styles.VectorIconView} />
               </View>

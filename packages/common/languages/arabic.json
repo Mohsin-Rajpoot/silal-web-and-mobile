@@ -421,6 +421,17 @@
     "drag_drop":"Drag and drop images or",
     "uplad":"upload",
     "files":"files",
-    "Supported_Formats":"Supported formats"
+    "Supported_Formats":"Supported formats",
+    "packageDimension":"Package Dimensions (up-to)",
+    "Width":"Width",
+    "Depth":"Depth",
+    "height":"Height",
+    "item_qualities":"Item qualities",
+    "BreakAble":"Breakable",
+    "FlameAble":"Flammable",
+    "Contain_liquid":"Contain liquid",
+    "Package_weight":"Package Weight",
+    "Kg":"Kg",
+    "days":"Days"
   }
 }

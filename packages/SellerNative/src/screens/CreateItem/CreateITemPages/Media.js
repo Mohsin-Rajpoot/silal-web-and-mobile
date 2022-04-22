@@ -24,6 +24,11 @@ const Media = ({moveForward, goPrev}) => {
   const [refresh, setRefresh] = useState(false);
   const option = {
     mediaType: 'image',
+    maximumMessageTitle: 'Notification',
+    maximumMessage: 'You have selected the maximum number of media allowed',
+    messageTitleButton: 'OK',
+    cancelTitle: 'Cancel',
+    maxSelectedAssets: 9,
   };
 
   const openPicker = async () => {
@@ -206,9 +211,7 @@ const Media = ({moveForward, goPrev}) => {
             <ImageBackground
               source={{uri: image?.[0]?.path}}
               resizeMode="contain"
-              style={{width: '100%', height: '100%'}}
-               
-              >
+              style={{width: '100%', height: '100%'}}>
               {image?.[0]?.path ? (
                 <TouchableOpacity
                   activeOpacity={0.6}
@@ -241,16 +244,97 @@ const Media = ({moveForward, goPrev}) => {
                   source={{uri: image?.[1]?.path}}
                   style={{width: '100%', height: '100%'}}
                   resizeMode="contain">
-                  <TouchableOpacity
-                    activeOpacity={0.6}
-                    onPress={() => deletePhoto(1)}>
-                    <CustomText label="Remove" />
-                  </TouchableOpacity>
+                  {image?.[1]?.path ? (
+                    <TouchableOpacity
+                      activeOpacity={0.6}
+                      onPress={() => deletePhoto(1)}
+                      style={styles.removeIcon}>
+                      <View style={{alignSelf: 'flex-end', margin: 5}}>
+                        <Icon
+                          name="circle-with-cross"
+                          type="entypo"
+                          size={24}
+                          color={colors.primary}
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  ) : (
+                    <View />
+                  )}
                 </ImageBackground>
               </View>
-              <View style={styles.innerPic1}></View>
-              <View style={styles.innerPic1}></View>
-              <View style={styles.innerPic1}></View>
+              <View style={styles.innerPic1}>
+                <ImageBackground
+                  source={{uri: image?.[2]?.path}}
+                  style={{width: '100%', height: '100%'}}
+                  resizeMode="contain">
+                  {image?.[2]?.path ? (
+                    <TouchableOpacity
+                      activeOpacity={0.6}
+                      onPress={() => deletePhoto(2)}
+                      style={styles.removeIcon}>
+                      <View style={{alignSelf: 'flex-end', margin: 5}}>
+                        <Icon
+                          name="circle-with-cross"
+                          type="entypo"
+                          size={24}
+                          color={colors.primary}
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  ) : (
+                    <View />
+                  )}
+                </ImageBackground>
+              </View>
+              <View style={styles.innerPic1}>
+                <ImageBackground
+                  source={{uri: image?.[3]?.path}}
+                  style={{width: '100%', height: '100%'}}
+                  resizeMode="contain">
+                  {image?.[3]?.path ? (
+                    <TouchableOpacity
+                      activeOpacity={0.6}
+                      onPress={() => deletePhoto(3)}
+                      style={styles.removeIcon}>
+                      <View style={{alignSelf: 'flex-end', margin: 5}}>
+                        <Icon
+                          name="circle-with-cross"
+                          type="entypo"
+                          size={24}
+                          color={colors.primary}
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  ) : (
+                    <View />
+                  )}
+                </ImageBackground>
+              </View>
+              <View style={styles.innerPic1}>
+                <ImageBackground
+                  source={{uri: image?.[4]?.path}}
+                  style={{width: '100%', height: '100%'}}
+                  resizeMode="contain">
+                  {image?.[4]?.path ? (
+                    <TouchableOpacity
+                      activeOpacity={0.6}
+                      onPress={() => deletePhoto(4)}
+                      style={styles.removeIcon}>
+                      <View style={{alignSelf: 'flex-end', margin: 5}}>
+                        <Icon
+                          name="circle-with-cross"
+                          type="entypo"
+                          size={24}
+                          color={colors.primary}
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  ) : (
+                    <View />
+                  )}
+                </ImageBackground>
+              </View>
             </View>
             <View
               style={{
@@ -258,10 +342,102 @@ const Media = ({moveForward, goPrev}) => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
               }}>
-              <View style={styles.innerPic1}></View>
-              <View style={styles.innerPic1}></View>
-              <View style={styles.innerPic1}></View>
-              <View style={styles.innerPic1}></View>
+              <View style={styles.innerPic1}>
+                <ImageBackground
+                  source={{uri: image?.[5]?.path}}
+                  style={{width: '100%', height: '100%'}}
+                  resizeMode="contain">
+                  {image?.[5]?.path ? (
+                    <TouchableOpacity
+                      activeOpacity={0.6}
+                      onPress={() => deletePhoto(5)}
+                      style={styles.removeIcon}>
+                      <View style={{alignSelf: 'flex-end', margin: 5}}>
+                        <Icon
+                          name="circle-with-cross"
+                          type="entypo"
+                          size={24}
+                          color={colors.primary}
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  ) : (
+                    <View />
+                  )}
+                </ImageBackground>
+              </View>
+              <View style={styles.innerPic1}>
+                <ImageBackground
+                  source={{uri: image?.[6]?.path}}
+                  style={{width: '100%', height: '100%'}}
+                  resizeMode="contain">
+                  {image?.[6]?.path ? (
+                    <TouchableOpacity
+                      activeOpacity={0.6}
+                      onPress={() => deletePhoto(6)}
+                      style={styles.removeIcon}>
+                      <View style={{alignSelf: 'flex-end', margin: 5}}>
+                        <Icon
+                          name="circle-with-cross"
+                          type="entypo"
+                          size={24}
+                          color={colors.primary}
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  ) : (
+                    <View />
+                  )}
+                </ImageBackground>
+              </View>
+              <View style={styles.innerPic1}>
+                <ImageBackground
+                  source={{uri: image?.[7]?.path}}
+                  style={{width: '100%', height: '100%'}}
+                  resizeMode="contain">
+                  {image?.[7]?.path ? (
+                    <TouchableOpacity
+                      activeOpacity={0.6}
+                      onPress={() => deletePhoto(7)}
+                      style={styles.removeIcon}>
+                      <View style={{alignSelf: 'flex-end', margin: 5}}>
+                        <Icon
+                          name="circle-with-cross"
+                          type="entypo"
+                          size={24}
+                          color={colors.primary}
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  ) : (
+                    <View />
+                  )}
+                </ImageBackground>
+              </View>
+              <View style={styles.innerPic1}>
+                <ImageBackground
+                  source={{uri: image?.[8]?.path}}
+                  style={{width: '100%', height: '100%'}}
+                  resizeMode="contain">
+                  {image?.[8]?.path ? (
+                    <TouchableOpacity
+                      activeOpacity={0.6}
+                      onPress={() => deletePhoto(8)}
+                      style={styles.removeIcon}>
+                      <View style={{alignSelf: 'flex-end', margin: 5}}>
+                        <Icon
+                          name="circle-with-cross"
+                          type="entypo"
+                          size={24}
+                          color={colors.primary}
+                        />
+                      </View>
+                    </TouchableOpacity>
+                  ) : (
+                    <View />
+                  )}
+                </ImageBackground>
+              </View>
             </View>
           </View>
         </View>

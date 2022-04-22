@@ -9,18 +9,20 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
-import {
-  CustomButton,
-  LockOnLandscape,
-} from '@SilalApp/common/components/native';
-import {Picker} from '@react-native-picker/picker';
 import {CheckBox} from 'react-native-elements';
 import Svg, {Path} from 'react-native-svg';
 import Feather from 'react-native-vector-icons/Feather';
+import Entypo from 'react-native-vector-icons/Entypo';
 // import Camera from "../../components/Camera"
 import Tooltip from 'react-native-walkthrough-tooltip';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useTranslation} from 'react-i18next';
+import Menu, {
+  MenuTrigger,
+  MenuOptions,
+  MenuOption,
+} from 'react-native-popup-menu';
+import {color} from 'react-native-elements/dist/helpers';
 const Secondary = '#002733';
 let Primary = '#5AB3A8';
 const AddItem = ({navigation}) => {
@@ -31,6 +33,9 @@ const AddItem = ({navigation}) => {
   const [loader, setLoader] = useState(false);
   const [order_state, set_order_state] = useState('All');
   const [showTip, setTip] = useState(false);
+  const [selected_Category, set_selected_Category] = useState('Salad');
+
+  console.log('*****************', selected_Category);
   //     const CameraPicker = () => {
   //         // alert('fhfhfh')
   // return(
@@ -150,6 +155,7 @@ const AddItem = ({navigation}) => {
     <SafeAreaView
       style={{width: '100%', alignSelf: 'center', backgroundColor: '#f1f1f1'}}>
       <ScrollView showsVerticalScrollIndicator={false}>
+     
         <View style={{width: '100%', alignSelf: 'center'}}>
           {order_state == 'All' ? (
             <View
@@ -223,25 +229,79 @@ const AddItem = ({navigation}) => {
                     </View>
                   </View>
                   <View style={{flexDirection: 'row'}}>
+                    {/* /// */}
+
                     <View style={styles.dropdownbox}>
-                      <Picker
-                        selectedValue={selectedCategory}
-                        onValueChange={(itemValue, itemIndex) =>
-                          setselectedCategory(itemValue)
-                        }>
-                        <Picker.Item label={t('Salads')} value="java" />
-                        <Picker.Item label={t('Salad_special')} value="js" />
-                      </Picker>
+                      <Menu>
+                        <MenuTrigger onPress={() => {}}>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                              paddingVertical: 5,
+                              paddingHorizontal: 7,
+                            }}>
+                            <Text>{selected_Category}</Text>
+                            <Entypo
+                              name="chevron-down"
+                              style={[
+                                styles.cross_icon,
+                                {color: '#4C6870', fontSize: 20},
+                              ]}
+                            />
+                          </View>
+                        </MenuTrigger>
+                        <MenuOptions customStyles={{optionText: {padding: 5}}}>
+                          <MenuOption
+                            onSelect={set_selected_Category}
+                            value="Salad"
+                            text="Salad"
+                          />
+                          <MenuOption
+                            onSelect={set_selected_Category}
+                            value="Berger"
+                            text="Berger"
+                          />
+                        </MenuOptions>
+                      </Menu>
                     </View>
+
+
                     <View style={styles.dropdownbox}>
-                      <Picker
-                        selectedValue={Cusine}
-                        onValueChange={(itemValue, itemIndex) =>
-                          setCusine(itemValue)
-                        }>
-                        <Picker.Item label={t('Cusine')} value="java" />
-                        <Picker.Item label={t('Cuisine_special')} value="js" />
-                      </Picker>
+                      <Menu>
+                        <MenuTrigger onPress={() => {}}>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                              paddingVertical: 5,
+                              paddingHorizontal: 7,
+                            }}>
+                            <Text>{selected_Category}</Text>
+                            <Entypo
+                              name="chevron-down"
+                              style={[
+                                styles.cross_icon,
+                                {color: '#4C6870', fontSize: 20},
+                              ]}
+                            />
+                          </View>
+                        </MenuTrigger>
+                        <MenuOptions customStyles={{optionText: {padding: 5}}}>
+                          <MenuOption
+                            onSelect={set_selected_Category}
+                            value="Salad"
+                            text="Salad"
+                          />
+                          <MenuOption
+                            onSelect={set_selected_Category}
+                            value="Berger"
+                            text="Berger"
+                          />
+                        </MenuOptions>
+                      </Menu>
                     </View>
                   </View>
 
@@ -358,7 +418,7 @@ const AddItem = ({navigation}) => {
                   <FlatList
                     data={data2}
                     numColumns={4}
-                    style={{marginBottom: 10, height: 50}}
+                    style={{marginBottom: 10, }}
                     renderItem={({item}) => (
                       <View style={{flexDirection: 'row', width: '25%'}}>
                         <CheckBox
@@ -876,6 +936,7 @@ const AddItem = ({navigation}) => {
           ) : null}
           {order_state == 'completed' ? <Text>Harris</Text> : null}
         </View>
+      
       </ScrollView>
     </SafeAreaView>
   );
@@ -893,6 +954,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Regular',
     alignSelf: 'center',
     borderColor: '#CCD4D6',
+    height:40
   },
   IngrediantsTextInput: {
     width: '23%',
@@ -900,6 +962,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.3,
     borderColor: '#CCD4D6',
     paddingHorizontal: 10,
+    height:40
   },
   IngrediantsTextInput1: {
     width: '13%',
@@ -913,13 +976,14 @@ const styles = StyleSheet.create({
     width: '43%',
   },
   dropdownbox: {
-    height: 50,
+    height: 30,
     width: '45%',
     elevation: 0.7,
     borderRadius: 5,
-    borderColor: Secondary,
+    borderColor: '#C2CCCF',
     marginVertical: 5,
     marginHorizontal: 15,
+    borderWidth: 1,
   },
   CustomizationBox: {
     backgroundColor: '#F2F4F5',

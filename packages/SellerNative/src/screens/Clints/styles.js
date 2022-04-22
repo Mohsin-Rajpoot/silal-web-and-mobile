@@ -162,6 +162,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop:-30
   },
   modal_recuring: {
     backgroundColor: '#5AB3A8',
