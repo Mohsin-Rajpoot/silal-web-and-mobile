@@ -198,14 +198,17 @@ const QtyDetailStyled = styled.div`
 const SearchWindow = ({
     classN,
     ID,
+    height,
+    change,
 }) => {
     return (
-        <SearchWindowStyled className={classN}>
+        <SearchWindowStyled className={classN} height={height}>
             <SearchIcon />
             <input
                 type="text"
                 id={ID}
                 placeholder="Search"
+                onChange={change}
             />
         </SearchWindowStyled>
     )
@@ -213,7 +216,7 @@ const SearchWindow = ({
 
 const SearchWindowStyled = styled.div`
     width: 100%;
-    height: 30px;
+    height: ${props => props.height || "30px"};
     padding: 7px 0 7px 10px;
     margin-bottom: 20px;
     background: #FFFFFF;

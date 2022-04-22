@@ -91,6 +91,13 @@ const ButtonText = styled.button`
 
 const TableStyled = styled.div`
   font-family: 'Lato', sans-serif;
+  button[data-testid] {
+    background: #F2F4F5;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    margin: auto;
+  }
   &.modal-table {
     background: #FAFAFA;
     max-height: 228px;
@@ -131,7 +138,7 @@ const TableStyled = styled.div`
   .rdt_TableCell {
     padding-top: 8px;
     padding-bottom: 8px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
   }
   .rdt_Pagination {
@@ -168,6 +175,14 @@ const TableStyled = styled.div`
     }
     &.out {
       background: #ff5630;
+    }
+    &.bank {
+      background: #FFFAE6;
+      color: #FF8B00;
+    }
+    &.credit {
+      background: #E6FCFF;
+      color: #008DA6;
     }
   }
   .action-btn {
@@ -430,7 +445,7 @@ const FlexContainer = styled.div`
 const HeadingStyled = styled.h1`
   font-size:${(props) => props.size && (props.size)};
   font-weight:${(props) => props.weight && (props.weight)};
-  color:${(props) => props.color ? props.color : "inherit"};
+  color:${(props) => props.color ? props.color : "#002733"};
   margin:${(props) => props.margin ? props.margin : "0"};
   a {
     color: var(--theme-clr);
@@ -702,33 +717,6 @@ const Description = styled.p`
   color: #002733;
 `;
 
-const SettingBtn = styled.button`
-  background: #FFFFFF;
-  border-radius: 5px;
-  border: none;
-  text-align: left;
-  height: 35px;
-  width: 317px;
-  padding: 8px 10px;
-  font-family: 'Lato';
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-  color: #002733;
-  margin-bottom: 10px;
-  .icon {
-    margin-right: 10px;
-  }
-  &.red {
-    color: #DE350B;
-  }
-  .arrow {
-    path {
-      fill: #4C687080;
-    }
-  }
-`;
-
 const Radio = styled.label`
   display: block;
   position: relative;
@@ -772,8 +760,9 @@ const Radio = styled.label`
     border-color: var(--theme-clr);
   }
   .checkmark:after {
-    top: 3px;
-    left: 3px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -882,7 +871,6 @@ export {
   UploadedImageSmallContainer,
   SimpleNav,
   Description,
-  SettingBtn,
   Radio,
   Suggestions,
   Tag,

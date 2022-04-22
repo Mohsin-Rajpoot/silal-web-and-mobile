@@ -15,6 +15,7 @@ import { Col, Form, Row } from "react-bootstrap";
 import { Burger } from "../../../components/AllImages";
 import { SearchBar } from "../../../components/clients/Nav";
 import { Search } from "react-bootstrap-icons";
+
 const CanvasModal = ({ show, setShow, type }) => {
   const [canvasShow, setCanvasShow] = useState(false);
   const canvasCloseHandler = () => {

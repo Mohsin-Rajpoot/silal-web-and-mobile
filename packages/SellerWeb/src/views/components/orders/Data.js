@@ -1,7 +1,5 @@
 
-import {
-    dish,
-} from '../../components/AllImages'
+import { dish, itemImg } from '../../components/AllImages'
 
 const orderData = [
     {
@@ -67,7 +65,31 @@ const orderListData = [
     },
 ]
 
+const expandRowsData = [
+    {
+        img: itemImg,
+        name: "Guess Saffiano",
+        itemDetail: "(GUCB15TBK) laptop bag 15",
+        qty: "2",
+        clr: "Black, Big",
+        itemId: "#7DG8098",
+        stock: "42",
+        price: "$ 4.00",
+    },
+    {
+        img: itemImg,
+        name: "Guess Saffiano",
+        itemDetail: "(GUCB15TBK) laptop bag 15",
+        qty: "2",
+        clr: "Black, Big",
+        itemId: "#7DG8098",
+        stock: "42",
+        price: "$ 4.00",
+    },
+]
+
 export {
     orderData,
-    orderListData
+    orderListData,
+    expandRowsData,
 }

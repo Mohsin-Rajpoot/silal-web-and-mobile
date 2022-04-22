@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Switch } from '../Style'
 import { BannerEditIcon, AddPhoto } from '../AllImages'
 
 const ProfileBanner = ({
@@ -104,6 +105,52 @@ const ProfileBannerStyled = styled.div`
     }
 `;
 
+const ToggleBtn = ({ name, onchange, checked, label }) => {
+    return (
+        <div className="d-flex align-items-center">
+            <ToggleBtnStyled>
+                <input
+                    type="checkbox"
+                    name={name}
+                    onChange={onchange}
+                    defaultChecked={checked}
+                />
+                <span className="slider"></span>
+            </ToggleBtnStyled>
+            <ToggleLabel>{label}</ToggleLabel>
+        </div>
+    )
+}
+
+const ToggleBtnStyled = styled(Switch)`
+    z-index: 1;
+    width: 51px;
+    height: 31px;
+    .slider {
+        background-color: #78788029;
+        &::before {
+            bottom: 1.5px;
+        }
+    }
+    input:checked + .slider {
+        background-color: #34C759;
+    }
+    input:checked + .slider:before {
+        transform: translateX(19px);
+    }
+`;
+
+const ToggleLabel = styled.label`
+    width: 46px;
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 120%;
+    color: #4C6870;
+    margin-left: 12px;
+`;
+
 export {
     ProfileBanner,
+    ToggleBtn,
 }

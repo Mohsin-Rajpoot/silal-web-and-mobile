@@ -20,6 +20,10 @@ import uploadImgPlaceholder from "../../assets/images/upload-img-placeholder.png
 import uploadIcon2 from "../../assets/images/svg/upload-icon2.svg"
 import bottleImg from "../../assets/images/bottle-img.png"
 import closeRed from "../../assets/images/svg/close-red.svg"
+import englishFlag from "../../assets/images/english-flag.png"
+import arabicFlag from "../../assets/images/arabic-flag.png"
+import jewFlag from "../../assets/images/jew-flag.png"
+import itemImg from "../../assets/images/item-img.png"
 import restaurantBg from "../../assets/images/restaurant-bg.png"
 import { ReactComponent as Menu } from "../../assets/images/svg/menu.svg"
 import { ReactComponent as Home } from "../../assets/images/svg/home.svg"
@@ -29,6 +33,7 @@ import { ReactComponent as Product } from "../../assets/images/svg/products.svg"
 import { ReactComponent as NotificationIcon } from "../../assets/images/svg/notification.svg"
 import { ReactComponent as Close } from "../../assets/images/svg/close.svg"
 import { ReactComponent as CalendarIcon } from "../../assets/images/svg/calendar.svg"
+import { ReactComponent as CalendarIcon2 } from "../../assets/images/svg/calendar-icon2.svg"
 import { ReactComponent as DropdownMenu } from "../../assets/images/svg/dropdown-menu.svg"
 import { ReactComponent as CycleIcon } from "../../assets/images/svg/cycle-icon.svg"
 import { ReactComponent as BackArrow } from "../../assets/images/svg/back-arrow.svg"
@@ -62,6 +67,9 @@ import { ReactComponent as BgPhoneIcon } from "../../assets/images/svg/bg-phone-
 import { ReactComponent as AddPhoto } from "../../assets/images/svg/add-photo.svg"
 import { ReactComponent as AttachmentIcon } from "../../assets/images/svg/attachment-icon.svg"
 import { ReactComponent as ImgIcon } from "../../assets/images/svg/img-icon.svg"
+import { ReactComponent as LogoS } from "../../assets/images/svg/logo-s.svg"
+import { ReactComponent as DangerVector } from "../../assets/images/svg/danger-vector.svg"
+import { ReactComponent as SortArrows } from "../../assets/images/svg/sort-arrows.svg"
 
 export {
     Menu,
@@ -128,4 +136,12 @@ export {
     AddPhoto,
     AttachmentIcon,
     ImgIcon,
+    englishFlag,
+    arabicFlag,
+    jewFlag,
+    LogoS,
+    CalendarIcon2,
+    DangerVector,
+    SortArrows,
+    itemImg,
 }
