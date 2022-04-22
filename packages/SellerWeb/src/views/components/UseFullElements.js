@@ -199,15 +199,16 @@ const SearchWindow = ({
     classN,
     ID,
     height,
-    width,
+    change,
 }) => {
     return (
-        <SearchWindowStyled className={classN} height="36px">
+        <SearchWindowStyled className={classN} height={height}>
             <SearchIcon />
             <input
                 type="text"
                 id={ID}
                 placeholder="Search"
+                onChange={change}
             />
         </SearchWindowStyled>
     )

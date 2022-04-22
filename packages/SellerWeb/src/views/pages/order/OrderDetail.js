@@ -1,7 +1,7 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
-import { Button, RangeSlider } from "../../components/Style";
+import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
+import { Row, Col, Modal } from "react-bootstrap"
+import { Button, RangeSlider } from "../../components/Style"
 import {
   OrderIdMain,
   OrderListMain,
@@ -9,14 +9,23 @@ import {
   OrderListItem,
   OrderDetails,
   OrderHistory,
-} from "../../components/orders/Components";
-import { Heading, CardStyled } from "../../components/Style";
-import { BackArrow } from "../../components/AllImages";
-import { orderListData } from "./DummyData";
-import Modal from "react-bootstrap/Modal";
+} from "../../components/orders/Components"
+import {
+  Heading,
+  CardStyled,
+  ThemeModal,
+  Textarea,
+} from "../../components/Style"
+import { orderListData } from "../../components/orders/Data"
+import { BackArrow } from "../../components/AllImages"
+
 const OrderDetail = () => {
-  const [modalShow, setModalShow] = React.useState(false);
-  const history = useHistory();
+  const history = useHistory()
+  const [modalShow, setModalShow] = React.useState(false)
+  const [showCancelModal, setShowCancelModal] = useState(false)
+
+  const handleCloseCancelModal = () => setShowCancelModal(false)
+  const handleShowCancelModal = () => setShowCancelModal(true)
 
   return (
     <>
@@ -81,7 +90,13 @@ const OrderDetail = () => {
               Change estimation time
             </Button>
             <div className="d-flex">
-              <Button type="button" className="me-2" width="129px" bg="#CCD4D680" color="#4C6870">
+              <Button
+                type="button"
+                className="me-2 px-1"
+                width="129px"
+                bg="#CCD4D680"
+                color="#4C6870"
+                onClick={handleShowCancelModal}>
                 Cancel order
               </Button>
               <Button
@@ -93,6 +108,7 @@ const OrderDetail = () => {
           </CardStyled>
         </Col>
       </Row>
+
       <Modal
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -138,8 +154,30 @@ const OrderDetail = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
-  );
-};
 
-export default OrderDetail;
+      <Modal show={showCancelModal} onHide={handleCloseCancelModal} centered className="refusal-modal">
+        <ThemeModal>
+          <Modal.Header closeButton className="pb-1">
+            <Modal.Title>Indicate the reason for cancelation</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="py-0">
+            <div className="text dark-clr">We will notify the client about it</div>
+            <Textarea placeholder='Type here...' className='mb-4 mt-3 refusal-textarea'></Textarea>
+          </Modal.Body>
+          <Modal.Footer>
+            <div className="d-flex w-100">
+              <Col lg={6} className="pe-2">
+                <Button className="grey w-100" onClick={handleCloseCancelModal}>Cancel</Button>
+              </Col>
+              <Col lg={6} className="ps-2">
+                <Button className="w-100" onClick={handleCloseCancelModal}>Submit</Button>
+              </Col>
+            </div>
+          </Modal.Footer>
+        </ThemeModal>
+      </Modal>
+    </>
+  )
+}
+
+export default OrderDetail

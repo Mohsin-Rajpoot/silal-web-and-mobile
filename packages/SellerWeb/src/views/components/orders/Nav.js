@@ -59,18 +59,18 @@ const Nav = ({
                         <Menu />
                     </button>
                     <Link
-                        to="/current-order"
-                        className={`nav-link-btn ${location.pathname === "/current-order" ? "active" : ""}`}>
+                        to="/orders/current-order"
+                        className={`nav-link-btn ${location.pathname === "/orders/current-order" ? "active" : ""}`}>
                         Current orders
                     </Link>
                     <Link
-                        to="/pre-order"
-                        className={`nav-link-btn ${location.pathname === "/pre-order" ? "active" : ""}`}>
+                        to="/orders/pre-order"
+                        className={`nav-link-btn ${location.pathname === "/orders/pre-order" ? "active" : ""}`}>
                         Pre-orders <span>(8)</span>
                     </Link>
                     <Link
-                        to="/archive-order"
-                        className={`nav-link-btn ${location.pathname === "/archive-order" ? "active" : ""}`}>
+                        to="/orders/archive-order"
+                        className={`nav-link-btn ${location.pathname === "/orders/archive-order" ? "active" : ""}`}>
                         Archive
                     </Link>
                 </div>

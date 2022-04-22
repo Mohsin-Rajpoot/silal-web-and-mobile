@@ -91,6 +91,13 @@ const ButtonText = styled.button`
 
 const TableStyled = styled.div`
   font-family: 'Lato', sans-serif;
+  button[data-testid] {
+    background: #F2F4F5;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    margin: auto;
+  }
   &.modal-table {
     background: #FAFAFA;
     max-height: 228px;
@@ -131,7 +138,7 @@ const TableStyled = styled.div`
   .rdt_TableCell {
     padding-top: 8px;
     padding-bottom: 8px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
   }
   .rdt_Pagination {

@@ -23,6 +23,7 @@ import closeRed from "../../assets/images/svg/close-red.svg"
 import englishFlag from "../../assets/images/english-flag.png"
 import arabicFlag from "../../assets/images/arabic-flag.png"
 import jewFlag from "../../assets/images/jew-flag.png"
+import itemImg from "../../assets/images/item-img.png"
 import restaurantBg from "../../assets/images/restaurant-bg.png"
 import { ReactComponent as Menu } from "../../assets/images/svg/menu.svg"
 import { ReactComponent as Home } from "../../assets/images/svg/home.svg"
@@ -68,6 +69,7 @@ import { ReactComponent as AttachmentIcon } from "../../assets/images/svg/attach
 import { ReactComponent as ImgIcon } from "../../assets/images/svg/img-icon.svg"
 import { ReactComponent as LogoS } from "../../assets/images/svg/logo-s.svg"
 import { ReactComponent as DangerVector } from "../../assets/images/svg/danger-vector.svg"
+import { ReactComponent as SortArrows } from "../../assets/images/svg/sort-arrows.svg"
 
 export {
     Menu,
@@ -140,4 +142,6 @@ export {
     LogoS,
     CalendarIcon2,
     DangerVector,
+    SortArrows,
+    itemImg,
 }

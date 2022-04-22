@@ -27,6 +27,7 @@ const Sidebar = ({ sideBar, setSideBar }) => {
   const productPath = window.location.href.indexOf("product") > -1 ? true : false
   const offersPath = window.location.href.indexOf("offers") > -1 ? true : false
   const profilePath = window.location.href.indexOf("profile") > -1 ? true : false
+  const orderPath = window.location.href.indexOf("orders") > -1 ? true : false
   const { pathname } = useLocation()
 
   return (
@@ -70,15 +71,8 @@ const Sidebar = ({ sideBar, setSideBar }) => {
           Dashboard
         </Link>
         <Link
-          to="/current-order"
-          className={
-            pathname == "/current-order" ||
-              pathname == "/pre-order" ||
-              pathname == "/archive-order" ||
-              pathname == "/order-detail"
-              ? "active" : ""
-          }
-        >
+          to="/orders/current-order"
+          className={orderPath && "active"}>
           <Order />
           Orders
         </Link>

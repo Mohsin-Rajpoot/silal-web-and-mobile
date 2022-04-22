@@ -70,7 +70,7 @@ const CurrentOrder = ({ setSideBar, sideBar }) => {
                             <Heading className="text-white">Ready for pickup</Heading>
                             <Row>
                                 <Col lg={12} sm={4}>
-                                    <Link to="/order-detail" className="text-decoration-none">
+                                    <Link to="/orders/order-detail" className="text-decoration-none">
                                         <PickupOrder
                                             orderNumber="#247hw9"
                                             time="17 min ago"
@@ -78,7 +78,7 @@ const CurrentOrder = ({ setSideBar, sideBar }) => {
                                     </Link>
                                 </Col>
                                 <Col lg={12} sm={4}>
-                                    <Link to="/order-detail" className="text-decoration-none">
+                                    <Link to="/orders/order-detail" className="text-decoration-none">
                                         <PickupOrder
                                             orderNumber="#247hw9"
                                             time="17 min ago"
@@ -86,7 +86,7 @@ const CurrentOrder = ({ setSideBar, sideBar }) => {
                                     </Link>
                                 </Col>
                                 <Col lg={12} sm={4}>
-                                    <Link to="/order-detail" className="text-decoration-none">
+                                    <Link to="/orders/order-detail" className="text-decoration-none">
                                         <PickupOrder
                                             orderNumber="#247hw9"
                                             time="17 min ago"
@@ -94,7 +94,7 @@ const CurrentOrder = ({ setSideBar, sideBar }) => {
                                     </Link>
                                 </Col>
                                 <Col lg={12} sm={4}>
-                                    <Link to="/order-detail" className="text-decoration-none">
+                                    <Link to="/orders/order-detail" className="text-decoration-none">
                                         <PickupOrder
                                             orderNumber="#247hw9"
                                             time="1h 50min ago"
