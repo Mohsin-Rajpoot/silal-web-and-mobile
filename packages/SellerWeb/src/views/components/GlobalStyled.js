@@ -398,6 +398,7 @@ hr {
     left: 10px;
 }
 .info-sign {
+    font-family: 'Poppins';
     width: 15px;
     height: 15px;
     background: #5AB3A8;
@@ -523,6 +524,9 @@ hr {
     .modal-dialog {
         max-width: 420px;
     }
+}
+.category-canvas {
+    width: 775px;
 }
 `;
 

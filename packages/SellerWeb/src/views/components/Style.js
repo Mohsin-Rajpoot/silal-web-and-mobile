@@ -13,6 +13,19 @@ const CardStyled = styled.div`
   &.bg-blue {
     background-color: #4c6870;
   }
+  .head {
+    padding: 20px 20px 15px;
+    margin: -20px -20px 15px -20px;
+    border-bottom: 1px solid rgba(0, 39, 51, 0.08);
+    h1 {
+      font-family: 'Poppins';
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      color: #002733;
+      margin: 0;
+    }
+  }
 `;
 
 const Heading = styled.h1`
@@ -466,7 +479,7 @@ const Label = styled.label`
   font-weight: 600;
   font-size: ${(props) => props.size ? props.size : "12px"};
   line-height: 120%;
-  color: #002733;
+  color: ${(props) => props.color ? props.color : "#002733"};
   margin-bottom: 7px;
 `;
 
