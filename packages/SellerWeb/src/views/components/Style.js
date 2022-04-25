@@ -78,6 +78,9 @@ const Button = styled.button`
     background-color: #DE350B;
   }
   &.hover-fill {
+    background-color: white;
+    color: #5AB3A8;
+    border: 1px solid #5AB3A8;
     &:hover {
       background-color: #5AB3A8;
       color: white !important;

@@ -6,6 +6,7 @@ import { Row, Col } from 'react-bootstrap'
 import { Wrapper } from '../../components/listing/Style'
 import { SelectDiv } from '../../components/listing/Components'
 import CategoryCanvas from '../../components/listing/CategoryCanvas'
+import BarCodeCanvas from '../../components/listing/BarCodeCanvas'
 import {
     HeadingStyled,
     Button,
@@ -23,6 +24,7 @@ const CreateItem = () => {
     const history = useHistory()
     const [step, setStep] = useState(1)
     const [categoryCanvasShow, setCategoryCanvasShow] = useState(false)
+    const [barCodeCanvasShow, setBarCodeCanvasShow] = useState(false)
 
     return (
         <Wrapper>
@@ -118,7 +120,7 @@ const CreateItem = () => {
                                 </div>
                                 <div className="mr-30">
                                     <Label color="#00273380">Barcode  <span style={{ color: "#E42A2A" }}>*</span></Label>
-                                    <Input type="text" placeholder="Barcode" />
+                                    <Input type="text" placeholder="Barcode" readOnly onClick={() => setBarCodeCanvasShow(true)} />
                                 </div>
                                 <div className="between mr-30">
                                     <Label color="#00273380">About this item <span style={{ color: "#E42A2A" }}>*</span></Label>
@@ -157,6 +159,10 @@ const CreateItem = () => {
                     <CategoryCanvas
                         show={categoryCanvasShow}
                         setShow={setCategoryCanvasShow}
+                    />
+                    <BarCodeCanvas
+                        show={barCodeCanvasShow}
+                        setShow={setBarCodeCanvasShow}
                     />
                 </>
             }

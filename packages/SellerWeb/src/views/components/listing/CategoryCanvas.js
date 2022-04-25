@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { Offcanvas } from "react-bootstrap"
 import { Label, Button } from "../Style"
-import { SearchIcon } from '../AllImages'
+import { SearchIcon, RightArrow } from '../AllImages'
 
 const CategoryCanvas = ({ show, setShow }) => {
     return (
@@ -20,7 +20,29 @@ const CategoryCanvas = ({ show, setShow }) => {
                         <input type="text" placeholder="Electronics > Computers > Laptops" />
                     </div>
                     <div className="categories-main">
-
+                        <div className="category-col">
+                            {[...Array(12)].map((i) => (
+                                <div className="item">
+                                    Some category
+                                    <RightArrow />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="category-col">
+                            {[...Array(12)].map((i) => (
+                                <div className="item">
+                                    Some subcategory
+                                    <RightArrow />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="category-col">
+                            {[...Array(2)].map((i) => (
+                                <div className="item">
+                                    Some subcategory
+                                </div>
+                            ))}
+                        </div>
                     </div>
                     <div className="end">
                         <Button width="150px">Confirm</Button>
@@ -87,6 +109,53 @@ const Wrapper = styled.div`
         margin-bottom: 20px;
         height: 460px;
         width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        .category-col {
+            height: 100%;
+            width: calc(100% / 3);
+            border-right: 1px solid rgba(0, 39, 51, 0.1);
+            overflow-y: auto;
+            &:last-of-type {
+                border-right: none;
+            }
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #0027330D;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #00273326;
+                border-radius: 5px;
+            }
+            .item {
+                height: 45px;
+                padding: 10px 20px;
+                font-family: 'Lato';
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 104%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                color: #002733;
+                border-bottom: 1px solid rgba(0, 39, 51, 0.1);
+                cursor: pointer;
+                &:last-of-type {
+                    border-bottom: none;
+                }
+                &:hover,
+                &.active {
+                    background: #DAECEA;
+                }
+                svg {
+                    path {
+                        fill: #0027331A;
+                    }
+                }
+            }
+        }
     }
 `;
 

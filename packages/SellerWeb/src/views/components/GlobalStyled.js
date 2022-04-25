@@ -527,6 +527,7 @@ hr {
 }
 .category-canvas {
     width: 775px;
+    overflow-y: auto;
 }
 `;
 
