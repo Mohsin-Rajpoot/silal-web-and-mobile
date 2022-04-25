@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import { collpaseArrow } from "./AllImages";
+import { createGlobalStyle } from "styled-components"
+import { collpaseArrow } from "./AllImages"
 
 const GlobalStyle = createGlobalStyle`
 :root {
@@ -398,6 +398,7 @@ hr {
     left: 10px;
 }
 .info-sign {
+    font-family: 'Poppins';
     width: 15px;
     height: 15px;
     background: #5AB3A8;
@@ -494,20 +495,39 @@ hr {
 .modal-title-center {
     .modal-title {
         margin-left: auto !important;
+        text-align: center;
     }
 }
-.pincode-input-container
-{
-  .pincode-input-text
-  {
-    padding:0 !important;
-    margin:0 5px !important;
-    width: 45px !important;
-    height: 55px !important;
-    border-radius: 5px;
-    background: transparent;
-  }
+.save-note-hover:hover {
+    background: rgba(90, 179, 168, 0.2);
+    color: #5AB3A8;
+}
+.detail-modal {
+    .modal-dialog {
+        max-width: 700px;
+    }
+    .modal-content {
+        background-color: #FAFAFA;
+    }
+}
+.file-input-none {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+.modal-width-420 {
+    .modal-dialog {
+        max-width: 420px;
+    }
+}
+.category-canvas {
+    width: 775px;
 }
 `;
 
-export default GlobalStyle;
+export default GlobalStyle

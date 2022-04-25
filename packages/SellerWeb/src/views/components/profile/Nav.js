@@ -13,6 +13,7 @@ const Nav = ({
     setSideBar,
 }) => {
     const { pathname } = useLocation()
+
     const sidebarHandler = () => {
         setSideBar(!sideBar)
     }
@@ -30,23 +31,23 @@ const Nav = ({
             <NavStyled>
                 <div className="d-flex">
                     <Link
-                        to="/profile"
-                        className={`nav-link-btn ${pathname == '/profile' ? 'active' : ''}`}>
+                        to="/profile/profile"
+                        className={`nav-link-btn ${pathname == '/profile/profile' ? 'active' : ''}`}>
                         Profile
                     </Link>
                     <Link
-                        to="#"
-                        className={`nav-link-btn`}>
+                        to="/profile/opening-hours"
+                        className={`nav-link-btn ${pathname == '/profile/opening-hours' ? 'active' : ''}`}>
                         Opening hours
                     </Link>
                     <Link
-                        to="#"
-                        className={`nav-link-btn`}>
+                        to="/profile/payment-history"
+                        className={`nav-link-btn ${pathname == '/profile/payment-history' ? 'active' : ''}`}>
                         Payment history
                     </Link>
                     <Link
-                        to="#"
-                        className={`nav-link-btn`}>
+                        to="/profile/transaction-ledger"
+                        className={`nav-link-btn ${pathname == '/profile/transaction-ledger' ? 'active' : ''}`}>
                         Transaction ledger
                     </Link>
                 </div>

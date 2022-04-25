@@ -4686,3 +4686,22 @@ button.rs-calendar-header-title.rs-calendar-header-title-date.rs-btn.rs-btn-subt
   background-color: #F2F4F5 !important;
   border: none;
 }
+.openings-datepicker .rs-btn-default {
+  width: 150px !important;
+  height: 38px !important;
+  margin-right: 20px;
+}
+.openings-datepicker .rs-picker-toggle-placeholder {
+  margin-right: 43px;
+  line-height: 2;
+}
+.openings-datepicker .rs-picker-toggle-value {
+  margin-top: 8px;
+  margin-left: -9px;
+  font-family: 'Lato';
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 130%;
+  letter-spacing: -0.408px;
+  color: #002733;
+}

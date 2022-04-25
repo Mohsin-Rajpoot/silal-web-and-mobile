@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
     Home,
     Order,
@@ -8,22 +8,46 @@ import {
     Product,
 } from "../AllImages"
 
-const Menu = () => {
+const Menu = ({ sideBar }) => {
+    const clientPath = window.location.href.indexOf("client") > -1 ? true : false
+    const productPath = window.location.href.indexOf("product") > -1 ? true : false
+    const { pathname } = useLocation()
+
     return (
-        <MenuStyled>
-            <Link to="/" className="active">
+        <MenuStyled className={sideBar && "active"}>
+            <Link
+                to="/"
+                className={
+                    pathname == "/" ||
+                    pathname == "/reviews" ||
+                    pathname == "/out-of-stock"
+                    ? "active" : ""
+                }
+            >
                 <Home />
                 Home
             </Link>
-            <Link to="/">
+            <Link
+                to="/current-order"
+                className={
+                    pathname == "/current-order" ||
+                    pathname == "/pre-order" ||
+                    pathname == "/archive-order"
+                    ? "active" : ""
+                }
+            >
                 <Order />
                 Orders
             </Link>
-            <Link to="/">
+            <Link
+                to="/client/database"
+                className={clientPath && ("active")}>
                 <Clients />
                 Clients
             </Link>
-            <Link to="/">
+            <Link
+                to="/product/products"
+                className={productPath && ("active")}>
                 <Product />
                 Products
             </Link>
@@ -39,11 +63,14 @@ const MenuStyled = styled.div`
     position: fixed;
     bottom: 0;
     right: 0;
-    left: 0;
     padding: 0 100px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    transition: 0.3s width ease;
+    &.active {
+        width: calc(100% - 200px);
+    }
     a {
         display: flex;
         align-items: center;

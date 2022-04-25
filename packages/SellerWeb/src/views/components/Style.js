@@ -5,13 +5,26 @@ const CardStyled = styled.div`
   background: #ffffff;
   box-shadow: 0px 5px 10px -2px rgba(196, 214, 220, 0.25);
   border-radius: 5px;
-  padding: 20px;
+  padding: ${props => props.padding ? props.padding : '20px'};
   margin-bottom: 20px;
   &.bg-grey {
     background-color: #e5eaeb;
   }
   &.bg-blue {
     background-color: #4c6870;
+  }
+  .head {
+    padding: 20px 20px 15px;
+    margin: -20px -20px 15px -20px;
+    border-bottom: 1px solid rgba(0, 39, 51, 0.08);
+    h1 {
+      font-family: 'Poppins';
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      color: #002733;
+      margin: 0;
+    }
   }
 `;
 
@@ -23,15 +36,15 @@ const Heading = styled.h1`
 `;
 
 const Button = styled.button`
-  background: #5ab3a8;
+  background: ${props => props.bg ? props.bg : '#5AB3A8'};
   border-radius: 5px;
   border: none;
   padding: 0 20px;
   min-width: 100px;
   width: ${props => props.width};
-  height: 40px;
+  height: ${props => props.height ? props.height : '40px'};
   white-space: nowrap;
-  color: white;
+  color: ${props => props.color ? props.color : 'white'};
   font-weight: 600;
   font-size: 15px;
   transition: 0.2s all;
@@ -39,7 +52,7 @@ const Button = styled.button`
   margin-top: ${props => props.mt};
   &:hover {
     background: rgba(90, 179, 169, 0.9);
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
   &:disabled {
     background: rgba(90, 179, 168, 0.5);
@@ -64,6 +77,17 @@ const Button = styled.button`
   &.delete {
     background-color: #DE350B;
   }
+  &.hover-fill {
+    &:hover {
+      background-color: #5AB3A8;
+      color: white !important;
+      svg {
+        path {
+          fill: white;
+        }
+      }
+    }
+  }
 `;
 
 const ButtonText = styled.button`
@@ -73,13 +97,38 @@ const ButtonText = styled.button`
   height: 40px;
   white-space: nowrap;
   color: var(--theme-clr);
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: ${props => props.weight ? props.weight : '600'};
+  font-size: ${props => props.size ? props.size : '15px'};
   transition: 0.2s all;
 `;
 
 const TableStyled = styled.div`
   font-family: 'Lato', sans-serif;
+  button[data-testid] {
+    background: #F2F4F5;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    margin: auto;
+  }
+  &.modal-table {
+    background: #FAFAFA;
+    max-height: 228px;
+    overflow-y: auto;
+    padding: 14px;
+    border-radius: 8px;
+    .rdt_Table {
+      padding: 0;
+    }
+    .rdt_TableHeadRow {
+      min-height: 30px;
+      height: 30px;
+    }
+    .rdt_TableRow {
+      background: #FAFAFA;
+      min-height: 42px;
+    }
+  }
   .rdt_Table {
     padding: 20px;
     background: #ffffff;
@@ -102,7 +151,7 @@ const TableStyled = styled.div`
   .rdt_TableCell {
     padding-top: 8px;
     padding-bottom: 8px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
   }
   .rdt_Pagination {
@@ -139,6 +188,14 @@ const TableStyled = styled.div`
     }
     &.out {
       background: #ff5630;
+    }
+    &.bank {
+      background: #FFFAE6;
+      color: #FF8B00;
+    }
+    &.credit {
+      background: #E6FCFF;
+      color: #008DA6;
     }
   }
   .action-btn {
@@ -401,7 +458,7 @@ const FlexContainer = styled.div`
 const HeadingStyled = styled.h1`
   font-size:${(props) => props.size && (props.size)};
   font-weight:${(props) => props.weight && (props.weight)};
-  color:${(props) => props.color ? props.color : "inherit"};
+  color:${(props) => props.color ? props.color : "#002733"};
   margin:${(props) => props.margin ? props.margin : "0"};
   a {
     color: var(--theme-clr);
@@ -422,7 +479,7 @@ const Label = styled.label`
   font-weight: 600;
   font-size: ${(props) => props.size ? props.size : "12px"};
   line-height: 120%;
-  color: #002733;
+  color: ${(props) => props.color ? props.color : "#002733"};
   margin-bottom: 7px;
 `;
 
@@ -673,40 +730,6 @@ const Description = styled.p`
   color: #002733;
 `;
 
-const ContactButton = styled.button`
-  width: 343px;
-  height: 50px;
-  background: linear-gradient(180deg, #73D5C9 0%, #5AB3A8 100%);
-  box-shadow: 0px 5px 15px -8px rgba(115, 213, 201, 0.4);
-  border-radius: 5px;
-  border: none;
-  font-size: 17px;
-  line-height: 22px;
-  color: #FFFFFF;
-`;
-
-const SettingBtn = styled.button`
-  background: #FFFFFF;
-  border-radius: 5px;
-  border: none;
-  text-align: left;
-  height: 35px;
-  width: 317px;
-  padding: 8px 10px;
-  font-family: 'Lato';
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 18px;
-  color: #002733;
-  margin-bottom: 20px;
-  .icon {
-    margin-right: 10px;
-  }
-  &.red {
-    color: #DE350B;
-  }
-`;
-
 const Radio = styled.label`
   display: block;
   position: relative;
@@ -750,8 +773,9 @@ const Radio = styled.label`
     border-color: var(--theme-clr);
   }
   .checkmark:after {
-    top: 3px;
-    left: 3px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -768,7 +792,7 @@ const Suggestions = styled.div`
   font-weight: 500;
   font-size: 13px;
   line-height: 120%;
-  color: #4C6870;
+  color: #5AB3A8;
   margin-bottom: 8px;
   margin-right: 5px;
 `;
@@ -783,6 +807,56 @@ const Tag = styled.div`
   padding: 8px 20px;
   margin-right: 10px;
   border-radius: 5px;
+`;
+
+const Switch = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 32px;
+  input { 
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #5AB3A8;
+    border: 0.5px solid rgba(204, 212, 214, 0.5);
+    border-radius: 34px;
+    transition: .4s;
+    z-index: -1;
+    cursor: pointer;
+    &::before {
+      position: absolute;
+      content: "";
+      height: 27px;
+      width: 27px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      box-shadow: -2px 2px 7px rgba(0, 39, 51, 0.14), -4px 4px 4px rgba(0, 39, 51, 0.02);
+      border-radius: 50%;
+      transition: .4s;
+    }
+  }
+  input:checked + .slider {
+    background-color: #CACFD0;
+  }
+  input:focus + .slider {
+    box-shadow: 0 0 1px #CACFD0;
+  }
+  input:checked + .slider:before {
+    transform: translateX(28px);
+  }
+`;
+const Margin = styled.div`
+  margin: ${props => props.margin};
 `;
 
 export {
@@ -810,9 +884,9 @@ export {
   UploadedImageSmallContainer,
   SimpleNav,
   Description,
-  ContactButton,
-  SettingBtn,
   Radio,
   Suggestions,
   Tag,
+  Switch,
+  Margin,
 };

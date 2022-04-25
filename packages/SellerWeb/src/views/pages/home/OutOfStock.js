@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Nav from "../../components/home/Nav"
-import TableData from "../../components/Table"
+import Table from "../../components/Table"
 import {
     Dropdown,
     Modal,
@@ -208,8 +208,8 @@ const OutOfStock = ({ setSideBar, sideBar }) => {
     return (
         <>
             <Nav setSideBar={setSideBar} sideBar={sideBar} />
-            <TableStyled className="content-height">
-                <TableData
+            <TableStyled>
+                <Table
                     cols={columns}
                     rows={data}
                 />

@@ -45,10 +45,10 @@ const ReceivedOrder = ({
                 <img src={xIcon} alt="x" />
                 <span>Cheesecakes with sour cream and citrus hone</span>
             </div>
-            <span className="more lato f-medium">3 more</span>
-            <div className='mt-3'>
+            <span className="more lato f-bold">3 more</span>
+            {/* <div className='mt-3'>
                 <SwipeableButton color='#5AB3A8' text='Slide to confirm order' />
-            </div>
+            </div> */}
             {/* <ReactSwipeButton /> */}
         </ReceivedOrderStyled>
     )
@@ -87,7 +87,7 @@ const AcceptedOrder = ({
             </div>
             <div className="between mb-1">
                 <ButtonText onClick={btn1F}>Change estimation time</ButtonText>
-                <Button>Ready</Button>
+                <Button width="150px">Ready</Button>
             </div>
         </AcceptedOrderStyled>
     )
@@ -234,7 +234,8 @@ const OrderHistory = () => {
 const PreOrder = ({
     orderNumber,
     time,
-    modalHandle,
+    modalDelHandle,
+    modalDragHandle,
 }) => {
     return (
         <PreOrderStyled className="lato">
@@ -258,8 +259,8 @@ const PreOrder = ({
             </div>
             <span className="more">3 more</span>
             <div className="d-flex">
-                <Button onClick={modalHandle}>Decline</Button>
-                <Button>Move to current orders</Button>
+                <Button onClick={modalDelHandle}>Decline</Button>
+                <Button onClick={modalDragHandle}>Move to current orders</Button>
             </div>
         </PreOrderStyled>
     )
@@ -772,6 +773,163 @@ const ArchiveOrderHead = styled.div`
     
 `;
 
+const Notes = ({ date, note, noteDetail }) => {
+    return (
+        <NotesStyled onClick={noteDetail}>
+            <h1>{date}</h1>
+            <p>{note}</p>
+        </NotesStyled>
+    )
+}
+
+const NotesStyled = styled.div`
+    font-family: 'Lato';
+    border-bottom: 1px solid #EBEEEF;
+    background-color: #FAFAFA;
+    padding: 14px 0;
+    cursor: pointer;
+    &:last-of-type {
+        border-bottom: none;
+        border-radius: 0 0 5px 5px;
+    }
+    &:first-of-type {
+        border-radius: 5px 5px 0 0;
+    }
+    h1 {
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 120%;
+        letter-spacing: -0.408px;
+        color: #002733;
+        margin: 0 20px 4px 20px;
+    }
+    p {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 120%;
+        letter-spacing: -0.408px;
+        color: rgba(0, 39, 51, 0.5);
+        margin: 0 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+`;
+
+const AddNoteButton = styled.button`
+    position: absolute;
+    bottom: 20px;
+    right: 16px;
+    background: #5AB3A8;
+    border: 0;
+    box-shadow: 0px 15px 20px -8px rgba(115, 213, 201, 0.4);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    svg {
+        width: 25px;
+        height: 25px;
+    }
+`;
+
+const CheckNote = styled.div`
+    display: flex;
+    .checkbox-main {
+        margin: 2px 8px 0 0;
+        .checkmark {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(76, 104, 112, 0.5);
+            &::after {
+                left: 4px;
+                top: 1px;
+                width: 4px;
+                height: 8px;
+            }
+        }
+        input:checked ~ .checkmark {
+            border-color: #5AB3A8;
+            background-color: #5AB3A8;
+            &::after {
+                border-color: white;
+            }
+        }
+    }
+    .note {
+        border: none;
+        flex: 1;
+        caret-color: var(--theme-clr);
+        resize: none;
+        height: 200px;
+    }
+`;
+
+const PreOrderStatus = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 76px;
+    background: #FAFAFA;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    text-align: center;
+    h1 {
+        font-family: 'Poppins';
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 120%;
+        letter-spacing: -0.408px;
+        color: #002733;
+        margin: 0;
+    }
+    p {
+        font-family: 'Lato';
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 120%;
+        color: #4C6870;
+        margin: 0;
+    }
+`;
+
+const ModalNotes = styled.div`
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 39, 51, 0.08);
+    &:last-of-type {
+        border-bottom: none;
+    }
+    .checkbox-main {
+        margin: 0 8px 0 0;
+        .checkmark {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(76, 104, 112, 0.5);
+            &::after {
+                left: 4px;
+                top: 1px;
+                width: 4px;
+                height: 8px;
+            }
+        }
+        input:checked ~ .checkmark {
+            border-color: #5AB3A8;
+            background-color: #5AB3A8;
+            &::after {
+                border-color: white;
+            }
+        }
+    }
+    p {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 105%;
+        color: #002733;
+    }
+`;
+
 export {
     ReceivedOrder,
     AcceptedOrder,
@@ -785,4 +943,9 @@ export {
     OrderIdMain,
     OrderList,
     ArchiveOrderHead,
+    Notes,
+    AddNoteButton,
+    CheckNote,
+    PreOrderStatus,
+    ModalNotes,
 }
