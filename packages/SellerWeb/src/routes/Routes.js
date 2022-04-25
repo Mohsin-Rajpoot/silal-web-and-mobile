@@ -23,6 +23,7 @@ const OpeningHours = React.lazy(() => import('../views/pages/profile/OpeningHour
 const PaymentHistory = React.lazy(() => import('../views/pages/profile/PaymentHistory'))
 const TransactionLedger = React.lazy(() => import('../views/pages/profile/TransactionLedger'))
 const CreateNewItem = React.lazy(() => import('../views/pages/listing/CreateItem'))
+const Shipping = React.lazy(() => import('../views/pages/listing/Shipping'))
 // const notFound = React.lazy(() => import('../views/errorPages/NotFound'))
 
 const routes = [
@@ -51,6 +52,7 @@ const routes = [
     { path: '/profile/payment-history', exact: true, name: 'Payment History', component: PaymentHistory },
     { path: '/profile/transaction-ledger', exact: true, name: 'Transaction Ledger', component: TransactionLedger },
     { path: '/create-new-item', exact: true, name: 'Create new item', component: CreateNewItem },
+    { path: '/shipping', exact: true, name: 'Shipping', component: Shipping },
 
 ]
 
