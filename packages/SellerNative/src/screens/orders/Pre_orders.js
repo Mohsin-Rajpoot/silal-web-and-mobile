@@ -14,10 +14,7 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {
-  widthPercentageToDP as width,
-  heightPercentageToDP as height,
-} from 'react-native-responsive-screen';
+
 import {Image, SvgXml} from 'react-native-svg';
 import Svg, {
   Path,
@@ -30,17 +27,13 @@ import Svg, {
 } from 'react-native-svg';
 import Toast from 'react-native-easy-toast';
 import {useTranslation} from 'react-i18next';
-import CustomModal from '@SilalApp/common/components/native/CustomModal';
-import CustomText from '@SilalApp/common/components/CustomText';
-import fonts from '@SilalApp/common/assets/fonts';
-import colors from '@SilalApp/common/assets/colors';
-import {CustomButton} from '@SilalApp/common/components/native';
+const {width, height} = Dimensions.get('window');
+
 export default function Pre_orders({title, navigation}) {
   const {t} = useTranslation();
   const [modal_timer_visible, set_modal_timer_visible] = useState(false);
   const [refusal_text, set_refusal_text] = useState('');
   const toastRef = useRef();
-  const [modal, setModal] = useState(false);
 
   const data = [
     {
@@ -69,6 +62,24 @@ export default function Pre_orders({title, navigation}) {
     },
     {
       id: '5',
+      Title: 'Embedded Software last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+    },
+    {
+      id: '6',
+      Title: 'Embedded Software last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+    },
+    {
+      id: '7',
+      Title: 'Embedded Software full last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+    },
+    {
+      id: '8',
       Title: 'Embedded Software full last',
       SubTitle: 'USA',
       year: '22/03/2022',
@@ -114,15 +125,40 @@ export default function Pre_orders({title, navigation}) {
               styles.accept_btn,
               {width: '30%', backgroundColor: '#acd9d3'},
             ]}>
-            <Text style={styles.accept_btn_txt}>{t('Decline')}</Text>
+            <Text style={styles.accept_btn_txt}>Decline</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => setModal(!modal)}
+            onPress={() =>
+              toastRef.current.show(
+                <View style={{flexDirection: 'row'}}>
+                  <Text
+                    style={{
+                      color: '#002733',
+                      fontSize: 15,
+                      fontFamily: 'Lato-Bold',
+                    }}>
+                    The order #247HW9 has been moved to current orders
+                  </Text>
+                  <TouchableOpacity
+                    onPress={() => {
+                      toastRef.current.close(), alert('undo');
+                    }}>
+                    <Text
+                      style={{
+                        color: '#018FFB',
+                        fontSize: 15,
+                        fontFamily: 'Lato-Bold',
+                        marginLeft: 20,
+                      }}>
+                      UNDO
+                    </Text>
+                  </TouchableOpacity>
+                </View>,
+                3000,
+              )
+            }
             style={[styles.accept_btn, {width: '60%'}]}>
-            <Text style={styles.accept_btn_txt}>
-              {t('move_to_current_order')}
-            </Text>
+            <Text style={styles.accept_btn_txt}>Move to current orders</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -251,7 +287,37 @@ export default function Pre_orders({title, navigation}) {
               placeholder="Type here..."
               placeholderTextColor="#4C6870"
             />
-            <View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 10,
+              }}>
+              <Text
+                style={[
+                  styles.modal_heading,
+                  {fontWeight: '200', fontSize: 15},
+                ]}>
+                {t('suggestions')}
+              </Text>
+              <FlatList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item, index) => index.toString()}
+                data={data}
+                renderItem={({item}) => (
+                  <View
+                    style={{
+                      paddingVertical: 5,
+                      paddingHorizontal: 10,
+                      backgroundColor: '#E6F4F2',
+                      marginLeft: 10,
+                      borderRadius: 5,
+                    }}>
+                    <Text>{item.SubTitle}</Text>
+                  </View>
+                )}
+              />
               <View
                 style={{
                   flexDirection: 'row',
@@ -261,9 +327,9 @@ export default function Pre_orders({title, navigation}) {
                 <Text
                   style={[
                     styles.modal_heading,
-                    {fontWeight: '200', fontSize: 15, color:colors.black},
+                    {fontWeight: '200', fontSize: 15},
                   ]}>
-                  {t('suggestions')}
+                  Suggestions:
                 </Text>
                 <FlatList
                   horizontal
@@ -279,14 +345,7 @@ export default function Pre_orders({title, navigation}) {
                         marginLeft: 10,
                         borderRadius: 5,
                       }}>
-                      <Text
-                        style={{
-                          color: colors.primary,
-                          fontFamily: fonts.LatoMedium,
-                          fontSize:13
-                        }}>
-                        {item.SubTitle}
-                      </Text>
+                      <Text>{item.SubTitle}</Text>
                     </View>
                   )}
                 />
@@ -404,71 +463,16 @@ export default function Pre_orders({title, navigation}) {
         textStyle={{color: 'red'}}
       />
 
-      <CustomModal
-        isModalVisible={modal_timer_visible}
-        setModalVisible={set_modal_timer_visible}
-        modalWrapperStyle={{
-          marginHorizontal: width(30),
-          marginVertical: height(25),
-          justifyContent: 'center',
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modal_timer_visible}
+        onRequestClose={() => {
+          // Alert.alert("Modal has been closed.");
+          set_modal_timer_visible(!modal_timer_visible);
         }}>
         {render_modal_view()}
-      </CustomModal>
-      <CustomModal
-        isModalVisible={modal}
-        setModalVisible={setModal}
-        modalWrapperStyle={{
-          marginHorizontal: width(26),
-          marginVertical: height(36),
-          justifyContent: 'flex-start',
-          alignItems: 'flex-start',
-        }}>
-        <View
-          style={{
-            width: '100%',
-            alignSelf: 'flex-start',
-            margin: 10,
-          }}>
-          <CustomText
-            label={t('Drag_card_back_ToReceive')}
-            textStyle={styles.dragDropHead}
-          />
-        </View>
-        <View
-          style={{
-            width: '100%',
-            alignSelf: 'flex-start',
-            marginHorizontal: 10,
-          }}>
-          <CustomText
-            label={t('Drag_card_detail')}
-            textStyle={styles.dragDropHead1}
-          />
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            marginVertical: 20,
-            justifyContent: 'space-between',
-          }}>
-          <View style={{width: '45%', margin: 5}}>
-            <CustomButton
-              text={t('Cancel')}
-              containerStyle={styles.cancelButtonContainer}
-              textStyle={styles.cancelText}
-              onPress={() => setModal(false)}
-            />
-          </View>
-          <View style={{width: '45%', margin: 5}}>
-            <CustomButton
-              text={t('Confirm')}
-              containerStyle={styles.confirmButtonContainer}
-              textStyle={styles.confirmText}
-              onPress={() => setModal(false)}
-            />
-          </View>
-        </View>
-      </CustomModal>
+      </Modal>
     </View>
   );
 }
@@ -478,34 +482,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Bold',
     margin: 10,
     color: 'black',
-  },
-  cancelButtonContainer: {
-    width: '100%',
-    backgroundColor: colors.light_grey,
-  },
-  cancelText: {
-    fontSize: 17,
-    fontFamily: fonts.PoppinsSemiBold,
-    color: colors.textPrimary,
-  },
-  confirmText: {
-    fontSize: 17,
-    fontFamily: fonts.PoppinsSemiBold,
-    color: colors.white,
-  },
-  confirmButtonContainer: {
-    width: '100%',
-    backgroundColor: colors.primary,
-  },
-  dragDropHead: {
-    fontSize: 20,
-    fontFamily: fonts.bold,
-    color: colors.black,
-  },
-  dragDropHead1: {
-    fontSize: 18,
-    fontFamily: fonts.LatoMedium,
-    color: colors.black,
   },
   single_order: {
     backgroundColor: 'white',
@@ -597,19 +573,23 @@ const styles = StyleSheet.create({
     color: '#F2A341',
     fontFamily: 'Lato-Bold',
   },
-  centeredView: {},
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   modalView: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
     padding: 20,
     borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 0,
+      height: 2,
     },
-    shadowOpacity: 0.15,
-    shadowRadius: 1,
-    elevation: 0,
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
   modal_save_btn: {
     alignItems: 'center',
@@ -621,7 +601,7 @@ const styles = StyleSheet.create({
   },
   modal_heading: {
     fontSize: 18,
-    fontFamily:fonts.LatoBold,
+    fontWeight: '700',
     color: 'black',
   },
 

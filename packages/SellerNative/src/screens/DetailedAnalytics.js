@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
-  Dimensions,
+  Image,
   FlatList,
 } from 'react-native';
 import Modal from 'react-native-modal';
@@ -105,7 +105,8 @@ const DetailedAnalytics = ({navigation}) => {
                   <Text style={styles.NotificationTitle}>
                     Your notifications
                   </Text>
-                  <Text style={styles.NewNotification}>3 New</Text>
+                  <View style={styles.NewNotification}>
+                  <Text style={{color: colors.textWhite,}}>3 New</Text></View>
                 </View>
 
                 <FlatList
@@ -115,7 +116,11 @@ const DetailedAnalytics = ({navigation}) => {
                   renderItem={({item}) => (
                     <View>
                       <View style={{flexDirection: 'row', marginVertical: 15}}>
+                      <View style={styles.ImageVIew}>
+                      <Image source={require('../Assets/Icon.png')} style={styles.ImageModal} />
+                    </View>
                         <View style={styles.ModelDesign}>
+                          
                           <Text style={styles.ModalNotificationTitle}>
                             Silal Management
                           </Text>
@@ -162,9 +167,9 @@ const DetailedAnalytics = ({navigation}) => {
                   renderItem={({item}) => (
                     <View>
                       <View style={{flexDirection: 'row', marginVertical: 15}}>
-                        {/* <View style={styles.ImageVIew}>
-                      <Image source={require('../../Assets/Icon.png')} style={styles.ImageModal} />
-                    </View> */}
+                        <View style={styles.ImageVIew}>
+                      <Image source={require('../Assets/Icon.png')} style={styles.ImageModal} />
+                    </View>
                         <View style={styles.ModelDesign}>
                           <Text style={styles.ModalNotificationTitle}>
                             Silal Management
@@ -310,15 +315,12 @@ const styles = StyleSheet.create({
   },
   NewNotification: {
     fontFamily: fonts.LatoSemiBold,
-    marginTop: 15,
     backgroundColor: colors.primary,
     height: 30,
     width: 60,
-    textAlign: 'center',
-    textAlignVertical: 'center',
     borderRadius: 5,
-    color: colors.textWhite,
-    marginTop: 10,
+    marginTop: 10,  justifyContent:'center',alignItems:'center'
+   
   },
   ImageVIew: {
     backgroundColor: '#0065FF33',

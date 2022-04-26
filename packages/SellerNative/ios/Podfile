@@ -21,84 +21,10 @@ target 'Seller_App_Silal' do
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable the next line.
-  use_flipper!
+  use_flipper!()
 
-#   post_install do |installer|
-#     react_native_post_install(installer)
-#     __apply_Xcode_12_5_M1_post_install_workaround(installer)
-#   end
-# end
-
-# post_install do |installer|
-#   react_native_post_install(installer)
-#   __apply_Xcode_12_5_M1_post_install_workaround(installer)
-#   # installer.aggregate_targets.each do |aggregate_target| 
-#   #   aggregate_target.user_project.native_targets.each do |target|
-#   #     target.build_configurations.each do |config|
-#   #       config.build_settings['LIBRARY_SEARCH_PATHS'] = ['$(SDKROOT)/usr/lib/swift', '$(inherited)'] # or it won't build on apple silicon
-#   #       # without explicitly clearing this out, it flaps between excluding arm64 or not
-#   #       config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "" # stop this setting from waffling between arm65/x86_64 machines after pod install
-#   #       # Fix some library / linker errors
-#   #       config.build_settings['ONLY_ACTIVE_ARCH'] = 'YES' # only one at a time
-#   #       config.build_settings['VALID_ARCHS'] = 'arm64 x86_64' # you need both to work on both CPU archs / release etc
-#   #       config.build_settings['EXCLUDED_ARCHS'] = 'i386' # or you get directory not found linker errors
-#   #     end
-#   #   end
-#   #   aggregate_target.user_project.save
-#   # end
-
-#   # installer.pods_project.targets.each do |target|
-#   #   target.build_configurations.each do |config|
-
-#   #     # We support a smaller range of deployment than some libraries, eliminate related noise
-#   #     # This also avoids a nasty Folly bug about an API not available until ios10+
-#   #     config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = $iOSMinimumDeployVersion
-#   #   end
-#   # end
-
-#   # If you move versions around though you get another nasty Folly bug about redefined symbols, fix that...
-#   `sed -i -e  $'s/__IPHONE_10_0/__IPHONE_12_0/' Pods/RCT-Folly/folly/portability/Time.h`
-
-# end
-# end
-# use_flipper!()
-
-#   post_install do |installer|
-#     react_native_post_install(installer)
-#     __apply_Xcode_12_5_M1_post_install_workaround(installer)
-#   end
-# end
-# add_flipper_pods!('Flipper-Folly' => '2.3.0')
-#  post_install do |installer|
-#    flipper_post_install(installer)
-#  end
-# end
-# post_install do |installer|
-#   react_native_post_install(installer)
-
-#   # Apple Silicon builds require a library path tweak for Swift library discovery or "symbol not found" for swift things
-#   installer.aggregate_targets.each do |aggregate_target| 
-#     aggregate_target.user_project.native_targets.each do |target|
-#       target.build_configurations.each do |config|
-#         config.build_settings['LIBRARY_SEARCH_PATHS'] = ['$(SDKROOT)/usr/lib/swift', '$(inherited)']
-#       end
-#     end
-#     aggregate_target.user_project.save
-#   end
-
-#    # Flipper requires a crude patch to bump up iOS deployment target, or "error: thread-local storage is not supported for the current target"
-#   # I'm not aware of any other way to fix this one other than bumping iOS deployment target to match react-native (iOS 11 now)
-#   installer.pods_project.targets.each do |target|
-#     target.build_configurations.each do |config|
-#       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
-#      end
-#   end
-
-#   # ...but if you bump iOS deployment target, Flipper barfs again "Time.h:52:17: error: typedef redefinition with different types"
-#   # We need to make one crude patch to RCT-Folly - set `__IPHONE_10_0` to our iOS target + 1
-#   # https://github.com/facebook/flipper/issues/834 - 84 comments and still going...
-#   `sed -i -e  $'s/__IPHONE_10_0/__IPHONE_12_0/' #{installer.sandbox.root}/RCT-Folly/folly/portability/Time.h`
-# end
-# end
-
+  post_install do |installer|
+    react_native_post_install(installer)
+    __apply_Xcode_12_5_M1_post_install_workaround(installer)
+  end
 end

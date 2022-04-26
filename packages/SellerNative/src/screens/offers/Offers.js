@@ -146,7 +146,7 @@ const Offers = ({navigation}) => {
         modalWrapperStyle={{
           marginHorizontal: width(0),
           marginVertical: height(0),
-          marginLeft: '65%',
+          marginLeft: width(95),
           justifyContent: 'flex-start',
           borderRadius: 0,
         }}>
@@ -298,7 +298,7 @@ const Offers = ({navigation}) => {
               textStyle={styles.activeDaysHeading}
             />
           </View>
-          <DaySelect day={t('all_day')}  />
+          <DaySelect day={t('all_day')} />
           <View style={styles.labelContainer}>
             <View
               style={{

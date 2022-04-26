@@ -10,7 +10,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@baronha/react-native-multiple-image-picker": "^0.4.10",
     "@react-native-community/cli-platform-android": "^7.0.1",
     "@react-native-community/clipboard": "^1.5.1",
     "@react-native-community/datetimepicker": "^6.0.2",
@@ -43,7 +42,6 @@
     "react-native-linear-gradient": "^2.5.6",
     "react-native-modal": "^13.0.1",
     "react-native-multi-selectbox": "^1.5.0",
-    "react-native-multiple-select": "^0.5.7",
     "react-native-neat-date-picker": "^1.2.1",
     "react-native-orientation-locker": "^1.4.0",
     "react-native-pager-view": "^5.4.15",
@@ -64,7 +62,6 @@
     "react-native-swipe-list-view": "^3.2.9",
     "react-native-swipeable-rating": "^0.2.1",
     "react-native-table-component": "^1.2.2",
-    "react-native-tags-input": "^1.0.10",
     "react-native-toast-message": "^2.1.1",
     "react-native-toast-notifications": "^3.2.3",
     "react-native-vector-icons": "^9.1.0",
