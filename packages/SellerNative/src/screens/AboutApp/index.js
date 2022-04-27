@@ -9,11 +9,11 @@ import Header from '../Profile/moleclues/Header';
 import {useTranslation} from 'react-i18next';
 import CustomText from '@SilalApp/common/components/CustomText';
 import fonts from '@SilalApp/common/assets/fonts';
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 const AboutApp = ({navigation}) => {
   const {t} = useTranslation();
   return (
-    <View style={styles.mainContainer}>
+    <SafeAreaView style={styles.mainContainer}>
       <Header label={t('AboutApp')} onPress={() => navigation.openDrawer()} />
       <View style={styles.IconMainContainer}>
         <View style={styles.IconContainer} />
@@ -34,7 +34,7 @@ const AboutApp = ({navigation}) => {
           iconStyle={styles.iconStyle}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -42,8 +42,8 @@ export default AboutApp;
 
 const styles = ScaledSheet.create({
   mainContainer: {
-    backgroundColor: colors.white,
-    padding: '15@ms',
+    backgroundColor: colors.profileBackground,
+    paddingHorizontal:"10@s",
     flex: 1,
   },
   IconMainContainer: {

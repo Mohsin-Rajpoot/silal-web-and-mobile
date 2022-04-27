@@ -6,7 +6,7 @@ const styles = ScaledSheet.create({
     backgroundColor: colors.textWhite,
     borderRadius: '5@ms',
     marginVertical: '7@ms',
-    width: '32%',
+    width: '31%',
     marginRight: '10@ms',
   },
   headerContainer: {

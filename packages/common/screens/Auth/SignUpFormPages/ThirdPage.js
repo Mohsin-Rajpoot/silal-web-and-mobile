@@ -157,7 +157,7 @@ const ThirdPage = () => {
         </View>
         <View style={{ flexDirection: "row", marginVertical: 15 }}>
           <CustomText
-            label={t("Category")}
+            label={t("main_category")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />

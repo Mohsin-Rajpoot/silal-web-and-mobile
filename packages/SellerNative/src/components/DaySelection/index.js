@@ -20,9 +20,9 @@ const index = ({
   return (
     <View style={[containerStyle ? containerStyle : styles.daySelectContainer]}>
       <CustomText
-        label={active ? activelabel : t(day)}
+        label={t(day)}
         textStyle={[
-          active
+          state && active
             ? styles.dayTextActive
             : textStyle
             ? textStyle
@@ -37,7 +37,7 @@ const index = ({
         size={buttonSize ? buttonSize : 'large'}
         onToggle={() => {
           setActive(!active);
-          setState(!state)
+          setState(true);
         }}
       />
     </View>
@@ -50,8 +50,8 @@ const styles = ScaledSheet.create({
   daySelectContainer: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    width: '45%',
-    margin: 10,
+    width: '49%',
+    marginVertical: '5@s',
     justifyContent: 'space-between',
   },
   dayText: {

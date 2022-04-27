@@ -13,10 +13,15 @@ import CustomButton from '@SilalApp/common/components/native/CustomButton';
 import fonts from '@SilalApp/common/assets/fonts';
 import {useTranslation} from 'react-i18next';
 import {Icon} from 'react-native-elements';
+import { SafeAreaView } from 'react-native-safe-area-context';
 const ContactUs = ({navigation}) => {
   const {t} = useTranslation();
   return (
-    <ScrollView style={styles.mainContainer}>
+
+    <SafeAreaView style={styles.mainContainer}>
+      <ScrollView>
+
+
       <Header
         label={t('Contact_Silal')}
         onPress={() => navigation.openDrawer()}
@@ -46,7 +51,7 @@ const ContactUs = ({navigation}) => {
             <TextInput
               style={{fontSize: moderateScale(17), color: colors.black}}
               borderRadius={moderateScale(5)}
-              borderWidth={moderateScale(2)}
+              borderWidth={moderateScale(1)}
               borderColor={colors.borderColor}
               paddingHorizontal={scale(10)}
               height={verticalScale(35)}
@@ -58,7 +63,7 @@ const ContactUs = ({navigation}) => {
             <TextInput
               style={{fontSize: moderateScale(17), color: colors.black}}
               borderRadius={moderateScale(5)}
-              borderWidth={moderateScale(2)}
+              borderWidth={moderateScale(1)}
               borderColor={colors.borderColor}
               paddingHorizontal={scale(10)}
               height={verticalScale(35)}
@@ -77,7 +82,7 @@ const ContactUs = ({navigation}) => {
                 alignItems: 'flex-start',
               }}
               borderRadius={moderateScale(5)}
-              borderWidth={moderateScale(2)}
+              borderWidth={moderateScale(1)}
               borderColor={colors.borderColor}
               paddingHorizontal={scale(10)}
               height={verticalScale(70)}
@@ -107,7 +112,8 @@ const ContactUs = ({navigation}) => {
           </View>
         </View>
       </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -116,7 +122,7 @@ export default ContactUs;
 const styles = ScaledSheet.create({
   mainContainer: {
     paddingHorizontal: '15@s',
-    backgroundColor: colors.white,
+    backgroundColor: colors.profileBackground,
   },
   submitbutton:{
     fontSize:'14@ms',

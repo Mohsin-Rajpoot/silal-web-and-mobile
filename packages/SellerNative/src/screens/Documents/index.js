@@ -13,12 +13,13 @@ import CustomButton from '@SilalApp/common/components/native/CustomButton';
 import fonts from '@SilalApp/common/assets/fonts';
 import {Icon} from 'react-native-elements';
 import {useTranslation} from 'react-i18next'
+import { SafeAreaView } from 'react-native-safe-area-context';
 const Documents = ({navigation}) => {
   const {t}=useTranslation();
   return (
-    <View
+    <SafeAreaView
       style={{
-        backgroundColor: colors.white,
+        backgroundColor: colors.profileBackground,
         flex: 1,
         paddingHorizontal: scale(15),
       }}>
@@ -69,7 +70,7 @@ const Documents = ({navigation}) => {
           <CustomText label={t("Export")} textStyle={styles.buttonText} />
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

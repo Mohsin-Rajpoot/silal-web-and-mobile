@@ -62,7 +62,7 @@ const CustomModal = (props) => {
                 containerStyle={styles.buttonContainerActive}
                 text={props.Active}
                 textStyle={styles.activeButton}
-                onPress={props.onPress}
+                onPress={props.onPress && props.setModalVisible(false)}
               />
             </View>
           </View>
