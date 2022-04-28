@@ -13,7 +13,7 @@ const Header = ({
 }) => {
   const {t} = useTranslation();
   return (
-    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+    <View style={{flexDirection: 'row', alignItems: 'center',}}>
       <View style={styles.tabTitleContainer}>
         <View
           style={[

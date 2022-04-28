@@ -188,7 +188,7 @@ const Media = ({moveForward, goPrev}) => {
         modalWrapperStyle={{
           marginHorizontal: 0,
           marginVertical: 0,
-          marginLeft: '30%',
+          marginLeft: '33%',
           justifyContent: 'flex-start',
         }}>
         <View style={styles.barcodeModalHeader}>
@@ -480,7 +480,7 @@ const styles = ScaledSheet.create({
     justifyContent: 'space-between',
   },
   innerContainerModal: {
-    width: '97%',
+    width: '95%',
     alignSelf: 'center',
     backgroundColor: colors.ImageBack,
     marginTop: '10@s',
@@ -555,7 +555,7 @@ const styles = ScaledSheet.create({
     marginTop: '5@s',
   },
   borderCodeHeaderText: {
-    fontSize: '17@ms',
+    fontSize: '16@ms',
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.black,
   },
@@ -572,9 +572,9 @@ const styles = ScaledSheet.create({
     marginVertical: '10@s',
   },
   backContainer: {
-    borderRadius: '4@s',
+    borderRadius: '3@s',
     borderColor: colors.primary,
-    borderWidth: '1@s',
+    borderWidth: '0.5@s',
     backgroundColor: 'transparent',
   },
   backText: {
@@ -583,18 +583,18 @@ const styles = ScaledSheet.create({
     color: colors.primary,
   },
   mainPic: {
-    width: '120@s',
-    height: '120@s',
+    width: '102@s',
+    height: '102@s',
     backgroundColor: colors.ImageBack,
-    borderRadius: '4@s',
+    borderRadius: '3@s',
     overflow: 'hidden',
     marginRight: '5@s',
   },
   mainPic1: {
-    width: '130@s',
-    height: '130@s',
+    width: '102@s',
+    height: '102@s',
     backgroundColor: colors.ImageBack,
-    borderRadius: '4@s',
+    borderRadius: '3@s',
     overflow: 'hidden',
     marginRight: '5@s',
   },
@@ -604,20 +604,21 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     margin: '10@s',
+    marginTop:"10@s"
   },
   innerPic: {
-    width: '55@s',
-    height: '55@s',
+    width: '46.5@s',
+    height: '46.5@s',
     backgroundColor: colors.ImageBack,
-    borderRadius: '4@s',
+    borderRadius: '3@s',
     overflow: 'hidden',
     marginRight: '5@s',
   },
   innerPic1: {
-    width: '60@s',
-    height: '60@s',
+    width: '46.5@s',
+    height: '46.5@s',
     backgroundColor: colors.ImageBack,
-    borderRadius: '4@s',
+    borderRadius: '3@s',
     overflow: 'hidden',
     marginRight: '6@s',
   },

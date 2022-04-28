@@ -12,7 +12,9 @@ const index = ({
   search,
   placeholderTextColor,
   inputTextStyle,
-  keyboardType
+  keyboardType,
+  onChangeText,
+  value
 }) => {
   const [showPassword, setShowPassword] = useState(!secureText ? true : false);
   const [text, setText] = useState("");
@@ -42,8 +44,8 @@ const index = ({
         style={inputTextStyle ? inputTextStyle : CommonStyle.inputTextStyle}
         secureTextEntry={!showPassword}
         multiline={multiLine}
-        value={text}
-        onChangeText={(value) => setText(value)}
+        value={ value}
+        onChangeText={onChangeText}
         keyboardType={keyboardType}
       />
       {secureText && (

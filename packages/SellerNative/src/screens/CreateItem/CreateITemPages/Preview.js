@@ -78,9 +78,9 @@ const styles = ScaledSheet.create({
     color: colors.textWhite,
   },
   backContainer: {
-    borderRadius: '4@s',
+    borderRadius: '3@s',
     borderColor: colors.primary,
-    borderWidth: '1@s',
+    borderWidth: '0.5@s',
     backgroundColor: 'transparent',
   },
   backContainer1: {

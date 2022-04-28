@@ -137,6 +137,7 @@ const Order = ({navigation}) => {
           flex: 1,
           flexDirection: 'row',
           alignItems: 'center',
+     
         }}>
         <CommonTab tabs={tabs} page={page} onChangeTab={onChangeTab} />
         <View style={styles.sideTabContainer}>
@@ -910,7 +911,7 @@ const styles = ScaledSheet.create({
   sideTabContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '61%',
+    width: '53%',
     justifyContent: 'flex-end',
   },
   noteText: {

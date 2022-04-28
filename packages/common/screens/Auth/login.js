@@ -16,17 +16,28 @@ import PhoneNumber from "../../components/native/PhoneNumberInput";
 import HeaderBack from "../../components/native/HeaderBack";
 import colors from "../../assets/colors";
 import { useTranslation } from "react-i18next";
+import * as userAction from "../../../SellerNative/src/store/User/actions";
+import { useDispatch, useSelector } from "react-redux";
 const Login = ({ navigation, route }) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const data = route?.params;
+  const init = {
+    password: "",
+    email: "",
+  };
   const [active, setActive] = useState(1);
-  const [text, setText] = useState("");
+  const [text, setText] = useState(init);
   const goForgerPassword = () => {
     navigation.navigate("ForgetPassword");
   };
   const goBack = () => {
     navigation.pop();
   };
+  const loginFunction=(data)=>{
+    dispatch(userAction.userLoginSaga(data))
+  }
+  {console.log('-----Text' ,text)}
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
       <HeaderBack
@@ -45,14 +56,21 @@ const Login = ({ navigation, route }) => {
           {active == 2 ? (
             <View>
               <Text style={styles.phoneNumberText}>{t("email")}</Text>
-              <TextInput placeholderText="email.example@gmail.com" />
+              <TextInput
+                placeholderText="email.example@gmail.com"
+                onChangeText={(value) => setText({ ...text, email: value })}
+                value={text.email}
+              />
               <Text style={styles.phoneNumberText}>{t("Password")}</Text>
               <TextInput
                 placeholderText={t("Enter_password")}
                 secureText={true}
                 password={true}
+                onChangeText={(value)=>setText({...text, password:value})}
+                value={text.password}
               />
             </View>
+          
           ) : active == 1 ? (
             <View>
               <Text style={styles.phoneNumberText}>{t("phone_number")}</Text>
@@ -90,13 +108,15 @@ const Login = ({ navigation, route }) => {
               ? t("login")
               : t("Continue")
           }
-          onPress={() =>
+          onPress={() =>{
             navigation.navigate("Verification", {
               params: {
                 activeTab: data?.params?.signUp ? 4 : null,
                 active: active,
               },
             })
+            loginFunction(text)
+          }
           }
         />
         <View

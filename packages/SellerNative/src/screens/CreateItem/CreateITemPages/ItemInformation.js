@@ -186,7 +186,7 @@ const ItemInformation = ({onPress}) => {
           marginLeft: '25%',
           justifyContent: 'flex-start',
         }}>
-        <View style={{width: '100%'}}>
+        <View style={{width: '100%', marginTop:10}}>
           <View
             style={{
               flexDirection: 'row',
@@ -305,6 +305,7 @@ const ItemInformation = ({onPress}) => {
           marginVertical: 0,
           marginLeft: '65%',
           justifyContent: 'flex-start',
+          
         }}>
         <View style={styles.barCodeModalContainer}>
           <View style={styles.barcodeModalHeader}>
@@ -385,6 +386,7 @@ const styles = ScaledSheet.create({
     fontSize: '12@ms',
     fontFamily: fonts.LatoRegular,
     color: colors.textColorSec,
+    marginTop:"5@s"
   },
   barcodeModalHeader: {
     flexDirection: 'row',
@@ -395,15 +397,16 @@ const styles = ScaledSheet.create({
   barCodeModalContainer: {
     width: '100%',
     padding: '5@s',
+    marginTop:"10@s"
   },
   barcodeContainer: {
     borderColor: colors.borderColor,
-    borderWidth: '1@s',
-    borderRadius: '4@s',
+    borderWidth: '0.7@s',
+    borderRadius: '3@s',
     padding: '5@s',
   },
   borderCodeHeaderText: {
-    fontSize: '17@ms',
+    fontSize: '16@ms',
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.black,
   },
@@ -414,11 +417,12 @@ const styles = ScaledSheet.create({
   },
   click_to_ScanContainer: {
     borderColor: colors.primary,
-    borderWidth: '1@s',
-    borderRadius: '4@s',
+    borderWidth: '0.5@s',
+    borderRadius: '3@s',
     justifyContent: 'center',
     alignItems: 'center',
     padding: '5@s',
+    marginTop:"5@s"
   },
   click_to_Scan_text: {
     fontSize: '12@ms',
@@ -440,7 +444,7 @@ const styles = ScaledSheet.create({
     marginBottom: '5@s',
   },
   textSelectCategory: {
-    fontSize: '17@ms',
+    fontSize: '16@ms',
     fontFamily: fonts.bold,
     color: colors.black,
   },

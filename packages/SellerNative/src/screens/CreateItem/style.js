@@ -31,6 +31,7 @@ const styles = ScaledSheet.create({
   dullContainerStyle: {
     backgroundColor: colors.primaryBlur,
     marginRight: '10@s',
+
   },
   buttonContainerStyle: {
     backgroundColor: colors.primary,
@@ -41,12 +42,14 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.primary,
     marginHorizontal: '2@s',
+    marginVertical:"4@s"
   },
   buttonText: {
     fontSize: '12@ms',
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.textWhite,
     marginHorizontal: '2@s',
+    marginVertical:"4@s"
   },
   tabPagerContainer: {
     backgroundColor: colors.textWhite,
@@ -56,18 +59,20 @@ const styles = ScaledSheet.create({
     marginHorizontal:"5@s",
     marginVertical:"10@s",
     paddingVertical:"4@s",
-    justifyContent:"center",
+    
+  
    
   },
   tabTitleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+ 
   },
   numberContainer: {
     backgroundColor: colors.primary,
     borderRadius: '99@s',
-    width: '25@s',
-    height: '25@s',
+    width: '20@s',
+    height: '20@s',
     justifyContent: 'center',
     alignItems: 'center',
     margin: '5@s',
@@ -79,21 +84,21 @@ const styles = ScaledSheet.create({
   },
   SignUpHeaderInactive: {
     backgroundColor: colors.light_grey,
-    width: '23@s',
+    width: '20@s',
     height: '1@s',
-    marginHorizontal: '8@s',
+    marginHorizontal: '5@s',
   },
   SignformHeader: {
     backgroundColor: colors.primary,
-    width: '23@s',
+    width: '20@s',
     height: '1@s',
-    marginHorizontal: '8@s',
+    marginHorizontal: '5@s',
   },
   numberContainerInactive: {
     backgroundColor: colors.background2,
     borderRadius: '99@s',
-    width: '25@s',
-    height: '25@s',
+    width: '20@s',
+    height: '20@s',
     justifyContent: 'center',
     alignItems: 'center',
     margin: '5@s',
