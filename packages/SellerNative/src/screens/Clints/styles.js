@@ -1,4 +1,4 @@
-import {ScaledSheet} from 'react-native-size-matters';
+import { ScaledSheet } from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import {
   widthPercentageToDP as wp,
@@ -8,12 +8,23 @@ import {
 } from 'react-native-responsive-screen-hooks';
 import fonts from '@SilalApp/common/assets/fonts';
 const styles = ScaledSheet.create({
+  SearchMainViewModal: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
   Input: {
     height: 46,
     alignSelf: 'center',
     elevation: 0.5,
-    width: 442,
+    width: 450,
     borderRadius: 5,
+    backgroundColor: '#fff',
+    zIndex: 0,
+    marginVertical: 5,
+    borderWidth: 0.6,
+    borderColor: "#F2F4F5"
+
   },
   FlatListMainView: {
     width: '31%',
@@ -22,6 +33,7 @@ const styles = ScaledSheet.create({
     marginVertical: 10,
     justifyContent: 'space-between',
     marginHorizontal: 10,
+
   },
   FlatListMainView2: {
     width: '45%',
@@ -73,8 +85,9 @@ const styles = ScaledSheet.create({
   },
   SearchIcon: {
     fontSize: 20,
-    marginRight: -24,
+    zIndex: 1,
     color: '#B3BEC2',
+    marginRight: -24
   },
   ClintPageMainheading: {
     fontFamily: 'Poppins-Bold',
@@ -86,26 +99,44 @@ const styles = ScaledSheet.create({
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 8,
+    marginTop: 2,
     flexDirection: 'row',
-    height: 60,
-    width: 190,
-    marginHorizontal: 14,
+    paddingHorizontal: 10,
+    marginHorizontal: 17,
+    paddingVertical: 2
+
   },
   title: {
     fontSize: 18,
-    fontWeight: '700',
     fontFamily: 'Poppins-Light',
     margin: 10,
   },
   cross_icon: {
     color: '#CCD4D6',
-    fontSize: 16,
+
+  },
+  SecondModalCompleteView: {
+    width: 100, backgroundColor: '#36B37E', alignItems: 'center', justifyContent: 'center', marginHorizontal: 10, borderRadius: 5, height: 20, width: 76, marginVertical: 5
+  },
+  SecondModalContainer: {
+    flexDirection: 'row',
+  },
+  SecondViewCompleteText: {
+    color: '#fff', fontFamily: 'Lato-Medium', fontSize: 11
+  },
+  SecondModalIcon: {
+    fontSize: 30, color: '#002733', fontFamily: 'Poppins-SemiBold'
+  },
+  SecondModalText: {
+    fontSize: 19, color: '#002733', fontFamily: 'Poppins-SemiBold'
   },
   centeredView: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    // width:'106%',
+    // height:'100%'
   },
   modalView: {
     height: '100%',
@@ -131,6 +162,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop:-30
   },
   modal_recuring: {
     backgroundColor: '#5AB3A8',
@@ -183,12 +215,20 @@ const styles = ScaledSheet.create({
     fontFamily: 'Lato-Bold',
   },
   FlatStyle: {
-    paddingVertical: 10,
+    paddingTop: 5,
     flexDirection: 'row',
+    paddingHorizontal: 10
   },
-  FlatStyle1: {
-    flexDirection: 'row',
+  SecondModalTile: {
+    width: 330, fontFamily: 'Lato-Regular', color: '#002733', paddingHorizontal: 5, marginVertical: 5
   },
+  CrossIconSecondModal: {
+    width: 20, color: '#CCD4D6', fontSize: 18, marginVertical: 5
+  },
+  IdSecondModal: {
+    width: 20, fontFamily: 'Lato-Regular', color: '#002733', marginVertical: 5
+  },
+
   MoreOrderShow: {
     backgroundColor: '#E6F4F2',
     height: 25,
@@ -208,6 +248,7 @@ const styles = ScaledSheet.create({
     paddingHorizontal: 25,
   },
   CreditCard: {
+
     paddingVertical: 10,
     textAlign: 'right',
     color: '#002733',
@@ -219,5 +260,22 @@ const styles = ScaledSheet.create({
     fontFamily: 'Lato-Bold',
     fontSize: 13,
   },
+  CustomerMainTitle: {
+    flexDirection: 'row',
+    padding: 12,
+    backgroundColor: '#F2F4F5',
+    borderRadius: 5,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  SortBy: {
+    fontSize: 18,
+    color: '#002733',
+    marginHorizontal: 5,
+    marginTop: 5,
+  }
+
+
 });
 export default styles;

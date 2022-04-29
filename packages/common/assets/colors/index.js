@@ -30,7 +30,20 @@ const colors = {
   dullWhite:"#F1F2F3",
   noteBackground:"rgba(90, 179, 168, 0.1)",
   primaryLight:'rgba(90, 179, 168, 0.3)',
-  parrot:"#00B728"
+  parrot:"#00B728",
+  borderColor1:"rgba(204, 212, 214, 0.3)",
+  textPrime:"rgba(0, 39, 51, 0.5)",
+  background:"#FAFAFA",
+  background1:"rgba(229, 234, 235, 0.7)",
+  orange:'#FFAB00',
+  borderColor2:"#EBEEEF",
+  background2:'rgba(0, 39, 51, 0.1)',
+  textColor:"rgba(0, 39, 51, 0.3)",
+  textColorPrime:"rgba(0, 39, 51, 0.2)",
+  textColorSec:"rgba(0, 39, 51, 0.8)",
+
+  borderColor3:'rgba(76, 104, 112, 0.15)',
+  ImageBack:"#F4F7F8"
 
 };
 export default colors;

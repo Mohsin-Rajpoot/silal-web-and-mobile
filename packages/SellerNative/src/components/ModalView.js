@@ -8,12 +8,12 @@ import {
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 const OPTIONS = [
-  'oldest_first',
-  'Newest_first',
-  'Most_revenue',
-  'Less_revenue',
-  'Recurring_first',
-  'total_buyer_first',
+  'oldest first',
+  'Newest first',
+  'Most revenue',
+  'Less revenue',
+  'Recurring first',
+  
 ];
 const ModalView = props => {
   const {t}=useTranslation();
@@ -54,9 +54,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: 160,
     position: 'absolute',
-    right: 40,
-    marginVertical: 115,
+    right: 30,
     elevation: 2,
-    marginBottom: 20,
-  },
-});
+    top: -264,
+    
+
+
+
+  }
+})

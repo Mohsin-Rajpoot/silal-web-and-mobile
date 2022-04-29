@@ -91,6 +91,15 @@ const Drawer = props => {
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('CreateItem')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label={'Create item'}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.6}
         onPress={() => props.navigation.navigate('AboutApp')}>
         <CustomText
           textStyle={styles.drawerText}
@@ -120,9 +129,11 @@ const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.sidebar,
-    width:'90%',
+    // width:'100%',
     borderTopRightRadius: '15@vs',
     borderBottomRightRadius: '15@vs',
+    // borderTopRightRadius: 30,
+    //     borderBottomRightRadius: 30,
     paddingVertical: '23@vs',
     paddingLeft: '10@s',
     paddingRight: '13@s',

@@ -11,37 +11,25 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		450752C8D3B36DD23BC25168 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5863AD42E0BCC7BE8D26EF98 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */; };
-		4B85A67C7B640639849EC205 /* libPods-Seller_App_Silal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E240F582F5D58AD30B9BF9F0 /* libPods-Seller_App_Silal.a */; };
+		1806712E280A7FAF00A12AE2 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1806711F280A7FAF00A12AE2 /* Poppins-Medium.ttf */; };
+		1806712F280A7FAF00A12AE2 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18067120280A7FAF00A12AE2 /* Poppins-Light.ttf */; };
+		18067130280A7FAF00A12AE2 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18067121280A7FAF00A12AE2 /* Lato-Semibold.ttf */; };
+		18067131280A7FAF00A12AE2 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18067122280A7FAF00A12AE2 /* Poppins-Regular.ttf */; };
+		18067132280A7FAF00A12AE2 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18067123280A7FAF00A12AE2 /* Lato-Medium.ttf */; };
+		18067133280A7FAF00A12AE2 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18067124280A7FAF00A12AE2 /* Poppins-SemiBold.ttf */; };
+		18067134280A7FAF00A12AE2 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18067125280A7FAF00A12AE2 /* Lato-Thin.ttf */; };
+		18067135280A7FAF00A12AE2 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18067126280A7FAF00A12AE2 /* Poppins-ExtraLight.ttf */; };
+		18067136280A7FAF00A12AE2 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18067127280A7FAF00A12AE2 /* Poppins-Thin.ttf */; };
+		18067137280A7FAF00A12AE2 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18067128280A7FAF00A12AE2 /* Lato-Light.ttf */; };
+		18067138280A7FAF00A12AE2 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18067129280A7FAF00A12AE2 /* Poppins-Bold.ttf */; };
+		18067139280A7FAF00A12AE2 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1806712A280A7FAF00A12AE2 /* Poppins-ExtraBold.ttf */; };
+		1806713A280A7FAF00A12AE2 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1806712B280A7FAF00A12AE2 /* Lato-Bold.ttf */; };
+		1806713B280A7FAF00A12AE2 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1806712C280A7FAF00A12AE2 /* Lato-Italic.ttf */; };
+		1806713C280A7FAF00A12AE2 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1806712D280A7FAF00A12AE2 /* Lato-Regular.ttf */; };
+		27FEDFCB2812BD690023A09F /* index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FEDFCA2812BD690023A09F /* index.swift */; };
+		59B3F82B2030907C888E9D08 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3118B1FEDE0859E9A033FFB /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		9B608F8227DFC6B00014FE72 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7027DFC6AF0014FE72 /* Poppins-Bold.ttf */; };
-		9B608F8327DFC6B00014FE72 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7127DFC6AF0014FE72 /* Poppins-ExtraBoldItalic.ttf */; };
-		9B608F8427DFC6B00014FE72 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7227DFC6AF0014FE72 /* Poppins-ExtraLightItalic.ttf */; };
-		9B608F8527DFC6B00014FE72 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7327DFC6AF0014FE72 /* Poppins-Italic.ttf */; };
-		9B608F8627DFC6B00014FE72 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7427DFC6AF0014FE72 /* Poppins-Medium.ttf */; };
-		9B608F8727DFC6B00014FE72 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7527DFC6AF0014FE72 /* Poppins-SemiBold.ttf */; };
-		9B608F8827DFC6B00014FE72 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7627DFC6AF0014FE72 /* Poppins-MediumItalic.ttf */; };
-		9B608F8927DFC6B00014FE72 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7727DFC6AF0014FE72 /* Poppins-ThinItalic.ttf */; };
-		9B608F8A27DFC6B00014FE72 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7827DFC6AF0014FE72 /* Poppins-BlackItalic.ttf */; };
-		9B608F8B27DFC6B00014FE72 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7927DFC6AF0014FE72 /* Poppins-ExtraBold.ttf */; };
-		9B608F8C27DFC6B00014FE72 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7A27DFC6AF0014FE72 /* Poppins-Light.ttf */; };
-		9B608F8D27DFC6B00014FE72 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7B27DFC6AF0014FE72 /* Poppins-Black.ttf */; };
-		9B608F8E27DFC6B00014FE72 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7C27DFC6AF0014FE72 /* Poppins-Regular.ttf */; };
-		9B608F8F27DFC6B00014FE72 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7D27DFC6AF0014FE72 /* Poppins-Thin.ttf */; };
-		9B608F9027DFC6B00014FE72 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7E27DFC6AF0014FE72 /* Poppins-BoldItalic.ttf */; };
-		9B608F9127DFC6B00014FE72 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F7F27DFC6AF0014FE72 /* Poppins-SemiBoldItalic.ttf */; };
-		9B608F9227DFC6B00014FE72 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F8027DFC6AF0014FE72 /* Poppins-ExtraLight.ttf */; };
-		9B608F9327DFC6B00014FE72 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F8127DFC6AF0014FE72 /* Poppins-LightItalic.ttf */; };
-		9B608F9E27DFC7140014FE72 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F9427DFC7140014FE72 /* Lato-BlackItalic.ttf */; };
-		9B608F9F27DFC7140014FE72 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F9527DFC7140014FE72 /* Lato-BoldItalic.ttf */; };
-		9B608FA027DFC7140014FE72 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F9627DFC7140014FE72 /* Lato-Italic.ttf */; };
-		9B608FA127DFC7140014FE72 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F9727DFC7140014FE72 /* Lato-Thin.ttf */; };
-		9B608FA227DFC7140014FE72 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F9827DFC7140014FE72 /* Lato-Light.ttf */; };
-		9B608FA327DFC7140014FE72 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F9927DFC7140014FE72 /* Lato-Bold.ttf */; };
-		9B608FA427DFC7140014FE72 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F9A27DFC7140014FE72 /* Lato-Black.ttf */; };
-		9B608FA527DFC7140014FE72 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F9B27DFC7140014FE72 /* Lato-LightItalic.ttf */; };
-		9B608FA627DFC7140014FE72 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F9C27DFC7140014FE72 /* Lato-ThinItalic.ttf */; };
-		9B608FA727DFC7140014FE72 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B608F9D27DFC7140014FE72 /* Lato-Regular.ttf */; };
+		D4009DE1A2E47A170AAEE066 /* libPods-Seller_App_Silal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B70ADE50D488F00B88BBB35 /* libPods-Seller_App_Silal.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,14 +46,34 @@
 		00E356EE1AD99517003FC87E /* Seller_App_SilalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Seller_App_SilalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* Seller_App_SilalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Seller_App_SilalTests.m; sourceTree = "<group>"; };
+		021646EC8CFB90A92E3FCF11 /* Pods-Seller_App_Silal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal.release.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal.release.xcconfig"; sourceTree = "<group>"; };
+		03D863A0C16FCC5C1AF5DA79 /* Pods-Seller_App_Silal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal.debug.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Seller_App_Silal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seller_App_Silal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Seller_App_Silal/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Seller_App_Silal/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Seller_App_Silal/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Seller_App_Silal/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Seller_App_Silal/main.m; sourceTree = "<group>"; };
-		528DF25206173876DE702D7F /* Pods-Seller_App_Silal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal.release.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal.release.xcconfig"; sourceTree = "<group>"; };
-		5863AD42E0BCC7BE8D26EF98 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seller_App_Silal-Seller_App_SilalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		154BD6B6144925C580B8AC8B /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig"; sourceTree = "<group>"; };
+		1806711F280A7FAF00A12AE2 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		18067120280A7FAF00A12AE2 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Light.ttf"; path = "../assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
+		18067121280A7FAF00A12AE2 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Semibold.ttf"; path = "../assets/fonts/Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		18067122280A7FAF00A12AE2 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Regular.ttf"; path = "../assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		18067123280A7FAF00A12AE2 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Medium.ttf"; path = "../assets/fonts/Lato-Medium.ttf"; sourceTree = "<group>"; };
+		18067124280A7FAF00A12AE2 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-SemiBold.ttf"; path = "../assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		18067125280A7FAF00A12AE2 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Thin.ttf"; path = "../assets/fonts/Lato-Thin.ttf"; sourceTree = "<group>"; };
+		18067126280A7FAF00A12AE2 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-ExtraLight.ttf"; path = "../assets/fonts/Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		18067127280A7FAF00A12AE2 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Thin.ttf"; path = "../assets/fonts/Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		18067128280A7FAF00A12AE2 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Light.ttf"; path = "../assets/fonts/Lato-Light.ttf"; sourceTree = "<group>"; };
+		18067129280A7FAF00A12AE2 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Bold.ttf"; path = "../assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		1806712A280A7FAF00A12AE2 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-ExtraBold.ttf"; path = "../assets/fonts/Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		1806712B280A7FAF00A12AE2 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Bold.ttf"; path = "../assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
+		1806712C280A7FAF00A12AE2 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Italic.ttf"; path = "../assets/fonts/Lato-Italic.ttf"; sourceTree = "<group>"; };
+		1806712D280A7FAF00A12AE2 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
+		1806713D280A8E6500A12AE2 /* Seller_App_Silal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Seller_App_Silal.entitlements; path = Seller_App_Silal/Seller_App_Silal.entitlements; sourceTree = "<group>"; };
+		27FEDFCA2812BD690023A09F /* index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = index.swift; sourceTree = "<group>"; };
+		2B70ADE50D488F00B88BBB35 /* libPods-Seller_App_Silal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seller_App_Silal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		42F97D446A0E94341ACF37A2 /* Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Seller_App_Silal/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B608F7027DFC6AF0014FE72 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Bold.ttf"; path = "../android/app/src/main/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		9B608F7127DFC6AF0014FE72 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-ExtraBoldItalic.ttf"; path = "../android/app/src/main/assets/fonts/Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -95,10 +103,7 @@
 		9B608F9B27DFC7140014FE72 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-LightItalic.ttf"; path = "../android/app/src/main/assets/fonts/Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		9B608F9C27DFC7140014FE72 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-ThinItalic.ttf"; path = "../android/app/src/main/assets/fonts/Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 		9B608F9D27DFC7140014FE72 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Regular.ttf"; path = "../android/app/src/main/assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
-		A748C404339B820A6AEDE46B /* Pods-Seller_App_Silal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal.debug.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal.debug.xcconfig"; sourceTree = "<group>"; };
-		BA87E990B8978E415F64A937 /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig"; sourceTree = "<group>"; };
-		E240F582F5D58AD30B9BF9F0 /* libPods-Seller_App_Silal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seller_App_Silal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8D4F311B3842A2D84ACCD89 /* Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A3118B1FEDE0859E9A033FFB /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seller_App_Silal-Seller_App_SilalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -107,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				450752C8D3B36DD23BC25168 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a in Frameworks */,
+				59B3F82B2030907C888E9D08 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B85A67C7B640639849EC205 /* libPods-Seller_App_Silal.a in Frameworks */,
+				D4009DE1A2E47A170AAEE066 /* libPods-Seller_App_Silal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +147,7 @@
 		13B07FAE1A68108700A75B9A /* Seller_App_Silal */ = {
 			isa = PBXGroup;
 			children = (
+				1806713D280A8E6500A12AE2 /* Seller_App_Silal.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -156,8 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				E240F582F5D58AD30B9BF9F0 /* libPods-Seller_App_Silal.a */,
-				5863AD42E0BCC7BE8D26EF98 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */,
+				2B70ADE50D488F00B88BBB35 /* libPods-Seller_App_Silal.a */,
+				A3118B1FEDE0859E9A033FFB /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -165,10 +171,10 @@
 		32C5ADC0B9539448E4BBC0B4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A748C404339B820A6AEDE46B /* Pods-Seller_App_Silal.debug.xcconfig */,
-				528DF25206173876DE702D7F /* Pods-Seller_App_Silal.release.xcconfig */,
-				E8D4F311B3842A2D84ACCD89 /* Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig */,
-				BA87E990B8978E415F64A937 /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */,
+				03D863A0C16FCC5C1AF5DA79 /* Pods-Seller_App_Silal.debug.xcconfig */,
+				021646EC8CFB90A92E3FCF11 /* Pods-Seller_App_Silal.release.xcconfig */,
+				42F97D446A0E94341ACF37A2 /* Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig */,
+				154BD6B6144925C580B8AC8B /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -183,6 +189,22 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				27FEDFCA2812BD690023A09F /* index.swift */,
+				1806712B280A7FAF00A12AE2 /* Lato-Bold.ttf */,
+				1806712C280A7FAF00A12AE2 /* Lato-Italic.ttf */,
+				18067128280A7FAF00A12AE2 /* Lato-Light.ttf */,
+				18067123280A7FAF00A12AE2 /* Lato-Medium.ttf */,
+				1806712D280A7FAF00A12AE2 /* Lato-Regular.ttf */,
+				18067121280A7FAF00A12AE2 /* Lato-Semibold.ttf */,
+				18067125280A7FAF00A12AE2 /* Lato-Thin.ttf */,
+				18067129280A7FAF00A12AE2 /* Poppins-Bold.ttf */,
+				1806712A280A7FAF00A12AE2 /* Poppins-ExtraBold.ttf */,
+				18067126280A7FAF00A12AE2 /* Poppins-ExtraLight.ttf */,
+				18067120280A7FAF00A12AE2 /* Poppins-Light.ttf */,
+				1806711F280A7FAF00A12AE2 /* Poppins-Medium.ttf */,
+				18067122280A7FAF00A12AE2 /* Poppins-Regular.ttf */,
+				18067124280A7FAF00A12AE2 /* Poppins-SemiBold.ttf */,
+				18067127280A7FAF00A12AE2 /* Poppins-Thin.ttf */,
 				9B608F6F27DFC66B0014FE72 /* Resources */,
 				13B07FAE1A68108700A75B9A /* Seller_App_Silal */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -247,12 +269,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Seller_App_SilalTests" */;
 			buildPhases = (
-				B7CF5B0A1A91CB4BB7EC4281 /* [CP] Check Pods Manifest.lock */,
+				811BA3C0DD5CD93212F2EC14 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				FFF7ABF20ED8B86F504F41D6 /* [CP] Embed Pods Frameworks */,
-				2401EA23F2F87AC64754333E /* [CP] Copy Pods Resources */,
+				1A3D0A7F744BF51ED57CA496 /* [CP] Embed Pods Frameworks */,
+				280360C734831FEC75E201DF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -268,14 +290,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Seller_App_Silal" */;
 			buildPhases = (
-				712B443DB7D77094AF5337FD /* [CP] Check Pods Manifest.lock */,
+				E0DA3A5298717551F08F77A3 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				361CF0A30E45D50C4A313B85 /* [CP] Embed Pods Frameworks */,
-				A4F88826A75902E3E33350B9 /* [CP] Copy Pods Resources */,
+				AE27BEA8EB4D1D3CB3201CDE /* [CP] Embed Pods Frameworks */,
+				F07849E3E15EA736FA721D5B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -299,7 +321,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1330;
 					};
 				};
 			};
@@ -334,36 +356,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B608F8527DFC6B00014FE72 /* Poppins-Italic.ttf in Resources */,
-				9B608FA427DFC7140014FE72 /* Lato-Black.ttf in Resources */,
-				9B608FA127DFC7140014FE72 /* Lato-Thin.ttf in Resources */,
-				9B608F8C27DFC6B00014FE72 /* Poppins-Light.ttf in Resources */,
-				9B608F9E27DFC7140014FE72 /* Lato-BlackItalic.ttf in Resources */,
-				9B608F8627DFC6B00014FE72 /* Poppins-Medium.ttf in Resources */,
-				9B608FA327DFC7140014FE72 /* Lato-Bold.ttf in Resources */,
-				9B608FA727DFC7140014FE72 /* Lato-Regular.ttf in Resources */,
-				9B608FA227DFC7140014FE72 /* Lato-Light.ttf in Resources */,
-				9B608F8327DFC6B00014FE72 /* Poppins-ExtraBoldItalic.ttf in Resources */,
+				1806712E280A7FAF00A12AE2 /* Poppins-Medium.ttf in Resources */,
+				1806712F280A7FAF00A12AE2 /* Poppins-Light.ttf in Resources */,
+				18067130280A7FAF00A12AE2 /* Lato-Semibold.ttf in Resources */,
+				18067131280A7FAF00A12AE2 /* Poppins-Regular.ttf in Resources */,
+				18067132280A7FAF00A12AE2 /* Lato-Medium.ttf in Resources */,
+				18067133280A7FAF00A12AE2 /* Poppins-SemiBold.ttf in Resources */,
+				18067134280A7FAF00A12AE2 /* Lato-Thin.ttf in Resources */,
+				18067135280A7FAF00A12AE2 /* Poppins-ExtraLight.ttf in Resources */,
+				18067136280A7FAF00A12AE2 /* Poppins-Thin.ttf in Resources */,
+				18067137280A7FAF00A12AE2 /* Lato-Light.ttf in Resources */,
+				18067138280A7FAF00A12AE2 /* Poppins-Bold.ttf in Resources */,
+				18067139280A7FAF00A12AE2 /* Poppins-ExtraBold.ttf in Resources */,
+				1806713A280A7FAF00A12AE2 /* Lato-Bold.ttf in Resources */,
+				1806713B280A7FAF00A12AE2 /* Lato-Italic.ttf in Resources */,
+				1806713C280A7FAF00A12AE2 /* Lato-Regular.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				9B608FA027DFC7140014FE72 /* Lato-Italic.ttf in Resources */,
-				9B608F9127DFC6B00014FE72 /* Poppins-SemiBoldItalic.ttf in Resources */,
-				9B608F8F27DFC6B00014FE72 /* Poppins-Thin.ttf in Resources */,
-				9B608F8B27DFC6B00014FE72 /* Poppins-ExtraBold.ttf in Resources */,
-				9B608F8427DFC6B00014FE72 /* Poppins-ExtraLightItalic.ttf in Resources */,
-				9B608F8727DFC6B00014FE72 /* Poppins-SemiBold.ttf in Resources */,
-				9B608F9027DFC6B00014FE72 /* Poppins-BoldItalic.ttf in Resources */,
-				9B608FA627DFC7140014FE72 /* Lato-ThinItalic.ttf in Resources */,
-				9B608F9327DFC6B00014FE72 /* Poppins-LightItalic.ttf in Resources */,
-				9B608F8227DFC6B00014FE72 /* Poppins-Bold.ttf in Resources */,
-				9B608F8E27DFC6B00014FE72 /* Poppins-Regular.ttf in Resources */,
-				9B608F9F27DFC7140014FE72 /* Lato-BoldItalic.ttf in Resources */,
-				9B608F8927DFC6B00014FE72 /* Poppins-ThinItalic.ttf in Resources */,
-				9B608F9227DFC6B00014FE72 /* Poppins-ExtraLight.ttf in Resources */,
-				9B608F8D27DFC6B00014FE72 /* Poppins-Black.ttf in Resources */,
-				9B608F8827DFC6B00014FE72 /* Poppins-MediumItalic.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				9B608F8A27DFC6B00014FE72 /* Poppins-BlackItalic.ttf in Resources */,
-				9B608FA527DFC7140014FE72 /* Lato-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +393,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		2401EA23F2F87AC64754333E /* [CP] Copy Pods Resources */ = {
+		1A3D0A7F744BF51ED57CA496 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		280360C734831FEC75E201DF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -401,63 +427,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		361CF0A30E45D50C4A313B85 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		712B443DB7D77094AF5337FD /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Seller_App_Silal-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A4F88826A75902E3E33350B9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B7CF5B0A1A91CB4BB7EC4281 /* [CP] Check Pods Manifest.lock */ = {
+		811BA3C0DD5CD93212F2EC14 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -479,6 +449,62 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AE27BEA8EB4D1D3CB3201CDE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0DA3A5298717551F08F77A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Seller_App_Silal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F07849E3E15EA736FA721D5B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -498,23 +524,6 @@
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FFF7ABF20ED8B86F504F41D6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -532,6 +541,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				27FEDFCB2812BD690023A09F /* index.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,9 +558,12 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8D4F311B3842A2D84ACCD89 /* Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig */;
+			baseConfigurationReference = 42F97D446A0E94341ACF37A2 /* Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				EXCLUDED_ARCHS = i386;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -562,6 +575,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -570,15 +588,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seller_App_Silal.app/Seller_App_Silal";
+				VALID_ARCHS = "arm64 x86_64";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA87E990B8978E415F64A937 /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */;
+			baseConfigurationReference = 154BD6B6144925C580B8AC8B /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				EXCLUDED_ARCHS = i386;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				INFOPLIST_FILE = Seller_App_SilalTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -586,6 +608,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -594,22 +621,32 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seller_App_Silal.app/Seller_App_Silal";
+				VALID_ARCHS = "arm64 x86_64";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A748C404339B820A6AEDE46B /* Pods-Seller_App_Silal.debug.xcconfig */;
+			baseConfigurationReference = 03D863A0C16FCC5C1AF5DA79 /* Pods-Seller_App_Silal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Seller_App_Silal/Seller_App_Silal.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MB6N5259HZ;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = i386;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				INFOPLIST_FILE = Seller_App_Silal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -617,25 +654,35 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Seller_App_Silal;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Seller_App_Silal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 528DF25206173876DE702D7F /* Pods-Seller_App_Silal.release.xcconfig */;
+			baseConfigurationReference = 021646EC8CFB90A92E3FCF11 /* Pods-Seller_App_Silal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Seller_App_Silal/Seller_App_Silal.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MB6N5259HZ;
 				INFOPLIST_FILE = Seller_App_Silal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -643,8 +690,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Seller_App_Silal;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Seller_App_Silal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -705,7 +755,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SDKROOT)/usr/lib/swift\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.3/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -782,7 +832,7 @@
 				00E356F71AD99517003FC87E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Seller_App_Silal" */ = {
 			isa = XCConfigurationList;
@@ -791,7 +841,7 @@
 				13B07F951A680F5B00A75B9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Seller_App_Silal" */ = {
 			isa = XCConfigurationList;
@@ -800,7 +850,7 @@
 				83CBBA211A601CBA00E9B192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

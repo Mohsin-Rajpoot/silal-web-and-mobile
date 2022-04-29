@@ -3,7 +3,11 @@
 import React, { Component, useEffect, useState, useRef } from 'react';
 import { View, Text, StyleSheet, Dimensions, Image, FlatList, StatusBar, Animated } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient'
-
+import {
+    OrientationLocker,
+    LANDSCAPE,
+    PORTRAIT
+  } from 'react-native-orientation-locker';
 import * as Animatable from 'react-native-animatable';
 
 const windowWidthF = Dimensions.get("window").height
@@ -26,7 +30,35 @@ var values = [
 ]
 
 export default function CustomGraph() {
-    const [showDurationPicker, setshowDurationPicker] = useState(false)
+ 
+    // const [orientation, setOrientation] = useState(LANDSCAPE);
+    // const determineAndSetOrientation = () => {
+    //     let width = Dimensions.get('window').width;
+    //     let height = Dimensions.get('window').height;
+    
+    //     if (Dimensions == PORTRAIT) {
+    //         setOrientation(LANDSCAPE);
+    //         console.log(orientation,"orientation fff");
+    //       } else {
+    //         setOrientation(LANDSCAPE);
+    //         console.log(orientation,'LANDSCAPE eeeeee');
+    //       }
+    //   }
+    
+    //   useEffect(() => {
+    
+    //     determineAndSetOrientation();
+    //     Dimensions.addEventListener('change', determineAndSetOrientation);
+    
+    //     return () => {
+    //       Dimensions.addEventListener('change', determineAndSetOrientation)
+    //     }
+    //   }, []);
+
+
+
+
+
 
 
     const fadeAnim16 = useRef(new Animated.Value(0)).current;
@@ -50,7 +82,8 @@ export default function CustomGraph() {
     const animateFun = (value, value2) => {
         Animated.timing(value2, {
             toValue: value,
-            duration: 1800
+            duration: 1800,
+          
         }).start();
         return value2
     }
@@ -66,11 +99,11 @@ export default function CustomGraph() {
     }, [])
     return (
         <>
-            {/* <StatusBar translucent={false} barStyle="light-content" backgroundColor="#fff" /> */}
+
             <View style={styles.container}>
-                <View style={styles.innercontainer}>
+                <View style={[styles.innercontainer,{height: windowWidthF / 1.2,}]}>
                     <View style={{ height: windowHeightF / 1.21, width: windowHeightF, flexDirection: "row" }}>
-                        <View>
+                        <View style={{ marginTop: 2 }}>
                             <View style={styles.graphHorizontalLinesView}>
                                 <Text style={styles.digits}>${ValueFirst > 999999 ? 1 + "M" : (ValueFirst / 1000).toFixed(1)}</Text>
                                 <View style={styles.horizontalLine} />
@@ -80,33 +113,41 @@ export default function CustomGraph() {
                                 <View style={styles.horizontalLine} />
                             </View>
                             <View style={styles.graphHorizontalLinesView}>
-                                <Text style={styles.digits}>${(((ValueFirst / 2) / 2) / 1000).toFixed(1)}</Text>
+                                <Text style={styles.digits}>${((ValueFirst / 1000) / 2).toFixed(1)}</Text>
+
                                 <View style={styles.horizontalLine} />
                             </View>
                             <View style={styles.graphHorizontalLinesView}>
-                                <Text style={styles.digits}>${ValueFirst * 0}k</Text>
+
+                                <Text style={styles.digits}>${((ValueFirst / 1000) / 2).toFixed(1)}</Text>
+
                                 <View style={styles.horizontalLine} />
                             </View>
                             <View style={styles.graphHorizontalLinesView}>
-                                <Text style={styles.digits}>${ValueFirst * 0}k</Text>
+                                <Text style={styles.digits}>${ValueFirst * 0}</Text>
                                 <View style={styles.horizontalLine} />
                             </View>
-                            <View style={styles.graphHorizontalLinesView}>
-                                <Text style={styles.digits}>${ValueFirst * 0}k</Text>
+                            {/* <View style={styles.graphHorizontalLinesView}>
+                                <Text style={styles.digits}>${ValueFirst * 0}</Text>
                                 <View style={styles.horizontalLine} />
-                            </View>
+                            </View> */}
                         </View>
-                        <View style={styles.monthNameView}>
+
+                        <View style={[styles.monthNameView,{left: windowHeightF / 12,height: windowHeightF / 1.3,}]}>
                             <FlatList
                                 horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                                 data={graphValue}
                                 renderItem={({ item, index }) =>
-                                    <View style={{ width: windowHeightF / 20, marginRight: 1, }}>
-                                        <View style={{ position: "absolute", flexDirection: "row" }}>
-                                            <LinearGradient colors={['#73D5C9', '#5AB3A8',]} style={{ borderRadius: 15, }}>
+                                    <View style={{
+                                        width: windowHeightF / 20, height: 218, marginRight: 25,
+                                        // backgroundColor:'yellow',
+                                        justifyContent: 'flex-end',
+                                    }}>
+                                        <View style={{ position: "absolute", flexDirection: "row", }}>
+                                            <LinearGradient colors={['#73D5C9', '#5AB3A8',]} style={{ borderRadius: 15 }}>
                                                 <Animatable.View style={{
-                                                    width: 28, height: item.id == 1 ?
+                                                    width: 38, height: item.id == 1 ?
                                                         animateFun(item.earnedBarHeight, fadeAnim16) : item.id == 2 ?
                                                             animateFun(item.earnedBarHeight, fadeAnim17) : item.id == 3 ?
                                                                 animateFun(item.earnedBarHeight, fadeAnim18) : item.id == 4 ?
@@ -120,11 +161,23 @@ export default function CustomGraph() {
                                             </LinearGradient>
                                         </View>
                                         <View style={styles.durationListTextView}>
-                                            <Text style={[styles.quarterlySepText, {}]}>28 PM</Text>
-                                            {/* <Text style={[styles.quarterlySepText2, { position: 'absolute', marginTop: 3 }]}>29</Text> */}
+                                            <Text style={[styles.quarterlySepText]}>28 PM</Text>
+                                            <Text style={{ position: 'absolute', bottom: -10, paddingHorizontal: 5, fontFamily: 'Lato-Semibold', fontSize: 13, color: '#002733' }}>$ 230</Text>
+
                                         </View>
-                                    </View>}
-                                keyExtractor={item => item._id} />
+
+                                    </View>
+
+
+                                }
+
+
+                                keyExtractor={item => item._id}
+                                style={{
+
+                                    // backgroundColor:'green',
+                                }}
+                            />
                         </View>
                     </View>
                 </View>
@@ -136,11 +189,13 @@ export default function CustomGraph() {
 const styles = StyleSheet.create({
     container: {
         // flex: 1,
-        // backgroundColor: '#045bd1',
     },
     innercontainer: {
         width: '100%',
-        // height: windowWidthF / 2.2,
+        // height:120,
+        // backgroundColor: '#045bd1',
+
+        
     },
 
 
@@ -148,20 +203,21 @@ const styles = StyleSheet.create({
     graphHorizontalLinesView: {
         flexDirection: "row",
         alignItems: "center",
-        marginTop: 50,
+        marginTop: 35,
         width: "100%",
+        // backgroundColor: 'pink',
+        marginHorizontal: 10,
+        marginBottom: 5
     },
     digits: {
         // color: "#FFF",
         fontSize: 16,
         letterSpacing: 1,
-        // paddingLeft: windowHeightF / 10,
-        width: 50,
-
-
+        // paddingLeft: windowHeightF / 1.2,
+        width: 60,
     },
     horizontalLine: {
-        width: "70%",
+        width: "69.1%",
         borderTopWidth: 2,
         borderColor: "#00273314",
         marginTop: 6,
@@ -170,37 +226,31 @@ const styles = StyleSheet.create({
     monthNameView: {
         // width: "100%",
         position: "absolute",
-        left: windowHeightF / 5,
         alignSelf: "flex-end",
         bottom: -12,
-        height: windowHeightF / 1.3,
     },
 
 
     durationListTextView: {
         position: "absolute",
-        bottom: -7,
+        bottom: -30,
         height: 44,
     },
 
     quarterlySepText: {
-        // color: "#fff",
-        fontSize: 10,
-        paddingHorizontal: "25%",
-        height: 60,
-        marginTop: -4,
+        color: "#809399",
+        fontSize: 13,
+        paddingHorizontal: "10%",
+        height: 30,
+        marginTop: 20,
         alignSelf: "center",
         textAlignVertical: "center",
         width: 80,
+        fontFamily: 'Lato-Medium'
+
+
     },
-    quarterlySepText2: {
-        // color: "#fff",
-        fontSize: 14,
-        paddingHorizontal: "25%",
-        height: 30,
-        alignSelf: "center",
-        textAlignVertical: "center",
-    },
+
 
 
 
@@ -210,3 +260,4 @@ const styles = StyleSheet.create({
 });
 
 
+// //////

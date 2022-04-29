@@ -270,27 +270,83 @@ export default function Archive_orders({title, navigation}) {
                   </Picker>
                 </View>
 
-                <View style={{marginVertical: 5}}>
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      fontFamily: 'Lato-Semibold',
-                      color: '#002733',
-                      paddingVertical: 4,
-                    }}>
-                    Item name
-                  </Text>
-                  <View style={styles.dropdownbox}>
-                    <Picker
-                      animated={false}
-                      selectedValue={selectedCategoryItem}
-                      onValueChange={(itemValue, itemIndex) =>
-                        setselectedCategoryItem(itemValue)
-                      }>
-                      <Picker.Item label="Salad" value="java" />
-                      <Picker.Item label="Salad Special" value="js" />
-                    </Picker>
-                  </View>
+                <View style={{ justifyContent: 'center', alignSelf: 'center' }}>
+                    <SwipeListView
+                        data={data3}
+                        renderItem={(data, rowMap) => (
+                            <View>
+
+                                <View style={[styles.render_all_orders, { paddingTop: 5 }]}>
+                                    <View>
+                                        <CheckBox
+                                            checked={item.checked == true || item.checked == 'true' ? true : false}
+                                            onPress={() => setcheck(index)}
+                                            checkedColor="#5AB3A8"
+                                            uncheckedColor="#CCD4D6"
+                                        />
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '10%', marginTop: 5 }]}>
+                                        <Image source={require('../Assets/image12.png')} style={{ height: 45, width: 45, resizeMode: 'contain', borderRadius: 5 }} />
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '10%', height: 40 }]}>
+                                        <Text style={{ fontFamily: 'Lato-Regular', }}>Cheesecakes with sour cream and citrus hon</Text>
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '15%', justifyContent: 'flex-start', flexDirection: 'row', left: 20 }]}>
+                                        <Text style={{ fontFamily: 'Lato-Regular' }}>723DN2</Text>
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '10%', justifyContent: 'flex-start', flexDirection: 'row' }]}>
+                                        <Text style={{ marginLeft: -15 }}>11.14.2021</Text>
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '13%', }]}>
+                                        <Text style={{ fontFamily: 'Lato-Regular', alignSelf: 'flex-start', paddingHorizontal: 25 }}>230 g</Text>
+
+                                    </View>
+                                    <View style={[styles.render_all_order_single, {
+                                        width: '10%',
+
+
+                                    }]}>
+                                        <Text style={{ fontFamily: 'Lato-Regular', }}>18 portions</Text>
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '14%', }]}>
+                                        <Text style={{ fontFamily: 'Lato-Regular', }}>$ 2.50</Text>
+                                    </View>
+                                    <View style={[styles.render_all_order_single, { width: '8%', }]} >
+                                        <Menu>
+                                            <MenuTrigger style={styles.trigger}>
+                                                <View style={{ height: 40, width: 40, alignItems: 'center', justifyContent: 'center' }}>
+                                                    <Entypo name='dots-three-vertical' style={[styles.cross_icon, { color: '#4C6870', fontSize: 20 }]} />
+                                                </View>
+                                            </MenuTrigger>
+                                            <MenuOptions customStyles={{ optionText: { padding: 5 } }}>
+                                                <MenuOption onSelect={() => setShowmodal(true)} value="Normal" text='Edit' />
+                                                <MenuOption value="Normal" text='Freeze Listing' />
+                                                <MenuOption onSelect={() => setOpenmodal(true)} value="Normal" text='Delete' />
+                                            </MenuOptions>
+                                        </Menu>
+                                    </View>
+                                </View>
+                            </View>
+                        )}
+                        renderHiddenItem={(data, rowMap) => (
+                            <View style={styles.rowBack}>
+                                <View style={{ position: 'absolute', right: 2, flexDirection: 'row' }}>
+                                    <TouchableOpacity onPress={() => setShowmodal(true)} style={[styles.BackButtons, { backgroundColor: '#F2F4F5' }]}>
+                                        <Text style={[styles.BackButtonsText, { color: '#000' }]}>Edit</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={[styles.BackButtons, { backgroundColor: '#DEEBFF', }]}>
+                                        <Text style={[styles.BackButtonsText, { color: '#000' }]}>Freeze</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                        onPress={() => setOpenmodal(true)}
+                                        style={[styles.BackButtons, { backgroundColor: '#FB5C5C', }]}>
+                                        <Text style={styles.BackButtonsText}>Delete</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        )}
+                        rightOpenValue={-220}
+                    />
                 </View>
 
                 <View>

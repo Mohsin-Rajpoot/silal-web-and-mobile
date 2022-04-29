@@ -214,7 +214,7 @@ const Products = ({navigation}) => {
                   </Svg>
                 </View>
                 <View style={styles.containerText}>
-                  <Text style={styles.BoxTitleText}>{item.Title}</Text>
+                  <Text style={[styles.BoxTitleText,{width:130}]}>{item.Title}</Text>
                   <Text style={styles.TotleItem}>{item.Quantity}</Text>
                 </View>
               </TouchableOpacity>
@@ -267,6 +267,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
     fontSize: 17,
     color: '#002733',
+    
   },
   TotleItem: {
     color: '#CCD4D6',

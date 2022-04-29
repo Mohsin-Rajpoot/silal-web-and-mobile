@@ -5,25 +5,16 @@ import {
   View,
   TouchableOpacity,
   Dimensions,
-  SafeAreaView,
   FlatList,
   TextInput,
   Modal,
-  Pressable,
-  ToastAndroid,
+
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {Image, SvgXml} from 'react-native-svg';
 import Svg, {
   Path,
-  Defs,
-  LinearGradient,
-  Stop,
   Rect,
-  Circle,
-  G,
 } from 'react-native-svg';
 import {Slider, Icon} from 'react-native-elements';
 import Toast from 'react-native-easy-toast';
@@ -130,10 +121,10 @@ export default function Current_orders({title, navigation}) {
         <SwipeButton
           disabled={false}
           //disable the button by doing true (Optional)
-          swipeSuccessThreshold={70}
+          swipeSuccessThreshold={10}
           height={40}
           //height of the button (Optional)
-          width={330}
+          width={307}
           shouldResetAfterSuccess={true}
           //width of the button (Optional)
           title="Slide to accept order"
@@ -653,6 +644,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     paddingBottom: 10,
+ 
   },
   order_header: {
     flex: 1,
