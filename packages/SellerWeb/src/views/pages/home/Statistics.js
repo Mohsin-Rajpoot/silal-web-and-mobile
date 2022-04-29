@@ -12,9 +12,9 @@ import {
 import { CardStyled, Heading } from "../../components/Style";
 import {
   salesIcon,
-  cartIcon,
-  bellIcon,
-  ratingIcon,
+  BellIcon,
+  Cart,
+  Award,
   dish,
   CalendarIcon,
 } from "../../components/AllImages";
@@ -51,7 +51,7 @@ const Statistics = ({ setSideBar, sideBar }) => {
         </Col>
         <Col lg={3} md={6}>
           <RestaurantCard
-            icon={cartIcon}
+            icon={Cart}
             heading="Total Orders"
             number="398"
             rate="- 4%"
@@ -60,14 +60,14 @@ const Statistics = ({ setSideBar, sideBar }) => {
         </Col>
         <Col lg={3} md={6}>
           <RestaurantCard
-            icon={bellIcon}
+            icon={BellIcon}
             heading="Out-of-stock items"
             number="6"
           />
         </Col>
         <Col lg={3} md={6}>
           <RestaurantCard
-            icon={ratingIcon}
+            icon={Award}
             heading="Total Rating"
             number="4.8"
             rate="+ 0.9%"
@@ -124,7 +124,7 @@ const Statistics = ({ setSideBar, sideBar }) => {
           </CardStyled>
         </Col>
         <Col lg={8} md={12}>
-          <CardStyled className="dasboard-card-height">
+          <CardStyled className="">
             {/* <Heading>Revenue overview</Heading> */}
             <StatisticGraph />
           </CardStyled>
