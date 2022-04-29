@@ -33,7 +33,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
   return (
     <View style={styles.MainContainer}>
       <SafeAreaView style={styles.Container}>
-      <KeyboardAvoidingView  behavior='padding'>
+        <KeyboardAvoidingView behavior="padding">
           <View style={{width: '100%', alignSelf: 'center'}}>
             <View style={styles.Header}>
               <TouchableOpacity

@@ -9,7 +9,7 @@ import Header from '../Profile/moleclues/Header';
 import {useTranslation} from 'react-i18next';
 import CustomText from '@SilalApp/common/components/CustomText';
 import fonts from '@SilalApp/common/assets/fonts';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
 const AboutApp = ({navigation}) => {
   const {t} = useTranslation();
   return (
@@ -43,7 +43,7 @@ export default AboutApp;
 const styles = ScaledSheet.create({
   mainContainer: {
     backgroundColor: colors.profileBackground,
-    paddingHorizontal:"10@s",
+    paddingHorizontal: '10@s',
     flex: 1,
   },
   IconMainContainer: {

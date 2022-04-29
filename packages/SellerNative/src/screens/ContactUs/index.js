@@ -13,105 +13,106 @@ import CustomButton from '@SilalApp/common/components/native/CustomButton';
 import fonts from '@SilalApp/common/assets/fonts';
 import {useTranslation} from 'react-i18next';
 import {Icon} from 'react-native-elements';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
 const ContactUs = ({navigation}) => {
   const {t} = useTranslation();
   return (
-
     <SafeAreaView style={styles.mainContainer}>
       <ScrollView>
-
-
-      <Header
-        label={t('Contact_Silal')}
-        onPress={() => navigation.openDrawer()}
-      />
-      <View
-        style={{
-          width: '70%',
-          paddingVertical: verticalScale(20),
-        }}>
-        <View style={styles.container}>
-          <View style={{alignItems: 'flex-start'}}>
-            <CustomText
-              textStyle={styles.letSolveText}
-              label={t('LetsSolveProblem')}
-            />
-            <CustomText
-              textStyle={styles.letSolveDetailText}
-              label={t('ContactUsDetailText')}
-            />
-          </View>
-          <View style={{height: 20}} />
-          <View>
-            <CustomText
-              textStyle={styles.inputLabel}
-              label={t('ContactPhone_email')}
-            />
-            <TextInput
-              style={{fontSize: moderateScale(17), color: colors.black}}
-              borderRadius={moderateScale(5)}
-              borderWidth={moderateScale(1)}
-              borderColor={colors.borderColor}
-              paddingHorizontal={scale(10)}
-              height={verticalScale(35)}
-              marginTop={verticalScale(5)}
-            />
-          </View>
-          <View style={{marginTop: verticalScale(20)}}>
-            <CustomText textStyle={styles.inputLabel} label={t('Subject')} />
-            <TextInput
-              style={{fontSize: moderateScale(17), color: colors.black}}
-              borderRadius={moderateScale(5)}
-              borderWidth={moderateScale(1)}
-              borderColor={colors.borderColor}
-              paddingHorizontal={scale(10)}
-              height={verticalScale(35)}
-              marginTop={verticalScale(5)}
-            />
-          </View>
-          <View style={{marginTop: verticalScale(20)}}>
-            <CustomText
-              textStyle={styles.inputLabel}
-              label={t('YourMessage')}
-            />
-            <TextInput
-              style={{
-                fontSize: moderateScale(17),
-                color: colors.black,
-                alignItems: 'flex-start',
-              }}
-              borderRadius={moderateScale(5)}
-              borderWidth={moderateScale(1)}
-              borderColor={colors.borderColor}
-              paddingHorizontal={scale(10)}
-              height={verticalScale(70)}
-              marginTop={verticalScale(5)}
-              multiline={true}
-            />
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              marginTop: 12,
-              justifyContent: 'space-between',
-            }}>
-            <View style={{width: '30%'}}>
-              <View style={styles.attachContainer}>
-                <Icon name="attachment" type="entypo" color={colors.primary} />
-                <CustomText label="Attach" textStyle={styles.attachText} />
-              </View>
-            </View>
-            <View style={{width: '69%'}}>
-              <CustomButton
-                textStyle={styles.submitbutton}
-                containerStyle={styles.exportBtn}
-                text={t('Submit')}
+        <Header
+          label={t('Contact_Silal')}
+          onPress={() => navigation.openDrawer()}
+        />
+        <View
+          style={{
+            width: '70%',
+            paddingVertical: verticalScale(20),
+          }}>
+          <View style={styles.container}>
+            <View style={{alignItems: 'flex-start'}}>
+              <CustomText
+                textStyle={styles.letSolveText}
+                label={t('LetsSolveProblem')}
               />
+              <CustomText
+                textStyle={styles.letSolveDetailText}
+                label={t('ContactUsDetailText')}
+              />
+            </View>
+            <View style={{height: 20}} />
+            <View>
+              <CustomText
+                textStyle={styles.inputLabel}
+                label={t('ContactPhone_email')}
+              />
+              <TextInput
+                style={{fontSize: moderateScale(17), color: colors.black}}
+                borderRadius={moderateScale(5)}
+                borderWidth={moderateScale(1)}
+                borderColor={colors.borderColor}
+                paddingHorizontal={scale(10)}
+                height={verticalScale(35)}
+                marginTop={verticalScale(5)}
+              />
+            </View>
+            <View style={{marginTop: verticalScale(20)}}>
+              <CustomText textStyle={styles.inputLabel} label={t('Subject')} />
+              <TextInput
+                style={{fontSize: moderateScale(17), color: colors.black}}
+                borderRadius={moderateScale(5)}
+                borderWidth={moderateScale(1)}
+                borderColor={colors.borderColor}
+                paddingHorizontal={scale(10)}
+                height={verticalScale(35)}
+                marginTop={verticalScale(5)}
+              />
+            </View>
+            <View style={{marginTop: verticalScale(20)}}>
+              <CustomText
+                textStyle={styles.inputLabel}
+                label={t('YourMessage')}
+              />
+              <TextInput
+                style={{
+                  fontSize: moderateScale(17),
+                  color: colors.black,
+                  alignItems: 'flex-start',
+                }}
+                borderRadius={moderateScale(5)}
+                borderWidth={moderateScale(1)}
+                borderColor={colors.borderColor}
+                paddingHorizontal={scale(10)}
+                height={verticalScale(70)}
+                marginTop={verticalScale(5)}
+                multiline={true}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                marginTop: 12,
+                justifyContent: 'space-between',
+              }}>
+              <View style={{width: '30%'}}>
+                <View style={styles.attachContainer}>
+                  <Icon
+                    name="attachment"
+                    type="entypo"
+                    color={colors.primary}
+                  />
+                  <CustomText label="Attach" textStyle={styles.attachText} />
+                </View>
+              </View>
+              <View style={{width: '69%'}}>
+                <CustomButton
+                  textStyle={styles.submitbutton}
+                  containerStyle={styles.exportBtn}
+                  text={t('Submit')}
+                />
+              </View>
             </View>
           </View>
         </View>
-      </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -124,11 +125,11 @@ const styles = ScaledSheet.create({
     paddingHorizontal: '15@s',
     backgroundColor: colors.profileBackground,
   },
-  submitbutton:{
-    fontSize:'14@ms',
-    fontFamily:fonts.PoppinsSemiBold,
-    color:colors.textWhite,
-    margin:'2.7@s'
+  submitbutton: {
+    fontSize: '14@ms',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.textWhite,
+    margin: '2.7@s',
   },
   attachContainer: {
     flexDirection: 'row',

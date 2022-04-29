@@ -5,7 +5,7 @@ export const SET_USER_SUCCESS = 'SET_USER_SUCCESS';
 export const SET_USER_ERROR = 'SET_USER_ERROR';
 
 export const USER_LOGIN_SAGA = 'USER_LOGIN_SAGA';
-export const LOGOUT = "LOGOUT";
+export const LOGOUT = 'LOGOUT';
 export const setLoading = payload => ({
   type: SET_LOADING,
   payload,

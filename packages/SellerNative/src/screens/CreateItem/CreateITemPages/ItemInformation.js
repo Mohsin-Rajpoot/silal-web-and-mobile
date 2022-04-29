@@ -186,7 +186,7 @@ const ItemInformation = ({onPress}) => {
           marginLeft: '25%',
           justifyContent: 'flex-start',
         }}>
-        <View style={{width: '100%', marginTop:10}}>
+        <View style={{width: '100%', marginTop: 10}}>
           <View
             style={{
               flexDirection: 'row',
@@ -305,7 +305,6 @@ const ItemInformation = ({onPress}) => {
           marginVertical: 0,
           marginLeft: '65%',
           justifyContent: 'flex-start',
-          
         }}>
         <View style={styles.barCodeModalContainer}>
           <View style={styles.barcodeModalHeader}>
@@ -313,10 +312,11 @@ const ItemInformation = ({onPress}) => {
               label={t('add_barcode')}
               textStyle={styles.borderCodeHeaderText}
             />
-            <TouchableOpacity activeOpacity={0.6} onPress={()=>setBarCodeModal(false)}>
-            <Icon name="cross" type="entypo" size={30} />
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={() => setBarCodeModal(false)}>
+              <Icon name="cross" type="entypo" size={30} />
             </TouchableOpacity>
-
           </View>
 
           <CustomText label={t('ChooseWays')} textStyle={styles.chooseWays} />
@@ -386,7 +386,7 @@ const styles = ScaledSheet.create({
     fontSize: '12@ms',
     fontFamily: fonts.LatoRegular,
     color: colors.textColorSec,
-    marginTop:"5@s"
+    marginTop: '5@s',
   },
   barcodeModalHeader: {
     flexDirection: 'row',
@@ -397,7 +397,7 @@ const styles = ScaledSheet.create({
   barCodeModalContainer: {
     width: '100%',
     padding: '5@s',
-    marginTop:"10@s"
+    marginTop: '10@s',
   },
   barcodeContainer: {
     borderColor: colors.borderColor,
@@ -422,7 +422,7 @@ const styles = ScaledSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: '5@s',
-    marginTop:"5@s"
+    marginTop: '5@s',
   },
   click_to_Scan_text: {
     fontSize: '12@ms',

@@ -155,7 +155,6 @@ const AddItem = ({navigation}) => {
     <SafeAreaView
       style={{width: '100%', alignSelf: 'center', backgroundColor: '#f1f1f1'}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-     
         <View style={{width: '100%', alignSelf: 'center'}}>
           {order_state == 'All' ? (
             <View
@@ -266,7 +265,6 @@ const AddItem = ({navigation}) => {
                         </MenuOptions>
                       </Menu>
                     </View>
-
 
                     <View style={styles.dropdownbox}>
                       <Menu>
@@ -418,7 +416,7 @@ const AddItem = ({navigation}) => {
                   <FlatList
                     data={data2}
                     numColumns={4}
-                    style={{marginBottom: 10, }}
+                    style={{marginBottom: 10}}
                     renderItem={({item}) => (
                       <View style={{flexDirection: 'row', width: '25%'}}>
                         <CheckBox
@@ -936,7 +934,6 @@ const AddItem = ({navigation}) => {
           ) : null}
           {order_state == 'completed' ? <Text>Harris</Text> : null}
         </View>
-      
       </ScrollView>
     </SafeAreaView>
   );
@@ -954,7 +951,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Regular',
     alignSelf: 'center',
     borderColor: '#CCD4D6',
-    height:40
+    height: 40,
   },
   IngrediantsTextInput: {
     width: '23%',
@@ -962,7 +959,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.3,
     borderColor: '#CCD4D6',
     paddingHorizontal: 10,
-    height:40
+    height: 40,
   },
   IngrediantsTextInput1: {
     width: '13%',

@@ -5,12 +5,12 @@ import colors from '@SilalApp/common/assets/colors';
 import fonts from '@SilalApp/common/assets/fonts';
 import CustomText from '@SilalApp/common/components/CustomText';
 import {useTranslation} from 'react-i18next';
-import { CustomButton } from '@SilalApp/common/components/native';
-import PreviewComponent from '../../../components/Preview'
+import {CustomButton} from '@SilalApp/common/components/native';
+import PreviewComponent from '../../../components/Preview';
 const Preview = ({moveForward, goPrev}) => {
   const {t} = useTranslation();
   return (
-    <View style={{flexDirection:"row", alignItems:"flex-start"}}>
+    <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
       <ScrollView
         style={styles.mainContainer}
         contentContainerStyle={{flexGrow: 1}}>
@@ -19,7 +19,7 @@ const Preview = ({moveForward, goPrev}) => {
             <CustomText label={t('Preview')} textStyle={styles.headerTitle} />
           </View>
           <View style={styles.divider} />
-          <PreviewComponent/>
+          <PreviewComponent />
         </View>
       </ScrollView>
       <View style={styles.buttonContainer}>
@@ -70,7 +70,7 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginHorizontal: '10@s',
-    width:"30%"
+    width: '30%',
   },
   nextStep: {
     fontSize: '12@ms',
@@ -87,7 +87,7 @@ const styles = ScaledSheet.create({
     borderRadius: '4@s',
     borderColor: colors.primary,
     borderWidth: '1@s',
-    backgroundColor:colors.primary,
+    backgroundColor: colors.primary,
     paddingHorizontal: '30@s',
   },
   backText: {

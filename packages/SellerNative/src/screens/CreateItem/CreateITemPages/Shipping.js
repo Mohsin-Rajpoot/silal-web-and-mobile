@@ -14,7 +14,7 @@ import {useTranslation} from 'react-i18next';
 import {Icon} from 'react-native-elements';
 import CustomTextInput from '@SilalApp/common/components/native/TextInput';
 import {Checkbox} from 'native-base';
-import { CustomButton } from '@SilalApp/common/components/native';
+import {CustomButton} from '@SilalApp/common/components/native';
 const Shipping = ({moveForward, goPrev}) => {
   const {t} = useTranslation();
   const [active, setActive] = useState(false);
@@ -162,7 +162,6 @@ const Shipping = ({moveForward, goPrev}) => {
                   placeholderText={'300'}
                   placeholderTextColor={colors.black}
                   keyboardType={'numeric'}
-                  
                 />
               </View>
             </View>
@@ -180,21 +179,21 @@ const Shipping = ({moveForward, goPrev}) => {
           </View>
         </View>
       </View>
-         <View style={styles.buttonContainer}>
-              <CustomButton
-                text={t('back')}
-                containerStyle={styles.backContainer}
-                textStyle={styles.backText}
-                onPress={goPrev}
-              />
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <CustomButton
-                  text={t('Next_step')}
-                  textStyle={styles.nextStep}
-                  onPress={moveForward}
-                />
-              </View>
-            </View>
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          text={t('back')}
+          containerStyle={styles.backContainer}
+          textStyle={styles.backText}
+          onPress={goPrev}
+        />
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <CustomButton
+            text={t('Next_step')}
+            textStyle={styles.nextStep}
+            onPress={moveForward}
+          />
+        </View>
+      </View>
     </ScrollView>
   );
 };

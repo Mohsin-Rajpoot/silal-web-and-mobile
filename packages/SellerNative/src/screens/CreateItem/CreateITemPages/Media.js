@@ -604,7 +604,7 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     margin: '10@s',
-    marginTop:"10@s"
+    marginTop: '10@s',
   },
   innerPic: {
     width: '46.5@s',

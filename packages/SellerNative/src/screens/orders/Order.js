@@ -33,6 +33,7 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import {CustomButton} from '@SilalApp/common/components/native';
 import {ScaledSheet} from 'react-native-size-matters';
 import ItemDetail from './molecule';
+import {SwipeListView} from 'react-native-swipe-list-view';
 const Order = ({navigation}) => {
   const {t} = useTranslation();
   const toastRef = useRef();
@@ -97,6 +98,7 @@ const Order = ({navigation}) => {
       price: '$ 120.00',
     },
   ];
+  const data3 = [{id: 1}];
   const onChangeTab = page => {
     ref?.current?.setPageWithoutAnimation(page);
     setPage(page);
@@ -137,7 +139,6 @@ const Order = ({navigation}) => {
           flex: 1,
           flexDirection: 'row',
           alignItems: 'center',
-     
         }}>
         <CommonTab tabs={tabs} page={page} onChangeTab={onChangeTab} />
         <View style={styles.sideTabContainer}>
@@ -657,21 +658,49 @@ const Order = ({navigation}) => {
               <CustomText label="Ehllo" />
             </View>
           ) : addNote == 2 ? (
-            <View style={styles.noteDetail}>
-              <TouchableOpacity activeOpacity={0.6}>
-                <View style={{marginHorizontal: 10, marginVertical: 5}}>
-                  <CustomText
-                    label="20 November 2021"
-                    textStyle={styles.date}
-                  />
-                  <CustomText
-                    label="Sed ut perspiciatis unde omnis iste natus error sit volupta..."
-                    textStyle={styles.noteDetailText}
-                  />
-                </View>
+            <>
+                 <SwipeListView
+                data={data3}
+                renderItem={(data, rowMap) => (
+                  <View>
+                    <View style={styles.noteDetail}>
+                      <CustomText
+                        label="20 November 2021"
+                        textStyle={styles.date}
+                      />
+                      <CustomText
+                        label="Sed ut perspiciatis unde omnis iste natus error sit volupta..."
+                        textStyle={styles.noteDetailText}
+                      />
+                    </View>
 
-                <View style={styles.borderView} />
-              </TouchableOpacity>
+                    <View style={styles.borderView} />
+                  </View>
+                )}
+                renderHiddenItem={(data, rowMap) => (
+                  <View style={styles.rowBack}>
+                    <View
+                      style={{
+                        position: 'absolute',
+                        right:1,
+                        marginVertical:5
+                      }}>
+                      <TouchableOpacity
+                        style={[
+                          styles.BackButtons,
+                          {backgroundColor: '#FB5C5C'},
+                        ]}>
+                        <Text style={styles.BackButtonsText}>Delete</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                )}
+                rightOpenValue={-90}
+              />
+  
+            {/* <View style={styles.noteDetail}>
+         
+
               <View style={{marginHorizontal: 10, marginVertical: 5}}>
                 <CustomText label="17 November 2021" textStyle={styles.date} />
                 <CustomText
@@ -690,7 +719,8 @@ const Order = ({navigation}) => {
               </View>
 
               <View style={styles.borderView} />
-            </View>
+            </View> */}
+            </>
           ) : (
             <View />
           )}
@@ -777,7 +807,8 @@ const styles = ScaledSheet.create({
     width: '100%',
     backgroundColor: colors.background,
     alignSelf: 'center',
-    borderRadius: '4@s',
+    // borderRadius: '4@s',
+    marginVertical:5
   },
   quantityTitle: {
     fontSize: '15@ms',
@@ -857,7 +888,14 @@ const styles = ScaledSheet.create({
     padding: '5@s',
     borderRadius: '4@s',
   },
-
+  BackButtons: {
+    // backgroundColor: '#FF8B00',
+    height: 77,
+    width: 85,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // borderRadius: 5,
+  },
   maiLContainer: {
     width: 45,
     height: 45,
@@ -870,6 +908,11 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.bold,
     color: colors.black,
     textTransform: 'uppercase',
+  },
+  BackButtonsText: {
+    color: '#fff',
+    fontSize: 15,
+    fontFamily: 'Lato-Medium',
   },
   mail: {
     fontSize: 13,
@@ -977,5 +1020,9 @@ const styles = ScaledSheet.create({
     // flexDirection:'row',
     // backgroundColor:'red',
     padding: 10,
+  },
+  rowBack: {
+    height: 55,
+    backgroundColor: '#fff',
   },
 });

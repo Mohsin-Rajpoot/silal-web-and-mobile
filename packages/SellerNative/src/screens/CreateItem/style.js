@@ -4,15 +4,15 @@ import {ScaledSheet} from 'react-native-size-matters';
 
 const styles = ScaledSheet.create({
   mainContainer: {
-    backgroundColor:colors.profileBackground,
-    flex:1,
-    paddingHorizontal:"5@s"
+    backgroundColor: colors.profileBackground,
+    flex: 1,
+    paddingHorizontal: '5@s',
   },
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop:"5@s"
+    marginTop: '5@s',
   },
   createnewItemContainer: {
     flexDirection: 'row',
@@ -31,7 +31,6 @@ const styles = ScaledSheet.create({
   dullContainerStyle: {
     backgroundColor: colors.primaryBlur,
     marginRight: '10@s',
-
   },
   buttonContainerStyle: {
     backgroundColor: colors.primary,
@@ -42,31 +41,27 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.primary,
     marginHorizontal: '2@s',
-    marginVertical:"4@s"
+    marginVertical: '4@s',
   },
   buttonText: {
     fontSize: '12@ms',
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.textWhite,
     marginHorizontal: '2@s',
-    marginVertical:"4@s"
+    marginVertical: '4@s',
   },
   tabPagerContainer: {
     backgroundColor: colors.textWhite,
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius:"4@s",
-    marginHorizontal:"5@s",
-    marginVertical:"10@s",
-    paddingVertical:"4@s",
-    
-  
-   
+    borderRadius: '4@s',
+    marginHorizontal: '5@s',
+    marginVertical: '10@s',
+    paddingVertical: '4@s',
   },
   tabTitleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
- 
   },
   numberContainer: {
     backgroundColor: colors.primary,
