@@ -25,6 +25,9 @@ import arabicFlag from "../../assets/images/arabic-flag.png";
 import jewFlag from "../../assets/images/jew-flag.png";
 import itemImg from "../../assets/images/item-img.png";
 import restaurantBg from "../../assets/images/restaurant-bg.png";
+import Cart from "../../assets/images/svg/cart.svg";
+import BellIcon from "../../assets/images/svg/bell_icon.svg";
+import Award from "../../assets/images/svg/award.svg";
 import { ReactComponent as Menu } from "../../assets/images/svg/menu.svg";
 import { ReactComponent as Home } from "../../assets/images/svg/home.svg";
 import { ReactComponent as Order } from "../../assets/images/svg/order.svg";
@@ -79,6 +82,9 @@ export {
   Product,
   NotificationIcon,
   salesIcon,
+  Cart,
+  BellIcon,
+  Award,
   cartIcon,
   bellIcon,
   ratingIcon,

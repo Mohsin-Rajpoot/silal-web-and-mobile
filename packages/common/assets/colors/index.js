@@ -13,6 +13,24 @@ const colors = {
   grayLight:'#F5F5F5',
   textWhite:'#FFFFFF',
   textPrimary:"#4C6870",
-  gray:'#8D8E96'
+  gray:'#8D8E96',
+  borderColor:'#E8E8E8',
+  profileBackground:'#f5f7f9',
+  primaryBlur:'rgba(90, 179, 168, 0.2)',
+  garyDark:'#EDEDED',
+  otpBorder:'#CDCDD0',
+  backGround:'#E5E5E5',
+  gray_light:'#B3BEC2',
+  underLine: 'rgba(0, 39, 51, 0.08)',
+  dropDownBackground:"#F2F4F5",
+  lightRed:"#DE350B",
+  red50:"#FFEBE6",
+  bluish:"#E6FCFF",
+  textPrimaryBlur:'rgba(76, 104, 112, 0.5)',
+  dullWhite:"#F1F2F3",
+  noteBackground:"rgba(90, 179, 168, 0.1)",
+  primaryLight:'rgba(90, 179, 168, 0.3)',
+  parrot:"#00B728"
+
 };
 export default colors;

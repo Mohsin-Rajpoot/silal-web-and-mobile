@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ClientContainer from "./ClientContainer";
 import ProductContainer from "./ProductContainer";
 import OffersContainer from "./views/OffersContainer";
+import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>

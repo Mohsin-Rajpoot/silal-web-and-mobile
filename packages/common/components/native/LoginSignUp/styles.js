@@ -1,14 +1,18 @@
 import { ScaledSheet } from "react-native-size-matters";
 import colors from "../../../assets/colors";
+import fonts from "../../../assets/fonts";
 const styles = ScaledSheet.create({
   mainContainer: {
-    width: "85%",
+    width: '75%',
     alignSelf: "center",
     flexDirection: "row",
-    backgroundColor: colors.grayLight,
+    backgroundColor: colors.garyDark,
     borderRadius: "5@s",
     overflow: "hidden",
     marginVertical: "10@s",
+    padding: "1@s",
+    borderWidth:'1@ms',
+    borderColor:colors.borderColor
   },
   activeTabContainer: {
     alignItems: "center",
@@ -26,9 +30,12 @@ const styles = ScaledSheet.create({
   textPhone: {
     color: colors.textWhite,
     fontSize: "13@ms",
+    fontFamily:fonts.LatoBold
   },
   textEmail: {
     color: colors.textPrimary,
+    fontSize: "13@ms",
+    fontFamily:fonts.LatoBold
   },
 });
 

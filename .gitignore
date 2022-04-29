@@ -57,4 +57,7 @@ buck-out/
 *.jsbundle
 
 # CocoaPods
-/ios/Pods/
+**/ios/Pods/
+
+# Local Netlify folder
+.netlify

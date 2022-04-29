@@ -1,7 +1,9 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./styles";
+import { useTranslation } from "react-i18next";
 const index = ({ active, setActive }) => {
+  const { t } = useTranslation();
   return (
     <View style={styles.mainContainer}>
       <TouchableOpacity
@@ -25,7 +27,7 @@ const index = ({ active, setActive }) => {
                 : null,
             ]}
           >
-            Phone Number
+            {t("phone_number")}
           </Text>
         </View>
       </TouchableOpacity>
@@ -49,7 +51,7 @@ const index = ({ active, setActive }) => {
               : null,
           ]}
         >
-          Email
+          {t("email")}
         </Text>
       </TouchableOpacity>
     </View>
