@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { Button, CardStyled, Input, Label } from "../../components/Style";
+import Select from "react-select";
 
 export default function Specifications({ step, addStep }) {
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+    { value: "vanill12321a", label: "Vanill12312a" },
+  ];
+
   return (
     <>
       <Row>
@@ -24,31 +32,50 @@ export default function Specifications({ step, addStep }) {
             <div className="d-flex">
               <p className="sub_title">Category Required Attributes</p>
             </div>
-            <div className="between mr-30">
+
+            <div className="between mt-3">
               <Label color="#00273380"> Brand </Label>
             </div>
             <div className="d-flex align-items-center">
-              <Input type="text" placeholder="Item name" />
+              <Select
+                options={options}
+                className="react-select"
+                styles={{ width: "90%" }}
+                isMulti
+              />
               <div className="position-relative info-hover">
                 <div className="info-sign poppins text-white center"></div>
               </div>
             </div>
-            <div className="mr-30">
-              <div className="between">
-                <Label color="#00273380">Item name (2nd language)</Label>
-                <p className="charac-left">80 characters left</p>
-              </div>
-              <Input type="text" placeholder="Item name" />
-            </div>
-            <Label color="#00273380">
-              Category <span style={{ color: "#E42A2A" }}>*</span>
-            </Label>
 
-            <div className="between mr-30">
-              <Label color="#00273380">
-                About this item <span style={{ color: "#E42A2A" }}>*</span>
-              </Label>
-              <p className="charac-left">1000 characters left</p>
+            <div className="between mt-3">
+              <Label color="#00273380"> Color </Label>
+            </div>
+            <div className="d-flex align-items-center">
+              <Select
+                options={options}
+                className="react-select"
+                styles={{ width: "90%" }}
+                isMulti
+              />
+              <div className="position-relative info-hover">
+                <div className="info-sign poppins text-white center"></div>
+              </div>
+            </div>
+
+            <div className="between mt-3">
+              <Label color="#00273380"> Capacity (GB) </Label>
+            </div>
+            <div className="d-flex align-items-center">
+              <Select
+                options={options}
+                className="react-select"
+                styles={{ width: "90%" }}
+                isMulti
+              />
+              <div className="position-relative info-hover">
+                <div className="info-sign poppins text-white center"></div>
+              </div>
             </div>
 
             <div className="end">
