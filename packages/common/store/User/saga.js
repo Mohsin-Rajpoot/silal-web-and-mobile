@@ -13,6 +13,7 @@ function* login({payload}) {
       .catch(error => {
         console.log('error', error);
       });
+      yield put(actions.setUserSuccess(response.data))
   } catch (error) {
     yield put(actions.setUserError('Please check your internet connection'));
     console.log('error in loginSaga', error);

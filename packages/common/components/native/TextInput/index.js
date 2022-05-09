@@ -47,6 +47,7 @@ const index = ({
         value={ value}
         onChangeText={onChangeText}
         keyboardType={keyboardType}
+        autoCapitalize={false}
       />
       {secureText && (
         <>

@@ -503,6 +503,11 @@ const styles = ScaledSheet.create({
       height: 3,
     },
   },
+  errorMessage:{
+    fontSize:'10@ms',
+    fontFamily:fonts.LatoRegular,
+    color:colors.red
+  }
 });
 
 export default styles;
