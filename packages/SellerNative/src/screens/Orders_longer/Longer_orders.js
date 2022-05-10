@@ -116,7 +116,7 @@ const Home = ({navigation}) => {
       {/* <LockOnLandscape /> */}
       <View style={{flexDirection: 'row', alignItems: 'center', height: '15%'}}>
         <View style={{padding: 15}}>
-          <TouchableOpacity>
+          <TouchableOpacity activeOpacity={0.6} onPress={()=>navigation.openDrawer()}>
             <MaterialCommunityIcons
               name="reorder-horizontal"
               size={20}
@@ -141,7 +141,9 @@ const Home = ({navigation}) => {
         showsHorizontalScrollIndicator={false}
         ref={scrollref}
         horizontal
-        scrollEnabled={false}>
+        scrollEnabled={false}
+        style={{flex:1}}
+        >
         <View style={{width: width, height: '100%'}}>
           <Acceptance_orders navigation={navigation} />
         </View>

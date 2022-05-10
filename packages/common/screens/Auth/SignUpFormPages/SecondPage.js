@@ -25,7 +25,7 @@ const SecondPage = () => {
       >
         <View style={{ flexDirection: "row", marginTop: 30 }}>
           <CustomText
-            label={t("Owner_phone")}
+            label={t("Business_Phone")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />

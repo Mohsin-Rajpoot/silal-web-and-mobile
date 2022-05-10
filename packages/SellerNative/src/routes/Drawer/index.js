@@ -55,6 +55,15 @@ const Drawer = props => {
       {!expanded && <ProfileBox navigation={props.navigation} />}
       <TouchableOpacity
         activeOpacity={0.6}
+        onPress={() => props.navigation.navigate('TabStack')}>
+        <CustomText
+          textStyle={styles.drawerText}
+          fontFamily={fonts.PoppinsMedium}
+          label={'Home'}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.6}
         onPress={() => props.navigation.navigate('Offers')}>
         <CustomText
           textStyle={styles.drawerText}

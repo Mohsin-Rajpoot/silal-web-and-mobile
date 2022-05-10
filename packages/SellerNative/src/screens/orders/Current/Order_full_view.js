@@ -744,8 +744,8 @@ const App = ({navigation, route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
-    backgroundColor: '#E5E5E5',
+    backgroundColor: colors.profileBackground,
+    margin:20
     // justifyContent: 'center',
     // alignItems: 'center'
   },

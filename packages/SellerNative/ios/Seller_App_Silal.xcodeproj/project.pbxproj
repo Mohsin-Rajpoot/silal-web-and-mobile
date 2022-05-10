@@ -612,7 +612,13 @@
 				CODE_SIGN_ENTITLEMENTS = Seller_App_Silal/Seller_App_Silal.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MB6N5259HZ;
+<<<<<<< HEAD
 				ENABLE_BITCODE = NO;
+=======
+				ENABLE_BITCODE = YES;
+				EXCLUDED_ARCHS = i386;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+>>>>>>> ShoaibMainIos
 				INFOPLIST_FILE = Seller_App_Silal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -641,6 +647,7 @@
 				CODE_SIGN_ENTITLEMENTS = Seller_App_Silal/Seller_App_Silal.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MB6N5259HZ;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Seller_App_Silal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

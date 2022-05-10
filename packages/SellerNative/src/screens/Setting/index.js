@@ -30,7 +30,7 @@ import Preference from 'react-native-preference';
 import RNRestart from 'react-native-restart';
 import CustomModal from '@SilalApp/common/components/native/CustomModal';
 import {CustomButton} from '@SilalApp/common/components/native';
-
+import {SafeAreaView} from 'react-native-safe-area-context';
 const Setting = ({navigation}) => {
   const getLang = Preference.get('languageValue');
   const {t, i18n} = useTranslation();
@@ -60,7 +60,7 @@ const Setting = ({navigation}) => {
   };
   return (
     <>
-      <View style={styles.mainContainer}>
+      <SafeAreaView style={styles.mainContainer}>
         <Header label={t('Setting')} onPress={() => navigation.openDrawer()} />
         {rightArrow ? (
           <View />
@@ -241,8 +241,8 @@ const Setting = ({navigation}) => {
           isModalVisible={isVisible}
           setModalVisible={setVisible}
           modalWrapperStyle={{
-            marginHorizontal: width(27),
-            marginVertical: height(30),
+            marginHorizontal: width(22),
+            marginVertical: height(33),
             justifyContent: 'flex-start',
             borderRadius: 15,
           }}
@@ -253,8 +253,8 @@ const Setting = ({navigation}) => {
           isModalVisible={isVisibleLogout}
           setModalVisible={setVisibleLogout}
           modalWrapperStyle={{
-            marginHorizontal: width(27),
-            marginVertical: height(32),
+            marginHorizontal: width(25),
+            marginVertical: height(33),
             justifyContent: 'flex-start',
             borderRadius: 15,
           }}
@@ -263,7 +263,7 @@ const Setting = ({navigation}) => {
           Active={t('Logout')}
           onPress={() => navigation.navigate('AuthStack')}
         />
-      </View>
+      </SafeAreaView>
       <CustomModal
         isModalVisible={modal}
         setModalVisible={setModal}
@@ -280,7 +280,10 @@ const Setting = ({navigation}) => {
               label={t('language')}
               textStyle={styles.modalHeaderTitle}
             />
+            <TouchableOpacity activeOpacity={0.6} onPress={()=>setModal(false)}>
             <Icon name="cross" type="entypo" size={26} />
+            </TouchableOpacity>
+      
           </View>
           <TouchableOpacity
             activeOpacity={0.6}
@@ -409,7 +412,7 @@ export default Setting;
 
 const styles = ScaledSheet.create({
   mainContainer: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.profileBackground,
     padding: '15@ms',
     flex: 1,
   },
@@ -486,7 +489,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: '5@s',
+    marginTop: '10@s',
   },
   modalHeaderTitle: {
     fontSize: '17@ms',

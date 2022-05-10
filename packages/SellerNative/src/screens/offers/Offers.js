@@ -41,7 +41,7 @@ const Offers = ({navigation}) => {
     startDate: '',
     endDate: '',
   };
-
+  const [activeSwitch, setActiveSwitch] = useState(false);
   const [modal, setModal] = useState(false);
   const [createPostModal, setCreatePostModal] = useState(false);
   const [open, setOpen] = useState(false);
@@ -57,6 +57,7 @@ const Offers = ({navigation}) => {
   const [offerData, setOffferData] = useState(init);
   const [startTime, setStartTime] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
+
   const [page, setPage] = useState(0);
   const openCreateOfferModal = () => {
     setCreatePostModal(true);
@@ -96,7 +97,13 @@ const Offers = ({navigation}) => {
   const DayShower = () => {
     var dayAppender = [];
     days.map((item, index) => {
-      dayAppender.push(<DaySelect day={item} />);
+      dayAppender.push(
+        <DaySelect
+          day={item}
+          state={activeSwitch}
+          setState={setActiveSwitch}
+        />,
+      );
       // return <DaySelect day={item} />;
     });
 
@@ -105,13 +112,19 @@ const Offers = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <Header label={t('offers')} onPress={() => navigation.openDrawer()} />
-      <Tabs
-        containerStyle={{marginTop: 10, marginBottom: 20}}
-        tabs={[t('current'), t('Past')]}
-        page={page}
-      />
-      <ScrollView>
+      <View style={{paddingHorizontal: 15}}>
+        <Header label={t('offers')} onPress={() => navigation.openDrawer()} />
+      </View>
+
+      <View style={{paddingHorizontal: 15}}>
+        <Tabs
+          containerStyle={{marginTop: 10, marginBottom: 20}}
+          tabs={[t('current'), t('Past')]}
+          page={page}
+        />
+      </View>
+
+      <ScrollView contentContainerStyle={{paddingHorizontal: 15}}>
         <View style={styles.inputContainer}>
           <View style={styles.inputContainerMian}>
             <TextInput
@@ -146,7 +159,7 @@ const Offers = ({navigation}) => {
         modalWrapperStyle={{
           marginHorizontal: width(0),
           marginVertical: height(0),
-          marginLeft: width(95),
+          marginLeft: '63%',
           justifyContent: 'flex-start',
           borderRadius: 0,
         }}>
@@ -171,10 +184,10 @@ const Offers = ({navigation}) => {
             />
           </View>
 
-          {/* <Image
+          <Image
             source={require('../../Assets/image8.png')}
             style={styles.image}
-          /> */}
+          />
           <CustomText label={t('OfferProfile')} textStyle={styles.offerText} />
           <View style={styles.offerNameContainer}>
             <CustomText label={'Offername'} textStyle={styles.offerName} />
@@ -198,6 +211,7 @@ const Offers = ({navigation}) => {
               iconContainerStyle={{backgroundColor: 'red'}}
             />
           </View>
+          <View style={{height: 10}} />
           <View style={styles.offerNameContainer}>
             <CustomText
               label={t('OfferDescription')}
