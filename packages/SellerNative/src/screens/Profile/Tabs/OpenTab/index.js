@@ -39,14 +39,18 @@ export default () => {
           />
         </Tab>
       </View>
-      <View style={{height: '80%', width: '70%'}}>
-        <TabView value={index} onChange={setIndex} animationType="spring">
+      <View style={{height: '80%', width: '100%'}}>
+        <TabView  value={index} onChange={setIndex} animationType="spring" >
+       
           <TabView.Item style={styles.tabViewContainer}>
             <TabItem item={{day: t('Monday')}} />
           </TabView.Item>
           <TabView.Item style={styles.tabViewContainer}>
             <>
+              <View style={{width:"100%"}}>
               <SpecialTabItem />
+              </View>
+            
               <CustomButton
                 type="TERTIARY"
                 textStyle={{color: colors.primary}}
@@ -79,7 +83,7 @@ const styles = ScaledSheet.create({
     marginTop: '10@vs',
     paddingTop: '20@vs',
     paddingHorizontal: '10@s',
-    width: '65.5%',
+    width: '90%',
   },
   specialBtn: {
     alignSelf: 'flex-start',

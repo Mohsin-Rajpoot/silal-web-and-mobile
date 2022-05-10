@@ -4,15 +4,15 @@ import {ScaledSheet} from 'react-native-size-matters';
 
 const styles = ScaledSheet.create({
   mainContainer: {
-    backgroundColor:colors.profileBackground,
-    flex:1,
-    paddingHorizontal:"5@s"
+    backgroundColor: colors.profileBackground,
+    flex: 1,
+    paddingHorizontal: '5@s',
   },
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop:"5@s"
+    marginTop: '5@s',
   },
   createnewItemContainer: {
     flexDirection: 'row',
@@ -41,23 +41,23 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.primary,
     marginHorizontal: '2@s',
+    marginVertical: '4@s',
   },
   buttonText: {
     fontSize: '12@ms',
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.textWhite,
     marginHorizontal: '2@s',
+    marginVertical: '4@s',
   },
   tabPagerContainer: {
     backgroundColor: colors.textWhite,
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius:"4@s",
-    marginHorizontal:"5@s",
-    marginVertical:"10@s",
-    paddingVertical:"4@s",
-    justifyContent:"center",
-   
+    borderRadius: '4@s',
+    marginHorizontal: '5@s',
+    marginVertical: '10@s',
+    paddingVertical: '4@s',
   },
   tabTitleContainer: {
     flexDirection: 'row',
@@ -66,8 +66,8 @@ const styles = ScaledSheet.create({
   numberContainer: {
     backgroundColor: colors.primary,
     borderRadius: '99@s',
-    width: '25@s',
-    height: '25@s',
+    width: '20@s',
+    height: '20@s',
     justifyContent: 'center',
     alignItems: 'center',
     margin: '5@s',
@@ -79,21 +79,21 @@ const styles = ScaledSheet.create({
   },
   SignUpHeaderInactive: {
     backgroundColor: colors.light_grey,
-    width: '23@s',
+    width: '20@s',
     height: '1@s',
-    marginHorizontal: '8@s',
+    marginHorizontal: '5@s',
   },
   SignformHeader: {
     backgroundColor: colors.primary,
-    width: '23@s',
+    width: '20@s',
     height: '1@s',
-    marginHorizontal: '8@s',
+    marginHorizontal: '5@s',
   },
   numberContainerInactive: {
     backgroundColor: colors.background2,
     borderRadius: '99@s',
-    width: '25@s',
-    height: '25@s',
+    width: '20@s',
+    height: '20@s',
     justifyContent: 'center',
     alignItems: 'center',
     margin: '5@s',

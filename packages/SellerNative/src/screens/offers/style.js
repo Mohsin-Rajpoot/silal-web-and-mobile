@@ -10,8 +10,8 @@ import fonts from '@SilalApp/common/assets/fonts';
 const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: colors.backGround,
-    paddingHorizontal: '10@ms',
+    backgroundColor: colors.profileBackground,
+ 
   }, 
   inputContainer: {
     flexDirection: 'row',
@@ -20,10 +20,10 @@ const styles = ScaledSheet.create({
     justifyContent:'space-between'
   },
   inputContainerMian: {
-    width: '75%',
+    width: '74%',
   },
   buttonContainer: {
-    width: '20%',
+    width: '23%',
     marginRight:'10@ms'
   },
   inputStyling: {
@@ -31,22 +31,24 @@ const styles = ScaledSheet.create({
     height: '35@ms',
   },
   buttonStyle: {
-    height: '35@ms',
     width:"100%"
   },
   buttonText: {
     fontFamily: fonts.PoppinsSemiBold,
-    fontSize: '8@ms',
-    paddingHorizontal:'20@ms'
+    fontSize: '12@ms',
+    color:colors.textWhite,
+    paddingVertical:'3@s'
   },
   offerContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'flex-start',
+    justifyContent:"space-between"
+
   },
   modalMainContainer: {
     width: '95%',
     height: '100%',
+    marginTop:"10@s"
   },
   crossIcon: {
     alignSelf: 'flex-end',
@@ -59,18 +61,22 @@ const styles = ScaledSheet.create({
   image: {
     width: '100%',
     alignSelf: 'center',
-    borderRadius: '5@ms',
+    borderRadius: '4@ms',
+    height:"90@s",
+    resizeMode:"cover"
   },
   offerText: {
     fontSize: '13@ms',
     fontFamily: fonts.PoppinsSemiBold,
     marginTop: '4@s',
     color: colors.black,
+    marginBottom:'3@s'
   },
   offerName: {
     fontSize: '9@ms',
-    fontFamily: fonts.LatoMedium,
+    fontFamily: fonts.LatoSemiBold,
     color: colors.black,
+  
   },
   createOffer: {
     flexDirection: 'row',
@@ -155,6 +161,9 @@ const styles = ScaledSheet.create({
   daySelectionContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    backgroundColor:"Yellow",
+    width:"100%",
+    justifyContent:'space-between'
   },
   dropDownContainer: {
     paddingVertical: '5@vs',

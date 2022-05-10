@@ -432,7 +432,9 @@
     "Contain_liquid":"Contain liquid",
     "Package_weight":"Package Weight",
     "Kg":"Kg",
-    "days":"Days"
+    "days":"Days",
+    "Business_Phone":"Business phone number",
+    "main_category":"Main Category"
 
   
   }

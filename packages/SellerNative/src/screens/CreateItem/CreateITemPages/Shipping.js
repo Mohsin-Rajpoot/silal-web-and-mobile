@@ -14,7 +14,7 @@ import {useTranslation} from 'react-i18next';
 import {Icon} from 'react-native-elements';
 import CustomTextInput from '@SilalApp/common/components/native/TextInput';
 import {Checkbox} from 'native-base';
-import { CustomButton } from '@SilalApp/common/components/native';
+import {CustomButton} from '@SilalApp/common/components/native';
 const Shipping = ({moveForward, goPrev}) => {
   const {t} = useTranslation();
   const [active, setActive] = useState(false);
@@ -179,21 +179,21 @@ const Shipping = ({moveForward, goPrev}) => {
           </View>
         </View>
       </View>
-         <View style={styles.buttonContainer}>
-              <CustomButton
-                text={t('back')}
-                containerStyle={styles.backContainer}
-                textStyle={styles.backText}
-                onPress={goPrev}
-              />
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <CustomButton
-                  text={t('Next_step')}
-                  textStyle={styles.nextStep}
-                  onPress={moveForward}
-                />
-              </View>
-            </View>
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          text={t('back')}
+          containerStyle={styles.backContainer}
+          textStyle={styles.backText}
+          onPress={goPrev}
+        />
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <CustomButton
+            text={t('Next_step')}
+            textStyle={styles.nextStep}
+            onPress={moveForward}
+          />
+        </View>
+      </View>
     </ScrollView>
   );
 };
@@ -270,9 +270,9 @@ const styles = ScaledSheet.create({
     marginVertical: '10@s',
   },
   backContainer: {
-    borderRadius: '4@s',
+    borderRadius: '3@s',
     borderColor: colors.primary,
-    borderWidth: '1@s',
+    borderWidth: '0.5@s',
     backgroundColor: 'transparent',
   },
   backText: {

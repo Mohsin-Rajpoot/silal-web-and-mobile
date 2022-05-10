@@ -709,8 +709,10 @@ export default function Archive_orders({title, navigation}) {
           </View>
         </View>
       ) : null}
-
+      <View style={{width:"100%"}}>
       {header_alloredrs()}
+   
+
       <FlatList
         // ListHeaderComponent={header_alloredrs}
         ItemSeparatorComponent={item_seperator}
@@ -737,7 +739,7 @@ export default function Archive_orders({title, navigation}) {
           />
         </View>
       </View>
-
+      </View>
       <Modal
         animationType="slide"
         transparent={true}
@@ -885,6 +887,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginTop: 10,
     padding: 10,
+    
   },
   modelTextTitle: {
     borderRadius: 5,

@@ -53,6 +53,7 @@ const Specification = ({moveForward, goPrev}) => {
               </TouchableOpacity>
             </View>
           </View>
+          
           <View style={styles.divider} />
           <View style={styles.InnerContainer}>
             <CustomText
@@ -164,7 +165,7 @@ const Specification = ({moveForward, goPrev}) => {
 
             <CustomText label={t('Capacity')} textStyle={styles.inputTitle} />
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <View style={{width: '90%',marginTop:3}}>
+              <View style={{width: '90%', marginTop: 3}}>
                 <MultiSelectDropDown />
                 {/* <DropDown multiple={true}/> */}
                 {/* <CustomDropDown multiple={true}  /> */}
@@ -203,9 +204,14 @@ const Specification = ({moveForward, goPrev}) => {
                   textStyle={styles.customText}
                 />
               </TouchableOpacity>
-              <CustomButton text={t('Next_step')} textStyle={styles.nextStep} onPress={moveForward} />
+              <CustomButton
+                text={t('Next_step')}
+                textStyle={styles.nextStep}
+                onPress={moveForward}
+              />
             </View>
           </View>
+          <View style={{height: 20, width: '100%'}} />
         </View>
       </ScrollView>
       <CustomModal
@@ -370,6 +376,7 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.bold,
     color: colors.textPrime,
     marginTop: '10@s',
+    marginBottom: '3@s',
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -378,9 +385,9 @@ const styles = ScaledSheet.create({
     marginHorizontal: '10@s',
   },
   backContainer: {
-    borderRadius: '4@s',
+    borderRadius: '3@s',
     borderColor: colors.primary,
-    borderWidth: '1@s',
+    borderWidth: '0.5@s',
     backgroundColor: 'transparent',
   },
   plusContainer: {
@@ -399,6 +406,7 @@ const styles = ScaledSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginBottom: '5@s',
   },
   addCustomField: {
     backgroundColor: colors.primaryBlur,
@@ -440,7 +448,8 @@ const styles = ScaledSheet.create({
   barCodeModalContainer: {
     width: '100%',
     padding: '5@s',
-    height: '93%',
+    height: '91%',
+    marginTop: '10@s',
   },
   barcodeContainer: {
     borderColor: colors.borderColor,
@@ -449,13 +458,14 @@ const styles = ScaledSheet.create({
     padding: '5@s',
   },
   borderCodeHeaderText: {
-    fontSize: '17@ms',
+    fontSize: '16@ms',
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.black,
   },
   chooseWays1: {
-    fontSize: '10@ms',
+    fontSize: '9@ms',
     fontFamily: fonts.bold,
     color: colors.textPrime,
+    marginBottom: '3@s',
   },
 });

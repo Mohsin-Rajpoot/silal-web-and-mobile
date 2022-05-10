@@ -122,9 +122,10 @@ const styles = ScaledSheet.create({
   },
   inputContainer: {
     height: null,
-    borderRadius: 10,
+    borderRadius: '4@s',
     borderColor: colors.borderColor,
     borderWidth: '0.5@s',
+    padding:"4@s"
   },
   inputTextWrapper: {
     flexDirection: 'row',

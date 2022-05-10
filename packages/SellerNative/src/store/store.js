@@ -12,10 +12,7 @@ import {rootSaga} from './rootSaga';
 const sagaMiddleware = createSagaMiddleware();
 
 // Redux: Store
-const store = createStore(
-  rootReducer,
-  applyMiddleware(sagaMiddleware),
-);
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 // Middleware: Redux Saga
 sagaMiddleware.run(rootSaga);

@@ -222,13 +222,16 @@ const styles = ScaledSheet.create({
     fontSize: "12@ms",
     fontFamily: fonts.LatoBold,
     color: colors.black,
-    marginVertical: "3@s",
+    // marginVertical: "3@s",
+    marginBottom:"4@s"
+
   },
   headerTextInactive: {
     fontSize: "12@ms",
     fontFamily: fonts.LatoBold,
     color: colors.light_grey,
-    marginVertical: "3@s",
+    // marginVertical: "3@s",
+    marginBottom:"4@s"
   },
   firstPageMainContainer: {
     margin: "5@s",
@@ -276,6 +279,7 @@ const styles = ScaledSheet.create({
     flexDirection: "row",
     alignSelf: "flex-end",
     marginHorizontal: "15@s",
+    marginBottom:"10@s"
   },
   backIconInnerContainer: {
     flexDirection: "row",
@@ -499,6 +503,11 @@ const styles = ScaledSheet.create({
       height: 3,
     },
   },
+  errorMessage:{
+    fontSize:'10@ms',
+    fontFamily:fonts.LatoRegular,
+    color:colors.red
+  }
 });
 
 export default styles;
