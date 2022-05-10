@@ -31,9 +31,9 @@ const ItemCreaterFirstStep = ({navigation}) => {
   const toastRef = useRef();
 
   return (
-    <View style={styles.MainContainer}>
-      <SafeAreaView style={styles.Container}>
-        <KeyboardAvoidingView behavior="padding">
+    <SafeAreaView style={styles.MainContainer}>
+      <ScrollView style={styles.Container}>
+      
           <View style={{width: '100%', alignSelf: 'center'}}>
             <View style={styles.Header}>
               <TouchableOpacity
@@ -295,6 +295,12 @@ const ItemCreaterFirstStep = ({navigation}) => {
                   </TouchableOpacity>
                 </View>
               </View>
+
+
+
+
+
+              
             </View>
             <View
               style={{
@@ -356,9 +362,9 @@ const ItemCreaterFirstStep = ({navigation}) => {
             opacity={1}
             textStyle={{color: 'red'}}
           />
-        </KeyboardAvoidingView>
-      </SafeAreaView>
-    </View>
+      
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

@@ -722,7 +722,7 @@ const AddItem = ({navigation}) => {
                     borderRadius: 5,
                     elevation: 1,
                     alignItems: 'center',
-                    height: 440,
+                    height: 390,
                     paddingVertical: 17,
                   }}>
                   <View>
@@ -737,8 +737,8 @@ const AddItem = ({navigation}) => {
                             {
                               marginVertical: 10,
                               backgroundColor: '#F2F4F5',
-                              width: '44%',
-                              height: 130,
+                              width: '43%',
+                              height: 120,
                               alignSelf: 'center',
                             },
                           ]}>
@@ -802,14 +802,14 @@ const AddItem = ({navigation}) => {
                           position: 'absolute',
                           right: 20,
                           fontSize: 12,
-                          bottom: 5,
+                          bottom: 10,
                           fontFamily: 'Lato-Semibold',
                           color: '#CCD4D6',
                         }}>
                         2 mb max
                       </Text>
                     </View>
-                    <View style={{alignItems: 'center', marginBottom: 20}}>
+                    <View style={{alignItems: 'center', }}>
                       <TouchableOpacity
                         // onPress={() => navigation.navigate('Camera')}
                         // <Camera/>

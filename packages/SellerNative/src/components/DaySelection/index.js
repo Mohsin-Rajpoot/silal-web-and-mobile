@@ -6,19 +6,11 @@ import fonts from '@SilalApp/common/assets/fonts';
 import colors from '@SilalApp/common/assets/colors';
 import {ScaledSheet} from 'react-native-size-matters';
 import {useTranslation} from 'react-i18next';
-const index = ({
-  day,
-  containerStyle,
-  buttonSize,
-  textStyle,
-  activelabel,
-  state,
-  setState,
-}) => {
+const index = ({day}) => {
   const {t} = useTranslation();
   const [active, setActive] = useState(false);
   return (
-    <View style={[containerStyle ? containerStyle : styles.daySelectContainer]}>
+    <View style={styles.daySelectContainer}>
       <CustomText
         label={t(day)}
         textStyle={[
@@ -37,7 +29,7 @@ const index = ({
         size={buttonSize ? buttonSize : 'large'}
         onToggle={() => {
           setActive(!active);
-          setState(true);
+          // setState(true);
         }}
       />
     </View>

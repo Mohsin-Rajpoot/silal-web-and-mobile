@@ -11,7 +11,6 @@ import Setting from '../screens/Setting';
 import AboutApp from '../screens/AboutApp';
 import LongerOrder from '../screens/Orders_longer/Longer_orders'
 import Order_full_view from '../screens/orders/Current/Order_full_view'
-import CreateItem from '../screens/CreateItem';
 // import ContactUs from '../screens/ContactUs';
 // import Setting from '../screens/Setting';
 
@@ -49,7 +48,6 @@ const MainStack = () => {
       <Drawer.Screen name='AboutApp' component={AboutApp}/>
       <Drawer.Screen name='longerOrder' component={LongerOrder}/>
       <Drawer.Screen name='Order_full_view' component={Order_full_view}/>
-      <Drawer.Screen name='CreateItem' component={CreateItem}/>
     </Drawer.Navigator>
   );
 };
