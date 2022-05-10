@@ -53,6 +53,7 @@ const Specification = ({moveForward, goPrev}) => {
               </TouchableOpacity>
             </View>
           </View>
+          
           <View style={styles.divider} />
           <View style={styles.InnerContainer}>
             <CustomText
