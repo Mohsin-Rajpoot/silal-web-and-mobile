@@ -7,15 +7,17 @@ import ClientContainer from "./ClientContainer";
 import ProductContainer from "./ProductContainer";
 import OffersContainer from "./views/OffersContainer";
 import "./index.css";
+import Auth from "./views/pages/Login";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
+        <Route path="/" component={Auth} />
+        <Route path="/Dashboard" component={App} />
         <Route path="/client" component={ClientContainer} />
         <Route path="/product" component={ProductContainer} />
         <Route path="/offers" component={OffersContainer} />
-        <Route path="/" component={App} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,
