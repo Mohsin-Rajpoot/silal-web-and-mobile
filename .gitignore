@@ -36,6 +36,7 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
+ios/
 # BUCK
 buck-out/
 \.buckd/
@@ -58,3 +59,6 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+Pods/
+Seller_App_Silal.xcworkspace
