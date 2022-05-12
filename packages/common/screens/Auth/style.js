@@ -223,15 +223,14 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.LatoBold,
     color: colors.black,
     // marginVertical: "3@s",
-    marginBottom:"4@s"
-
+    marginBottom: "4@s",
   },
   headerTextInactive: {
     fontSize: "12@ms",
     fontFamily: fonts.LatoBold,
     color: colors.light_grey,
     // marginVertical: "3@s",
-    marginBottom:"4@s"
+    marginBottom: "4@s",
   },
   firstPageMainContainer: {
     margin: "5@s",
@@ -279,7 +278,7 @@ const styles = ScaledSheet.create({
     flexDirection: "row",
     alignSelf: "flex-end",
     marginHorizontal: "15@s",
-    marginBottom:"10@s"
+    marginBottom: "10@s",
   },
   backIconInnerContainer: {
     flexDirection: "row",
@@ -474,40 +473,46 @@ const styles = ScaledSheet.create({
     marginRight: "5@s",
   },
   ToastMainView: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginVertical: 0,
   },
   IconToast: {
-    color: 'green',
+    color: "green",
     fontSize: 20,
     paddingHorizontal: 4,
   },
   ToastParagraph: {
-    color: '#002733',
+    color: "#002733",
     fontSize: 15,
-    fontFamily: 'Lato-Bold',
+    fontFamily: "Lato-Bold",
   },
   ActionToast: {
-    color: '#018FFB',
+    color: "#018FFB",
     fontSize: 15,
-    fontFamily: 'Lato-Bold',
+    fontFamily: "Lato-Bold",
     marginLeft: 20,
   },
   Tost: {
-    backgroundColor: '#FFFFFF',
-    top:-100,
-    shadowColor: '#000',
-    position: 'absolute',
+    backgroundColor: "#FFFFFF",
+    top: -100,
+    shadowColor: "#000",
+    position: "absolute",
     shadowOffset: {
       width: 0,
       height: 3,
     },
   },
-  errorMessage:{
-    fontSize:'10@ms',
-    fontFamily:fonts.LatoRegular,
-    color:colors.red
-  }
+  errorMessage: {
+    fontSize: "10@ms",
+    fontFamily: fonts.LatoRegular,
+    color: colors.red,
+  },
+  backIcon: {
+    backgroundColor: colors.blurPrimary,
+    padding: "3@s",
+    marginHorizontal: "10@s",
+    borderRadius: "4@s",
+  },
 });
 
 export default styles;

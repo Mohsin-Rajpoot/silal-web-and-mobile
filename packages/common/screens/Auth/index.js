@@ -21,8 +21,12 @@ import RNRestart from "react-native-restart";
 import { useTranslation } from "react-i18next";
 import colors from "../../assets/colors";
 import fonts from "../../assets/fonts";
+import { Icon } from "react-native-elements";
+import DeviceInfo from "react-native-device-info";
 const OnBoarding = ({ navigation }) => {
   const { t, i18n } = useTranslation();
+  const isTab = DeviceInfo.isTablet();
+
   const getLang = Preference.get("languageValue");
   const [orientation, setOrientation] = useState("portrait");
   const [open, setOpen] = useState(false);
@@ -34,6 +38,9 @@ const OnBoarding = ({ navigation }) => {
   ]);
   const ref = useRef(null);
   const [page, setPage] = useState(1);
+  {
+    console.log("--------PAge", page);
+  }
   useEffect(() => {
     lor(setOrientation);
 
@@ -60,9 +67,33 @@ const OnBoarding = ({ navigation }) => {
       {page == 3 ? (
         <View />
       ) : (
-        <TouchableOpacity activeOpacity={0.6} onPress={() => setPage(3)}>
-          <Text style={styles.skipbutton}>Skip</Text>
-        </TouchableOpacity>
+        <View
+          style={{
+            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          {(!isTab && page == 1) || page == 2 ? (
+            isTab && page ? (
+              <View />
+            ) : (
+              <View style={styles.backIcon}>
+                <Icon
+                  name="chevron-back-sharp"
+                  type="ionicon"
+                  size={24}
+                  color={colors.primary}
+                />
+              </View>
+            )
+          ) : (
+            <View />
+          )}
+          <TouchableOpacity activeOpacity={0.6} onPress={() => setPage(3)}>
+            <Text style={styles.skipbutton}>Skip</Text>
+          </TouchableOpacity>
+        </View>
       )}
       <AppIntroSlider
         showNextButton={false}
@@ -87,35 +118,51 @@ const OnBoarding = ({ navigation }) => {
               <Text style={styles.body}> {item?.body}</Text>
             </View>
             {page == 3 ? (
-              < >
-              <View style={{width:'65%'}}>
-              <Text style={{fontSize:20, color:colors.black, alignSelf:'flex-start', fontFamily:fonts.bold}}>{t("ChangeLanguage")}</Text>
-              </View>
+              <>
+                <View style={{ width: "65%" }}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      color: colors.black,
+                      alignSelf: "flex-start",
+                      fontFamily: fonts.bold,
+                    }}
+                  >
+                    {t("ChangeLanguage")}
+                  </Text>
+                </View>
 
-              <View style={{width:"65%", alignSelf:'center', marginVertical:10, marginBottom:10}}> 
-                <DropDownPicker
-                  open={open}
-                  value={value}
-                  items={items}
-                  setOpen={setOpen}
-                  setValue={setValue}
-                  setItems={setItems}
-                  placeholder="Select Language"
-                  style={styles.dropDownStyle1}
-                  placeholderStyle={styles.dropDownPlaceHolder}
-                  dropDownContainerStyle={styles.dropdownContainer}
-                  iconContainerStyle={{ backgroundColor: "red" }}
-                  onChangeValue={(language) => {
-                    i18n.changeLanguage(language).then(() => {
-                      I18nManager.forceRTL(
-                        language === "ar" || language === "he"
-                      );
-                      RNRestart.Restart();
-                    });
-                    Preference.setWhiteList([]);
-                    Preference.set("languageValue", language);
+                <View
+                  style={{
+                    width: "65%",
+                    alignSelf: "center",
+                    marginVertical: 10,
+                    marginBottom: 10,
                   }}
-                />
+                >
+                  <DropDownPicker
+                    open={open}
+                    value={value}
+                    items={items}
+                    setOpen={setOpen}
+                    setValue={setValue}
+                    setItems={setItems}
+                    placeholder="Select Language"
+                    style={styles.dropDownStyle1}
+                    placeholderStyle={styles.dropDownPlaceHolder}
+                    dropDownContainerStyle={styles.dropdownContainer}
+                    iconContainerStyle={{ backgroundColor: "red" }}
+                    onChangeValue={(language) => {
+                      i18n.changeLanguage(language).then(() => {
+                        I18nManager.forceRTL(
+                          language === "ar" || language === "he"
+                        );
+                        RNRestart.Restart();
+                      });
+                      Preference.setWhiteList([]);
+                      Preference.set("languageValue", language);
+                    }}
+                  />
                 </View>
                 <View style={{ flex: 0.6, justifyContent: "flex-end" }}>
                   <AuthButton name={t("signup")} onPress={goToSignUp} />

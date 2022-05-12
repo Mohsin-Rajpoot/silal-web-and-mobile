@@ -19,7 +19,7 @@ const styles = ScaledSheet.create({
     
   },
   button1: {
-    backgroundColor: 'rgba(90, 179, 168, 0.2)',
+    backgroundColor: colors.blurPrimary,
     width: wp('65%'),
     alignSelf: "center",
     alignItems: "center",
