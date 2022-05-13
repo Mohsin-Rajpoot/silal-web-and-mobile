@@ -195,34 +195,6 @@ const routes = [
     component: CreateNewItem,
   },
   { path: "/shipping", exact: true, name: "Shipping", component: Shipping },
-
-  { path: "/", exact: true, name: "Loginpage", component: Loginpage },
-  { path: "/otp", exact: true, name: "Otppage", component: Otppage },
-  {
-    path: "/verification",
-    exact: true,
-    name: "Verificationpage",
-    component: Verificationpage,
-  },
-  {
-    path: "/resetpassword",
-    exact: true,
-    name: "Resetpass",
-    component: Resetpass,
-  },
-  {
-    path: "/emailverifycode",
-    exact: true,
-    name: "Emailverifycode",
-    component: Emailverifycode,
-  },
-  {
-    path: "/createnewpassword",
-    exact: true,
-    name: "Createnewpassword",
-    component: Createnewpassword,
-  },
-  { path: "/splash", exact: true, name: "Splashpage", component: Splashpage },
 ];
 
 export default routes;

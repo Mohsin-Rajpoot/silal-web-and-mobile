@@ -33,7 +33,7 @@ const Nav = ({
                     <Menu />
                 </button>
                 <Link
-                    to="/"
+                    to="/statistics"
                     className={`nav-link-btn ${location.pathname == "/" ? "active" : ""}`}>
                     Statistics
                 </Link>

@@ -59,9 +59,9 @@ const Sidebar = ({ sideBar, setSideBar }) => {
         </Accordion> */}
         <div className="logo-text text-white">Silal Service</div>
         <Link
-          to="/"
+          to="/statistics"
           className={
-            pathname == "/" ||
+            pathname == "/statistics" ||
               pathname == "/reviews" ||
               pathname == "/out-of-stock"
               ? "active" : ""

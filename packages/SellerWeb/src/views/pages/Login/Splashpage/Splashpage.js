@@ -23,7 +23,7 @@ function Splashpage() {
       </div>
     </Wrapper>
   ) : (
-    <Redirect to="/dashboard/statistics" />
+    <Redirect to="/statistics" />
   );
 }
 
