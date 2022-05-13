@@ -47,5 +47,6 @@ const colors = {
 
   borderColor3: "rgba(76, 104, 112, 0.15)",
   ImageBack: "#F4F7F8",
+  mobileNewBorder:"rgba(76, 104, 112, 0.1)"
 };
 export default colors;

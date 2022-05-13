@@ -8,12 +8,19 @@ const styles = ScaledSheet.create({
     padding: "5@s",
   },
   phoneNumberInput: {
-    height: "32@s",
+    height:'40@vs',
     width: "100%",
     backgroundColor: "transparent",
     padding: 0,
     margin: 0,
-
+  },
+  phoneNumberInputMobile: {
+    height:'40@vs',
+    width: "100%",
+    backgroundColor: colors.dullWhite,
+    padding: 0,
+    margin: 0,
+    borderRadius:"5@s"
   },
   searchIconContainer:{
     flexDirection:'row',
@@ -21,7 +28,7 @@ const styles = ScaledSheet.create({
   },
   searchIcon:{
     marginHorizontal:'5@ms',
-    
+   
   },
   searchText:{
     fontSize:'10@ms',
@@ -34,9 +41,20 @@ const styles = ScaledSheet.create({
     borderColor: colors.light_grey,
     width: "100%",
     borderRadius: "4@ms",
-    height: "30@s",
+    height: "40@vs",
     flexDirection:'row',
     alignItems:'center'
+  },
+  textInputStylesMobile: {
+    alignSelf: "center",
+    // borderWidth: "0.3@s",
+    borderColor: colors.light_grey,
+    width: "100%",
+    borderRadius: "5@ms",
+    height: "40@vs",
+    flexDirection:'row',
+    alignItems:'center',
+    backgroundColor:colors.dullWhite
   },
   inputTextStyle: {
     fontSize: "12@ms",

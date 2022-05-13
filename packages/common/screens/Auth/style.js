@@ -14,6 +14,11 @@ const styles = ScaledSheet.create({
     alignSelf: "center",
     flexGrow: 1,
   },
+  innerContainerMobile: {
+    width: "95%",
+    alignSelf: "center",
+    flexGrow: 1,
+  },
   dropDownStyle1: {
     width: "50%",
     backgroundColor: "red",
@@ -21,7 +26,7 @@ const styles = ScaledSheet.create({
   phoneNumberText: {
     color: colors.textPrimary,
     marginBottom: "5@ms",
-    fontSize: "11@ms",
+    fontSize: "12@ms",
     fontFamily: fonts.LatoBold,
     marginTop: "5@ms",
   },
@@ -38,6 +43,14 @@ const styles = ScaledSheet.create({
     borderBottomRightRadius: "4@s",
     fontSize: "10@ms",
   },
+  textContainerMobile: {
+    backgroundColor: "transparent",
+    borderColor: colors.mobileNewBorder,
+    borderLeftWidth:'1@s',
+    borderTopRightRadius: "4@s",
+    borderBottomRightRadius: "4@s",
+    fontSize: "10@ms",
+  },
   countyPickerContainer: {
     borderColor: colors.light_grey,
     borderTopWidth: "0.5@s",
@@ -48,13 +61,23 @@ const styles = ScaledSheet.create({
     color: colors.red,
     fontSize: 12,
   },
+  countyPickerContainerMobile: {
+    borderColor: 'transparent',
+    borderTopWidth: "2@s",
+    borderLeftWidth: "0.5@s",
+    borderBottomWidth: "0.5@s",
+    borderTopLeftRadius: "5@s",
+    borderBottomLeftRadius: "5@s",
+    color: colors.red,
+    fontSize: 12,
+  },
   bottomText: {
     fontSize: "11@ms",
     color: colors.textPrimary,
     fontFamily: fonts.LatoMedium,
   },
   nestedBottomText: {
-    fontSize: "8@s",
+    fontSize: "12@ms",
     color: colors.primary,
     fontFamily: fonts.LatoMedium,
   },
@@ -90,7 +113,7 @@ const styles = ScaledSheet.create({
     margin: "3@s",
   },
   passwordWarningText: {
-    fontSize: "8@s",
+    fontSize: "10@ms",
     color: colors.light_grey,
     paddingHorizontal: "2@s",
   },
@@ -106,13 +129,32 @@ const styles = ScaledSheet.create({
     alignSelf: "center",
     marginTop: "10@s",
   },
+  choseAccountShoppingMobile: {
+    backgroundColor: colors.black,
+    width: "45@vs",
+    height: "45@vs",
+    borderRadius: "99@s",
+    alignSelf: "center",
+    marginHorizontal:"10@s"
+  },
   choseMainContainer: {
     width: "125@s",
     height: "100@s",
-    backgroundColor: "rgba(90, 179, 168, 0.15);",
+    backgroundColor: colors.blurPrimary,
     borderRadius: "4@s",
     margin: "5@s",
     borderWidth: "0.5@s",
+    borderColor: colors.primary,
+  },
+  choseMainContainerMobile: {
+    width:"280@s",
+    height: "90@s",
+    flexDirection:"row",
+    alignItems:"center",
+    backgroundColor: colors.blurPrimary,
+    borderRadius: "8@s",
+    margin: "5@s",
+    borderWidth: "1@s",
     borderColor: colors.primary,
   },
   choseMainContainer1: {
@@ -123,6 +165,15 @@ const styles = ScaledSheet.create({
     margin: "5@s",
     borderWidth: "0.5@s",
     borderColor: "rgba(205, 205, 208, 0.5)",
+  },
+  choseMainContainer1Mobile: {
+    width: "280@s",
+    height: "90@s",
+    backgroundColor: colors.dullWhite,
+    borderRadius: "4@s",
+    margin: "5@s",
+    // borderWidth: "0.5@s",
+    // borderColor: "rgba(205, 205, 208, 0.5)",
   },
   accountTitle: {
     fontSize: "12@ms",
@@ -512,6 +563,62 @@ const styles = ScaledSheet.create({
     padding: "3@s",
     marginHorizontal: "10@s",
     borderRadius: "4@s",
+  },
+  buttonMobile: {
+    backgroundColor: colors.primary,
+    width: wp('90%'),
+    alignSelf: "center",
+    alignItems: "center",
+    padding: "10@s",
+    borderRadius: "5@s",
+    margin:'5@s'
+    
+  },
+  button1Mobile: {
+    backgroundColor: colors.blurPrimary,
+    width: wp('90%'),
+    alignSelf: "center",
+    alignItems: "center",
+    padding: "10@s",
+    borderRadius: "4@s",
+    margin:'5@s'
+  },
+  button1Mobile1: {
+    backgroundColor: colors.blurPrimary1,
+    width: wp('90%'),
+    alignSelf: "center",
+    alignItems: "center",
+    padding: "10@s",
+    borderRadius: "4@s",
+    margin:'5@s'
+  },
+  button: {
+    backgroundColor: colors.primary,
+    width: wp('65%'),
+    alignSelf: "center",
+    alignItems: "center",
+    padding: "10@s",
+    borderRadius: "4@s",
+    margin:'5@s'
+    
+  },
+  button1: {
+    backgroundColor: colors.blurPrimary,
+    width: wp('65%'),
+    alignSelf: "center",
+    alignItems: "center",
+    padding: "10@s",
+    borderRadius: "5@s",
+    margin:'5@s'
+  },
+  button2: {
+    backgroundColor: colors.blurPrimary1,
+    width: wp('65%'),
+    alignSelf: "center",
+    alignItems: "center",
+    padding: "10@s",
+    borderRadius: "5@s",
+    margin:'5@s'
   },
 });
 

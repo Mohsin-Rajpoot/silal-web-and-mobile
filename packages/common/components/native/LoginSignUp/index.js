@@ -2,15 +2,19 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./styles";
 import { useTranslation } from "react-i18next";
-const index = ({ active, setActive }) => {
+const index = ({ active, setActive, isTab }) => {
   const { t } = useTranslation();
   return (
-    <View style={styles.mainContainer}>
+    <View style={[!isTab ? styles.mainContainerMobile : styles.mainContainer]}>
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={() => setActive(1)}
         style={[
-          active == 1
+          isTab == false && active == 1
+            ? styles.activeBackgroundMobile
+            : isTab == false && active == 2
+            ? styles.activeTabContainerMobile
+            : active == 1
             ? styles.activeBackground
             : active == 2
             ? styles.activeTabContainer
@@ -35,7 +39,11 @@ const index = ({ active, setActive }) => {
         activeOpacity={0.6}
         onPress={() => setActive(2)}
         style={[
-          active == 2
+          isTab == false && active == 2
+            ? styles.activeBackgroundMobile
+            : isTab == false && active == 1
+            ? styles.activeTabContainerMobile
+            : active == 2
             ? styles.activeBackground
             : active == 1
             ? styles.activeTabContainer

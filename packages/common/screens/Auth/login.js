@@ -19,8 +19,10 @@ import { useTranslation } from "react-i18next";
 import * as userAction from "../../store/User/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../Loader";
+import DeviceInfo from "react-native-device-info";
 const Login = ({ navigation, route }) => {
   const { t } = useTranslation();
+  const isTab = DeviceInfo.isTablet();
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.User);
   console.log("Loading", loading);
@@ -78,9 +80,15 @@ const Login = ({ navigation, route }) => {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       >
-        <LoginSignUpButton active={active} setActive={setActive} />
+        <LoginSignUpButton
+          active={active}
+          setActive={setActive}
+          isTab={isTab}
+        />
 
-        <View style={styles.innerContainer}>
+        <View
+          style={!isTab ? styles.innerContainerMobile : styles.innerContainer}
+        >
           {active == 2 ? (
             <View>
               <Text style={styles.phoneNumberText}>{t("email")}</Text>
@@ -90,6 +98,7 @@ const Login = ({ navigation, route }) => {
                   setText({ ...text, email: value });
                 }}
                 value={text.email}
+                isTab={isTab}
               />
               {text.error ? (
                 <Text style={styles.errorMessage}>{text.error}</Text>
@@ -103,21 +112,32 @@ const Login = ({ navigation, route }) => {
                 password={true}
                 onChangeText={(value) => setText({ ...text, password: value })}
                 value={text.password}
+                isTab={isTab}
               />
             </View>
           ) : active == 1 ? (
             <View>
               <Text style={styles.phoneNumberText}>{t("phone_number")}</Text>
               <PhoneInput
-                containerStyle={CommonStyle.phoneNumberInput}
-                textContainerStyle={styles.textContainer}
+                containerStyle={
+                  !isTab
+                    ? CommonStyle.phoneNumberInputMobile
+                    : CommonStyle.phoneNumberInput
+                }
+                textContainerStyle={
+                  !isTab ? styles.textContainerMobile : styles.textContainer
+                }
                 textInputProps={{
                   fontSize: 12,
                   padding: 0,
                   marginTop: 0,
                   maxLength: 10,
                 }}
-                countryPickerButtonStyle={styles.countyPickerContainer}
+                countryPickerButtonStyle={
+                  !isTab
+                    ? styles.countyPickerContainerMobile
+                    : styles.countyPickerContainer
+                }
                 textInputStyle={{ color: colors.black }}
                 codeTextStyle={styles.codeText}
                 defaultCode="RU"
@@ -135,7 +155,7 @@ const Login = ({ navigation, route }) => {
         {loading && <Loader />}
         <View style={{ flexGrow: 1 }} />
         <Button
-          changeColor={true}
+          buttonStyling={!isTab ? styles.button1Mobile1 : styles.button2}
           name={
             data?.params?.signUp
               ? t("next")
@@ -160,6 +180,7 @@ const Login = ({ navigation, route }) => {
             flexDirection: "row",
             alignSelf: "center",
             marginVertical: 15,
+            alignItems: "center",
           }}
         >
           {data?.params?.signUp ? (
