@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Wrapper from "./Emailverifycode.styled";
-import Linktag from "@SilalApp/sellerweb/src/views/Components/auth/Linktag/Linktag";
-import Countdowntimer from "@SilalApp/sellerweb/src/views/Components/auth/Countdowntimer/Countdowntimer";
-import Otpcode from "@SilalApp/sellerweb/src/views/Components/auth/Otpcode/Otpcode";
-import Gobackbuton from "@SilalApp/sellerweb/src/views/Components/auth/Gobackbutton/Gobackbuton";
-import Snackbar from "@SilalApp/sellerweb/src/views/Components/auth/Snackbar/Snackbar";
+import Linktag from "@SilalApp/sellerweb/src/views/components/auth/Linktag/Linktag";
+import Countdowntimer from "@SilalApp/sellerweb/src/views/components/auth/Countdowntimer/Countdowntimer";
+import Otpcode from "@SilalApp/sellerweb/src/views/components/auth/Otpcode/Otpcode";
+import Gobackbuton from "@SilalApp/sellerweb/src/views/components/auth/Gobackbutton/Gobackbuton";
+import Snackbar from "@SilalApp/sellerweb/src/views/components/auth/Snackbar/Snackbar";
 // countdown timer
 import Countdown from "react-countdown";
 

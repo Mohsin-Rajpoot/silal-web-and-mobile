@@ -7,14 +7,14 @@ import ClientContainer from "./ClientContainer";
 import ProductContainer from "./ProductContainer";
 import OffersContainer from "./views/OffersContainer";
 import "./index.css";
-import Auth from "./views/pages/Login";
+import AuthLayout from "./Auth";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={Auth} />
-        <Route path="/Dashboard" component={App} />
+        <Route path="/" component={AuthLayout} />
+        <Route path="/dashboard" component={App} />
         <Route path="/client" component={ClientContainer} />
         <Route path="/product" component={ProductContainer} />
         <Route path="/offers" component={OffersContainer} />

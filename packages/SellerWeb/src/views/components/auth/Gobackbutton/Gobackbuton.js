@@ -1,13 +1,13 @@
 import React from "react";
 import Wrapper from "./Gobackbutton.styled";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 // import icons
 import { Icon } from "@iconify/react";
 
 function Gobackbuton({ primaryIcon }) {
-  const Navigate = useNavigate();
+  const history = useHistory();
   function handleClick() {
-    Navigate(-1);
+    history.goBack();
   }
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Wrapper from "./Splashpage.styled";
 // import hooks
 function Splashpage() {
@@ -23,7 +23,7 @@ function Splashpage() {
       </div>
     </Wrapper>
   ) : (
-    <Navigate to="/dashboard" />
+    <Redirect to="/dashboard/statistics" />
   );
 }
 

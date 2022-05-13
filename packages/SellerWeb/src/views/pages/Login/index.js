@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Wrapper from "./Login.styled";
 import Loginpage from "./Loginpage/Loginpage";
 import Otppage from "./Otppage/Otppage";
@@ -12,13 +12,17 @@ import Splashpage from "./Splashpage/Splashpage";
 function index() {
   return (
     <Wrapper>
-      <Route index element={<Loginpage />} />
-      <Route path="otp" element={<Otppage />} />
-      <Route path="verification" element={<Verificationpage />} />
-      <Route path="resetpassword" element={<Resetpass />} />
-      <Route path="emailverifycode" element={<Emailverifycode />} />
-      <Route path="createnewpassword" element={<Createnewpassword />} />
-      <Route path="splash" element={<Splashpage />} />
+      <BrowserRouter>
+        <Switch>
+          <Route index component={Loginpage} />
+          <Route path="/otp" component={Otppage} />
+          <Route path="/verification" component={Verificationpage} />
+          <Route path="/resetpassword" component={Resetpass} />
+          <Route path="/emailverifycode" component={Emailverifycode} />
+          <Route path="/createnewpassword" component={Createnewpassword} />
+          <Route path="/splash" component={Splashpage} />
+        </Switch>
+      </BrowserRouter>
     </Wrapper>
   );
 }

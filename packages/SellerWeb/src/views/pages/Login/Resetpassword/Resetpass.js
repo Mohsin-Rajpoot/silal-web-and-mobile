@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Wrapper from "./Resetpass.styled";
-import Linktag from "@SilalApp/sellerweb/src/views/Components/auth/Linktag/Linktag";
-import FormControl from "@SilalApp/sellerweb/src/views/Components/auth/FormControl/FormControl";
-import Gobackbuton from "@SilalApp/sellerweb/src/views/Components/auth/Gobackbutton/Gobackbuton";
+import Linktag from "@SilalApp/sellerweb/src/views/components/auth/Linktag/Linktag";
+import FormControl from "@SilalApp/sellerweb/src/views/components/auth/FormControl/FormControl";
+import Gobackbuton from "@SilalApp/sellerweb/src/views/components/auth/Gobackbutton/Gobackbuton";
 
 function Resetpass() {
   const [formValue, setFormValue] = useState("");

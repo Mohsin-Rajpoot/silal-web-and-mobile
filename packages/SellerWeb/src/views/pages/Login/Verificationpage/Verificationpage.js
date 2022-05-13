@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Linktag from "@SilalApp/sellerweb/src/views/Components/auth/Linktag/Linktag";
+import Linktag from "@SilalApp/sellerweb/src/views/components/auth/Linktag/Linktag";
 import Wrapper from "./Verificationpage.styled";
-import CountdownTimer from "@SilalApp/sellerweb/src/views/Components/auth/Countdowntimer/Countdowntimer";
+import CountdownTimer from "@SilalApp/sellerweb/src/views/components/auth/Countdowntimer/Countdowntimer";
 import Countdown from "react-countdown";
-import Otpcode from "@SilalApp/sellerweb/src/views/Components/auth/Otpcode/Otpcode";
-import Gobackbuton from "@SilalApp/sellerweb/src/views/Components/auth/Gobackbutton/Gobackbuton";
-import Snackbar from "@SilalApp/sellerweb/src/views/Components/auth/Snackbar/Snackbar";
+import Otpcode from "@SilalApp/sellerweb/src/views/components/auth/Otpcode/Otpcode";
+import Gobackbuton from "@SilalApp/sellerweb/src/views/components/auth/Gobackbutton/Gobackbuton";
+import Snackbar from "@SilalApp/sellerweb/src/views/components/auth/Snackbar/Snackbar";
 function Verificationpage() {
   const [resendcodePopup, setResendcodePopup] = useState(false);
   const [targetedTime, setTargetedTime] = useState(5000);

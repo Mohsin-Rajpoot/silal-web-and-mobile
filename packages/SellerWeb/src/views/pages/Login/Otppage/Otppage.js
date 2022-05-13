@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Wrapper from "./Otppage.styled";
 import Countdown from "react-countdown";
 // import components
-import Linktag from "../../../Components/auth/Linktag/Linktag";
-import CountdownTimer from "../../../Components/auth/Countdowntimer/Countdowntimer";
-import Otpcode from "../../../Components/auth/Otpcode/Otpcode";
-import Gobackbuton from "../../../Components/auth/Gobackbutton/Gobackbuton";
-import Snackbar from "../../../Components/auth/Snackbar/Snackbar";
+import Linktag from "../../../components/auth/Linktag/Linktag";
+import CountdownTimer from "../../../components/auth/Countdowntimer/Countdowntimer";
+import Otpcode from "../../../components/auth/Otpcode/Otpcode";
+import Gobackbuton from "../../../components/auth/Gobackbutton/Gobackbuton";
+import Snackbar from "../../../components/auth/Snackbar/Snackbar";
 
 function Otppage() {
   const [resendcodePopup, setResendcodePopup] = useState(false);

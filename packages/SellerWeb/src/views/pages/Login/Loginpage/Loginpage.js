@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Wrapper from "./Loginpage.styled";
 import { Link } from "react-router-dom";
-import Button from "../../../Components/auth/Button/Button";
-import Linktag from "../../../Components/auth/Linktag/Linktag";
+import Button from "../../../components/auth/Button/Button";
+import Linktag from "../../../components/auth/Linktag/Linktag";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
-import FormControl from "../../../Components/auth/FormControl/FormControl";
-import Gobackbuton from "../../../Components/auth/Gobackbutton/Gobackbuton";
+import FormControl from "../../../components/auth/FormControl/FormControl";
+import Gobackbuton from "../../../components/auth/Gobackbutton/Gobackbuton";
 
 function Loginpage() {
   const [formValue, setFormValue] = useState("");
