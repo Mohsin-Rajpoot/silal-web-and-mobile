@@ -8,32 +8,31 @@ const styles = ScaledSheet.create({
     padding: "5@s",
   },
   phoneNumberInput: {
-    height:'40@vs',
+    height: "40@vs",
     width: "100%",
     backgroundColor: "transparent",
     padding: 0,
     margin: 0,
   },
   phoneNumberInputMobile: {
-    height:'40@vs',
+    height: "40@vs",
     width: "100%",
     backgroundColor: colors.dullWhite,
     padding: 0,
     margin: 0,
-    borderRadius:"5@s"
+    borderRadius: "5@s",
   },
-  searchIconContainer:{
-    flexDirection:'row',
-    alignItems:'center'
+  searchIconContainer: {
+    flexDirection: "row",
+    alignItems: "center",
   },
-  searchIcon:{
-    marginHorizontal:'5@ms',
-   
+  searchIcon: {
+    marginHorizontal: "5@ms",
   },
-  searchText:{
-    fontSize:'10@ms',
-    color:colors.gray_light,
-    fontFamily:fonts.LatoMedium
+  searchText: {
+    fontSize: "10@ms",
+    color: colors.gray_light,
+    fontFamily: fonts.LatoMedium,
   },
   textInputStyles: {
     alignSelf: "center",
@@ -42,8 +41,8 @@ const styles = ScaledSheet.create({
     width: "100%",
     borderRadius: "4@ms",
     height: "40@vs",
-    flexDirection:'row',
-    alignItems:'center'
+    flexDirection: "row",
+    alignItems: "center",
   },
   textInputStylesMobile: {
     alignSelf: "center",
@@ -52,9 +51,9 @@ const styles = ScaledSheet.create({
     width: "100%",
     borderRadius: "5@ms",
     height: "40@vs",
-    flexDirection:'row',
-    alignItems:'center',
-    backgroundColor:colors.dullWhite
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: colors.dullWhite,
   },
   inputTextStyle: {
     fontSize: "12@ms",
@@ -78,6 +77,14 @@ const styles = ScaledSheet.create({
     alignSelf: "center",
     borderRadius: "10@s",
     marginVertical: "50@s",
+  },
+  commonIconMobile: {
+    width: "220@s",
+    height: "220@s",
+    backgroundColor: colors.primary,
+    alignSelf: "center",
+    borderRadius: "10@s",
+    marginTop:"150@vs"
   },
 });
 export default styles;

@@ -7,10 +7,11 @@ import PhoneInput from "react-native-phone-number-input";
 import CommonStyle from "../../../styles";
 import colors from "../../../assets/colors";
 import { useTranslation } from "react-i18next";
+import DeviceInfo from 'react-native-device-info'
 const FirstPage = () => {
   const { t } = useTranslation();
   const [text, setText] = useState("");
-
+  const isTab= DeviceInfo.isTablet()
   return (
     <View style={styles.firstPageMainContainer}>
       <ScrollView

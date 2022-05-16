@@ -46,7 +46,7 @@ const styles = ScaledSheet.create({
   textContainerMobile: {
     backgroundColor: "transparent",
     borderColor: colors.mobileNewBorder,
-    borderLeftWidth:'1@s',
+    borderLeftWidth: "1@s",
     borderTopRightRadius: "4@s",
     borderBottomRightRadius: "4@s",
     fontSize: "10@ms",
@@ -62,7 +62,7 @@ const styles = ScaledSheet.create({
     fontSize: 12,
   },
   countyPickerContainerMobile: {
-    borderColor: 'transparent',
+    borderColor: "transparent",
     borderTopWidth: "2@s",
     borderLeftWidth: "0.5@s",
     borderBottomWidth: "0.5@s",
@@ -93,6 +93,17 @@ const styles = ScaledSheet.create({
   optContainer: {
     borderWidth: "1@s",
     borderColor: colors.otpBorder,
+    borderRadius: "5@s",
+    height: "40@s",
+    width: "30@s",
+    fontSize: "12@ms",
+    color: colors.black,
+    textAlign: "center",
+  },
+  optContainerMobile: {
+    // borderWidth: "1@s",
+    // borderColor: colors.otpBorder,
+    backgroundColor: colors.dullWhite,
     borderRadius: "5@s",
     height: "40@s",
     width: "30@s",
@@ -135,22 +146,22 @@ const styles = ScaledSheet.create({
     height: "45@vs",
     borderRadius: "99@s",
     alignSelf: "center",
-    marginHorizontal:"10@s"
+    marginHorizontal: "10@s",
   },
   choseMainContainer: {
     width: "125@s",
     height: "100@s",
     backgroundColor: colors.blurPrimary,
-    borderRadius: "4@s",
+    borderRadius: "5@s",
     margin: "5@s",
     borderWidth: "0.5@s",
     borderColor: colors.primary,
   },
   choseMainContainerMobile: {
-    width:"280@s",
+    width: "280@s",
     height: "90@s",
-    flexDirection:"row",
-    alignItems:"center",
+    flexDirection: "row",
+    alignItems: "center",
     backgroundColor: colors.blurPrimary,
     borderRadius: "8@s",
     margin: "5@s",
@@ -170,8 +181,10 @@ const styles = ScaledSheet.create({
     width: "280@s",
     height: "90@s",
     backgroundColor: colors.dullWhite,
-    borderRadius: "4@s",
+    borderRadius: "8@s",
     margin: "5@s",
+    flexDirection: "row",
+    alignItems: "center",
     // borderWidth: "0.5@s",
     // borderColor: "rgba(205, 205, 208, 0.5)",
   },
@@ -253,13 +266,13 @@ const styles = ScaledSheet.create({
     textAlign: "center",
   },
   SignformHeader: {
-    width: wp("32%"),
+    width: wp("31%"),
     backgroundColor: colors.primary,
     height: "5@s",
     borderRadius: "5@s",
   },
   SignUpHeaderInactive: {
-    width: wp("32%"),
+    width: wp("31%"),
     backgroundColor: colors.grayLight,
     height: "5@s",
     borderRadius: "5@s",
@@ -267,7 +280,7 @@ const styles = ScaledSheet.create({
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginHorizontal: "5@s",
+    marginHorizontal: "10@s",
   },
   headerText: {
     fontSize: "12@ms",
@@ -566,59 +579,64 @@ const styles = ScaledSheet.create({
   },
   buttonMobile: {
     backgroundColor: colors.primary,
-    width: wp('90%'),
+    width: wp("90%"),
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
     borderRadius: "5@s",
-    margin:'5@s'
-    
+    margin: "5@s",
   },
   button1Mobile: {
     backgroundColor: colors.blurPrimary,
-    width: wp('90%'),
+    width: wp("90%"),
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
     borderRadius: "4@s",
-    margin:'5@s'
+    margin: "5@s",
   },
   button1Mobile1: {
     backgroundColor: colors.blurPrimary1,
-    width: wp('90%'),
+    width: wp("90%"),
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
     borderRadius: "4@s",
-    margin:'5@s'
+    margin: "5@s",
   },
   button: {
     backgroundColor: colors.primary,
-    width: wp('65%'),
+    width: wp("65%"),
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
     borderRadius: "4@s",
-    margin:'5@s'
-    
+    margin: "5@s",
   },
   button1: {
     backgroundColor: colors.blurPrimary,
-    width: wp('65%'),
+    width: wp("65%"),
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
     borderRadius: "5@s",
-    margin:'5@s'
+    margin: "5@s",
   },
   button2: {
     backgroundColor: colors.blurPrimary1,
-    width: wp('65%'),
+    width: wp("65%"),
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
     borderRadius: "5@s",
-    margin:'5@s'
+    margin: "5@s",
+  },
+  questionnaire: {
+    fontSize: "16@ms",
+    color: colors.black,
+    fontFamily: fonts.bold,
+    marginLeft: "10@s",
+    marginBottom: "10@s",
   },
 });
 

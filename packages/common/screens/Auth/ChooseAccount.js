@@ -65,10 +65,13 @@ const ChooseAccount = () => {
           <TouchableOpacity activeOpacity={0.6} onPress={() => setActive(2)}>
             <View
               style={[
+               
                 !isTab && active == 2
                   ? styles.choseMainContainerMobile
                   : active == 2
                   ? styles.choseMainContainer
+                  : !isTab
+                  ? styles.choseMainContainer1Mobile
                   : styles.choseMainContainer1,
               ]}
             >

@@ -16,7 +16,7 @@ const ChangePassword = ({ navigation }) => {
   };
   return (
     <View style={CommonStyle.mainContainer}>
-      <HeaderBack onGoBack={goBack} />
+      <HeaderBack onGoBack={goBack} name={t('Reset_password')}  />
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}

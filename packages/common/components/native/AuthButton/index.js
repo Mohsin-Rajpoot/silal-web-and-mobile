@@ -1,7 +1,9 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./style";
-const index = ({ name, onPress, changeColor, buttonStyling, isTab }) => {
+import DeviceInfo from "react-native-device-info";
+const index = ({ name, onPress, changeColor, buttonStyling }) => {
+  const isTab = DeviceInfo.isTablet();
   return (
     <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
       <View
@@ -10,6 +12,8 @@ const index = ({ name, onPress, changeColor, buttonStyling, isTab }) => {
             ? buttonStyling
             : changeColor
             ? styles.button1
+            : !isTab
+            ? styles.buttonMobile
             : styles.button,
         ]}
       >
