@@ -7,6 +7,7 @@ import PhoneInput from "react-native-phone-number-input";
 import CommonStyle from "../../../styles";
 import colors from "../../../assets/colors";
 import { useTranslation } from "react-i18next";
+import IsTablet from "../../../components/native/IsTablet";
 const FirstPage = () => {
   const { t } = useTranslation();
   const [text, setText] = useState("");
@@ -34,10 +35,20 @@ const FirstPage = () => {
           <CustomText label="*" textStyle={styles.star} />
         </View>
         <PhoneInput
-          containerStyle={CommonStyle.phoneNumberInput}
-          textContainerStyle={styles.textContainer}
+          containerStyle={
+            !IsTablet
+              ? CommonStyle.phoneNumberInputMobile
+              : CommonStyle.phoneNumberInput
+          }
+          textContainerStyle={
+            !IsTablet ? styles.textContainerMobile : styles.textContainer
+          }
           textInputProps={{ fontSize: 12, padding: 0, marginTop: 0 }}
-          countryPickerButtonStyle={styles.countyPickerContainer}
+          countryPickerButtonStyle={
+            !IsTablet
+              ? styles.countyPickerContainerMobile
+              : styles.countyPickerContainer
+          }
           textInputStyle={{ color: colors.gray }}
           codeTextStyle={styles.codeText}
           defaultCode="RU"

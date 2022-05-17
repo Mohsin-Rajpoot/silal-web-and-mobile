@@ -213,7 +213,7 @@
     "Basic_information": "Basic information",
     "Contacts": "Contacts",
     "Detail": "Details",
-    "owner_name": "Owner/manager name(private)",
+    "owner_name": "Business owner/manager name(private)",
     "enter_full_name": "Enter full name",
     "Owner_phone": "Owner/manager phone number",
     "business_name": "Business name",
@@ -434,8 +434,10 @@
    "Kg":"Kg",
    "days":"Days",
    "Business_Phone":"Business phone number",
-    "main_category":"Main Category"
-
+    "main_category":"Main Category",
+    "letsGo":"Let’s go",
+    "questionnaire":"Questionnaire",
+    "basicInfo":"Basic Info"
 
   }
 }

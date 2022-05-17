@@ -14,6 +14,24 @@ const styles = ScaledSheet.create({
     borderWidth:'1@ms',
     borderColor:colors.borderColor
   },
+  mainContainerMobile: {
+    width: '95%',
+    alignSelf: "center",
+    flexDirection: "row",
+    backgroundColor: colors.garyDark,
+    borderRadius: "25@s",
+    overflow: "hidden",
+    marginVertical: "10@s",
+    padding: "1@s",
+    borderWidth:'1@ms',
+    borderColor:colors.borderColor
+  },
+  activeTabContainerMobile: {
+    alignItems: "center",
+    padding: "10@s",
+    width: "50%",
+    borderRadius: "25@s",
+  },
   activeTabContainer: {
     alignItems: "center",
     padding: "10@s",
@@ -26,6 +44,13 @@ const styles = ScaledSheet.create({
     padding: "10@s",
     width: "50%",
     borderRadius: "3@s",
+  },
+  activeBackgroundMobile: {
+    backgroundColor: colors.primary,
+    alignItems: "center",
+    padding: "10@s",
+    width: "50%",
+    borderRadius: "25@s",
   },
   textPhone: {
     color: colors.textWhite,

@@ -37,10 +37,8 @@ const OnBoarding = ({ navigation }) => {
     { label: t("hebrew"), value: "he" },
   ]);
   const ref = useRef(null);
-  const [page, setPage] = useState(1);
-  {
-    console.log("--------PAge", page);
-  }
+  const [page, setPage] = useState(0);
+
   useEffect(() => {
     lor(setOrientation);
 
@@ -48,10 +46,10 @@ const OnBoarding = ({ navigation }) => {
       rol();
     };
   }, []);
-  const onAccept = () => {
-    if (page + 1 != 3) {
-      ref?.current?.goToSlide(page + 1);
-      setPage(page + 1);
+  const goBack = () => {
+    if (page - 1 >= 0) {
+      ref?.current?.goToSlide(page - 1);
+      setPage(page - 1);
     } else {
       //   navigation.navigate("Registration");
     }
@@ -74,18 +72,20 @@ const OnBoarding = ({ navigation }) => {
             justifyContent: "space-between",
           }}
         >
-          {(!isTab && page == 1) || page == 2 ? (
-            isTab && page ? (
+          {!isTab && (page == 1 || page == 2) ? (
+            (isTab && page == 3) || (!isTab && page == 0) ? (
               <View />
             ) : (
-              <View style={styles.backIcon}>
-                <Icon
-                  name="chevron-back-sharp"
-                  type="ionicon"
-                  size={24}
-                  color={colors.primary}
-                />
-              </View>
+              <TouchableOpacity activeOpacity={0.6} onPress={() => goBack()}>
+                <View style={styles.backIcon}>
+                  <Icon
+                    name="chevron-back-sharp"
+                    type="ionicon"
+                    size={24}
+                    color={colors.primary}
+                  />
+                </View>
+              </TouchableOpacity>
             )
           ) : (
             <View />
@@ -103,9 +103,11 @@ const OnBoarding = ({ navigation }) => {
         keyExtractor={(item, index) => {
           item?.id + index.toString();
         }}
-        dotStyle={page == 3 ? null : styles.dot}
+        dotStyle={page == 3 || (!isTab && page == 2) ? null : styles.dot}
         onSlideChange={(index) => setPage(index)}
-        activeDotStyle={page == 3 ? null : styles.underScore}
+        activeDotStyle={
+          page == 3 || (!isTab && page == 2) ? null : styles.underScore
+        }
         renderItem={({ item, index }) => (
           <View style={styles.screenContainer}>
             <Image
@@ -117,9 +119,27 @@ const OnBoarding = ({ navigation }) => {
               <Text style={styles.heading}>{item?.heading}</Text>
               <Text style={styles.body}> {item?.body}</Text>
             </View>
+            {!isTab && page == 2 ? (
+              <>
+                <View style={{ flex: 0.6 }} />
+                <AuthButton
+                  name={t("letsGo")}
+                  onPress={() => setPage(3)}
+                  isTab={isTab}
+                />
+              </>
+            ) : (
+              <View />
+            )}
             {page == 3 ? (
               <>
-                <View style={{ width: "65%" }}>
+                <View
+                  style={{
+                    width: !isTab ? "90%" : "65%",
+                    justifyContent: "center",
+                    flexDirection: "row",
+                  }}
+                >
                   <Text
                     style={{
                       fontSize: 20,
@@ -134,7 +154,7 @@ const OnBoarding = ({ navigation }) => {
 
                 <View
                   style={{
-                    width: "65%",
+                    width: !isTab ? "90%" : "65%",
                     alignSelf: "center",
                     marginVertical: 5,
                     marginBottom: 5,
@@ -164,12 +184,21 @@ const OnBoarding = ({ navigation }) => {
                     }}
                   />
                 </View>
-                <View style={{ flex: 0.6, justifyContent: "flex-end",marginTop:10 }}>
-                  <AuthButton name={t("signup")} onPress={goToSignUp} />
+                <View style={{ flex: 0.6, justifyContent: "flex-end" }}>
                   <AuthButton
+                    buttonStyling={!isTab ? styles.buttonMobile : styles.button}
+                    name={t("signup")}
+                    onPress={goToSignUp}
+                    isTab={isTab}
+                  />
+                  <AuthButton
+                    buttonStyling={
+                      !isTab ? styles.button1Mobile : styles.button1
+                    }
                     name={t("login")}
                     changeColor={true}
                     onPress={goToLogin}
+                    isTab={isTab}
                   />
                 </View>
               </>

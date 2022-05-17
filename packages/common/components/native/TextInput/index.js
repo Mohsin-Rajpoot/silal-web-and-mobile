@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import CommonStyle from "../../../styles";
 import colors from "../../../assets/colors";
 import { Icon } from "react-native-elements";
+import { verticalScale, moderateScale } from "react-native-size-matters";
 const index = ({
   placeholderText,
   inputStyle,
@@ -14,12 +15,13 @@ const index = ({
   inputTextStyle,
   keyboardType,
   onChangeText,
-  value
+  value, 
+  isTab
 }) => {
   const [showPassword, setShowPassword] = useState(!secureText ? true : false);
   const [text, setText] = useState("");
   return (
-    <View style={[CommonStyle.textInputStyles, inputStyle]}>
+    <View style={[ !isTab?  CommonStyle.textInputStylesMobile : CommonStyle.textInputStyles, inputStyle]}>
       {text.length ? (
         <View />
       ) : (
@@ -62,7 +64,7 @@ const index = ({
                 name={showPassword ? "eye" : "eye-off"}
                 type="feather"
                 color={colors.light_grey}
-                style={{ fontSize: 18 }}
+                size={moderateScale(17)}
               />
             </TouchableOpacity>
           </View>

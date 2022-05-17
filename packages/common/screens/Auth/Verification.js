@@ -9,9 +9,11 @@ import OTPInputView from "@twotalltotems/react-native-otp-input";
 import Button from "../../components/native/AuthButton";
 import AuthCustomText from "../../components/native/AuthCustomText";
 import { useTranslation } from "react-i18next";
+import DeviceInfo from "react-native-device-info";
 const Verification = ({ route, navigation }) => {
   const { params } = route?.params;
   const { t } = useTranslation();
+  const isTab = DeviceInfo.isTablet();
   const [code, setCode] = useState("");
 
   const goToChangePassword = () => {
@@ -79,7 +81,9 @@ const Verification = ({ route, navigation }) => {
                 : 5
             }
             style={styles.optStyling}
-            codeInputFieldStyle={styles.optContainer}
+            codeInputFieldStyle={
+              !isTab ? styles.optContainerMobile : styles.optContainer
+            }
             handleChange={(value) => setCode(value)}
           />
           <CustomText

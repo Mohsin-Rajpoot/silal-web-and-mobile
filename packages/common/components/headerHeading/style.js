@@ -15,7 +15,7 @@ const styles = ScaledSheet.create({
     fontFamily:fonts.LatoRegular,
     alignSelf:"center",
     textAlign:"center",
-    lineHeight:'13@s',
+    lineHeight:'15@s',
 
   },
 });
