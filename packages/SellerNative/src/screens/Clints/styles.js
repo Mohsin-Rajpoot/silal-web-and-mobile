@@ -68,7 +68,7 @@ const styles = ScaledSheet.create({
     paddingVertical: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#5AB3A8',
+    backgroundColor: colors.primary,
     width: '100%',
     paddingHorizontal: 15,
     borderTopRightRadius: 5,
@@ -79,9 +79,10 @@ const styles = ScaledSheet.create({
     color: '#fff',
     fontFamily: 'Lato-Regular',
     fontSize: 11,
-    backgroundColor: '#88cbc5',
+    backgroundColor: '#50c681',
     padding: 5,
     borderRadius: 3,
+    overflow:'hidden'
   },
   SearchIcon: {
     fontSize: 20,
@@ -162,10 +163,10 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop:-30
+    // marginTop:-20
   },
   modal_recuring: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: colors.primary,
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,

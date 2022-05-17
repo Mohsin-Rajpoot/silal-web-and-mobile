@@ -121,6 +121,7 @@ const Offers = ({navigation}) => {
           containerStyle={{marginTop: 10, marginBottom: 20}}
           tabs={[t('current'), t('Past')]}
           page={page}
+          onChangeTab={(index)=>setPage(index)}
         />
       </View>
 

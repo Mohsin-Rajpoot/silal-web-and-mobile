@@ -21,7 +21,7 @@ const TabStack = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#5AB3A8',
+        tabBarActiveTintColor: colors.primary,
         
       }}
       initialRouteName="HomeStack">

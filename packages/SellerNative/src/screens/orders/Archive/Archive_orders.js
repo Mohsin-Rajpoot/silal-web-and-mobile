@@ -35,6 +35,7 @@ import Menu, {
   renderers,
 } from 'react-native-popup-menu';
 import DatePicker from './../../../components/DatePicker';
+import colors from '@SilalApp/common/assets/colors';
 
 const {width, height} = Dimensions.get('window');
 
@@ -352,7 +353,7 @@ export default function Archive_orders({title, navigation}) {
             }}
             style={[
               styles.archive_orders_tab,
-              {borderColor: order_state == 'All' ? '#5AB3A8' : '#e8edee'},
+              {borderColor: order_state == 'All' ? colors.primary : '#e8edee'},
             ]}>
             <Text
               style={{
@@ -370,7 +371,7 @@ export default function Archive_orders({title, navigation}) {
             }}
             style={[
               styles.archive_orders_tab,
-              {borderColor: order_state == 'completed' ? '#5AB3A8' : '#e8edee'},
+              {borderColor: order_state == 'completed' ? colors.primary : '#e8edee'},
             ]}>
             <Text
               style={{
@@ -388,7 +389,7 @@ export default function Archive_orders({title, navigation}) {
             }}
             style={[
               styles.archive_orders_tab,
-              {borderColor: order_state == 'cancelled' ? '#5AB3A8' : '#e8edee'},
+              {borderColor: order_state == 'cancelled' ? colors.primary : '#e8edee'},
             ]}>
             <Text
               style={{
@@ -417,12 +418,11 @@ export default function Archive_orders({title, navigation}) {
               />
             </Svg>
             <Text style={{fontSize: 17}}>Filters</Text>
-            {/* <Calender /> */}
-          </View>
-          <View style={styles.calndr_date}>
-            <DatePicker height={40} width={200} color="#4C6870" />
-            {/* <Text>16 NOV</Text> */}
-          </View>
+          
+          </View >
+          <View style={styles.calndr_date}> 
+           <DatePicker/>
+           </View>
         </View>
       </View>
       <View>{header_alloredrs()}</View>
@@ -612,7 +612,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   accept_btn: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: colors.primary,
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
@@ -639,7 +639,7 @@ const styles = StyleSheet.create({
   },
   ready_btn: {
     flex: 1,
-    backgroundColor: '#5AB3A8',
+    backgroundColor: colors.primary,
     borderRadius: 5,
     alignItems: 'center',
     paddingVertical: 10,
@@ -707,7 +707,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   modal_recuring: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: colors.primary,
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,
@@ -746,6 +746,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 10,
+    paddingBottom:8
   },
   all_orders_heading_txt: {
     fontFamily: 'Lato-Bold',

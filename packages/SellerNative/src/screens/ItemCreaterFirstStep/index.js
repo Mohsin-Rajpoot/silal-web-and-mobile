@@ -22,6 +22,7 @@ import Toast from 'react-native-easy-toast';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useTranslation} from 'react-i18next';
+import colors from '@SilalApp/common/assets/colors';
 const ItemCreaterFirstStep = ({navigation}) => {
   const {t} = useTranslation();
   const [order_state, set_order_state] = useState('All');
@@ -31,9 +32,9 @@ const ItemCreaterFirstStep = ({navigation}) => {
   const toastRef = useRef();
 
   return (
-    <View style={styles.MainContainer}>
-      <SafeAreaView style={styles.Container}>
-        <KeyboardAvoidingView behavior="padding">
+    <SafeAreaView style={styles.MainContainer}>
+      <ScrollView style={styles.Container}>
+      
           <View style={{width: '100%', alignSelf: 'center'}}>
             <View style={styles.Header}>
               <TouchableOpacity
@@ -249,7 +250,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                               )
                             }
                             style={[
-                              {backgroundColor: '#5AB3A8'},
+                              {backgroundColor: colors.primary},
                               styles.Buttonss,
                             ]}>
                             <Text style={[{color: '#fff'}, styles.DeleteModal]}>
@@ -290,11 +291,17 @@ const ItemCreaterFirstStep = ({navigation}) => {
                         3000,
                       )
                     }
-                    style={[styles.HeaderButton, {backgroundColor: '#5AB3A8'}]}>
+                    style={[styles.HeaderButton, {backgroundColor: colors.primary}]}>
                     <Text style={styles.HeaderButtonText}>{t('Publish')}</Text>
                   </TouchableOpacity>
                 </View>
               </View>
+
+
+
+
+
+              
             </View>
             <View
               style={{
@@ -314,7 +321,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                 <View
                   style={[
                     styles.archive_orders_tab,
-                    {borderColor: order_state == 'All' ? '#5AB3A8' : '#e8edee'},
+                    {borderColor: order_state == 'All' ? colors.primary : '#e8edee'},
                   ]}
                 />
               </TouchableOpacity>
@@ -332,7 +339,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                     styles.archive_orders_tab,
                     {
                       borderColor:
-                        order_state == 'completed' ? '#5AB3A8' : '#e8edee',
+                        order_state == 'completed' ? colors.primary : '#e8edee',
                     },
                   ]}
                 />
@@ -356,9 +363,9 @@ const ItemCreaterFirstStep = ({navigation}) => {
             opacity={1}
             textStyle={{color: 'red'}}
           />
-        </KeyboardAvoidingView>
-      </SafeAreaView>
-    </View>
+      
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

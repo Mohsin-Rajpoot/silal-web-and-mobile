@@ -156,15 +156,15 @@ const OnBoarding = ({ navigation }) => {
                   style={{
                     width: !isTab ? "90%" : "65%",
                     alignSelf: "center",
-                    marginVertical: 10,
-                    marginBottom: 10,
+                    marginVertical: 5,
+                    marginBottom: 5,
                   }}
                 >
                   <DropDownPicker
                     open={open}
                     value={value}
                     items={items}
-                    setOpen={setOpen}
+                    setOpen={setOpen}     
                     setValue={setValue}
                     setItems={setItems}
                     placeholder="Select Language"

@@ -295,7 +295,7 @@ const Statistics = ({}) => {
           <View style={styles.HotProductPart}>
             <Text style={styles.headerTitleSecondary}>Hot products</Text>
             <View>
-              <Calender bg_Calender="done" />
+              <Calender bg_Calender="done"/>
             </View>
           </View>
           <View>
