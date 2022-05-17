@@ -15,7 +15,7 @@ const styles = ScaledSheet.create({
     flexGrow: 1,
   },
   dropDownStyle1: {
-    width: "50%",
+    width: "50%", 
     backgroundColor: "red",
   },
   phoneNumberText: {
@@ -311,6 +311,7 @@ const styles = ScaledSheet.create({
     backgroundColor: "transparent",
     borderColor: colors.borderColor,
     height: "40@ms",
+    // marginVertical:50
   },
   dropDownPlaceHolder: {
     color: colors.light_grey,
@@ -447,6 +448,7 @@ const styles = ScaledSheet.create({
     alignSelf: "center",
     textAlign: "center",
     lineHeight: "13@s",
+    marginBottom:108
   },
   checkout_text: {
     fontSize: "11@ms",

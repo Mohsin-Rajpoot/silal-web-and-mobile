@@ -8,7 +8,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "start-tab": "react-native run-ios --simulator \"iPad (7th generation)\""
+    "start-tab": "react-native run-ios --simulator \"iPad (7th generation)\"",
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'"
   },
   "dependencies": {
     "@baronha/react-native-multiple-image-picker": "^0.4.10",

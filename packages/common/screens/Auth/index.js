@@ -136,15 +136,15 @@ const OnBoarding = ({ navigation }) => {
                   style={{
                     width: "65%",
                     alignSelf: "center",
-                    marginVertical: 10,
-                    marginBottom: 10,
+                    marginVertical: 5,
+                    marginBottom: 5,
                   }}
                 >
                   <DropDownPicker
                     open={open}
                     value={value}
                     items={items}
-                    setOpen={setOpen}
+                    setOpen={setOpen}     
                     setValue={setValue}
                     setItems={setItems}
                     placeholder="Select Language"
@@ -164,7 +164,7 @@ const OnBoarding = ({ navigation }) => {
                     }}
                   />
                 </View>
-                <View style={{ flex: 0.6, justifyContent: "flex-end" }}>
+                <View style={{ flex: 0.6, justifyContent: "flex-end",marginTop:10 }}>
                   <AuthButton name={t("signup")} onPress={goToSignUp} />
                   <AuthButton
                     name={t("login")}

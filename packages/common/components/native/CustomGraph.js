@@ -9,6 +9,7 @@ import {
     PORTRAIT
   } from 'react-native-orientation-locker';
 import * as Animatable from 'react-native-animatable';
+import colors from '../../assets/colors';
 
 const windowWidthF = Dimensions.get("window").height
 const windowHeightF = Dimensions.get("window").width
@@ -145,7 +146,7 @@ export default function CustomGraph() {
                                         justifyContent: 'flex-end',
                                     }}>
                                         <View style={{ position: "absolute", flexDirection: "row", }}>
-                                            <LinearGradient colors={['#73D5C9', '#5AB3A8',]} style={{ borderRadius: 15 }}>
+                                            <LinearGradient colors={['#69d174', colors.primary]} style={{ borderRadius: 15 }}>
                                                 <Animatable.View style={{
                                                     width: 38, height: item.id == 1 ?
                                                         animateFun(item.earnedBarHeight, fadeAnim16) : item.id == 2 ?

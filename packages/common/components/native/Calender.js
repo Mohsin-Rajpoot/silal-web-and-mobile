@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Text, Button } from 'react-native'
 import DatePicker from 'react-native-neat-date-picker'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import moment from "moment";
+import colors from '../../assets/colors';
 
 const Calender = ({ bg_Calender }) => {
     React.useEffect(() => {
@@ -27,11 +28,11 @@ const Calender = ({ bg_Calender }) => {
         setShowDatePicker(false)
     }
     const colorOptions = {
-        headerColor: '#5AB3A8',
-        weekDaysColor: '#5AB3A8',
-        selectedDateColor: '#5AB3A8',
-        confirmButtonColor: '#5AB3A8',
-        selectedDateBackgroundColor: '#5AB3A8'
+        headerColor: colors.primary,
+        weekDaysColor: colors.primary,
+        selectedDateColor: colors.primary,
+        confirmButtonColor: colors.primary,
+        selectedDateBackgroundColor: colors.primary
 
     }
 

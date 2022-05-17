@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import colors from "../../assets/colors";
 
 export default function CustomButton({
   text,
@@ -21,8 +22,7 @@ export default function CustomButton({
         ]}
       >
         <Text
-          style={[styles.buttonText, styles[`buttonText_${type}`], textStyle]}
-        >
+          style={[styles.buttonText, styles[`buttonText_${type}`], textStyle]} >
           {text}
         </Text>
       </TouchableOpacity>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   mainbutton_PRIMARY: {
-    backgroundColor: "#5AB3A8",
+    backgroundColor: colors.primary,
     fontFamily: "Poppins-SemiBold",
   },
   mainbutton_TERTIARY: {},

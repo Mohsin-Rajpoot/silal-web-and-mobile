@@ -16,7 +16,7 @@ const styles = ScaledSheet.create({
         paddingTop: 10
     },
     ImgeViewBKG: {
-        height: 50,
+        height: 50,  
         width: 50,
         backgroundColor: '#E3FCEF',
         borderRadius: 25,
@@ -109,7 +109,7 @@ const styles = ScaledSheet.create({
         height: 38,
         width: 36,
         borderRadius: 18,
-        backgroundColor: '#5AB3A8',
+        backgroundColor: colors.primary,
         marginVertical: 30,
     },
     FlatListBadge: {
@@ -146,7 +146,7 @@ const styles = ScaledSheet.create({
         color: '#36B37E', textAlign: 'center'
     },
     WhihteDiveIcon: {
-        fontSize: 30, color: '#5AB3A8'
+        fontSize: 30, color: colors.primary
     },
     BackgroundLightRed: {
         backgroundColor: '#FFEBE6',
@@ -161,7 +161,7 @@ const styles = ScaledSheet.create({
         width: '64%', backgroundColor: '#fff', elevation: 2, marginHorizontal: 10, borderRadius: 5, marginBottom: 20
     },
     GraphButtonText: {
-        fontFamily: 'Poppins-Medium', fontSize: 13, textAlignVertical: 'center', color: '#5AB3A8',
+        fontFamily: 'Poppins-Medium', fontSize: 13, textAlignVertical: 'center', color: colors.primary,
     },
     GraphButton: {
         backgroundColor: '#5AB3A826', justifyContent: 'center',

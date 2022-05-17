@@ -32,7 +32,8 @@ const styles = ScaledSheet.create({
     },
     NewNotification: {
         fontFamily: fonts.LatoSemiBold, marginTop: 15, backgroundColor: colors.primary, height: 30, width: 60, textAlign: 'center',
-        textAlignVertical: 'center', borderRadius: 5, color: colors.textWhite, marginTop: 10,
+        textAlignVertical: 'center', borderRadius: 5, color: colors.textWhite, overflow: 'hidden',paddingTop:5
+        // marginTop: 10,
     },
     ImageVIew: {
         backgroundColor: '#0065FF33', height: 56, width: 56, borderRadius: 28, justifyContent: 'center', alignItems: 'center'

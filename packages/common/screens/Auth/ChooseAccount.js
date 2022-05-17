@@ -6,7 +6,7 @@ import Images from "../../assets/images";
 import AuthButton from "../../components/native/AuthButton";
 import styles from "./style";
 import { useTranslation } from "react-i18next";
-const ChooseAccount = () => {
+const ChooseAccount = ({navigation}) => {
   const { t } = useTranslation();
   const [active, setActive] = useState(1);
   return (
@@ -50,7 +50,10 @@ const ChooseAccount = () => {
         </View>
       </View>
       <View style={{ flex: 0.95 }} />
-      <AuthButton onPress={()=>navigation.navigate('MainStack')} name={t("Continue")} />
+      <AuthButton 
+      onPress={()=>navigation.navigate("MainStack", {screen: "Home"})}
+      
+      name={t("Continue")} />
     </>
   );
 };

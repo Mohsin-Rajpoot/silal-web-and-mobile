@@ -30,6 +30,7 @@
 		59B3F82B2030907C888E9D08 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3118B1FEDE0859E9A033FFB /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D4009DE1A2E47A170AAEE066 /* libPods-Seller_App_Silal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B70ADE50D488F00B88BBB35 /* libPods-Seller_App_Silal.a */; };
+		FA7CF0E7282D98E500833813 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = FA7CF0E6282D98E500833813 /* main.jsbundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		9B608F9D27DFC7140014FE72 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Regular.ttf"; path = "../android/app/src/main/assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		A3118B1FEDE0859E9A033FFB /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seller_App_Silal-Seller_App_SilalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FA7CF0E6282D98E500833813 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		13B07FAE1A68108700A75B9A /* Seller_App_Silal */ = {
 			isa = PBXGroup;
 			children = (
+				FA7CF0E6282D98E500833813 /* main.jsbundle */,
 				1806713D280A8E6500A12AE2 /* Seller_App_Silal.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -359,6 +362,7 @@
 				1806712E280A7FAF00A12AE2 /* Poppins-Medium.ttf in Resources */,
 				1806712F280A7FAF00A12AE2 /* Poppins-Light.ttf in Resources */,
 				18067130280A7FAF00A12AE2 /* Lato-Semibold.ttf in Resources */,
+				FA7CF0E7282D98E500833813 /* main.jsbundle in Resources */,
 				18067131280A7FAF00A12AE2 /* Poppins-Regular.ttf in Resources */,
 				18067132280A7FAF00A12AE2 /* Lato-Medium.ttf in Resources */,
 				18067133280A7FAF00A12AE2 /* Poppins-SemiBold.ttf in Resources */,
@@ -632,7 +636,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Seller_App_Silal/Seller_App_Silal.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = MB6N5259HZ;
 				ENABLE_BITCODE = YES;
 				EXCLUDED_ARCHS = i386;
@@ -646,6 +650,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 					"$(inherited)",
 				);
+				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -671,7 +676,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Seller_App_Silal/Seller_App_Silal.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = MB6N5259HZ;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Seller_App_Silal/Info.plist;
@@ -683,6 +690,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 					"$(inherited)",
 				);
+				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -691,6 +699,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Seller_App_Silal;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Seller_App_Silal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

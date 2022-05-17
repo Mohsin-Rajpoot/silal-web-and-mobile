@@ -52,12 +52,11 @@ const Reviews = () => {
                     <View style={styles.firstViewInerStyle}>
                         <Text style={styles.firstViewTitle} >Reviews</Text>
                         <Calender />
-
                     </View>
                     <FlatList
                         data={data2}
                         numColumns={1}
-                        style={{ marginBottom: 5, height: 500 }}
+                        style={{ marginBottom: 5, height: 400 }}
                         renderItem={({ item }) => (
                             <View>
                                 <View style={styles.FlatListParagraphTitle}>
@@ -112,8 +111,8 @@ const Reviews = () => {
                 </View>
             </View>
         </KeyboardAvoidingView>
+        
     )
 }
 
 export default Reviews
-
