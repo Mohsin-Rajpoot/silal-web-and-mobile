@@ -79,8 +79,8 @@ const styles = ScaledSheet.create({
     marginVertical: "50@s",
   },
   commonIconMobile: {
-    width: "220@s",
-    height: "220@s",
+    width: "210@s",
+    height: "210@s",
     backgroundColor: colors.primary,
     alignSelf: "center",
     borderRadius: "10@s",

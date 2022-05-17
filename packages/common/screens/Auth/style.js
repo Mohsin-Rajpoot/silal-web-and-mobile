@@ -625,7 +625,8 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.bold,
     alignSelf: "center",
     textAlign: "center",
-    lineHeight: "13@s",
+    lineHeight: "20@s",
+    marginTop:"10@s"
   },
   checkout_text: {
     fontSize: "11@ms",

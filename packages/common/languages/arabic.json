@@ -117,7 +117,7 @@
     "peakhours": "PEAK HOURS",
     "Total_sales": "Total Sales",
     "Total_orders": "Total Orders",
-    "out_of_stock_item": "Out-of-stock items",
+    "out_of_stock_item": "Out of Stock",
     "Total_rating": "Total Rating",
     "Hot_products": "Hot products",
     "review_overview": "Reviews overview",
@@ -437,6 +437,7 @@
     "main_category": "Main Category",
     "letsGo": "Let’s go",
     "questionnaire": "Questionnaire",
-    "basicInfo": "Basic Info"
+    "basicInfo": "Basic Info",
+    "RenewItem":"Renew items list"
   }
 }

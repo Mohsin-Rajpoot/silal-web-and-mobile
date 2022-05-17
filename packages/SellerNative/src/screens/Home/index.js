@@ -25,8 +25,11 @@ import {Icon, Badge} from 'react-native-elements';
 import Modal from 'react-native-modal';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
-
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import {useTranslation} from 'react-i18next';
+import {moderateScale, verticalScale} from 'react-native-size-matters';
 const Home = ({navigation}) => {
+  const {t} = useTranslation();
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   }, []);
@@ -78,53 +81,106 @@ const Home = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <LockOnLandscape onPress={() => console.log('Harris')} />
       <View style={styles.HeaderContainer}>
-        <View style={{padding: 15}}>
+        <View style={{margin: verticalScale(10)}}>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <MaterialCommunityIcons
-              name="reorder-horizontal"
-              size={20}
+              name="menu"
+              size={moderateScale(!IsTablet ? 26 : 22)}
               style={styles.BambergIcon}
             />
           </TouchableOpacity>
         </View>
-        <View style={{padding: 15, flexDirection: 'row'}}>
-          <CustomButton
-            onPress={() => onCurrentOrder(0)}
-            text="Statistics"
-            type={Statistic ? 'PRIMARY' : 'TERTIARY'}
-          />
-          <CustomButton
-            onPress={() => onCurrentOrder(1)}
-            text="Reviews"
-            type={Reviews ? 'PRIMARY' : 'TERTIARY'}
-          />
-          <CustomButton
-            onPress={() => onCurrentOrder(2)}
-            text="Out-of-stock"
-            type={Outofstock ? 'PRIMARY' : 'TERTIARY'}
-          />
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            width: '100%',
+            marginVertical: verticalScale(5),
+          }}>
+          <ScrollView horizontal contentContainerStyle={{width: '92%'}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                width: !IsTablet ? '80%' : '95%',
+              }}>
+              <CustomButton
+                onPress={() => onCurrentOrder(0)}
+                text={t('Statistics')}
+                // type={Statistic ? 'PRIMARY' : 'TERTIARY'}
+                containerStyle={
+                  !IsTablet && Statistic
+                    ? styles.tabbuttonMobile
+                    : !IsTablet && !Statistic
+                    ? styles.tabbuttonMobileInactive
+                    : IsTablet && Statistic
+                    ? styles.tabbutton
+                    : IsTablet && !Statistic
+                    ? styles.tabbuttonInactive
+                    : styles.tabbutton
+                }
+                textStyle={
+                  Statistic ? styles.tabTitle : styles.tabTitleInactive
+                }
+              />
+              <CustomButton
+                onPress={() => onCurrentOrder(1)}
+                text={t('reviews')}
+                containerStyle={
+                  !IsTablet && Reviews
+                    ? styles.tabbuttonMobile
+                    : !IsTablet && !Reviews
+                    ? styles.tabbuttonMobileInactive
+                    : IsTablet && Reviews
+                    ? styles.tabbutton
+                    : IsTablet && !Reviews
+                    ? styles.tabbuttonInactive
+                    : styles.tabbutton
+                }
+                textStyle={Reviews ? styles.tabTitle : styles.tabTitleInactive}
+              />
+              <CustomButton
+                onPress={() => onCurrentOrder(2)}
+                text={t('out_of_stock')}
+                // type={Outofstock ? 'PRIMARY' : 'TERTIARY'}
+                containerStyle={
+                  !IsTablet && Outofstock
+                    ? styles.tabbuttonMobile
+                    : !IsTablet && !Outofstock
+                    ? styles.tabbuttonMobileInactive
+                    : IsTablet && Outofstock
+                    ? styles.tabbutton
+                    : IsTablet && !Outofstock
+                    ? styles.tabbuttonInactive
+                    : styles.tabbutton
+                }
+                textStyle={
+                  Outofstock ? styles.tabTitle : styles.tabTitleInactive
+                }
+              />
+            </View>
+            <TouchableOpacity
+              onPress={() => setModalVisible(!modalVisible)}
+              style={[
+                styles.ModalMainButton,
+                {
+                  backgroundColor: modalVisible == true ? '#4C6870' : null,
+                  borderRadius: modalVisible == true ? 25 : null,
+                },
+              ]}>
+              <MaterialCommunityIcons
+                size={moderateScale(!IsTablet ? 24 : 26)}
+                color={modalVisible == true ? '#fff' : '#002733'}
+                name={'bell-outline'}
+              />
+              <Badge
+                // value={'9'}
+                containerStyle={styles.BadgeContainer}
+                badgeStyle={styles.badgeStyle}
+              />
+            </TouchableOpacity>
+          </ScrollView>
         </View>
-
-        <TouchableOpacity
-          onPress={() => setModalVisible(!modalVisible)}
-          style={[
-            styles.ModalMainButton,
-            {
-              backgroundColor: modalVisible == true ? '#4C6870' : null,
-              borderRadius: modalVisible == true ? 25 : null,
-            },
-          ]}>
-          <MaterialCommunityIcons
-            size={33}
-            color={modalVisible == true ? '#fff' : '#002733'}
-            name={'bell-outline'}
-          />
-          <Badge
-            // value={'9'}
-            containerStyle={styles.BadgeContainer}
-            badgeStyle={styles.badgeStyle}
-          />
-        </TouchableOpacity>
       </View>
 
       <Modal

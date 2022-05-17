@@ -47,6 +47,16 @@ const colors = {
 
   borderColor3: "rgba(76, 104, 112, 0.15)",
   ImageBack: "#F4F7F8",
-  mobileNewBorder:"rgba(76, 104, 112, 0.1)"
+  mobileNewBorder:"rgba(76, 104, 112, 0.1)",
+  textPrimeColor:"#4C7061",
+  backgroundColor:"#fafafa",
+  whiteDull:"rgba(255, 255, 255, 0)",
+  text:"rgba(76, 104, 112, 0.7)",
+  peackHourColor:"#ebcdcc",
+  redColor:"#E20909",
+  primaryBlurColor:"rgba(205, 239, 219, 1)",
+  parrotColor:"#36B37E",
+  yellow:"#FFC400"
+  
 };
 export default colors;
