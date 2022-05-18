@@ -6,6 +6,7 @@ import moment from "moment";
 import colors from "../../assets/colors";
 import { verticalScale } from "react-native-size-matters";
 import IsTablet from "./IsTablet";
+import { Icon } from "react-native-elements";
 
 const Calender = ({ bg_Calender }) => {
   React.useEffect(() => {
@@ -42,34 +43,53 @@ const Calender = ({ bg_Calender }) => {
       <TouchableOpacity
         style={{
           flexDirection: "row",
-          backgroundColor: bg_Calender == "Default" ? null : "#F2F4F5",
+          backgroundColor: bg_Calender == "Default" ? null : colors.dullWhite,
           marginTop: 8,
           //   width: 140,
-          padding: verticalScale(5),
-          justifyContent: "center",
+          padding: verticalScale(!IsTablet ? 10 : 5),
+          justifyContent: !IsTablet ? "space-between" : "center",
           alignItems: "center",
           borderRadius: 5,
+
           marginRight: verticalScale(5),
         }}
         onPress={openDatePicker}
       >
-        <Text
+        <View
           style={{
-            color: colors.textPrimeColor,
-            fontSize: verticalScale(9),
+            flexDirection: !IsTablet ? "row-reverse" : "row",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          {moment(start_date).format("MMM DD -")}
-          {moment(end_date).format(" MMM DD")}
-        </Text>
-        <MaterialCommunityIcons
-          name="calendar-month-outline"
-          style={{
-            fontSize: verticalScale(12),
-            color: colors.textPrimeColor,
-            paddingHorizontal: 3,
-          }}
-        />
+          <Text
+            style={{
+              color: colors.textPrimeColor,
+              fontSize: verticalScale(10),
+            }}
+          >
+            {moment(start_date).format("MMM DD -")}
+            {moment(end_date).format(" MMM DD")}
+          </Text>
+          <MaterialCommunityIcons
+            name="calendar-month-outline"
+            style={{
+              fontSize: verticalScale(12),
+              color: colors.textPrimeColor,
+              paddingHorizontal: 3,
+            }}
+          />
+        </View>
+        {!IsTablet ? (
+          <Icon
+            name="keyboard-arrow-down"
+            type="material"
+            size={22}
+            color={colors.sidebar}
+          />
+        ) : (
+          <View />
+        )}
       </TouchableOpacity>
       {/* <Button title={'open'} onPress={openDatePicker} /> */}
       <DatePicker
