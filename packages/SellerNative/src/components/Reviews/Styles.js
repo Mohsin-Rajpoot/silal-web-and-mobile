@@ -1,103 +1,201 @@
-import { ScaledSheet } from 'react-native-size-matters';
+import {ScaledSheet} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import {
-    widthPercentageToDP as wp,
-    heightPercentageToDP as hp,
-    listenOrientationChange as lor,
-    removeOrientationListener as rol,
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+  listenOrientationChange as lor,
+  removeOrientationListener as rol,
 } from 'react-native-responsive-screen-hooks';
 import fonts from '@SilalApp/common/assets/fonts';
 const styles = ScaledSheet.create({
+  Title: {
+    color: '#002733',
+    fontFamily: fonts.b,
+    fontSize: 25,
+    lineHeight: 35,
+  },
+  subTitle: {
+    fontFamily: 'Lato-Light',
+    fontSize: 25,
+    color: '#809399',
+    fontSize: 13,
+  },
+  PeackTimeBackground: {
+    backgroundColor: '#8777D9',
+    width: 171,
+    height: 34,
+    borderRadius: 5,
+    marginHorizontal: 15,
+    marginVertical: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  TextPeackTime: {
+    fontFamily: 'Lato-Regular',
+    fontSize: 12,
+    color: '#fff',
+  },
 
-    Title: {
-        color: '#002733',
-        fontFamily: 'Poppins-Bold',
-        fontSize: 25,
-        lineHeight: 35,
+  ReviewsFlatListSecondaryMain: {
+    paddingHorizontal: '10@s',
+    color: colors.black,
+    fontFamily: fonts.LatoBold,
+    fontSize: '10@vs',
+    lineHeight:22
+  },
+  DividerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginVertical: 10,
+  },
+  DividerRowMobile: {
+    flexDirection: 'column-reverse',
+    justifyContent: 'space-evenly',
+    marginVertical: '5@vs',
+    alignItems: 'center',
+  },
+  DividerFirstView: {
+    width: '68%',
+    backgroundColor: '#fff',
+    elevation: 1,
+    borderRadius: 5,
+    height: '94%',
+  },
+  DividerFirstViewMobile: {
+    width: '93%',
+    backgroundColor: colors.textWhite,
+    elevation: 1,
+    borderRadius: '5@s',
+    alignSelf: 'center',
+  },
+  firstViewInerStyle: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    marginVertical: '10@s',
+    paddingHorizontal: '12@vs',
+    alignItems: 'center',
+  },
+  firstViewInerStyleMobile: {
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    marginVertical: '15@vs',
+    paddingHorizontal: '10@vs',
+  },
+  firstViewTitle: {
+    fontSize: '13@vs',
+    fontFamily: fonts.bold,
+    color: colors.black,
+  },
+  FlatListParagraphTitle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '95%',
+    alignItems: 'center',
 
-    },
-    subTitle: {
-        fontFamily: 'Lato-Light',
-        fontSize: 25,
-        color: '#809399',
-        fontSize: 13
-    },
-    PeackTimeBackground: {
-        backgroundColor: '#8777D9',
-        width: 171,
-        height: 34,
-        borderRadius: 5,
-        marginHorizontal: 15,
-        marginVertical: 2,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    TextPeackTime: {
-        fontFamily: 'Lato-Regular',
-        fontSize: 12,
-        color: '#fff'
-    },
+  },
+  FlatListParagraphTitleMobile: {
+    flexDirection: 'column',
+    
+  },
+  TextParagraphFlat: {
+    marginHorizontal: 30,
+    marginLeft: 150,
+    marginVertical: 1,
+  },
+  FirstParagraphContent: {
+    color: '#002733',
+    fontSize: 13,
+    fontFamily: 'Lato-Regular',
+    paddingVertical: 10,
+  },
+  ParagraphSecond: {
+    fontSize: 13,
+    paddingVertical: 5,
+    backgroundColor: '#F2F2F2',
+    borderRadius: 5,
+    padding: 4,
+    marginTop: 5,
+    paddingVertical: 10,
+  },
+  ContactButton: {
+    color: '#4C6870',
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: 13,
+  },
+  BorderLine: {
+    borderBottomWidth: 1,
+    marginHorizontal: 20,
+    marginVertical: 10,
+    borderBottomColor: '#809399',
+    opacity: 0.1,
+  },
+  SecondViewMainContainer: {
+    width: '25%',
+    backgroundColor: colors.textWhite,
+    elevation: 2,
+    borderRadius: '4@s',
+    height: '40%',
+  },
+  SecondViewMainContainerMobile: {
+    width: '93%',
+    backgroundColor: colors.textWhite,
+    elevation: 2,
+    borderRadius: '6@s',
+    paddingVertical: '10@s',
+    marginVertical: '10@s',
+    alignSelf: 'center',
+  },
+  SecondViewTitle: {
+    color: colors.black,
+    fontFamily: 'Poppins-Bold',
+    textAlign: 'center',
+    fontSize: '12@vs',
+    paddingVertical: '10@vs',
+  },
+  SecondViewTitleMobile: {
+    color: colors.black,
+    fontFamily: fonts.bold,
+    textAlign: 'left',
+    fontSize: '13@vs',
+    paddingHorizontal: '10@s',
+    marginBottom: '4@s',
+    marginLeft: '2@s',
+  },
+  LineSecondView: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    paddingHorizontal: '15@s',
+  },
 
-    ReviewsFlatListSecondaryMain: {
-        paddingHorizontal: 10,
-        color: '#002733',
-        fontFamily: 'Lato-Bold',
-        paddingTop: 4
-    },
-    DividerRow: {
-        flexDirection: 'row', justifyContent: 'space-evenly', marginVertical: 10,
-    },
-    DividerFirstView: {
-        width: "68%", backgroundColor: '#fff', elevation: 1, borderRadius: 5, height: "94%"
-    },
-    firstViewInerStyle: {
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        marginVertical: 20,
-        paddingHorizontal: 20,
-    },
-    firstViewTitle: {
-        fontSize: 18, fontFamily: 'Poppins-Bold', color: '#002733', left: -8
-    },
-    FlatListParagraphTitle: {
-        height: 50, flexDirection: 'row', justifyContent: 'space-between'
-    },
-    TextParagraphFlat: {
-        marginHorizontal: 30, marginLeft: 150, marginVertical: 1
-    },
-    FirstParagraphContent: {
-        color: '#002733', fontSize: 13, fontFamily: 'Lato-Regular', paddingVertical: 10
-    },
-    ParagraphSecond: {
-        fontSize: 13, paddingVertical: 5, backgroundColor: '#F2F2F2', borderRadius: 5, padding: 4, marginTop: 5, paddingVertical: 10
-    },
-    ContactButton: {
-        color: '#4C6870', fontFamily: 'Poppins-SemiBold', fontSize: 13
-    },
-    BorderLine: {
-        borderBottomWidth: 1, marginHorizontal: 20, marginVertical: 10, borderBottomColor: '#809399', opacity: 0.1
-    },
-    SecondViewMainContainer: {
-        width: "25%", backgroundColor: '#fff', elevation: 5, borderRadius: 5, paddingVertical: 5, height: "33%"
-    },
-    SecondViewTitle: {
-        color: '#002733', fontFamily: 'Poppins-Bold', textAlign: 'center', fontSize: 18, paddingVertical: 15
-    },
-    LineSecondView: {
-        justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 20
-    },
-    SecondViewBorderLine: {
-        borderBottomWidth: 1, marginHorizontal: 20, marginVertical: 10, borderBottomColor: '#809399', opacity: 0.1
-    },
-    TitleView: {
-        fontFamily: 'Lato-Regular', color: '#002733', fontSize: 13
-    },
-    oneEightNine: {
-        fontFamily: 'Lato-Bold', color: '#002733', fontSize: 13
-    }
+  SecondViewBorderLine: {
+    borderBottomWidth: 1,
+    marginHorizontal: 20,
+    marginVertical: 10,
+    borderBottomColor: '#809399',
+    opacity: 0.1,
+  },
+  TitleView: {
+    fontFamily: 'Lato-Regular',
+    color: colors.black,
+    fontSize: '8@vs',
+  },
+  TitleViewMobile: {
+    fontFamily: 'Lato-Regular',
+    color: colors.black,
+    fontSize: '12@vs',
+  },
 
+  oneEightNine: {
+    fontFamily: 'Lato-Bold',
+    color: '#002733',
 
-
-
+    fontSize: 13,
+  },
+  timeDuration: {
+    fontSize: '8@vs',
+    fontFamily: fonts.LatoRegular,
+    color: colors.textPrimeColor,
+    backgroundColor:"red"
+  },
 });
 export default styles;

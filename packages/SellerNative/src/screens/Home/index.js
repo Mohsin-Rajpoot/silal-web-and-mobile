@@ -26,7 +26,6 @@ const Home = ({navigation}) => {
   const [Outofstock, setOutofstack] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   var { width } = Dimensions.get("window");
-
   const scrollref = useRef()
 
   const onCurrentOrder = index => {
