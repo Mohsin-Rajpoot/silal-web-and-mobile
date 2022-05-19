@@ -57,7 +57,8 @@ const colors = {
   primaryBlurColor:"rgba(205, 239, 219, 1)",
   parrotColor:"#36B37E",
   yellow:"#FFC400",
-  grayColor:"#809399"
+  grayColor:"#809399",
+  dullWhiteColor:"'#F2F2F2"
   
 };
 export default colors;

@@ -20,7 +20,8 @@ import {useTranslation} from 'react-i18next';
 import colors from '@SilalApp/common/assets/colors';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import {Icon} from 'react-native-elements';
-import {verticalScale} from 'react-native-size-matters';
+import {moderateScale, verticalScale} from 'react-native-size-matters';
+import fonts from '@SilalApp/common/assets/fonts';
 const data2 = [
   {
     id: '1',
@@ -90,7 +91,6 @@ const Reviews = () => {
                   <View
                     style={{
                       flexDirection: !IsTablet ? 'column' : 'row',
-                      backgroundColor: 'yellow',
                     }}>
                     <View
                       style={
@@ -103,20 +103,26 @@ const Reviews = () => {
                           flexDirection: 'row',
                           alignItems: 'center',
                           justifyContent: 'space-between',
-                          width: !IsTablet ? '40%' : '30%',
+                          width: !IsTablet ? '100%' : '70%',
                         }}>
                         <Text style={styles.ReviewsFlatListSecondaryMain}>
                           {item.Title}
                         </Text>
+                        {!IsTablet ? (
+                          <Text style={styles.timeDuration}>{item.time}</Text>
+                        ) : (
+                          <View />
+                        )}
                         {IsTablet ? (
                           <View
                             style={{
                               width: '100%',
                               flexDirection: 'row',
-                             
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
                             }}>
                             {IsTablet && (
-                              <View style={{width: '90%'}}>
+                              <View style={{width: '30%'}}>
                                 <Raiting />
                               </View>
                             )}
@@ -133,17 +139,7 @@ const Reviews = () => {
                           <View />
                         )}
                       </View>
-                      <View
-                        style={{
-                          marginLeft: -20,
-                          marginTop: -3,
-                        }}>
-                        {!IsTablet ? (
-                          <Text style={styles.timeDuration}>{item.time}</Text>
-                        ) : (
-                          <View />
-                        )}
-                      </View>
+                      <View style={{}}></View>
                       {!IsTablet ? (
                         <View style={{marginHorizontal: 10, marginTop: 10}}>
                           <Raiting />
@@ -153,57 +149,75 @@ const Reviews = () => {
                       )}
                     </View>
                   </View>
-                  <View style={styles.TextParagraphFlat}>
+                  <View
+                    style={
+                      !IsTablet
+                        ? styles.TextParagraphFlatMobile
+                        : styles.TextParagraphFlat
+                    }>
                     <Text style={styles.FirstParagraphContent}>
                       {item.Paragraph}
                     </Text>
-                    <Text style={styles.ParagraphSecond}>
+                    <Text
+                      style={
+                        !IsTablet
+                          ? styles.ParagraphSecondMobile
+                          : styles.ParagraphSecond
+                      }>
                       {' '}
                       <Text
                         style={{
-                          fontFamily: 'Poppins-Medium',
+                          fontFamily: fonts.LatoMedium,
                           color: colors.black,
+                          fontSize: verticalScale(12),
                         }}>
                         Order :{' '}
                       </Text>{' '}
                       {item.aboutOrder}
                     </Text>
-                    {isReply == true ? (
-                      <View
-                        style={{
-                          borderColor: '#E8E8E8',
-                          borderWidth: 1,
-                          marginVertical: 10,
-                          borderRadius: 5,
-                        }}>
-                        <TextInput
-                          placeholder="Type here"
-                          multiline={true}
-                          textAlignVertical="top"
-                          style={{height: 80}}
-                        />
-                      </View>
-                    ) : null}
+                  </View>
+                  {!IsTablet ? (
+                    <View />
+                  ) : IsTablet && isReply == true ? (
                     <View
                       style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        marginVertical: 5,
+                        borderColor: '#E8E8E8',
+                        borderWidth: 1,
+                        borderRadius: 5,
+                        width: '80%',
+                        alignSelf: 'flex-end',
+                        marginHorizontal: verticalScale(12),
+                        marginVertical: moderateScale(8),
                       }}>
-                      <CustomButton
-                        text={isReply == true ? 'Submit' : 'Reply'}
-                        onPress={() => setisReply(true)}
+                      <TextInput
+                        placeholder="Type here"
+                        multiline={true}
+                        textAlignVertical="top"
+                        style={{height: 80}}
                       />
-                      <TouchableOpacity
-                        style={{
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                        }}>
-                        <Text style={styles.ContactButton}>
-                          Contact support
-                        </Text>
-                      </TouchableOpacity>
                     </View>
+                  ) : null}
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      marginVertical: 5,
+                      width: '80%',
+                      alignItems: 'center',
+                      alignSelf: 'flex-end',
+                      marginRight: verticalScale(10),
+                    }}>
+                    <CustomButton
+                      text={isReply == true ? 'Submit' : 'Reply'}
+                      onPress={() => setisReply(true)}
+                    />
+                    <TouchableOpacity
+                      style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}>
+                      <Text style={styles.ContactButton}>Contact support</Text>
+                    </TouchableOpacity>
                   </View>
                   <View style={styles.BorderLine} />
                 </View>

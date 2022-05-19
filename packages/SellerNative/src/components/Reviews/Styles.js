@@ -41,7 +41,7 @@ const styles = ScaledSheet.create({
     color: colors.black,
     fontFamily: fonts.LatoBold,
     fontSize: '10@vs',
-    lineHeight:22
+    lineHeight: 22,
   },
   DividerRow: {
     flexDirection: 'row',
@@ -88,34 +88,50 @@ const styles = ScaledSheet.create({
   },
   FlatListParagraphTitle: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '95%',
+    width: '100%',
     alignItems: 'center',
-
   },
   FlatListParagraphTitleMobile: {
     flexDirection: 'column',
-    
+    width: '95%',
   },
   TextParagraphFlat: {
     marginHorizontal: 30,
     marginLeft: 150,
     marginVertical: 1,
   },
+  TextParagraphFlatMobile: {
+    marginHorizontal: '10@s',
+    marginVertical: 1,
+    flexDirection: 'column-reverse',
+  },
   FirstParagraphContent: {
-    color: '#002733',
-    fontSize: 13,
-    fontFamily: 'Lato-Regular',
+    color: colors.black,
+    fontSize: '10@vs',
+    fontFamily: fonts.LatoRegular,
     paddingVertical: 10,
+    lineHeight: 24,
   },
   ParagraphSecond: {
-    fontSize: 13,
+    fontSize: '9@vs',
     paddingVertical: 5,
-    backgroundColor: '#F2F2F2',
-    borderRadius: 5,
-    padding: 4,
+    backgroundColor: colors.dullWhite,
+    borderRadius: '4@s',
+    padding: '5@s',
     marginTop: 5,
+    lineHeight: 26,
+    fontFamily: fonts.LatoRegular,
+  },
+  ParagraphSecondMobile: {
+    fontSize: '10@vs',
+    backgroundColor: colors.dullWhite,
+    borderRadius: '4@s',
+    marginTop: '7@s',
     paddingVertical: 10,
+    color: colors.light_grey,
+    paddingHorizontal: '5@s',
+    lineHeight: 20,
+    fontFamily: fonts.LatoRegular,
   },
   ContactButton: {
     color: '#4C6870',
@@ -195,7 +211,6 @@ const styles = ScaledSheet.create({
     fontSize: '8@vs',
     fontFamily: fonts.LatoRegular,
     color: colors.textPrimeColor,
-    backgroundColor:"red"
   },
 });
 export default styles;
