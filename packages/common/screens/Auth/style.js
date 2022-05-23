@@ -20,7 +20,7 @@ const styles = ScaledSheet.create({
     flexGrow: 1,
   },
   dropDownStyle1: {
-    width: "50%", 
+    width: wp('65%'), 
     backgroundColor: "red",
   },
   phoneNumberText: {
@@ -158,7 +158,7 @@ const styles = ScaledSheet.create({
     borderColor: colors.primary,
   },
   choseMainContainerMobile: {
-    width: "280@s",
+    width: '100%',
     height: "90@s",
     flexDirection: "row",
     alignItems: "center",
@@ -167,6 +167,7 @@ const styles = ScaledSheet.create({
     margin: "5@s",
     borderWidth: "1@s",
     borderColor: colors.primary,
+    alignSelf:"center"
   },
   choseMainContainer1: {
     width: "125@s",
@@ -178,13 +179,14 @@ const styles = ScaledSheet.create({
     borderColor: "rgba(205, 205, 208, 0.5)",
   },
   choseMainContainer1Mobile: {
-    width: "280@s",
+    width: '100%',
     height: "90@s",
     backgroundColor: colors.dullWhite,
     borderRadius: "8@s",
     margin: "5@s",
     flexDirection: "row",
     alignItems: "center",
+    alignSelf:"center"
     // borderWidth: "0.5@s",
     // borderColor: "rgba(205, 205, 208, 0.5)",
   },
@@ -222,8 +224,8 @@ const styles = ScaledSheet.create({
   },
   screenImage: {
     resizeMode: "contain",
-    width: wp("30%"),
-    height: hp("30%"),
+    width: wp("25%"),
+    height: hp("25%"),
     alignSelf: "center",
     margin: "10@s",
   },
@@ -266,13 +268,25 @@ const styles = ScaledSheet.create({
     textAlign: "center",
   },
   SignformHeader: {
-    width: wp("30%"),
+    width: wp("32%"),
+    backgroundColor: colors.primary,
+    height: "5@s",
+    borderRadius: "5@s",
+  },
+  SignformHeaderMobile: {
+    width: wp("29%"),
     backgroundColor: colors.primary,
     height: "5@s",
     borderRadius: "5@s",
   },
   SignUpHeaderInactive: {
-    width: wp("30%"),
+    width: wp("32%"),
+    backgroundColor: colors.grayLight,
+    height: "5@s",
+    borderRadius: "5@s",
+  },
+  SignUpHeaderInactiveMobile: {
+    width: wp("28%"),
     backgroundColor: colors.grayLight,
     height: "5@s",
     borderRadius: "5@s",
@@ -280,7 +294,12 @@ const styles = ScaledSheet.create({
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginHorizontal: "10@s",
+    marginHorizontal:"2@s"
+  },
+  headerContainerMobile: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginHorizontal:"15@s"
   },
   headerText: {
     fontSize: "12@ms",
@@ -302,27 +321,26 @@ const styles = ScaledSheet.create({
   formTextHeading: {
     fontSize: "11@ms",
     fontFamily: fonts.LatoBold,
-    color: colors.black,
+    color: colors.textPrimeColor,
     paddingHorizontal: "2@s",
-    marginVertical: "5@s",
   },
   addressContainer: {
     flexDirection: "row",
     marginTop: "10@s",
-    height: "30@s",
-    justifyContent: "space-between",
+    justifyContent:"space-between",
+    width:"100%",
   },
   formTextHeadingOptional: {
     fontSize: "12@ms",
     fontFamily: fonts.LatoBold,
-    color: colors.black,
+    color: colors.textPrimeColor,
     paddingHorizontal: "2@s",
   },
   addressInputContainer: {
     width: wp("30%"),
   },
   addressInputContainerMobile1: {
-    width: wp("45%"),
+    width: wp("44%"),
   },
   addressInputContainerMobile: {
     width: wp("91.5%"),
@@ -373,15 +391,24 @@ const styles = ScaledSheet.create({
     borderRadius: "3@s",
     margin: "5@s",
   },
+  formButtonMobile: {
+    backgroundColor: colors.primary,
+    width: wp("90%"),
+    alignSelf: "center",
+    alignItems: "center",
+    padding: "10@s",
+    borderRadius: "8@s",
+    margin: "5@s",
+  },
   dropDownStyle: {
     backgroundColor: "transparent",
     borderColor: colors.borderColor,
     height: "40@ms",
   },
-  dropDownStyle1: {
+  dropDownStyle12: {
     backgroundColor: "transparent",
     borderColor: colors.borderColor,
-    height: "40@ms",
+    height: "45@ms",
     // marginVertical:50
   },
   dropDownPlaceHolder: {
@@ -513,6 +540,7 @@ const styles = ScaledSheet.create({
     borderRadius: "99@s",
     alignSelf: "center",
   },
+  
   customRadioInactive: {
     backgroundColor: "transparent",
     width: "5@s",
@@ -523,7 +551,6 @@ const styles = ScaledSheet.create({
   paymentMainContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: "8@s",
     flexWrap: "wrap",
   },
   paymentInnerContainer: {
@@ -590,7 +617,7 @@ const styles = ScaledSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     borderRadius: "2@s",
-    borderColor: colors.borderColor,
+    borderColor: colors.background2,
     borderWidth: "0.5@s",
     width: "15@s",
     height: "15@s",
@@ -626,7 +653,7 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.bold,
     alignSelf: "center",
     textAlign: "center",
-    lineHeight: "20@s",
+    lineHeight: "30@s",
     marginTop:"10@s"
   },
   checkout_text: {

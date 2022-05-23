@@ -62,9 +62,13 @@ const TitleHeading = ({ navigation, Date }) => {
             </View>
           </View>
         </View>
-        <View>
-          {Date == "Date" ? <Calender bg_Calender="notdone" /> : null}
-        </View>
+        {!IsTablet ? (
+          <View />
+        ) : (
+          <View>
+            {Date == "Date" ? <Calender bg_Calender="notdone" /> : null}
+          </View>
+        )}
       </View>
     </SafeAreaView>
   );
@@ -93,7 +97,7 @@ const styles = ScaledSheet.create({
   },
   PeackTimeBackground: {
     backgroundColor: colors.peackHourColor,
-    borderRadius: '3@s',
+    borderRadius: "3@s",
     marginHorizontal: "10@s",
     marginVertical: "1@s",
     justifyContent: "center",

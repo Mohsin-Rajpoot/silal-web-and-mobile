@@ -20,7 +20,7 @@ import {useTranslation} from 'react-i18next';
 import colors from '@SilalApp/common/assets/colors';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import {Icon} from 'react-native-elements';
-import {moderateScale, verticalScale} from 'react-native-size-matters';
+import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 import fonts from '@SilalApp/common/assets/fonts';
 const data2 = [
   {
@@ -199,27 +199,36 @@ const Reviews = () => {
                   ) : null}
                   <View
                     style={{
-                      flexDirection: 'row',
+                      flexDirection: !IsTablet ? 'column' : 'row',
                       justifyContent: 'space-between',
                       marginVertical: 5,
-                      width: '80%',
-                      alignItems: 'center',
-                      alignSelf: 'flex-end',
-                      marginRight: verticalScale(10),
+                      width: !IsTablet ? '90%' : '80%',
+                      alignSelf: !IsTablet ? 'center' : 'flex-end',
+                      marginRight: scale(10),
                     }}>
                     <CustomButton
                       text={isReply == true ? 'Submit' : 'Reply'}
+                      containerStyle={
+                        !IsTablet ? styles.submitBtnMobile : styles.submitBtn
+                      }
                       onPress={() => setisReply(true)}
                     />
                     <TouchableOpacity
-                      style={{
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}>
-                      <Text style={styles.ContactButton}>Contact support</Text>
+                      style={
+                        !IsTablet ? styles.contactBtn : styles.contactBtnTab
+                      }>
+                      <Text
+                        style={
+                          !IsTablet
+                            ? styles.ContactButtonMobile
+                            : styles.ContactButton
+                        }>
+                        {t('contact_support')}
+                      </Text>
                     </TouchableOpacity>
                   </View>
                   <View style={styles.BorderLine} />
+                  <View style={{height:100}}/>
                 </View>
               )}
               keyExtractor={item => item.id}

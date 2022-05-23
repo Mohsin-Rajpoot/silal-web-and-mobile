@@ -1,4 +1,4 @@
-import {ScaledSheet} from 'react-native-size-matters';
+import {ScaledSheet, verticalScale} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import {
   widthPercentageToDP as wp,
@@ -134,9 +134,14 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.LatoRegular,
   },
   ContactButton: {
-    color: '#4C6870',
-    fontFamily: 'Poppins-SemiBold',
-    fontSize: 13,
+    color:  colors.textPrimeColor,
+    fontFamily: fonts.PoppinsSemiBold,
+    fontSize: '10@vs',
+  },
+  ContactButtonMobile: {
+    color:  colors.primary,
+    fontFamily: fonts.PoppinsSemiBold,
+    fontSize: '10@vs',
   },
   BorderLine: {
     borderBottomWidth: 1,
@@ -211,6 +216,26 @@ const styles = ScaledSheet.create({
     fontSize: '8@vs',
     fontFamily: fonts.LatoRegular,
     color: colors.textPrimeColor,
+  },
+  submitBtnMobile: {
+    width: '100%',
+    borderRadius: '10@s',
+  },
+  submitBtn: {
+    width: '100%',
+  },
+  contactBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.primaryGreen,
+    width: '100%',
+    paddingVertical: '8@vs',
+    borderRadius: '10@s',
+  },
+  contactBtnTab: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: '5@s',
   },
 });
 export default styles;

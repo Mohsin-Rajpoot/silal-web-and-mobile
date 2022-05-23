@@ -13,20 +13,24 @@ import AuthButton from "../../components/native/AuthButton";
 import styles from "./style";
 import { useTranslation } from "react-i18next";
 import DeviceInfo from "react-native-device-info";
-const ChooseAccount = () => {
+const ChooseAccount = ({ navigation }) => {
   const isTab = DeviceInfo.isTablet();
   const { t } = useTranslation();
   const [active, setActive] = useState(1);
   return (
     <>
       <View>
-        <HeaderBack name={"Silal " + t("Seller")} backIcon={true} />
+        <HeaderBack
+          name={"Silal " + t("Seller")}
+          backIcon={!isTab ? false : true}
+        />
         <HeaderHeading headingName={t("Choose_An_account")} />
 
         <View
           style={{
             flexDirection: !isTab ? "column" : "row",
             alignSelf: "center",
+            width: !isTab ? "90%" : "50%",
           }}
         >
           <TouchableOpacity activeOpacity={0.6} onPress={() => setActive(1)}>
@@ -65,7 +69,6 @@ const ChooseAccount = () => {
           <TouchableOpacity activeOpacity={0.6} onPress={() => setActive(2)}>
             <View
               style={[
-               
                 !isTab && active == 2
                   ? styles.choseMainContainerMobile
                   : active == 2

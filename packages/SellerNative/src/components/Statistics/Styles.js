@@ -73,15 +73,17 @@ const styles = ScaledSheet.create({
   MainWhiteDiv: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    paddingHorizontal: '12@s',
+    paddingHorizontal: '15@s',
     justifyContent: 'space-between',
-    marginHorizontal: 3,
+    marginHorizontal: 1,
     zIndex: 0,
   },
   MainWhiteDivMobile: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    padding: '10@s',
+    paddingHorizontal: '11@s',
+    alignSelf: 'center',
+    marginBottom:"5@s"
   },
   One: {
     backgroundColor: colors.textWhite,
@@ -89,13 +91,13 @@ const styles = ScaledSheet.create({
     elevation: 2,
     borderRadius: 5,
     marginVertical: 15,
-    padding: '5@s',
+    padding: '1@s',
   },
   OneMobile: {
     backgroundColor: colors.textWhite,
-    width: '46%',
+    width: '46.8%',
     elevation: 1,
-    paddingVertical: '13@s',
+    paddingVertical: '15@s',
     margin: '5@s',
     borderRadius: '8@s',
     paddingHorizontal: '5@s',
@@ -171,8 +173,8 @@ const styles = ScaledSheet.create({
     // paddingHorizontal: 30,
   },
   Title: {
-    color: '#002733',
-    fontFamily: 'Poppins-Bold',
+    color: colors.black,
+    fontFamily: fonts.bold,
     fontSize: 25,
     lineHeight: 35,
   },
@@ -234,7 +236,6 @@ const styles = ScaledSheet.create({
     elevation: 2,
     marginHorizontal: 10,
     borderRadius: 5,
-    marginBottom: 20,
   },
   graphViewMobile: {
     width: '100%',
@@ -256,7 +257,7 @@ const styles = ScaledSheet.create({
     borderRadius: 5,
     paddingHorizontal: '7@s',
     paddingVertical: '5@s',
-    flexDirection:"row",
+    flexDirection: 'row',
   },
   GraphHeading: {
     justifyContent: 'center',

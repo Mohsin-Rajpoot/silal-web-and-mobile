@@ -1,7 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import colors from "../../assets/colors";
-
+import fonts from "../../assets/fonts";
+import { ScaledSheet } from "react-native-size-matters";
+import IsTablet from "./IsTablet";
 export default function CustomButton({
   text,
   onPress,
@@ -22,7 +24,12 @@ export default function CustomButton({
         ]}
       >
         <Text
-          style={[styles.buttonText, styles[`buttonText_${type}`], textStyle]} >
+          style={[
+            !IsTablet ? styles.buttonTextMobile : styles.buttonText,
+            styles[`buttonText_${type}`],
+            textStyle,
+          ]}
+        >
           {text}
         </Text>
       </TouchableOpacity>
@@ -30,7 +37,7 @@ export default function CustomButton({
   );
 }
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   mainbutton: {
     justifyContent: "center",
     alignItems: "center",
@@ -45,14 +52,21 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-SemiBold",
   },
   mainbutton_TERTIARY: {},
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
+  buttonTextMobile: {
+    color: colors.textWhite,
+    fontSize: "12@vs",
     letterSpacing: 1,
-    fontFamily: "Poppins-SemiBold",
+    fontFamily: fonts.PoppinsSemiBold,
+  },
+  buttonText: {
+    color: colors.textWhite,
+    fontSize: "10@vs",
+    paddingHorizontal: "5@s",
+    letterSpacing: 1,
+    fontFamily: fonts.PoppinsSemiBold,
   },
   buttonText_TERTIARY: {
     color: "#4C6870",
-    fontFamily: "Poppins-SemiBold",
+    fontFamily: fonts.PoppinsSemiBold,
   },
 });

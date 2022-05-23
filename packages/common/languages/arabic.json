@@ -438,6 +438,10 @@
     "letsGo": "Let’s go",
     "questionnaire": "Questionnaire",
     "basicInfo": "Basic Info",
-    "RenewItem":"Renew items list"
+    "RenewItem":"Renew items list",
+    "Revenue_overView":"Revenue overview",
+    "Detail_infor":"Detailed info",
+    "Detail_analytics":"Detailed analytics",
+    "Revenue":"Revenue"
   }
 }

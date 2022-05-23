@@ -266,7 +266,7 @@ const Statistics = ({}) => {
               data={data}
               numColumns={1}
               nestedScrollEnabled={true}
-              style={{marginBottom: 10, height: 350}}
+              style={{marginBottom: 10, height: 360}}
               renderItem={({item}) => (
                 <View style={styles.FlatListMainView}>
                   <View>
@@ -291,11 +291,11 @@ const Statistics = ({}) => {
         </View>
         <View style={!IsTablet ? styles.graphViewMobile : styles.graphView}>
           <View style={styles.GraphHeaderView}>
-            <Text style={styles.GraphHeading}>Revenue overview</Text>
+            <Text style={styles.GraphHeading}>{t('Revenue_overView')}</Text>
             <TouchableOpacity
               onPress={() => navigation.navigate('DetailedAnalytics')}
               style={styles.GraphButton}>
-              <Text style={styles.GraphButtonText}>Detailed info</Text>
+              <Text style={styles.GraphButtonText}>{t('Detail_infor')}</Text>
               {!IsTablet ? (
                 <Icon
                   name="right"

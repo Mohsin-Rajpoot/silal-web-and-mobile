@@ -1,6 +1,7 @@
 const colors = {
   sidebar: "#4C6870",
   primary: "#05AE4B",
+
   blurPrimary: "#CDEFDB",
   blurPrimary1: "#82D6A5",
   primary1: "#5AB3A8",
@@ -44,6 +45,7 @@ const colors = {
   textColor: "rgba(0, 39, 51, 0.3)",
   textColorPrime: "rgba(0, 39, 51, 0.2)",
   textColorSec: "rgba(0, 39, 51, 0.8)",
+  primaryGreen:'#CDEFDB',
 
   borderColor3: "rgba(76, 104, 112, 0.15)",
   ImageBack: "#F4F7F8",
@@ -58,7 +60,10 @@ const colors = {
   parrotColor:"#36B37E",
   yellow:"#FFC400",
   grayColor:"#809399",
-  dullWhiteColor:"'#F2F2F2"
+  dullWhiteColor:"'#F2F2F2",
+  purpleLight:"#E7E4F7",
+  blueDark:"#0065FF",
+  lightBlue:"#CCE0FF"
   
 };
 export default colors;
