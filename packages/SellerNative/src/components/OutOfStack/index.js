@@ -12,6 +12,10 @@ import Menu, {
 import {CheckBox} from 'react-native-elements';
 import styles from './styles';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import CustomText from '@SilalApp/common/components/CustomText';
+import {scale, verticalScale} from 'react-native-size-matters';
+import colors from '@SilalApp/common/assets/colors';
+import ItemDetails from '../ItemDetails';
 // import { useFocusEffect } from '@react-navigation/native';
 export default function Archive_orders({title, navigation}) {
   const [checked, setchecked] = useState(false);
@@ -266,7 +270,43 @@ export default function Archive_orders({title, navigation}) {
     );
   };
 
-  return (
+  return !IsTablet ? (
+    <View
+      style={{
+        paddingHorizontal: scale(15),
+        paddingVertical: verticalScale(20),
+      }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginBottom: verticalScale(10),
+        }}>
+        <CustomText label="15 items" textStyle={styles.itemText} />
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+          <CheckBox
+            checked={checked == 'true' ? true : false}
+            onPress={() => console.log("check box")}
+            checkedColor="#5AB3A8"
+            uncheckedColor="#CCD4D6"
+          />
+          <CustomText
+            label="Select all"
+            marginLeft={scale(-15)}
+            color={colors.textPrimary}
+          />
+        </View>
+      </View>
+          <ItemDetails />
+
+    </View>
+  ) : (
     <View
       style={{
         height: 570,

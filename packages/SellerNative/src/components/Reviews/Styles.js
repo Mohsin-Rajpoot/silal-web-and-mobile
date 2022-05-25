@@ -41,7 +41,7 @@ const styles = ScaledSheet.create({
     color: colors.black,
     fontFamily: fonts.LatoBold,
     fontSize: '10@vs',
-    lineHeight: 22,
+    lineHeight: 20,
   },
   DividerRow: {
     flexDirection: 'row',
@@ -109,7 +109,6 @@ const styles = ScaledSheet.create({
     color: colors.black,
     fontSize: '10@vs',
     fontFamily: fonts.LatoRegular,
-    paddingVertical: 10,
     lineHeight: 24,
   },
   ParagraphSecond: {
@@ -133,13 +132,28 @@ const styles = ScaledSheet.create({
     lineHeight: 20,
     fontFamily: fonts.LatoRegular,
   },
+  ParagraphSecondMobile1: {
+    fontSize: '10@vs',
+    backgroundColor: colors.dullWhite,
+    borderRadius: '4@s',
+    paddingVertical: 10,
+    color: colors.light_grey,
+    paddingHorizontal: '5@s',
+    lineHeight: 18,
+    fontFamily: fonts.LatoRegular,
+  },
   ContactButton: {
-    color:  colors.textPrimeColor,
+    color: colors.textPrimeColor,
     fontFamily: fonts.PoppinsSemiBold,
     fontSize: '10@vs',
   },
   ContactButtonMobile: {
-    color:  colors.primary,
+    color: colors.primary,
+    fontFamily: fonts.PoppinsSemiBold,
+    fontSize: '10@vs',
+  },
+  CancelButtonMobile: {
+    color: colors.textPrimeColor,
     fontFamily: fonts.PoppinsSemiBold,
     fontSize: '10@vs',
   },
@@ -232,10 +246,49 @@ const styles = ScaledSheet.create({
     paddingVertical: '8@vs',
     borderRadius: '10@s',
   },
+  cancelBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.light_grey,
+    width: '100%',
+    paddingVertical: '8@vs',
+    borderRadius: '10@s',
+  },
   contactBtnTab: {
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: '5@s',
+  },
+  replyTo_Review: {
+    fontSize: '13@vs',
+    fontFamily: fonts.bold,
+    color: colors.black,
+    marginTop: '5@s',
+  },
+  replyTo_Review_Detail: {
+    fontSize: '10@vs',
+    fontFamily: fonts.LatoRegular,
+    color: colors.textPrimeColor,
+    marginBottom: '10@vs',
+  },
+  suggestion: {
+    fontSize: '11@vs',
+    fontFamily: fonts.LatoRegular,
+    color: colors.textPrimeColor,
+    marginLeft: '10@s',
+    marginTop: '5@s',
+  },
+  tagContainer: {
+    backgroundColor: colors.primaryGreen,
+    paddingVertical: '5@s',
+    borderRadius: '5@s',
+    paddingHorizontal: '2@s',
+    margin: '3@s',
+  },
+  tagTitle: {
+    fontSize: '10@vs',
+    fontFamily: fonts.LatoBold,
+    color: colors.primary,
   },
 });
 export default styles;

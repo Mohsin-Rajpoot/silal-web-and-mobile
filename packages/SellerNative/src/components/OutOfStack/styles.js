@@ -259,6 +259,10 @@ const styles = ScaledSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: "center"
+    },
+    itemText:{
+        fontSize:'20@vs',
+        fontFamily:fonts.PoppinsSemiBold
     }
 
 
