@@ -1,5 +1,12 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {Text, View, FlatList, Image, TouchableHighlight} from 'react-native';
+import {
+  Text,
+  View,
+  FlatList,
+  Image,
+  TouchableHighlight,
+  ScrollView,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -43,6 +50,7 @@ export default function Archive_orders({title, navigation}) {
   //     },[])
   //   );
 
+  const dataItem = [{id: 0}, {id: 1}, {id: 2}, {id: 3}];
   var [data, setData] = useState([
     {
       id: '1',
@@ -276,35 +284,43 @@ export default function Archive_orders({title, navigation}) {
         paddingHorizontal: scale(15),
         paddingVertical: verticalScale(20),
       }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginBottom: verticalScale(10),
-        }}>
-        <CustomText label="15 items" textStyle={styles.itemText} />
+      <ScrollView>
         <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
+            marginBottom: verticalScale(10),
           }}>
-          <CheckBox
-            checked={checked == 'true' ? true : false}
-            onPress={() => console.log("check box")}
-            checkedColor="#5AB3A8"
-            uncheckedColor="#CCD4D6"
-          />
-          <CustomText
-            label="Select all"
-            marginLeft={scale(-15)}
-            color={colors.textPrimary}
-          />
+          <CustomText label="15 items" textStyle={styles.itemText} />
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <CheckBox
+              checked={checked}
+              onPress={() => setchecked(!checked)}
+              checkedColor="#5AB3A8"
+              uncheckedColor="#CCD4D6"
+            />
+            <CustomText
+              label="Select all"
+              marginLeft={scale(-15)}
+              color={colors.textPrimary}
+            />
+          </View>
         </View>
-      </View>
-          <ItemDetails />
-
+        <FlatList
+          data={dataItem}
+          keyExtractor={(item, index) => item + index.toString()}
+          renderItem={({item}) => (
+            <ItemDetails checkedState={checked}  />
+          )}
+        />
+        <View style={{height: 200}} />
+      </ScrollView>
     </View>
   ) : (
     <View

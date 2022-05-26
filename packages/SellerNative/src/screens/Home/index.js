@@ -28,6 +28,7 @@ import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import {useTranslation} from 'react-i18next';
 import {moderateScale, verticalScale} from 'react-native-size-matters';
 const Home = ({navigation}) => {
+  var {width} = Dimensions.get('screen');
   const {t} = useTranslation();
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
@@ -36,7 +37,8 @@ const Home = ({navigation}) => {
   const [Reviews, setReviews] = useState(false);
   const [Outofstock, setOutofstack] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  var {width} = Dimensions.get('screen');
+  const [screenWidth, setScreenWidth] = useState(width);
+ 
   const scrollref = useRef();
 
   const onCurrentOrder = index => {
@@ -77,7 +79,11 @@ const Home = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LockOnLandscape onPress={() => console.log('Harris')} />
+      <LockOnLandscape
+        onPress={() => console.log('Harris')}
+        width={screenWidth}
+        setWidth={setScreenWidth}
+      />
       <View style={styles.HeaderContainer}>
         <View style={{margin: verticalScale(10)}}>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
@@ -304,15 +310,16 @@ const Home = ({navigation}) => {
       <ScrollView
         showsHorizontalScrollIndicator={false}
         ref={scrollref}
+        contentContainerStyle={{width:"100%"}}
         horizontal
         scrollEnabled={false}>
-        <View style={{height: '100%', width: width}}>
+        <View style={{height: '100%', width: "100%"}}>
           <StatisticsView />
         </View>
-        <View style={{height: '100%', width: width}}>
+        <View style={{height: '100%', width:"100%"}}>
           <ReviewView />
         </View>
-        <View style={{height: '100%', width: width}}>
+        <View style={{height: '100%', width: "100%"}}>
           <OutOfStack />
         </View>
       </ScrollView>
