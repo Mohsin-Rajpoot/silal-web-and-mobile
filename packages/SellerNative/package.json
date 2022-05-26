@@ -55,6 +55,7 @@
     "react-native-phone-number-input": "^2.1.0",
     "react-native-popup-menu": "^0.15.12",
     "react-native-preference": "^2.2.3",
+    "react-native-raw-bottom-sheet": "^2.2.0",
     "react-native-reanimated": "^2.4.1",
     "react-native-responsive-screen-hooks": "^1.4.2",
     "react-native-restart": "^0.0.24",

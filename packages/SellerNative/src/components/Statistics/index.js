@@ -21,9 +21,10 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import {useTranslation} from 'react-i18next';
-import {verticalScale} from 'react-native-size-matters';
 import {Icon} from 'react-native-elements';
 import colors from '@SilalApp/common/assets/colors';
+import {moderateScale, verticalScale} from 'react-native-size-matters';
+
 const Statistics = ({}) => {
   const navigation = useNavigation();
   const {t} = useTranslation();
@@ -138,7 +139,7 @@ const Statistics = ({}) => {
                       source={item.image}
                       style={
                         !IsTablet
-                          ? styles.CurrencyImageMobile
+                          ? styles.CurrencyImageMobile 
                           : styles.CurrencyImage
                       }
                     />

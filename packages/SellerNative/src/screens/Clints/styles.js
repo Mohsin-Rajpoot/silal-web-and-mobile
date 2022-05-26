@@ -1,4 +1,4 @@
-import { ScaledSheet } from 'react-native-size-matters';
+import {ScaledSheet} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import {
   widthPercentageToDP as wp,
@@ -7,33 +7,86 @@ import {
   removeOrientationListener as rol,
 } from 'react-native-responsive-screen-hooks';
 import fonts from '@SilalApp/common/assets/fonts';
+import {color} from 'react-native-reanimated';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const styles = ScaledSheet.create({
+  ContainerClients: {
+    backgroundColor: '#E5E5E5',
+    paddingHorizontal: '15@s',
+  },
+  ContainerClientsMobile: {
+    backgroundColor: '#E5E5E5',
+    paddingHorizontal: '15@s',
+  },
+  BambergIcon: {
+    color: colors.black,
+    paddingHorizontal: '15@s',
+    paddingVertical: '25@s',
+  },
+  FlatListMobileMain: {
+    marginBottom: '10@s',
+    height: '73%',
+  },
+  FlatListMain: {
+    marginBottom: '30@vs',
+    height: '80%',
+  },
   SearchMainViewModal: {
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
   },
   Input: {
-    height: 46,
+    height: '25@s',
     alignSelf: 'center',
     elevation: 0.5,
     width: 450,
     borderRadius: 5,
-    backgroundColor: '#fff',
+    backgroundColor: colors.textWhite,
     zIndex: 0,
     marginVertical: 5,
     borderWidth: 0.6,
-    borderColor: "#F2F4F5"
-
+    borderColor: colors.dropDownBackground,
   },
+  InputMobile: {
+    height: '35@s',
+    alignSelf: 'center',
+    elevation: 0.5,
+    width: '260@s',
+    borderRadius: 5,
+    backgroundColor: colors.textWhite,
+    zIndex: 0,
+    marginVertical: '5@vs',
+    borderWidth: 0.6,
+    borderColor: colors.dropDownBackground,
+  },
+  SearchBarMobile: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: '20@s',
+  },
+  mainModalandSearcbar:{
+flexDirection:'row'
+  },
+  SearchBar: {flexDirection: 'row', alignItems: 'center'},
   FlatListMainView: {
-    width: '31%',
+    width: '30%',
     backgroundColor: '#F4F7F8',
     borderRadius: 5,
     marginVertical: 10,
     justifyContent: 'space-between',
-    marginHorizontal: 10,
-
+    marginHorizontal: '5.8@s',
+  },
+  FlatListMainViewMobile: {
+    width: '320@s',
+    backgroundColor: '#F4F7F8',
+    borderRadius: 5,
+    marginVertical: '5@s',
+    // justifyContent: 'space-between',
+    marginHorizontal: '14@s',
+    marginBottom: '5@vs',
+    // justifyContent:'center',
+    // alignItems:'center'
   },
   FlatListMainView2: {
     width: '45%',
@@ -48,22 +101,29 @@ const styles = ScaledSheet.create({
     paddingVertical: 10,
   },
   OrderFlat: {
-    color: '#002733',
+    color: colors.black,
     fontSize: 13,
-    fontFamily: 'Lato-Bold',
+    fontFamily: fonts.LatoBold,
   },
   FlatIdDynamic: {
     width: 100,
-    color: '#CCD4D6',
-    fontFamily: 'Lato-Regular',
+    color: colors.light_grey,
+    fontFamily: fonts.LatoRegular,
     fontSize: 13,
   },
   TitleMainTextFlat: {
     color: '#fff',
-    fontFamily: 'Lato-Regular',
-    fontSize: 15,
-    paddingTop: 4,
+    fontFamily: fonts.LatoRegular,
+    fontSize: '10@s',
+    // paddingTop: 4,
   },
+  TitleMainTextFlatMobile: {
+    color: '#fff',
+    fontFamily: fonts.LatoRegular,
+    fontSize: '15@s',
+    // paddingTop: ,
+  },
+
   GreenBkgFlat: {
     paddingVertical: 15,
     flexDirection: 'row',
@@ -76,25 +136,41 @@ const styles = ScaledSheet.create({
     elevation: 1,
   },
   ButtonFlatList: {
-    color: '#fff',
-    fontFamily: 'Lato-Regular',
-    fontSize: 11,
+    color: colors.textWhite,
+    fontFamily: fonts.LatoRegular,
+    fontSize: '5@s',
     backgroundColor: '#50c681',
     padding: 5,
     borderRadius: 3,
-    overflow:'hidden'
+    overflow: 'hidden',
+  },
+  ButtonFlatListMobile: {
+    color: colors.textWhite,
+    fontFamily: fonts.LatoRegular,
+    fontSize: '11@s',
+    backgroundColor: '#50c681',
+    padding: 5,
+    borderRadius: 3,
+    overflow: 'hidden',
   },
   SearchIcon: {
     fontSize: 20,
     zIndex: 1,
-    color: '#B3BEC2',
-    marginRight: -24
+    color: colors.gray_light,
+    marginRight: -24,
   },
   ClintPageMainheading: {
-    fontFamily: 'Poppins-Bold',
-    fontSize: 25,
-    color: '#002733',
+    fontFamily: fonts.bold,
+    fontSize: '15@s',
+    color: colors.black,
     paddingTop: 5,
+  },
+  ClintPageMainheadingMobile: {
+    fontFamily: fonts.bold,
+    fontSize: '20@s',
+    color: colors.black,
+    // paddingTop: 5,
+    marginHorizontal: '15@s',
   },
   modelTextTitle: {
     borderRadius: 5,
@@ -104,8 +180,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 10,
     marginHorizontal: 17,
-    paddingVertical: 2
-
+    paddingVertical: 2,
   },
   title: {
     fontSize: 18,
@@ -113,23 +188,36 @@ const styles = ScaledSheet.create({
     margin: 10,
   },
   cross_icon: {
-    color: '#CCD4D6',
-
+    color: colors.light_grey,
   },
   SecondModalCompleteView: {
-    width: 100, backgroundColor: '#36B37E', alignItems: 'center', justifyContent: 'center', marginHorizontal: 10, borderRadius: 5, height: 20, width: 76, marginVertical: 5
+    width: 100,
+    backgroundColor: colors.parrotColor,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 10,
+    borderRadius: 5,
+    height: 20,
+    width: 76,
+    marginVertical: 5,
   },
   SecondModalContainer: {
     flexDirection: 'row',
   },
   SecondViewCompleteText: {
-    color: '#fff', fontFamily: 'Lato-Medium', fontSize: 11
+    color: colors.textWhite,
+    fontFamily: 'Lato-Medium',
+    fontSize: 11,
   },
   SecondModalIcon: {
-    fontSize: 30, color: '#002733', fontFamily: 'Poppins-SemiBold'
+    fontSize: 30,
+    color: colors.black,
+    fontFamily: 'Poppins-SemiBold',
   },
   SecondModalText: {
-    fontSize: 19, color: '#002733', fontFamily: 'Poppins-SemiBold'
+    fontSize: 19,
+    color: colors.black,
+    fontFamily: 'Poppins-SemiBold',
   },
   centeredView: {
     flex: 1,
@@ -154,9 +242,41 @@ const styles = ScaledSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+
+  CloseMainModalMobile:{
+    flexDirection:'row',
+    justifyContent:'flex-end',
+    marginVertical:15,
+  
+  },
+  CloseMainModal:{
+display:'none'
+  
+  },
+  crossButtonModal:{
+    
+    flexDirection:'row',justifyContent:'flex-end',marginTop:IsTablet ? '8@s': '15%', display: IsTablet ? null : true,
+   
+  },
+  
+  modalViewMobile: {
+    height: '100%',
+    width: '100%',
+    alignSelf: 'flex-end',
+    backgroundColor: 'white',
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
   orderid_text: {
     fontSize: 15,
-    color: '#002733',
+    color: colors.black,
     fontFamily: 'Poppins-SemiBold',
   },
   modal_header: {
@@ -164,6 +284,15 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     // marginTop:-20
+    
+  },
+  modal_headerMobile: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    // marginTop:-20
+    paddingVertical:'10@s'
+    
   },
   modal_recuring: {
     backgroundColor: colors.primary,
@@ -183,7 +312,7 @@ const styles = ScaledSheet.create({
     fontSize: 15,
   },
   modal_title_first: {
-    color: '#CCD4D6',
+    color: colors.light_grey,
     fontSize: 15,
     width: 150,
   },
@@ -205,29 +334,39 @@ const styles = ScaledSheet.create({
   OrderIdentityCode: {
     fontSize: 15,
     paddingVertical: 7,
-    color: '#002733',
+    color: colors.black,
     fontWeight: 'bold',
     paddingHorizontal: 5,
   },
   TimeBar: {
     fontSize: 15,
-    color: '#002733',
+    color: colors.black,
     paddingVertical: 10,
-    fontFamily: 'Lato-Bold',
+    fontFamily: fonts.LatoBold,
   },
   FlatStyle: {
     paddingTop: 5,
     flexDirection: 'row',
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   SecondModalTile: {
-    width: 330, fontFamily: 'Lato-Regular', color: '#002733', paddingHorizontal: 5, marginVertical: 5
+    width: 330,
+    fontFamily: fonts.LatoRegular,
+    color: colors.black,
+    paddingHorizontal: 5,
+    marginVertical: 5,
   },
   CrossIconSecondModal: {
-    width: 20, color: '#CCD4D6', fontSize: 18, marginVertical: 5
+    width: 20,
+    color: colors.light_grey,
+    fontSize: 18,
+    marginVertical: 5,
   },
   IdSecondModal: {
-    width: 20, fontFamily: 'Lato-Regular', color: '#002733', marginVertical: 5
+    width: 20,
+    fontFamily: fonts.LatoRegular,
+    color: colors.black,
+    marginVertical: 5,
   },
 
   MoreOrderShow: {
@@ -244,27 +383,26 @@ const styles = ScaledSheet.create({
     width: '50%',
     paddingVertical: 10,
     fontSize: 15,
-    fontFamily: 'Lato-Bold',
-    color: '#CCD4D6',
+    fontFamily: fonts.LatoBold,
+    color: colors.light_grey,
     paddingHorizontal: 25,
   },
   CreditCard: {
-
     paddingVertical: 10,
     textAlign: 'right',
-    color: '#002733',
-    fontFamily: 'Lato-Bold',
+    color: colors.black,
+    fontFamily: fonts.LatoBold,
     fontSize: 15,
   },
   ModalDropdown: {
-    color: '#002733',
-    fontFamily: 'Lato-Bold',
+    color: colors.black,
+    fontFamily: fonts.LatoBold,
     fontSize: 13,
   },
   CustomerMainTitle: {
     flexDirection: 'row',
     padding: 12,
-    backgroundColor: '#F2F4F5',
+    backgroundColor: colors.dropDownBackground,
     borderRadius: 5,
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -272,11 +410,68 @@ const styles = ScaledSheet.create({
   },
   SortBy: {
     fontSize: 18,
-    color: '#002733',
+    color: colors.black,
     marginHorizontal: 5,
     marginTop: 5,
+  },
+  HeaderSection: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 5,
+    marginHorizontal: 15,
+  },
+  HeaderSectionMobile: {
+    marginVertical: 5,
+    flexDirection: 'column',
+  },
+  ButtonShow: {
+    paddingBottom: '8@vs',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    // position: 'relative',
+    // top: -19,
+  },
+  ButtonHide: {
+    display: 'none',
+  },
+  hideButton: {
+    backgroundColor: colors.blurPrimary,
+    height: '35@vs',
+    width: '290@s',
+    borderRadius:5,
+    overflow:'hidden',
+    marginBottom:10
+  },
+  HideButtonText: {
+    color: colors.primary,
+    justifyContent: 'center',
+    paddingVertical: '10@vs',
+    alignSelf: 'center',
+    alignItems: 'center',
+    textAlignVertical: 'center',
+    fontFamily:fonts.PoppinsSemiBold,
+    fontSize:"13@s",
+  },
+  CrossIconbts:{
+    color:colors.black,
+    fontSize:20,
+    padding:15
+    
+  },
+  sheet_head_view:{
+    justifyContent:'flex-end',
+    flexDirection:'row',
+    zIndex:0
+  },
+  BottomSheetTextHead:{
+    borderBottomWidth:1,
+    borderBottomColor:'rgba(0, 39, 51, 0.08)',
+    marginHorizontal:'10@s',
+    marginVertical:'5@vs',
+    flexDirection:'row',justifyContent:'space-between'
+  },
+  mianviewText:{
+    marginTop:'12@vs'
   }
-
-
 });
 export default styles;
