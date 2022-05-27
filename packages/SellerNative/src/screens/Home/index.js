@@ -27,9 +27,18 @@ import styles from './styles';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import {useTranslation} from 'react-i18next';
 import {moderateScale, verticalScale} from 'react-native-size-matters';
+import Tab from './molecule/Tab';
+import PagerView from 'react-native-pager-view';
 const Home = ({navigation}) => {
   var {width} = Dimensions.get('screen');
   const {t} = useTranslation();
+  const ref = useRef(null);
+  const tabs = ['Statistics', 'reviews', 'out_of_stock'];
+  const [page, setPage] = useState(0);
+  const onChangeTab = page => {
+    ref?.current?.setPageWithoutAnimation(page);
+    setPage(page);
+  };
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   }, []);
@@ -38,26 +47,26 @@ const Home = ({navigation}) => {
   const [Outofstock, setOutofstack] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [screenWidth, setScreenWidth] = useState(width);
- 
-  const scrollref = useRef();
 
-  const onCurrentOrder = index => {
-    scrollref.current.scrollTo({x: width * index});
-    console.log(index);
-    if (index == 0) {
-      setStatistic(true);
-      setReviews(false);
-      setOutofstack(false);
-    } else if (index == 1) {
-      setStatistic(false);
-      setReviews(true);
-      setOutofstack(false);
-    } else if (index == 2) {
-      setStatistic(false);
-      setReviews(false);
-      setOutofstack(true);
-    }
-  };
+  // const scrollref = useRef();
+
+  // const onCurrentOrder = index => {
+  //   scrollref.current.scrollTo({x: width * index});
+  //   console.log(index);
+  //   if (index == 0) {
+  //     setStatistic(true);
+  //     setReviews(false);
+  //     setOutofstack(false);
+  //   } else if (index == 1) {
+  //     setStatistic(false);
+  //     setReviews(true);
+  //     setOutofstack(false);
+  //   } else if (index == 2) {
+  //     setStatistic(false);
+  //     setReviews(false);
+  //     setOutofstack(true);
+  //   }
+  // };
 
   const data2 = [
     {
@@ -85,16 +94,7 @@ const Home = ({navigation}) => {
         setWidth={setScreenWidth}
       />
       <View style={styles.HeaderContainer}>
-        <View style={{margin: verticalScale(10)}}>
-          <TouchableOpacity onPress={() => navigation.openDrawer()}>
-            <MaterialCommunityIcons
-              name="menu"
-              size={moderateScale(!IsTablet ? 26 : 22)}
-              style={styles.BambergIcon}
-            />
-          </TouchableOpacity>
-        </View>
-        <View
+        {/* <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
@@ -190,10 +190,22 @@ const Home = ({navigation}) => {
               />
             </TouchableOpacity>
           </ScrollView>
+        </View> */}
+      </View>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={{margin: verticalScale(10)}}>
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
+            <MaterialCommunityIcons
+              name="menu"
+              size={moderateScale(!IsTablet ? 26 : 22)}
+              style={styles.BambergIcon}
+            />
+          </TouchableOpacity>
         </View>
+        <Tab tabs={tabs} page={page} onChangeTab={onChangeTab} />
       </View>
 
-      <Modal
+      {/* <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
@@ -305,24 +317,34 @@ const Home = ({navigation}) => {
             />
           </ScrollView>
         </View>
-      </Modal>
+      </Modal> */}
 
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        ref={scrollref}
-        contentContainerStyle={{width:"100%"}}
-        horizontal
-        scrollEnabled={false}>
-        <View style={{height: '100%', width: "100%"}}>
+      <PagerView
+        style={{flex: 1}}
+        initialPage={0}
+        scrollEnabled={false}
+        ref={ref}>
+        <View key={'1'}>
           <StatisticsView />
         </View>
-        <View style={{height: '100%', width:"100%"}}>
+        <View key={'2'}>
           <ReviewView />
         </View>
-        <View style={{height: '100%', width: "100%"}}>
+        <View key={'3'}>
           <OutOfStack />
         </View>
-      </ScrollView>
+      </PagerView>
+
+      {/* <ScrollView
+        showsHorizontalScrollIndicator={false}
+        ref={scrollref}
+        contentContainerStyle={{width: '100%', flexDirection: 'row'}}
+        nestedScrollEnabled={true}
+        scrollEnabled={true}>
+        <View></View>
+        <View></View>
+        <View></View>
+      </ScrollView> */}
     </SafeAreaView>
   );
 };

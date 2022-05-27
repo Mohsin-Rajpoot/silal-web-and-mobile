@@ -12,6 +12,9 @@ import fonts from '@SilalApp/common/assets/fonts';
 const styles = ScaledSheet.create({
   container: {
     backgroundColor: colors.backgroundColor,
+    width:"100%",
+    flex:1, 
+    height:"100%"
   },
 
   ModalMainButton: {

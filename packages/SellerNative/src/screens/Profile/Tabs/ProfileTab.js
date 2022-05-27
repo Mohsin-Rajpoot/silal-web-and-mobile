@@ -26,7 +26,7 @@ import {
   heightPercentageToDP as height,
 } from 'react-native-responsive-screen';
 import {useTranslation} from 'react-i18next';
-
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const Profile = () => {
   const {t} = useTranslation();
   const [isEdit, setIsEdit] = useState(false);
@@ -40,30 +40,51 @@ const Profile = () => {
       style={styles.mainContainer}
       showsHorizontalScrollIndicator={false}
       showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        <View style={styles.profileMainContainer}>
+      <View style={!IsTablet ? styles.containerMobile : styles.container}>
+        <View
+          style={
+            !IsTablet
+              ? styles.profileMainContainerMobile
+              : styles.profileMainContainer
+          }>
           <ImageBackground
             resizeMode="cover"
             source={require('../../../Assets/image8.png')}
             style={styles.imgContainer}
           />
 
-          <View style={{top: -90}}>
-            <View style={styles.imageborderRadius}>
-              <ImageBackground
-                source={require('../../../Assets/profile.png')}
-                style={styles.profileImage}>
-                {isEdit ? (
-                  <Icon
-                    name="camera-plus-outline"
-                    type="material-community"
-                    size={moderateScale(40)}
-                    color={colors.textWhite}
-                  />
-                ) : (
-                  <View />
-                )}
-              </ImageBackground>
+          <View style={{top: !IsTablet ? -35 : -90}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'flex-end',
+                justifyContent: 'space-between',
+              }}>
+              <View style={styles.imageborderRadius}>
+                <ImageBackground
+                  source={require('../../../Assets/profile.png')}
+                  style={styles.profileImage}>
+                  {isEdit ? (
+                    <Icon
+                      name="camera-plus-outline"
+                      type="material-community"
+                      size={moderateScale(40)}
+                      color={colors.textWhite}
+                    />
+                  ) : (
+                    <View />
+                  )}
+                </ImageBackground>
+              </View>
+              {!IsTablet ? (
+                <CustomButton
+                  textStyle={styles.buttonTextStyleMobile}
+                  containerStyle={styles.buttonContainerStyleMobile}
+                  text={t('EditProfile')}
+                />
+              ) : (
+                <View />
+              )}
             </View>
             {isEdit ? <EditBox /> : <TimingBox />}
           </View>
@@ -337,6 +358,12 @@ const styles = ScaledSheet.create({
     marginRight: '12@s',
     marginBottom: '5@s',
   },
+  buttonContainerStyleMobile: {
+    backgroundColor: colors.primary,
+    width: '90%',
+    borderRadius: '8@s',
+    marginRight: '20@s',
+  },
   cancelButton: {
     backgroundColor: colors.light_grey,
     borderRadius: '4@s',
@@ -355,6 +382,12 @@ const styles = ScaledSheet.create({
   },
   profileMainContainer: {
     width: '62%',
+    backgroundColor: '#fff',
+    marginTop: '10@s',
+    marginRight: '10@s',
+  },
+  profileMainContainerMobile: {
+    width: '100%',
     backgroundColor: '#fff',
     marginTop: '10@s',
     marginRight: '10@s',
@@ -384,6 +417,13 @@ const styles = ScaledSheet.create({
     color: colors.textWhite,
     margin: '4@s',
   },
+  buttonTextStyleMobile: {
+    fontFamily: fonts.LatoSemiBold,
+    fontSize: '12@vs',
+    color: colors.textWhite,
+    paddingHorizontal: '1@s',
+    marginVertical: '3@s',
+  },
   buttonTextStyle1: {
     fontFamily: fonts.PoppinsSemiBold,
     fontSize: '12@ms',
@@ -396,12 +436,18 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     width: '100%',
   },
+  containerMobile: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+  },
   buttonContainer: {
     alignSelf: 'center',
     marginTop: '10@s',
   },
   imgContainer: {
-    width: '100%',
+    width: '110%',
     height: '150@vs',
     borderRadius: '4@s',
     overflow: 'hidden',
