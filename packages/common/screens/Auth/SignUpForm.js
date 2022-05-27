@@ -61,7 +61,9 @@ const SignUpForm = ({ navigation }) => {
       ) : (
         <View />
       )}
-      <View style={styles.headerContainer}>
+      <View
+        style={!isTab ? styles.headerContainerMobile : styles.headerContainer}
+      >
         <Header
           label={!isTab ? t("basicInfo") : t("Basic_information")}
           textStyle={styles.headerText}
@@ -102,24 +104,29 @@ const SignUpForm = ({ navigation }) => {
         </View>
       </PagerView>
       <View style={styles.outerContainer}>
-        <TouchableOpacity
-          activeOpacity={0.6}
-          onPress={goprev}
-          style={styles.backIconInnerContainer}
-        >
-          <Icon
-            name="arrowleft"
-            type="antdesign"
-            color={colors.black}
-            size={28}
-          />
+        {!isTab ? (
+          <View />
+        ) : (
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={goprev}
+            style={styles.backIconInnerContainer}
+          >
+            <Icon
+              name="arrowleft"
+              type="antdesign"
+              color={colors.black}
+              size={28}
+            />
 
-          <CustomText label={t("back")} textStyle={styles.backText} />
-        </TouchableOpacity>
-
+            <CustomText label={t("back")} textStyle={styles.backText} />
+          </TouchableOpacity>
+        )}
         <AuthButton
           name={page == 2 ? t("Submit") : t("Next_step")}
-          buttonStyling={styles.formButton}
+          buttonStyling={
+            !IsTablet ? styles.formButtonMobile : styles.formButton
+          }
           onPress={moveForward}
         />
       </View>

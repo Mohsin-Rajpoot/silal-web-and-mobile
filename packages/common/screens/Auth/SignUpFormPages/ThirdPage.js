@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
 import CustomText from "../../../components/CustomText";
@@ -13,7 +14,12 @@ import DropDownPicker from "react-native-dropdown-picker";
 import { Icon } from "react-native-elements";
 import colors from "../../../assets/colors";
 import { useTranslation } from "react-i18next";
-import { ScaledSheet, moderateScale, scale } from "react-native-size-matters";
+import {
+  ScaledSheet,
+  moderateScale,
+  scale,
+  verticalScale,
+} from "react-native-size-matters";
 import moment from "moment";
 import fonts from "../../../assets/fonts";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -49,7 +55,7 @@ const ThirdPage = () => {
     setPaymentSelect(data);
   };
   return (
-    <View style={styles.firstPageMainContainer}>
+    <SafeAreaView style={styles.firstPageMainContainer}>
       <ScrollView
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
@@ -93,7 +99,7 @@ const ThirdPage = () => {
               >
                 <View
                   style={[
-                    active == 0
+                    active == 0 && IsTablet
                       ? styles.customRadio
                       : styles.customRadioInactive,
                   ]}
@@ -136,7 +142,7 @@ const ThirdPage = () => {
               >
                 <View
                   style={[
-                    active == 1
+                    active == 1 && IsTablet
                       ? styles.customRadio
                       : styles.customRadioInactive,
                   ]}
@@ -180,7 +186,7 @@ const ThirdPage = () => {
               >
                 <View
                   style={[
-                    active == 2
+                    active == 2 && IsTablet
                       ? styles.customRadio
                       : styles.customRadioInactive,
                   ]}
@@ -219,7 +225,12 @@ const ThirdPage = () => {
           dropDownContainerStyle={styles.dropdownContainer}
           iconContainerStyle={{ backgroundColor: "red" }}
         />
-        <View style={{ flexDirection: "row", marginVertical: 15 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            marginTop: verticalScale(!IsTablet ? 20 : 10),
+          }}
+        >
           <CustomText
             label={t("Accept_payment")}
             textStyle={styles.formTextHeading}
@@ -274,7 +285,12 @@ const ThirdPage = () => {
             })}
           </View>
         </View>
-        <View style={{ flexDirection: "row", marginVertical: 15 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            marginTop: verticalScale(!IsTablet ? 20 : 10),
+          }}
+        >
           <CustomText
             label={t("store_description")}
             textStyle={styles.formTextHeading}
@@ -375,7 +391,7 @@ const ThirdPage = () => {
         </View>
         <View style={{ height: 50 }} />
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 

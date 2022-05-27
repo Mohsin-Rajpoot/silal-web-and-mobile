@@ -6,9 +6,9 @@ import {
   listenOrientationChange as lor,
   removeOrientationListener as rol,
 } from 'react-native-responsive-screen-hooks';
-import fonts from '@SilalApp/common/assets/fonts';
+// import fonts from '@SilalApp/common/assets/fonts';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
-
+import fonts from '@SilalApp/common/assets/fonts';
 const styles = ScaledSheet.create({
   container: {
     backgroundColor: colors.backgroundColor,
@@ -81,7 +81,6 @@ const styles = ScaledSheet.create({
     paddingHorizontal: 10,
   },
   ModalNotificationTitle: {
-    fontFamily: fonts.PoppinsSemiBold,
     fontSize: 13,
     color: colors.black,
   },

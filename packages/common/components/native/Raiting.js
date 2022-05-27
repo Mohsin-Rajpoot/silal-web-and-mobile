@@ -34,7 +34,7 @@ class Raiting extends React.Component {
         <StarRating
           disabled={false}
           maxStars={5}
-          starSize={!IsTablet ? 20 : 30}
+          starSize={!IsTablet ? 16 : 30}
           halfStarColor={"#FFC400"}
           emptyStarColor={"#CCD4D6"}
           rating={this.state.starCount}

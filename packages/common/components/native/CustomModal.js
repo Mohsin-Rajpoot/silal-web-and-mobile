@@ -13,6 +13,7 @@ const CustomModal = (props) => {
       {props.isModalVisible && (
         <Modal
           transparent={true}
+          
           onBackdropPress={() => props.setModalVisible(false)}
           isVisible={props.isModalVisible}
           style={[styles.modalWrapper, props.modalWrapperStyle]}

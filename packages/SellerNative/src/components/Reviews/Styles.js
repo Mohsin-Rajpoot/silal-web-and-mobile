@@ -1,4 +1,4 @@
-import {ScaledSheet} from 'react-native-size-matters';
+import {ScaledSheet, verticalScale} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import {
   widthPercentageToDP as wp,
@@ -41,7 +41,7 @@ const styles = ScaledSheet.create({
     color: colors.black,
     fontFamily: fonts.LatoBold,
     fontSize: '10@vs',
-    lineHeight:22
+    lineHeight: 20,
   },
   DividerRow: {
     flexDirection: 'row',
@@ -88,39 +88,74 @@ const styles = ScaledSheet.create({
   },
   FlatListParagraphTitle: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '95%',
+    width: '100%',
     alignItems: 'center',
-
   },
   FlatListParagraphTitleMobile: {
     flexDirection: 'column',
-    
+    width: '95%',
   },
   TextParagraphFlat: {
     marginHorizontal: 30,
     marginLeft: 150,
     marginVertical: 1,
   },
+  TextParagraphFlatMobile: {
+    marginHorizontal: '10@s',
+    marginVertical: 1,
+    flexDirection: 'column-reverse',
+  },
   FirstParagraphContent: {
-    color: '#002733',
-    fontSize: 13,
-    fontFamily: 'Lato-Regular',
-    paddingVertical: 10,
+    color: colors.black,
+    fontSize: '10@vs',
+    fontFamily: fonts.LatoRegular,
+    lineHeight: 24,
   },
   ParagraphSecond: {
-    fontSize: 13,
+    fontSize: '9@vs',
     paddingVertical: 5,
-    backgroundColor: '#F2F2F2',
-    borderRadius: 5,
-    padding: 4,
+    backgroundColor: colors.dullWhite,
+    borderRadius: '4@s',
+    padding: '5@s',
     marginTop: 5,
+    lineHeight: 26,
+    fontFamily: fonts.LatoRegular,
+  },
+  ParagraphSecondMobile: {
+    fontSize: '10@vs',
+    backgroundColor: colors.dullWhite,
+    borderRadius: '4@s',
+    marginTop: '7@s',
     paddingVertical: 10,
+    color: colors.light_grey,
+    paddingHorizontal: '5@s',
+    lineHeight: 20,
+    fontFamily: fonts.LatoRegular,
+  },
+  ParagraphSecondMobile1: {
+    fontSize: '10@vs',
+    backgroundColor: colors.dullWhite,
+    borderRadius: '4@s',
+    paddingVertical: 10,
+    color: colors.light_grey,
+    paddingHorizontal: '5@s',
+    lineHeight: 18,
+    fontFamily: fonts.LatoRegular,
   },
   ContactButton: {
-    color: '#4C6870',
-    fontFamily: 'Poppins-SemiBold',
-    fontSize: 13,
+    color: colors.textPrimeColor,
+    fontFamily: fonts.PoppinsSemiBold,
+    fontSize: '10@vs',
+  },
+  ContactButtonMobile: {
+    color: colors.primary,
+    fontFamily: fonts.PoppinsSemiBold,
+    fontSize: '10@vs',
+  },
+  CancelButtonMobile: {
+    color: colors.textPrimeColor,
+    fontFamily: fonts.PoppinsSemiBold,
+    fontSize: '10@vs',
   },
   BorderLine: {
     borderBottomWidth: 1,
@@ -195,7 +230,65 @@ const styles = ScaledSheet.create({
     fontSize: '8@vs',
     fontFamily: fonts.LatoRegular,
     color: colors.textPrimeColor,
-    backgroundColor:"red"
+  },
+  submitBtnMobile: {
+    width: '100%',
+    borderRadius: '10@s',
+  },
+  submitBtn: {
+    width: '100%',
+  },
+  contactBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.primaryGreen,
+    width: '100%',
+    paddingVertical: '8@vs',
+    borderRadius: '10@s',
+  },
+  cancelBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.light_grey,
+    width: '100%',
+    paddingVertical: '8@vs',
+    borderRadius: '10@s',
+  },
+  contactBtnTab: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: '5@s',
+  },
+  replyTo_Review: {
+    fontSize: '13@vs',
+    fontFamily: fonts.bold,
+    color: colors.black,
+    marginTop: '5@s',
+  },
+  replyTo_Review_Detail: {
+    fontSize: '10@vs',
+    fontFamily: fonts.LatoRegular,
+    color: colors.textPrimeColor,
+    marginBottom: '10@vs',
+  },
+  suggestion: {
+    fontSize: '11@vs',
+    fontFamily: fonts.LatoRegular,
+    color: colors.textPrimeColor,
+    marginLeft: '10@s',
+    marginTop: '5@s',
+  },
+  tagContainer: {
+    backgroundColor: colors.primaryGreen,
+    paddingVertical: '5@s',
+    borderRadius: '5@s',
+    paddingHorizontal: '2@s',
+    margin: '3@s',
+  },
+  tagTitle: {
+    fontSize: '10@vs',
+    fontFamily: fonts.LatoBold,
+    color: colors.primary,
   },
 });
 export default styles;

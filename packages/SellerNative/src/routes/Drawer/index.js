@@ -1,9 +1,10 @@
 import {View, TouchableOpacity, useWindowDimensions} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   DrawerContentScrollView,
   DrawerItemList,
   DrawerItem,
+  useDrawerStatus,
 } from '@react-navigation/drawer';
 import {Icon, ListItem} from 'react-native-elements';
 import {
@@ -17,14 +18,29 @@ import fonts from 'fonts';
 import ProfileBox from './Molecules/ProfileBox';
 import Offers from '../../screens/offers/Offers';
 import {useTranslation} from 'react-i18next';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const Drawer = props => {
   const {t} = useTranslation();
   const width = useWindowDimensions().width * 0.3;
   const [expanded, setExpanded] = useState(false);
+  const isDrawer = useDrawerStatus() === 'open';
+  useEffect(() => {
+    if (isDrawer && !IsTablet) {
+      props.setData({
+        inputRange: [0, 1],
+        outputRange: [0.8, 1],
+      });
+    } else {
+      props.setData({
+        inputRange: [0, 1],
+        outputRange: [1, 1],
+      });
+    }
+  }, [isDrawer]);
+
   return (
     <DrawerContentScrollView
-      showsHorizontalScrollIndicator={false}
-      showsVerticalScrollIndicator={false}
+      scrollEnabled={true}
       style={styles.mainContainer}
       {...props}>
       <TouchableOpacity onPress={() => props.navigation.closeDrawer()}>

@@ -58,7 +58,7 @@ const SecondPage = () => {
         />
         <View style={{ flexDirection: "row", marginTop: 30 }}>
           <CustomText
-            label={t("business_name")}
+            label={t("Business_address")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />
@@ -73,7 +73,7 @@ const SecondPage = () => {
               setValue={setValue}
               setItems={setItems}
               placeholder={t("city")}
-              style={styles.dropDownStyle1}
+              style={styles.dropDownStyle12}
               placeholderStyle={styles.dropDownPlaceHolder}
               dropDownContainerStyle={styles.dropdownContainer}
               iconContainerStyle={{ backgroundColor: "red" }}
@@ -96,6 +96,7 @@ const SecondPage = () => {
               inputStyle={styles.addressInput}
             />
           </View>
+          {!IsTablet ? <View style={{ width: 10 }} /> : <View />}
           <View>
             <View
               style={
@@ -120,7 +121,7 @@ const SecondPage = () => {
                 setValue={setValue}
                 setItems={setItems}
                 placeholder={t("city")}
-                style={styles.dropDownStyle1}
+                style={styles.dropDownStyle12}
                 placeholderStyle={styles.dropDownPlaceHolder}
                 dropDownContainerStyle={styles.dropdownContainer}
                 iconContainerStyle={{ backgroundColor: "red" }}

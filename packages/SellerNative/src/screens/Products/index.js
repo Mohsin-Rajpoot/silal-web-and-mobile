@@ -127,24 +127,7 @@ const Products = ({navigation}) => {
       Title: t('customization_temp'),
     },
   ];
-  const data4 = [
-    {
-      id: '1',
-      Quantity: '5 items',
-      Title: t('Drafts'),
-    },
 
-    {
-      id: '2',
-      Quantity: '5 items',
-      Title: t('listing_template'),
-    },
-    {
-      id: '3',
-      Quantity: '5 items',
-      Title: t('customization_temp'),
-    },
-  ];
 
   return (
     <SafeAreaView style={{backgroundColor: '#E5E5E5'}}>

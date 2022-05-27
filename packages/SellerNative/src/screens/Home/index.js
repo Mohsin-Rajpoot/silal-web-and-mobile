@@ -1,5 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { View, SafeAreaView, TouchableOpacity, LogBox, Dimensions, ScrollView, FlatList, StyleSheet, Text, Image, } from 'react-native';
+import React, {useState, useEffect, useRef} from 'react';
+import {
+  View,
+  SafeAreaView,
+  TouchableOpacity,
+  LogBox,
+  Dimensions,
+  ScrollView,
+  FlatList,
+  StyleSheet,
+  Text,
+  Image,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   CustomButton,
@@ -8,43 +19,44 @@ import {
 import OutOfStack from '../../components/OutOfStack';
 import StatisticsView from '../../components/Statistics';
 import ReviewView from '../../components/Reviews';
-import { useDimensions } from '@react-native-community/hooks'
-import { Icon, Badge } from 'react-native-elements';
-import Modal from "react-native-modal";
-import AntDesign from 'react-native-vector-icons/AntDesign'
+import {useDimensions} from '@react-native-community/hooks';
+import {Icon, Badge} from 'react-native-elements';
+import Modal from 'react-native-modal';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import styles from './styles';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import {useTranslation} from 'react-i18next';
 import {moderateScale, verticalScale} from 'react-native-size-matters';
 const Home = ({navigation}) => {
+  var {width} = Dimensions.get('screen');
   const {t} = useTranslation();
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
-  }, [])
+  }, []);
   const [Statistic, setStatistic] = useState(true);
   const [Reviews, setReviews] = useState(false);
   const [Outofstock, setOutofstack] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  var { width } = Dimensions.get("window");
-  const scrollref = useRef()
+  const [screenWidth, setScreenWidth] = useState(width);
+ 
+  const scrollref = useRef();
 
   const onCurrentOrder = index => {
-    scrollref.current.scrollTo({ x: width * index })
+    scrollref.current.scrollTo({x: width * index});
     console.log(index);
     if (index == 0) {
       setStatistic(true);
       setReviews(false);
-      setOutofstack(false)
+      setOutofstack(false);
     } else if (index == 1) {
       setStatistic(false);
       setReviews(true);
-      setOutofstack(false)
+      setOutofstack(false);
     } else if (index == 2) {
       setStatistic(false);
       setReviews(false);
-      setOutofstack(true)
+      setOutofstack(true);
     }
-
   };
 
   const data2 = [
@@ -65,11 +77,13 @@ const Home = ({navigation}) => {
     },
   ];
 
-
-
   return (
     <SafeAreaView style={styles.container}>
-      <LockOnLandscape onPress={() => console.log("Harris")} />
+      <LockOnLandscape
+        onPress={() => console.log('Harris')}
+        width={screenWidth}
+        setWidth={setScreenWidth}
+      />
       <View style={styles.HeaderContainer}>
         <View style={{margin: verticalScale(10)}}>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
@@ -77,7 +91,6 @@ const Home = ({navigation}) => {
               name="menu"
               size={moderateScale(!IsTablet ? 26 : 22)}
               style={styles.BambergIcon}
-              
             />
           </TouchableOpacity>
         </View>
@@ -151,7 +164,13 @@ const Home = ({navigation}) => {
               />
             </View>
             <TouchableOpacity
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={() =>
+                setModalVisible(
+                  !IsTablet
+                    ? navigation.navigate('Notification')
+                    : !modalVisible,
+                )
+              }
               style={[
                 styles.ModalMainButton,
                 {
@@ -183,71 +202,100 @@ const Home = ({navigation}) => {
           setModalVisible(!modalVisible);
         }}>
         <View style={styles.ModalHeightwidth}>
-          <ScrollView style={{ height: 610 }}>
-            <View style={{ flexDirection: 'row', }}>
+          <ScrollView style={{height: 610}}>
+            <View style={{flexDirection: 'row'}}>
               <Text style={styles.NotificationTitle}>Your notifications</Text>
               <Text style={styles.NewNotification}>3 New</Text>
-
             </View>
 
             <FlatList
               data={data2}
               numColumns={1}
-              style={{ marginBottom: 5, }}
-              renderItem={({ item }) => (
+              style={{marginBottom: 5}}
+              renderItem={({item}) => (
                 <View>
-                  <View style={{ flexDirection: 'row', marginVertical: 15 }}>
+                  <View style={{flexDirection: 'row', marginVertical: 15}}>
                     <View style={styles.ImageVIew}>
-                      <Image source={require('../../Assets/Icon.png')} style={styles.ImageModal} />
+                      <Image
+                        source={require('../../Assets/Icon.png')}
+                        style={styles.ImageModal}
+                      />
                     </View>
-                    
 
                     <View style={styles.ModelDesign}>
-                      <Text style={styles.ModalNotificationTitle}>Silal Management</Text>
+                      <Text style={styles.ModalNotificationTitle}>
+                        Silal Management
+                      </Text>
                       <Text style={styles.NotificationDescription}>
                         Your campaign is coming to an end, look at the
-                        statistics and analyze the effectiveness of advertising.</Text>
-                      <View style={{ flexDirection: 'row' }}>
-                        <MaterialCommunityIcons name="clock-time-five-outline"
-                          style={styles.ClockIconNotification} />
+                        statistics and analyze the effectiveness of advertising.
+                      </Text>
+                      <View style={{flexDirection: 'row'}}>
+                        <MaterialCommunityIcons
+                          name="clock-time-five-outline"
+                          style={styles.ClockIconNotification}
+                        />
 
                         <Text style={styles.TimeBar}>13 min</Text>
                       </View>
                     </View>
                     <TouchableOpacity>
-                      <AntDesign name="close" style={{ fontSize: 19, color: '#CCD4D6' }} />
+                      <AntDesign
+                        name="close"
+                        style={{fontSize: 19, color: '#CCD4D6'}}
+                      />
                     </TouchableOpacity>
                   </View>
-                  <View style={{ borderBottomWidth: 1, borderColor: '#CCD4D6' }} />
+                  <View
+                    style={{borderBottomWidth: 1, borderColor: '#CCD4D6'}}
+                  />
                 </View>
               )}
               keyExtractor={item => item.id}
             />
-            <Text style={{ color: '#CCD4D6', fontSize: 17, fontFamily: 'Poppins-SemiBold' }}>Previous Notification</Text>
+            <Text
+              style={{
+                color: '#CCD4D6',
+                fontSize: 17,
+                fontFamily: 'Poppins-SemiBold',
+              }}>
+              Previous Notification
+            </Text>
             <FlatList
               data={data2}
               numColumns={1}
-              style={{ marginBottom: 5, }}
-              renderItem={({ item }) => (
+              style={{marginBottom: 5}}
+              renderItem={({item}) => (
                 <View>
-                  <View style={{ flexDirection: 'row', marginVertical: 15 }}>
+                  <View style={{flexDirection: 'row', marginVertical: 15}}>
                     <View style={styles.ImageVIew}>
-                      <Image source={require('../../Assets/Icon.png')} style={styles.ImageModal} />
+                      <Image
+                        source={require('../../Assets/Icon.png')}
+                        style={styles.ImageModal}
+                      />
                     </View>
                     <View style={styles.ModelDesign}>
-                      <Text style={styles.ModalNotificationTitle}>Silal Management</Text>
+                      <Text style={styles.ModalNotificationTitle}>
+                        Silal Management
+                      </Text>
                       <Text style={styles.NotificationDescription}>
                         Your campaign is coming to an end, look at the
-                        statistics and analyze the effectiveness of advertising.</Text>
-                      <View style={{ flexDirection: 'row' }}>
-                        <MaterialCommunityIcons name="clock-time-five-outline"
-                          style={styles.ClockIconNotification} />
+                        statistics and analyze the effectiveness of advertising.
+                      </Text>
+                      <View style={{flexDirection: 'row'}}>
+                        <MaterialCommunityIcons
+                          name="clock-time-five-outline"
+                          style={styles.ClockIconNotification}
+                        />
 
                         <Text style={styles.TimeBar}>Yesterday</Text>
                       </View>
                     </View>
                     <TouchableOpacity>
-                      <AntDesign name="close" style={styles.CrossIconNotification} />
+                      <AntDesign
+                        name="close"
+                        style={styles.CrossIconNotification}
+                      />
                     </TouchableOpacity>
                   </View>
                   <View style={styles.BorderNotification} />
@@ -262,23 +310,21 @@ const Home = ({navigation}) => {
       <ScrollView
         showsHorizontalScrollIndicator={false}
         ref={scrollref}
+        contentContainerStyle={{width:"100%"}}
         horizontal
         scrollEnabled={false}>
-        <View style={{ width: width, height: '100%' }}>
+        <View style={{height: '100%', width: "100%"}}>
           <StatisticsView />
         </View>
-        <View style={{ width: width, height: '100%' }}>
+        <View style={{height: '100%', width:"100%"}}>
           <ReviewView />
         </View>
-        <View style={{ width: width, height: '100%' }}>
+        <View style={{height: '100%', width: "100%"}}>
           <OutOfStack />
         </View>
-
       </ScrollView>
-
-
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

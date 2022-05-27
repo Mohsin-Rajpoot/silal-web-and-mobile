@@ -1,4 +1,10 @@
-import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import React, { useRef } from "react";
 import HeaderHeading from "../../components/headerHeading";
 import HeaderBack from "../../components/native/HeaderBack";
@@ -9,6 +15,7 @@ import CustomText from "../../components/CustomText";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./style";
 import Toast from "react-native-easy-toast";
+import IsTablet from "../../components/native/IsTablet";
 const GettingStarted = ({ navigation, route }) => {
   const { t } = useTranslation();
   const toastRef = useRef();
@@ -43,7 +50,7 @@ const GettingStarted = ({ navigation, route }) => {
     );
   };
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }}>
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
@@ -98,6 +105,7 @@ const GettingStarted = ({ navigation, route }) => {
                 ? showToast() & goToMainStack()
                 : goToSignUpForm();
             }}
+            buttonStyling={!IsTablet ? styles.formButtonMobile : null}
           />
         </View>
         <Toast
@@ -110,7 +118,7 @@ const GettingStarted = ({ navigation, route }) => {
           textStyle={{ color: "red" }}
         />
       </ScrollView>
-    </>
+    </SafeAreaView>
   );
 };
 
