@@ -18,7 +18,7 @@ export default function CustomButton({
         onPress={onPress}
         activeOpacity={0.6}
         style={[
-          styles.mainbutton,
+          !IsTablet ? styles.mainbuttonMobile : styles.mainbutton,
           styles[`mainbutton_${type}`],
           containerStyle,
         ]}
@@ -46,6 +46,15 @@ const styles = ScaledSheet.create({
     marginVertical: 5,
     alignSelf: "center",
     borderRadius: 5,
+  },
+  mainbuttonMobile: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: '10@vs',
+    paddingVertical: '4@vs',
+    marginVertical: 5,
+    alignSelf: "center",
+    borderRadius: '10@s',
   },
   mainbutton_PRIMARY: {
     backgroundColor: colors.primary,

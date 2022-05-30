@@ -4,15 +4,18 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import CustomText from '@SilalApp/common/components/CustomText';
 import {ScaledSheet} from 'react-native-size-matters';
 import fonts from 'fonts';
+import {Icon} from 'react-native-elements';
+import colors from '@SilalApp/common/assets/colors';
 const Header = ({label, onPress}) => {
   return (
     <View style={styles.mainContainer}>
       <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
-        <MaterialCommunityIcons
+        {/* <MaterialCommunityIcons
           name="reorder-horizontal"
           size={28}
           color="#000000"
-        />
+        /> */}
+        <Icon name="menu" type="entypo" size={22} color={colors.black} />
       </TouchableOpacity>
       <CustomText
         fontFamily={fonts.bold}

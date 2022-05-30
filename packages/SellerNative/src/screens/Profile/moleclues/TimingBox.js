@@ -94,7 +94,7 @@ const styles = ScaledSheet.create({
   },
   resturantName: {
     fontFamily: fonts.bold,
-    fontSize: '21@ms',
+    fontSize: '15@vs',
     color: colors.black,
   },
   slogan: {

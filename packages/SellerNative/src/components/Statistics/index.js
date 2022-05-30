@@ -123,7 +123,7 @@ const Statistics = ({}) => {
     },
   ];
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={{width:"100%", flexGrow:1}}>
       <View style={{zIndex: 1}}>
         <TitleHeading Date="Date" />
       </View>
