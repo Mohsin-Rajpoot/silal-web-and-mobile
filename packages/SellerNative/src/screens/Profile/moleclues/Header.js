@@ -38,6 +38,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingTop: '12@vs',
+    marginHorizontal:'10@s'
   },
   profileText: {
     fontSize: '19@ms',

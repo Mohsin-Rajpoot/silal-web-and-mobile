@@ -50,7 +50,7 @@ const Profile = () => {
           <ImageBackground
             resizeMode="cover"
             source={require('../../../Assets/image8.png')}
-            style={styles.imgContainer}
+            style={!IsTablet ? styles.imgContainerMobile : styles.imgContainer}
           />
 
           <View style={{top: !IsTablet ? -35 : -90}}>
@@ -76,11 +76,12 @@ const Profile = () => {
                   )}
                 </ImageBackground>
               </View>
-              {!IsTablet ? (
+              {!IsTablet && !isEdit ? (
                 <CustomButton
                   textStyle={styles.buttonTextStyleMobile}
                   containerStyle={styles.buttonContainerStyleMobile}
                   text={t('EditProfile')}
+                  onPress={() => setIsEdit(!isEdit)}
                 />
               ) : (
                 <View />
@@ -91,7 +92,7 @@ const Profile = () => {
         </View>
 
         <View style={styles.updateButtonContainer}>
-          {!isEdit ? (
+          {!isEdit && IsTablet ? (
             <>
               <CustomButton
                 onPress={() => setIsEdit(!isEdit)}
@@ -220,8 +221,12 @@ const Profile = () => {
                 containerStyle={styles.cancelButton}
               />
               <CustomButton
-                textStyle={styles.editBtn}
-                containerStyle={styles.editButtonContainer}
+                textStyle={!IsTablet ? styles.editBtnMobile : styles.editBtn}
+                containerStyle={
+                  !IsTablet
+                    ? styles.editButtonContainerMobile
+                    : styles.editButtonContainer
+                }
                 text={t('SaveChanges')}
               />
             </View>
@@ -373,6 +378,12 @@ const styles = ScaledSheet.create({
     borderRadius: '4@s',
     marginLeft: '7@s',
   },
+  editButtonContainerMobile: {
+    backgroundColor: colors.primary,
+    borderRadius: '4@s',
+    marginLeft: '7@s',
+  
+  },
   buttonContainerStyle1: {
     backgroundColor: colors.primaryBlur,
     width: '85%',
@@ -390,7 +401,6 @@ const styles = ScaledSheet.create({
     width: '100%',
     backgroundColor: '#fff',
     marginTop: '10@s',
-    marginRight: '10@s',
   },
   imageborderRadius: {
     width: '80@s',
@@ -447,11 +457,19 @@ const styles = ScaledSheet.create({
     marginTop: '10@s',
   },
   imgContainer: {
-    width: '110%',
+    width: '100%',
     height: '150@vs',
     borderRadius: '4@s',
     overflow: 'hidden',
     justifyContent: 'space-between',
+    alignSelf: 'center',
+  },
+  imgContainerMobile: {
+    width: '100%',
+    height: '150@vs',
+    overflow: 'hidden',
+    justifyContent: 'space-between',
+    alignSelf: 'center',
   },
   addressBox: {
     alignSelf: 'flex-end',
@@ -474,10 +492,16 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.textWhite,
   },
+  editBtnMobile: {
+    paddingVertical: '5@s',
+    fontSize: '11@ms',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.textWhite,
+  },
   editCancel: {
     paddingHorizontal: '15@s',
     paddingVertical: '4@s',
-    color: colors.textPrimaryBlur,
+    color: colors.textPrimary,
     fontSize: '12@ms',
     fontFamily: fonts.PoppinsSemiBold,
   },

@@ -31,11 +31,14 @@ const DropDown = (props) => {
       ]}
       dropDownContainerStyle={{
         borderColor: colors.borderColor,
+   
       }}
       style={{
         borderColor: colors.borderColor,
         borderRadius: 8,
-        height:62
+        height:props.height|| 62,
+        backgroundColor:props.backgroundColor,
+        borderWidth:props.borderWidth
       }}
       // onChangeValue={()=> se}
     />

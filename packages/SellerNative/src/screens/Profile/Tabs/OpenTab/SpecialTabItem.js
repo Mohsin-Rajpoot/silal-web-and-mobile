@@ -1,7 +1,12 @@
 import {Pressable, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import CustomText from '@SilalApp/common/components/CustomText';
-import {ScaledSheet, moderateScale, scale} from 'react-native-size-matters';
+import {
+  ScaledSheet,
+  moderateScale,
+  scale,
+  verticalScale,
+} from 'react-native-size-matters';
 import fonts from '@SilalApp/common/assets/fonts';
 import {Icon, Switch} from 'react-native-elements';
 import colors from '@SilalApp/common/assets/colors';
@@ -9,9 +14,13 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {CustomButton} from '@SilalApp/common/components/native';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import ToggleSwitch from 'toggle-switch-react-native';
+
 const SpecialTabItem = ({item}) => {
   const [checked, setChecked] = useState(false);
   const [startTime, setStartTime] = useState(new Date());
+  const [active, setActive] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [show, setShow] = useState(false);
   const onStartChange = (event, selectedDate, setTime, time) => {
@@ -43,21 +52,34 @@ const SpecialTabItem = ({item}) => {
           }
         />
       )}
-      <View style={styles.container}>
-        <Switch
-          color={colors.light_green}
-          value={checked}
-          onValueChange={value => setChecked(value)}
+      <View style={[styles.container, {marginTop: verticalScale(-20)}]}>
+        <ToggleSwitch
+          isOn={checked}
+          onColor={colors.light_green}
+          offColor={colors.light_grey}
+          labelStyle={{color: 'black', fontWeight: '900'}}
+          size={'large'}
+          onToggle={() => {
+            setChecked(!checked);
+            // setState(true);
+          }}
         />
         <CustomText
-          fontSize={12}
+          fontSize={verticalScale(10)}
           marginLeft={5}
           fontFamily={fonts.LatoRegular}
           label={checked ? 'Open' : 'Closed'}
+          marginRight={5}
+          color={colors.textPrimeColor}
         />
       </View>
       {checked ? (
-        <>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
           <Pressable
             style={styles.dropDownContainer}
             onPress={() => setShow(true)}>
@@ -82,8 +104,11 @@ const SpecialTabItem = ({item}) => {
           )}
           <CustomText
             fontSize={12}
-            marginLeft={5}
+            marginLeft={scale(5)}
+            marginRight={scale(5)}
             fontFamily={fonts.LatoRegular}
+            marginBottom={verticalScale(10)}
+            color={colors.textPrimeColor}
             label={'TO'}
           />
           <View />
@@ -109,15 +134,7 @@ const SpecialTabItem = ({item}) => {
               }
             />
           )}
-          <TouchableOpacity
-            style={[
-              styles.dropDownContainer,
-              {
-                width: null,
-                paddingHorizontal: moderateScale(5),
-                backgroundColor: colors.red50,
-              },
-            ]}>
+          <TouchableOpacity style={styles.deledContainer}>
             <Icon
               color={colors.lightRed}
               type="antdesign"
@@ -125,16 +142,9 @@ const SpecialTabItem = ({item}) => {
               size={moderateScale(14)}
             />
           </TouchableOpacity>
-        </>
+        </View>
       ) : (
         <>
-          <View />
-          <View />
-          <View />
-          <View />
-          <View />
-          <View />
-          <View />
           <View />
         </>
       )}
@@ -149,6 +159,20 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  container1Mobile: {
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
+  },
+  containerMobile: {
+    flexDirection: 'column',
+    width: '95%',
+    backgroundColor: colors.textWhite,
+    elevation: 1,
+    alignSelf: 'center',
+    padding: '15@s',
+    paddingBottom: '5@vs',
+    borderRadius: '10@s',
+  },
   dropDownContainer: {
     paddingVertical: '5@vs',
     paddingHorizontal: '10@s',
@@ -160,5 +184,45 @@ const styles = ScaledSheet.create({
     borderWidth: 2,
     borderColor: '#ebebeb',
     justifyContent: 'space-between',
+  },
+
+  dropDownContainer: {
+    paddingVertical: '5@vs',
+    paddingHorizontal: '10@s',
+    width: '80@s',
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: colors.dropDownBackground,
+    borderRadius: '4@ms',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '30@vs',
+    marginBottom: '10@vs',
+    marginTop: '-10@vs',
+  },
+  dropDownContainerMobile: {
+    paddingVertical: '5@vs',
+    paddingHorizontal: '10@s',
+    width: '40%',
+    height: '30@vs',
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: colors.dropDownBackground,
+    borderRadius: '4@ms',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: '5@vs',
+    marginBottom: '10@vs',
+  },
+  deledContainer: {
+    width: '35@msr',
+    height: '35@msr',
+    paddingHorizontal: scale(5),
+    backgroundColor: colors.red50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '-20@vs',
+    marginLeft: '10@s',
+    borderRadius: '5@msr',
   },
 });

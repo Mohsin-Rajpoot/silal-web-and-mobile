@@ -12,6 +12,7 @@ import React, {useState} from 'react';
 import Tabs from '../Profile/moleclues/Tabs';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import styles from './style';
+import ToggleSwitch from 'toggle-switch-react-native';
 import TextInput from '@SilalApp/common/components/native/TextInput';
 import {CustomButton} from '@SilalApp/common/components/native';
 import OfferComponent from '../../components/OfferComponent';

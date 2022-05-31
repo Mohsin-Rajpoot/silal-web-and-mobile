@@ -63,7 +63,8 @@ const colors = {
   dullWhiteColor:"'#F2F2F2",
   purpleLight:"#E7E4F7",
   blueDark:"#0065FF",
-  lightBlue:"#CCE0FF"
+  lightBlue:"#CCE0FF",
+  text1: "rgba(76, 104, 112, 0.3)"
   
 };
 export default colors;
