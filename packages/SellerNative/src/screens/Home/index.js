@@ -202,10 +202,40 @@ const Home = ({navigation}) => {
             />
           </TouchableOpacity>
         </View>
-        <Tab tabs={tabs} page={page} onChangeTab={onChangeTab} />
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}>
+          <Tab tabs={tabs} page={page} onChangeTab={onChangeTab} />
+          <TouchableOpacity
+            onPress={() =>
+              setModalVisible(
+                !IsTablet ? navigation.navigate('Notification') : !modalVisible,
+              )
+            }
+            style={[
+              styles.ModalMainButton,
+              {
+                backgroundColor: modalVisible == true ? '#4C6870' : null,
+                borderRadius: modalVisible == true ? 25 : null,
+              },
+            ]}>
+            <MaterialCommunityIcons
+              size={moderateScale(!IsTablet ? 24 : 26)}
+              color={modalVisible == true ? '#fff' : '#002733'}
+              name={'bell-outline'}
+            />
+            <Badge
+              // value={'9'}
+              containerStyle={styles.BadgeContainer}
+              badgeStyle={styles.badgeStyle}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
 
-      {/* <Modal
+      <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
@@ -317,7 +347,7 @@ const Home = ({navigation}) => {
             />
           </ScrollView>
         </View>
-      </Modal> */}
+      </Modal>
 
       <PagerView
         style={{flex: 1}}

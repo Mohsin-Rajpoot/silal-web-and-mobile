@@ -316,7 +316,7 @@ export default function Archive_orders({title, navigation}) {
           data={dataItem}
           keyExtractor={(item, index) => item + index.toString()}
           renderItem={({item}) => (
-            <ItemDetails checkedState={checked}  />
+            <ItemDetails checkedState={checked} />
           )}
         />
         <View style={{height: 200}} />

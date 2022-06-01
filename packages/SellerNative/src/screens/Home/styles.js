@@ -16,7 +16,6 @@ const styles = ScaledSheet.create({
     flex:1, 
     height:"100%"
   },
-
   ModalMainButton: {
     height: 50,
     width: 50,

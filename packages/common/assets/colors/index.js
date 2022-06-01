@@ -56,7 +56,7 @@ const colors = {
   text:"rgba(76, 104, 112, 0.7)",
   peackHourColor:"#ebcdcc",
   redColor:"#E20909",
-  primaryBlurColor:"rgba(205, 239, 219, 1)",
+  primaryBlurColor:"rgba(227, 252, 239, 1)",
   parrotColor:"#36B37E",
   yellow:"#FFC400",
   grayColor:"#809399",

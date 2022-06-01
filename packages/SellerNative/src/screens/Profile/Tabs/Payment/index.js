@@ -1,12 +1,25 @@
 import React, {useState, useRef} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  FlatList,
+  ScrollView,
+} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import TextInput from '@SilalApp/common/components/native/TextInput';
 import colors from '@SilalApp/common/assets/colors';
 import fonts from '@SilalApp/common/assets/fonts';
 import {useTranslation} from 'react-i18next';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
-import {ScaledSheet} from 'react-native-size-matters';
+import {
+  ScaledSheet,
+  scale,
+  moderateScale,
+  verticalScale,
+} from 'react-native-size-matters';
+import ItemDetails from '../../../../components/ItemDetails';
 export default function Archive_orders({title, navigation}) {
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
@@ -61,7 +74,7 @@ export default function Archive_orders({title, navigation}) {
       year: '22/03/2022',
     },
   ];
-
+  const itemDetailsArray = [0, 1, 2, 3, 4];
   const render_all_oredrs = () => {
     return (
       <TouchableOpacity
@@ -130,7 +143,23 @@ export default function Archive_orders({title, navigation}) {
     );
   };
 
-  return (
+  return !IsTablet ? (
+    <ScrollView style={{padding: moderateScale(15)}}>
+      {itemDetailsArray.map((item, index) => {
+        return (
+          <ItemDetails
+            marginBottom={verticalScale(20)}
+            key={item}
+            imgContainer
+            checkBoxLabelFirst={t('order_id')}
+            checkBoxLabelSecond=" #723DN2"
+            payment
+            navigation={navigation}
+          />
+        );
+      })}
+    </ScrollView>
+  ) : (
     <View style={{height: '83%', padding: 10}}>
       <View
         style={{
@@ -179,7 +208,6 @@ const styles = ScaledSheet.create({
   inputMobile: {
     width: '85%',
     backgroundColor: colors.textWhite,
-
   },
   title: {
     fontSize: 18,
@@ -233,7 +261,7 @@ const styles = ScaledSheet.create({
   },
   calndr_date: {
     backgroundColor: 'white',
-  
+
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',

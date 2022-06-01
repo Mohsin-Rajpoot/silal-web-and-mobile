@@ -6,7 +6,11 @@ import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const Tab = ({onChangeTab, page, tabs, containerStyle}) => {
   const {t} = useTranslation();
   return (
-    <View style={[{flexDirection: 'row', marginTop: 5}, containerStyle]}>
+    <View
+      style={[
+        {flexDirection: 'row', marginTop: 5, width: !IsTablet ? '80%' : '90%'},
+        containerStyle,
+      ]}>
       <ScrollView horizontal>
         {tabs?.map((item, index) => (
           <CustomButton

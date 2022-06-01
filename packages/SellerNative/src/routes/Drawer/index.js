@@ -153,7 +153,7 @@ export default Drawer;
 const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: colors.sidebar,
+    backgroundColor: colors.textPrimeColor,
     // width:'100%',
     borderTopRightRadius: '15@vs',
     borderBottomRightRadius: '15@vs',
@@ -162,6 +162,7 @@ const styles = ScaledSheet.create({
     paddingVertical: '23@vs',
     paddingLeft: '10@s',
     paddingRight: '13@s',
+    opacity:1
   },
   cross: {
     alignSelf: 'flex-end',

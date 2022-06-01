@@ -50,11 +50,11 @@ const styles = ScaledSheet.create({
   mainbuttonMobile: {
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: '10@vs',
+    paddingHorizontal: '7@vs',
     paddingVertical: '4@vs',
     marginVertical: 5,
     alignSelf: "center",
-    borderRadius: '10@s',
+    borderRadius: '8@s',
   },
   mainbutton_PRIMARY: {
     backgroundColor: colors.primary,
@@ -63,7 +63,7 @@ const styles = ScaledSheet.create({
   mainbutton_TERTIARY: {},
   buttonTextMobile: {
     color: colors.textWhite,
-    fontSize: "12@vs",
+    fontSize: "10@vs",
     letterSpacing: 1,
     fontFamily: fonts.PoppinsSemiBold,
   },

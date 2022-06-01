@@ -177,11 +177,13 @@ const SpecialTabItem = ({item}) => {
           }}>
           <View style={{width: '100%', padding: moderateScale(10)}}>
             <View style={styles.modalContainer}>
-              <CustomText label="Delete special time?" />
+              <CustomText fontFamily={fonts.PoppinsSemiBold} label="Delete special time?" />
             </View>
             <View style={styles.modalBtnContainer}>
-              <CustomButton text="Cancel" containerStyle={styles.modalBtn} />
+              
+              <CustomButton text="Cancel" onPress={()=>setModal(false)}  containerStyle={styles.modalBtn} />
               <CustomButton
+              onPress={()=>setModal(false)}
                 text="Delete"
                 containerStyle={[
                   styles.modalBtn,
