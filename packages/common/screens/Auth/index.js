@@ -141,7 +141,7 @@ const OnBoarding = ({ navigation }) => {
                       justifyContent: "center",
                       flexDirection: "row",
                     }}
-                  >
+                   >
                     <Text
                       style={{
                         fontSize: 20,
@@ -158,7 +158,7 @@ const OnBoarding = ({ navigation }) => {
                     style={{
                       width: !isTab ? "90%" : "65%",
                       alignSelf: "center",
-                      marginVertical: 5,
+                      marginBottom: 25,
                       marginBottom: 5,
                     }}
                   >

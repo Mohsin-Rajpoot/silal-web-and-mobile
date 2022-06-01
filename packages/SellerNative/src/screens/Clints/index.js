@@ -39,11 +39,6 @@ const Clints = ({navigation}) => {
 
 
 const [filter, setfilter]=useState('')
-  // ///
-  // const [text, setText] = useState(false);
-  // const onPressHandler = event => setText(!text);
-
-  // ////
 
   const changeModalVisibilty = bool => {
     setModalVisible(bool);
@@ -250,7 +245,6 @@ const [filter, setfilter]=useState('')
   ] = useState(false);
 
   const [SecondModalVisible, setSecondModalVisible] = useState(false);
-// ////
 
 const footer = () => {
   return (
@@ -265,7 +259,6 @@ const footer = () => {
 };
 
 
-// ////////
   const sheet_data = () => {
     return (
       <View style={styles.sheet}>

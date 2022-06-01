@@ -129,7 +129,6 @@ export default function Archive_orders({title, navigation}) {
     return (
       <View>
         <View
-          //    style={}
           style={[
             styles.render_all_orders,
             {backgroundColor: index == selected_index ? '#E6F4F2' : 'white'},
@@ -315,9 +314,7 @@ export default function Archive_orders({title, navigation}) {
         <FlatList
           data={dataItem}
           keyExtractor={(item, index) => item + index.toString()}
-          renderItem={({item}) => (
-            <ItemDetails checkedState={checked}  />
-          )}
+          renderItem={({item}) => <ItemDetails checkedState={checked} />}
         />
         <View style={{height: 200}} />
       </ScrollView>
