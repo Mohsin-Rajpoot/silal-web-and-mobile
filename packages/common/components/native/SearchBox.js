@@ -11,7 +11,7 @@ const SearchBox = (props ) => {
         <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <View style={[styles.container, ]}>
 
-                <View style={[IsTablet ?styles.SearchIcon:styles.SearchIconMobile]}>
+                <View style={[IsTablet ? styles.SearchIcon : styles.SearchIconMobile, props.customStyle]}>
                     <Fontisto name="search" style={{ fontSize: 19, color: '#B3BEC2', paddingHorizontal: 5 }} />
                 </View>
                 <TextInput

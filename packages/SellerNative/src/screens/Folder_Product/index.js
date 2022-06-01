@@ -9,7 +9,11 @@ import {
   Modal,
   ScrollView,
   Image,
+<<<<<<< HEAD
   Dimensions,
+=======
+  TextInputBase,
+>>>>>>> 53bcc59e5a8465ec4b12aced58d6471acf4650b8
   SafeAreaView,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -21,7 +25,10 @@ import Menu, {
   MenuOptions,
   MenuOption,
 } from 'react-native-popup-menu';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 53bcc59e5a8465ec4b12aced58d6471acf4650b8
 import {CheckBox, SearchBar} from 'react-native-elements';
 import {
   CustomButton,
@@ -36,11 +43,15 @@ import Foundation from 'react-native-vector-icons/Foundation';
 import colors from '@SilalApp/common/assets/colors';
 import styles from './styles';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
+<<<<<<< HEAD
 import RBSheet from 'react-native-raw-bottom-sheet';
 import Svg,{Rect,Path} from 'react-native-svg';
 import fonts from '@SilalApp/common/assets/fonts';
 const Secondary = '#002733';
 var windowWidth = Dimensions.get('window').width;
+=======
+const Secondary = '#002733';
+>>>>>>> 53bcc59e5a8465ec4b12aced58d6471acf4650b8
 
 export default function Archive_orders({title, navigation}) {
   const [selectedCategory, setselectedCategory] = useState();
@@ -51,8 +62,11 @@ export default function Archive_orders({title, navigation}) {
   const [Openmodal, setOpenmodal] = useState(false);
   const [Showmodal, setShowmodal] = useState(false);
 
+<<<<<<< HEAD
 
   const Sheet = useRef();
+=======
+>>>>>>> 53bcc59e5a8465ec4b12aced58d6471acf4650b8
   const [selected_Category, set_selected_Category] = useState('Salad');
   const setcheck = index => {
     const val = data[index];
@@ -65,7 +79,10 @@ export default function Archive_orders({title, navigation}) {
       }, 100);
     }, 200);
   };
+<<<<<<< HEAD
   const [check1, setCheck1] = useState(false);
+=======
+>>>>>>> 53bcc59e5a8465ec4b12aced58d6471acf4650b8
   var [data, setData] = useState([
     {
       id: '1',
@@ -206,7 +223,6 @@ const sheet_data = () => {
                 </View>
                 <View style={{marginHorizontal: 40}}>
                   <Text style={styles.ModalSubTitle}>Item</Text>
-
                   <View>
                     <Text style={styles.dropDownModalTitle}>
                       Item description
