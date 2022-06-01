@@ -4,6 +4,7 @@ import CommonStyle from "../../../styles";
 import colors from "../../../assets/colors";
 import { Icon } from "react-native-elements";
 import { verticalScale, moderateScale } from "react-native-size-matters";
+import IsTablet from "../IsTablet";
 const index = ({
   placeholderText,
   inputStyle,
@@ -31,7 +32,7 @@ const index = ({
               name="search"
               type="evilIcons"
               style={CommonStyle.searchIcon}
-              size={30}
+              size={!IsTablet ? verticalScale(22): verticalScale(22)}
               color={colors.gray_light}
             />
             

@@ -64,7 +64,8 @@ const colors = {
   purpleLight:"#E7E4F7",
   blueDark:"#0065FF",
   lightBlue:"#CCE0FF",
-  text1: "rgba(76, 104, 112, 0.3)"
+  text1: "rgba(76, 104, 112, 0.3)",
+  redLight:"rgba(222, 53, 11, 0.15)"
   
 };
 export default colors;

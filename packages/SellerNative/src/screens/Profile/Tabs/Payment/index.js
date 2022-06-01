@@ -5,10 +5,12 @@ import TextInput from '@SilalApp/common/components/native/TextInput';
 import colors from '@SilalApp/common/assets/colors';
 import fonts from '@SilalApp/common/assets/fonts';
 import {useTranslation} from 'react-i18next';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import {ScaledSheet} from 'react-native-size-matters';
 export default function Archive_orders({title, navigation}) {
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
-
+  const dataItem = [{id: 0}, {id: 1}, {id: 2}, {id: 3}];
   const data = [
     {
       id: '1',
@@ -130,13 +132,18 @@ export default function Archive_orders({title, navigation}) {
 
   return (
     <View style={{height: '83%', padding: 10}}>
-      <View style={{flexDirection: 'row'}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}>
         <TextInput
           search={true}
           placeholderText={t('Search')}
-          inputStyle={styles.input}
+          inputStyle={!IsTablet ? styles.inputMobile : styles.input}
         />
-        <View style={styles.filter_box}>
+        <View style={!IsTablet ? styles.filter_boxMobile : styles.filter_box}>
           <View style={styles.calndr_date}>
             <Text>16 NOV</Text>
           </View>
@@ -153,7 +160,7 @@ export default function Archive_orders({title, navigation}) {
     </View>
   );
 }
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   bankDetail: {
     fontSize: 14,
     fontFamily: fonts.LatoRegular,
@@ -169,6 +176,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.textWhite,
     height: 55,
   },
+  inputMobile: {
+    width: '85%',
+    backgroundColor: colors.textWhite,
+
+  },
   title: {
     fontSize: 18,
     fontWeight: '700',
@@ -176,10 +188,16 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   filter_box: {
-    flex: 1,
     justifyContent: 'flex-end',
     flexDirection: 'row',
     alignItems: 'center',
+    width: '20%',
+  },
+  filter_boxMobile: {
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '8%',
   },
   filter: {
     flexDirection: 'row',
@@ -215,8 +233,7 @@ const styles = StyleSheet.create({
   },
   calndr_date: {
     backgroundColor: 'white',
-    height: 40,
-    width: 200,
+  
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',

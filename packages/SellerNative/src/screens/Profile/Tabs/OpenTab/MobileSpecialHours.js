@@ -168,35 +168,27 @@ const SpecialTabItem = ({item}) => {
         </View>
       )}
       {modal && (
-        // <CustomModal
-        //   isModalVisible={modal}
-        //   modalWrapperStyle={{marginVertical: '85%'}}
-        //   setModalVisible={setModal}>
-        //   <View style={{width: '100%',}}>
-        //     <View style={styles.modalContainer}>
-        //       <CustomText label="Delete special time?" color="red" />
-        //     </View>
-        //     <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',width:'100%'}}>
-        //         <CustomButton text="Cancel" containerStyle={{width:'40%',height:verticalScale(40)}} />
-        //         <CustomButton text="Delete" containerStyle={{width:'40%',height:verticalScale(40)}} />
-        //     </View>
-        //   </View>
-        // </CustomModal>
         <CustomModal
           isModalVisible={modal}
           setModalVisible={setModal}
           modalWrapperStyle={{
-            marginVertical: '95%',
+            marginVertical: '92%',
             justifyContent: 'flex-start',
           }}>
-          <View style={{width: '100%'}}>
+          <View style={{width: '100%', padding: moderateScale(10)}}>
             <View style={styles.modalContainer}>
               <CustomText label="Delete special time?" />
             </View>
-            <View
-              style={styles.modalBtnContainer}>
+            <View style={styles.modalBtnContainer}>
               <CustomButton text="Cancel" containerStyle={styles.modalBtn} />
-              <CustomButton text="Delete" containerStyle={styles.modalBtn} />
+              <CustomButton
+                text="Delete"
+                containerStyle={[
+                  styles.modalBtn,
+                  {backgroundColor: colors.redLight},
+                ]}
+                textStyle={{color:colors.red}}
+              />
             </View>
           </View>
         </CustomModal>
@@ -260,21 +252,20 @@ const styles = ScaledSheet.create({
     borderBottomColor: colors.borderColor,
     borderBottomWidth: 1,
     width: '100%',
-    marginBottom: verticalScale(20),
+    marginBottom: '15@vs',
     alignSelf: 'center',
-    paddingVertical:'10@vs',
-    alignItems:'center'
+    paddingBottom: '15@vs',
+    alignItems: 'center',
   },
-  modalBtnContainer:{
+  modalBtnContainer: {
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom:'10@vs'
   },
   modalBtn: {
     width: '100%',
-    height: verticalScale(40),
-    paddingHorizontal: scale(43),
+    height: '40@vs',
+    paddingHorizontal: '39@s',
   },
 });
