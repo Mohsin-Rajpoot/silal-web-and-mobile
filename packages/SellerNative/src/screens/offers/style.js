@@ -252,5 +252,59 @@ const styles = ScaledSheet.create({
   buttonText1: {
     width: '100%',
   },
+  loadMoreButton: {
+    backgroundColor: colors.blurPrimary,
+    width: '90%',
+    marginBottom: '10@s',
+    paddingVertical: '10@s',
+  },
+  loadmoreText: {
+    fontSize: '14@vs',
+    color: colors.primary,
+    fontFamily: fonts.bold,
+  },
+  menuModalContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+  },
+  divider: {
+    height: '1@s',
+    width: '100%',
+    backgroundColor: colors.dullWhite,
+    marginVertical: '15@s',
+  },
+  menuTextTitle: {
+    fontSize: '14@vs',
+    fontFamily: fonts.LatoMedium,
+    color: colors.black,
+    marginLeft: '10@s',
+  },
+  deleteofferText: {
+    fontSize: '13@vs',
+    fontFamily: fonts.bold,
+    color: colors.black,
+    marginBottom: '5@s',
+  },
+  deleteOfferDetail: {
+    fontSize: '11@vs',
+    fontFamily: fonts.LatoRegular,
+    color: colors.textPrimary,
+  },
+  cancelButton:{
+    width:"46%",
+    height:"35@vs"
+  },
+  cancelButton1:{
+    width:"46%",
+    height:"35@vs",
+    backgroundColor:colors.redLight,
+
+  },
+  deleteText:{
+    fontSize:"12@vs",
+    fontFamily:fonts.bold,
+    color:colors.red
+  }
 });
 export default styles;

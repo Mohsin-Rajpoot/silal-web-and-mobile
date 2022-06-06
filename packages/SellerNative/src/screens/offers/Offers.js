@@ -37,6 +37,7 @@ import {useToast} from 'react-native-toast-notifications';
 import {useTranslation} from 'react-i18next';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import TabButton from '@SilalApp/common/components/native/LoginSignUp';
+import {color} from 'react-native-elements/dist/helpers';
 const Offers = ({navigation}) => {
   const toast = useToast();
   const {t} = useTranslation();
@@ -47,6 +48,7 @@ const Offers = ({navigation}) => {
   const [activeSwitch, setActiveSwitch] = useState(false);
   const [modal, setModal] = useState(false);
   const [createPostModal, setCreatePostModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -56,6 +58,7 @@ const Offers = ({navigation}) => {
   const [mode, setMode] = useState('date');
   const [endMode, setEndMode] = useState('date');
   const [show, setShow] = useState(false);
+  const [mobileModal, setMobileModal] = useState(false);
   const [endShow, setEndShow] = useState(false);
   const [offerData, setOffferData] = useState(init);
   const [startTime, setStartTime] = useState(new Date());
@@ -65,6 +68,8 @@ const Offers = ({navigation}) => {
   const openCreateOfferModal = () => {
     setCreatePostModal(true);
   };
+  const data = [1, 2, 3];
+  const tabData = [1, 2, 3, 4, 5, 6, 7];
   const onStartChangeTime = (event, selectedDate, setTime, time) => {
     const currentDate = selectedDate || time;
     setShow(Platform.OS === 'ios');
@@ -115,18 +120,19 @@ const Offers = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <View style={{marginLeft:2}}>
-      <Header label={t('offers')} onPress={() => navigation.openDrawer()} />
+      <View style={{marginLeft: 2, marginBottom: !IsTablet && 10}}>
+        <Header label={t('offers')} onPress={() => navigation.openDrawer()} />
       </View>
       <View style={{flexDirection: !IsTablet ? 'column-reverse' : 'column'}}>
         {!IsTablet ? (
-          <View style={{width: '96%',alignSelf:'center'}}>
-            <TabButton  active={active}
-          setActive={setActive}
-          isTab={IsTablet}
-          firstLabel="Current"
-          secondLabel="Past"
-          />
+          <View style={{width: '96%', alignSelf: 'center'}}>
+            <TabButton
+              active={active}
+              setActive={setActive}
+              isTab={IsTablet}
+              firstLabel="Current"
+              secondLabel="Past"
+            />
           </View>
         ) : (
           <View style={!IsTablet && styles.tab}>
@@ -150,12 +156,14 @@ const Offers = ({navigation}) => {
           <View style={styles.buttonContainer}>
             {!IsTablet ? (
               <View style={styles.plusIcon}>
-                <Icon
-                  name="plus"
-                  type="antdesign"
-                  size={22}
-                  color={colors.textWhite}
-                />
+                <TouchableOpacity activeOpacity={0.6} onPress={()=>navigation.navigate("RenewOffer")}>
+                  <Icon
+                    name="plus"
+                    type="antdesign"
+                    size={22}
+                    color={colors.textWhite}
+                  />
+                </TouchableOpacity>
               </View>
             ) : (
               <CustomButton
@@ -173,15 +181,34 @@ const Offers = ({navigation}) => {
           style={
             !IsTablet ? styles.offerContainerMobile : styles.offerContainer
           }>
-          <OfferComponent isModal={modal} setModal={setModal} navigation={navigation} />
-          <OfferComponent />
-          <OfferComponent />
-          <OfferComponent />
-          <OfferComponent />
-          <OfferComponent />
-          <OfferComponent />
+          {!IsTablet
+            ? data.map(item => {
+                return (
+                  <OfferComponent
+                    isModal={modal}
+                    setModal={setModal}
+                    mobileModal={mobileModal}
+                    setMobileModal={setMobileModal}
+                  />
+                );
+              })
+            : tabData.map(item => {
+                return (
+                  <OfferComponent
+                    isModal={modal}
+                    setModal={setModal}
+                    mobileModal={mobileModal}
+                    setMobileModal={setMobileModal}
+                  />
+                );
+              })}
         </View>
       </ScrollView>
+      <CustomButton
+        text={t('Load_more')}
+        containerStyle={styles.loadMoreButton}
+        textStyle={styles.loadmoreText}
+      />
       <CustomModal
         isModalVisible={modal}
         setModalVisible={setModal}
@@ -529,6 +556,89 @@ const Offers = ({navigation}) => {
             </View>
           </View>
         </ScrollView>
+      </CustomModal>
+      <CustomModal
+        isModalVisible={mobileModal}
+        setModalVisible={setMobileModal}
+        modalWrapperStyle={{
+          marginHorizontal: width(0),
+          marginTop: height('80%'),
+          marginVertical: height(0),
+          borderTopRightRadius: 20,
+        }}>
+        <TouchableOpacity
+          style={styles.menuModalContainer}
+          activeOpacity={0.6}
+          onPress={() => {
+            setMobileModal(false);
+            navigation.navigate('offerDetail');
+          }}>
+          <Icon
+            name="edit-3"
+            type="feather"
+            size={moderateScale(22)}
+            color={colors.dullWhite}
+          />
+
+          <CustomText
+            label={t('edit_more_basicInfo')}
+            textStyle={styles.menuTextTitle}
+          />
+        </TouchableOpacity>
+        <View style={styles.divider} />
+        <TouchableOpacity
+          style={styles.menuModalContainer}
+          activeOpacity={0.6}
+          onPress={() => {
+            setMobileModal(false);
+            setDeleteModal(!deleteModal);
+          }}>
+          <Icon
+            type="antdesign"
+            name="delete"
+            size={moderateScale(18)}
+            color={colors.red}
+          />
+          <CustomText
+            label={t('delete')}
+            textStyle={[styles.menuTextTitle, {color: colors.red}]}
+          />
+        </TouchableOpacity>
+      </CustomModal>
+      <CustomModal
+        isModalVisible={deleteModal}
+        setModalVisible={setDeleteModal}
+        modalWrapperStyle={{
+          marginHorizontal: width(5),
+          marginVertical: height('40%'),
+        }}>
+        <CustomText
+          label={t('deleteOffer')}
+          textStyle={styles.deleteofferText}
+        />
+        <CustomText
+          label={t('deleteOfferDetail')}
+          textStyle={styles.deleteOfferDetail}
+        />
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            width: '100%',
+            marginTop: moderateScale(10),
+          }}>
+          <CustomButton
+            text={t('Cancel')}
+            containerStyle={styles.cancelButton}
+            textStyle={[styles.deleteText,{color:colors.textWhite}]}
+          />
+          <CustomButton
+            text={t('delete')}
+            containerStyle={styles.cancelButton1}
+            textStyle={styles.deleteText}
+          />
+        </View>
       </CustomModal>
     </SafeAreaView>
   );

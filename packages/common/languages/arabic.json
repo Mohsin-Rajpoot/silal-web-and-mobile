@@ -445,6 +445,12 @@
     "Revenue":"Revenue",
     "Reply_to_review":"Reply to review",
     "Reply_to_Customer":"We will notify the customer about it",
-    "order_id":"ORDER ID"
+    "order_id":"ORDER ID",
+    "date_range":"Date range",
+    "Load_more":"load more",
+    "edit_more_basicInfo":"Edit basic information",
+    "deleteOffer":"Delete offer?",
+    "deleteOfferDetail":"If you delete an offer, it is no longer valid. ",
+    "renewOffer":"Renew offer"
   }
 }

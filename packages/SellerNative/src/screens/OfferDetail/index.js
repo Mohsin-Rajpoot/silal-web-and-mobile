@@ -27,9 +27,10 @@ import TextInput from '@SilalApp/common/components/native/TextInput';
 import {Checkbox} from 'native-base';
 import DaySelect from '../../components/DaySelection/index';
 import {days} from '@SilalApp/common/assets/Data';
-import Header from "../../components/Header"
+import Header from '../../components/Header';
 
-const OfferDetail = () => {
+
+const OfferDetail = ({navigation}) => {
   const toast = useToast();
   const {t} = useTranslation();
   const init = {
@@ -51,6 +52,7 @@ const OfferDetail = () => {
   const [show, setShow] = useState(false);
   const [endShow, setEndShow] = useState(false);
   const [offerData, setOffferData] = useState(init);
+
   const [startTime, setStartTime] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
   const [active, setActive] = useState(1);
@@ -105,19 +107,51 @@ const OfferDetail = () => {
       showsHorizontalScrollIndicator={false}
       showsVerticalScrollIndicator={false}>
       <View style={{marginVertical: 10}}>
-      <Header showIcon title="Sunday Funday" />
-   <CustomText label="Salads" color={colors.gray50} marginLeft={scale(42)} fontFamily={fonts.LatoBold} fontSize={verticalScale(14)} /> 
+        <Header showIcon title="Sunday Funday" dostIcon={true} goBack={()=>navigation.pop()}  />
+        <CustomText
+          label="Salads"
+          color={colors.gray50}
+          marginLeft={scale(42)}
+          fontFamily={fonts.LatoBold}
+          fontSize={verticalScale(11)}
+        />
       </View>
       <Image source={require('../../Assets/image8.png')} style={styles.image} />
-      <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
-<CustomButton text="Change photo" containerStyle={{height:verticalScale(45),width:'80%'}}  /> 
-<View style={{justifyContent:'center',alignItems:'center',backgroundColor:'red',width:'16%',height:verticalScale(45),borderRadius:verticalScale(5)}}>
- <Text>D</Text>
-</View>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}>
+        <CustomButton
+          text="Change photo"
+          containerStyle={{
+            height: verticalScale(40),
+            width: '85%',
+            backgroundColor: colors.grayColorLight,
+          }}
+          textStyle={{color: colors.black}}
+        />
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: colors.redLightColor,
+            width: '13%',
+            height: verticalScale(40),
+            borderRadius: verticalScale(8),
+          }}>
+          <Icon
+            type="antdesign"
+            name="delete"
+            size={moderateScale(18)}
+            color={colors.red}
+          />
+        </View>
       </View>
       <CustomText label={t('OfferProfile')} textStyle={styles.offerText} />
       <View style={styles.offerNameContainer}>
-        <CustomText label={'Offername'} textStyle={styles.offerName} />
+        <CustomText label={t('Offername')} textStyle={styles.offerName} />
         <CustomText
           label={t('charcterLeft')}
           textStyle={styles.characterLeft}
@@ -161,7 +195,7 @@ const OfferDetail = () => {
         />
       </View>
       <View style={styles.labelContainer}>
-        <CustomText label={t('Duration')} textStyle={styles.offerName} />
+        <CustomText label={t('date_range')} textStyle={styles.offerName} />
       </View>
       <View style={styles.durationContainer}>
         <View style={styles.dateTimeContainer}>
@@ -228,7 +262,6 @@ const OfferDetail = () => {
 
       <View style={styles.daySelectionContainer}>
         <DayShower />
-        {/* <DaySelect day={"EveryDay"} /> */}
       </View>
       <View style={styles.labelContainer}>
         <CustomText
@@ -236,7 +269,7 @@ const OfferDetail = () => {
           textStyle={styles.activeDaysHeading}
         />
       </View>
-      <DaySelect day={t('all_day')} />
+      <DaySelect day={t('all_day')} toggleButton={true} />
       <View style={styles.labelContainer}>
         <View
           style={{
@@ -245,10 +278,19 @@ const OfferDetail = () => {
             justifyContent: 'space-between',
           }}>
           <Pressable
-            style={[styles.dropDownContainer, {width: scale(75)}]}
+            style={[
+              styles.dropDownContainer,
+              {
+                width: '40%',
+                height: verticalScale(40),
+                borderWidth: 0,
+                backgroundColor: colors.dullWhite,
+              },
+            ]}
             onPress={() => setShow(true)}>
             <CustomText
               fontSize={10}
+              marginTop={4}
               label={
                 startDate ? moment(startDate).format('h:mm A') : 'Start Time'
               }
@@ -267,10 +309,19 @@ const OfferDetail = () => {
             label={'TO'}
           />
           <Pressable
-            style={[styles.dropDownContainer, {width: scale(75)}]}
+            style={[
+              styles.dropDownContainer,
+              {
+                width: '40%',
+                height: verticalScale(40),
+                borderWidth: 0,
+                backgroundColor: colors.dullWhite,
+              },
+            ]}
             onPress={() => setShow(true)}>
             <CustomText
               fontSize={10}
+              marginTop={4}
               label={
                 startDate ? moment(startDate).format('h:mm A') : 'Start Time'
               }
@@ -320,12 +371,13 @@ const OfferDetail = () => {
           />
         )}
       </View>
-      <CustomButton
+      <View style={styles.buttonContainer}>
+        <CustomButton
           text={t('SaveChanges')}
           textStyle={styles.modalbutton}
           containerStyle={styles.buttonContainerSaveChanging}
         />
-      <View style={{height: 90}} />
+      </View>
     </ScrollView>
   );
 };
@@ -343,6 +395,7 @@ const styles = ScaledSheet.create({
   buttonContainerSaveChanging: {
     width: '100%',
     alignItems: 'center',
+    height:'45@vs'
   },
   image: {
     width: '100%',
@@ -350,17 +403,17 @@ const styles = ScaledSheet.create({
     borderRadius: '10@ms',
     height: '200@s',
     resizeMode: 'cover',
-    marginBottom:'10@vs'
+    marginBottom: '10@vs',
   },
   offerText: {
-    fontSize: '13@ms',
+    fontSize: '13@vs',
     fontFamily: fonts.PoppinsSemiBold,
     marginTop: '4@s',
     color: colors.black,
     marginBottom: '3@s',
   },
   offerName: {
-    fontSize: '9@ms',
+    fontSize: '10@vs',
     fontFamily: fonts.LatoSemiBold,
     color: colors.black,
   },
@@ -374,7 +427,7 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
   },
   labelContainer: {
-    marginVertical: '5@ms',
+    marginVertical: '6@ms',
   },
   creareOfferText: {
     fontSize: '16@ms',
@@ -386,14 +439,15 @@ const styles = ScaledSheet.create({
     alignSelf: 'flex-end',
   },
   characterLeft: {
-    fontSize: '8@ms',
+    fontSize: '9@vs',
     fontFamily: fonts.LatoSemiBold,
     color: colors.light_grey,
   },
   dropDownStyle: {
     width: '100%',
-    borderColor: colors.light_grey,
+    borderColor: colors.dullWhite,
     marginVertical: '5@ms',
+    backgroundColor: colors.dullWhite,
   },
   dropDownPlaceHolder: {
     color: colors.black,
@@ -406,9 +460,11 @@ const styles = ScaledSheet.create({
   inPutTextStyle: {
     fontSize: '11@ms',
     fontFamily: fonts.LatoRegular,
+    lineHeight: 22,
   },
   inputStyle: {
-    height: '70@ms',
+    height: '75@vs',
+    backgroundColor: colors.dullWhite,
   },
   inputContainerStyle: {
     marginVertical: '5@ms',
@@ -422,11 +478,13 @@ const styles = ScaledSheet.create({
     width: '100%',
   },
   dateTimeContainer: {
-    width: '45%',
+    width: '48%',
     borderColor: colors.light_grey,
     borderWidth: '0.5@ms',
-    padding: '5@ms',
-    borderRadius: '2@s',
+    borderRadius: '8@s',
+    backgroundColor: colors.dullWhite,
+    height: '40@vs',
+    justifyContent: 'center',
   },
   checkBoxContainer: {
     flexDirection: 'row',
@@ -436,11 +494,10 @@ const styles = ScaledSheet.create({
     fontSize: '13@ms',
     fontFamily: fonts.LatoRegular,
     color: colors.black,
-    marginLeft: '10@ms',
-    marginRight: '10@ms',
+    marginHorizontal:"5@s"
   },
   activeDaysHeading: {
-    fontSize: '15@ms',
+    fontSize: '14@vs',
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.black,
   },
@@ -462,5 +519,18 @@ const styles = ScaledSheet.create({
     borderWidth: 2,
     borderColor: '#ebebeb',
     justifyContent: 'space-between',
+  },
+  dateTimeText: {
+    color: colors.black,
+    margin: '6@s',
+  },
+  buttonContainer: {
+    backgroundColor: 'white',
+    marginTop: '10@vs',
+    paddingTop: '10@vs',
+    paddingBottom:'40@vs',
+    backgroundColor: 'whiten',
+    borderTopColor: colors.borderColor,
+    borderTopWidth: 1,
   },
 });

@@ -6,13 +6,20 @@ import {Icon} from 'react-native-elements';
 import colors from '@SilalApp/common/assets/colors';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 
-const index = ({isModal, setModal, navigation}) => {
+const index = ({
+  isModal,
+  setModal,
+  navigation,
+  mobileModal,
+  setMobileModal,
+}) => {
   return (
     <View style={styles.mainOuterContainer}>
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={() => {
-          !IsTablet ? navigation.navigate('offerDetail') : setModal(!isModal);
+          IsTablet && setModal(!isModal);
+          !IsTablet && setMobileModal(!mobileModal)
         }}>
         <View style={styles.headerContainer}>
           <View>

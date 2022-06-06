@@ -68,5 +68,7 @@ const colors = {
   redLight:"rgba(222, 53, 11, 0.15)",
   borderColorSecondary:"rgba(0, 39, 51, 0.05)",
   gray50:'rgba(76, 104, 112, 0.5)',
+  grayColorLight:"rgba(204, 212, 214, 0.5)",
+  redLightColor:"rgba(250, 225, 218, 1)"
 };
 export default colors;

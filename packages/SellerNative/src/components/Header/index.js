@@ -17,7 +17,15 @@ import {Icon, Badge} from 'react-native-elements';
 import fonts from '@SilalApp/common/assets/fonts';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
-const Header = ({title, navigation, goBack, showIcon, Notification,rightPress}) => {
+const Header = ({
+  title,
+  navigation,
+  goBack,
+  showIcon,
+  Notification,
+  rightPress,
+  dostIcon,
+}) => {
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
   const data2 = [
@@ -41,26 +49,25 @@ const Header = ({title, navigation, goBack, showIcon, Notification,rightPress}) 
   return (
     <View style={styles.Header}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
-       <TouchableOpacity
+        <TouchableOpacity
           onPress={goBack}
           activeOpacity={0.6}
           style={{
             flexDirection: 'row',
             alignItems: 'center',
-            marginTop: 8,
-            width: '60%',
+
           }}>
           <MaterialCommunityIcons
             name="keyboard-backspace"
             style={{
-              fontSize: verticalScale(20),
+              fontSize: verticalScale(22),
               color: colors.black,
               marginHorizontal: moderateScale(5),
             }}
           />
-
-          <Text style={styles.HeaderTitle}>{t(title)}</Text>
         </TouchableOpacity>
+        <Text style={styles.HeaderTitle}>{t(title)}</Text>
+
         {Notification ? (
           <View style={styles.NewNotification}>
             <Text style={styles.newNotiTitle}>3</Text>
@@ -73,7 +80,16 @@ const Header = ({title, navigation, goBack, showIcon, Notification,rightPress}) 
       <View>
         {showIcon ? (
           <TouchableOpacity onPress={rightPress}>
-            <Icon name='dots-three-vertical' type='entypo' size={verticalScale(16)} color={colors.gray50} />
+            {!dostIcon ? (
+              <View />
+            ) : (
+              <Icon
+                name="dots-three-vertical"
+                type="entypo"
+                size={verticalScale(16)}
+                color={colors.gray50}
+              />
+            )}
           </TouchableOpacity>
         ) : (
           <TouchableOpacity
@@ -223,8 +239,7 @@ const styles = ScaledSheet.create({
     color: colors.black,
     fontSize: '14@vs',
     fontFamily: fonts.bold,
-    width: '150%',
-    marginLeft:'10@s'
+    marginLeft: '10@s',
   },
   ModalMainButton: {
     position: 'absolute',
@@ -285,10 +300,10 @@ const styles = ScaledSheet.create({
     padding: '5@s',
     borderRadius: '5@s',
   },
-  newNotiTitle:{
-    fontSize:"10@vs",
-    fontFamily:fonts.LatoMedium,
-    color:colors.textWhite,
-    marginHorizontal:"2@s"
-  }
+  newNotiTitle: {
+    fontSize: '10@vs',
+    fontFamily: fonts.LatoMedium,
+    color: colors.textWhite,
+    marginHorizontal: '2@s',
+  },
 });

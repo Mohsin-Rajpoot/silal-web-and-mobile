@@ -31,7 +31,7 @@ const Notification = ({navigation}) => {
   };
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <Header title={'Notification'} goBack={goBack} showIcon={true} Notification={true} />
+      <Header title={'Notification'} goBack={goBack} showIcon={true} dostIcon={false} />
       <FlatList
         data={data2}
         numColumns={1}
@@ -90,12 +90,7 @@ const Notification = ({navigation}) => {
         )}
         keyExtractor={item => item.id}
       />
-      <Text
-        style={
-        styles.previousnotification    
-      }>
-        Previous Notification
-      </Text>
+      <Text style={styles.previousnotification}>Previous Notification</Text>
       <FlatList
         data={data2}
         numColumns={1}
