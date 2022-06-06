@@ -5,31 +5,55 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import colors from 'common_colors';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import {Icon} from 'react-native-elements';
 const ProfileBox = ({navigation}) => {
   const {t} = useTranslation();
   return (
     <View>
       <View style={styles.mainContainer}>
-        <Pressable
-          onPress={() => navigation.navigate('Profile')}
-          style={styles.imgContainer}></Pressable>
-        <CustomText
-          fontFamily={fonts.PoppinsSemiBold}
-          textStyle={styles.accountText}
-          label="Account’s name"
-        />
-        <CustomText
-          fontFamily={fonts.PoppinsMedium}
-          color={colors.sidebar}
-          textStyle={styles.email}
-          label="debra.holt@example.com"
-        />
-        <Pressable>
+        <View
+          style={{
+            width: !IsTablet ? '15%' : '100%',
+            alignSelf: 'center',
+            alignItems: 'center',
+          }}>
+          <Pressable
+            onPress={() => navigation.navigate('Profile')}
+            style={
+              !IsTablet ? styles.imgContainerMobile : styles.imgContainer
+            }></Pressable>
+         
+        </View>
+        <View
+          style={{
+            alignItems: !IsTablet ? 'flex-start' : 'center',
+            width: '60%',
+          }}>
           <CustomText
-            fontFamily={fonts.PoppinsSemiBold}
-            textStyle={styles.btnLogOut}
-            label={t('Logout')}
+            textStyle={styles.innertitleAccount}
+            label="Account’s name"
           />
+          <CustomText textStyle={styles.email} label="debra.holt@example.com" />
+        </View>
+        {!IsTablet && (
+          <View style={styles.checkContainer}>
+            <Icon
+              name="check"
+              color={colors.textWhite}
+              size={20}
+              type="fontawesome"
+            />
+          </View>
+        )}
+        <Pressable>
+          {IsTablet && (
+            <CustomText
+              fontFamily={fonts.PoppinsSemiBold}
+              textStyle={styles.btnLogOut}
+              label={t('Logout')}
+            />
+          )}
         </Pressable>
       </View>
       <View style={styles.container}>
@@ -58,15 +82,23 @@ const styles = ScaledSheet.create({
     width: '100%',
     backgroundColor: colors.textWhite,
     paddingVertical: '10@vs',
-    borderTopRightRadius: '5@ms',
-    borderTopLeftRadius: '5@ms',
-    justifyContent: 'center',
+    borderTopRightRadius: !IsTablet ? '14@s' : '5@ms',
+    borderTopLeftRadius: !IsTablet ? '14@s' : '5@ms',
+    justifyContent: !IsTablet ? 'space-between' : 'center',
     alignItems: 'center',
     padding: '10@ms',
+    flexDirection: !IsTablet ? 'row' : 'column',
   },
   imgContainer: {
-    width: '50@ms',
-    height: '50@ms',
+    width: '45@vs',
+    height: '45@vs',
+    borderRadius: '100@ms',
+    backgroundColor: colors.black,
+    marginBottom: '10@vs',
+  },
+  imgContainerMobile: {
+    width: '30@vs',
+    height: '30@vs',
     borderRadius: '100@ms',
     backgroundColor: colors.black,
     marginBottom: '10@vs',
@@ -77,8 +109,9 @@ const styles = ScaledSheet.create({
     marginBottom: '5@vs',
   },
   email: {
-    fontSize: '12@ms',
+    fontSize: '10@ms',
     marginBottom: '10@vs',
+    fontFamily: fonts.LatoRegular,
   },
   btnLogOut: {
     fontSize: '14@ms',
@@ -86,18 +119,20 @@ const styles = ScaledSheet.create({
   },
   container: {
     width: '100%',
-    backgroundColor: colors.white,
+    backgroundColor: !IsTablet ? colors.textWhite : colors.white,
     paddingVertical: '10@vs',
-    borderBottomRightRadius: '5@ms',
-    borderBottomLeftRadius: '5@ms',
+    borderBottomRightRadius: !IsTablet ? '14@s' : '5@ms',
+    borderBottomLeftRadius: !IsTablet ? '14@s' : '5@ms',
     flexDirection: 'row',
     padding: '10@ms',
     alignItems: 'center',
     marginBottom: '20@vs',
+    borderTopWidth: !IsTablet ? '0.1@s' : 0,
+    borderTopColor: !IsTablet ? colors.borderColorSecondary : null,
   },
   imgContainer2: {
-    width: '30@ms',
-    height: '30@ms',
+    width: '30@vs',
+    height: '30@vs',
     borderRadius: '100@ms',
     backgroundColor: colors.black,
     marginRight: '10@vs',
@@ -110,5 +145,21 @@ const styles = ScaledSheet.create({
   email2: {
     fontSize: '10@ms',
     color: colors.sidebar,
+  },
+  innertitleAccount: {
+    fontSize: '12@vs',
+    fontFamily: fonts.LatoBold,
+    color: colors.black,
+  },
+  innertitleAccountdetail: {
+    fontSize: '12@vs',
+    fontFamily: fonts.LatoBold,
+    color: colors.black,
+  },
+  checkContainer: {
+    backgroundColor: colors.primary,
+    borderRadius: '25@s',
+    padding: '1@s',
+    width: '10%',
   },
 });

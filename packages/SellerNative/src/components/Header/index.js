@@ -17,7 +17,7 @@ import {Icon, Badge} from 'react-native-elements';
 import fonts from '@SilalApp/common/assets/fonts';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
-const Header = ({title, navigation, goBack, showIcon, Notification}) => {
+const Header = ({title, navigation, goBack, showIcon, Notification,rightPress}) => {
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
   const data2 = [
@@ -41,7 +41,7 @@ const Header = ({title, navigation, goBack, showIcon, Notification}) => {
   return (
     <View style={styles.Header}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <TouchableOpacity
+       <TouchableOpacity
           onPress={goBack}
           activeOpacity={0.6}
           style={{
@@ -72,7 +72,9 @@ const Header = ({title, navigation, goBack, showIcon, Notification}) => {
       </View>
       <View>
         {showIcon ? (
-          <View />
+          <TouchableOpacity onPress={rightPress}>
+            <Icon name='dots-three-vertical' type='entypo' size={verticalScale(16)} color={colors.gray50} />
+          </TouchableOpacity>
         ) : (
           <TouchableOpacity
             onPress={() =>
@@ -214,13 +216,15 @@ const styles = ScaledSheet.create({
   Header: {
     flexDirection: 'row',
     marginTop: '5@s',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
   HeaderTitle: {
     color: colors.black,
     fontSize: '14@vs',
     fontFamily: fonts.bold,
+    width: '150%',
+    marginLeft:'10@s'
   },
   ModalMainButton: {
     position: 'absolute',

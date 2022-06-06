@@ -65,7 +65,8 @@ const colors = {
   blueDark:"#0065FF",
   lightBlue:"#CCE0FF",
   text1: "rgba(76, 104, 112, 0.3)",
-  redLight:"rgba(222, 53, 11, 0.15)"
-  
+  redLight:"rgba(222, 53, 11, 0.15)",
+  borderColorSecondary:"rgba(0, 39, 51, 0.05)",
+  gray50:'rgba(76, 104, 112, 0.5)',
 };
 export default colors;

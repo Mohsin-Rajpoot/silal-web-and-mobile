@@ -35,6 +35,8 @@ import {days} from '@SilalApp/common/assets/Data';
 import OfferItem from '../../components/OfferItem';
 import {useToast} from 'react-native-toast-notifications';
 import {useTranslation} from 'react-i18next';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import TabButton from '@SilalApp/common/components/native/LoginSignUp';
 const Offers = ({navigation}) => {
   const toast = useToast();
   const {t} = useTranslation();
@@ -58,7 +60,7 @@ const Offers = ({navigation}) => {
   const [offerData, setOffferData] = useState(init);
   const [startTime, setStartTime] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
-
+  const [active, setActive] = useState(1);
   const [page, setPage] = useState(0);
   const openCreateOfferModal = () => {
     setCreatePostModal(true);
@@ -113,20 +115,30 @@ const Offers = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <View style={{paddingHorizontal: 15}}>
-        <Header label={t('offers')} onPress={() => navigation.openDrawer()} />
+      <View style={{marginLeft:2}}>
+      <Header label={t('offers')} onPress={() => navigation.openDrawer()} />
       </View>
-
-      <View style={{paddingHorizontal: 15}}>
-        <Tabs
-          containerStyle={{marginTop: 10, marginBottom: 20}}
-          tabs={[t('current'), t('Past')]}
-          page={page}
-          onChangeTab={(index)=>setPage(index)}
-        />
-      </View>
-
-      <ScrollView contentContainerStyle={{paddingHorizontal: 15}}>
+      <View style={{flexDirection: !IsTablet ? 'column-reverse' : 'column'}}>
+        {!IsTablet ? (
+          <View style={{width: '96%',alignSelf:'center'}}>
+            <TabButton  active={active}
+          setActive={setActive}
+          isTab={IsTablet}
+          firstLabel="Current"
+          secondLabel="Past"
+          />
+          </View>
+        ) : (
+          <View style={!IsTablet && styles.tab}>
+            <Tabs
+              containerStyleButton={!IsTablet && styles.tabButton}
+              tabs={[t('current'), t('Past')]}
+              page={page}
+              onChangeTab={index => setPage(index)}
+              textStyle={styles.buttonText1}
+            />
+          </View>
+        )}
         <View style={styles.inputContainer}>
           <View style={styles.inputContainerMian}>
             <TextInput
@@ -136,17 +148,32 @@ const Offers = ({navigation}) => {
             />
           </View>
           <View style={styles.buttonContainer}>
-            <CustomButton
-              text={t('Create_new_offer')}
-              containerStyle={styles.buttonStyle}
-              textStyle={styles.buttonText}
-              onPress={openCreateOfferModal}
-            />
+            {!IsTablet ? (
+              <View style={styles.plusIcon}>
+                <Icon
+                  name="plus"
+                  type="antdesign"
+                  size={22}
+                  color={colors.textWhite}
+                />
+              </View>
+            ) : (
+              <CustomButton
+                text={t('Create_new_offer')}
+                containerStyle={styles.buttonStyle}
+                textStyle={styles.buttonText}
+                onPress={openCreateOfferModal}
+              />
+            )}
           </View>
         </View>
-        <View style={styles.offerContainer}>
-          <OfferComponent isModal={modal} setModal={setModal} />
-
+      </View>
+      <ScrollView contentContainerStyle={{paddingHorizontal: 15}}>
+        <View
+          style={
+            !IsTablet ? styles.offerContainerMobile : styles.offerContainer
+          }>
+          <OfferComponent isModal={modal} setModal={setModal} navigation={navigation} />
           <OfferComponent />
           <OfferComponent />
           <OfferComponent />

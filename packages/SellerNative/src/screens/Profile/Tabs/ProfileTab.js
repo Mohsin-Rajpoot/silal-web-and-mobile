@@ -365,9 +365,10 @@ const styles = ScaledSheet.create({
   },
   buttonContainerStyleMobile: {
     backgroundColor: colors.primary,
-    width: '90%',
+    width: '30%',
     borderRadius: '8@s',
     marginRight: '20@s',
+    marginTop:'40@vs'
   },
   cancelButton: {
     backgroundColor: colors.light_grey,

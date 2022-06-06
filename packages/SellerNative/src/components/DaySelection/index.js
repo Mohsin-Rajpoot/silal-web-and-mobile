@@ -33,7 +33,7 @@ const index = ({
         isOn={active}
         onColor={colors.light_green}
         offColor={colors.light_grey}
-        labelStyle={{color: 'black', fontWeight: '900'}}
+        labelStyle={{color: 'black', fontWeight: '800'}}
         size={buttonSize ? buttonSize : 'large'}
         onToggle={() => {
           setActive(!active);

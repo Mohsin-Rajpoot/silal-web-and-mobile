@@ -3,7 +3,14 @@ import React from 'react';
 import {CustomButton} from '@SilalApp/common/components/native';
 import {useTranslation} from 'react-i18next';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
-const Tabs = ({onChangeTab, page, tabs, containerStyle}) => {
+const Tabs = ({
+  onChangeTab,
+  page,
+  tabs,
+  containerStyle,
+  containerStyleButton,
+  textStyle,
+}) => {
   const {t} = useTranslation();
   return (
     <View
@@ -18,6 +25,8 @@ const Tabs = ({onChangeTab, page, tabs, containerStyle}) => {
             onPress={() => onChangeTab(index)}
             text={t(item)}
             type={page == index ? 'PRIMARY' : 'TERTIARY'}
+            containerStyle={containerStyleButton}
+            textStyle={textStyle}
           />
         ))}
       </ScrollView>

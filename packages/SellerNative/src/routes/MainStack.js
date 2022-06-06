@@ -21,6 +21,8 @@ import Animated, {interpolate, useSharedValue} from 'react-native-reanimated';
 import {View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import colors from '@SilalApp/common/assets/colors';
+import OfferStack from './OfferStack';
 // import ContactUs from '../screens/ContactUs';
 // import Setting from '../screens/Setting';
 
@@ -34,7 +36,7 @@ const Screens = ({navigation, style}) => {
         <Stack.Screen name="TabStack" component={TabStack} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Documents" component={Documents} />
-        <Stack.Screen name="Offers" component={Offers} />
+        <Stack.Screen name="Offers" component={OfferStack} />
         <Stack.Screen name="ContactUs" component={ContactUs} />
         <Stack.Screen name="Setting" component={Setting} />
         <Stack.Screen name="AboutApp" component={AboutApp} />
@@ -60,15 +62,22 @@ const MainStack = () => {
       initialRouteName="TabStack"
       backBehavior="none"
       screenOptions={{
-        overlayColor: 'rgba(0,0,0,0.1)',
+        overlayColor: 'rgba(0,0,0,0.0)',
         drawerType: !IsTablet ? 'slide' : 'front',
         headerShown: false,
+        sceneContainerStyle: {backgroundColor: colors.textPrimeColor},
         drawerStyle: {
           flex: 1,
-          width: !IsTablet ? '65%' : '35%',
-          backgroundColor: 'transparent',
+          width: !IsTablet ? '75%' : '39%',
+          backgroundColor: colors.textPrimeColor,
+          borderTopRightRadius: !IsTablet ? 0 : 40,
+          borderBottomRightRadius: !IsTablet ? 0 : 40,
         },
-        drawerContentContainerStyle: {flex: 1, backgroundColor: 'red'},
+
+        drawerContentContainerStyle: {
+          flex: 1,
+          backgroundColor: colors.textPrimeColor,
+        },
         drawerContentStyle: {flex: 1, backgroundColor: 'red'},
       }}
       drawerContent={props => {

@@ -13,27 +13,25 @@ export default function CustomButton({
   textStyle,
 }) {
   return (
-    <View>
-      <TouchableOpacity
-        onPress={onPress}
-        activeOpacity={0.6}
-        style={[
-          !IsTablet ? styles.mainbuttonMobile : styles.mainbutton,
-          styles[`mainbutton_${type}`],
-          containerStyle,
-        ]}
-      >
-        <Text
-          style={[
-            !IsTablet ? styles.buttonTextMobile : styles.buttonText,
-            styles[`buttonText_${type}`],
-            textStyle,
-          ]}
-        >
-          {text}
-        </Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity
+    onPress={onPress}
+    activeOpacity={0.6}
+    style={[
+      !IsTablet ? styles.mainbuttonMobile : styles.mainbutton,
+      styles[`mainbutton_${type}`],
+      containerStyle,
+    ]}
+  >
+    <Text
+      style={[
+        !IsTablet ? styles.buttonTextMobile : styles.buttonText,
+        styles[`buttonText_${type}`],
+        textStyle,
+      ]}
+    >
+      {text}
+    </Text>
+  </TouchableOpacity>
   );
 }
 
