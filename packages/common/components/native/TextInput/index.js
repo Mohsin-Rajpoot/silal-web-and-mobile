@@ -26,15 +26,7 @@ const index = ({
   const [text, setText] = useState("");
   return (
     <View>
-      {withLabel && (
-        <CustomText
-          color={colors.textPrimary}
-          fontFamily={fonts.LatoMedium}
-          marginBottom={verticalScale(4)}
-          fontSize={verticalScale(10)}
-          label={withLabel}
-        />
-      )}
+     
       <View
         style={[
           !isTab

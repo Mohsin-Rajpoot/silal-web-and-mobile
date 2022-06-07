@@ -452,7 +452,13 @@
     "deleteOffer":"Delete offer?",
     "deleteOfferDetail":"If you delete an offer, it is no longer valid. ",
     "renewOffer":"Renew offer",
-    "of":"of"
+    "of":"of",
+    "add_a_new_item":"Add a new item",
+    "choose_item":"Choose item",
+    "chicken&CheeseBurger":"Chicken & Cheese Burger",
+    "freeze_offer":"Freeze offer",
+    "offer_is_freezed":"Offer is freezed",
+    "freezeDetails":"This offer has been paused as you requested, any attempt to buy items from this offer will not work, you may un-freeze anytime."
    
   }
 }

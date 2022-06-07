@@ -1,6 +1,5 @@
-import {Text, View, TouchableOpacity} from 'react-native';
+import { View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import CustomText from '@SilalApp/common/components/CustomText';
 import {ScaledSheet} from 'react-native-size-matters';
 import fonts from 'fonts';
