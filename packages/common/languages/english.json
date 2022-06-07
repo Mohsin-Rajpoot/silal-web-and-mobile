@@ -451,7 +451,8 @@
     "edit_more_basicInfo":"Edit basic information",
     "deleteOffer":"Delete offer?",
     "deleteOfferDetail":"If you delete an offer, it is no longer valid. ",
-    "renewOffer":"Renew offer"
+    "renewOffer":"Renew offer",
+    "of":"of"
    
   }
 }

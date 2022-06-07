@@ -109,7 +109,7 @@ const RenewOffer = () => {
             showsVerticalScrollIndicator={false}>
             <View>
               <CustomText
-                label="Main item"
+                label={t("mainItem")}
                 fontFamily={fonts.LatoBold}
                 fontSize={verticalScale(15)}
                 marginBottom={verticalScale(15)}
@@ -129,7 +129,7 @@ const RenewOffer = () => {
                     }}
                     inputTextStyle={styles.modalInput}
                     placeholderTextColor={colors.black}
-                    withLabel="Initial price"
+                    withLabel={t("initialPrice")}
                   />
                   <CustomInput
                     placeholderText="$ 1.00"
@@ -139,7 +139,7 @@ const RenewOffer = () => {
                     }}
                     inputTextStyle={styles.modalInput}
                     placeholderTextColor={colors.black}
-                    withLabel="New price"
+                    withLabel={t("NewPrice")}
                   />
                 </View>
               </View>
@@ -151,7 +151,7 @@ const RenewOffer = () => {
                 }}
                 inputTextStyle={styles.modalInput}
                 placeholderTextColor={colors.black}
-                withLabel="Item"
+                withLabel={t("Item")}
               />
               <View
                 style={{
@@ -168,7 +168,7 @@ const RenewOffer = () => {
                     }}
                     inputTextStyle={styles.modalInput}
                     placeholderTextColor={colors.black}
-                    withLabel="Price effect"
+                    withLabel={t("priceEffect")}
                   />
                 </View>
                 <View style={{width: '30%'}}>
@@ -182,7 +182,7 @@ const RenewOffer = () => {
                     }}
                     inputTextStyle={styles.modalInput}
                     placeholderTextColor={colors.black}
-                    withLabel="of"
+                    withLabel={t("of")}
                   />
                 </View>
               </View>
@@ -194,12 +194,12 @@ const RenewOffer = () => {
                 }}
                 inputTextStyle={styles.modalInput}
                 placeholderTextColor={colors.black}
-                withLabel="Min quantity"
+                withLabel={t("MinQuantity")}
               />
               <CustomButton
                 textStyle={{fontSize: verticalScale(13)}}
                 containerStyle={styles.modalBtn}
-                text="Save changes"
+                text={t("SaveChanges")}
               />
             </View>
           </ScrollView>
@@ -213,10 +213,10 @@ export default RenewOffer;
 
 const styles = ScaledSheet.create({
   mainContainer: {
-    padding: '15@msr',
+    padding: '10@msr',
   },
   headerContainer: {
-    padding: '5@msr',
+    padding: '2@msr',
   },
   totalContainer: {
     backgroundColor: colors.primary,
