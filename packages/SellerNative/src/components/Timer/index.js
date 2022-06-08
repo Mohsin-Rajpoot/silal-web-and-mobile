@@ -5,15 +5,21 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState,useRef} from 'react';
 import {ScaledSheet} from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {Slider, Icon} from 'react-native-elements';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import colors from '@SilalApp/common/assets/colors';
+import Toast from "react-native-easy-toast";
+
+import { color } from 'react-native-reanimated';
 const Timer = ({label}) => {
   const [modal_timer_visible, set_modal_timer_visible] = useState(false);
   const [values, set_values] = useState(0);
   const [manual_time, set_manual_time] = useState('');
+  const toastRef = useRef();
+
   return (
     <View style={styles.centeredView}>
       <View style={styles.modalView}>
@@ -28,7 +34,7 @@ const Timer = ({label}) => {
           </Text>
           <Text
             style={{
-              color: '#5AB3A8',
+              color: colors.primary,
               fontSize: 18,
               fontWeight: '700',
               width: 150,
@@ -69,13 +75,13 @@ const Timer = ({label}) => {
                     width: 30,
                     borderRadius: 20,
                     borderWidth: 2,
-                    borderColor: '#5AB3A8',
+                    borderColor: colors.primary,
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}>
                   <View
                     style={{
-                      backgroundColor: '#5AB3A8',
+                      backgroundColor: colors.primary,
                       height: 10,
                       width: 10,
                       borderRadius: 20,
@@ -224,6 +230,15 @@ const Timer = ({label}) => {
           </TouchableOpacity>
         </View>
       </View>
+      <Toast
+          ref={toastRef}
+          style={styles.Tost}
+          position="top"
+          fadeInDuration={750}
+          fadeOutDuration={800}
+          opacity={1}
+          textStyle={{ color: "red" }}
+        />
     </View>
   );
 };
@@ -247,7 +262,7 @@ const styles = ScaledSheet.create({
   modal_save_btn: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#5AB3A8',
+    backgroundColor: colors.primary,
     width: 210,
     padding: 10,
     borderRadius: 5,

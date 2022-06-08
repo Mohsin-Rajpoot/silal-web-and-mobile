@@ -39,11 +39,6 @@ const Clints = ({navigation}) => {
 
 
 const [filter, setfilter]=useState('')
-  // ///
-  // const [text, setText] = useState(false);
-  // const onPressHandler = event => setText(!text);
-
-  // ////
 
   const changeModalVisibilty = bool => {
     setModalVisible(bool);
@@ -403,6 +398,22 @@ const footer = () => {
     );
   };
 
+  // //////////////
+
+// const footer = () => {
+//   return (
+//     <View style={{marginTop:10}}>
+//     <View style={!IsTablet ? styles.ButtonShow : styles.ButtonHide}>
+//         <TouchableOpacity style={styles.hideButton}>
+//           <Text style={styles.HideButtonText}>Load More</Text>
+//         </TouchableOpacity>
+//       </View>
+//       </View>
+//   );
+// };
+
+
+ 
   // //////////////
 
   const Customer_Data = () => {

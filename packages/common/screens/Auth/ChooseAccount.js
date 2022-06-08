@@ -45,18 +45,22 @@ const ChooseAccount = ({ navigation }) => {
                   : styles.choseMainContainer1,
               ]}
             >
-              {/* <Image
-            source={Images?.Image11}
-            style={{ width: 90, height: 90 }}
+              <Image
+            source={Images?.Shopping}
+            style={
+              !isTab
+                ? styles.choseAccountShoppingMobile
+                : styles.choseAccountShopping
+            }
             resizeMode="center"
-          /> */}
-              <View
+          />
+              {/* <View
                 style={
                   !isTab
                     ? styles.choseAccountShoppingMobile
                     : styles.choseAccountShopping
                 }
-              />
+              /> */}
               <View>
                 <Text style={styles.accountTitle}>Restaurant’s name</Text>
                 <Text style={styles.accountDetail}>
@@ -78,18 +82,22 @@ const ChooseAccount = ({ navigation }) => {
                   : styles.choseMainContainer1,
               ]}
             >
-              {/* <Image
-            source={Images?.Image11}
-            style={{ width: 90, height: 90 }}
+              <Image
+            source={Images?.shop}
+            style={
+              !isTab
+                ? styles.choseAccountShoppingMobile
+                : styles.choseAccountShopping
+            }
             resizeMode="center"
-          /> */}
-              <View
+          />
+              {/* <View
                 style={
                   !isTab
                     ? styles.choseAccountShoppingMobile
                     : styles.choseAccountShopping
                 }
-              />
+              /> */}
               <View>
                 <Text style={styles.accountTitle}>Restaurant’s name</Text>
                 <Text style={styles.accountDetail}>

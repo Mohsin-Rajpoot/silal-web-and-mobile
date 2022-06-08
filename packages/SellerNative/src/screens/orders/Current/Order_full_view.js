@@ -387,26 +387,26 @@ const App = ({navigation, route}) => {
                   height: 20,
                   width: 20,
                   borderRadius: 30,
-                  backgroundColor: '#5AB3A8',
+                  backgroundColor:colors.primary,
                 }}></View>
               <View
                 style={{
                   height: 40,
                   width: 2,
-                  backgroundColor: '#5AB3A8',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
                   height: 20,
                   width: 20,
                   borderRadius: 30,
-                  backgroundColor: '#5AB3A8',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
                   height: 40,
                   width: 2,
-                  backgroundColor: '#5AB3A8',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
@@ -421,7 +421,7 @@ const App = ({navigation, route}) => {
                   style={{
                     height: 10,
                     width: 10,
-                    backgroundColor: '#5AB3A8',
+                    backgroundColor: colors.primary,
                     borderRadius: 30,
                   }}></View>
               </View>
@@ -429,7 +429,7 @@ const App = ({navigation, route}) => {
                 style={{
                   height: 40,
                   width: 2,
-                  backgroundColor: '#5AB3A8',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
@@ -444,7 +444,7 @@ const App = ({navigation, route}) => {
                   style={{
                     height: 10,
                     width: 10,
-                    backgroundColor: '#5AB3A8',
+                    backgroundColor: colors.primary,
                     borderRadius: 30,
                   }}></View>
               </View>
@@ -518,7 +518,7 @@ const App = ({navigation, route}) => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={{
-                  backgroundColor: '#5AB3A8',
+                  backgroundColor: colors.primary,
                   borderRadius: 5,
                   padding: 10,
                   alignItems: 'center',
@@ -687,7 +687,7 @@ const App = ({navigation, route}) => {
               <Text
                 style={{
                   padding: 5,
-                  backgroundColor: '#E6F4F2',
+                  backgroundColor: colors.bluish,
                   borderRadius: 5,
                   marginLeft: 10,
                   fontSize: 11,

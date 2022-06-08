@@ -139,6 +139,8 @@ const Order = ({navigation}) => {
           flex: 1,
           flexDirection: 'row',
           alignItems: 'center',
+          // backgroundColor:'red',
+          // width:'10%'
         }}>
         <CommonTab tabs={tabs} page={page} onChangeTab={onChangeTab} />
         <View style={styles.sideTabContainer}>
@@ -285,7 +287,7 @@ const Order = ({navigation}) => {
         isModalVisible={modal}
         setModalVisible={setModal}
         modalWrapperStyle={{
-          marginHorizontal: width(30),
+          marginHorizontal: width(25),
           marginVertical: height(30),
           justifyContent: 'center',
         }}
@@ -954,7 +956,7 @@ const styles = ScaledSheet.create({
   sideTabContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '53%',
+    width: '36%',
     justifyContent: 'flex-end',
   },
   noteText: {

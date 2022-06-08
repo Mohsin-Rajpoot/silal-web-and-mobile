@@ -1,10 +1,14 @@
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
-import React from 'react';
+import {StyleSheet, Dimensions, View, ScrollView} from 'react-native';
+import React,{useState} from 'react';
 import {CustomButton} from '@SilalApp/common/components/native';
 import {useTranslation} from 'react-i18next';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import { LockOnLandscape } from '@SilalApp/common/components/native';
+var {width} = Dimensions.get('screen');
 const Tab = ({onChangeTab, page, tabs, containerStyle}) => {
   const {t} = useTranslation();
+  const [screenWidth, setScreenWidth] = useState(width);
+
   return (
     <View
       style={[

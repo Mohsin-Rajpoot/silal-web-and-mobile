@@ -24,8 +24,10 @@ import {useTranslation} from 'react-i18next';
 import {Icon} from 'react-native-elements';
 import colors from '@SilalApp/common/assets/colors';
 import {moderateScale, verticalScale} from 'react-native-size-matters';
-
+import { LockOnLandscape } from '@SilalApp/common/components/native';
+var {width} = Dimensions.get('screen');
 const Statistics = ({}) => {
+  const [screenWidth, setScreenWidth] = useState(width);
   const navigation = useNavigation();
   const {t} = useTranslation();
   // const [orientation, setOrientation] = useState('LANDSCAPE');
@@ -106,9 +108,9 @@ const Statistics = ({}) => {
     {
       id: 3,
       image: require('../../Assets/Bellicon.png'),
-      title: 'out_of_stock_item',
-      percentage: '11.1%',
-      Amount: '6',
+      title: 'out of stock item',
+      // percentage: '11.1%',
+      Amount: '9',
       lowOrders: 2,
       rating: false,
     },
@@ -124,6 +126,11 @@ const Statistics = ({}) => {
   ];
   return (
     <ScrollView contentContainerStyle={{width:"100%", flexGrow:1}}>
+       <LockOnLandscape
+        onPress={() => console.log('Harris')}
+        width={screenWidth}
+        setWidth={setScreenWidth}
+      />
       <View style={{zIndex: 1}}>
         <TitleHeading Date="Date" />
       </View>

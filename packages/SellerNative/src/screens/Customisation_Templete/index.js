@@ -11,6 +11,7 @@ import styles from './styles';
 import Entypo from 'react-native-vector-icons/Entypo';
 import images from '../../Assets';
 import {useTranslation} from 'react-i18next';
+import colors from '@SilalApp/common/assets/colors';
 const Customisation_Templete = () => {
   const {t} = useTranslation();
   const data = [
@@ -120,7 +121,7 @@ const Customisation_Templete = () => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[styles.PrimaryButton, {paddingHorizontal: 15}]}>
-                  <Text style={styles.TertiaryButtonText}>
+                  <Text style={[styles.TertiaryButtonText,{color:colors.primary}]}>
                     {t('Add_template_as')}
                   </Text>
                 </TouchableOpacity>
@@ -132,7 +133,7 @@ const Customisation_Templete = () => {
       />
 
       <TouchableOpacity style={styles.CreateButton}>
-        <Entypo name="plus" style={{fontSize: 20, color: '#fff'}} />
+        <Entypo name="plus" style={{fontSize: 20, color: colors.textWhite}} />
         <Text style={styles.CreatebuttonText}>{t('create_new')} </Text>
       </TouchableOpacity>
     </View>

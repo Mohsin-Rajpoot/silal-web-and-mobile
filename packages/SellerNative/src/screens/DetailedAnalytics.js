@@ -216,7 +216,7 @@ const styles = ScaledSheet.create({
   SecondColumn: {
     height: 40,
     width: '80%',
-    backgroundColor: '#5AB3A8',
+    backgroundColor: colors.primary,
     borderRadius: 5,
     justifyContent: 'space-between',
     alignItems: 'center',

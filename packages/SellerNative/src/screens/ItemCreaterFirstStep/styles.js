@@ -31,7 +31,7 @@ const styles = ScaledSheet.create({
   HeaderButtonText: {
     color: '#fff',
     textAlign: 'center',
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   Container: {
     width: '95%',
@@ -118,7 +118,7 @@ const styles = ScaledSheet.create({
     },
   },
   PreviewHeader: {
-    color: '#5AB3A8',
+    color: colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 12,
@@ -126,12 +126,19 @@ const styles = ScaledSheet.create({
     fontFamily: 'Poppins-SemiBold',
   },
   ModalContainerPreview: {
+    width: '100%',
+    height: '100%',
+    // backgroundColor: '#fff',
+    // position: 'absolute',
+    // right: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)'
+  },
+  ModalContainePreviewMain:{
     width: '40%',
     height: '100%',
-    backgroundColor: '#fff',
+    backgroundColor:colors.textWhite,
     position: 'absolute',
     right: 0,
-    // backgroundColor: 'rgba(0,0,0,0.5)'
   },
   CrossPreview: {
     fontSize: 25,
@@ -193,7 +200,7 @@ const styles = ScaledSheet.create({
     fontFamily: 'Lato-Regular',
   },
   ModalTertiaryButton: {
-    borderColor: '#5AB3A8',
+    borderColor: colors.primary,
     borderWidth: 2,
     height: 40,
     width: 170,
@@ -203,10 +210,10 @@ const styles = ScaledSheet.create({
   },
   ButtonText: {
     color: '#5AB3A8',
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.LatoSemiBold,
   },
   PrimaryButtonModal: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: colors.primary,
     height: 40,
     width: 170,
     justifyContent: 'center',
@@ -215,8 +222,13 @@ const styles = ScaledSheet.create({
     marginHorizontal: 10,
   },
   TextPrimaryButton: {
-    color: '#fff',
-    fontFamily: 'Poppins-SemiBold',
+    color: colors.textWhite,
+    fontFamily: fonts.LatoSemiBold,
+    
+  },
+  TertiaryButtonText:{
+// color:colors.primary,
+// backgroundColor:'red'
   },
   ToastMainView: {
     flexDirection: 'row',

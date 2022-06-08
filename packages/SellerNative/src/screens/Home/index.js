@@ -194,6 +194,7 @@ const Home = ({navigation}) => {
       </View>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <View style={{margin: verticalScale(10)}}>
+       
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <MaterialCommunityIcons
               name="menu"

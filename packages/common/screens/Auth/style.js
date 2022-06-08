@@ -227,7 +227,7 @@ const styles = ScaledSheet.create({
     width: wp("25%"),
     height: hp("25%"),
     alignSelf: "center",
-    margin: "10@s",
+    // margin: "5@s",
   },
   dot: {
     width: "10@ms",
@@ -247,6 +247,7 @@ const styles = ScaledSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    marginTop:"-15@s"
   },
   skipbutton: {
     fontSize: "12@ms",
@@ -254,6 +255,7 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.LatoBold,
     alignSelf: "flex-end",
     margin: "15@ms",
+    marginVertical:'22@vs'
   },
   signUpDetailText: {
     fontSize: "11@ms",
@@ -765,6 +767,7 @@ const styles = ScaledSheet.create({
     padding: "10@s",
     borderRadius: "4@s",
     margin: "5@s",
+    marginVertical:'1@s'
   },
   button1: {
     backgroundColor: colors.blurPrimary,

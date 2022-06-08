@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {View, Image} from 'react-native';
 import {ScaledSheet, verticalScale} from 'react-native-size-matters';
 import React from 'react';
 
@@ -16,7 +16,11 @@ const AboutApp = ({navigation}) => {
     <SafeAreaView style={styles.mainContainer}>
       <Header label={t('AboutApp')} onPress={() => navigation.openDrawer()} />
       <View style={styles.IconMainContainer}>
-        <View style={styles.IconContainer} />
+        <Image
+          source={require('../../Assets/Group276.png')}
+          style={styles.IconContainer}
+        />
+
         <CustomText label="Silal app" textStyle={styles.SilalText} />
         <CustomText label="Ver. 1.0" textStyle={styles.versionText} />
       </View>
@@ -59,7 +63,7 @@ const styles = ScaledSheet.create({
   IconContainer: {
     width: '80@s',
     height: '80@s',
-    backgroundColor: colors.primary,
+    // backgroundColor: colors.primary,
     borderRadius: '10@s',
     marginVertical: '10@s',
   },

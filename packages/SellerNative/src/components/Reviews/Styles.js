@@ -97,7 +97,7 @@ const styles = ScaledSheet.create({
   },
   TextParagraphFlat: {
     marginHorizontal: 30,
-    marginLeft: 150,
+    marginLeft: 165,
     marginVertical: 1,
   },
   TextParagraphFlatMobile: {
@@ -234,6 +234,8 @@ const styles = ScaledSheet.create({
   submitBtnMobile: {
     width: '100%',
     borderRadius: '10@s',
+    // marginHorizontal:'40@s'
+    
   },
   submitBtn: {
     width: '100%',

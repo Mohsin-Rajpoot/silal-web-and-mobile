@@ -21,6 +21,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 // import TitleHeading from '../components/TitleHeading';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {acc} from 'react-native-reanimated';
+import colors from '@SilalApp/common/assets/colors';
 // import LockOnLandscape from '../components/Dashboard/LockOnLandscape';
 // import StatisticWhiteBoxTitle from '../components/StatisticWhiteBoxTitle';
 const {width, height} = Dimensions.get('window');
@@ -61,7 +62,7 @@ const Home = ({navigation}) => {
             styles.order_button,
             {
               backgroundColor:
-                acceptance_order_state == true ? '#5AB3A8' : null,
+                acceptance_order_state == true ? colors.primary : null,
               width: 250,
             },
           ]}>
@@ -78,7 +79,7 @@ const Home = ({navigation}) => {
           style={[
             styles.order_button,
             {
-              backgroundColor: preparing == true ? '#5AB3A8' : null,
+              backgroundColor: preparing == true ? colors.primary : null,
               width: 250,
             },
           ]}>
@@ -95,7 +96,7 @@ const Home = ({navigation}) => {
           style={[
             styles.order_button,
             {
-              backgroundColor: pickup_order_state == true ? '#5AB3A8' : null,
+              backgroundColor: pickup_order_state == true ? colors.primary : null,
               width: 250,
             },
           ]}>
