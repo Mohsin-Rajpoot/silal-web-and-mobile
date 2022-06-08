@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import OfferDetail from '../screens/OfferDetail';
 import Offers from '../screens/offers/Offers';
 import RenewOffer from '../screens/RenewOffer';
+import Preview from '../screens/RenewOffer/Molecules/Preview';
 const Stack = createNativeStackNavigator();
 // const navTheme = {
 //   ...DefaultTheme,
@@ -22,6 +23,7 @@ const OfferStack = () => {
       <Stack.Screen name="offer" component={Offers} />
       <Stack.Screen name="offerDetail" component={OfferDetail} />
       <Stack.Screen name='RenewOffer' component={RenewOffer}/>
+      <Stack.Screen name='Preview' component={Preview}/>
     </Stack.Navigator>
     // </NavigationContainer>
   );

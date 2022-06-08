@@ -458,6 +458,10 @@
     "chicken&CheeseBurger": "Chicken & Cheese Burger",
     "freeze_offer": "Freeze offer",
     "offer_is_freezed": "Offer is freezed",
-    "freezeDetails": "This offer has been paused as you requested, any attempt to buy items from this offer will not work, you may un-freeze anytime."
+    "freezeDetails": "This offer has been paused as you requested, any attempt to buy items from this offer will not work, you may un-freeze anytime.",
+    "please_review":"Please review",
+    "terms_of_use":"Terms of Use",
+    "for_full_details":"for full details",
+    "Un_Freeze":"Un-Freeze"
   }
 }

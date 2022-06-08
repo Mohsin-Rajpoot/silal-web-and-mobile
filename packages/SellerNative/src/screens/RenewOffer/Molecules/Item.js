@@ -5,7 +5,17 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import colors from '@SilalApp/common/assets/colors';
 import CustomButton from '@SilalApp/common/components/native/CustomButton';
 import fonts from '@SilalApp/common/assets/fonts';
-const Item = ({heading, withLabel, text1, text2, editPress, imgPath}) => {
+const Item = ({
+  heading,
+  withLabel,
+  text1,
+  text2,
+  editPress,
+  imgPath,
+  buttonText,
+  leftIcon,
+  btnStyle
+}) => {
   return (
     <View style={styles.mainContainer}>
       <CustomText
@@ -25,9 +35,12 @@ const Item = ({heading, withLabel, text1, text2, editPress, imgPath}) => {
           <CustomText label={text2} textStyle={styles.detail} />
           <CustomButton
             onPress={editPress}
-            containerStyle={styles.btn}
-            textStyle={styles.btnText}
-            text="Edit"
+            containerStyle={leftIcon ? styles.btnStyle : styles.btn}
+            textStyle={leftIcon? styles.btnText2 : styles.btnText}
+            text={buttonText || 'Edit'}
+            iconName="shopping-cart"
+            iconType="feather"
+            leftIcon={leftIcon}
           />
         </View>
       </View>
@@ -73,6 +86,8 @@ const styles = ScaledSheet.create({
     color: colors.textPrimary,
     fontFamily: fonts.LatoMedium,
     marginTop: '4@vs',
+    width: '150@s',
+    lineHeight:18
   },
   btn: {
     width: '90@s',
@@ -82,9 +97,24 @@ const styles = ScaledSheet.create({
     alignSelf: 'flex-start',
     marginTop: '10@vs',
   },
+  btnStyle: {
+    width: '137@s',
+    height: '30@vs',
+    borderRadius: '100@vs',
+    backgroundColor: colors.primary,
+    alignSelf: 'flex-start',
+    marginTop: '10@vs',
+  },
   btnText: {
     color: colors.primary,
     fontSize: '13@vs',
     marginTop: -2,
+    
   },
+  btnText2: {
+    color: colors.textWhite,
+    fontSize: '13@vs',
+    marginLeft:'10@s'
+  },
+  
 });

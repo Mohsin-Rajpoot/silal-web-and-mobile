@@ -24,7 +24,7 @@ import CustomButton from '@SilalApp/common/components/native/CustomButton';
 import {Icon} from 'react-native-elements';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-const RenewOffer = () => {
+const RenewOffer = ({navigation}) => {
   const {t} = useTranslation();
   const [modal, setModal] = useState(false);
   const [sModal, setSModal] = useState(false);
@@ -36,6 +36,7 @@ const RenewOffer = () => {
     {label: 'Banana', value: 'banana'},
   ]);
   const [freezeModal, setFreezeModal] = useState(false);
+  const [isFreeze, setIsFreeze] = useState(false);
   const totalDataArray = [
     {
       id: 1,
@@ -94,16 +95,31 @@ const RenewOffer = () => {
         />
       </View>
       <View style={styles.totalContainer}>
-        {totalDataArray.map((item, index) => {
-          return (
-            <TotalDetails
-              key={item.id}
-              marginVertical={item.marginVertical}
-              firstText={item.detail}
-              secondText={item.total}
+        <View>
+          {totalDataArray.map((item, index) => {
+            return (
+              <TotalDetails
+                key={item.id}
+                marginVertical={item.marginVertical}
+                firstText={item.detail}
+                secondText={item.total}
+              />
+            );
+          })}
+        </View>
+        {isFreeze && (
+          <View style={{marginLeft: scale(-30)}}>
+            <Image
+              source={images.freezeIcon}
+              style={{
+                width: verticalScale(30),
+                height: verticalScale(30),
+                resizeMode: 'contain',
+                tintColor: colors.textWhite,
+              }}
             />
-          );
-        })}
+          </View>
+        )}
       </View>
 
       {itemDataArray.map((item, index) => {
@@ -334,11 +350,20 @@ const RenewOffer = () => {
           </View>
         </View>
         <View style={{width: '81%'}}>
-          <CustomButton
-            textStyle={{fontSize: verticalScale(12)}}
-            containerStyle={styles.btnContainer}
-            text={t('Apply')}
-          />
+          {isFreeze ? (
+            <CustomButton
+              textStyle={{fontSize: verticalScale(12)}}
+              containerStyle={styles.btnContainer}
+              text={t('Un_Freeze')}
+              onPress={() => setIsFreeze(false)}
+            />
+          ) : (
+            <CustomButton
+              textStyle={{fontSize: verticalScale(12)}}
+              containerStyle={styles.btnContainer}
+              text={t('Apply')}
+            />
+          )}
         </View>
       </View>
       {mobileModal && (
@@ -354,7 +379,7 @@ const RenewOffer = () => {
           <TouchableOpacity
             style={styles.menuModalContainer}
             activeOpacity={0.6}
-            onPress={() => console.log('Preview')}>
+            onPress={() => navigation.navigate('Preview')}>
             <Icon
               name="device-mobile"
               type="octicon"
@@ -394,8 +419,12 @@ const RenewOffer = () => {
           setModalVisible={setFreezeModal}
           modalWrapperStyle={{
             marginHorizontal: 0,
-            marginVertical: height('30%'),
+            marginVertical: height('35%'),
             borderTopRightRadius: 20,
+            paddingHorizontal: scale(5),
+            paddingTop: verticalScale(30),
+            marginTop: height(22),
+            marginHorizontal: scale(10),
           }}>
           <Image
             source={images.freezeIcon}
@@ -412,7 +441,44 @@ const RenewOffer = () => {
             marginBottom={verticalScale(15)}
             marginTop={verticalScale(10)}
           />
-          <CustomText label={t("freezeDetails")} />
+          <CustomText
+            fontFamily={fonts.LatoMedium}
+            fontSize={verticalScale(14)}
+            textStyle={{textAlign: 'center'}}
+            label={t('freezeDetails')}
+          />
+          <View style={{flexDirection: 'row'}}>
+            <CustomText
+              label={t('please_review')}
+              fontSize={verticalScale(13)}
+              fontFamily={fonts.LatoMedium}
+            />
+            <CustomText
+              color={colors.primary}
+              label={t('terms_of_use')}
+              fontSize={verticalScale(13)}
+              fontFamily={fonts.LatoMedium}
+            />
+            <CustomText
+              label={t('for_full_details')}
+              fontSize={verticalScale(13)}
+              fontFamily={fonts.LatoMedium}
+            />
+          </View>
+          <CustomButton
+            text={t('Ok')}
+            onPress={() => {
+              setIsFreeze(true);
+              setFreezeModal(false);
+              setMobileModal(false);
+            }}
+            containerStyle={{
+              width: '100%',
+              height: verticalScale(45),
+              marginTop: verticalScale(20),
+            }}
+            textStyle={{fontSize: verticalScale(14)}}
+          />
         </CustomModal>
       )}
     </ScrollView>
@@ -436,6 +502,8 @@ const styles = ScaledSheet.create({
     paddingHorizontal: '15@s',
     marginTop: '10@vs',
     marginBottom: '20@vs',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   buttonContainer: {
     backgroundColor: colors.textWhite,

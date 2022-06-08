@@ -1,9 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import colors from "../../assets/colors";
 import fonts from "../../assets/fonts";
-import { ScaledSheet } from "react-native-size-matters";
+import { ScaledSheet,verticalScale } from "react-native-size-matters";
 import IsTablet from "./IsTablet";
+import {Icon} from 'react-native-elements';
+
 export default function CustomButton({
   text,
   onPress,
@@ -11,6 +13,9 @@ export default function CustomButton({
   navigation,
   containerStyle,
   textStyle,
+  leftIcon,
+  iconName,
+  iconType
 }) {
   return (
     <TouchableOpacity
@@ -22,6 +27,7 @@ export default function CustomButton({
       containerStyle,
     ]}
   >
+    {leftIcon && <Icon size={verticalScale(14)} color={colors.textWhite} type={iconType} name={iconName} />}
     <Text
       style={[
         !IsTablet ? styles.buttonTextMobile : styles.buttonText,
@@ -53,6 +59,8 @@ const styles = ScaledSheet.create({
     marginVertical: 5,
     alignSelf: "center",
     borderRadius: '8@s',
+    flexDirection:'row',
+    alignItems:'center'
   },
   mainbutton_PRIMARY: {
     backgroundColor: colors.primary,
