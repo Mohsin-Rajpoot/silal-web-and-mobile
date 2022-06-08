@@ -8,14 +8,16 @@ import {
   FlatList,
   TextInput,
   Modal,
-
 } from 'react-native';
+import Accepted from '../molecule/Accepted';
+import DailySummaryCompo from '../molecule/DailySummaryCompo';
 import Entypo from 'react-native-vector-icons/Entypo';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import SellerTools from '../molecule/SellerTools';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Svg, {
-  Path,
-  Rect,
-} from 'react-native-svg';
+import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
+
+import Svg, {Path, Rect} from 'react-native-svg';
 import {Slider, Icon} from 'react-native-elements';
 import Toast from 'react-native-easy-toast';
 import SwipeButton from 'rn-swipe-button';
@@ -115,7 +117,7 @@ export default function Current_orders({title, navigation}) {
           </Text>
         </View>
         <View style={styles.more_order}>
-          <Text style={{color:colors.primary}}>3 more</Text>
+          <Text style={{color: colors.primary}}>3 more</Text>
         </View>
 
         <SwipeButton
@@ -531,102 +533,123 @@ export default function Current_orders({title, navigation}) {
   };
 
   return (
-    <View style={{flexDirection: 'row', height: '100%', width: '100%'}}>
-      {/* <View style={{flexDirection:'row'}}> */}
-      <View
-        style={{
-          backgroundColor: '#E5EAEB',
-          width: '40%',
-          marginLeft: 10,
-          borderRadius: 5,
-        }}>
-        <Text style={styles.title}>Received</Text>
-        <FlatList
-          keyExtractor={(item, index) => index.toString()}
-          data={data}
-          renderItem={({item}) => render_received(item)}
-        />
-      </View>
-
-      <View
-        style={{
-          backgroundColor: '#E5EAEB',
-          width: '40%',
-          marginLeft: 10,
-          borderRadius: 5,
-        }}>
-        <Text style={styles.title}>Accepted</Text>
-        <FlatList
-          keyExtractor={(item, index) => index.toString()}
-          data={data}
-          renderItem={({item}) => render_accepted(item)}
-        />
-      </View>
-
-      <View
-        style={{
-          backgroundColor: '#4C6870',
-          width: '16%',
-          marginLeft: 10,
-          borderRadius: 5,
-        }}>
-        <Text style={[styles.title, {color: 'white'}]}>Ready for pickup</Text>
-        <FlatList
-          keyExtractor={(item, index) => index.toString()}
-          data={data}
-          renderItem={({item}) => render_ready_pickup()}
-        />
+    <>
+      <View style={{paddingHorizontal: scale(15)}}>
+        {!IsTablet ? (
+          <SellerTools
+            onPress={() => navigation.navigate('SellerToolScreen')}
+          />
+        ) : (
+          <View />
+        )}
         <View
           style={{
             flexDirection: 'row',
-            padding: 10,
-            backgroundColor: colors.primary,
-            borderBottomLeftRadius: 5,
-            borderBottomRightRadius: 5,
             alignItems: 'center',
-            justifyContent: 'space-evenly',
+            justifyContent: 'space-between',
           }}>
-          <Svg
-            width="36"
-            height="24"
-            viewBox="0 0 36 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <Path
-              d="M27.27 9L24.72 1.98C24.285 0.795 23.16 0 21.9 0H18V3H21.9L24.09 9H16.875L16.335 7.5H18V4.5H10.5V7.5H13.125L15.855 15H14.85C14.19 11.655 11.385 9.18 7.875 9.015C3.675 8.805 0 12.3 0 16.5C0 20.7 3.3 24 7.5 24C11.19 24 14.175 21.465 14.85 18H21.15C21.81 21.345 24.615 23.82 28.125 23.985C32.325 24.18 36 20.7 36 16.485C36 12.285 32.7 8.985 28.5 8.985H27.27V9ZM11.73 18C11.13 19.755 9.495 21 7.5 21C4.98 21 3 19.02 3 16.5C3 13.98 4.98 12 7.5 12C9.495 12 11.13 13.245 11.73 15H7.5V18H11.73ZM21.15 15H19.05L17.955 12H22.5C21.84 12.87 21.36 13.875 21.15 15ZM28.5 21C25.98 21 24 19.02 24 16.5C24 15.105 24.615 13.905 25.575 13.08L27.015 17.04L29.835 16.02L28.38 12.015C28.425 12.015 28.47 12 28.515 12C31.035 12 33.015 13.98 33.015 16.5C33.015 19.02 31.02 21 28.5 21Z"
-              fill="white"
-            />
-          </Svg>
-          <View>
-            <Text style={styles.onway}>ON-WAY</Text>
-            <Text style={[styles.onway, {marginTop: 5}]}>4 orders</Text>
-          </View>
+          <Accepted />
+          <Accepted change />
+        </View>
+        <DailySummaryCompo checkPress={()=>navigation.navigate("DailySummary")} />
+      </View>
+      <View style={{flexDirection: 'row', height: '100%', width: '100%'}}>
+        {/* <View style={{flexDirection:'row'}}> */}
+        <View
+          style={{
+            backgroundColor: '#E5EAEB',
+            width: '40%',
+            marginLeft: 10,
+            borderRadius: 5,
+          }}>
+          <Text style={styles.title}>Received</Text>
+          <FlatList
+            keyExtractor={(item, index) => index.toString()}
+            data={data}
+            renderItem={({item}) => render_received(item)}
+          />
         </View>
 
-        {/* </View> */}
-      </View>
+        <View
+          style={{
+            backgroundColor: '#E5EAEB',
+            width: '40%',
+            marginLeft: 10,
+            borderRadius: 5,
+          }}>
+          <Text style={styles.title}>Accepted</Text>
+          <FlatList
+            keyExtractor={(item, index) => index.toString()}
+            data={data}
+            renderItem={({item}) => render_accepted(item)}
+          />
+        </View>
 
-      <Toast
-        ref={toastRef}
-        style={styles.toast}
-        position="bottom"
-        positionValue={250}
-        fadeInDuration={750}
-        fadeOutDuration={800}
-        opacity={1}
-        textStyle={{color: 'red'}}
-      />
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modal_timer_visible}
-        onRequestClose={() => {
-          // Alert.alert("Modal has been closed.");
-          set_modal_timer_visible(!modal_timer_visible);
-        }}>
-        {render_modal_view()}
-      </Modal>
-    </View>
+        <View
+          style={{
+            backgroundColor: '#4C6870',
+            width: '16%',
+            marginLeft: 10,
+            borderRadius: 5,
+          }}>
+          <Text style={[styles.title, {color: 'white'}]}>Ready for pickup</Text>
+          <FlatList
+            keyExtractor={(item, index) => index.toString()}
+            data={data}
+            renderItem={({item}) => render_ready_pickup()}
+          />
+          <View
+            style={{
+              flexDirection: 'row',
+              padding: 10,
+              backgroundColor: colors.primary,
+              borderBottomLeftRadius: 5,
+              borderBottomRightRadius: 5,
+              alignItems: 'center',
+              justifyContent: 'space-evenly',
+            }}>
+            <Svg
+              width="36"
+              height="24"
+              viewBox="0 0 36 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <Path
+                d="M27.27 9L24.72 1.98C24.285 0.795 23.16 0 21.9 0H18V3H21.9L24.09 9H16.875L16.335 7.5H18V4.5H10.5V7.5H13.125L15.855 15H14.85C14.19 11.655 11.385 9.18 7.875 9.015C3.675 8.805 0 12.3 0 16.5C0 20.7 3.3 24 7.5 24C11.19 24 14.175 21.465 14.85 18H21.15C21.81 21.345 24.615 23.82 28.125 23.985C32.325 24.18 36 20.7 36 16.485C36 12.285 32.7 8.985 28.5 8.985H27.27V9ZM11.73 18C11.13 19.755 9.495 21 7.5 21C4.98 21 3 19.02 3 16.5C3 13.98 4.98 12 7.5 12C9.495 12 11.13 13.245 11.73 15H7.5V18H11.73ZM21.15 15H19.05L17.955 12H22.5C21.84 12.87 21.36 13.875 21.15 15ZM28.5 21C25.98 21 24 19.02 24 16.5C24 15.105 24.615 13.905 25.575 13.08L27.015 17.04L29.835 16.02L28.38 12.015C28.425 12.015 28.47 12 28.515 12C31.035 12 33.015 13.98 33.015 16.5C33.015 19.02 31.02 21 28.5 21Z"
+                fill="white"
+              />
+            </Svg>
+            <View>
+              <Text style={styles.onway}>ON-WAY</Text>
+              <Text style={[styles.onway, {marginTop: 5}]}>4 orders</Text>
+            </View>
+          </View>
+
+          {/* </View> */}
+        </View>
+
+        <Toast
+          ref={toastRef}
+          style={styles.toast}
+          position="bottom"
+          positionValue={250}
+          fadeInDuration={750}
+          fadeOutDuration={800}
+          opacity={1}
+          textStyle={{color: 'red'}}
+        />
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modal_timer_visible}
+          onRequestClose={() => {
+            // Alert.alert("Modal has been closed.");
+            set_modal_timer_visible(!modal_timer_visible);
+          }}>
+          {render_modal_view()}
+        </Modal>
+      </View>
+    </>
   );
 }
 const styles = StyleSheet.create({
@@ -644,7 +667,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     paddingBottom: 10,
- 
   },
   order_header: {
     flex: 1,
@@ -684,7 +706,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 30,
     marginTop: 5,
-    
   },
   accept_btn: {
     backgroundColor: colors.primary,
