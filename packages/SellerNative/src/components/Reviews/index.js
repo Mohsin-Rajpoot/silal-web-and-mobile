@@ -270,11 +270,12 @@ const Reviews = () => {
                   </View>
                 </ScrollView>
               </CustomModal>
+              <View>
               <FlatList
                 data={data2}
                 numColumns={1}
                 nestedScrollEnabled={true}
-                style={{marginBottom: 5, height: 400}}
+                style={{marginBottom: 5,}}
                 renderItem={({item}) => (
                   <View style={{flexDirection: 'column'}}>
                     <View
@@ -292,16 +293,14 @@ const Reviews = () => {
                             flexDirection: 'row',
                             alignItems: 'center',
                             justifyContent: 'space-between',
-                            width: !IsTablet ? '100%' : '70%',
+                            width: !IsTablet ? '100%' : '80%',
                           }}>
                           <Text style={styles.ReviewsFlatListSecondaryMain}>
                             {item.Title}
                           </Text>
                           {!IsTablet ? (
                             <Text style={styles.timeDuration}>{item.time}</Text>
-                          ) : (
-                            <View />
-                          )}
+                          ) : null}
                           {IsTablet ? (
                             <View
                               style={{
@@ -311,7 +310,7 @@ const Reviews = () => {
                                 alignItems: 'center',
                               }}>
                               {IsTablet && (
-                                <View style={{width: '30%'}}>
+                                <View style={{width: '32%'}}>
                                   <Raiting />
                                 </View>
                               )}
@@ -373,7 +372,7 @@ const Reviews = () => {
                           borderColor: '#E8E8E8',
                           borderWidth: 1,
                           borderRadius: 5,
-                          width: '80%',
+                          width: '74%',
                           alignSelf: 'flex-end',
                           marginHorizontal: verticalScale(12),
                           marginVertical: moderateScale(8),
@@ -390,10 +389,11 @@ const Reviews = () => {
                       style={{
                         flexDirection: !IsTablet ? 'column' : 'row',
                         justifyContent: 'space-between',
-                        marginVertical: 5,
-                        width: !IsTablet ? '90%' : '80%',
+                        marginVertical: '3%',
+                        width: !IsTablet ? '85%' : '73%',
                         alignSelf: !IsTablet ? 'center' : 'flex-end',
                         marginRight: scale(10),
+                        // marginHorizontal: IsTablet? '50%': null,
                       }}>
                       <CustomButton
                         text={isReply == true ? 'Submit' : 'Reply'}
@@ -403,7 +403,7 @@ const Reviews = () => {
                         onPress={() => {
                           setModalData(item);
                           setVisible(!IsTablet ? !visible : false);
-                          setisReply(true);
+                          setisReply(!isReply);
                         }}
                       />
                       <TouchableOpacity
@@ -426,6 +426,7 @@ const Reviews = () => {
                 )}
                 keyExtractor={item => item.id}
               />
+              </View>
             </View>
             <View
               style={

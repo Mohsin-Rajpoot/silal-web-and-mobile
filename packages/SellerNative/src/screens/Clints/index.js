@@ -400,156 +400,20 @@ const footer = () => {
 
   // //////////////
 
-const footer = () => {
-  return (
-    <View style={{marginTop:10}}>
-    <View style={!IsTablet ? styles.ButtonShow : styles.ButtonHide}>
-        <TouchableOpacity style={styles.hideButton}>
-          <Text style={styles.HideButtonText}>Load More</Text>
-        </TouchableOpacity>
-      </View>
-      </View>
-  );
-};
+// const footer = () => {
+//   return (
+//     <View style={{marginTop:10}}>
+//     <View style={!IsTablet ? styles.ButtonShow : styles.ButtonHide}>
+//         <TouchableOpacity style={styles.hideButton}>
+//           <Text style={styles.HideButtonText}>Load More</Text>
+//         </TouchableOpacity>
+//       </View>
+//       </View>
+//   );
+// };
 
 
-  const sheet_data = () => {
-    return (
-      <View style={styles.sheet}>
-        <View style={styles.sheet_head_view}>
-          <TouchableOpacity onPress={() => Sheet.current.close()}>
-            {/* <AntDesign name="closecircle" size={24} color="#dadce2" /> */}
-            <Entypo style={styles.CrossIconbts} name="cross" />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            justifyContent: 'center',
-            alignSelf: 'center',
-            zIndex: 1,
-            marginTop: -33,
-          }}>
-          <Text style={{fontFamily: fonts.LatoBold, fontSize: 17}}>
-            Sort By
-          </Text>
-        </View>
-
-        <View style={styles.mianviewText}>
-          <View style={styles.BottomSheetTextHead}>
-            <TouchableOpacity onPress={()=>setfilter('newest')}>
-              <Text
-                style={{
-                  color: filter == 'newest' ? '#05AE4B': '#002733' ,
-                  paddingVertical: 5,
-                  fontFamily: fonts.LatoMedium,
-                }}>
-                Newest first
-              </Text>
-            </TouchableOpacity>
-            {filter == 'newest' ? (
-              <View style={{}}>
-                <Svg
-                  width="14"
-                  height="10"
-                  viewBox="0 0 14 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <Path
-                    d="M1.72853 4.3107C1.54799 4.11868 1.29894 4.00571 1.03554 3.99634C0.772144 3.98697 0.515699 4.08197 0.32197 4.26067C0.128242 4.43938 0.0128967 4.68734 0.00101728 4.95064C-0.0108622 5.21393 0.0816843 5.47127 0.258533 5.6667L3.87053 9.5857C4.40753 10.1117 5.20753 10.1117 5.70453 9.6157L6.06853 9.25669C7.38306 7.96392 8.69607 6.66958 10.0075 5.3737L10.0475 5.3337C11.2732 4.12576 12.4926 2.91141 13.7055 1.6907C13.8868 1.50089 13.9862 1.24743 13.9823 0.98499C13.9783 0.722553 13.8714 0.472185 13.6845 0.28791C13.4976 0.103635 13.2457 0.000227559 12.9833 3.75124e-07C12.7208 -0.000226808 12.4688 0.102745 12.2815 0.286696C11.0742 1.50103 9.86085 2.70938 8.64153 3.9117L8.60153 3.9517C7.3448 5.19399 6.08647 6.43466 4.82653 7.6737L1.72853 4.3107Z"
-                    fill="#05AE4B"
-                  />
-                </Svg>
-              </View>
-            ) : null}
-          </View>
-
-          <View style={styles.BottomSheetTextHead}>
-            <TouchableOpacity onPress={()=>setfilter('oldest')}>
-              <Text
-                style={{
-                  color: filter == 'oldest' ?'#05AE4B': '#002733' ,
-                  paddingVertical: 5,
-                  fontFamily: fonts.LatoMedium,
-                }}>
-                Oldest first
-              </Text>
-            </TouchableOpacity>
-            {filter == 'oldest' ? (
-              <View style={{}}>
-                <Svg
-                  width="14"
-                  height="10"
-                  viewBox="0 0 14 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <Path
-                    d="M1.72853 4.3107C1.54799 4.11868 1.29894 4.00571 1.03554 3.99634C0.772144 3.98697 0.515699 4.08197 0.32197 4.26067C0.128242 4.43938 0.0128967 4.68734 0.00101728 4.95064C-0.0108622 5.21393 0.0816843 5.47127 0.258533 5.6667L3.87053 9.5857C4.40753 10.1117 5.20753 10.1117 5.70453 9.6157L6.06853 9.25669C7.38306 7.96392 8.69607 6.66958 10.0075 5.3737L10.0475 5.3337C11.2732 4.12576 12.4926 2.91141 13.7055 1.6907C13.8868 1.50089 13.9862 1.24743 13.9823 0.98499C13.9783 0.722553 13.8714 0.472185 13.6845 0.28791C13.4976 0.103635 13.2457 0.000227559 12.9833 3.75124e-07C12.7208 -0.000226808 12.4688 0.102745 12.2815 0.286696C11.0742 1.50103 9.86085 2.70938 8.64153 3.9117L8.60153 3.9517C7.3448 5.19399 6.08647 6.43466 4.82653 7.6737L1.72853 4.3107Z"
-                    fill="#05AE4B"
-                  />
-                </Svg>
-              </View>
-            ) : null}
-          </View>
-          <View style={styles.BottomSheetTextHead}>
-            <TouchableOpacity onPress={()=>setfilter('AZ')}>
-              <Text
-                style={{
-                  color: filter == 'AZ' ?'#05AE4B': '#002733'  ,
-                  paddingVertical: 5,
-                  fontFamily: fonts.LatoMedium,
-                }}>
-                A-Z
-              </Text>
-            </TouchableOpacity>
-            {filter == 'AZ' ? (
-              <View style={{}}>
-                <Svg
-                  width="14"
-                  height="10"
-                  viewBox="0 0 14 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <Path
-                    d="M1.72853 4.3107C1.54799 4.11868 1.29894 4.00571 1.03554 3.99634C0.772144 3.98697 0.515699 4.08197 0.32197 4.26067C0.128242 4.43938 0.0128967 4.68734 0.00101728 4.95064C-0.0108622 5.21393 0.0816843 5.47127 0.258533 5.6667L3.87053 9.5857C4.40753 10.1117 5.20753 10.1117 5.70453 9.6157L6.06853 9.25669C7.38306 7.96392 8.69607 6.66958 10.0075 5.3737L10.0475 5.3337C11.2732 4.12576 12.4926 2.91141 13.7055 1.6907C13.8868 1.50089 13.9862 1.24743 13.9823 0.98499C13.9783 0.722553 13.8714 0.472185 13.6845 0.28791C13.4976 0.103635 13.2457 0.000227559 12.9833 3.75124e-07C12.7208 -0.000226808 12.4688 0.102745 12.2815 0.286696C11.0742 1.50103 9.86085 2.70938 8.64153 3.9117L8.60153 3.9517C7.3448 5.19399 6.08647 6.43466 4.82653 7.6737L1.72853 4.3107Z"
-                    fill="#05AE4B"
-                  />
-                </Svg>
-              </View>
-            ) : null}
-          </View>
-
-          <View style={styles.BottomSheetTextHead}>
-            <TouchableOpacity onPress={()=>setfilter('ZA')}>
-              <Text
-                style={{
-                  color: filter == 'ZA' ?'#05AE4B': '#002733' ,
-                  paddingVertical: 5,
-                  fontFamily: fonts.LatoMedium,
-                }}>
-                Z-A
-              </Text>
-            </TouchableOpacity>
-            {filter == 'ZA' ? (
-              <View style={{}}>
-                <Svg
-                  width="14"
-                  height="10"
-                  viewBox="0 0 14 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <Path
-                    d="M1.72853 4.3107C1.54799 4.11868 1.29894 4.00571 1.03554 3.99634C0.772144 3.98697 0.515699 4.08197 0.32197 4.26067C0.128242 4.43938 0.0128967 4.68734 0.00101728 4.95064C-0.0108622 5.21393 0.0816843 5.47127 0.258533 5.6667L3.87053 9.5857C4.40753 10.1117 5.20753 10.1117 5.70453 9.6157L6.06853 9.25669C7.38306 7.96392 8.69607 6.66958 10.0075 5.3737L10.0475 5.3337C11.2732 4.12576 12.4926 2.91141 13.7055 1.6907C13.8868 1.50089 13.9862 1.24743 13.9823 0.98499C13.9783 0.722553 13.8714 0.472185 13.6845 0.28791C13.4976 0.103635 13.2457 0.000227559 12.9833 3.75124e-07C12.7208 -0.000226808 12.4688 0.102745 12.2815 0.286696C11.0742 1.50103 9.86085 2.70938 8.64153 3.9117L8.60153 3.9517C7.3448 5.19399 6.08647 6.43466 4.82653 7.6737L1.72853 4.3107Z"
-                    fill="#05AE4B"
-                  />
-                </Svg>
-              </View>
-            ) : null}
-          </View>
-        </View>
-      </View>
-    );
-  };
-
+ 
   // //////////////
 
   const Customer_Data = () => {

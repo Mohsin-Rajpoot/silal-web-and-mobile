@@ -10,7 +10,7 @@ class Raiting extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      starCount: 3.5,
+      starCount: 3,
     };
   }
 

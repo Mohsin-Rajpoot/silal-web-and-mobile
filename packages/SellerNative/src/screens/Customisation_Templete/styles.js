@@ -62,7 +62,7 @@ const styles = ScaledSheet.create({
   },
   TertiaryButton: {
     height: 50,
-    borderColor: '4C6870B2',
+    borderColor: colors.black,
     borderWidth: 1.3,
     borderRadius: 5,
     justifyContent: 'center',
@@ -70,12 +70,12 @@ const styles = ScaledSheet.create({
     padding: 15,
   },
   TertiaryButtonText: {
-    color: '#4C6870',
+    color: colors.black,
     fontSize: 15,
     fontFamily: 'Poppins-SemiBold',
   },
   PrimaryButton: {
-    backgroundColor: '#C7EDEA',
+    backgroundColor: colors.blurPrimary1,
     marginHorizontal: 10,
     height: 50,
     borderRadius: 5,

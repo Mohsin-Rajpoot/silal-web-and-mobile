@@ -13,6 +13,8 @@ import Documents from '../screens/Documents';
 import Offers from '../screens/offers/Offers';
 import ContactUs from '../screens/ContactUs';
 import Setting from '../screens/Setting';
+import PreOrderSettings from '../screens/Setting/molecule/PreOrderSettings'
+import AdminCodeScreen from '../screens/Setting/molecule/AdminCodeScreen';
 import AboutApp from '../screens/AboutApp';
 import LongerOrder from '../screens/Orders_longer/Longer_orders';
 import Order_full_view from '../screens/orders/Current/Order_full_view';
@@ -37,6 +39,8 @@ const Screens = ({navigation, style}) => {
         <Stack.Screen name="Offers" component={Offers} />
         <Stack.Screen name="ContactUs" component={ContactUs} />
         <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen name="PreOrderSettings" component={PreOrderSettings} />
+        <Stack.Screen name="AdminCodeScreen" component={AdminCodeScreen} />
         <Stack.Screen name="AboutApp" component={AboutApp} />
         <Stack.Screen name="longerOrder" component={LongerOrder} />
         <Stack.Screen name="Order_full_view" component={Order_full_view} />

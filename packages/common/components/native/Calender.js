@@ -31,11 +31,11 @@ const Calender = ({ bg_Calender }) => {
     setShowDatePicker(false);
   };
   const colorOptions = {
-    headerColor: "#5AB3A8",
-    weekDaysColor: "#5AB3A8",
-    selectedDateColor: "#5AB3A8",
-    confirmButtonColor: "#5AB3A8",
-    selectedDateBackgroundColor: "#5AB3A8",
+    headerColor: colors.primary,
+    weekDaysColor: colors.primary,
+    selectedDateColor: colors.primary,
+    confirmButtonColor: colors.primary,
+    selectedDateBackgroundColor: colors.primary,
   };
 
   return (

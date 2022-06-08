@@ -43,7 +43,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                 name="keyboard-backspace"
                 style={styles.BackArrow}
               />
-              <Text style={styles.backTitle}>{t('create_new_item')}</Text>
+              <Text style={styles.backTitle}>{t('create_new_item' )}</Text>
             </TouchableOpacity>
             <View style={{marginHorizontal: 5, marginVertical: 4}}>
               <Modal
@@ -51,6 +51,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                 animationType="slideInRight"
                 transparent={true}>
                 <View style={styles.ModalContainerPreview}>
+                  <View style={styles.ModalContainePreviewMain}> 
                   <Entypo
                     onPress={() => setOpenmodal(false)}
                     name="cross"
@@ -129,7 +130,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                     </Text>
                     <View style={{flexDirection: 'row', marginHorizontal: 42}}>
                       <TouchableOpacity style={styles.ModalTertiaryButton}>
-                        <Text style={styles.ButtonText}>
+                        <Text style={[styles.ButtonText,{color:colors.primary}]}>
                           {t('Save_as_draft')}
                         </Text>
                       </TouchableOpacity>
@@ -162,6 +163,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                       </TouchableOpacity>
                     </View>
                   </ScrollView>
+                </View>
                 </View>
               </Modal>
             </View>
@@ -256,7 +258,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                 </Modal>
                 <TouchableOpacity
                   onPress={() => setShowmodal(true)}
-                  style={[styles.HeaderButton, {backgroundColor: '#A7D5D0'}]}>
+                  style={[styles.HeaderButton, {backgroundColor: colors.blurPrimary1}]}>
                   <Text style={styles.HeaderButtonText}>
                     {t('Save_as_draft')}
                   </Text>

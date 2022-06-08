@@ -115,7 +115,7 @@ export default function Current_orders({title, navigation}) {
           </Text>
         </View>
         <View style={styles.more_order}>
-          <Text>3 more</Text>
+          <Text style={{color:colors.primary}}>3 more</Text>
         </View>
 
         <SwipeButton
@@ -677,13 +677,14 @@ const styles = StyleSheet.create({
   },
   more_order: {
     width: 60,
-    backgroundColor: '#E6F4F2',
+    backgroundColor: colors.blurPrimary,
     padding: 3,
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 30,
     marginTop: 5,
+    
   },
   accept_btn: {
     backgroundColor: colors.primary,

@@ -9,11 +9,7 @@ import {
   Modal,
   ScrollView,
   Image,
-<<<<<<< HEAD
   Dimensions,
-=======
-  TextInputBase,
->>>>>>> 53bcc59e5a8465ec4b12aced58d6471acf4650b8
   SafeAreaView,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -25,33 +21,28 @@ import Menu, {
   MenuOptions,
   MenuOption,
 } from 'react-native-popup-menu';
-<<<<<<< HEAD
-
-=======
->>>>>>> 53bcc59e5a8465ec4b12aced58d6471acf4650b8
 import {CheckBox, SearchBar} from 'react-native-elements';
 import {
   CustomButton,
   LockOnLandscape,
   SearchBox,
 } from '@SilalApp/common/components/native';
+import CustomModal from '@SilalApp/common/components/native/CustomModal';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import Octicons from 'react-native-vector-icons/Octicons';
+
 import {Picker} from '@react-native-picker/picker';
 import Foundation from 'react-native-vector-icons/Foundation';
 // import MultiSelectDropDown from '../../components/MultiSelectDropDown';
 import colors from '@SilalApp/common/assets/colors';
 import styles from './styles';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
-<<<<<<< HEAD
 import RBSheet from 'react-native-raw-bottom-sheet';
-import Svg,{Rect,Path} from 'react-native-svg';
+import Svg, {Rect, Path, G} from 'react-native-svg';
 import fonts from '@SilalApp/common/assets/fonts';
+
 const Secondary = '#002733';
 var windowWidth = Dimensions.get('window').width;
-=======
-const Secondary = '#002733';
->>>>>>> 53bcc59e5a8465ec4b12aced58d6471acf4650b8
 
 export default function Archive_orders({title, navigation}) {
   const [selectedCategory, setselectedCategory] = useState();
@@ -62,11 +53,7 @@ export default function Archive_orders({title, navigation}) {
   const [Openmodal, setOpenmodal] = useState(false);
   const [Showmodal, setShowmodal] = useState(false);
 
-<<<<<<< HEAD
-
   const Sheet = useRef();
-=======
->>>>>>> 53bcc59e5a8465ec4b12aced58d6471acf4650b8
   const [selected_Category, set_selected_Category] = useState('Salad');
   const setcheck = index => {
     const val = data[index];
@@ -79,10 +66,7 @@ export default function Archive_orders({title, navigation}) {
       }, 100);
     }, 200);
   };
-<<<<<<< HEAD
   const [check1, setCheck1] = useState(false);
-=======
->>>>>>> 53bcc59e5a8465ec4b12aced58d6471acf4650b8
   var [data, setData] = useState([
     {
       id: '1',
@@ -177,23 +161,31 @@ export default function Archive_orders({title, navigation}) {
     },
   ];
 
-const sheet_data = () => {
-  return (
-    <View style={styles.sheet}>
-      <View style={{flexDirection:'row'}}>
-        <Octicons name="pencil" fontSize={15}/>
-      <Text>fdfsdf</Text>
-      </View>
-     
-     
-    </View>
-  );
-};
+  // const sheet_data = () => {
+  //   return (
+
+  //   );
+  // };
+ 
+  
+
+
+  footer = () => {
+    return (
+      <TouchableOpacity style={styles.headerStyle}>
+        <Text style={styles.footerText}>Load More</Text>
+      </TouchableOpacity>
+    );
+  };
+
+
+
+
 
   const render_all_oredrs = (item, index) => {
     return (
       <View>
-        <View style={{marginHorizontal: 5, marginVertical: 4}}>
+        {/* <View style={{marginHorizontal: 5, marginVertical: 4}}>
           <Modal
             visible={Showmodal}
             animationType="slideInRight"
@@ -262,7 +254,7 @@ const sheet_data = () => {
                   <View style={styles.grayViewContainer}>
                     <View style={{flexDirection: 'row'}}>
                       <Text style={styles.ToppingTitle}>
-                        Toppings:{' '}
+                        Toppings:
                         <Text style={{color: '#4C6870', fontSize: 13}}>
                           Lettuce, Cheese, Tomatoes, Pickle
                         </Text>
@@ -360,7 +352,7 @@ const sheet_data = () => {
               </ScrollView>
             </View>
           </Modal>
-        </View>
+        </View> */}
         <View style={{marginHorizontal: 5, marginVertical: 4}}>
           <Modal
             visible={Openmodal}
@@ -378,8 +370,9 @@ const sheet_data = () => {
                     style={{fontSize: 25, color: '#CCD4D6'}}
                   />
                 </View>
+
                 <Text style={styles.ModalParagraph}>
-                  Are you sure you want to delete the{' '}
+                  Are you sure you want to delete the
                   <Text style={{fontFamily: 'Lato-Bold', color: '#002733'}}>
                     #723DN2
                   </Text>
@@ -667,6 +660,253 @@ const sheet_data = () => {
   };
   return (
     <SafeAreaView style={styles.Container}>
+{/* Delete Modal Blure Start */}
+
+<CustomModal
+              isModalVisible={Openmodal}
+              setModalVisible={setOpenmodal}
+              modalWrapperStyle={
+                !IsTablet
+                  ? styles.ModalWrapperDeleteMobile
+                  : styles.ModalWrapperDelete
+              }
+              modalContainerStyle={{
+                borderRadius: 2,
+                backgroundColor: 'white',
+              }}>
+              <View style={styles.ModalContainer}>
+                <View style={styles.ModeViewDeleteMobile}>
+                  <Text style={{justifyContent:'center',alignSelf:'center',fontSize:15,fontFamily:fonts.bold}}>Delete folder?</Text>
+                  <View
+                    style={
+                      !IsTablet ? styles.ModalTitleMobile : styles.ModalTitle
+                    }>
+                    <Text
+                      style={
+                        !IsTablet
+                          ? styles.ModalHeadingMobile
+                          : styles.ModalHeading
+                      }>
+                      Are you sure you want to delete this folder?
+                    </Text>
+                    
+                  </View>
+
+                  <View
+                    style={
+                      !IsTablet
+                        ? styles.ModalButtonContainerMobile
+                        : styles.ModalButtonContainer
+                    }>
+                    <TouchableOpacity
+                      onPress={() => setOpenmodal(false)}
+                      style={[
+                        {backgroundColor: colors.primary},
+                        !IsTablet
+                          ? styles.ButtonssDeleteMobile
+                          : styles.ButtonssDelete,
+                      ]}>
+                      <Text style={[{color: '#fff'}, styles.DeleteModal]}>
+                        Cancel
+                      </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                      onPress={() => setOpenmodal(false)}
+                      style={[
+                        {backgroundColor: 'rgba(222, 53, 11, 0.2)'},
+                        !IsTablet
+                          ? styles.ButtonssDeleteMobile
+                          : styles.ButtonssDelete,
+                      ]}>
+                      <Text style={[styles.DeleteModal, {color: '#DE350B'}]}>
+                        Yes, Delete
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            </CustomModal>
+
+
+
+{/* Delete modal blur end */}
+
+
+          <Modal
+            visible={Showmodal}
+            animationType="slide"
+            transparent={true}
+            style={{}}>
+            <View style={IsTablet ? styles.ModalContainerPreview :styles.ModalContainerPreviewMobile}>
+              <TouchableOpacity style={!IsTablet?styles.ShowmodalOpenButtonMobile: styles.ShowmodalOpenButton}>
+                <Entypo
+                  name="cross"
+                  style={IsTablet?styles.closeShowmodalicon:styles.closeShowmodaliconMobile}
+                  onPress={() => setShowmodal(false)}
+                />
+              </TouchableOpacity>
+              <ScrollView>
+                <TouchableOpacity style={styles.SaveButton}>
+                  <Text style={styles.Savetext}>Save</Text>
+                </TouchableOpacity>
+
+                <Image
+                  source={require('../../Assets/image134.png')}
+                  style={styles.ImageMoadalMain}
+                />
+                <View style={styles.IconOnMainImageView}>
+                  <View style={styles.InnerViewMainImage}>
+                    <Octicons name="pencil" style={styles.IconePencilMain} />
+                  </View>
+                </View>
+                <View style={{marginHorizontal: 40}}>
+                  <Text style={styles.ModalSubTitle}>Item</Text>
+                  <View>
+                    <Text style={styles.dropDownModalTitle}>
+                      Item description
+                    </Text>
+                    <TextInput
+                      multiline={true}
+                      textAlignVertical="top"
+                      placeholder="Amet minim mollit non 
+                                        deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
+                                        duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
+                      placeholderTextColor="#002733"
+                      style={styles.TextInputMAinView}
+                    />
+                  </View>
+                  <View style={{marginTop: 15}}>
+                    <Text style={styles.dropDownModalTitle}>
+                      Nutritional value
+                    </Text>
+                    <FlatList
+                      data={data4}
+                      numColumns={2}
+                      style={{marginBottom: 10}}
+                      showsVerticalScrollIndicator={false}
+                      renderItem={({item}) => (
+                        <View style={styles.CalViewFaltModal}>
+                          <TextInput
+                            placeholder="313 cal"
+                            placeholderTextColor="#002733"
+                            style={styles.CalInputFaltModal}
+                          />
+                        </View>
+                      )}
+                      keyExtractor={item => item.id}
+                    />
+                  </View>
+                  <Text style={styles.AddViewModal}>Add-ons</Text>
+                  <View style={styles.grayViewContainer}>
+                    <View style={{flexDirection: 'row'}}>
+                      <Text style={styles.ToppingTitle}>
+                        Toppings:
+                        <Text style={{color: '#4C6870', fontSize: 13}}>
+                          Lettuce, Cheese, Tomatoes, Pickle
+                        </Text>
+                      </Text>
+                      <View style={styles.WhitePencilBkgView}>
+                        <Foundation
+                          name="pencil"
+                          style={{fontSize: 20, color: '#fff'}}
+                        />
+                      </View>
+                    </View>
+                    <FlatList
+                      data={data4}
+                      numColumns={3}
+                      style={{marginBottom: 10}}
+                      showsVerticalScrollIndicator={false}
+                      renderItem={({item}) => (
+                        <TouchableOpacity style={styles.FlatLettuce}>
+                          <Text
+                            style={{
+                              color: '#4C6870',
+                              fontFamily: 'Lato-Regular',
+                            }}>
+                            Lettuce
+                          </Text>
+                        </TouchableOpacity>
+                      )}
+                      keyExtractor={item => item.id}
+                    />
+                  </View>
+                  <View style={styles.grayViewContainer}>
+                    <View style={{flexDirection: 'row'}}>
+                      <Text style={styles.ToppingTitle}>
+                        Sauces:{' '}
+                        <Text style={{color: '#4C6870', fontSize: 13}}>
+                          Ketchup, Maynoaise, BBQ
+                        </Text>
+                      </Text>
+                      <View style={styles.WhitePencilBkgView}>
+                        <Foundation
+                          name="pencil"
+                          style={{fontSize: 20, color: '#fff'}}
+                        />
+                      </View>
+                    </View>
+
+                    <FlatList
+                      data={data4}
+                      numColumns={3}
+                      style={{marginBottom: 10}}
+                      showsVerticalScrollIndicator={false}
+                      renderItem={({item}) => (
+                        <TouchableOpacity style={styles.FlatLettuce}>
+                          <Text style={styles.TextStyleFlatModal}>Ketchup</Text>
+                        </TouchableOpacity>
+                      )}
+                      keyExtractor={item => item.id}
+                    />
+                  </View>
+                  <View style={[styles.grayViewContainer, {marginBottom: 20}]}>
+                    <View style={{flexDirection: 'row'}}>
+                      <Text style={styles.ToppingTitle}>
+                        Drinks:{' '}
+                        <Text style={{color: '#4C6870', fontSize: 13}}>
+                          Pepsi, Nestea, Coca-cola, Water, 7UP
+                        </Text>
+                      </Text>
+                      <View style={styles.WhitePencilBkgView}>
+                        <Foundation
+                          name="pencil"
+                          style={{fontSize: 20, color: '#fff'}}
+                        />
+                      </View>
+                    </View>
+
+                    <FlatList
+                      data={data4}
+                      numColumns={3}
+                      style={{marginBottom: 10}}
+                      showsVerticalScrollIndicator={false}
+                      renderItem={({item}) => (
+                        <TouchableOpacity style={styles.FlatLettuce}>
+                          <Text style={styles.TextStyleFlatModal}>Nestea</Text>
+                        </TouchableOpacity>
+                      )}
+                      keyExtractor={item => item.id}
+                    />
+                  </View>
+                  <View style={{marginBottom: 40}}>
+                    <View style={styles.BottomButtonModal}>
+                      <CustomButton text="Edit listing" />
+                    </View>
+                  </View>
+                </View>
+              </ScrollView>
+            </View>
+          </Modal>
+
+
+          {/* Edit_Modal End */}
+
+
+
+
+
       <View style={styles.secondaryContainer}>
         <View
           style={
@@ -690,7 +930,9 @@ const sheet_data = () => {
               Salads
             </Text>
           </TouchableOpacity>
+          
 
+        
           {IsTablet ? (
             <SearchBox customStyle={{width: '30%'}} placeholder="Search" />
           ) : (
@@ -772,69 +1014,103 @@ const sheet_data = () => {
           <FlatList
             data={data4}
             numColumns={1}
-            style={{marginBottom: 90, }}
-            showsVerticalScrollIndicator={false}
+            style={{marginBottom: 90}}
+            ListFooterComponent={footer}
+            // showsVerticalScrollIndicator={false}
             renderItem={({item}) => (
-              <View
-                style={styles.flatMobileViewe}>
+              <View style={styles.flatMobileViewe}>
                 <View style={styles.mobileContainerSecond}>
                   <View>
                     <CheckBox
                       checked={check1}
                       onPress={() => setCheck1(!check1)}
+                      // onPress={() => setShowmodal(!Showmodal)}
+
                       checkedColor="#5AB3A8"
                       uncheckedColor="#CCD4D6"
                     />
                   </View>
                   <View>
+                    <TouchableOpacity
+                      onPress={() => Sheet.current.open()}
+                      style={{paddingHorizontal: 15}}>
+                      <Entypo
+                        name="dots-three-vertical"
+                        style={{color: colors.gray, fontSize: 18}}
+                      />
+                    </TouchableOpacity>
+                    <RBSheet
+                      ref={Sheet}
+                      animationType="slide"
+                      closeOnPressMask={true}
+                      closeOnDragDown={false}
+                      dragFromTopOnly
+                      height={windowWidth * 0.8}
+                      openDuration={250}
+                      customStyles={{
+                        container: {
+                          // flex:1,
+                          borderTopLeftRadius: 10,
+                          borderTopRightRadius: 10,
+                          backgroundColor: '#F8F8F8',
+                        },
+                      }}>
+                      <View style={styles.sheet}>
+                        <TouchableOpacity
+                          onPress={() => {Sheet.current.close(),setTimeout(() => {
+                            setShowmodal(true)
+                          }, 1000);}}
+                          // onPress={()=>{Sheet.current.close(),setShowmodal(true)}}
+                          style={styles.ModalContant}>
+                          <Octicons
+                            name="pencil"
+                            fontSize={15}
+                            style={{
+                              height: 18,
+                              width: 18,
+                              marginHorizontal: 10,
+                              color: colors.gray,
+                            }}
+                          />
+                          <Text>Edit</Text>
+                        </TouchableOpacity>
+                        <View style={styles.borderbotomview} />
+                        <TouchableOpacity style={styles.ModalContant}>
+                          <View style={{marginHorizontal: 8}}>
+                            <Svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <Path
+                                d="M8.75 1.25C8.75 0.835786 8.41421 0.5 8 0.5C7.58579 0.5 7.25 0.835786 7.25 1.25V3.18936L5.78767 1.72703C5.49478 1.43414 5.01991 1.43414 4.72701 1.72703C4.43412 2.01993 4.43412 2.4948 4.72701 2.78769L7.25 5.31068V7.25H5.31064L2.78767 4.72703C2.49478 4.43414 2.01991 4.43414 1.72701 4.72703C1.43412 5.01993 1.43412 5.4948 1.72701 5.78769L3.18932 7.25H1.25C0.835787 7.25 0.5 7.58579 0.5 8C0.5 8.41421 0.835787 8.75 1.25 8.75H3.18932L1.72702 10.2123C1.43413 10.5052 1.43413 10.9801 1.72702 11.273C2.01992 11.5658 2.49479 11.5658 2.78768 11.273L5.31064 8.75H7.25V10.6893L4.72703 13.2123C4.43413 13.5052 4.43413 13.9801 4.72703 14.273C5.01992 14.5658 5.49479 14.5658 5.78768 14.273L7.25 12.8106V14.75C7.25 15.1642 7.58579 15.5 8 15.5C8.41421 15.5 8.75 15.1642 8.75 14.75V12.8106L10.2123 14.2729C10.5052 14.5658 10.9801 14.5658 11.273 14.2729C11.5658 13.98 11.5658 13.5051 11.273 13.2122L8.75 10.6893V8.75H10.6894L13.2123 11.2729C13.5052 11.5658 13.9801 11.5658 14.273 11.2729C14.5658 10.98 14.5658 10.5051 14.273 10.2122L12.8107 8.75H14.75C15.1642 8.75 15.5 8.41421 15.5 8C15.5 7.58579 15.1642 7.25 14.75 7.25H12.8107L14.273 5.78778C14.5658 5.49488 14.5658 5.02001 14.273 4.72712C13.9801 4.43422 13.5052 4.43422 13.2123 4.72712L10.6894 7.25H8.75V5.31073L11.273 2.78776C11.5659 2.49487 11.5659 2.02 11.273 1.7271C10.9801 1.43421 10.5052 1.43421 10.2123 1.7271L8.75 3.18941V1.25Z"
+                                fill="#CCD4D6"
+                              />
+                            </Svg>
+                          </View>
+                          <Text>Freez</Text>
+                        </TouchableOpacity>
+                        <View style={styles.borderbotomview} />
+                        <TouchableOpacity
+                        
+                          onPress={
+                            () => {Sheet.current.close(),setTimeout(() => {
+                              setOpenmodal(!Openmodal)
+                            }, 1000);}
+                            // () => setOpenmodal(!Openmodal)
+                          }
+                          style={styles.ModalContant}>
+                          <Image
+                            source={require('../../Assets/li_trash-2.png')}
+                            style={{height: 18, width: 18, marginHorizontal: 8}}
+                          />
 
-
-
-
-
-                  <TouchableOpacity
-            onPress={() => Sheet.current.open()}
-            style={{paddingHorizontal: 15}}>
-            <Svg
-              width="44"
-              height="40"
-              viewBox="0 0 44 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <Rect width="44" height="40" rx="8" fill="white" />
-              <Path
-                d="M17.2434 13.5781C17.5689 13.2526 18.0965 13.2526 18.4219 13.5781L21.7553 16.9114C22.0807 17.2368 22.0807 17.7645 21.7553 18.0899C21.4298 18.4153 20.9022 18.4153 20.5768 18.0899L18.666 16.1792V25.834C18.666 26.2942 18.2929 26.6673 17.8327 26.6673C17.3724 26.6673 16.9993 26.2942 16.9993 25.834V16.1792L15.0886 18.0899C14.7632 18.4153 14.2355 18.4153 13.9101 18.0899C13.5847 17.7645 13.5847 17.2368 13.9101 16.9114L17.2434 13.5781ZM25.3327 23.8221V14.1673C25.3327 13.7071 25.7058 13.334 26.166 13.334C26.6263 13.334 26.9994 13.7071 26.9994 14.1673V23.8221L28.9101 21.9114C29.2355 21.586 29.7632 21.586 30.0886 21.9114C30.414 22.2368 30.414 22.7645 30.0886 23.0899L26.7553 26.4232C26.599 26.5795 26.387 26.6673 26.166 26.6673C25.945 26.6673 25.733 26.5795 25.5768 26.4232L22.2434 23.0899C21.918 22.7645 21.918 22.2368 22.2434 21.9114C22.5689 21.586 23.0965 21.586 23.4219 21.9114L25.3327 23.8221Z"
-                fill="#C9D2D4"
-              />
-              <Rect
-                x="0.5"
-                y="0.5"
-                width="43"
-                height="39"
-                rx="7.5"
-                stroke="#E8E8E8"
-                stroke-opacity="0.5"
-              />
-            </Svg>
-          </TouchableOpacity>
-          <RBSheet
-            ref={Sheet}
-            animationType="slide"
-            closeOnPressMask={true}
-            closeOnDragDown={false}
-            dragFromTopOnly
-            height={windowWidth * 0.8}
-            openDuration={250}
-            customStyles={{
-              container: {
-                // flex:1,
-                borderTopLeftRadius: 10,
-                borderTopRightRadius: 10,
-                backgroundColor: '#F8F8F8',
-              },
-            }}>
-            {sheet_data()}
-          </RBSheet>
+                          <Text style={{color: '#FF4545CC'}}>Delete</Text>
+                        </TouchableOpacity>
+                        <View style={styles.borderbotomview} />
+                      </View>
+                    </RBSheet>
                     {/* <Menu>
                       <MenuTrigger style={styles.trigger}>
                         <View style={styles.tyrigerIcon}>

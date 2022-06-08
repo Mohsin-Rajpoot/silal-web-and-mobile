@@ -6,6 +6,10 @@ import {
   listenOrientationChange as lor,
   removeOrientationListener as rol,
 } from 'react-native-responsive-screen-hooks';
+import {
+  widthPercentageToDP as width,
+  heightPercentageToDP as height,
+} from 'react-native-responsive-screen';
 import fonts from '@SilalApp/common/assets/fonts';
 import {color} from 'react-native-reanimated';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
@@ -123,14 +127,14 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  all_ordersMobile:{
+  all_ordersMobile: {
     // backgroundColor: 'red',
     // alignItems: 'center',
     // justifyContent: 'center',
-    width:'100%',
-    paddingHorizontal:'10@s',
+    width: '100%',
+    paddingHorizontal: '10@s',
     backgroundColor: '#F2F4F5',
-    marginVertical:'10@s'
+    marginVertical: '10@s',
   },
   all_orders_header: {
     flexDirection: 'row',
@@ -233,7 +237,7 @@ const styles = ScaledSheet.create({
   },
   all_orders_heading_txt: {
     fontFamily: fonts.LatoBold,
-    width:'100@s',
+    width: '100@s',
     // paddingHorizontal:100
   },
   toast: {
@@ -314,9 +318,17 @@ const styles = ScaledSheet.create({
   ModeView: {
     height: 180,
     width: 410,
-    backgroundColor: '#fff',
+    backgroundColor: colors.textWhite,
     borderRadius: 5,
     elevation: 0.2,
+  },
+  ModeViewDeleteMobile: {
+    height: '160@s',
+    width: 410,
+    backgroundColor: colors.textWhite,
+    borderRadius: 5,
+    elevation: 0.2,
+    paddingVertical: '10@s',
   },
   ModalTitle: {
     flexDirection: 'row',
@@ -358,7 +370,7 @@ const styles = ScaledSheet.create({
   ModalContainerPreview: {
     width: '40%',
     height: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: colors.textWhite,
     position: 'absolute',
     right: 0,
     paddingVertical: 20,
@@ -373,13 +385,25 @@ const styles = ScaledSheet.create({
     shadowRadius: 4,
     elevation: 1,
   },
-  CrossPreview: {
-    fontSize: 25,
-    color: '#000000',
-    position: 'absolute',
-    right: 15,
-    top: 20,
+  ModalContainerPreviewMobile: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: colors.textWhite,
+    // position: 'absolute',
+    // right: 0,
+    paddingVertical: '30@s',
+
+    // backgroundColor: 'rgba(0,0,0,0.5)',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 1,
   },
+
   dropdownbox: {
     height: 50,
     width: '100%',
@@ -391,14 +415,31 @@ const styles = ScaledSheet.create({
   ShowmodalOpenButton: {
     height: 30,
     width: 40,
-    flexDirection: 'row-reverse',
-    width: '100%',
+    // flexDirection: 'row-reverse',
+    // width: '100%',
     marginVertical: 5,
-    marginRight: -24,
+    // marginRight: -24,
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
+    marginRight: '10@s',
+  },
+  ShowmodalOpenButtonMobile: {
+    height: '20@s',
+    width: '40@s',
+    // flexDirection: 'row-reverse',
+    // width: '100%',
+    marginVertical: 5,
+    // marginRight: -24,
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
   },
   closeShowmodalicon: {
     fontSize: 30,
-    color: '#002733',
+    color: colors.black,
+  },
+  closeShowmodaliconMobile: {
+    fontSize: 30,
+    color: colors.black,
   },
   SaveButton: {
     backgroundColor: colors.primary,
@@ -549,7 +590,6 @@ const styles = ScaledSheet.create({
     height: '100%',
     paddingHorizontal: 20,
     backgroundColor: '#f1f1f1',
-     
   },
   secondaryContainer: {
     width: '100%',
@@ -566,7 +606,7 @@ const styles = ScaledSheet.create({
     // justifyContent: 'space-between',
     marginVertical: 5,
     // alignItems: 'center',
-    marginHorizontal:15
+    marginHorizontal: 15,
   },
   backButtonpage: {
     fontSize: 25,
@@ -598,74 +638,132 @@ const styles = ScaledSheet.create({
     fontFamily: 'Poppins-Bold',
     paddingVertical: '5@s',
   },
-  MobileViewContainer:{
+  MobileViewContainer: {
     // backgroundColor:'#E5E5E5',
-    justifyContent:'center',
-    width:'90%',
-    justifyContent:'center',
-    alignSelf:'center',
-    padding:10,
-    borderRadius:10,
-    marginTop:10
+    justifyContent: 'center',
+    width: '90%',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    padding: 10,
+    borderRadius: 10,
+    // marginTop: 5,
   },
-  mobileContainerSecond:{
-    justifyContent:'space-between',
-    flexDirection:'row',
-    alignItems:'center',
+  mobileContainerSecond: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
     // marginBottom:39,
   },
-  tyrigerIcon:
-  {
+  tyrigerIcon: {
     height: 40,
     width: 40,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  manuImage:
-  {
+  manuImage: {
     height: 120,
     width: 100,
     resizeMode: 'contain',
     borderRadius: 15,
     overflow: 'hidden',
   },
-  EvenRow:
-  {
+  EvenRow: {
     justifyContent: 'space-between',
     flexDirection: 'row',
     backgroundColor: '#f1f1f1',
-    height:"30@s",
-    alignItems:'center',
-    paddingHorizontal:20,
+    height: '30@s',
+    alignItems: 'center',
+    paddingHorizontal: 20,
   },
-  Oddrow:
-  {
+  Oddrow: {
     justifyContent: 'space-between',
     flexDirection: 'row',
     backgroundColor: colors.textWhite,
-    alignItems:'center',
-    paddingHorizontal:20,
-    alignItems:'center',
-    paddingHorizontal:20,
-    height:"30@s",
-
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    height: '30@s',
   },
-  ProductDiscription:
-  {
-    marginHorizontal: 20, width: '50%'
+  ProductDiscription: {
+    marginHorizontal: 20,
+    width: '50%',
   },
-  flatMobileViewe:
-  {
+  flatMobileViewe: {
     backgroundColor: '#ffffff',
-    marginTop: 20,
-    marginVertical: 5,
+    marginTop: '10@s',
+    // marginVertical: 5,
     borderRadius: 15,
     elevation: 5,
     overflow: 'hidden',
-    paddingHorizontal:10,
-    paddingVertical:20,
-    elevation:15
-  }
+    paddingHorizontal: 10,
+    paddingVertical: 20,
+    elevation: 15,
+  },
+  borderbotomview: {
+    borderBottomColor: 'rgba(0, 39, 51, 0.08)',
+    borderBottomWidth: 1,
+
+    // marginTop: "20@s",
+  },
+  ModalContant: {
+    flexDirection: 'row',
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+  },
+
+  // Delete
+  ModalWrapperDeleteMobile: {
+    marginHorizontal: width(6),
+    marginVertical: height(39),
+  },
+  DeleteModal: {
+    fontFamily: fonts.PoppinsSemiBold,
+    fontSize: 15,
+  },
+  ButtonssDeleteMobile: {
+    width: '95@s',
+    height: '40@s',
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // marginHorizontal: 10,
+    // backgroundColor:'red'
+  },
+  ModalButtonContainerMobile: {
+    flexDirection: 'row',
+    // justifyContent: 'space-between',
+    width: '96%',
+    // alignSelf: 'center',
+    paddingVertical: '10@s',
+    justifyContent: 'space-evenly',
+  },
+  ModalHeadingMobile: {
+    color: '#414342',
+    fontSize: '12@s',
+    fontFamily: fonts.PoppinsSemiBold,
+    width: 250,
+    marginHorizontal: '35@s',
+    // backgroundColor:'red'
+    paddingVertical: '10@s',
+    paddingHorizontal: '12@s',
+  },
+  headerStyle: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignSelf: 'center',
+    marginVertical: 10,
+    height: '35@s',
+    width: '290@s',
+    backgroundColor: colors.blurPrimary,
+    borderRadius: 5,
+    overflow: 'hidden',
+  },
+  footerText: {
+    color: colors.primary,
+    fontFamily: fonts.PoppinsSemiBold,
+    fontSize: '14@s',
+    paddingVertical:7
+  },
 });
 export default styles;
- 
