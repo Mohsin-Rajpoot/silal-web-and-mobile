@@ -98,7 +98,6 @@ export default function Current_orders({title, navigation}) {
           <Text style={styles.orderid_text}>
             ORDER ID
             <Text style={[styles.orderid_text, {color: 'black'}]}>
-              {' '}
               #123456
             </Text>
           </Text>
@@ -114,7 +113,7 @@ export default function Current_orders({title, navigation}) {
           <Text style={{fontSize: 17}}>2</Text>
           <Entypo name="cross" style={styles.cross_icon} />
           <Text style={styles.order_title}>
-            Cheesecakes with sour cream and citrus{' '}
+            Cheesecakes with sour cream and citrus
           </Text>
         </View>
         <View style={styles.more_order}>
@@ -229,7 +228,6 @@ export default function Current_orders({title, navigation}) {
           <Text style={styles.orderid_text}>
             ORDER ID
             <Text style={[styles.orderid_text, {color: 'black'}]}>
-              {' '}
               #123456
             </Text>
           </Text>

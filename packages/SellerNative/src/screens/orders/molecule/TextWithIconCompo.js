@@ -1,4 +1,4 @@
-import {Image, Text, View} from 'react-native';
+import {Image, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
@@ -7,11 +7,14 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import images from '../../../../assets/images';
 import ToggleSwitch from 'toggle-switch-react-native';
 import fonts from '@SilalApp/common/assets/fonts';
-const TextWithIconCompo = ({toggle,time,text,iconPath}) => {
+const TextWithIconCompo = ({toggle, time, text, iconPath, onPress}) => {
   const [checked, setChecked] = useState(false);
 
   return (
-    <View style={styles.mainContainer}>
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.6}
+      style={styles.mainContainer}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <Image source={iconPath} style={styles.leftIcon} />
         <CustomText
@@ -22,13 +25,15 @@ const TextWithIconCompo = ({toggle,time,text,iconPath}) => {
         />
       </View>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        {time && <CustomText
-          label={time}
-          fontFamily={fonts.LatoMedium}
-          fontSize={verticalScale(12)}
-          color={colors.gray50}
-          marginRight={scale(3)}
-        />}
+        {time && (
+          <CustomText
+            label={time}
+            fontFamily={fonts.LatoMedium}
+            fontSize={verticalScale(12)}
+            color={colors.gray50}
+            marginRight={scale(3)}
+          />
+        )}
         {toggle ? (
           <ToggleSwitch
             isOn={checked}
@@ -45,7 +50,7 @@ const TextWithIconCompo = ({toggle,time,text,iconPath}) => {
           <Icon type="entypo" name="chevron-right" color={colors.gray50} />
         )}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -60,9 +65,8 @@ const styles = ScaledSheet.create({
     backgroundColor: colors.textWhite,
     borderRadius: '8@vs',
     height: '45@vs',
-    marginBottom:'10@vs',
-    elevation:0.5
-    
+    marginBottom: '10@vs',
+    elevation: 0.5,
   },
   leftIcon: {
     width: '20@vs',
