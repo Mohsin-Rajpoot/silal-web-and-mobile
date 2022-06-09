@@ -35,11 +35,11 @@ const styles = ScaledSheet.create({
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'space-between',
-        paddingVertical:"10@vs",
+        paddingVertical:"5@vs",
         borderTopWidth:1,
         borderBottomWidth:1,
         borderColor:colors.borderColor,
-        marginBottom:'10@vs'
+        marginBottom:'5@vs'
         
     },
     icon:{

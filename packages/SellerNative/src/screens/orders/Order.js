@@ -138,7 +138,7 @@ const Order = ({navigation}) => {
       // </View>
       <View
         style={{
-          paddingVertical: 15,
+          paddingVertical: 5,
           flex: 1,
           flexDirection: 'row',
           alignItems: 'center',
@@ -254,9 +254,9 @@ const Order = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{backgroundColor: '#f4f7f8', flex: 1}}>
-      <View style={{flexDirection: 'row', alignItems: 'center', height: '15%'}}>
-        <View style={{padding: 15}}>
+    <SafeAreaView style={{backgroundColor: colors.background, flex: 1}}>
+      <View style={{flexDirection: 'row', alignItems: 'center', height: !IsTablet ? '10%' :'12%'}}>
+        <View style={{padding: 5}}>
           <TouchableOpacity
             activeOpacity={0.6}
             onPress={() => navigation.openDrawer()}>
@@ -271,7 +271,6 @@ const Order = ({navigation}) => {
 
         {Header()}
       </View>
-      
 
       <View style={{flex: 1}}>
         <PagerView

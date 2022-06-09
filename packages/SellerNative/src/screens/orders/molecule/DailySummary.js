@@ -70,7 +70,7 @@ export default DailySummary;
 
 const styles = ScaledSheet.create({
   mainContainer: {
-    padding: '15@vs',
+    padding: '5@vs',
     backgroundColor: colors.background,
     flex: 1,
   },

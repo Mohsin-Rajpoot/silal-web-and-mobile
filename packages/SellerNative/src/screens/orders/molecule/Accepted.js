@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
 import CustomText from '@SilalApp/common/components/CustomText';
@@ -7,18 +7,32 @@ import colors from '@SilalApp/common/assets/colors';
 import {useTranslation} from 'react-i18next';
 import {Icon} from 'react-native-elements';
 
-const Accepted = ({change}) => {
+const Accepted = ({change, setActiveTab, activeTab}) => {
   const {t} = useTranslation();
 
   return (
-    <View
+    <TouchableOpacity
+      activeOpacity={0.6}
+      onPress={() =>
+        change
+          ? setActiveTab(1)
+          : activeTab == 2
+          ? setActiveTab(0)
+          : setActiveTab(2)
+      }
       style={[
         styles.mainContainer,
         {backgroundColor: change ? colors.textPrimeColor : colors.boxBg},
       ]}>
       <View style={styles.headerTextCont}>
         <CustomText
-          label={t('Accepted')}
+          label={
+            change
+              ? t('Ready')
+              : activeTab == 0
+              ? t('received')
+              : t('Accepted')
+          }
           fontSize={verticalScale(14)}
           fontFamily={fonts.LatoBold}
           color={change ? colors.textWhite : colors.black}
@@ -59,7 +73,7 @@ const Accepted = ({change}) => {
           label="#247hw9"
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
