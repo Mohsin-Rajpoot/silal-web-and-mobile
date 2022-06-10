@@ -23,12 +23,14 @@ import {Slider, Icon} from 'react-native-elements';
 import Toast from 'react-native-easy-toast';
 import SwipeButton from 'rn-swipe-button';
 import colors from '@SilalApp/common/assets/colors';
-import {t} from 'i18next';
+import {useTranslation} from 'react-i18next';
+import fonts from '@SilalApp/common/assets/fonts';
 const {width, height} = Dimensions.get('window');
 
 export default function Current_orders({title, navigation}) {
   const [modal_timer_visible, set_modal_timer_visible] = useState(false);
   const [values, set_values] = useState(0);
+  const {t} = useTranslation();
   const [manual_time, set_manual_time] = useState('');
   const [activeTab, setActiveTab] = useState(2);
 
@@ -96,28 +98,28 @@ export default function Current_orders({title, navigation}) {
         style={styles.single_order}>
         <View style={styles.order_header}>
           <Text style={styles.orderid_text}>
-            ORDER ID
-            <Text style={[styles.orderid_text, {color: 'black'}]}>
-              #123456
-            </Text>
+            {t('order_id')}
+            <Text style={[styles.orderid_text, {color: 'black'}]}>#123456</Text>
           </Text>
           <Text style={[styles.orderid_text, {color: 'black'}]}>19.43 MIN</Text>
         </View>
         <View style={styles.order_item}>
-          <Text style={{fontSize: 17}}>2</Text>
+          <Text style={styles.order_title}>2</Text>
           <Entypo name="cross" style={styles.cross_icon} />
           <Text style={styles.order_title}>French Fries </Text>
           <Text style={styles.order_title}>{item.id}</Text>
         </View>
         <View style={[styles.order_item, {marginTop: 5}]}>
-          <Text style={{fontSize: 17}}>2</Text>
+          <Text style={styles.order_title}>2</Text>
           <Entypo name="cross" style={styles.cross_icon} />
           <Text style={styles.order_title}>
             Cheesecakes with sour cream and citrus
           </Text>
         </View>
         <View style={styles.more_order}>
-          <Text style={{color: colors.primary}}>3 more</Text>
+          <Text style={{color: colors.primary, fontSize: verticalScale(10)}}>
+            3 more
+          </Text>
         </View>
 
         <SwipeButton
@@ -126,10 +128,10 @@ export default function Current_orders({title, navigation}) {
           swipeSuccessThreshold={10}
           height={40}
           //height of the button (Optional)
-          width={307}
+          width={'100%'}
           shouldResetAfterSuccess={true}
           //width of the button (Optional)
-          title="Slide to accept order"
+          title={t('slide_to_Accept')}
           //Text inside the button (Optional)
           //thumbIconImageSource={thumbIcon}
           //You can also set your own icon for the button (Optional)
@@ -155,7 +157,7 @@ export default function Current_orders({title, navigation}) {
                       fontFamily: 'Lato-Bold',
                       marginLeft: 20,
                     }}>
-                    UNDO
+                    {t('undo')}
                   </Text>
                 </TouchableOpacity>
               </View>,
@@ -184,8 +186,7 @@ export default function Current_orders({title, navigation}) {
           containerStyles={{borderRadius: 5, height: 40}}
           railStyles={{
             backgroundColor: colors.primary,
-            borderRadius: 5,
-            opacity: 0.6,
+            borderRadius: !IsTablet ? verticalScale(7) : verticalScale(5),
             height: 45,
             marginLeft: -5,
           }}
@@ -226,71 +227,67 @@ export default function Current_orders({title, navigation}) {
         style={styles.single_order}>
         <View style={styles.order_header}>
           <Text style={styles.orderid_text}>
-            ORDER ID
-            <Text style={[styles.orderid_text, {color: 'black'}]}>
-              #123456
-            </Text>
+            {t('order_id')}
+            <Text style={[styles.orderid_text, {color: 'black'}]}>#123456</Text>
           </Text>
           <Text style={[styles.orderid_text, {color: 'black'}]}>19.43 MIN</Text>
         </View>
-        <View style={styles.order_recve_phone_view}>
-          <Svg
-            width="44"
-            height="44"
-            viewBox="0 0 44 44"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <Rect width="44" height="44" rx="5" fill="#DEEBFF" />
-            <Path
-              d="M26.384 18.712L23.179 16.384C22.8192 16.1207 22.3816 15.9855 21.936 16C21.3924 16.0136 20.8667 16.1961 20.4317 16.5223C19.9967 16.8485 19.6742 17.3021 19.509 17.82C19.323 18.403 19.153 18.797 18.999 19.002C18.5336 19.6228 17.93 20.1266 17.236 20.4734C16.5421 20.8203 15.7768 21.0005 15.001 21V23C16.0337 23.0011 17.0538 22.7733 17.9879 22.3329C18.9219 21.8925 19.7468 21.2504 20.403 20.453L21.1 24.408L19.039 26.138L16.816 32.246L18.696 32.93L20.736 27.326L24.126 24.481C24.4042 24.2564 24.617 23.9612 24.7424 23.6264C24.8678 23.2915 24.9012 22.9291 24.839 22.577L24.33 19.692L25.007 20.184L27.134 23.112L28.752 21.936L26.401 18.7L26.384 18.712ZM20.501 15.5C21.0314 15.5 21.5401 15.2893 21.9152 14.9142C22.2902 14.5391 22.501 14.0304 22.501 13.5C22.501 12.9696 22.2902 12.4609 21.9152 12.0858C21.5401 11.7107 21.0314 11.5 20.501 11.5C19.9705 11.5 19.4618 11.7107 19.0867 12.0858C18.7117 12.4609 18.501 12.9696 18.501 13.5C18.501 14.0304 18.7117 14.5391 19.0867 14.9142C19.4618 15.2893 19.9705 15.5 20.501 15.5ZM23.473 28.681L26.687 32.511L28.219 31.226L25.243 27.68L24.497 25.5L22.706 27L23.473 28.681Z"
-              fill="#0065FF"
-            />
-          </Svg>
-          <View style={{marginLeft: 10}}>
-            <Text style={styles.order_recve_name}>Wade Wamen</Text>
-            <Text style={{fontSize: 17, fontFamily: 'Lato-Regular'}}>
-              (808)555-0111
-            </Text>
+        <View style={{flexDirection: !IsTablet ? 'row' : 'column'}}>
+          <View style={styles.order_recve_phone_view}>
+            <Svg
+              width="44"
+              height="44"
+              viewBox="0 0 44 44"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <Rect width="44" height="44" rx="5" fill="#DEEBFF" />
+              <Path
+                d="M26.384 18.712L23.179 16.384C22.8192 16.1207 22.3816 15.9855 21.936 16C21.3924 16.0136 20.8667 16.1961 20.4317 16.5223C19.9967 16.8485 19.6742 17.3021 19.509 17.82C19.323 18.403 19.153 18.797 18.999 19.002C18.5336 19.6228 17.93 20.1266 17.236 20.4734C16.5421 20.8203 15.7768 21.0005 15.001 21V23C16.0337 23.0011 17.0538 22.7733 17.9879 22.3329C18.9219 21.8925 19.7468 21.2504 20.403 20.453L21.1 24.408L19.039 26.138L16.816 32.246L18.696 32.93L20.736 27.326L24.126 24.481C24.4042 24.2564 24.617 23.9612 24.7424 23.6264C24.8678 23.2915 24.9012 22.9291 24.839 22.577L24.33 19.692L25.007 20.184L27.134 23.112L28.752 21.936L26.401 18.7L26.384 18.712ZM20.501 15.5C21.0314 15.5 21.5401 15.2893 21.9152 14.9142C22.2902 14.5391 22.501 14.0304 22.501 13.5C22.501 12.9696 22.2902 12.4609 21.9152 12.0858C21.5401 11.7107 21.0314 11.5 20.501 11.5C19.9705 11.5 19.4618 11.7107 19.0867 12.0858C18.7117 12.4609 18.501 12.9696 18.501 13.5C18.501 14.0304 18.7117 14.5391 19.0867 14.9142C19.4618 15.2893 19.9705 15.5 20.501 15.5ZM23.473 28.681L26.687 32.511L28.219 31.226L25.243 27.68L24.497 25.5L22.706 27L23.473 28.681Z"
+                fill="#0065FF"
+              />
+            </Svg>
+            <View style={{marginLeft: 10}}>
+              <Text style={styles.order_recve_name}>Wade Wamen</Text>
+              <Text style={styles.orderid_text1}>(808)555-0111</Text>
+            </View>
+          </View>
+          <View style={styles.order_recve_loc_view}>
+            <Svg
+              width="44"
+              height="44"
+              viewBox="0 0 44 44"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <Rect width="44" height="44" rx="5" fill="#EAE6FF" />
+              <Path
+                d="M28.364 27.3639L22 33.7279L15.636 27.3639C14.3773 26.1052 13.5202 24.5016 13.1729 22.7558C12.8257 21.0099 13.0039 19.2004 13.6851 17.5558C14.3663 15.9113 15.5198 14.5057 16.9999 13.5168C18.4799 12.5278 20.22 12 22 12C23.78 12 25.5201 12.5278 27.0001 13.5168C28.4802 14.5057 29.6337 15.9113 30.3149 17.5558C30.9961 19.2004 31.1743 21.0099 30.8271 22.7558C30.4798 24.5016 29.6227 26.1052 28.364 27.3639ZM22 22.9999C22.5304 22.9999 23.0391 22.7892 23.4142 22.4141C23.7893 22.0391 24 21.5304 24 20.9999C24 20.4695 23.7893 19.9608 23.4142 19.5857C23.0391 19.2106 22.5304 18.9999 22 18.9999C21.4696 18.9999 20.9609 19.2106 20.5858 19.5857C20.2107 19.9608 20 20.4695 20 20.9999C20 21.5304 20.2107 22.0391 20.5858 22.4141C20.9609 22.7892 21.4696 22.9999 22 22.9999Z"
+                fill="#6554C0"
+              />
+            </Svg>
+            <View style={{marginLeft: 10}}>
+              <Text style={styles.order_recve_name}>2.4 km</Text>
+            </View>
           </View>
         </View>
-        <View style={styles.order_recve_loc_view}>
-          <Svg
-            width="44"
-            height="44"
-            viewBox="0 0 44 44"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <Rect width="44" height="44" rx="5" fill="#EAE6FF" />
-            <Path
-              d="M28.364 27.3639L22 33.7279L15.636 27.3639C14.3773 26.1052 13.5202 24.5016 13.1729 22.7558C12.8257 21.0099 13.0039 19.2004 13.6851 17.5558C14.3663 15.9113 15.5198 14.5057 16.9999 13.5168C18.4799 12.5278 20.22 12 22 12C23.78 12 25.5201 12.5278 27.0001 13.5168C28.4802 14.5057 29.6337 15.9113 30.3149 17.5558C30.9961 19.2004 31.1743 21.0099 30.8271 22.7558C30.4798 24.5016 29.6227 26.1052 28.364 27.3639ZM22 22.9999C22.5304 22.9999 23.0391 22.7892 23.4142 22.4141C23.7893 22.0391 24 21.5304 24 20.9999C24 20.4695 23.7893 19.9608 23.4142 19.5857C23.0391 19.2106 22.5304 18.9999 22 18.9999C21.4696 18.9999 20.9609 19.2106 20.5858 19.5857C20.2107 19.9608 20 20.4695 20 20.9999C20 21.5304 20.2107 22.0391 20.5858 22.4141C20.9609 22.7892 21.4696 22.9999 22 22.9999Z"
-              fill="#6554C0"
-            />
-          </Svg>
-          <View style={{marginLeft: 10}}>
-            <Text style={styles.order_recve_name}>2.4 km</Text>
-          </View>
-        </View>
-        <View style={styles.order_recve_loc_view}>
+        <View
+          style={
+            !IsTablet
+              ? styles.order_recve_loc_viewMobile
+              : styles.order_recve_loc_view
+          }>
           <TouchableOpacity onPress={() => set_modal_timer_visible(true)}>
-            <Text
-              style={{
-                marginRight: 20,
-                color: colors.primary,
-                fontFamily: 'Poppins-Regular',
-              }}>
-              Change estimation time
-            </Text>
+            <Text style={styles.changeEstimateTime}>{t('changeEstimate')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate('Longer_orders')}
-            style={styles.ready_btn}>
+            style={!IsTablet ? styles.ready_btnMobile : styles.ready_btn}>
             <Text
               style={{
-                color: 'white',
-                fontFamily: 'Poppins-SemiBold',
-                fontSize: 15,
+                color: colors.textWhite,
+                fontFamily: fonts.bold,
+                fontSize: verticalScale(11),
               }}>
-              Ready
+              {t('Ready')}
             </Text>
           </TouchableOpacity>
         </View>
@@ -302,7 +299,7 @@ export default function Current_orders({title, navigation}) {
       <TouchableOpacity
         onPress={() => navigate_to_fullview()}
         style={[
-          styles.single_order,
+          !IsTablet ? styles.single_orderMobile : styles.single_order,
           {paddingVertical: 10, marginHorizontal: 20, marginVertical: 10},
         ]}>
         <Text style={styles.order_recve_name}>#247HW9</Text>
@@ -515,7 +512,7 @@ export default function Current_orders({title, navigation}) {
                           fontFamily: 'Lato-Bold',
                           marginLeft: 20,
                         }}>
-                        UNDO
+                        {t('undo')}
                       </Text>
                     </TouchableOpacity>
                   </View>,
@@ -533,7 +530,7 @@ export default function Current_orders({title, navigation}) {
 
   return (
     <>
-      <ScrollView >
+      <ScrollView>
         <View style={{paddingHorizontal: scale(10)}}>
           {!IsTablet ? (
             <SellerTools
@@ -555,14 +552,13 @@ export default function Current_orders({title, navigation}) {
                 }}>
                 <Accepted setActiveTab={setActiveTab} activeTab={activeTab} />
                 <Accepted
-                  change={activeTab == 1 ? false: true}
+                  change={activeTab == 1 ? false : true}
                   setActiveTab={setActiveTab}
                   activeTab={activeTab}
                 />
               </View>
             </>
           )}
-          {console.log('====ActiveTab', activeTab)}
         </View>
         <View style={{flexDirection: 'row', height: '100%', width: '100%'}}>
           {(!IsTablet && activeTab == 2) || IsTablet ? (
@@ -607,6 +603,9 @@ export default function Current_orders({title, navigation}) {
                 width: !IsTablet ? '95%' : '16%',
                 marginLeft: 10,
                 borderRadius: 5,
+                justifyContent:"center",
+                alignSelf:"center",
+              
               }}>
               <Text style={[styles.title, {color: 'white'}]}>
                 Ready for pickup
@@ -614,6 +613,11 @@ export default function Current_orders({title, navigation}) {
               <FlatList
                 keyExtractor={(item, index) => index.toString()}
                 data={data}
+                contentContainerStyle={{
+                  flexDirection: !IsTablet ? 'row' : 'column',
+                  flexWrap: !IsTablet ? 'wrap' : 'nowrap',
+                 
+                }}
                 renderItem={({item}) => render_ready_pickup()}
               />
               <View
@@ -687,6 +691,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingBottom: 10,
   },
+  single_orderMobile: {
+    backgroundColor: colors.boxBg,
+    width: '95%',
+    borderRadius: verticalScale(8),
+    marginRight:verticalScale(35)
+   
+  },
   order_header: {
     flex: 1,
     marginTop: 10,
@@ -694,37 +705,45 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   orderid_text: {
-    fontSize: 15,
-    color: '#CCD4D6',
-    // fontWeight:'bold',
-    fontFamily: 'Lato-Bold',
+    fontSize: verticalScale(12),
+    color: colors.light_grey,
+    fontFamily: fonts.LatoMedium,
+    marginRight: verticalScale(2),
+  },
+  orderid_text1: {
+    fontSize: verticalScale(12),
+    color: colors.light_grey,
+    fontFamily: fonts.LatoMedium,
+    marginRight: verticalScale(2),
   },
   order_timer: {
     backgroundColor: '#F2A341',
     borderRadius: '0 0 5 5',
   },
   order_title: {
-    width: '70%',
-    fontSize: 17,
-    fontFamily: 'Lato-Bold',
+    fontSize: verticalScale(11),
+    fontFamily: fonts.LatoSemiBold,
+    color: colors.black,
   },
   order_item: {
     flexDirection: 'row',
     marginTop: 20,
+    alignItems: 'center',
   },
   cross_icon: {
     color: '#CCD4D6',
     fontSize: 20,
   },
   more_order: {
-    width: 60,
-    backgroundColor: colors.blurPrimary,
+    width: 70,
+    backgroundColor: colors.primaryBlurColor,
     padding: 3,
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 30,
     marginTop: 5,
+    flexDirection: 'row',
   },
   accept_btn: {
     backgroundColor: colors.primary,
@@ -739,9 +758,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
   },
   order_recve_name: {
-    fontSize: 17,
-    fontFamily: 'Lato-Regular',
-    color: 'black',
+    fontSize: verticalScale(!IsTablet ? 12 : 10),
+    fontFamily: fonts.LatoRegular,
+    color: colors.black,
   },
   order_recve_phone_view: {
     flexDirection: 'row',
@@ -752,11 +771,31 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 10,
     alignItems: 'center',
+    marginLeft: !IsTablet ? 10 : 0,
+  },
+  order_recve_loc_viewMobile: {
+    flexDirection: 'column-reverse',
+    marginTop: 15,
+    alignItems: 'center',
+  },
+  changeEstimateTime: {
+    fontSize: verticalScale(10),
+    fontFamily: fonts.bold,
+    color: colors.primary,
+    marginVertical: verticalScale(5),
   },
   ready_btn: {
     flex: 1,
     backgroundColor: colors.primary,
     borderRadius: 5,
+    alignItems: 'center',
+    paddingVertical: 10,
+    justifyContent: 'center',
+  },
+  ready_btnMobile: {
+    width: '100%',
+    backgroundColor: colors.primary,
+    borderRadius: verticalScale(10),
     alignItems: 'center',
     paddingVertical: 10,
     justifyContent: 'center',
