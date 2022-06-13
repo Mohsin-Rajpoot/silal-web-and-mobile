@@ -479,7 +479,9 @@
     "pre_orders":"Pre-orders",
     "inventory_notes1":"Conduct an inventory of ingredients",
     "inventory_notes2":"Hold a meeting for new employees, give out documents",
-    "inventory_notes3":"Conduct an inventory of ingredients"
+    "inventory_notes3":"Conduct an inventory of ingredients",
+    "enter_manually":"Enter manually",
+    "save_time":"Save time"
 
   
    
