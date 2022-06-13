@@ -18,7 +18,7 @@ import {
   heightPercentageToDP as height,
 } from 'react-native-responsive-screen';
 
-const SellerToolScreen = () => {
+const SellerToolScreen = ({navigation}) => {
   const {t} = useTranslation();
   const [contactModal, setContactModal] = useState(false);
   const [modal, setModal] = useState(false);
@@ -39,7 +39,7 @@ const SellerToolScreen = () => {
       id: 2,
       text: t('Notes'),
       iconPath: images.noteIcon,
-      onPress: () => setNoteModal(true),
+      onPress: () => navigation.navigate('Notes'),
     },
     {
       id: 3,
