@@ -12,29 +12,27 @@ import TextInput from '../../../common/components/native/TextInput/index';
 import {CustomButton} from '@SilalApp/common/components/native';
 import {useTranslation} from 'react-i18next';
 
-
 const TimerMobile = ({label}) => {
   const {t} = useTranslation();
   const [modal_timer_visible, set_modal_timer_visible] = useState(false);
   const [values, set_values] = useState(0);
   const [manual_time, set_manual_time] = useState('');
   const toastRef = useRef();
-  const emptyArray = [0,1];
-  const timeArray = ['50 min', '40 min',  '60 min'];
+  const emptyArray = [0, 1];
+  const timeArray = ['50 min', '40 min', '60 min'];
   return (
     <ScrollView style={styles.centeredView}>
-     
       <CustomText
         fontSize={18}
         fontFamily={fonts.bold}
         marginBottom={verticalScale(5)}
-        label={label ? label : t("Order_will_be_ready")}
+        label={label ? label : t('Order_will_be_ready')}
       />
       <CustomText
         fontSize={18}
         fontFamily={fonts.bold}
         color={colors.primary}
-        label={values + 40  + t("minutes")}
+        label={values + 40 + t('minutes')}
       />
 
       <View style={{marginTop: verticalScale(20), width: '100%'}}>
@@ -78,16 +76,15 @@ const TimerMobile = ({label}) => {
             ),
           }}
         />
-
       </View>
-      <View style={{width: '100%',}}>
-      <View
+      <View style={{width: '100%'}}>
+        <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
-            marginTop:verticalScale(10),
-            paddingHorizontal:scale(20)
+            marginTop: verticalScale(10),
+            paddingHorizontal: scale(20),
           }}>
           {emptyArray.map((item, index) => {
             return <View key={index} style={styles.heightView} />;
@@ -112,15 +109,15 @@ const TimerMobile = ({label}) => {
           })}
         </View>
       </View>
-     <View style={{alignSelf:'flex-start'}}>
-     <CustomText
-        label={t("enter_manually")}
-        fontSize={15}
-        marginBottom={verticalScale(8)}
-        fontFamily={fonts.LatoMedium}
-        marginTop={verticalScale(15)}
-      />
-     </View>
+      <View style={{alignSelf: 'flex-start'}}>
+        <CustomText
+          label={t('enter_manually')}
+          fontSize={15}
+          marginBottom={verticalScale(8)}
+          fontFamily={fonts.LatoMedium}
+          marginTop={verticalScale(15)}
+        />
+      </View>
       <TextInput
         placeholderText="+30 min"
         value={manual_time}
@@ -140,14 +137,24 @@ const TimerMobile = ({label}) => {
           alignItems: 'center',
           justifyContent: 'space-between',
           width: '100%',
-          marginTop:verticalScale(15)
+          marginTop: verticalScale(15),
         }}>
-        <CustomButton containerStyle={styles.modal_save_btn} text={t("Cancel")} />
-        <CustomButton containerStyle={styles.modal_save_btn} text={t("save_time")} />
+        <CustomButton
+          textStyle={{color: colors.textPrimeColor, fontSize: 15}}
+          containerStyle={[
+            styles.modal_save_btn,
+            {backgroundColor: colors.light_grey},
+          ]}
+          text={t('Cancel')}
+        />
+        <CustomButton
+          textStyle={{fontSize: 15}}
+          containerStyle={styles.modal_save_btn}
+          text={t('save_time')}
+        />
       </View>
-    
-       
-        {/* <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+
+      {/* <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 
               <View style={{alignItems: 'center', justifyContent: 'center'}}>
                 <View
@@ -213,7 +220,7 @@ const TimerMobile = ({label}) => {
                 <Text>15 min</Text>
               </View>
             </View> */}
-              {/* <View
+      {/* <View
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
@@ -304,10 +311,9 @@ const styles = ScaledSheet.create({
   // },
   modal_save_btn: {
     borderRadius: '10@vs',
-    width:'48%',
-    height:'40@vs'
+    width: '48%',
+    height: '40@vs',
   },
 });
 
-
-var x = 5
+var x = 5;

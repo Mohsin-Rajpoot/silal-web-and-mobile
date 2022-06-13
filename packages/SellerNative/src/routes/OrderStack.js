@@ -8,6 +8,7 @@ import FullOrderDetail from './../screens/FullOrderDetail';
 import SellerToolScreen from '../screens/orders/molecule/SellerToolScreen';
 import DailySummary from '../screens/orders/molecule/DailySummary';
 import Notes from '../screens/orders/molecule/Notes';
+import OrderFullViewMobile from '../screens/orders/Current/OrderFullViewMobile';
 const Stack = createNativeStackNavigator();
 // const navTheme = {
 //   ...DefaultTheme,
@@ -29,6 +30,7 @@ const OrderStack = () => {
       <Stack.Screen name="SellerToolScreen" component={SellerToolScreen} />
       <Stack.Screen name="DailySummary" component={DailySummary} />
       <Stack.Screen name='Notes' component={Notes}/>
+      <Stack.Screen name='OrderFullViewMobile' component={OrderFullViewMobile}/>
     </Stack.Navigator>
     // </NavigationContainer>
   );

@@ -42,7 +42,7 @@ const DailySummary = () => {
   return (
     <ScrollView style={styles.mainContainer}>
       <View style={styles.headerContainer}>
-        <Header title={t('daily_summary')} dostIcon={true} showIcon />
+        <Header title={t('daily_summary')} dostIcon={true} showIcon treeDot />
         <View style={{height:verticalScale(15)}} />
         {dataArray.map((item, index) => {
           return (
