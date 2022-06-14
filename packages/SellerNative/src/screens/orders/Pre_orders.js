@@ -108,6 +108,7 @@ export default function Pre_orders({title, navigation}) {
         <View style={styles.order_header}>
           <Text style={styles.orderid_text}>
             {t('orderId')}
+            <View style={{width:5}} />
             <Text style={[styles.orderid_text, {color: 'black'}]}>#123456</Text>
           </Text>
           <View style={styles.delivryby_btn}>
@@ -117,15 +118,15 @@ export default function Pre_orders({title, navigation}) {
           </View>
         </View>
         <View style={styles.order_item}>
-          <Text style={{fontSize: 17}}>2</Text>
+          <Text style={{fontSize: 17,marginRight:5}}>2</Text>
           <Entypo name="cross" style={styles.cross_icon} />
-          <Text style={styles.order_title}>French Fries </Text>
+          <Text style={[styles.order_title,{marginLeft: 5,}]}>{t('french_fries')}</Text>
         </View>
         <View style={[styles.order_item, {marginTop: 5}]}>
-          <Text style={{fontSize: 17}}>2</Text>
+          <Text style={{fontSize: 17,marginRight:5}}>2</Text>
           <Entypo name="cross" style={styles.cross_icon} />
-          <Text style={styles.order_title}>
-            Cheesecakes with sour cream and citrus{' '}
+          <Text style={[styles.order_title,{marginLeft:5}]}>
+            Cheesecakes with sour cream and citrus
           </Text>
         </View>
         <View style={styles.more_order}>
@@ -136,7 +137,7 @@ export default function Pre_orders({title, navigation}) {
             onPress={() => set_modal_timer_visible(true)}
             style={[
               styles.accept_btn,
-              {width: '30%', backgroundColor: colors.blurPrimary},
+              {width: '30%', backgroundColor: colors.blurPrimary1},
             ]}>
             <Text style={[styles.accept_btn_txt, {color: colors.primary}]}>
               {t('Decline')}
@@ -158,18 +159,18 @@ export default function Pre_orders({title, navigation}) {
   const render_this_week = () => {
     return (
       <View style={styles.single_order}>
-        <View style={[styles.order_header, {flexDirection: 'column'}]}>
+        <View style={[styles.order_header, {flexDirection: !IsTablet ? 'column' : "row"}]}>
           <Text style={styles.orderid_text}>
-            {t('orderId')}
+            {t('orderId')} 
+            <View style={{width:5}} />
             <Text style={[styles.orderid_text, {color: 'black'}]}>
-              {' '}
               #123456
             </Text>
           </Text>
           <View
             style={[
               styles.delivryby_btn,
-              {width: '65%', marginTop: verticalScale(5)},
+              {width: !IsTablet ?  '65%' : null, marginTop: verticalScale(5)},
             ]}>
             <Text style={styles.delivryby_btn_txt}>
               {t('Delivery_by')} 14 DEC 13:30 PM
@@ -177,14 +178,14 @@ export default function Pre_orders({title, navigation}) {
           </View>
         </View>
         <View style={styles.order_item}>
-          <Text style={{fontSize: 17}}>2</Text>
+          <Text style={{fontSize: 17,marginRight:5}}>2</Text>
           <Entypo name="cross" style={styles.cross_icon} />
-          <Text style={styles.order_title}>French Fries </Text>
+          <Text style={[styles.order_title,{marginLeft:5}]}>French Fries </Text>
         </View>
         <View style={[styles.order_item, {marginTop: 5}]}>
-          <Text style={{fontSize: 17}}>2</Text>
+          <Text style={{fontSize: 17,marginRight:5}}>2</Text>
           <Entypo name="cross" style={styles.cross_icon} />
-          <Text style={styles.order_title}>
+          <Text style={[styles.order_title,{marginLeft:5}]}>
             Cheesecakes with sour cream and citrus{' '}
           </Text>
         </View>
@@ -197,10 +198,10 @@ export default function Pre_orders({title, navigation}) {
             onPress={() => set_modal_timer_visible(true)}
             style={[
               styles.accept_btn,
-              {width: '30%', backgroundColor: colors.blurPrimary},
+              {width: '30%', backgroundColor: colors.blurPrimary1},
             ]}>
             <Text style={[styles.accept_btn_txt, {color: colors.primary}]}>
-              Decline
+              {t("Decline")}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -226,7 +227,7 @@ export default function Pre_orders({title, navigation}) {
                         fontFamily: 'Lato-Bold',
                         marginLeft: 20,
                       }}>
-                      UNDO
+                      {t("undo")}
                     </Text>
                   </TouchableOpacity>
                 </View>,
@@ -234,7 +235,7 @@ export default function Pre_orders({title, navigation}) {
               )
             }
             style={[styles.accept_btn, {width: '60%'}]}>
-            <Text style={styles.accept_btn_txt}>Move to current orders</Text>
+            <Text style={styles.accept_btn_txt}>{t("move_to_current_order")}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -280,7 +281,7 @@ export default function Pre_orders({title, navigation}) {
               textAlignVertical="top"
               numberOfLines={3}
               onChangeText={n => set_refusal_text(n)}
-              placeholder="Type here..."
+              placeholder={t("Type_here")+"..."}
               placeholderTextColor="#4C6870"
             />
             <View>
@@ -331,7 +332,7 @@ export default function Pre_orders({title, navigation}) {
                 }}>
                 <TouchableOpacity
                   onPress={() => set_modal_timer_visible(!modal_timer_visible)}
-                  style={[styles.modal_save_btn, {backgroundColor: '#CCD4D6'}]}>
+                  style={[styles.modal_save_btn, {backgroundColor: colors.light_grey}]}>
                   <Text style={{color: 'black'}}>Cancel</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -375,7 +376,7 @@ export default function Pre_orders({title, navigation}) {
                   //     ToastAndroid.showWithGravityAndOffset('Preperation time is changed',ToastAndroid.LONG,ToastAndroid.BOTTOM,25,50);
                   //     }}
                   style={styles.modal_save_btn}>
-                  <Text style={{color: 'white'}}>Submit</Text>
+                  <Text style={{color: 'white'}}>{t("Submit")}</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -538,15 +539,10 @@ export default function Pre_orders({title, navigation}) {
         <View />
       )}
       <ScrollView
-        style={
-          !IsTablet
-            ? {flexDirection: 'column'}
-            : {
-                flexDirection: 'row',
-                justifyContent: 'space-evenly',
-                height: '100%',
-              }
-        }>
+        contentContainerStyle={{
+          flexGrow: 1,
+          flexDirection: !IsTablet ? 'column' : 'row',
+        }}>
         {(!IsTablet && forWeek) || IsTablet ? (
           <View
             style={
@@ -577,7 +573,7 @@ export default function Pre_orders({title, navigation}) {
             />
           </View>
         ) : null}
-        {(!IsTablet && forWeek) || IsTablet ? null : (
+        {(!IsTablet && !forWeek) || IsTablet ? (
           <View
             style={
               !IsTablet ? styles.mainContainerMobile : styles.mainContainer
@@ -605,7 +601,7 @@ export default function Pre_orders({title, navigation}) {
               renderItem={({item}) => render_today()}
             />
           </View>
-        )}
+        ) : null}
 
         {/* <Button title="Show Toast" onPress={() => toastRef.current.show(
               <View style={{flexDirection:'row'}}>
@@ -718,13 +714,13 @@ export default function Pre_orders({title, navigation}) {
 }
 const styles = ScaledSheet.create({
   mainContainer: {
-    backgroundColor: '#E5EAEB',
-    width: '48%',
+    backgroundColor: colors.boxBg,
+    width: '47%',
     marginLeft: 10,
     borderRadius: 5,
   },
   mainContainerMobile: {
-    backgroundColor: '#E5EAEB',
+    backgroundColor: colors.boxBg,
     width: '95%',
     alignSelf: 'center',
     borderRadius: 5,
@@ -802,7 +798,7 @@ const styles = ScaledSheet.create({
 
   orderid_text: {
     fontSize: 15,
-    color: '#CCD4D6',
+    color: colors.light_grey,
     fontFamily: 'Lato-Bold',
   },
   order_timer: {
@@ -819,17 +815,17 @@ const styles = ScaledSheet.create({
     marginTop: 20,
   },
   cross_icon: {
-    color: '#CCD4D6',
+    color: colors.light_grey,
     fontSize: 20,
   },
   more_order: {
     width: 60,
-    backgroundColor: '#E6F4F2',
+    backgroundColor: colors.primaryGreen,
     padding: 3,
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 30,
+    marginLeft: 40,
     marginTop: 5,
   },
   accept_btn: {

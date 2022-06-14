@@ -530,7 +530,7 @@ export default function Current_orders({title, navigation}) {
 
   return (
     <>
-      <ScrollView>
+      <ScrollView contentContainerStyle={{flexGrow:1}}>
         <View style={{paddingHorizontal: scale(10)}}>
           {!IsTablet ? (
             <SellerTools
