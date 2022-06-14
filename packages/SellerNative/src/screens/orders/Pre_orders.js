@@ -10,6 +10,7 @@ import {
   FlatList,
   TextInput,
   Modal,
+  ScrollView,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -19,6 +20,7 @@ import {
   heightPercentageToDP as height,
 } from 'react-native-responsive-screen';
 import {Image, SvgXml} from 'react-native-svg';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import Svg, {
   Path,
   Defs,
@@ -31,6 +33,7 @@ import Svg, {
 import Toast from 'react-native-easy-toast';
 import {useTranslation} from 'react-i18next';
 import CustomModal from '@SilalApp/common/components/native/CustomModal';
+import {ScaledSheet, verticalScale} from 'react-native-size-matters';
 import CustomText from '@SilalApp/common/components/CustomText';
 import fonts from '@SilalApp/common/assets/fonts';
 import colors from '@SilalApp/common/assets/colors';
@@ -41,6 +44,7 @@ export default function Pre_orders({title, navigation}) {
   const [refusal_text, set_refusal_text] = useState('');
   const toastRef = useRef();
   const [modal, setModal] = useState(false);
+  const [forWeek, setForWeek] = useState(false);
 
   const data = [
     {
@@ -81,10 +85,7 @@ export default function Pre_orders({title, navigation}) {
         <View style={styles.order_header}>
           <Text style={styles.orderid_text}>
             {t('orderId')}
-            <Text style={[styles.orderid_text, {color: 'black'}]}>
-              {' '}
-              #123456
-            </Text>
+            <Text style={[styles.orderid_text, {color: 'black'}]}>#123456</Text>
           </Text>
           <View style={styles.delivryby_btn}>
             <Text style={styles.delivryby_btn_txt}>
@@ -112,9 +113,9 @@ export default function Pre_orders({title, navigation}) {
             onPress={() => set_modal_timer_visible(true)}
             style={[
               styles.accept_btn,
-              {width: '30%', backgroundColor: '#acd9d3'},
+              {width: '30%', backgroundColor: colors.blurPrimary},
             ]}>
-            <Text style={styles.accept_btn_txt}>{t('Decline')}</Text>
+            <Text style={[styles.accept_btn_txt,{color:colors.primary}]}>{t('Decline')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.6}
@@ -132,17 +133,14 @@ export default function Pre_orders({title, navigation}) {
   const render_this_week = () => {
     return (
       <View style={styles.single_order}>
-        <View style={styles.order_header}>
+        <View style={[styles.order_header,{flexDirection:'column'}]}>
           <Text style={styles.orderid_text}>
             {t('orderId')}
-            <Text style={[styles.orderid_text, {color: 'black'}]}>
-              {' '}
-              #123456
-            </Text>
+            <Text style={[styles.orderid_text, {color: 'black'}]}> #123456</Text>
           </Text>
-          <View style={styles.delivryby_btn}>
+          <View style={[styles.delivryby_btn,{width: "65%",marginTop:verticalScale(5)}]}>
             <Text style={styles.delivryby_btn_txt}>
-              {t('Delivery_by')}13:30 PM
+              {t('Delivery_by')} 14 DEC 13:30 PM
             </Text>
           </View>
         </View>
@@ -167,9 +165,9 @@ export default function Pre_orders({title, navigation}) {
             onPress={() => set_modal_timer_visible(true)}
             style={[
               styles.accept_btn,
-              {width: '30%', backgroundColor: '#acd9d3'},
+              {width: '30%', backgroundColor: colors.blurPrimary},
             ]}>
-            <Text style={styles.accept_btn_txt}>Decline</Text>
+            <Text style={[styles.accept_btn_txt,{color:colors.primary}]}>Decline</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
@@ -261,7 +259,7 @@ export default function Pre_orders({title, navigation}) {
                 <Text
                   style={[
                     styles.modal_heading,
-                    {fontWeight: '200', fontSize: 15, color:colors.black},
+                    {fontWeight: '200', fontSize: 15, color: colors.black},
                   ]}>
                   {t('suggestions')}
                 </Text>
@@ -283,7 +281,7 @@ export default function Pre_orders({title, navigation}) {
                         style={{
                           color: colors.primary,
                           fontFamily: fonts.LatoMedium,
-                          fontSize:13
+                          fontSize: 13,
                         }}>
                         {item.SubTitle}
                       </Text>
@@ -354,37 +352,100 @@ export default function Pre_orders({title, navigation}) {
   };
 
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        height: '100%',
-      }}>
-      {/* <View style={{flexDirection:'row',justifyContent:'space-evenly',}}> */}
-      <View style={{backgroundColor: '#E5EAEB', width: '48%', borderRadius: 5}}>
-        <Text style={styles.title}>For today</Text>
-        <FlatList
-          keyExtractor={(item, index) => index.toString()}
-          data={data}
-          renderItem={({item}) => render_today()}
-        />
-      </View>
+    <>
+      {!IsTablet ? (
+        <TouchableOpacity
+          activeOpacity={0.6}
+          onPress={() => setForWeek(!forWeek)}
+          style={styles.forTodayContainer}>
+          <CustomText
+            fontSize={16}
+            fontFamily={fonts.PoppinsSemiBold}
+            label={forWeek ? t('For_today') : t('this_week')}
+          />
+          <View style={styles.weekNumCont}>
+            <CustomText
+              fontSize={16}
+              fontFamily={fonts.PoppinsSemiBold}
+              color={colors.textWhite}
+              label={forWeek ? '8' : '19'}
+            />
+          </View>
+        </TouchableOpacity>
+      ) : (
+        <View />
+      )}
+      <ScrollView
+        style={
+          !IsTablet
+            ? {flexDirection: 'column'}
+            : {
+                flexDirection: 'row',
+                justifyContent: 'space-evenly',
+                height: '100%',
+              }
+        }>
+        {(!IsTablet && forWeek) || IsTablet ? (
+          <View
+            style={
+              !IsTablet ? styles.mainContainerMobile : styles.mainContainer
+            }>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                paddingRight: 10,
+              }}>
+              <Text style={styles.title}>{t('this_week')}</Text>
+              <View style={styles.weekNumCont}>
+                <CustomText
+                  fontSize={16}
+                  fontFamily={fonts.PoppinsSemiBold}
+                  color={colors.textWhite}
+                  label="19"
+                />
+              </View>
+            </View>
 
-      <View
-        style={{
-          backgroundColor: '#E5EAEB',
-          width: '48%',
-          marginLeft: 10,
-          borderRadius: 5,
-        }}>
-        <Text style={styles.title}>{t('this_week')}</Text>
-        <FlatList
-          keyExtractor={(item, index) => index.toString()}
-          data={data}
-          renderItem={({item}) => render_this_week()}
-        />
-      </View>
-      {/* <Button title="Show Toast" onPress={() => toastRef.current.show(
+            <FlatList
+              keyExtractor={(item, index) => index.toString()}
+              data={data}
+              renderItem={({item}) => render_this_week()}
+            />
+          </View>
+        ) : null}
+        {(!IsTablet && forWeek) || IsTablet ? null : (
+          <View
+            style={
+              !IsTablet ? styles.mainContainerMobile : styles.mainContainer
+            }>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                paddingRight: 10,
+              }}>
+              <Text style={styles.title}>{t('For_today')}</Text>
+              <View style={styles.weekNumCont}>
+                <CustomText
+                  fontSize={16}
+                  fontFamily={fonts.PoppinsSemiBold}
+                  color={colors.textWhite}
+                  label="8"
+                />
+              </View>
+            </View>
+            <FlatList
+              keyExtractor={(item, index) => index.toString()}
+              data={data}
+              renderItem={({item}) => render_today()}
+            />
+          </View>
+        )}
+
+        {/* <Button title="Show Toast" onPress={() => toastRef.current.show(
               <View style={{flexDirection:'row'}}>
                 <Text style={{color:'#002733',fontSize:15,fontFamily:'Lato-Bold'}}>The order #247HW9 has been moved to Accepted</Text>
                 <TouchableOpacity onPress={()=>{toastRef.current.close(), alert('undo')}}>
@@ -393,86 +454,121 @@ export default function Pre_orders({title, navigation}) {
               </View>
               ,1000
               )} /> */}
-      <Toast
-        ref={toastRef}
-        style={styles.toast}
-        position="bottom"
-        positionValue={250}
-        fadeInDuration={750}
-        fadeOutDuration={800}
-        opacity={1}
-        textStyle={{color: 'red'}}
-      />
+        <Toast
+          ref={toastRef}
+          style={styles.toast}
+          position="bottom"
+          positionValue={250}
+          fadeInDuration={750}
+          fadeOutDuration={800}
+          opacity={1}
+          textStyle={{color: 'red'}}
+        />
 
-      <CustomModal
-        isModalVisible={modal_timer_visible}
-        setModalVisible={set_modal_timer_visible}
-        modalWrapperStyle={{
-          marginHorizontal: width(30),
-          marginVertical: height(25),
-          justifyContent: 'center',
-        }}>
-        {render_modal_view()}
-      </CustomModal>
-      <CustomModal
-        isModalVisible={modal}
-        setModalVisible={setModal}
-        modalWrapperStyle={{
-          marginHorizontal: width(26),
-          marginVertical: height(36),
-          justifyContent: 'flex-start',
-          alignItems: 'flex-start',
-        }}>
-        <View
-          style={{
-            width: '100%',
-            alignSelf: 'flex-start',
-            margin: 10,
+        <CustomModal
+          isModalVisible={modal_timer_visible}
+          setModalVisible={set_modal_timer_visible}
+          modalWrapperStyle={{
+            marginHorizontal: width(30),
+            marginVertical: height(25),
+            justifyContent: 'center',
           }}>
-          <CustomText
-            label={t('Drag_card_back_ToReceive')}
-            textStyle={styles.dragDropHead}
-          />
-        </View>
-        <View
-          style={{
-            width: '100%',
-            alignSelf: 'flex-start',
-            marginHorizontal: 10,
+          {render_modal_view()}
+        </CustomModal>
+        <CustomModal
+          isModalVisible={modal}
+          setModalVisible={setModal}
+          modalWrapperStyle={{
+            marginHorizontal: width(26),
+            marginVertical: height(36),
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
           }}>
-          <CustomText
-            label={t('Drag_card_detail')}
-            textStyle={styles.dragDropHead1}
-          />
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            marginVertical: 20,
-            justifyContent: 'space-between',
-          }}>
-          <View style={{width: '45%', margin: 5}}>
-            <CustomButton
-              text={t('Cancel')}
-              containerStyle={styles.cancelButtonContainer}
-              textStyle={styles.cancelText}
-              onPress={() => setModal(false)}
+          <View
+            style={{
+              width: '100%',
+              alignSelf: 'flex-start',
+              margin: 10,
+            }}>
+            <CustomText
+              label={t('Drag_card_back_ToReceive')}
+              textStyle={styles.dragDropHead}
             />
           </View>
-          <View style={{width: '45%', margin: 5}}>
-            <CustomButton
-              text={t('Confirm')}
-              containerStyle={styles.confirmButtonContainer}
-              textStyle={styles.confirmText}
-              onPress={() => setModal(false)}
+          <View
+            style={{
+              width: '100%',
+              alignSelf: 'flex-start',
+              marginHorizontal: 10,
+            }}>
+            <CustomText
+              label={t('Drag_card_detail')}
+              textStyle={styles.dragDropHead1}
             />
           </View>
-        </View>
-      </CustomModal>
-    </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              marginVertical: 20,
+              justifyContent: 'space-between',
+            }}>
+            <View style={{width: '45%', margin: 5}}>
+              <CustomButton
+                text={t('Cancel')}
+                containerStyle={styles.cancelButtonContainer}
+                textStyle={styles.cancelText}
+                onPress={() => setModal(false)}
+              />
+            </View>
+            <View style={{width: '45%', margin: 5}}>
+              <CustomButton
+                text={t('Confirm')}
+                containerStyle={styles.confirmButtonContainer}
+                textStyle={styles.confirmText}
+                onPress={() => setModal(false)}
+              />
+            </View>
+          </View>
+        </CustomModal>
+      </ScrollView>
+    </>
   );
 }
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
+  mainContainer: {
+    backgroundColor: '#E5EAEB',
+    width: '48%',
+    marginLeft: 10,
+    borderRadius: 5,
+  },
+  mainContainerMobile: {
+    backgroundColor: '#E5EAEB',
+    width: '95%',
+    alignSelf: 'center',
+    borderRadius: 5,
+    paddingBottom: 5,
+    marginBottom: 10,
+  },
+  forTodayContainer: {
+    width: '95%',
+    alignSelf: 'center',
+    backgroundColor: colors.boxBg,
+    paddingVertical: '14@vs',
+    paddingHorizontal: '12@s',
+    borderRadius: '12@vs',
+    marginBottom: '10@vs',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  weekNumCont: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.red20,
+    width: '28@vs',
+    height: '28@vs',
+    borderRadius: '100@vs',
+  },
   title: {
     fontSize: 18,
     fontFamily: 'Poppins-Bold',
@@ -521,6 +617,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+
   orderid_text: {
     fontSize: 15,
     color: '#CCD4D6',
@@ -556,7 +653,7 @@ const styles = StyleSheet.create({
   accept_btn: {
     backgroundColor: colors.primary,
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 8,
     marginTop: 10,
     alignItems: 'center',
   },
@@ -621,7 +718,7 @@ const styles = StyleSheet.create({
   },
   modal_heading: {
     fontSize: 18,
-    fontFamily:fonts.LatoBold,
+    fontFamily: fonts.LatoBold,
     color: 'black',
   },
 

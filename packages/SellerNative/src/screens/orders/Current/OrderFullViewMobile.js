@@ -1,8 +1,13 @@
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
 import React, {useState} from 'react';
 import Header from '../../../components/Header';
 import {useTranslation} from 'react-i18next';
-import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
+import {
+  scale,
+  ScaledSheet,
+  verticalScale,
+  moderateScale,
+} from 'react-native-size-matters';
 import CustomText from '@SilalApp/common/components/CustomText';
 import colors from '@SilalApp/common/assets/colors';
 import Tab from './molecules/Tab';
@@ -12,11 +17,16 @@ import fonts from '@SilalApp/common/assets/fonts';
 import CustomButton from '@SilalApp/common/components/native/CustomButton';
 import DetailsItem from './molecules/DetailsItem';
 import {Icon} from 'react-native-elements';
+import CustomModal from '@SilalApp/common/components/native/CustomModal';
+import {
+  widthPercentageToDP as width,
+  heightPercentageToDP as height,
+} from 'react-native-responsive-screen';
 
-const OrderFullViewMobile = ({route}) => {
-  const status = route?.params?.status;
+const OrderFullViewMobile = ({navigation}) => {  
   const {t} = useTranslation();
   const [active, setActive] = useState(0);
+  const [mobileModal, setMobileModal] = useState(false);
   const listArray = [
     {
       id: 1,
@@ -91,7 +101,69 @@ const OrderFullViewMobile = ({route}) => {
           padding: verticalScale(15),
           backgroundColor: colors.background,
         }}>
-        <Header title={t('Order ID #247HW9')} dostIcon={true} showIcon />
+        <Header
+        goBack={()=> navigation.navigate('Longer_orders')}
+       
+          rightPress={() => setMobileModal(true)}
+          title={t('Order ID #247HW9')}
+          dostIcon={true}
+          showIcon
+        />
+        {mobileModal && (
+          <CustomModal
+            isModalVisible={mobileModal}
+            setModalVisible={setMobileModal}
+            modalWrapperStyle={{
+              marginHorizontal: 0,
+              marginTop: height('80%'),
+              marginVertical: 0,
+              borderTopRightRadius: 20,
+            }}>
+            <TouchableOpacity
+              style={styles.menuModalContainer}
+              activeOpacity={0.6}>
+             <Image
+                source={images.alarmIcon}
+                style={{
+                  tintColor: colors.dullWhite,
+                  resizeMode: 'center',
+                  width: verticalScale(20),
+                  height: verticalScale(20),
+                }}
+              />
+              
+
+              <CustomText
+                label={t('changeEstimate')}
+                textStyle={styles.menuTextTitle}
+              />
+            </TouchableOpacity>
+
+            <View style={styles.divider} />
+
+            <TouchableOpacity
+              style={[
+                styles.menuModalContainer,
+                {marginTop: verticalScale(15)},
+              ]}
+              activeOpacity={0.6}>
+              <Image
+                source={images.crossIcon}
+                style={{
+                  tintColor: colors.dullWhite,
+                  resizeMode: 'center',
+                  width: verticalScale(20),
+                  height: verticalScale(20),
+                }}
+              />
+
+              <CustomText
+                label={t('Cancel_order')}
+                textStyle={styles.menuTextTitle}
+              />
+            </TouchableOpacity>
+          </CustomModal>
+        )}
         <Tab active={active} setActive={setActive} />
       </View>
       <ScrollView style={{flex: 1}}>
@@ -364,5 +436,24 @@ const styles = ScaledSheet.create({
     width: '10@vs',
     backgroundColor: colors.primary,
     borderRadius: '100@vs',
+  },
+  menuModalContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    paddingTop: '10@vs',
+    paddingBottom: '25@vs',
+    paddingHorizontal: '10@s',
+  },
+  menuTextTitle: {
+    fontSize: '14@vs',
+    fontFamily: fonts.LatoMedium,
+    color: colors.black,
+    marginLeft: '10@s',
+  },
+  divider: {
+    height: '1@s',
+    width: '100%',
+    backgroundColor: colors.dullWhite,
   },
 });

@@ -7,6 +7,8 @@ const images = {
     infoIcon:require('./infoIcon.png'),        
     clockIcon:require('./clockIcon.png'),        
     noteIcon:require('./noteIcon.png'),        
+    crossIcon:require('./crossIcon.png'),        
+    alarmIcon:require('./alarmIcon.png'),        
 }
 
 export default images
