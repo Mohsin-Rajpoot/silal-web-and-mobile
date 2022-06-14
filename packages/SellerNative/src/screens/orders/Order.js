@@ -274,9 +274,9 @@ const Order = ({navigation}) => {
 
       <View style={{flex: 1}}>
         <PagerView
-          style={{flex: 1}}
+          style={{flex:1}}
           initialPage={0}
-          scrollEnabled={false}
+          // scrollEnabled={false}
           ref={ref}>
           <View key={'1'}>
             <Current_orders title="Received" navigation={navigation} />
@@ -408,7 +408,8 @@ const Order = ({navigation}) => {
           style={{width: '100%'}}
           contentContainerStyle={{
             flexGrow: 1,
-          }}>
+          }}
+          >
           <View style={{width: '100%'}}>
             <TouchableOpacity
               activeOpacity={0.6}
