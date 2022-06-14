@@ -483,7 +483,12 @@
     "enter_manually":"Enter manually",
     "save_time":"Save time",
     "undo":"UNDO",
-    "changeEstimate":"Change estimation time"
+    "changeEstimate":"Change estimation time",
+    "Order_list":"Order list",
+    "CUSTOMER":"CUSTOMER",
+    "olive_Johnanson":"Olive Johnanson",
+    "DRIVER":"DRIVER",
+    "brooklyn_simmons":"Brooklyn Simmons"
 
   
    

@@ -33,7 +33,7 @@ import Svg, {
 import Toast from 'react-native-easy-toast';
 import {useTranslation} from 'react-i18next';
 import CustomModal from '@SilalApp/common/components/native/CustomModal';
-import {ScaledSheet, verticalScale} from 'react-native-size-matters';
+import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
 import CustomText from '@SilalApp/common/components/CustomText';
 import fonts from '@SilalApp/common/assets/fonts';
 import colors from '@SilalApp/common/assets/colors';
@@ -79,6 +79,29 @@ export default function Pre_orders({title, navigation}) {
     },
   ];
 
+  const suggestionArray = [
+    {
+      id: 1,
+      text: 'Nulla Lorem',
+    },
+    {
+      id: 2,
+      text: 'Nulla Lorem mollit',
+    },
+    {
+      id: 3,
+      text: 'Nulla Lorem',
+    },
+    {
+      id: 4,
+      text: 'Nulla Lorem mollit cupidatat irure',
+    },
+    {
+      id: 5,
+      text: 'Nulla Lorem ',
+    },
+  ];
+
   const render_today = () => {
     return (
       <View style={styles.single_order}>
@@ -115,7 +138,9 @@ export default function Pre_orders({title, navigation}) {
               styles.accept_btn,
               {width: '30%', backgroundColor: colors.blurPrimary},
             ]}>
-            <Text style={[styles.accept_btn_txt,{color:colors.primary}]}>{t('Decline')}</Text>
+            <Text style={[styles.accept_btn_txt, {color: colors.primary}]}>
+              {t('Decline')}
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.6}
@@ -133,12 +158,19 @@ export default function Pre_orders({title, navigation}) {
   const render_this_week = () => {
     return (
       <View style={styles.single_order}>
-        <View style={[styles.order_header,{flexDirection:'column'}]}>
+        <View style={[styles.order_header, {flexDirection: 'column'}]}>
           <Text style={styles.orderid_text}>
             {t('orderId')}
-            <Text style={[styles.orderid_text, {color: 'black'}]}> #123456</Text>
+            <Text style={[styles.orderid_text, {color: 'black'}]}>
+              {' '}
+              #123456
+            </Text>
           </Text>
-          <View style={[styles.delivryby_btn,{width: "65%",marginTop:verticalScale(5)}]}>
+          <View
+            style={[
+              styles.delivryby_btn,
+              {width: '65%', marginTop: verticalScale(5)},
+            ]}>
             <Text style={styles.delivryby_btn_txt}>
               {t('Delivery_by')} 14 DEC 13:30 PM
             </Text>
@@ -167,7 +199,9 @@ export default function Pre_orders({title, navigation}) {
               styles.accept_btn,
               {width: '30%', backgroundColor: colors.blurPrimary},
             ]}>
-            <Text style={[styles.accept_btn_txt,{color:colors.primary}]}>Decline</Text>
+            <Text style={[styles.accept_btn_txt, {color: colors.primary}]}>
+              Decline
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
@@ -209,7 +243,7 @@ export default function Pre_orders({title, navigation}) {
 
   const render_modal_view = () => {
     return (
-      <View style={styles.centeredView}>
+      <View>
         <View style={styles.modalView}>
           <View
             style={{
@@ -350,6 +384,134 @@ export default function Pre_orders({title, navigation}) {
       </View>
     );
   };
+  const render_modal_view_Mobile = () => {
+    return (
+      <View style={{paddingTop: verticalScale(25)}}>
+        <Text style={styles.modal_heading_Mobile}>
+          {t('Indicate_the_Reason')}
+        </Text>
+        <Text
+          style={{
+            color: colors.black,
+            fontSize: verticalScale(11),
+            marginTop: verticalScale(5),
+          }}>
+          {t('Indicate_detail')}
+        </Text>
+
+        <View style={{marginTop: verticalScale(20)}}>
+          <View style={{width: '100%'}}>
+            <TextInput
+              multiline={true}
+              style={{
+                fontSize: verticalScale(15),
+                color: colors.textPrimary,
+                backgroundColor: colors.dropDownBackground,
+                paddingVertical: verticalScale(10),
+                paddingHorizontal: scale(20),
+                height: verticalScale(125),
+                width: '100%',
+                borderRadius: 10,
+              }}
+              value={refusal_text}
+              textAlignVertical="top"
+              numberOfLines={3}
+              onChangeText={n => set_refusal_text(n)}
+              placeholder="Type here..."
+              placeholderTextColor={colors.textPrimary}
+            />
+          </View>
+          <Text
+            style={{
+              fontSize: verticalScale(11),
+              marginBottom: verticalScale(5),
+              marginTop: verticalScale(15),
+              color: colors.textPrimeColor,
+            }}>
+            {t('suggestions')}
+          </Text>
+          <View>
+            <View style={{marginLeft: scale(-10)}}>
+              <FlatList
+                contentContainerStyle={{flexDirection: 'row', flexWrap: 'wrap'}}
+                keyExtractor={(item, index) => index.toString()}
+                data={suggestionArray}
+                renderItem={({item}) => (
+                  <View
+                    style={{
+                      paddingVertical: verticalScale(5),
+                      paddingHorizontal: scale(10),
+                      backgroundColor: colors.Primary20,
+                      marginLeft: scale(10),
+                      borderRadius: verticalScale(5),
+                      marginBottom: verticalScale(10),
+                    }}>
+                    <Text
+                      style={{
+                        color: colors.primary,
+                        fontFamily: fonts.LatoMedium,
+                        fontSize: verticalScale(11),
+                      }}>
+                      {item.text}
+                    </Text>
+                  </View>
+                )}
+              />
+            </View>
+            <CustomButton
+              containerStyle={styles.modalCancelBtn}
+              onPress={() => set_modal_timer_visible(!modal_timer_visible)}
+              text={t('Submit')}
+              textStyle={{fontSize: verticalScale(13)}}
+            />
+            <CustomButton
+              text={t('Cancel')}
+              textStyle={{fontSize: verticalScale(13), color: colors.mehndi50}}
+              containerStyle={[
+                styles.modalCancelBtn,
+                {backgroundColor: colors.light_grey50},
+              ]}
+              onPress={() => {
+                set_modal_timer_visible(false);
+                toastRef.current.show(
+                  <View style={{flexDirection: 'row'}}>
+                    <FontAwesome
+                      name="check-circle"
+                      style={{color: '#36b27c', fontSize: 20}}
+                    />
+                    <Text
+                      style={{
+                        color: '#002733',
+                        fontSize: 15,
+                        fontFamily: 'Lato-Bold',
+                        marginLeft: 10,
+                      }}>
+                      Order #247HW9 was declined
+                    </Text>
+                    <TouchableOpacity
+                      onPress={() => {
+                        toastRef.current.close(), alert('undo');
+                      }}>
+                      <Text
+                        style={{
+                          color: '#018FFB',
+                          fontSize: 15,
+                          fontFamily: 'Lato-Bold',
+                          marginLeft: 20,
+                        }}>
+                        UNDO
+                      </Text>
+                    </TouchableOpacity>
+                  </View>,
+                  3000,
+                );
+              }}
+            />
+          </View>
+        </View>
+      </View>
+    );
+  };
 
   return (
     <>
@@ -465,16 +627,36 @@ export default function Pre_orders({title, navigation}) {
           textStyle={{color: 'red'}}
         />
 
-        <CustomModal
-          isModalVisible={modal_timer_visible}
-          setModalVisible={set_modal_timer_visible}
-          modalWrapperStyle={{
-            marginHorizontal: width(30),
-            marginVertical: height(25),
-            justifyContent: 'center',
-          }}>
-          {render_modal_view()}
-        </CustomModal>
+        {!IsTablet ? (
+          <CustomModal
+            isModalVisible={modal_timer_visible}
+            setModalVisible={set_modal_timer_visible}
+            modalContainerStyle={{
+              padding: 0,
+              margin: 0,
+              paddingHorizontal: scale(15),
+              overflow: 'hidden',
+              borderRadius: 20,
+            }}
+            modalWrapperStyle={{
+              marginTop: height(58),
+              marginHorizontal: 0,
+              marginVertical: 0,
+            }}>
+            {render_modal_view_Mobile()}
+          </CustomModal>
+        ) : (
+          <CustomModal
+            isModalVisible={modal_timer_visible}
+            setModalVisible={set_modal_timer_visible}
+            modalWrapperStyle={{
+              marginHorizontal: width(30),
+              marginVertical: height(25),
+              justifyContent: 'center',
+            }}>
+            {render_modal_view()}
+          </CustomModal>
+        )}
         <CustomModal
           isModalVisible={modal}
           setModalVisible={setModal}
@@ -694,11 +876,11 @@ const styles = ScaledSheet.create({
     color: '#F2A341',
     fontFamily: 'Lato-Bold',
   },
-  centeredView: {},
+
   modalView: {
     backgroundColor: 'transparent',
     padding: 20,
-    borderRadius: 10,
+    borderRadius: '20@vs',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -721,6 +903,11 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.LatoBold,
     color: 'black',
   },
+  modal_heading_Mobile: {
+    fontSize: '14@vs',
+    color: colors.black,
+    fontFamily: fonts.bold,
+  },
 
   toast: {
     backgroundColor: '#FFFFFF',
@@ -735,5 +922,10 @@ const styles = ScaledSheet.create({
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
     elevation: 6,
+  },
+  modalCancelBtn: {
+    width: '100%',
+    height: '45@vs',
+    marginBottom: '5@vs',
   },
 });
