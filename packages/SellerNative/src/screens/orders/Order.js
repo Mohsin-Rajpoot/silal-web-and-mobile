@@ -285,7 +285,7 @@ const Order = ({navigation}) => {
             <Pre_orders />
           </View>
           <View key={'3'}>
-            <Archive_orders />
+            <Archive_orders navigation={navigation} />
           </View>
         </PagerView>
       </View>

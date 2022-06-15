@@ -38,6 +38,7 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import fonts from '@SilalApp/common/assets/fonts';
 import colors from '@SilalApp/common/assets/colors';
 import {CustomButton} from '@SilalApp/common/components/native';
+import {Icon} from 'react-native-elements';
 export default function Pre_orders({title, navigation}) {
   const {t} = useTranslation();
   const [modal_timer_visible, set_modal_timer_visible] = useState(false);
@@ -108,7 +109,7 @@ export default function Pre_orders({title, navigation}) {
         <View style={styles.order_header}>
           <Text style={styles.orderid_text}>
             {t('orderId')}
-            <View style={{width:5}} />
+            <View style={{width: 5}} />
             <Text style={[styles.orderid_text, {color: 'black'}]}>#123456</Text>
           </Text>
           <View style={styles.delivryby_btn}>
@@ -118,26 +119,30 @@ export default function Pre_orders({title, navigation}) {
           </View>
         </View>
         <View style={styles.order_item}>
-          <Text style={{fontSize: 17,marginRight:5}}>2</Text>
+          <Text style={{fontSize: 17, marginRight: 5}}>2</Text>
           <Entypo name="cross" style={styles.cross_icon} />
-          <Text style={[styles.order_title,{marginLeft: 5,}]}>{t('french_fries')}</Text>
+          <Text style={[styles.order_title, {marginLeft: 5}]}>
+            {t('french_fries')}
+          </Text>
         </View>
         <View style={[styles.order_item, {marginTop: 5}]}>
-          <Text style={{fontSize: 17,marginRight:5}}>2</Text>
+          <Text style={{fontSize: 17, marginRight: 5}}>2</Text>
           <Entypo name="cross" style={styles.cross_icon} />
-          <Text style={[styles.order_title,{marginLeft:5}]}>
+          <Text style={[styles.order_title, {marginLeft: 5}]}>
             Cheesecakes with sour cream and citrus
           </Text>
         </View>
-        <View style={styles.more_order}>
-          <Text style={{color: colors.primary}}>3 more</Text>
-        </View>
+        {IsTablet && (
+          <View style={styles.more_order}>
+            <Text style={{color: colors.primary}}>3 more</Text>
+          </View>
+        )}
         <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
           <TouchableOpacity
             onPress={() => set_modal_timer_visible(true)}
             style={[
               styles.accept_btn,
-              {width: '30%', backgroundColor: colors.blurPrimary1},
+              {width: '30%', backgroundColor: colors.Primary20},
             ]}>
             <Text style={[styles.accept_btn_txt, {color: colors.primary}]}>
               {t('Decline')}
@@ -159,18 +164,20 @@ export default function Pre_orders({title, navigation}) {
   const render_this_week = () => {
     return (
       <View style={styles.single_order}>
-        <View style={[styles.order_header, {flexDirection: !IsTablet ? 'column' : "row"}]}>
+        <View
+          style={[
+            styles.order_header,
+            {flexDirection: !IsTablet ? 'column' : 'row'},
+          ]}>
           <Text style={styles.orderid_text}>
-            {t('orderId')} 
-            <View style={{width:5}} />
-            <Text style={[styles.orderid_text, {color: 'black'}]}>
-              #123456
-            </Text>
+            {t('orderId')}
+            <View style={{width: 5}} />
+            <Text style={[styles.orderid_text, {color: 'black'}]}>#123456</Text>
           </Text>
           <View
             style={[
               styles.delivryby_btn,
-              {width: !IsTablet ?  '65%' : null, marginTop: verticalScale(5)},
+              {width: !IsTablet ? '65%' : null, marginTop: verticalScale(5)},
             ]}>
             <Text style={styles.delivryby_btn_txt}>
               {t('Delivery_by')} 14 DEC 13:30 PM
@@ -178,41 +185,114 @@ export default function Pre_orders({title, navigation}) {
           </View>
         </View>
         <View style={styles.order_item}>
-          <Text style={{fontSize: 17,marginRight:5}}>2</Text>
+          <Text style={{fontSize: 17, marginRight: 5}}>2</Text>
           <Entypo name="cross" style={styles.cross_icon} />
-          <Text style={[styles.order_title,{marginLeft:5}]}>French Fries </Text>
+          <Text style={[styles.order_title, {marginLeft: 5}]}>
+            French Fries{' '}
+          </Text>
         </View>
         <View style={[styles.order_item, {marginTop: 5}]}>
-          <Text style={{fontSize: 17,marginRight:5}}>2</Text>
+          <Text style={{fontSize: 17, marginRight: 5}}>2</Text>
           <Entypo name="cross" style={styles.cross_icon} />
-          <Text style={[styles.order_title,{marginLeft:5}]}>
+          <Text style={[styles.order_title, {marginLeft: 5}]}>
             Cheesecakes with sour cream and citrus{' '}
           </Text>
         </View>
-        <View style={styles.more_order}>
-          <Text style={{color: colors.primary}}>3 more</Text>
-        </View>
+        {IsTablet && (
+          <View style={styles.more_order}>
+            <Text style={{color: colors.primary}}>3 more</Text>
+          </View>
+        )}
 
         <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
           <TouchableOpacity
-            onPress={() => set_modal_timer_visible(true)}
+            onPress={() =>
+              toastRef.current.show(
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    width: !IsTablet ? scale(270) : null,
+                  }}>
+                  {!IsTablet ? (
+                    <View
+                      style={{marginLeft: scale(-20), marginRight: scale(10)}}>
+                      <Icon
+                        type="antdesign"
+                        name="checkcircle"
+                        size={verticalScale(20)}
+                        color={colors.primary}
+                      />
+                    </View>
+                  ) : null}
+                  <Text
+                    style={{
+                      color: colors.black50,
+                      fontSize: !IsTablet
+                        ? verticalScale(11)
+                        : verticalScale(13),
+                      fontFamily: fonts.LatoBold,
+                      width: !IsTablet ? '86%' : null,
+                    }}>
+                    Order #247hw9 declined
+                  </Text>
+                  <TouchableOpacity
+                    onPress={() => {
+                      toastRef.current.close(), alert('undo');
+                    }}>
+                    <Text
+                      style={{
+                        color: colors.blue50,
+                        fontSize: !IsTablet
+                          ? verticalScale(12)
+                          : verticalScale(13),
+                        fontFamily: fonts.LatoBold,
+                      }}>
+                      {t('undo')}
+                    </Text>
+                  </TouchableOpacity>
+                </View>,
+                3000,
+              )
+            }
             style={[
               styles.accept_btn,
-              {width: '30%', backgroundColor: colors.blurPrimary1},
+              {width: '30%', backgroundColor: colors.Primary20},
             ]}>
             <Text style={[styles.accept_btn_txt, {color: colors.primary}]}>
-              {t("Decline")}
+              {t('Decline')}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
               toastRef.current.show(
-                <View style={{flexDirection: 'row'}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    width: !IsTablet ? scale(270) : null,
+                  }}>
+                  {!IsTablet ? (
+                    <View
+                      style={{marginLeft: scale(-20), marginRight: scale(10)}}>
+                      <Icon
+                        type="antdesign"
+                        name="checkcircle"
+                        size={verticalScale(20)}
+                        color={colors.primary}
+                      />
+                    </View>
+                  ) : null}
                   <Text
                     style={{
-                      color: '#002733',
-                      fontSize: 15,
-                      fontFamily: 'Lato-Bold',
+                      color: colors.black50,
+                      fontSize: !IsTablet
+                        ? verticalScale(11)
+                        : verticalScale(13),
+                      fontFamily: fonts.LatoBold,
+                      width: !IsTablet ? '86%' : null,
                     }}>
                     The order #247HW9 has been moved to current orders
                   </Text>
@@ -222,12 +302,13 @@ export default function Pre_orders({title, navigation}) {
                     }}>
                     <Text
                       style={{
-                        color: '#018FFB',
-                        fontSize: 15,
-                        fontFamily: 'Lato-Bold',
-                        marginLeft: 20,
+                        color: colors.blue50,
+                        fontSize: !IsTablet
+                          ? verticalScale(12)
+                          : verticalScale(13),
+                        fontFamily: fonts.LatoBold,
                       }}>
-                      {t("undo")}
+                      {t('undo')}
                     </Text>
                   </TouchableOpacity>
                 </View>,
@@ -235,7 +316,9 @@ export default function Pre_orders({title, navigation}) {
               )
             }
             style={[styles.accept_btn, {width: '60%'}]}>
-            <Text style={styles.accept_btn_txt}>{t("move_to_current_order")}</Text>
+            <Text style={styles.accept_btn_txt}>
+              {t('move_to_current_order')}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -281,7 +364,7 @@ export default function Pre_orders({title, navigation}) {
               textAlignVertical="top"
               numberOfLines={3}
               onChangeText={n => set_refusal_text(n)}
-              placeholder={t("Type_here")+"..."}
+              placeholder={t('Type_here') + '...'}
               placeholderTextColor="#4C6870"
             />
             <View>
@@ -332,7 +415,10 @@ export default function Pre_orders({title, navigation}) {
                 }}>
                 <TouchableOpacity
                   onPress={() => set_modal_timer_visible(!modal_timer_visible)}
-                  style={[styles.modal_save_btn, {backgroundColor: colors.light_grey}]}>
+                  style={[
+                    styles.modal_save_btn,
+                    {backgroundColor: colors.light_grey},
+                  ]}>
                   <Text style={{color: 'black'}}>Cancel</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -376,7 +462,7 @@ export default function Pre_orders({title, navigation}) {
                   //     ToastAndroid.showWithGravityAndOffset('Preperation time is changed',ToastAndroid.LONG,ToastAndroid.BOTTOM,25,50);
                   //     }}
                   style={styles.modal_save_btn}>
-                  <Text style={{color: 'white'}}>{t("Submit")}</Text>
+                  <Text style={{color: 'white'}}>{t('Submit')}</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -612,17 +698,6 @@ export default function Pre_orders({title, navigation}) {
               </View>
               ,1000
               )} /> */}
-        <Toast
-          ref={toastRef}
-          style={styles.toast}
-          position="bottom"
-          positionValue={250}
-          fadeInDuration={750}
-          fadeOutDuration={800}
-          opacity={1}
-          textStyle={{color: 'red'}}
-        />
-
         {!IsTablet ? (
           <CustomModal
             isModalVisible={modal_timer_visible}
@@ -657,10 +732,13 @@ export default function Pre_orders({title, navigation}) {
           isModalVisible={modal}
           setModalVisible={setModal}
           modalWrapperStyle={{
-            marginHorizontal: width(26),
-            marginVertical: height(36),
+            marginHorizontal: width(!IsTablet ? 5 : 26),
+            marginVertical: height(!IsTablet ? 37 : 36),
             justifyContent: 'flex-start',
             alignItems: 'flex-start',
+            overflow: 'hidden',
+            borderRadius: verticalScale(12),
+            padding: verticalScale(10),
           }}>
           <View
             style={{
@@ -670,7 +748,9 @@ export default function Pre_orders({title, navigation}) {
             }}>
             <CustomText
               label={t('Drag_card_back_ToReceive')}
-              textStyle={styles.dragDropHead}
+              textStyle={[
+                !IsTablet ? styles.dragDropHeadMobile : styles.dragDropHead,
+              ]}
             />
           </View>
           <View
@@ -681,7 +761,9 @@ export default function Pre_orders({title, navigation}) {
             }}>
             <CustomText
               label={t('Drag_card_detail')}
-              textStyle={styles.dragDropHead1}
+              textStyle={
+                !IsTablet ? styles.dragDropHead1Mobile : styles.dragDropHead1
+              }
             />
           </View>
           <View
@@ -689,26 +771,53 @@ export default function Pre_orders({title, navigation}) {
               flexDirection: 'row',
               marginVertical: 20,
               justifyContent: 'space-between',
+              width: '100%',
+              alignSelf: 'center',
             }}>
-            <View style={{width: '45%', margin: 5}}>
-              <CustomButton
-                text={t('Cancel')}
-                containerStyle={styles.cancelButtonContainer}
-                textStyle={styles.cancelText}
-                onPress={() => setModal(false)}
-              />
-            </View>
-            <View style={{width: '45%', margin: 5}}>
-              <CustomButton
-                text={t('Confirm')}
-                containerStyle={styles.confirmButtonContainer}
-                textStyle={styles.confirmText}
-                onPress={() => setModal(false)}
-              />
-            </View>
+            <CustomButton
+              text={t('Cancel')}
+              containerStyle={{
+                backgroundColor: colors.light_grey50,
+                width: '48%',
+                height: !IsTablet ? verticalScale(42) : null,
+              }}
+              textStyle={[
+                !IsTablet ? styles.cancelTextMobile : styles.cancelText,
+                {color: colors.mehndi50},
+              ]}
+              onPress={() => setModal(false)}
+            />
+            <CustomButton
+              text={t('Confirm')}
+              containerStyle={{
+                width: '48%',
+                height: !IsTablet ? verticalScale(42) : null,
+              }}
+              textStyle={
+                !IsTablet ? styles.cancelTextMobile : styles.cancelText
+              }
+              onPress={() => setModal(false)}
+            />
           </View>
         </CustomModal>
       </ScrollView>
+      <Toast
+        ref={toastRef}
+        style={[
+          styles.toast,
+          {
+            position: 'absolute',
+            top: 0,
+            paddingHorizontal: !IsTablet ? scale(30) : scale(20),
+          },
+        ]}
+        position={!IsTablet ? 'top' : 'bottom'}
+        positionValue={!IsTablet ? 0 : 250}
+        fadeInDuration={750}
+        fadeOutDuration={800}
+        opacity={1}
+        textStyle={{color: 'red'}}
+      />
     </>
   );
 }
@@ -753,33 +862,35 @@ const styles = ScaledSheet.create({
     margin: 10,
     color: 'black',
   },
-  cancelButtonContainer: {
-    width: '100%',
-    backgroundColor: colors.light_grey,
+
+  cancelTextMobile: {
+    fontSize: '15@vs',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   cancelText: {
-    fontSize: 17,
+    fontSize: '13@vs',
     fontFamily: fonts.PoppinsSemiBold,
-    color: colors.textPrimary,
-  },
-  confirmText: {
-    fontSize: 17,
-    fontFamily: fonts.PoppinsSemiBold,
-    color: colors.white,
-  },
-  confirmButtonContainer: {
-    width: '100%',
-    backgroundColor: colors.primary,
   },
   dragDropHead: {
     fontSize: 20,
     fontFamily: fonts.bold,
     color: colors.black,
   },
+  dragDropHeadMobile: {
+    fontSize: '15@vs',
+    fontFamily: fonts.bold,
+    color: colors.black,
+  },
   dragDropHead1: {
     fontSize: 18,
     fontFamily: fonts.LatoMedium,
-    color: colors.black,
+    color: colors.mehndi50,
+  },
+  dragDropHead1Mobile: {
+    fontSize: '13@vs',
+    fontFamily: fonts.LatoMedium,
+    color: colors.mehndi50,
+    textAlign: 'center',
   },
   single_order: {
     backgroundColor: 'white',
@@ -907,9 +1018,7 @@ const styles = ScaledSheet.create({
 
   toast: {
     backgroundColor: '#FFFFFF',
-    // marginHorizontal:30,
     paddingVertical: 10,
-    paddingHorizontal: 20,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

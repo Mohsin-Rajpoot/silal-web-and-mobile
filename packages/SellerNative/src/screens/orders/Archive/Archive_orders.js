@@ -14,10 +14,12 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Archive_orders_mobile from './Archive_order_mobile';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import {Image, SvgXml} from 'react-native-svg';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import Svg, {
   Path,
   Defs,
@@ -340,8 +342,8 @@ export default function Archive_orders({title, navigation}) {
     );
   };
 
-  return (
-    <View style={{height: '100%', padding: 20}}>
+  return !IsTablet ? <Archive_orders_mobile navigation={navigation} /> : ( 
+    <View style={{flex:1, padding: 20}}>
       {/* <MenuProvider > */}
 
       <View style={{flexDirection: 'row'}}>
@@ -371,7 +373,10 @@ export default function Archive_orders({title, navigation}) {
             }}
             style={[
               styles.archive_orders_tab,
-              {borderColor: order_state == 'completed' ? colors.primary : '#e8edee'},
+              {
+                borderColor:
+                  order_state == 'completed' ? colors.primary : '#e8edee',
+              },
             ]}>
             <Text
               style={{
@@ -389,7 +394,10 @@ export default function Archive_orders({title, navigation}) {
             }}
             style={[
               styles.archive_orders_tab,
-              {borderColor: order_state == 'cancelled' ? colors.primary : '#e8edee'},
+              {
+                borderColor:
+                  order_state == 'cancelled' ? colors.primary : '#e8edee',
+              },
             ]}>
             <Text
               style={{
@@ -418,11 +426,10 @@ export default function Archive_orders({title, navigation}) {
               />
             </Svg>
             <Text style={{fontSize: 17}}>Filters</Text>
-          
-          </View >
-          <View style={styles.calndr_date}> 
-           <DatePicker/>
-           </View>
+          </View>
+          <View style={styles.calndr_date}>
+            <DatePicker />
+          </View>
         </View>
       </View>
       <View>{header_alloredrs()}</View>
@@ -510,7 +517,6 @@ export default function Archive_orders({title, navigation}) {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          // alert("Modal has been closed.");
           setModalVisible(!modalVisible);
         }}>
         <View style={styles.centeredView}>
@@ -746,7 +752,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 10,
-    paddingBottom:8
+    paddingBottom: 8,
   },
   all_orders_heading_txt: {
     fontFamily: 'Lato-Bold',
