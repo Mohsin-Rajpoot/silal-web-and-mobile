@@ -488,6 +488,9 @@
     "CUSTOMER":"CUSTOMER",
     "olive_Johnanson":"Olive Johnanson",
     "DRIVER":"DRIVER",
-    "brooklyn_simmons":"Brooklyn Simmons"
+    "brooklyn_simmons":"Brooklyn Simmons",
+    "Refund":"Refund",
+    "contactCustomer":"Contact customer",
+    "call_customer_service":"Call customer-service"
   }
 }
