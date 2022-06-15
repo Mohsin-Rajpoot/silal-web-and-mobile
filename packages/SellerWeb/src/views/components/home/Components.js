@@ -197,6 +197,10 @@ const HotProductStyled = styled.div`
   &:last-of-type {
     margin-bottom: 0;
   }
+  .center{
+    background-color: #CDEFDB;
+    color: #05AE4B;
+  }
   img {
     border-radius: 5px;
     width: 70px;

@@ -93,14 +93,14 @@ export default function Graph() {
       {
         label: "",
         data: [22, 99, 33, 45, 55, 66, 77, 88, 99, 12, 55],
-        backgroundColor: "rgba(115, 213, 201, 1)",
+        backgroundColor: "#05AE4B",
         borderRadius: 15,
       },
     ],
   };
   return (
     <>
-      <Bar options={options} data={data} />
+      <Bar backgroundColor = "yellow" options={options} data={data} />
     </>
   );
 }

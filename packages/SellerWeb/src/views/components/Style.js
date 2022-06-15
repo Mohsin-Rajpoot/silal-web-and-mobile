@@ -36,7 +36,7 @@ const Heading = styled.h1`
 `;
 
 const Button = styled.button`
-  background: ${props => props.bg ? props.bg : '#5AB3A8'};
+  background: ${props => props.bg ? props.bg : '#05AE4B'};
   border-radius: 5px;
   border: none;
   padding: 0 20px;
@@ -51,7 +51,8 @@ const Button = styled.button`
   margin-bottom: ${props => props.mb};
   margin-top: ${props => props.mt};
   &:hover {
-    background: rgba(90, 179, 169, 0.9);
+    background: '#CDEFDB';
+    color: '#05AE4B';
     transform: scale(1.01);
   }
   &:disabled {

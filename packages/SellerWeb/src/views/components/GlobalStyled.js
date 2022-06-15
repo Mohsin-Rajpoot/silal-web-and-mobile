@@ -4,7 +4,7 @@ import { collpaseArrow } from "./AllImages"
 const GlobalStyle = createGlobalStyle`
 :root {
     --dark-clr: #002733;
-    --theme-clr: #5AB3A8;
+    --theme-clr: #05AE4B;
 }
 * {
     margin: 0;

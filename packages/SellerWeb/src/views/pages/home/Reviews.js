@@ -41,6 +41,7 @@ const Reviews = ({ setSideBar, sideBar }) => {
                                 placeholder="dd mm yy"
                                 character="&#160;&#160;-&#160;&#160;"
                                 caretAs={CalendarIcon}
+                                 
                             />
                             {/* <DatePicker
                                 onChange={dateOnChange}
