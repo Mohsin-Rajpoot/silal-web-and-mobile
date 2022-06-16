@@ -10,6 +10,9 @@ import DailySummary from '../screens/orders/molecule/DailySummary';
 import Notes from '../screens/orders/molecule/Notes';
 import OrderFullViewMobile from '../screens/orders/Current/OrderFullViewMobile';
 import OrderIdScreen from '../screens/orders/Archive/OrderIdScreen';
+import Acceptance_order_mobile from '../screens/Orders_longer/Acceptance_order_mobile'
+import LongOrderDetails from '../screens/Orders_longer/molecules/LongOrderDetails';
+import Acceptance_orders from '../screens/Orders_longer/Acceptance_orders'
 const Stack = createNativeStackNavigator();
 // const navTheme = {
 //   ...DefaultTheme,
@@ -33,6 +36,9 @@ const OrderStack = () => {
       <Stack.Screen name='Notes' component={Notes}/>
       <Stack.Screen name='OrderFullViewMobile' component={OrderFullViewMobile}/>
       <Stack.Screen name='OrderIdScreen' component={OrderIdScreen}/>
+      <Stack.Screen name='Acceptance_order_mobile' component={Acceptance_order_mobile}/>
+      <Stack.Screen name='LongOrderDetails' component={LongOrderDetails}/>
+      <Stack.Screen name='Acceptance_orders' component={Acceptance_orders}/>
     </Stack.Navigator>
     // </NavigationContainer>
   );

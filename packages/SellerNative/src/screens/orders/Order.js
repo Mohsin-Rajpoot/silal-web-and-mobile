@@ -33,7 +33,7 @@ import Timer from '../../components/Timer';
 import Toast from 'react-native-easy-toast';
 import CustomText from '@SilalApp/common/components/CustomText';
 import {CustomButton} from '@SilalApp/common/components/native';
-import {scale, ScaledSheet} from 'react-native-size-matters';
+import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
 import ItemDetail from './molecule';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
@@ -262,7 +262,7 @@ const Order = ({navigation}) => {
             onPress={() => navigation.openDrawer()}>
             <MaterialCommunityIcons
               name="reorder-horizontal"
-              size={20}
+              size={verticalScale(22)}
               style={{marginLeft: 10}}
               color={'#000000'}
             />
