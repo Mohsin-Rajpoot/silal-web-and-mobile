@@ -3,16 +3,17 @@ import React from "react";
 import Fontisto from "react-native-vector-icons/Fontisto";
 import IsTablet from "./IsTablet";
 import { ScaledSheet } from "react-native-size-matters";
+import colors from "../../assets/colors";
 const SearchBox = (props) => {
   return (
     <View
-      style={{
+      style={[{
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-      }}
+      },]}
     >
-      <View style={[styles.container]}>
+      <View style={[styles.container,props.SearchBoxContainerCustomStyle]}>
         <View
           style={[
             IsTablet ? styles.SearchIcon : styles.SearchIconMobile,
@@ -21,14 +22,14 @@ const SearchBox = (props) => {
         >
           <Fontisto
             name="search"
-            style={{ fontSize: 19, color: "#B3BEC2", paddingHorizontal: 5 }}
+            style={{ fontSize: 19, color: colors.gray_light, paddingHorizontal: 5 }}
           />
         </View>
         <TextInput
           placeholder={props.placeholder}
-          placeholderTextColor="#B3BEC2"
+          placeholderTextColor={colors.gray_light}
           paddingHorizontal={32}
-          style={IsTablet ? styles.Input : styles.InputMobile}
+          style={[IsTablet ? styles.Input : styles.InputMobile,props.SearchBoxContainerCustomStyle]}
         />
       </View>
     </View>
@@ -54,7 +55,7 @@ const styles = ScaledSheet.create({
     elevation: 0.5,
     width: "220@s",
     borderRadius: 5,
-    backgroundColor: "#fff",
+    backgroundColor:colors.textWhite,
     zIndex: 0,
   },
   InputMobile: {
@@ -63,7 +64,7 @@ const styles = ScaledSheet.create({
     elevation: 0.5,
     width: "330@s",
     borderRadius: 5,
-    backgroundColor: "#fff",
+    backgroundColor: colors.textWhite,
     zIndex: 0,
     marginTop: 10,
   },

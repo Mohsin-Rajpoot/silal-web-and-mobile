@@ -41,7 +41,6 @@ import RBSheet from 'react-native-raw-bottom-sheet';
 import Svg, {Rect, Path, G} from 'react-native-svg';
 import fonts from '@SilalApp/common/assets/fonts';
 
-const Secondary = '#002733';
 var windowWidth = Dimensions.get('window').width;
 
 export default function Archive_orders({title, navigation}) {
@@ -166,9 +165,6 @@ export default function Archive_orders({title, navigation}) {
 
   //   );
   // };
- 
-  
-
 
   footer = () => {
     return (
@@ -177,10 +173,6 @@ export default function Archive_orders({title, navigation}) {
       </TouchableOpacity>
     );
   };
-
-
-
-
 
   const render_all_oredrs = (item, index) => {
     return (
@@ -353,7 +345,7 @@ export default function Archive_orders({title, navigation}) {
             </View>
           </Modal>
         </View> */}
-        <View style={{marginHorizontal: 5, marginVertical: 4}}>
+        <View style={styles.modelContainerStyle}>
           <Modal
             visible={Openmodal}
             animationType="slideInRight"
@@ -367,13 +359,14 @@ export default function Archive_orders({title, navigation}) {
                   <Entypo
                     onPress={() => setOpenmodal(false)}
                     name="cross"
-                    style={{fontSize: 25, color: '#CCD4D6'}}
+                    style={styles.deleteModalCrossIcon}
                   />
                 </View>
 
                 <Text style={styles.ModalParagraph}>
                   Are you sure you want to delete the
-                  <Text style={{fontFamily: 'Lato-Bold', color: '#002733'}}>
+                  <Text
+                    style={{fontFamily: fonts.LatoBold, color: colors.black}}>
                     #723DN2
                   </Text>
                   item from Salads folder?
@@ -381,7 +374,10 @@ export default function Archive_orders({title, navigation}) {
                 <View style={styles.ModalButtonContainer}>
                   <TouchableOpacity
                     onPress={() => setOpenmodal(false)}
-                    style={[{backgroundColor: '#CCD4D6'}, styles.Buttonss]}>
+                    style={[
+                      {backgroundColor: colors.light_grey},
+                      styles.Buttonss,
+                    ]}>
                     <Text style={styles.DeleteModal}>Cancel</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -389,7 +385,8 @@ export default function Archive_orders({title, navigation}) {
                       {backgroundColor: colors.primary},
                       styles.Buttonss,
                     ]}>
-                    <Text style={[{color: '#fff'}, styles.DeleteModal]}>
+                    <Text
+                      style={[{color: colors.textWhite}, styles.DeleteModal]}>
                       Delete
                     </Text>
                   </TouchableOpacity>
@@ -399,7 +396,7 @@ export default function Archive_orders({title, navigation}) {
           </Modal>
         </View>
 
-        <View style={{justifyContent: 'center', alignSelf: 'center'}}>
+        <View style={styles.SwipeListViewContainer}>
           <SwipeListView
             data={data3}
             renderItem={(data, rowMap) => (
@@ -413,8 +410,8 @@ export default function Archive_orders({title, navigation}) {
                           : false
                       }
                       onPress={() => setcheck(index)}
-                      checkedColor="#5AB3A8"
-                      uncheckedColor="#CCD4D6"
+                      checkedColor={colors.primary}
+                      uncheckedColor={colors.light_grey}
                     />
                   </View>
                   <View
@@ -424,12 +421,7 @@ export default function Archive_orders({title, navigation}) {
                     ]}>
                     <Image
                       source={require('../../Assets/image12.png')}
-                      style={{
-                        height: 45,
-                        width: 45,
-                        resizeMode: 'contain',
-                        borderRadius: 5,
-                      }}
+                      style={styles.primaryImageContainer}
                     />
                   </View>
                   <View
@@ -437,41 +429,30 @@ export default function Archive_orders({title, navigation}) {
                       styles.render_all_order_single,
                       {width: '10%', height: 40},
                     ]}>
-                    <Text style={{fontFamily: 'Lato-Regular'}}>
+                    <Text style={{fontFamily: fonts.LatoRegular}}>
                       Cheesecakes with sour cream and citrus hon
                     </Text>
                   </View>
                   <View
                     style={[
                       styles.render_all_order_single,
-                      {
-                        width: '15%',
-                        justifyContent: 'flex-start',
-                        flexDirection: 'row',
-                        left: 20,
-                      },
+                      
+                       styles.renderAllOrderSingleStyle
+                      
                     ]}>
-                    <Text style={{fontFamily: 'Lato-Regular'}}>723DN2</Text>
+                    <Text style={{fontFamily: fonts.LatoRegular}}>723DN2</Text>
                   </View>
                   <View
                     style={[
                       styles.render_all_order_single,
-                      {
-                        width: '10%',
-                        justifyContent: 'flex-start',
-                        flexDirection: 'row',
-                      },
+                  styles.renderAllOrderSingleSecond,
                     ]}>
                     <Text style={{marginLeft: -15}}>11.14.2021</Text>
                   </View>
                   <View
                     style={[styles.render_all_order_single, {width: '13%'}]}>
                     <Text
-                      style={{
-                        fontFamily: 'Lato-Regular',
-                        alignSelf: 'flex-start',
-                        paddingHorizontal: 25,
-                      }}>
+                      style={styles.renderAllOrderHerading}>
                       230 g
                     </Text>
                   </View>
@@ -482,29 +463,24 @@ export default function Archive_orders({title, navigation}) {
                         width: '10%',
                       },
                     ]}>
-                    <Text style={{fontFamily: 'Lato-Regular'}}>
+                    <Text style={{fontFamily: fonts.LatoRegular}}>
                       18 portions
                     </Text>
                   </View>
                   <View
                     style={[styles.render_all_order_single, {width: '14%'}]}>
-                    <Text style={{fontFamily: 'Lato-Regular'}}>$ 2.50</Text>
+                    <Text style={{fontFamily: fonts.LatoRegular}}>$ 2.50</Text>
                   </View>
                   <View style={[styles.render_all_order_single, {width: '8%'}]}>
                     <Menu>
                       <MenuTrigger style={styles.trigger}>
                         <View
-                          style={{
-                            height: 40,
-                            width: 40,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}>
+                          style={styles.ThreeDots}>
                           <Entypo
                             name="dots-three-vertical"
                             style={[
                               styles.cross_icon,
-                              {color: '#4C6870', fontSize: 20},
+                              {color: colors.sidebar, fontSize: 20},
                             ]}
                           />
                         </View>
@@ -530,37 +506,50 @@ export default function Archive_orders({title, navigation}) {
             renderHiddenItem={(data, rowMap) => (
               <View style={styles.rowBack}>
                 <View
-                  style={{
-                    position: 'absolute',
-                    right: 2,
-                    flexDirection: 'row',
-                  }}>
+                  style={styles.SwperHidenView}>
                   <TouchableOpacity
                     onPress={() => setShowmodal(true)}
-                    style={[styles.BackButtons, {backgroundColor: '#F2F4F5'}]}>
-                    <Text style={[styles.BackButtonsText, {color: '#000'}]}>
+                    style={[
+                      styles.BackButtons,
+                      {backgroundColor: colors.dropDownBackground},
+                    ]}>
+                    <Text
+                      style={[styles.BackButtonsText, {color: colors.black}]}>
                       Edit
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    style={[styles.BackButtons, {backgroundColor: '#DEEBFF'}]}>
-                    <Text style={[styles.BackButtonsText, {color: '#000'}]}>
+                    style={[
+                      styles.BackButtons,
+                      {backgroundColor: colors.light_blue},
+                    ]}>
+                    <Text
+                      style={[styles.BackButtonsText, {color: colors.black}]}>
                       Freeze
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     onPress={() => setOpenmodal(true)}
-                    style={[styles.BackButtons, {backgroundColor: '#FB5C5C'}]}>
+                    style={[
+                      styles.BackButtons,
+                      {backgroundColor: colors.swiper_red},
+                    ]}>
                     <Text style={styles.BackButtonsText}>Delete</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             )}
-            rightOpenValue={-220}
+            rightOpenValue={-260}
           />
         </View>
 
-        <View style={{borderBottomWidth: 0.9, borderColor: '#00273314'}} />
+        <View
+          style={{
+            borderBottomWidth: 0.9,
+            borderColor: colors.light_grey,
+            opacity: 0.5,
+          }}
+        />
       </View>
     );
   };
@@ -576,7 +565,7 @@ export default function Archive_orders({title, navigation}) {
             !IsTablet
               ? [
                   styles.all_ordersMobile,
-                  {backgroundColor: 'white', display: 'none'},
+                  {backgroundColor: colors.textWhite, display: 'none'},
                 ]
               : styles.all_orders,
             {width: '5%'},
@@ -660,252 +649,259 @@ export default function Archive_orders({title, navigation}) {
   };
   return (
     <SafeAreaView style={styles.Container}>
-{/* Delete Modal Blure Start */}
+      {/* Delete Modal Blure Start */}
 
-<CustomModal
-              isModalVisible={Openmodal}
-              setModalVisible={setOpenmodal}
-              modalWrapperStyle={
-                !IsTablet
-                  ? styles.ModalWrapperDeleteMobile
-                  : styles.ModalWrapperDelete
-              }
-              modalContainerStyle={{
-                borderRadius: 2,
-                backgroundColor: 'white',
+      <CustomModal
+        isModalVisible={Openmodal}
+        setModalVisible={setOpenmodal}
+        modalWrapperStyle={
+          !IsTablet
+            ? styles.ModalWrapperDeleteMobile
+            : styles.ModalWrapperDelete
+        }
+        modalContainerStyle={{
+          borderRadius: 2,
+          backgroundColor: colors.textWhite,
+        }}>
+        <View style={styles.ModalContainer}>
+          <View style={styles.ModeViewDeleteMobile}>
+            <Text
+              style={{
+                justifyContent: 'center',
+                alignSelf: 'center',
+                fontSize: 15,
+                fontFamily: fonts.bold,
               }}>
-              <View style={styles.ModalContainer}>
-                <View style={styles.ModeViewDeleteMobile}>
-                  <Text style={{justifyContent:'center',alignSelf:'center',fontSize:15,fontFamily:fonts.bold}}>Delete folder?</Text>
-                  <View
-                    style={
-                      !IsTablet ? styles.ModalTitleMobile : styles.ModalTitle
-                    }>
-                    <Text
-                      style={
-                        !IsTablet
-                          ? styles.ModalHeadingMobile
-                          : styles.ModalHeading
-                      }>
-                      Are you sure you want to delete this folder?
-                    </Text>
-                    
-                  </View>
+              Delete folder?
+            </Text>
+            <View
+              style={!IsTablet ? styles.ModalTitleMobile : styles.ModalTitle}>
+              <Text
+                style={
+                  !IsTablet ? styles.ModalHeadingMobile : styles.ModalHeading
+                }>
+                Are you sure you want to delete this folder?
+              </Text>
+            </View>
 
-                  <View
-                    style={
-                      !IsTablet
-                        ? styles.ModalButtonContainerMobile
-                        : styles.ModalButtonContainer
-                    }>
-                    <TouchableOpacity
-                      onPress={() => setOpenmodal(false)}
-                      style={[
-                        {backgroundColor: colors.primary},
-                        !IsTablet
-                          ? styles.ButtonssDeleteMobile
-                          : styles.ButtonssDelete,
-                      ]}>
-                      <Text style={[{color: '#fff'}, styles.DeleteModal]}>
-                        Cancel
-                      </Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                      onPress={() => setOpenmodal(false)}
-                      style={[
-                        {backgroundColor: 'rgba(222, 53, 11, 0.2)'},
-                        !IsTablet
-                          ? styles.ButtonssDeleteMobile
-                          : styles.ButtonssDelete,
-                      ]}>
-                      <Text style={[styles.DeleteModal, {color: '#DE350B'}]}>
-                        Yes, Delete
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              </View>
-            </CustomModal>
-
-
-
-{/* Delete modal blur end */}
-
-
-          <Modal
-            visible={Showmodal}
-            animationType="slide"
-            transparent={true}
-            style={{}}>
-            <View style={IsTablet ? styles.ModalContainerPreview :styles.ModalContainerPreviewMobile}>
-              <TouchableOpacity style={!IsTablet?styles.ShowmodalOpenButtonMobile: styles.ShowmodalOpenButton}>
-                <Entypo
-                  name="cross"
-                  style={IsTablet?styles.closeShowmodalicon:styles.closeShowmodaliconMobile}
-                  onPress={() => setShowmodal(false)}
-                />
+            <View
+              style={
+                !IsTablet
+                  ? styles.ModalButtonContainerMobile
+                  : styles.ModalButtonContainer
+              }>
+              <TouchableOpacity
+                onPress={() => setOpenmodal(false)}
+                style={[
+                  {backgroundColor: colors.primary},
+                  !IsTablet
+                    ? styles.ButtonssDeleteMobile
+                    : styles.ButtonssDelete,
+                ]}>
+                <Text style={[{color: colors.textWhite}, styles.DeleteModal]}>
+                  Cancel
+                </Text>
               </TouchableOpacity>
-              <ScrollView>
-                <TouchableOpacity style={styles.SaveButton}>
-                  <Text style={styles.Savetext}>Save</Text>
-                </TouchableOpacity>
 
-                <Image
-                  source={require('../../Assets/image134.png')}
-                  style={styles.ImageMoadalMain}
-                />
-                <View style={styles.IconOnMainImageView}>
-                  <View style={styles.InnerViewMainImage}>
-                    <Octicons name="pencil" style={styles.IconePencilMain} />
-                  </View>
-                </View>
-                <View style={{marginHorizontal: 40}}>
-                  <Text style={styles.ModalSubTitle}>Item</Text>
-                  <View>
-                    <Text style={styles.dropDownModalTitle}>
-                      Item description
-                    </Text>
-                    <TextInput
-                      multiline={true}
-                      textAlignVertical="top"
-                      placeholder="Amet minim mollit non 
+              <TouchableOpacity
+                onPress={() => setOpenmodal(false)}
+                style={[
+                  {backgroundColor: 'rgba(222, 53, 11, 0.2)'},
+                  !IsTablet
+                    ? styles.ButtonssDeleteMobile
+                    : styles.ButtonssDelete,
+                ]}>
+                <Text style={[styles.DeleteModal, {color: colors.lightRed}]}>
+                  Yes, Delete
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </CustomModal>
+
+      {/* Delete modal blur end */}
+
+      <Modal
+        visible={Showmodal}
+        animationType="slide"
+        transparent={true}
+         >
+           <View style={styles.ModalContainerPreview1}>
+        <View 
+          style={
+            IsTablet
+              ? styles.ModalContainerPreview
+              : styles.ModalContainerPreviewMobile
+          }>
+          <TouchableOpacity
+            style={
+              !IsTablet
+                ? styles.ShowmodalOpenButtonMobile
+                : styles.ShowmodalOpenButton
+            }>
+            <Entypo
+              name="cross"
+              style={
+                IsTablet
+                  ? styles.closeShowmodalicon
+                  : styles.closeShowmodaliconMobile
+              }
+              onPress={() => setShowmodal(false)}
+            />
+          </TouchableOpacity>
+          <ScrollView>
+            <TouchableOpacity style={styles.SaveButton}>
+              <Text style={styles.Savetext}>Save</Text>
+            </TouchableOpacity>
+
+            <Image
+              source={require('../../Assets/image134.png')}
+              style={styles.ImageMoadalMain}
+            />
+            <View style={styles.IconOnMainImageView}>
+              <View style={styles.InnerViewMainImage}>
+                <Octicons name="pencil" style={styles.IconePencilMain} />
+              </View>
+            </View>
+            <View style={{marginHorizontal: 40}}>
+              <Text style={styles.ModalSubTitle}>Item</Text>
+              <View>
+                <Text style={styles.dropDownModalTitle}>Item description</Text>
+                <TextInput
+                  multiline={true}
+                  textAlignVertical="top"
+                  placeholder="Amet minim mollit non 
                                         deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
                                         duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-                      placeholderTextColor="#002733"
-                      style={styles.TextInputMAinView}
-                    />
-                  </View>
-                  <View style={{marginTop: 15}}>
-                    <Text style={styles.dropDownModalTitle}>
-                      Nutritional value
+                  placeholderTextColor={colors.black}
+                  style={styles.TextInputMAinView}
+                />
+              </View>
+              <View style={{marginTop: 15}}>
+                <Text style={styles.dropDownModalTitle}>Nutritional value</Text>
+                <FlatList
+                  data={data4}
+                  numColumns={2}
+                  style={{marginBottom: 10}}
+                  showsVerticalScrollIndicator={false}
+                  renderItem={({item}) => (
+                    <View style={styles.CalViewFaltModal}>
+                      <TextInput
+                        placeholder="313 cal"
+                        placeholderTextColor={colors.black}
+                        style={styles.CalInputFaltModal}
+                      />
+                    </View>
+                  )}
+                  keyExtractor={item => item.id}
+                />
+              </View>
+              <Text style={styles.AddViewModal}>Add-ons</Text>
+              <View style={styles.grayViewContainer}>
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={styles.ToppingTitle}>
+                    Toppings:
+                    <Text style={{color: colors.sidebar, fontSize: 13}}>
+                      Lettuce, Cheese, Tomatoes, Pickle
                     </Text>
-                    <FlatList
-                      data={data4}
-                      numColumns={2}
-                      style={{marginBottom: 10}}
-                      showsVerticalScrollIndicator={false}
-                      renderItem={({item}) => (
-                        <View style={styles.CalViewFaltModal}>
-                          <TextInput
-                            placeholder="313 cal"
-                            placeholderTextColor="#002733"
-                            style={styles.CalInputFaltModal}
-                          />
-                        </View>
-                      )}
-                      keyExtractor={item => item.id}
+                  </Text>
+                  <View style={styles.WhitePencilBkgView}>
+                    <Foundation
+                      name="pencil"
+                      style={{fontSize: 20, color: colors.textWhite}}
                     />
-                  </View>
-                  <Text style={styles.AddViewModal}>Add-ons</Text>
-                  <View style={styles.grayViewContainer}>
-                    <View style={{flexDirection: 'row'}}>
-                      <Text style={styles.ToppingTitle}>
-                        Toppings:
-                        <Text style={{color: '#4C6870', fontSize: 13}}>
-                          Lettuce, Cheese, Tomatoes, Pickle
-                        </Text>
-                      </Text>
-                      <View style={styles.WhitePencilBkgView}>
-                        <Foundation
-                          name="pencil"
-                          style={{fontSize: 20, color: '#fff'}}
-                        />
-                      </View>
-                    </View>
-                    <FlatList
-                      data={data4}
-                      numColumns={3}
-                      style={{marginBottom: 10}}
-                      showsVerticalScrollIndicator={false}
-                      renderItem={({item}) => (
-                        <TouchableOpacity style={styles.FlatLettuce}>
-                          <Text
-                            style={{
-                              color: '#4C6870',
-                              fontFamily: 'Lato-Regular',
-                            }}>
-                            Lettuce
-                          </Text>
-                        </TouchableOpacity>
-                      )}
-                      keyExtractor={item => item.id}
-                    />
-                  </View>
-                  <View style={styles.grayViewContainer}>
-                    <View style={{flexDirection: 'row'}}>
-                      <Text style={styles.ToppingTitle}>
-                        Sauces:{' '}
-                        <Text style={{color: '#4C6870', fontSize: 13}}>
-                          Ketchup, Maynoaise, BBQ
-                        </Text>
-                      </Text>
-                      <View style={styles.WhitePencilBkgView}>
-                        <Foundation
-                          name="pencil"
-                          style={{fontSize: 20, color: '#fff'}}
-                        />
-                      </View>
-                    </View>
-
-                    <FlatList
-                      data={data4}
-                      numColumns={3}
-                      style={{marginBottom: 10}}
-                      showsVerticalScrollIndicator={false}
-                      renderItem={({item}) => (
-                        <TouchableOpacity style={styles.FlatLettuce}>
-                          <Text style={styles.TextStyleFlatModal}>Ketchup</Text>
-                        </TouchableOpacity>
-                      )}
-                      keyExtractor={item => item.id}
-                    />
-                  </View>
-                  <View style={[styles.grayViewContainer, {marginBottom: 20}]}>
-                    <View style={{flexDirection: 'row'}}>
-                      <Text style={styles.ToppingTitle}>
-                        Drinks:{' '}
-                        <Text style={{color: '#4C6870', fontSize: 13}}>
-                          Pepsi, Nestea, Coca-cola, Water, 7UP
-                        </Text>
-                      </Text>
-                      <View style={styles.WhitePencilBkgView}>
-                        <Foundation
-                          name="pencil"
-                          style={{fontSize: 20, color: '#fff'}}
-                        />
-                      </View>
-                    </View>
-
-                    <FlatList
-                      data={data4}
-                      numColumns={3}
-                      style={{marginBottom: 10}}
-                      showsVerticalScrollIndicator={false}
-                      renderItem={({item}) => (
-                        <TouchableOpacity style={styles.FlatLettuce}>
-                          <Text style={styles.TextStyleFlatModal}>Nestea</Text>
-                        </TouchableOpacity>
-                      )}
-                      keyExtractor={item => item.id}
-                    />
-                  </View>
-                  <View style={{marginBottom: 40}}>
-                    <View style={styles.BottomButtonModal}>
-                      <CustomButton text="Edit listing" />
-                    </View>
                   </View>
                 </View>
-              </ScrollView>
+                <FlatList
+                  data={data4}
+                  numColumns={3}
+                  style={{marginBottom: 10}}
+                  showsVerticalScrollIndicator={false}
+                  renderItem={({item}) => (
+                    <TouchableOpacity style={styles.FlatLettuce}>
+                      <Text
+                        style={{
+                          color: colors.sidebar,
+                          fontFamily: fonts.LatoRegular,
+                        }}>
+                        Lettuce
+                      </Text>
+                    </TouchableOpacity>
+                  )}
+                  keyExtractor={item => item.id}
+                />
+              </View>
+              <View style={styles.grayViewContainer}>
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={styles.ToppingTitle}>
+                    Sauces:
+                    <Text style={{color: colors.sidebar, fontSize: 13}}>
+                      Ketchup, Maynoaise, BBQ
+                    </Text>
+                  </Text>
+                  <View style={styles.WhitePencilBkgView}>
+                    <Foundation
+                      name="pencil"
+                      style={{fontSize: 20, color: colors.textWhite}}
+                    />
+                  </View>
+                </View>
+
+                <FlatList
+                  data={data4}
+                  numColumns={3}
+                  style={{marginBottom: 10}}
+                  showsVerticalScrollIndicator={false}
+                  renderItem={({item}) => (
+                    <TouchableOpacity style={styles.FlatLettuce}>
+                      <Text style={styles.TextStyleFlatModal}>Ketchup</Text>
+                    </TouchableOpacity>
+                  )}
+                  keyExtractor={item => item.id}
+                />
+              </View>
+              <View style={[styles.grayViewContainer, {marginBottom: 20}]}>
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={styles.ToppingTitle}>
+                    Drinks:{' '}
+                    <Text style={{color: colors.sidebar, fontSize: 13}}>
+                      Pepsi, Nestea, Coca-cola, Water, 7UP
+                    </Text>
+                  </Text>
+                  <View style={styles.WhitePencilBkgView}>
+                    <Foundation
+                      name="pencil"
+                      style={{fontSize: 20, color: colors.textWhite}}
+                    />
+                  </View>
+                </View>
+
+                <FlatList
+                  data={data4}
+                  numColumns={3}
+                  style={{marginBottom: 10}}
+                  showsVerticalScrollIndicator={false}
+                  renderItem={({item}) => (
+                    <TouchableOpacity style={styles.FlatLettuce}>
+                      <Text style={styles.TextStyleFlatModal}>Nestea</Text>
+                    </TouchableOpacity>
+                  )}
+                  keyExtractor={item => item.id}
+                />
+              </View>
+              <View style={{marginBottom: 40}}>
+                <View style={styles.BottomButtonModal}>
+                  <CustomButton text="Edit listing" />
+                </View>
+              </View>
             </View>
-          </Modal>
+          </ScrollView>
+        </View>
+        </View>
+      </Modal>
 
-
-          {/* Edit_Modal End */}
-
-
-
-
+      {/* Edit_Modal End */}
 
       <View style={styles.secondaryContainer}>
         <View
@@ -930,9 +926,7 @@ export default function Archive_orders({title, navigation}) {
               Salads
             </Text>
           </TouchableOpacity>
-          
 
-        
           {IsTablet ? (
             <SearchBox customStyle={{width: '30%'}} placeholder="Search" />
           ) : (
@@ -941,7 +935,7 @@ export default function Archive_orders({title, navigation}) {
                 type={SearchBar}
                 style={{
                   height: 40,
-                  backgroundColor: '#ffffff',
+                  backgroundColor: colors.textWhite,
                   borderRadius: 5,
                   elevation: 5,
                   width: '85%',
@@ -961,7 +955,7 @@ export default function Archive_orders({title, navigation}) {
                   name="plus"
                   style={{
                     fontSize: 20,
-                    color: '#ffffff',
+                    color: colors.textWhite,
                     justifyContent: 'center',
                     alignSelf: 'center',
                     alignItems: 'center',
@@ -976,6 +970,7 @@ export default function Archive_orders({title, navigation}) {
             <View style={{right: 10, position: 'relative'}}>
               <CustomButton
                 text="Add new item"
+                containerStyle={styles.AddButtonStyle}
                 onPress={() => navigation.navigate('ItemCreaterFirstStep')}
               />
               {/* <MultiSelectDropDown/> */}
@@ -986,7 +981,7 @@ export default function Archive_orders({title, navigation}) {
       {IsTablet ? (
         <View
           style={{
-            backgroundColor: '#fff',
+            backgroundColor: colors.textWhite,
             width: '100%',
             paddingVertical: 12,
             paddingHorizontal: 10,
@@ -1026,8 +1021,8 @@ export default function Archive_orders({title, navigation}) {
                       onPress={() => setCheck1(!check1)}
                       // onPress={() => setShowmodal(!Showmodal)}
 
-                      checkedColor="#5AB3A8"
-                      uncheckedColor="#CCD4D6"
+                      checkedColor={colors.primary}
+                      uncheckedColor={colors.light_grey}
                     />
                   </View>
                   <View>
@@ -1057,9 +1052,12 @@ export default function Archive_orders({title, navigation}) {
                       }}>
                       <View style={styles.sheet}>
                         <TouchableOpacity
-                          onPress={() => {Sheet.current.close(),setTimeout(() => {
-                            setShowmodal(true)
-                          }, 1000);}}
+                          onPress={() => {
+                            Sheet.current.close(),
+                              setTimeout(() => {
+                                setShowmodal(true);
+                              }, 1000);
+                          }}
                           // onPress={()=>{Sheet.current.close(),setShowmodal(true)}}
                           style={styles.ModalContant}>
                           <Octicons
@@ -1085,7 +1083,7 @@ export default function Archive_orders({title, navigation}) {
                               xmlns="http://www.w3.org/2000/svg">
                               <Path
                                 d="M8.75 1.25C8.75 0.835786 8.41421 0.5 8 0.5C7.58579 0.5 7.25 0.835786 7.25 1.25V3.18936L5.78767 1.72703C5.49478 1.43414 5.01991 1.43414 4.72701 1.72703C4.43412 2.01993 4.43412 2.4948 4.72701 2.78769L7.25 5.31068V7.25H5.31064L2.78767 4.72703C2.49478 4.43414 2.01991 4.43414 1.72701 4.72703C1.43412 5.01993 1.43412 5.4948 1.72701 5.78769L3.18932 7.25H1.25C0.835787 7.25 0.5 7.58579 0.5 8C0.5 8.41421 0.835787 8.75 1.25 8.75H3.18932L1.72702 10.2123C1.43413 10.5052 1.43413 10.9801 1.72702 11.273C2.01992 11.5658 2.49479 11.5658 2.78768 11.273L5.31064 8.75H7.25V10.6893L4.72703 13.2123C4.43413 13.5052 4.43413 13.9801 4.72703 14.273C5.01992 14.5658 5.49479 14.5658 5.78768 14.273L7.25 12.8106V14.75C7.25 15.1642 7.58579 15.5 8 15.5C8.41421 15.5 8.75 15.1642 8.75 14.75V12.8106L10.2123 14.2729C10.5052 14.5658 10.9801 14.5658 11.273 14.2729C11.5658 13.98 11.5658 13.5051 11.273 13.2122L8.75 10.6893V8.75H10.6894L13.2123 11.2729C13.5052 11.5658 13.9801 11.5658 14.273 11.2729C14.5658 10.98 14.5658 10.5051 14.273 10.2122L12.8107 8.75H14.75C15.1642 8.75 15.5 8.41421 15.5 8C15.5 7.58579 15.1642 7.25 14.75 7.25H12.8107L14.273 5.78778C14.5658 5.49488 14.5658 5.02001 14.273 4.72712C13.9801 4.43422 13.5052 4.43422 13.2123 4.72712L10.6894 7.25H8.75V5.31073L11.273 2.78776C11.5659 2.49487 11.5659 2.02 11.273 1.7271C10.9801 1.43421 10.5052 1.43421 10.2123 1.7271L8.75 3.18941V1.25Z"
-                                fill="#CCD4D6"
+                                fill={colors.light_grey}
                               />
                             </Svg>
                           </View>
@@ -1093,11 +1091,13 @@ export default function Archive_orders({title, navigation}) {
                         </TouchableOpacity>
                         <View style={styles.borderbotomview} />
                         <TouchableOpacity
-                        
                           onPress={
-                            () => {Sheet.current.close(),setTimeout(() => {
-                              setOpenmodal(!Openmodal)
-                            }, 1000);}
+                            () => {
+                              Sheet.current.close(),
+                                setTimeout(() => {
+                                  setOpenmodal(!Openmodal);
+                                }, 1000);
+                            }
                             // () => setOpenmodal(!Openmodal)
                           }
                           style={styles.ModalContant}>
@@ -1140,7 +1140,10 @@ export default function Archive_orders({title, navigation}) {
                   </View>
                 </View>
                 <View
-                  style={{borderBottomWidth: 2, borderBottomColor: '#f1f1f1'}}
+                  style={{
+                    borderBottomWidth: 2,
+                    borderBottomColor: colors.light_grey,
+                  }}
                 />
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <Image
@@ -1179,19 +1182,21 @@ export default function Archive_orders({title, navigation}) {
       )}
       {IsTablet ? (
         <View style={styles.pagination_view}>
-          <Text style={{fontFamily: 'Lato-Regular'}}>Showing 1-9 of 86</Text>
+          <Text style={{fontFamily: fonts.LatoRegular}}>Showing 1-9 of 86</Text>
           <View style={styles.pagination_numbring}>
             <Ionicons
               name="chevron-back"
               style={{color: '#d1d8da', fontSize: 24}}
             />
-            <Text style={{fontFamily: 'Lato-Regular', color: 'black'}}>1</Text>
+            <Text style={{fontFamily: fonts.LatoRegular, color: colors.black}}>
+              1
+            </Text>
             <Text>2</Text>
             <Text>3</Text>
             <Text>4</Text>
             <MaterialCommunityIcons
               name="chevron-right-circle"
-              style={{color: '#4c6870', fontSize: 24}}
+              style={{color: colors.sidebar, fontSize: 24}}
             />
           </View>
         </View>

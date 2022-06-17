@@ -914,7 +914,7 @@ const styles = ScaledSheet.create({
   BackButtonsText: {
     color: '#fff',
     fontSize: 15,
-    fontFamily: 'Lato-Medium',
+    fontFamily: fonts.LatoMedium,
   },
   mail: {
     fontSize: 13,

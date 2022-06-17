@@ -14,20 +14,35 @@ import fonts from '@SilalApp/common/assets/fonts';
 import {useTranslation} from 'react-i18next';
 import {Icon} from 'react-native-elements';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import {isTablet} from 'react-native-device-info';
 const ContactUs = ({navigation}) => {
   const {t} = useTranslation();
   return (
-    <SafeAreaView style={styles.mainContainer}>
+    <SafeAreaView
+      style={IsTablet ? styles.mainContainer : styles.mainContainerMobile}>
       <ScrollView>
+        {IsTablet ? 
         <Header
           label={t('Contact_Silal')}
           onPress={() => navigation.openDrawer()}
         />
+        
+        :
+        <Header
+        label={t('Contact_Us')}
+        onPress={() => navigation.openDrawer()}
+      />
+        }
         <View
-          style={{
-            width: '70%',
-            paddingVertical: verticalScale(20),
-          }}>
+          style={
+            IsTablet
+              ? {
+                  width: '70%',
+                  paddingVertical: verticalScale(20),
+                }
+              : styles.CustomTextTitle
+          }>
           <View style={styles.container}>
             <View style={{alignItems: 'flex-start'}}>
               <CustomText
@@ -88,22 +103,34 @@ const ContactUs = ({navigation}) => {
               />
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                marginTop: 12,
-                justifyContent: 'space-between',
-              }}>
-              <View style={{width: '30%'}}>
+              style={
+                IsTablet
+                  ? {
+                      flexDirection: 'row',
+                      marginTop: 12,
+                      justifyContent: 'space-between',
+                    }
+                  : styles.BottomButtonMobile
+              }>
+              <View style={IsTablet ? {width: '30%'} : styles.AttachButton}>
                 <View style={styles.attachContainer}>
                   <Icon
                     name="attachment"
                     type="entypo"
                     color={colors.primary}
                   />
-                  <CustomText label="Attach" textStyle={styles.attachText} />
+                  {IsTablet ? (
+                    <CustomText label="Attach" textStyle={styles.attachText} />
+                  ) : (
+                    <CustomText
+                      label="Add attachments"
+                      textStyle={styles.attachText}
+                    />
+                  )}
                 </View>
               </View>
-              <View style={{width: '69%'}}>
+              <View
+                style={IsTablet ? {width: '69%'} : styles.SubmitButtonMobile}>
                 <CustomButton
                   textStyle={styles.submitbutton}
                   containerStyle={styles.exportBtn}
@@ -125,6 +152,10 @@ const styles = ScaledSheet.create({
     paddingHorizontal: '15@s',
     backgroundColor: colors.profileBackground,
   },
+  mainContainerMobile: {
+    paddingHorizontal: '15@s',
+    backgroundColor: colors.textWhite,
+  },
   submitbutton: {
     fontSize: '14@ms',
     fontFamily: fonts.PoppinsSemiBold,
@@ -134,7 +165,7 @@ const styles = ScaledSheet.create({
   attachContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.primaryBlur,
+    backgroundColor: colors.blurPrimary,
     padding: '9@s',
     justifyContent: 'center',
     width: '100%',
@@ -187,5 +218,21 @@ const styles = ScaledSheet.create({
     marginBottom: '15@vs',
     marginRight: '15@s',
     shadowColor: 'rgba(115, 213, 201, 1)',
+  },
+  CustomTextTitle: {
+    width: '100%',
+    paddingVertical: verticalScale(20),
+  },
+  BottomButtonMobile: {
+    flexDirection: 'column',
+    marginTop: 12,
+    justifyContent: 'space-between',
+  },
+  AttachButton: {
+    width: '100%',
+    marginBottom: 80,
+  },
+  SubmitButtonMobile: {
+    width: '100%',
   },
 });

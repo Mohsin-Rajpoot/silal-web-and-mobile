@@ -29,6 +29,7 @@ import {useTranslation} from 'react-i18next';
 import {moderateScale, verticalScale} from 'react-native-size-matters';
 import Tab from './molecule/Tab';
 import PagerView from 'react-native-pager-view';
+import fonts from '@SilalApp/common/assets/fonts';
 const Home = ({navigation}) => {
   var {width} = Dimensions.get('screen');
   const {t} = useTranslation();
@@ -300,7 +301,7 @@ const Home = ({navigation}) => {
               style={{
                 color: '#CCD4D6',
                 fontSize: 17,
-                fontFamily: 'Poppins-SemiBold',
+                fontFamily: fonts.PoppinsSemiBold,
               }}>
               Previous Notification
             </Text>

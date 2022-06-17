@@ -252,7 +252,7 @@ const Setting = ({navigation}) => {
               modalWrapperStyle={styles.ModalWrapperDeleteMobile}
               modalContainerStyle={{
                 borderRadius: 2,
-                backgroundColor: 'white',
+                // backgroundColor: 'red',
               }}>
               <View style={styles.ModalContainer1}>
                 <View style={styles.ModeView}>
@@ -851,8 +851,8 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
   },
   ModeView: {
-    height: 160,
-    width: 410,
+    height: '170@s',
+    width: '280@s',
     backgroundColor: colors.textWhite,
     borderRadius: 5,
     elevation: 0.2,
@@ -869,7 +869,7 @@ const styles = ScaledSheet.create({
     // justifyContent: 'space-between',
     // backgroundColor: 'red',
 
-    marginTop: 10,
+    paddingTop: '20@s',
 
     // backgroundColor:'red'
   },
@@ -889,13 +889,13 @@ const styles = ScaledSheet.create({
     // justifyContent: 'space-between',
     // width: '%',
     // alignSelf: 'center',
-    paddingVertical: 40,
+    paddingVertical: '20@s',
     justifyContent: 'space-evenly',
     marginHorizontal:30
   },
   ButtonssDeleteMobile: {
-    width: '35%',
-    height: 45,
+    width: '110@s',
+    height: '45@s',
     borderRadius: 15,
     alignItems: 'center',
     justifyContent: 'center',
@@ -903,13 +903,13 @@ const styles = ScaledSheet.create({
     overflow:'hidden'
   },
   ModalWrapperDeleteMobile: {
-    marginHorizontal: width(5),
-    marginVertical: height(38),
+    marginHorizontal: width(10),
+    marginVertical: height(41),
   },
   ConfirmText:{
     textAlign: 'center',
-    paddingHorizontal: 90,
-    marginTop:10,
+    // paddingHorizontal: 90,
+    paddingTop:'20@s',
     color:'#4C7061',
     fontFamily:fonts.LatoRegular
   },

@@ -1,4 +1,11 @@
-import {View, Text, SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  Dimensions,
+  Image,
+} from 'react-native';
 import React, {useState, useRef} from 'react';
 import CustomText from '@SilalApp/common/components/CustomText';
 import {CustomButton} from '@SilalApp/common/components/native';
@@ -12,10 +19,21 @@ import Specification from './CreateITemPages/Specification';
 import Media from './CreateITemPages/Media';
 import Shipping from './CreateITemPages/Shipping';
 import Preview from './CreateITemPages/Preview';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import Entypo from 'react-native-vector-icons/Entypo';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import colors from '@SilalApp/common/assets/colors';
+import Octicons from 'react-native-vector-icons/Octicons';
+import fonts from '@SilalApp/common/assets/fonts';
+var windowWidth = Dimensions.get('window').width;
 const CreateItem = ({navigation}) => {
   const {t} = useTranslation();
   const ref = useRef(null);
   const [page, setPage] = useState(0);
+
+  const Sheet_Header = useRef();
+
   const goprev = () => {
     if (page > 0) {
       const newStep = Math.max(0, page - 1);
@@ -45,44 +63,121 @@ const CreateItem = ({navigation}) => {
   };
   return (
     <SafeAreaView style={styles.mainContainer}>
+      {/* RB Sheet Header Start */}
+
+      <RBSheet
+        ref={Sheet_Header}
+        animationType="slide"
+        closeOnPressMask={true}
+        closeOnDragDown={false}
+        dragFromTopOnly
+        height={windowWidth * 0.6}
+        openDuration={250}
+        customStyles={{
+          container: {
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            backgroundColor: colors.textWhite,
+          },
+        }}>
+        <View
+          style={{
+            backgroundColor: 'white',
+            paddingHorizontal: 10,
+            marginTop: 35,
+          }}>
+          <TouchableOpacity style={{flexDirection: 'row',marginTop:5,marginVertical:10}}>
+            <Octicons
+              name="pencil"
+              style={styles.IconHeaderSheet}
+            />
+            <Text style={styles.headerSheetText}>Save as draft</Text>
+          </TouchableOpacity>
+          <View style={styles.divider} />
+          <TouchableOpacity style={{flexDirection: 'row',marginTop:30,marginVertical:10}}>
+            <Octicons
+              name="stack"
+              style={styles.IconHeaderSheet}
+            />
+            <Text style={styles.headerSheetText}>Save as template</Text>
+          </TouchableOpacity>
+          <View style={styles.divider} />
+          <TouchableOpacity style={{flexDirection: 'row',marginTop:20,marginVertical:10}}>
+          <Image
+            source={require('../../Assets/li_trash-2.png')}
+            style={{width: 20, height: 20,marginHorizontal:10}}
+          />
+            <Text style={styles.headerSheetText}>Save as template</Text>
+          </TouchableOpacity>
+          <View style={styles.divider} />
+          {/* <Image
+            source={require('../../Assets/li_trash-2.png')}
+            style={{width: 30, height: 30}}
+          /> */}
+        </View>
+      </RBSheet>
+
+      {/* RB Sheet Header End */}
       <View style={styles.headerContainer}>
-        <View style={styles.createnewItemContainer}>
-          <Icon name="arrowleft" type="antdesign" size={40} />
-          <CustomText
-            label={t('create_new_item')}
-            textStyle={styles.createItemText}
-          />
-        </View>
-        <View style={styles.buttonContainer}>
-          <CustomButton
-            text={t('Save_as_template')}
-            containerStyle={styles.dullContainerStyle}
-            textStyle={styles.buttonTextDull}
-          />
-          <CustomButton
-            text={t('Save_as_draft')}
-            containerStyle={styles.dullContainerStyle}
-            textStyle={styles.buttonTextDull}
-          />
-          <CustomButton
-            text={t('Request_to_publish')}
-            containerStyle={styles.buttonContainerStyle}
-            textStyle={styles.buttonText}
-          />
-        </View>
+        {IsTablet ? (
+          <View style={{flexDirection: 'row'}}>
+            <View style={styles.createnewItemContainer}>
+              <Icon name="arrowleft" type="antdesign" size={40} />
+              <CustomText
+                label={t('create_new_item')}
+                textStyle={styles.createItemText}
+              />
+            </View>
+            <View style={styles.buttonContainer}>
+              <CustomButton
+                text={t('Save_as_template')}
+                containerStyle={styles.dullContainerStyle}
+                textStyle={styles.buttonTextDull}
+              />
+              <CustomButton
+                text={t('Save_as_draft')}
+                containerStyle={styles.dullContainerStyle}
+                textStyle={styles.buttonTextDull}
+              />
+              <CustomButton
+                text={t('Request_to_publish')}
+                containerStyle={styles.buttonContainerStyle}
+                textStyle={styles.buttonText}
+              />
+            </View>
+          </View>
+        ) : (
+          <View style={styles.createnewItemContainerMobile}>
+            <View style={{flexDirection: 'row'}}>
+              <Icon name="arrowleft" type="antdesign" size={20} />
+              <CustomText
+                label={t('create_new_item')}
+                textStyle={styles.createItemText}
+              />
+            </View>
+            <TouchableOpacity onPress={() => Sheet_Header.current.open()}>
+              <Entypo
+                name="dots-three-vertical"
+                style={{color: colors.divider, fontSize: 20}}
+              />
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
-      <View style={styles.tabPagerContainer}>
-        <Header
-          label="item_information"
-          pageNumber={1}
-          active={page}
-          page={0}
-        />
-        <Header label="specification" pageNumber={2} active={page} page={1} />
-        <Header label="media" pageNumber={3} active={page} page={2} />
-        <Header label="Shipping" pageNumber={4} active={page} page={3} />
-        <Header label="Preview" pageNumber={5} active={page} page={4} />
-      </View>
+      {IsTablet ? (
+        <View style={styles.tabPagerContainer}>
+          <Header
+            label="item_information"
+            pageNumber={1}
+            active={page}
+            page={0}
+          />
+          <Header label="specification" pageNumber={2} active={page} page={1} />
+          <Header label="media" pageNumber={3} active={page} page={2} />
+          <Header label="Shipping" pageNumber={4} active={page} page={3} />
+          <Header label="Preview" pageNumber={5} active={page} page={4} />
+        </View>
+      ) : null}
       <PagerView
         style={{flex: 1}}
         initialPage={0}
@@ -109,3 +204,6 @@ const CreateItem = ({navigation}) => {
 };
 
 export default CreateItem;
+
+
+ 

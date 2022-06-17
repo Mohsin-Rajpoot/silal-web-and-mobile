@@ -47,8 +47,7 @@ const [filter, setfilter]=useState('')
     setchoseData(option);
   };
 
-  // ////
-
+  
   const Sheet = useRef();
   const Sheet_state = useRef();
 
@@ -662,7 +661,7 @@ const footer = () => {
                     style={{
                       fontSize: 13,
                       color: '#002733',
-                      fontFamily: 'Poppins-SemiBold',
+                      fontFamily: fonts.PoppinsSemiBold,
                     }}>
                     $ 4.00
                   </Text>

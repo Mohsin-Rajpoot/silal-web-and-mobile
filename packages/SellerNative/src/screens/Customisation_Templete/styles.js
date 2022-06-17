@@ -10,12 +10,12 @@ import fonts from '@SilalApp/common/assets/fonts';
 const styles = ScaledSheet.create({
   WhiteView: {
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: colors.textWhite,
     height: 250,
     elevation: 1,
     borderWidth: 2,
     borderRadius: 5,
-    borderColor: '#ffffff',
+    borderColor: colors.textWhite,
     marginBottom: 10,
   },
   ViewHeading: {
@@ -28,7 +28,7 @@ const styles = ScaledSheet.create({
     color: '#4C6870B2',
     paddingHorizontal: 15,
     fontSize: 18,
-    fontFamily: 'Lato-Medium',
+    fontFamily:fonts.LatoMedium,
   },
   headingText: {
     fontSize: 17,
@@ -42,23 +42,23 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
   },
   headingTextButton: {
-    color: '#4C6870',
-    fontFamily: 'Lato-Regular',
+    color: colors.sidebar,
+    fontFamily: fonts.LatoRegular,
     fontSize: 15,
   },
   TextInputView: {
     height: 40,
     width: 90,
-    borderColor: '#4C6870B2',
+    borderColor: colors.borderColor,
     borderWidth: 0.5,
     marginVertical: 5,
     borderRadius: 3,
   },
   Unavaiable: {
     marginVertical: 15,
-    color: '#002733',
+    color: colors.black,
     fontSize: 17,
-    fontFamily: 'Lato-Regular',
+    fontFamily: fonts.LatoRegular,
   },
   TertiaryButton: {
     height: 50,
@@ -72,7 +72,7 @@ const styles = ScaledSheet.create({
   TertiaryButtonText: {
     color: colors.black,
     fontSize: 15,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   PrimaryButton: {
     backgroundColor: colors.blurPrimary1,
@@ -101,9 +101,14 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
   },
   CreatebuttonText: {
-    color: '#fff',
+    color: colors.textWhite,
     fontSize: 15,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
+  },
+  styleUser: {
+    fontSize: 17,
+    color: colors.black,
+    fontFamily: fonts.LatoRegular,
   },
 });
 export default styles;

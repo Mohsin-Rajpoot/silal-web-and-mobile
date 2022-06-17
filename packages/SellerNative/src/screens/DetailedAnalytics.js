@@ -98,7 +98,7 @@ const DetailedAnalytics = ({navigation}) => {
                   marginHorizontal: 30,
                 }}>
                 <View style={styles.SecondColumn}>
-                  <Text style={{fontFamily: 'Poppins-SemiBold', color: '#fff'}}>
+                  <Text style={{fontFamily: fonts.PoppinsSemiBold, color: colors.textWhite}}>
                     Revenue
                   </Text>
                 </View>
@@ -224,8 +224,8 @@ const styles = ScaledSheet.create({
     paddingHorizontal: 10,
   },
   SecondColumnFlatData: {
-    fontFamily: 'Poppins-SemiBold',
-    color: '#002733',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.black,
     paddingVertical: 4,
     paddingHorizontal: 4,
     fontSize: 13,
