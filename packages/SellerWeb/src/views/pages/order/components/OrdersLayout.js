@@ -23,4 +23,4 @@ const OrdersLayout = () => {
   )
 }
 
-export default OrdersLayout
+export default OrdersLayout;

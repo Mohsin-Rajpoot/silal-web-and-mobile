@@ -23,7 +23,7 @@ const Database = () => {
                 type="button"
                 onClick={() => setModal(true, 'reccuring')}
               >
-                <DataCardHeader>
+                <DataCardHeader >
                   <HeadingStyled
                     size="15px"
                     className="text-white"
@@ -174,7 +174,7 @@ export const DataCard = styled.div`
 export const DataCardHeader = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background: #5ab3a8;
+  background: #05AE4B;
   border-radius: 5px 5px 0px 0px;
   padding: 15px;
   .status-tip {

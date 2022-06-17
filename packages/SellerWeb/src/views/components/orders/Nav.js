@@ -24,7 +24,8 @@ import {
     InfoIcon,
     BgEmailIcon,
     BgPhoneIcon,
-} from '../AllImages'
+}
+ from '../AllImages'
 
 const Nav = ({
     sideBar,
@@ -169,7 +170,7 @@ const ModalButton = styled.button`
         line-height: 120%;
         letter-spacing: -0.408px;
         text-transform: uppercase;
-        color: #5AB3A8;
+        color: #05AE4B;
     }
 `;
 

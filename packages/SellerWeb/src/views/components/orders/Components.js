@@ -35,6 +35,10 @@ const ReceivedOrder = ({ orderNumber, time, clockIcon }) => {
         <span>Cheesecakes with sour cream and citrus hone</span>
       </div>
       <span className="more lato f-bold">3 more</span>
+      <div className="butn">
+      <Button width="100%">Click to accept order</Button>
+      </div>
+      
       {/* <div className='mt-3'>
                 <SwipeableButton color='#5AB3A8' text='Slide to confirm order' />
             </div> */}
@@ -282,11 +286,7 @@ const ReceivedOrderStyled = styled.div`
             display: block;
         }
         span {
-<<<<<<< HEAD
-            font-size: 16px;
-=======
             font-size: 15px;
->>>>>>> b62894287e2ebca268f9de269a39ecb8916323f7
             letter-spacing: -0.408px;
             color: #002733;
         }

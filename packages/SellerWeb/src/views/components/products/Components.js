@@ -207,7 +207,7 @@ const CustomizationItem = ({ item, classN }) => {
 
 const CustomizationItemStyled = styled.div`
     min-height: 100px;
-    background: #5AB3A8;
+    background: #05AE4B;
     border-radius: 5px;
     margin-bottom: 20px;
     padding: 15px;

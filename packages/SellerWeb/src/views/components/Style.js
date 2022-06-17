@@ -80,10 +80,10 @@ const Button = styled.button`
   }
   &.hover-fill {
     background-color: white;
-    color: #5AB3A8;
-    border: 1px solid #5AB3A8;
+    color: #05AE4B;
+    border: 1px solid #05AE4B;
     &:hover {
-      background-color: #5AB3A8;
+      background-color: #05AE4B;
       color: white !important;
       svg {
         path {
