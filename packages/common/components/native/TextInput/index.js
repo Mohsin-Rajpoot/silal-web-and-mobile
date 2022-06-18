@@ -12,7 +12,7 @@ const index = ({
   inputStyle,
   secureText,
   multiLine,
-  password,
+  password, 
   search,
   placeholderTextColor,
   inputTextStyle,
@@ -20,6 +20,7 @@ const index = ({
   onChangeText,
   value,
   isTab,
+  selectionColor,
   withLabel,
 }) => {
   const [showPassword, setShowPassword] = useState(!secureText ? true : false);
@@ -33,6 +34,7 @@ const index = ({
             ? CommonStyle.textInputStylesMobile
             : CommonStyle.textInputStyles,
           inputStyle,
+          
         ]}
       >
         {text.length ? (
@@ -60,6 +62,7 @@ const index = ({
           secureTextEntry={!showPassword}
           multiline={multiLine}
           value={value}
+          selectionColor={selectionColor}
           onChangeText={onChangeText}
           keyboardType={keyboardType}
           autoCapitalize={false}

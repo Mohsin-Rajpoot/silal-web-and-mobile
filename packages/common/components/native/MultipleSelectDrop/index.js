@@ -4,7 +4,7 @@ import MultiSelect from "react-native-multiple-select";
 import colors from "../../../assets/colors";
 import { ScaledSheet } from "react-native-size-matters";
 import fonts from "../../../assets/fonts";
-const MultiSelectDropDown = () => {
+const MultiSelectDropDown = (props) => {
   const [itemSelect, setItemSelect] = useState([]);
   const ref = useRef();
   const items = [
@@ -50,7 +50,7 @@ const MultiSelectDropDown = () => {
     setItemSelect(SelectedItem);
   };
   return (
-    <View style={{ marginTop: 10 }}>
+    <View style={[{ marginTop: 2},]}>
       <MultiSelect
         hideTags
         items={items}
@@ -69,14 +69,14 @@ const MultiSelectDropDown = () => {
         selectedItemIconColor={colors.primary}
         itemTextColor="#000"
         displayKey="name"
-        searchInputStyle={{ color: "#CCC" }}
+        searchInputStyle={{ color: "#CCC", }}
         submitButtonColor={colors.primary}
         submitButtonText="Submit"
         styleItemsContainer={{ backgroundColor: "transparent" }}
         // styleTextDropdown={{ backgroundColor: "green" }}
         // styleDropdownMenu={{ backgroundColor: "blue" }}
-        styleSelectorContainer={{ backgroundColor: "black" }}
-        styleDropdownMenuSubsection={styles.mainContainerSelector}
+        styleSelectorContainer={{backgroundColor: "black"}}
+        styleDropdownMenuSubsection={[styles.mainContainerSelector,props.CustomDropdownStyle]}
         // styleInputGroup={{backgroundColor:"red"}}
         // styleListContainer={{backgroundColor:"blue"}}
         styleTextDropdown={{marginHorizontal:10}}

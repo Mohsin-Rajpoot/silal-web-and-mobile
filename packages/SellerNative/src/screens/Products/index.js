@@ -147,7 +147,7 @@ const Products = ({navigation}) => {
   ];
 
   return (
-    <SafeAreaView style={{backgroundColor: '#E5E5E5'}}>
+    <SafeAreaView style={{backgroundColor: colors.white}}>
       <TouchableOpacity onPress={() => navigation.openDrawer()}>
         <MaterialCommunityIcons
           name="menu"
@@ -165,16 +165,16 @@ const Products = ({navigation}) => {
               }>
               {t('products')}
             </Text>
-            <SearchBox
-              
-              
-              placeholder={t('Search')}
-            />
-            <View style={IsTablet ? styles.headerButton : styles.headerButtonMobile}>
+            <SearchBox placeholder={t('Search')} />
+            <View
+              style={
+                IsTablet ? styles.headerButton : styles.headerButtonMobile
+              }>
               <CustomButton text={t('add_new_item')} />
             </View>
           </View>
-          <View style={!IsTablet ? styles.headermbilemargin : styles.headermargin }>
+          <View
+            style={!IsTablet ? styles.headermbilemargin : styles.headermargin}>
             <FlatList
               data={data}
               numColumns={!IsTablet == true ? '2' : '4'}
@@ -287,23 +287,35 @@ const Products = ({navigation}) => {
                       marginHorizontal: 5,
                     }}
                   />
-                  <Text style={styles.modelimageoverly}>
+                  <CustomText
+                    label={t('Change cover picture')}
+                    textStyle={styles.modelimageoverly}
+                  />
+                  {/* <Text style={styles.modelimageoverly}>
                     Change cover picture
-                  </Text>
+                  </Text> */}
                 </View>
 
                 <View
                   style={
                     !IsTablet ? styles.NameFolderMobile : styles.NameFolder
                   }>
-                  <Text
+                  <CustomText
+                    label={t('Folder_name')}
+                    textStyle={
+                      !IsTablet
+                        ? styles.TitleModelInputMobile
+                        : styles.TitleModelInput
+                    }
+                  />
+                  {/* <Text
                     style={
                       !IsTablet
                         ? styles.TitleModelInputMobile
                         : styles.TitleModelInput
                     }>
                     Folder name
-                  </Text>
+                  </Text> */}
                 </View>
                 <TextInput
                   style={
@@ -314,14 +326,23 @@ const Products = ({navigation}) => {
                 />
                 <View style={{flexDirection: 'row'}}>
                   <View>
-                    <TouchableOpacity
+                    {/* <TouchableOpacity
                       style={[
                         {backgroundColor: colors.light_grey},
                         !IsTablet
                           ? styles.saveButtoneditModalMobile
                           : styles.saveButtoneditModal,
                       ]}>
-                      <Text
+                      <CustomText
+                        label={t('Cancel')}
+                        textStyle={[
+                          {color: '#4C7061'},
+                          !IsTablet
+                            ? styles.saveButtonTextMobile
+                            : styles.saveButtonText,
+                        ]}
+                      /> */}
+                      {/* <Text
                         style={[
                           {color: '#4C7061'},
                           !IsTablet
@@ -329,26 +350,34 @@ const Products = ({navigation}) => {
                             : styles.saveButtonText,
                         ]}>
                         Cancel
-                      </Text>
-                    </TouchableOpacity>
+                      </Text> */}
+                    {/* </TouchableOpacity> */}
                   </View>
                   <View>
-                    <TouchableOpacity
+                    {/* <TouchableOpacity
                       style={[
                         {backgroundColor: colors.primary},
                         !IsTablet
                           ? styles.saveButtoneditModalMobile
                           : styles.saveButtoneditModal,
                       ]}>
-                      <Text
+                      <CustomText
+                        label={t('Save_changes')}
+                        textStyle={
+                          !IsTablet
+                            ? styles.saveButtonTextMobile
+                            : styles.saveButtonText
+                        }
+                      /> */}
+                      {/* <Text
                         style={
                           !IsTablet
                             ? styles.saveButtonTextMobile
                             : styles.saveButtonText
                         }>
                         Save changes
-                      </Text>
-                    </TouchableOpacity>
+                      </Text> */}
+                    {/* </TouchableOpacity> */}
                   </View>
                 </View>
               </CustomModal>
@@ -370,23 +399,41 @@ const Products = ({navigation}) => {
               }}>
               <View style={styles.ModalContainer}>
                 <View style={styles.ModeView}>
-                  <Text style={{justifyContent:'center',alignSelf:'center',fontSize:15,fontFamily:fonts.bold}}>Delete folder?</Text>
+                  <Text
+                    style={{
+                      justifyContent: 'center',
+                      alignSelf: 'center',
+                      fontSize: 15,
+                      fontFamily: fonts.bold,
+                    }}>
+                    Delete folder?
+                  </Text>
                   <View
                     style={
                       !IsTablet ? styles.ModalTitleMobile : styles.ModalTitle
                     }>
-                    <Text
+                    <CustomText
+                      label={t('Are_you_sure_you_want_to_delete_this_folder')}
+                      textStyle={
+                        !IsTablet
+                          ? styles.ModalHeadingMobile
+                          : styles.ModalHeading
+                      }
+                    />
+                    {/* <Text
                       style={
                         !IsTablet
                           ? styles.ModalHeadingMobile
                           : styles.ModalHeading
                       }>
                       Are you sure you want to delete this folder?
-                    </Text>
+                    </Text> */}
                     <Entypo
                       onPress={() => setOpenmodal(false)}
                       name="cross"
-                      style={!IsTablet ? styles.deleteCloseMbile : styles.deleteClose}
+                      style={
+                        !IsTablet ? styles.deleteCloseMbile : styles.deleteClose
+                      }
                     />
                   </View>
 
@@ -404,9 +451,16 @@ const Products = ({navigation}) => {
                           ? styles.ButtonssDeleteMobile
                           : styles.ButtonssDelete,
                       ]}>
-                      <Text style={[{color: '#fff'}, styles.DeleteModal]}>
+                      <CustomText
+                        label={t('Cancel')}
+                        textStyle={[
+                          {color: colors.textWhite},
+                          styles.DeleteModal,
+                        ]}
+                      />
+                      {/* <Text style={[{color:colors.textWhite}, styles.DeleteModal]}>
                         Cancel
-                      </Text>
+                      </Text> */}
                     </TouchableOpacity>
 
                     <TouchableOpacity
@@ -417,9 +471,14 @@ const Products = ({navigation}) => {
                           ? styles.ButtonssDeleteMobile
                           : styles.ButtonssDelete,
                       ]}>
-                      <Text style={[styles.DeleteModal, {color: '#DE350B'}]}>
+                      <CustomText
+                        label={t('Yes_Delete')}
+                        textStyle={[styles.DeleteModal, {color: '#DE350B'}]}
+                      />
+
+                      {/* <Text style={[styles.DeleteModal, {color: '#DE350B'}]}>
                         Yes, Delete
-                      </Text>
+                      </Text> */}
                     </TouchableOpacity>
                   </View>
                 </View>

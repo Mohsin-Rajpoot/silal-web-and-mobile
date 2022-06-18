@@ -33,13 +33,13 @@ const DropDown = (props) => {
         borderColor: colors.borderColor,
    
       }}
-      style={{
+      style={[{
         borderColor: colors.borderColor,
         borderRadius: 8,
         height:props.height|| 62,
         backgroundColor:props.backgroundColor,
         borderWidth:props.borderWidth
-      }}
+      },props.DropDownCustomStyle]}
       // onChangeValue={()=> se}
     />
   );

@@ -206,18 +206,18 @@ flexDirection:'row'
   },
   SecondViewCompleteText: {
     color: colors.textWhite,
-    fontFamily: 'Lato-Medium',
+    fontFamily:fonts.LatoMedium,
     fontSize: 11,
   },
   SecondModalIcon: {
     fontSize: 30,
     color: colors.black,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   SecondModalText: {
     fontSize: 19,
     color: colors.black,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   centeredView: {
     flex: 1,
@@ -277,7 +277,7 @@ display:'none'
   orderid_text: {
     fontSize: 15,
     color: colors.black,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   modal_header: {
     flexDirection: 'row',

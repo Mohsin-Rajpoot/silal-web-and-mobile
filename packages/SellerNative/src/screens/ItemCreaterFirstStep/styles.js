@@ -11,7 +11,7 @@ const styles = ScaledSheet.create({
   MainContainer: {
     width: '100%',
     alignSelf: 'center',
-    backgroundColor: '#f1f1f1',
+    backgroundColor: colors.textWhite,
   },
   archive_orders_tab: {
     borderWidth: 5,
@@ -29,14 +29,14 @@ const styles = ScaledSheet.create({
     borderRadius: 5,
   },
   HeaderButtonText: {
-    color: '#fff',
+    color: colors.textWhite,
     textAlign: 'center',
     fontFamily: fonts.PoppinsSemiBold,
   },
   Container: {
     width: '95%',
     alignSelf: 'center',
-    backgroundColor: '#f1f1f1',
+    backgroundColor: colors.textWhite,
   },
   Header: {
     flexDirection: 'row',
@@ -46,13 +46,13 @@ const styles = ScaledSheet.create({
   },
   BackArrow: {
     fontSize: 40,
-    color: '#002733',
-    fontFamily: 'Poppins-Bold',
+    color: colors.black,
+    fontFamily: fonts.bold,
   },
   backTitle: {
     fontSize: 25,
-    color: '#002733',
-    fontFamily: 'Poppins-Bold',
+    color: colors.black,
+    fontFamily:  fonts.bold,
   },
   ModalContainer: {
     justifyContent: 'center',
@@ -65,7 +65,7 @@ const styles = ScaledSheet.create({
     height: 180,
     width: 410,
     elevation: 2,
-    backgroundColor: '#fff',
+    backgroundColor: colors.textWhite,
     borderRadius: 5,
   },
   ModalTitle: {
@@ -77,11 +77,11 @@ const styles = ScaledSheet.create({
   ModalHeading: {
     color: '#414342',
     fontSize: 17,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   ModalParagraph: {
-    color: '#4C6870',
-    fontFamily: 'Lato-Regular',
+    color: colors.sidebar,
+    fontFamily: fonts.LatoRegular,
     paddingHorizontal: 20,
     fontSize: 15,
     marginVertical: 15,
@@ -102,14 +102,14 @@ const styles = ScaledSheet.create({
     marginHorizontal: 10,
   },
   DeleteModal: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.LatoSemiBold,
     fontSize: 15,
   },
   Tost: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.textWhite,
 
     paddingHorizontal: 20,
-    shadowColor: '#000',
+    shadowColor: colors.black,
     position: 'absolute',
     bottom: -171,
     shadowOffset: {
@@ -123,12 +123,12 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     paddingVertical: 12,
     fontSize: 15,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   ModalContainerPreview: {
     width: '100%',
     height: '100%',
-    // backgroundColor: '#fff',
+    // backgroundColor: colors.textWhite,
     // position: 'absolute',
     // right: 0,
     backgroundColor: 'rgba(0,0,0,0.5)'
@@ -142,13 +142,13 @@ const styles = ScaledSheet.create({
   },
   CrossPreview: {
     fontSize: 25,
-    color: '#000000',
+    color: colors.black,
     position: 'absolute',
     right: 15,
     top: 20,
   },
   MobileViewModal: {
-    backgroundColor: '#f1f1f1',
+    backgroundColor: colors.textWhite,
     width: '80%',
     height: 290,
     marginVertical: 37,
@@ -159,7 +159,7 @@ const styles = ScaledSheet.create({
   },
   IconModalMobile: {
     fontSize: 25,
-    color: '#000',
+    color: colors.black,
   },
   heartIcon: {
     height: 40,
@@ -176,28 +176,28 @@ const styles = ScaledSheet.create({
     paddingVertical: 10,
   },
   TitleModalPreview: {
-    color: '#002733',
+    color: colors.black,
     fontSize: 16,
-    fontFamily: 'Poppins-Bold',
+    fontFamily:  fonts.bold,
   },
   paragaphPreview: {
     fontSize: 15,
-    color: '#002733',
-    fontFamily: 'Lato-Regular',
+    color: colors.black,
+    fontFamily: fonts.LatoRegular,
   },
   ParagraphPadingHorizontal: {
     marginHorizontal: 45,
     marginVertical: 20,
   },
   Cal: {
-    color: '#002733',
-    fontFamily: 'Lato-Bold',
+    color: colors.black,
+    fontFamily: fonts.LatoBold,
   },
   AlertModal: {
     marginHorizontal: 40,
     marginVertical: 10,
-    color: '#002733',
-    fontFamily: 'Lato-Regular',
+    color: colors.black,
+    fontFamily: fonts.LatoRegular,
   },
   ModalTertiaryButton: {
     borderColor: colors.primary,
@@ -235,23 +235,23 @@ const styles = ScaledSheet.create({
     marginVertical: 0,
     position:'absolute',
     left:-420,
-    backgroundColor:'#fff',
+    backgroundColor:colors.textWhite,
     elevation:2
   },
   IconToast: {
-    color: 'green',
+    color: colors.primary,
     fontSize: 20,
     paddingHorizontal: 4,
   },
   ToastParagraph: {
-    color: '#002733',
+    color: colors.black,
     fontSize: 15,
-    fontFamily: 'Lato-Bold',
+    fontFamily: fonts.LatoBold,
   },
   ActionToast: {
     color: '#018FFB',
     fontSize: 15,
-    fontFamily: 'Lato-Bold',
+    fontFamily: fonts.LatoBold,
     marginLeft: 20,
   },
   button: {

@@ -14,116 +14,13 @@ import fonts from '@SilalApp/common/assets/fonts';
 import {color} from 'react-native-reanimated';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const styles = ScaledSheet.create({
-  title: {
-    fontSize: 18,
-    fontWeight: '700',
-    fontFamily: 'Poppins-Light',
-    margin: 10,
-  },
-  single_order: {
-    backgroundColor: 'white',
-    marginHorizontal: 10,
-    marginVertical: 5,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    paddingBottom: 10,
-  },
-  filter_box: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  filter: {
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    height: 40,
-    width: 150,
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  order_header: {
-    flex: 1,
-    marginTop: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  orderid_text: {
-    fontSize: 15,
-    color: '#CCD4D6',
-    fontWeight: 'bold',
-  },
-  order_timer: {
-    backgroundColor: '#F2A341',
-    borderRadius: '0 0 5 5',
-  },
-  order_title: {
-    width: '70%',
-    fontSize: 17,
-  },
-  order_item: {
-    flexDirection: 'row',
-    marginTop: 20,
-  },
   cross_icon: {
-    color: '#CCD4D6',
+    color: colors.light_grey,
     fontSize: 16,
   },
-  more_order: {
-    width: 60,
-    backgroundColor: '#E6F4F2',
-    padding: 3,
-    borderRadius: 4,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 30,
-    marginTop: 5,
-  },
-  accept_btn: {
-    backgroundColor: colors.primary,
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 10,
-    alignItems: 'center',
-  },
-  accept_btn_txt: {
-    color: 'white',
-    fontSize: 15,
-  },
-  order_recve_name: {
-    fontSize: 17,
-    fontWeight: '400',
-    color: 'black',
-  },
-  order_recve_phone_view: {
-    flexDirection: 'row',
-    marginTop: 20,
-    alignItems: 'center',
-  },
-  order_recve_loc_view: {
-    flexDirection: 'row',
-    marginTop: 10,
-    alignItems: 'center',
-  },
-  ready_btn: {
-    flex: 1,
-    backgroundColor: colors.primary,
-    borderRadius: 5,
-    alignItems: 'center',
-    paddingVertical: 10,
-    justifyContent: 'center',
-  },
-  delivryby_btn: {
-    backgroundColor: '#fdf1e3',
-    padding: 5,
-    borderRadius: 5,
-  },
-  delivryby_btn_txt: {
-    color: '#F2A341',
-  },
+
   all_orders: {
-    backgroundColor: '#F2F4F5',
+    backgroundColor: colors.dropDownBackground,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -133,14 +30,14 @@ const styles = ScaledSheet.create({
     // justifyContent: 'center',
     width: '100%',
     paddingHorizontal: '10@s',
-    backgroundColor: '#F2F4F5',
+    backgroundColor: colors.dropDownBackground,
     marginVertical: '10@s',
   },
   all_orders_header: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     height: 50,
-    backgroundColor: '#F2F4F5',
+    backgroundColor: colors.dropDownBackground,
     padding: 10,
     marginVertical: 8,
   },
@@ -148,7 +45,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     // height: 50,
-    // backgroundColor: '#F2F4F5',
+    // backgroundColor: colors.dropDownBackground,
     // padding: 10,
     marginVertical: 8,
   },
@@ -164,106 +61,13 @@ const styles = ScaledSheet.create({
     justifyContent: 'center',
     marginTop: 5,
   },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalView: {
-    height: '100%',
-    width: '50%',
-    alignSelf: 'flex-end',
-    backgroundColor: 'white',
-    padding: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  orderid_text: {
-    fontSize: 15,
-    color: 'black',
-    fontWeight: 'bold',
-  },
-  modal_header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  modal_recuring: {
-    backgroundColor: colors.primary,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 5,
-    marginLeft: 20,
-  },
-  modal_fields: {
-    flexDirection: 'row',
-    marginVertical: 5,
-    alignItems: 'center',
-  },
-  order_item: {
-    flexDirection: 'row',
-    marginTop: 20,
-    alignItems: 'center',
-  },
-  modal_title_second: {
-    color: 'black',
-    fontSize: 15,
-  },
-  modal_title_first: {
-    color: '#CCD4D6',
-    fontSize: 15,
-    width: 150,
-  },
-  archive_orders_tab: {
-    borderBottomWidth: 4,
-    height: 40,
-    paddingHorizontal: 20,
-    justifyContent: 'center',
-  },
-  calndr_date: {
-    backgroundColor: 'white',
-    height: 40,
-    width: 200,
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 10,
-  },
+
   all_orders_heading_txt: {
     fontFamily: fonts.LatoBold,
     width: '100@s',
     // paddingHorizontal:100
   },
-  toast: {
-    backgroundColor: colors.textWhite,
-    // marginHorizontal:30,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-    elevation: 6,
-  },
 
-  modal_data_heading: {
-    flexDirection: 'row',
-    padding: 12,
-    backgroundColor: '#F2F4F5',
-    borderRadius: 5,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 10,
-  },
   pagination_view: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -279,23 +83,9 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
   },
 
-  SwiperTextfg: {
-    textAlign: 'center',
-    paddingVertical: 3,
-    color: '#002733',
-    // borderRadius: 5,
-  },
-  SwiperTextbg: {
-    textAlign: 'center',
-    // paddingVertical: 3,
-    color: '#FFFFFF',
-    paddingHorizontal: 5,
-    paddingVertical: 8,
-    fontSize: 16,
-  },
   rowBack: {
     height: 55,
-    backgroundColor: '#fff',
+    backgroundColor: colors.textWhite,
   },
   BackButtons: {
     height: 60,
@@ -304,16 +94,16 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
   },
   BackButtonsText: {
-    color: '#fff',
+    color: colors.textWhite,
     fontSize: 15,
-    fontFamily: 'Lato-Medium',
+    fontFamily: fonts.LatoMedium,
   },
   ModalContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: '100%',
-    // backgroundColor: 'rgba(0,0,0,0.8)'
+    backgroundColor: 'rgba(0,0,0,0.8)',
   },
   ModeView: {
     height: 180,
@@ -339,11 +129,11 @@ const styles = ScaledSheet.create({
   ModalHeading: {
     color: '#414342',
     fontSize: 17,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   ModalParagraph: {
-    color: '#4C6870',
-    fontFamily: 'Lato-Regular',
+    color: colors.textPrimary,
+    fontFamily: fonts.LatoRegular,
     paddingHorizontal: 20,
     fontSize: 15,
     marginVertical: 15,
@@ -364,7 +154,7 @@ const styles = ScaledSheet.create({
     marginHorizontal: 10,
   },
   DeleteModal: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
     fontSize: 15,
   },
   ModalContainerPreview: {
@@ -376,7 +166,25 @@ const styles = ScaledSheet.create({
     paddingVertical: 20,
 
     // backgroundColor: 'rgba(0,0,0,0.5)',
-    shadowColor: '#000',
+    // shadowColor: colors.black,
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 1,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 4,
+    // elevation: 1,
+  },
+  ModalContainerPreview1: {
+    width: '100%',
+    height: '100%',
+    // backgroundColor: colors.textWhite,
+    // position: 'absolute',
+    // right: 0,
+    // paddingVertical: 20,
+
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    // shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -394,7 +202,7 @@ const styles = ScaledSheet.create({
     paddingVertical: '30@s',
 
     // backgroundColor: 'rgba(0,0,0,0.5)',
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -404,14 +212,6 @@ const styles = ScaledSheet.create({
     elevation: 1,
   },
 
-  dropdownbox: {
-    height: 50,
-    width: '100%',
-    borderWidth: 1,
-    borderRadius: 5,
-    marginVertical: 5,
-    borderColor: '#f1f1f1',
-  },
   ShowmodalOpenButton: {
     height: 30,
     width: 40,
@@ -451,9 +251,9 @@ const styles = ScaledSheet.create({
     borderRadius: 5,
   },
   Savetext: {
-    color: '#fff',
+    color: colors.textWhite,
     fontSize: 16,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   ImageMoadalMain: {
     height: 200,
@@ -473,7 +273,7 @@ const styles = ScaledSheet.create({
     elevation: 1,
   },
   InnerViewMainImage: {
-    backgroundColor: '#fff',
+    backgroundColor: colors.textWhite,
     height: 33,
     width: 35,
     justifyContent: 'center',
@@ -485,27 +285,27 @@ const styles = ScaledSheet.create({
   },
   IconePencilMain: {
     fontSize: 20,
-    color: '#4C6870',
+    color: colors.textPrimary,
   },
   ModalSubTitle: {
-    color: '#002733',
+    color: colors.black,
     fontSize: 17,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   dropDownModalTitle: {
     fontSize: 12,
-    fontFamily: 'Lato-Semibold',
-    color: '#002733',
+    fontFamily: fonts.LatoSemiBold,
+    color: colors.black,
     paddingVertical: 4,
   },
   TextInputMAinView: {
-    fontFamily: 'Lato-Regular',
+    fontFamily: fonts.LatoRegular,
     fontSize: 17,
     width: '100%',
     height: 150,
     borderWidth: 1,
-    borderColor: '#f1f1f1',
-    color: '#002733',
+    borderColor: colors.light_grey,
+    color: colors.black,
     borderRadius: 5,
     paddingVertical: 15,
     paddingHorizontal: 10,
@@ -516,25 +316,25 @@ const styles = ScaledSheet.create({
     marginVertical: 10,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#f1f1f1',
+    borderColor: colors.light_grey,
   },
   CalInputFaltModal: {
     fontSize: 17,
-    fontFamily: 'Lato-Regular',
+    fontFamily: fonts.LatoRegular,
     paddingHorizontal: 8,
     height: 40,
   },
   AddViewModal: {
-    color: '#002733',
+    color: colors.black,
     fontSize: 17,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
     paddingVertical: 10,
   },
   grayViewContainer: {
     width: '100%',
     justifyContent: 'center',
     alignSelf: 'center',
-    backgroundColor: '#F2F4F5',
+    backgroundColor: colors.dropDownBackground,
     borderRadius: 5,
     marginBottom: 20,
     paddingTop: 10,
@@ -542,13 +342,13 @@ const styles = ScaledSheet.create({
   },
   ToppingTitle: {
     fontSize: 14,
-    color: '#002733',
+    color: colors.black,
     paddingHorizontal: 5,
     width: 280,
     paddingVertical: 4,
   },
   WhitePencilBkgView: {
-    backgroundColor: '#4C6870',
+    backgroundColor: colors.textPrimary,
     height: 30,
     width: 30,
     justifyContent: 'center',
@@ -561,35 +361,26 @@ const styles = ScaledSheet.create({
     marginVertical: 5,
     borderRadius: 5,
     borderWidth: 1,
-    backgroundColor: '#CCD4D6',
+    backgroundColor: colors.light_grey,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
-    borderColor: '#CCD4D6',
+    borderColor: colors.light_grey,
   },
   TextStyleFlatModal: {
-    color: '#4C6870',
-    fontFamily: 'Lato-Regular',
+    color: colors.textPrimary,
+    fontFamily: fonts.LatoRegular,
   },
   BottomButtonModal: {
     position: 'absolute',
     right: 1,
     bottom: -40,
   },
-  dropdownbox1: {
-    height: 40,
-    width: '100%',
-    elevation: 0.7,
-    borderRadius: 5,
-    borderColor: '#C2CCCF',
-    marginVertical: 5,
 
-    borderWidth: 1,
-  },
   Container: {
     height: '100%',
     paddingHorizontal: 20,
-    backgroundColor: '#f1f1f1',
+    backgroundColor: colors.profileBackground,
   },
   secondaryContainer: {
     width: '100%',
@@ -610,32 +401,32 @@ const styles = ScaledSheet.create({
   },
   backButtonpage: {
     fontSize: 25,
-    color: '#002733',
-    fontFamily: 'Poppins-Bold',
+    color: colors.black,
+    fontFamily: fonts.bold,
   },
   backButtonpage: {
     fontSize: '20@s',
     fontSize: 25,
-    color: '#002733',
-    fontFamily: 'Poppins-Bold',
+    color: colors.black,
+    fontFamily: fonts.bold,
   },
   backButtonpagemobile: {
     fontSize: '10@s',
     fontSize: 25,
-    color: '#002733',
-    fontFamily: 'Poppins-Bold',
+    color: colors.black,
+    fontFamily: fonts.bold,
   },
   backButtonpageArrow: {
-    color: '#002733',
-    fontFamily: 'Poppins-Bold',
+    color: colors.black,
+    fontFamily: fonts.bold,
     justifyContent: 'center',
     alignItems: 'center',
     fontSize: '16@s',
   },
   backButtonpageArrowmobile: {
     fontSize: '25@s',
-    color: '#002733',
-    fontFamily: 'Poppins-Bold',
+    color: colors.black,
+    fontFamily: fonts.bold,
     paddingVertical: '5@s',
   },
   MobileViewContainer: {
@@ -670,7 +461,7 @@ const styles = ScaledSheet.create({
   EvenRow: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    backgroundColor: '#f1f1f1',
+    backgroundColor: colors.light_grey,
     height: '30@s',
     alignItems: 'center',
     paddingHorizontal: 20,
@@ -690,7 +481,7 @@ const styles = ScaledSheet.create({
     width: '50%',
   },
   flatMobileViewe: {
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.textWhite,
     marginTop: '10@s',
     // marginVertical: 5,
     borderRadius: 15,
@@ -763,7 +554,55 @@ const styles = ScaledSheet.create({
     color: colors.primary,
     fontFamily: fonts.PoppinsSemiBold,
     fontSize: '14@s',
-    paddingVertical:7
+    paddingVertical: 7,
+  },
+  AddButtonStyle: {
+    height: '21@s',
+  },
+  modelContainerStyle: {
+    marginHorizontal: 5,
+    marginVertical: 4,
+  },
+  deleteModalCrossIcon: {
+    fontSize: 25,
+    color: colors.light_grey,
+  },
+  SwipeListViewContainer: {
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  primaryImageContainer: {
+    height: 45,
+    width: 45,
+    resizeMode: 'contain',
+    borderRadius: 5,
+  },
+  renderAllOrderSingleStyle: {
+    width: '15%',
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+    left: 20,
+  },
+  renderAllOrderSingleSecond: {
+    width: '10%',
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+  },
+  renderAllOrderHerading: {
+    fontFamily: fonts.LatoRegular,
+    alignSelf: 'flex-start',
+    paddingHorizontal: 25,
+  },
+  ThreeDots: {
+    height: 40,
+    width: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  SwperHidenView: {
+    position: 'absolute',
+    right: 2,
+    flexDirection: 'row',
   },
 });
 export default styles;

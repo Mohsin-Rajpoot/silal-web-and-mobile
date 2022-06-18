@@ -23,6 +23,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useTranslation} from 'react-i18next';
 import colors from '@SilalApp/common/assets/colors';
+import fonts from '@SilalApp/common/assets/fonts';
 const ItemCreaterFirstStep = ({navigation}) => {
   const {t} = useTranslation();
   const [order_state, set_order_state] = useState('All');
@@ -81,7 +82,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                   <ScrollView>
                     <View style={{marginHorizontal: 45}}>
                       <Text style={styles.TitleModalPreview}>
-                        Nepolitana Pizza, 30 sm{' '}
+                        Nepolitana Pizza, 30 sm {' '}
                       </Text>
 
                       <Text style={styles.paragaphPreview}>
@@ -106,21 +107,21 @@ const ItemCreaterFirstStep = ({navigation}) => {
                     <View style={{flexDirection: 'row', marginHorizontal: 40}}>
                       <View style={{width: 60}}>
                         <Text style={styles.Cal}>221 cal</Text>
-                        <Text style={{color: '#4C6870'}}>{t('calories')}</Text>
+                        <Text style={{color: colors.sidebar}}>{t('calories')}</Text>
                       </View>
 
                       <View style={{width: 60}}>
                         <Text style={styles.Cal}>11g</Text>
-                        <Text style={{color: '#4C6870'}}>{t('Protein')}</Text>
+                        <Text style={{color:colors.sidebar}}>{t('Protein')}</Text>
                       </View>
                       <View style={{width: 60, paddingLeft: 5}}>
                         <Text style={styles.Cal}>11g</Text>
-                        <Text style={{color: '#4C6870'}}>{t('Fats')}</Text>
+                        <Text style={{color: colors.sidebar}}>{t('Fats')}</Text>
                       </View>
 
                       <View style={{width: 90}}>
                         <Text style={styles.Cal}>221 cal</Text>
-                        <Text style={{color: '#4C6870'}}>
+                        <Text style={{color: colors.sidebar}}>
                           {t('Carbohydrates')}
                         </Text>
                       </View>
@@ -189,7 +190,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                         <Entypo
                           onPress={() => setShowmodal(false)}
                           name="cross"
-                          style={{fontSize: 25, color: '#CCD4D6'}}
+                          style={{fontSize: 25, color: colors.light_grey}}
                         />
                       </View>
                       <Text style={styles.ModalParagraph}>
@@ -218,7 +219,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                             )
                           }
                           style={[
-                            {backgroundColor: '#CCD4D6'},
+                            {backgroundColor: colors.light_grey},
                             styles.Buttonss,
                           ]}>
                           <Text style={styles.DeleteModal}>{t('delete')}</Text>
@@ -304,8 +305,8 @@ const ItemCreaterFirstStep = ({navigation}) => {
             <TouchableOpacity onPress={() => set_order_state('All')}>
               <Text
                 style={{
-                  color: order_state == 'All' ? '#002733' : '#4C6870',
-                  fontFamily: 'Poppins-SemiBold',
+                  color: order_state == 'All' ? colors.black : colors.sidebar,
+                  fontFamily: fonts.LatoSemiBold,
                   paddingHorizontal: 20,
                 }}>
                 {t('add_item')}
@@ -323,8 +324,8 @@ const ItemCreaterFirstStep = ({navigation}) => {
             <TouchableOpacity onPress={() => set_order_state('completed')}>
               <Text
                 style={{
-                  color: order_state == 'completed' ? '#002733' : '#4C6870',
-                  fontFamily: 'Poppins-SemiBold',
+                  color: order_state == 'completed' ? colors.black: colors.sidebar,
+                  fontFamily: fonts.PoppinsSemiBold,
                   paddingHorizontal: 20,
                 }}>
                 {t('customization_temp')}

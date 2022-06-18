@@ -19,6 +19,8 @@ import AboutApp from '../screens/AboutApp';
 import LongerOrder from '../screens/Orders_longer/Longer_orders';
 import Order_full_view from '../screens/orders/Current/Order_full_view';
 import CreateItem from '../screens/CreateItem';
+import BarCodeScane from '../screens/CreateItem/CreateITemPages/BarCodeScane';
+import CustomValue from '../screens/CreateItem/CreateITemPages/CustomValue'
 import Animated, {interpolate, useSharedValue} from 'react-native-reanimated';
 import {View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -47,6 +49,11 @@ const Screens = ({navigation, style}) => {
         <Stack.Screen name="longerOrder" component={LongerOrder} />
         <Stack.Screen name="Order_full_view" component={Order_full_view} />
         <Stack.Screen name="CreateItem" component={CreateItem} />
+        <Stack.Screen name="BarCodeScane" component={BarCodeScane} />
+        <Stack.Screen name="CustomValue" component={CustomValue} />
+
+
+        
       </Stack.Navigator>
     </Animated.View>
   );

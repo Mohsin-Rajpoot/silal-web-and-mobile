@@ -58,7 +58,7 @@ const colors = {
   textColorPrime: "rgba(0, 39, 51, 0.2)",
   textColorSec: "rgba(0, 39, 51, 0.8)",
   primaryGreen:'#CDEFDB',
-
+  swiper_red:'#FB5C5C',
   borderColor3: "rgba(76, 104, 112, 0.15)",
   ImageBack: "#F4F7F8",
   mobileNewBorder:"rgba(76, 104, 112, 0.1)",

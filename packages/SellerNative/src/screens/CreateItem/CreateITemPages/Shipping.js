@@ -14,17 +14,35 @@ import {useTranslation} from 'react-i18next';
 import {Icon} from 'react-native-elements';
 import CustomTextInput from '@SilalApp/common/components/native/TextInput';
 import {Checkbox} from 'native-base';
+import {CheckBox} from 'react-native-elements';
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import {CustomButton} from '@SilalApp/common/components/native';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import Tooltip from 'react-native-walkthrough-tooltip';
+import AntDesign from 'react-native-vector-icons/AntDesign'
 const Shipping = ({moveForward, goPrev}) => {
   const {t} = useTranslation();
   const [active, setActive] = useState(false);
+  const [checked, setchecked] = useState(false);
   return (
     <ScrollView
-      style={styles.mainContainer}
+      style={IsTablet ? styles.mainContainer : styles.mainContainerMobile}
       contentContainerStyle={{flexGrow: 1}}>
       <View style={{flex: 1}}>
         <View style={styles.headerTitleContainer}>
-          <CustomText label={t('Shipping')} textStyle={styles.headerTitle} />
+          {!IsTablet ? (
+            <View style={styles.HeaderMainViewMobile}>
+              <View style={styles.greenCircleMobile}>
+                <Text style={styles.greenCircleTextMobile}>4</Text>
+              </View>
+              <CustomText
+                label={t('Shipping')}
+                textStyle={styles.SecondaryHeadingTitle}
+              />
+            </View>
+          ) : (
+            <CustomText label={t('Shipping')} textStyle={styles.headerTitle} />
+          )}
         </View>
         <View style={styles.divider} />
         <View style={styles.textInputContainer}>
@@ -39,7 +57,80 @@ const Shipping = ({moveForward, goPrev}) => {
             />
           </View>
 
-          <TouchableOpacity
+          <Tooltip
+                contentStyle={
+                  IsTablet
+                    ? styles.ContainerToolTip
+                    : styles.ContainerToolTipMobile
+                }
+                isVisible={active}
+                content={
+                  <Text
+                    style={{
+                      color: fonts.textWhite,
+                      fontSize: 13,
+                      fontFamily: fonts.LatoRegular,
+                      color: colors.textWhite,
+                    }}>
+                    Didn’t find an appropriate Item Name? Contact us and we'll
+                    add it! and we'll add it!
+                  </Text>
+                }
+                onClose={() => setActive(false)}
+                placement="bottom"
+                showChildInTooltip={false}
+                accessible={false}>
+                <TouchableOpacity
+                  style={
+                    IsTablet
+                      ? [
+                          styles.TooltipButton,
+                          {
+                            backgroundColor:
+                            active == true
+                                ? colors.primary
+                                : colors.blurPrimary,
+                          },
+                        ]
+                      : [
+                          styles.TooltipButtonMobile,
+                          {
+                            backgroundColor:
+                            active == true
+                                ? colors.primary
+                                : colors.blurPrimary,
+                          },
+                        ]
+                  }
+                  onPress={() => setActive(true)}>
+                  <AntDesign
+                    name="question"
+                    style={
+                      IsTablet
+                        ? [
+                            styles.TooltipText,
+                            {
+                              color:
+                              active == true
+                                  ? colors.textWhite
+                                  : colors.primary,
+                            },
+                          ]
+                        : [
+                            styles.TooltipTextMobile,
+                            {
+                              color:
+                              active == true
+                                  ? colors.textWhite
+                                  : colors.primary,
+                            },
+                          ]
+                    }
+                  />
+                </TouchableOpacity>
+              </Tooltip>
+                 {/* /////Tol Tip End */}
+          {/* <TouchableOpacity
             activeOpacity={0.6}
             style={active ? styles.questionActive : styles.questionInActive}
             onPress={() => setActive(!active)}>
@@ -49,7 +140,7 @@ const Shipping = ({moveForward, goPrev}) => {
               size={16}
               color={active ? colors.textWhite : colors.primary}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View style={styles.divider} />
         <View style={{margin: 20}}>
@@ -58,7 +149,7 @@ const Shipping = ({moveForward, goPrev}) => {
             textStyle={styles.categoryRequired}
           />
           <View
-            style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
+            style={IsTablet ?{flexDirection: 'row', alignItems: 'center', marginTop: 10}: {flexDirection:'row',justifyContent:'space-between',width:'100%',marginTop:'5%'}}>
             <View style={{width: '25%'}}>
               <CustomText
                 label={t('Width')}
@@ -108,40 +199,87 @@ const Shipping = ({moveForward, goPrev}) => {
             label={t('item_qualities')}
             textStyle={styles.categoryRequired}
           />
-          <View
-            style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
-            <Checkbox color={'green.600'}>
+          {!IsTablet ? (
+            <View>
+            <View style={styles.CheckBoxMobile}>
+            <CheckBox
+              checked={checked}
+              onPress={() => setchecked(!checked)}
+              checkedColor={colors.primary}
+              uncheckedColor={colors.gray}
+            />
+             <CustomText
+                  label={t('BreakAble')}
+                  textStyle={styles.checkboxDetail}
+                />
+            </View>
+             <View style={styles.CheckBoxMobile}>
+             <CheckBox
+               checked={checked}
+               onPress={() => setchecked(!checked)}
+               checkedColor={colors.primary}
+               uncheckedColor={colors.gray}
+             />
               <CustomText
-                label={t('BreakAble')}
-                textStyle={styles.checkboxDetail}
+                   label={t('FlameAble')}
+                   textStyle={styles.checkboxDetail}
+                 />
+             </View>
+              <View style={styles.CheckBoxMobile}>
+              <CheckBox
+                checked={checked}
+                onPress={() => setchecked(!checked)}
+                checkedColor={colors.primary}
+                uncheckedColor={colors.gray}
               />
-            </Checkbox>
-            <Checkbox color={'green.600'}>
-              <CustomText
-                label={t('FlameAble')}
-                textStyle={styles.checkboxDetail}
-              />
-            </Checkbox>
-            <Checkbox color={'green.600'}>
-              <CustomText
-                label={t('Contain_liquid')}
-                textStyle={styles.checkboxDetail}
-              />
-            </Checkbox>
-          </View>
+               <CustomText
+                    label={t('Contain_liquid')}
+                    textStyle={styles.checkboxDetail}
+                  />
+              </View>
+              </View>
+          ) : (
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 10,
+              }}>
+              <Checkbox
+                tintColors={{true: '#F15927', false: 'black'}}
+                color={'green.600'}>
+                <CustomText
+                  label={t('BreakAble')}
+                  textStyle={styles.checkboxDetail}
+                />
+              </Checkbox>
+              <Checkbox color={'green.600'}>
+                <CustomText
+                  label={t('FlameAble')}
+                  textStyle={styles.checkboxDetail}
+                />
+              </Checkbox>
+              <Checkbox color={'green.600'}>
+                <CustomText
+                  label={t('Contain_liquid')}
+                  textStyle={styles.checkboxDetail}
+                />
+              </Checkbox>
+            </View>
+          )}
         </View>
         <View style={styles.divider} />
         <View style={{marginHorizontal: 20, marginTop: 10}}>
           <View
             style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
-            <View style={{width: '25%'}}>
+            <View style={IsTablet ?{width: '25%'}: {width: '50%'}}>
               <CustomText
                 label={t('Delivery_time')}
                 textStyle={styles.categoryRequired}
               />
             </View>
 
-            <View style={{width: '25%'}}>
+            <View  style={IsTablet ?{width: '25%'}: {width: '50%'}}>
               <CustomText
                 label={t('Package_weight')}
                 textStyle={styles.categoryRequired}
@@ -152,7 +290,7 @@ const Shipping = ({moveForward, goPrev}) => {
         <View style={{margin: 20}}>
           <View
             style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
-            <View style={{width: '25%'}}>
+            <View  style={IsTablet ?{width: '25%'}: {width: '50%'}}>
               <CustomText
                 label={t('days')}
                 textStyle={styles.categoryRequired}
@@ -166,7 +304,7 @@ const Shipping = ({moveForward, goPrev}) => {
               </View>
             </View>
 
-            <View style={{width: '25%'}}>
+            <View  style={IsTablet ?{width: '25%'}: {width: '50%'}}>
               <CustomText label={t('Kg')} textStyle={styles.categoryRequired} />
               <View style={{width: '90%', marginTop: 10, marginRight: 10}}>
                 <CustomTextInput
@@ -179,6 +317,28 @@ const Shipping = ({moveForward, goPrev}) => {
           </View>
         </View>
       </View>
+      {!IsTablet ? (
+            <View style={{flexDirection: 'row'}}>
+              <TouchableOpacity
+                onPress={goPrev}
+                style={styles.BackbottomButtonContainerMobile}>
+                <Ionicons
+                  name="arrow-back"
+                  style={styles.BackbottomButtonIconMobile}
+                />
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={moveForward}
+                style={styles.ForwordbottomButtonContainerMobile}>
+                <CustomButton
+                  text={t('Next_step')}
+                  textStyle={styles.nextStepMobile}
+                  onPress={moveForward}
+                />
+              </TouchableOpacity>
+            </View>
+          ) : 
       <View style={styles.buttonContainer}>
         <CustomButton
           text={t('back')}
@@ -194,6 +354,7 @@ const Shipping = ({moveForward, goPrev}) => {
           />
         </View>
       </View>
+      }
     </ScrollView>
   );
 };
@@ -206,6 +367,13 @@ const styles = ScaledSheet.create({
     marginLeft: '5@s',
     width: '65%',
     borderRadius: '4@s',
+    marginBottom: '10@s',
+  },
+  mainContainerMobile: {
+    backgroundColor: colors.profileBackground,
+    marginLeft: '5@s',
+    width: '97%',
+    // borderRadius: '4@s',
     marginBottom: '10@s',
   },
   headerTitleContainer: {
@@ -279,5 +447,101 @@ const styles = ScaledSheet.create({
     fontSize: '12@ms',
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.primary,
+  },
+  HeaderMainViewMobile: {
+    backgroundColor: colors.textWhite,
+    height: '40@vs',
+    borderRadius: 5,
+    overflow: 'hidden',
+    marginHorizontal: '2@s',
+    elevation: 5,
+    flexDirection: 'row',
+    // justifyContent:'center'
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  greenCircleMobile: {
+    backgroundColor: colors.primary,
+    width: 26,
+    height: 26,
+    marginHorizontal: '5@s',
+    borderRadius: 13,
+  },
+  greenCircleTextMobile: {
+    color: colors.textWhite,
+    fontFamily: fonts.bold,
+    justifyContent: 'center',
+    textAlign: 'center',
+    fontSize: '15@s',
+  },
+  SecondaryHeadingTitle: {
+    fontFamily: fonts.LatoRegular,
+    color: colors.black,
+    paddingHorizontal: '5@s',
+  },
+  CheckBoxMobile:{
+    flexDirection:'row',alignItems:'center'
+  },
+  BackbottomButtonContainerMobile: {
+    backgroundColor: colors.blurPrimary,
+    height: '40@s',
+    width: '40@s',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: '10@s',
+    marginLeft: '10@s',
+    borderRadius: '5@s',
+    overflow: 'hidden',
+  },
+  BackbottomButtonIconMobile: {
+    fontSize: '17@s',
+    color: colors.primary,
+  },
+  nextStepMobile: {
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.textWhite,
+    fontSize: '12@ms',
+    width: '87%',
+    height: '38@s',
+    //  backgroundColor:'blue',
+    //  justifyContent:'center',
+    //  alignItems:'center',
+    textAlign: 'center',
+    paddingVertical: '12@s',
+  },
+
+  ContainerToolTip: {
+    flex: 1,
+    backgroundColor: colors.primary,
+    width: '100@s',
+  },
+  ContainerToolTipMobile: {
+    flex: 1,
+    backgroundColor: colors.primary,
+    width: '170@s',
+  },
+  TooltipButton: {
+    height: 30,
+    width: 30,
+    borderRadius: 15,
+    marginHorizontal: 10,
+  },
+  TooltipButtonMobile: {
+    height: '20@s',
+    width: '20@s',
+    borderRadius: 15,
+    marginHorizontal: 4,
+  },
+  TooltipText: {
+    fontSize: 25,
+    justifyContent: 'center',
+    textAlign: 'center',
+    paddingVertical: 2,
+  },
+  TooltipTextMobile: {
+    fontSize: '16@s',
+    justifyContent: 'center',
+    textAlign: 'center',
+    paddingVertical: 2,
   },
 });

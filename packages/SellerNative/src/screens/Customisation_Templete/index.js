@@ -12,6 +12,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import images from '../../Assets';
 import {useTranslation} from 'react-i18next';
 import colors from '@SilalApp/common/assets/colors';
+import fonts from '@SilalApp/common/assets/fonts';
 const Customisation_Templete = () => {
   const {t} = useTranslation();
   const data = [
@@ -28,7 +29,7 @@ const Customisation_Templete = () => {
   ];
 
   return (
-    <View style={{backgroundColor: '#f1f1f1'}}>
+    <View style={{backgroundColor:colors.backgroundColor }}>
       <FlatList
         data={data}
         numColumns={1}
@@ -39,11 +40,7 @@ const Customisation_Templete = () => {
             <View style={styles.ViewHeading}>
               <Text style={styles.headingText}>
                 <Text
-                  style={{
-                    fontSize: 17,
-                    color: '#002733',
-                    fontFamily: 'Lato-Regular',
-                  }}>
+               style={styles.styleUser}>
                   {t('topping')}:
                 </Text>{' '}
                 {t('Lettuce')}, {t('Cheese')}, {t('Tomatoes')}, {t('Pickle')}
@@ -104,11 +101,7 @@ const Customisation_Templete = () => {
               <Text style={[styles.headingText, {paddingTop: 5}]}>
                 {' '}
                 <Text
-                  style={{
-                    fontSize: 17,
-                    color: '#002733',
-                    fontFamily: 'Lato-Regular',
-                  }}>
+                  style={styles.styleUser}>
                   {t('Use_for')}:
                 </Text>{' '}
                 Sandwiches: Burger, Deli

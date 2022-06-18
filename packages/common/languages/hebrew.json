@@ -15,6 +15,7 @@
     "Account": "Account",
     "DeleteAccount": "Delete Account",
     "Contact_Silal": "Contact silal",
+    "Contact_Us":"צור קשר",
     "LetsSolveProblem": "Let's solve the problem",
     "ContactUsDetailText": "It looks like you have a problem with our system. We are here to help you, so please get in touch with us.",
     "ContactPhone_email": "Contact Phone/Email",
@@ -491,6 +492,12 @@
     "brooklyn_simmons":"Brooklyn Simmons",
     "Refund":"Refund",
     "contactCustomer":"Contact customer",
-    "call_customer_service":"Call customer-service"
+    "call_customer_service":"Call customer-service",
+    "Change_cover_picture":"שנה תמונת שער",
+    "Folder_name":"שם התיקיה",
+    "Save_changes":"שמור שינויים",
+    "Are_you_sure_you_want_to_delete_this_folder":"האם אתה בטוח שברצונך למחוק את התיקיה הזו?",
+    "Yes_Delete":"כן, מחק",
+    "0_00_303_0_453553":"0 00 303 0 453553"
   }
 }

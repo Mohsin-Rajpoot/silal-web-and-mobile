@@ -24,6 +24,7 @@ import Menu, {
 } from 'react-native-popup-menu';
 import {color} from 'react-native-elements/dist/helpers';
 import colors from '@SilalApp/common/assets/colors';
+import fonts from '@SilalApp/common/assets/fonts';
 const Secondary = '#002733';
 let Primary = colors.primary;
 const AddItem = ({navigation}) => {
@@ -197,7 +198,7 @@ const AddItem = ({navigation}) => {
                               style={{
                                 color: '#fff',
                                 fontSize: 13,
-                                fontFamily: 'Lato-Regular',
+                                fontFamily: fonts.LatoRegular,
                               }}>
                               Didn't find an appropriate Category ?
                               <Text
@@ -205,7 +206,7 @@ const AddItem = ({navigation}) => {
                                   color: colors.primary,
                                   fontSize: 13,
                                   lineHeight: 20,
-                                  fontFamily: 'Poppins-SemiBold',
+                                  fontFamily: fonts.PoppinsSemiBold,
                                   marginHorizontal: 5,
                                 }}>
                                 Contact Us
@@ -373,7 +374,7 @@ const AddItem = ({navigation}) => {
                       paddingTop: 17,
                       color: Secondary,
                       fontSize: 17,
-                      fontFamily: 'Lato-Regular',
+                      fontFamily: fonts.LatoRegular,
                     }}>
                     {t('Allergies')}
                   </Text>
@@ -399,7 +400,7 @@ const AddItem = ({navigation}) => {
                             marginLeft: -13,
                             color: Secondary,
                             fontSize: 17,
-                            fontFamily: 'Lato-Regular',
+                            fontFamily: fonts.LatoRegular,
                           }}>
                           {item.Text}
                         </Text>
@@ -412,7 +413,7 @@ const AddItem = ({navigation}) => {
                       paddingTop: 17,
                       color: Secondary,
                       fontSize: 17,
-                      fontFamily: 'Lato-Regular',
+                      fontFamily: fonts.LatoRegular,
                     }}>
                     {t('food_Preferences')}
                   </Text>
@@ -434,7 +435,7 @@ const AddItem = ({navigation}) => {
                             marginLeft: -13,
                             color: Secondary,
                             fontSize: 17,
-                            fontFamily: 'Lato-Regular',
+                            fontFamily: fonts.LatoRegular,
                           }}>
                           {item.SecondListText}
                         </Text>
@@ -457,7 +458,7 @@ const AddItem = ({navigation}) => {
                     style={{
                       color: Secondary,
                       fontSize: 15,
-                      fontFamily: 'Poppins-SemiBold',
+                      fontFamily: fonts.PoppinsSemiBold,
                       paddingVertical: 15,
                     }}>
                     {t('Select_customisations')}
@@ -475,7 +476,7 @@ const AddItem = ({navigation}) => {
                         {
                           marginLeft: -4,
                           fontSize: 15,
-                          fontFamily: 'Lato-Regular',
+                          fontFamily: fonts.LatoRegular,
                           backgroundColor: '#F2F4F5',
                           width: '29%',
                           marginHorizontal: 10,
@@ -489,7 +490,7 @@ const AddItem = ({navigation}) => {
                         styles.IngrediantsTextInput,
                         {
                           fontSize: 15,
-                          fontFamily: 'Lato-Regular',
+                          fontFamily: fonts.LatoRegular,
                           backgroundColor: '#F2F4F5',
                           width: '29%',
                           marginHorizontal: 10,
@@ -503,7 +504,7 @@ const AddItem = ({navigation}) => {
                         styles.IngrediantsTextInput,
                         {
                           fontSize: 15,
-                          fontFamily: 'Lato-Regular',
+                          fontFamily: fonts.LatoRegular,
                           backgroundColor: '#F2F4F5',
                           width: '29%',
                           marginHorizontal: 10,
@@ -708,7 +709,7 @@ const AddItem = ({navigation}) => {
                       {
                         marginLeft: -4,
                         fontSize: 15,
-                        fontFamily: 'Lato-Regular',
+                        fontFamily: fonts.LatoRegular,
                         backgroundColor: '#fff',
                         width: '90%',
                         marginHorizontal: 10,
@@ -858,7 +859,7 @@ const AddItem = ({navigation}) => {
                         paddingTop: 17,
                         color: Secondary,
                         fontSize: 17,
-                        fontFamily: 'Lato-Regular',
+                        fontFamily: fonts.LatoRegular,
                         marginHorizontal: 10,
                       }}>
                       {t('Imen_qualities')} (!)
@@ -885,7 +886,7 @@ const AddItem = ({navigation}) => {
                               marginLeft: -13,
                               color: Secondary,
                               fontSize: 17,
-                              fontFamily: 'Lato-Regular',
+                              fontFamily: fonts.LatoRegular,
                             }}>
                             {item.Text}
                           </Text>
@@ -914,7 +915,7 @@ const AddItem = ({navigation}) => {
                           styles.IngrediantsTextInput,
                           {
                             fontSize: 15,
-                            fontFamily: 'Lato-Regular',
+                            fontFamily: fonts.LatoRegular,
                             backgroundColor: '#fff',
                             width: '50%',
                             marginHorizontal: 14,
@@ -925,7 +926,7 @@ const AddItem = ({navigation}) => {
                         style={{
                           color: Secondary,
                           fontSize: 17,
-                          fontFamily: 'Lato-Regular',
+                          fontFamily: fonts.LatoRegular,
                         }}>
                         {t('minutes')}
                       </Text>
@@ -952,7 +953,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingLeft: 15,
     fontSize: 17,
-    fontFamily: 'Lato-Regular',
+    fontFamily: fonts.LatoRegular,
     alignSelf: 'center',
     borderColor: '#CCD4D6',
     height:40
@@ -971,7 +972,7 @@ const styles = StyleSheet.create({
   TextfieldTitle: {
     color: Secondary,
     fontSize: 14,
-    fontFamily: 'Lato-Regular',
+    fontFamily: fonts.LatoRegular,
     marginHorizontal: 20,
     paddingVertical: 10,
     width: '43%',
@@ -1019,7 +1020,7 @@ const styles = StyleSheet.create({
   HeaderButtonText: {
     color: '#fff',
     textAlign: 'center',
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   // ////////State
   archive_orders_tab: {
