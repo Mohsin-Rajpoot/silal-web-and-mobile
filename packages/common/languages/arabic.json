@@ -491,6 +491,8 @@
     "brooklyn_simmons":"Brooklyn Simmons",
     "Refund":"Refund",
     "contactCustomer":"Contact customer",
-    "call_customer_service":"Call customer-service"
+    "call_customer_service":"Call customer-service",
+    "awaitingAcceptance":"Awaiting acceptance (18)",
+    "accepted":"Accepted (2)"
   }
 }

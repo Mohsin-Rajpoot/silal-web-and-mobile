@@ -88,7 +88,9 @@ const colors = {
   red20:'rgba(255, 69, 69, 1)',
   gray70:'rgba(255, 255, 255, 0.7)',
   gray20:"rgba(250, 250, 250, 1)",
-  iconColor:"rgba(255, 255, 255, 1)"
+  iconColor:"rgba(255, 255, 255, 1)",
+  borderColor4:"(232, 232, 232, 0.5)",
+  modalBg:"#FDFDFD"
 };
 
 export default colors;

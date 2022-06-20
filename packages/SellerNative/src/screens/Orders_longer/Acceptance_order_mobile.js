@@ -1,75 +1,31 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {
-  StyleSheet,
-  Text,
   View,
   Keyboard,
   TouchableOpacity,
-  BackHandler,
   Dimensions,
-  SafeAreaView,
   Image,
-  FlatList,
-  TextInput,
-  Modal,
-  ScrollView,
-  Button,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Input from '@SilalApp/common/components/native/TextInput/index';
-import Entypo from 'react-native-vector-icons/Entypo';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
-import Fontisto from 'react-native-vector-icons/Fontisto';
-import IsTablet from '@SilalApp/common/components/native/IsTablet';
-// import { Image, SvgXml } from 'react-native-svg';
-import Svg, {
-  Path,
-  Defs,
-  LinearGradient,
-  Stop,
-  Rect,
-  Circle,
-  G,
-} from 'react-native-svg';
-import DatePicker from './../../components/DatePicker';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import {Searchbar} from 'react-native-paper';
-import {Picker} from '@react-native-picker/picker';
 import {useTranslation} from 'react-i18next';
 import CustomText from '@SilalApp/common/components/CustomText';
-import {ScaledSheet, verticalScale} from 'react-native-size-matters';
+import {ScaledSheet, verticalScale, scale} from 'react-native-size-matters';
 import fonts from '@SilalApp/common/assets/fonts';
-import {color} from 'react-native-elements/dist/helpers';
 import colors from '@SilalApp/common/assets/colors';
 import images from '../../../assets/images';
 import OrderItem from '../orders/Archive/molecules/OrderItem';
-import {useNavigation} from '@react-navigation/native';
-const {width, height} = Dimensions.get('window');
+import CustomModal from '@SilalApp/common/components/native/CustomModal';
+import {Icon} from 'react-native-elements';
+import OpenModal from './molecules/OpenModal';
+import CustomButton from '@SilalApp/common/components/native/CustomButton';
 
-export default function Acceptance_order_mobile({title, navigation}) {
+export default function Acceptance_order_mobile({navigation}) {
   console.log(navigation);
   const {t} = useTranslation();
   const [keyboardStatus, setKeyboardStatus] = useState(undefined);
-
-  const [modalVisible, setModalVisible] = useState(false);
-  const [show_modal_customer_data, set_show_modal_customer_data] =
-    useState(false);
-  const [show_modal_driver_data, set_show_modal_driver_data] = useState(false);
-  const [show_modal_order_details, set_show_modal_order_details] =
-    useState(false);
-  const [show_order_detail_view, set_show_order_detail_view] = useState(false);
-  const [selected_index, set_selected_index] = useState('');
-  const [search_value, set_search_value] = useState('');
-  const [search_filters, set_search_filters] = useState('');
-  const [refresher, setRefresh] = useState(false);
-  const [delivery_method, setdelivery_method] = useState();
-  const [category, setcategory] = useState();
-  const [pickup_time, setpickup_time] = useState();
-  const [status, setstatus] = useState();
-  const [date1, setdate1] = useState();
-  const [date2, setdate2] = useState();
-  const [active, setActive] = useState(false);
+  const [filter, setFilter] = useState(false);
+  const [method, setMethod] = useState(false);
+  const [order, setOrder] = useState(false);
 
   const InputRef = useRef();
 
@@ -97,7 +53,10 @@ export default function Acceptance_order_mobile({title, navigation}) {
       item: '2',
       totalPrice: '$ 129.00',
       rightIconPress: () =>
-        navigation.navigate('TabStack',{screen:'OrderStack', params:{screen:'LongOrderDetails'}})
+        navigation.navigate('TabStack', {
+          screen: 'OrderStack',
+          params: {screen: 'LongOrderDetails'},
+        }),
     },
   ];
 
@@ -118,7 +77,10 @@ export default function Acceptance_order_mobile({title, navigation}) {
             placeholderText={t('Search')}
           />
         </View>
-        <TouchableOpacity activeOpacity={0.6} style={styles.filterContainer}>
+        <TouchableOpacity
+          onPress={() => setFilter(true)}
+          activeOpacity={0.6}
+          style={styles.filterContainer}>
           <Image style={styles.filterIcon} source={images.filterIcon} />
         </TouchableOpacity>
       </View>
@@ -137,7 +99,308 @@ export default function Acceptance_order_mobile({title, navigation}) {
           />
         );
       })}
-     
+      {filter && (
+        <CustomModal
+          isModalVisible={filter}
+          setModalVisible={setFilter}
+          modalContainerStyle={{
+            padding: 0,
+            margin: 0,
+            paddingHorizontal: scale(15),
+            overflow: 'hidden',
+            borderRadius: 20,
+            backgroundColor: colors.gray20,
+          }}
+          modalWrapperStyle={{
+            marginTop: '80%',
+            marginHorizontal: 0,
+            marginVertical: 0,
+            backgroundColor: colors.gray20,
+          }}>
+          <View style={{width: '100%'}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}>
+              <View />
+              <CustomText
+                label={t('filters')}
+                color={colors.black50}
+                fontSize={17}
+                fontFamily={fonts.LatoBold}
+              />
+              <TouchableOpacity onPress={() => setFilter(false)}>
+                <Icon
+                  type="entypo"
+                  name="cross"
+                  color={colors.textPrimaryBlur}
+                  size={verticalScale(22)}
+                />
+              </TouchableOpacity>
+            </View>
+            <CustomText
+              fontFamily={fonts.LatoMedium}
+              fontSize={15}
+              marginBottom={verticalScale(8)}
+              marginTop={verticalScale(15)}
+              label={t('receivingMethod')}
+            />
+            <OpenModal
+              text={t('allMethods')}
+              onPress={() => {
+                setMethod(true);
+                setFilter(false);
+              }}
+            />
+            <CustomText
+              fontFamily={fonts.LatoMedium}
+              fontSize={15}
+              marginBottom={verticalScale(8)}
+              marginTop={verticalScale(15)}
+              label={t('Status')}
+            />
+            <OpenModal
+              text={t('all-orders')}
+              onPress={() => {
+                setOrder(true);
+                setFilter(false);
+              }}
+            />
+            <CustomText
+              fontFamily={fonts.LatoMedium}
+              fontSize={15}
+              marginBottom={verticalScale(8)}
+              marginTop={verticalScale(15)}
+              label={t('date_range')}
+            />
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}>
+              <View style={{width: '48%'}}>
+                <OpenModal text={t('all-orders')} />
+              </View>
+              <View style={{width: '48%'}}>
+                <OpenModal text={t('all-orders')} />
+              </View>
+            </View>
+            <CustomButton
+              textStyle={styles.btnText}
+              text={t('Apply')}
+              containerStyle={styles.btn}
+            />
+          </View>
+        </CustomModal>
+      )}
+      {method && (
+        <CustomModal
+          isModalVisible={method}
+          setModalVisible={setMethod}
+          modalContainerStyle={{
+            padding: 0,
+            margin: 0,
+            paddingHorizontal: scale(15),
+            overflow: 'hidden',
+            borderRadius: 20,
+            backgroundColor: colors.gray20,
+          }}
+          modalWrapperStyle={{
+            marginTop: '140%',
+            marginHorizontal: 0,
+            marginVertical: 0,
+            backgroundColor: colors.gray20,
+          }}>
+          <View style={{width: '100%'}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}>
+              <View />
+              <CustomText
+                label={t('receivingMethod')}
+                color={colors.black50}
+                fontSize={17}
+                fontFamily={fonts.LatoBold}
+              />
+              <TouchableOpacity
+                onPress={() => {
+                  setMethod(false);
+                  setFilter(true);
+                }}>
+                <Icon
+                  type="entypo"
+                  name="cross"
+                  color={colors.textPrimaryBlur}
+                  size={verticalScale(22)}
+                />
+              </TouchableOpacity>
+            </View>
+            <CustomText
+              fontSize={15}
+              fontFamily={fonts.LatoBold}
+              color={colors.primary}
+              marginTop={verticalScale(15)}
+              label={t('allMethods')}
+            />
+            <View style={styles.divider} />
+            <TouchableOpacity
+              activeOpacity={0.6}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}>
+              <CustomText
+                fontSize={15}
+                fontFamily={fonts.LatoMedium}
+                color={colors.black50}
+                label={t('Delivery')}
+              />
+              <Icon
+                type="antdesign"
+                name="check"
+                size={20}
+                color={colors.primary}
+              />
+            </TouchableOpacity>
+            <View style={styles.divider} />
+            <TouchableOpacity
+              activeOpacity={0.6}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}>
+              <CustomText
+                fontSize={15}
+                fontFamily={fonts.LatoMedium}
+                color={colors.black50}
+                label={t('Pickup')}
+              />
+              <Icon
+                type="antdesign"
+                name="check"
+                size={20}
+                color={colors.primary}
+              />
+            </TouchableOpacity>
+            <View style={{height: verticalScale(40)}} />
+          </View>
+        </CustomModal>
+      )}
+      {order && (
+        <CustomModal
+          isModalVisible={order}
+          setModalVisible={setOrder}
+          modalContainerStyle={{
+            padding: 0,
+            margin: 0,
+            paddingHorizontal: scale(15),
+            overflow: 'hidden',
+            borderRadius: 20,
+            backgroundColor: colors.gray20,
+          }}
+          modalWrapperStyle={{
+            marginTop: '140%',
+            marginHorizontal: 0,
+            marginVertical: 0,
+            backgroundColor: colors.gray20,
+          }}>
+          <View style={{width: '100%'}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}>
+              <View />
+              <CustomText
+                label={t('Status')}
+                color={colors.black50}
+                fontSize={17}
+                fontFamily={fonts.LatoBold}
+              />
+              <TouchableOpacity
+                onPress={() => {
+                  setOrder(false);
+                  setFilter(true);
+                }}>
+                <Icon
+                  type="entypo"
+                  name="cross"
+                  color={colors.textPrimaryBlur}
+                  size={verticalScale(22)}
+                />
+              </TouchableOpacity>
+            </View>
+            <CustomText
+              fontSize={15}
+              fontFamily={fonts.LatoBold}
+              color={colors.primary}
+              marginTop={verticalScale(15)}
+              label={t('allMethods')}
+            />
+            <View style={styles.divider} />
+            <TouchableOpacity
+              activeOpacity={0.6}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}>
+              <View style={[styles.pendingCont,{backgroundColor:colors.blueDark}]}>
+              <CustomText
+                fontSize={11}
+                fontFamily={fonts.LatoMedium}
+                color={colors.textWhite}
+                label={t('waiting_for_pickup')}
+              />
+              </View>
+              <Icon
+                type="antdesign"
+                name="check"
+                size={20}
+                color={colors.primary}
+              />
+            </TouchableOpacity>
+            <View style={styles.divider} />
+            <TouchableOpacity
+              activeOpacity={0.6}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}>
+             <View style={styles.pendingCont}>
+             <CustomText
+                fontSize={11}
+                fontFamily={fonts.LatoMedium}
+                color={colors.textWhite}
+
+                label={t('Pending')}
+              />
+             </View>
+              <Icon
+                type="antdesign"
+                name="check"
+                size={20}
+                color={colors.primary}
+              />
+            </TouchableOpacity>
+            <View style={{height: verticalScale(40)}} />
+          </View>
+        </CustomModal>
+       
+      )}
     </View>
   );
 }
@@ -177,4 +440,26 @@ const styles = ScaledSheet.create({
     height: '100%',
     resizeMode: 'contain',
   },
+  btn: {
+    width: '100%',
+    height: '45@vs',
+    borderRadius: '10@vs',
+    marginTop: '20@vs',
+  },
+  btnText: {
+    fontSize: '13@vs',
+  },
+  divider: {
+    width: '100%',
+    borderBottomWidth: 1,
+    borderColor: colors.underLine,
+    marginVertical: '15@vs',
+  },
+  pendingCont:{
+    paddingHorizontal:'10@s',
+    paddingVertical:'3@vs',
+    backgroundColor:colors.orange1,
+    borderRadius:'5@vs'
+  },
+ 
 });
