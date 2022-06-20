@@ -33,7 +33,7 @@ const CustomValue = ({navigation}) => {
         />
         <View style={styles.textfiedStyleMobile}>
           <CustomText
-            label={t('Your adding a new value to this field')}
+            label={t('Your_adding_a_new_value_to_this_field')}
             //  translation Not Added
             textStyle={styles.HeadingInputHeading}
           />
@@ -45,7 +45,7 @@ const CustomValue = ({navigation}) => {
 
           <View style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
             <CustomText
-              label={t('Current Values')}
+              label={t('Current_Values')}
               //  translation Not Added
               textStyle={styles.HeadingInputHeading}
             />
@@ -77,7 +77,7 @@ const CustomValue = ({navigation}) => {
           <TouchableOpacity style={styles.AddButtonMobile}>
             <Entypo name="plus" style={styles.plusIcon} />
             <CustomText
-              label={t('Add one more option')}
+              label={t('Add_One_more_option')}
               //  translation Not Added
               textStyle={styles.buttonPlus}
             />
@@ -85,7 +85,7 @@ const CustomValue = ({navigation}) => {
         </View>
       </ScrollView>
       <CustomButton
-        text={t('Add values to Brand field')}
+        text={t('Add_values_to_Brand_field')}
         //  translation Not Added
         textStyle={styles.TextAddValue}
         containerStyle={!IsTablet ? styles.addValueBtnMobile : styles.submitBtn}

@@ -210,7 +210,7 @@ const ItemInformation = ({onPress}) => {
               </View>
             </View>
             <View style={styles.textInputContainer}>
-              <CustomTextInput />
+              <CustomTextInput inputStyle={!IsTablet? styles.InputCntainerMobile : null } />
               {/* ToolTip Start */}
 
               <Tooltip
@@ -310,7 +310,7 @@ const ItemInformation = ({onPress}) => {
                 />
               </View>
             </View>
-            <CustomTextInput placeholderText={t('item_name')} />
+            <CustomTextInput inputTextStyle={{paddingHorizontal:2}} inputStyle={!IsTablet? styles.InputCntainerMobile : null } placeholderText={t('item_name')} />
             <View
               style={{
                 flexDirection: 'row',
@@ -366,7 +366,7 @@ const ItemInformation = ({onPress}) => {
                   {active == false ? (
                     <FlatList
                       data={data1}
-                      keyExtractor={(item, index) => item + index.toString()}
+                      keyExtractor={(item, index) => index.toString()}
                       renderItem={({item}) => (
                         <TouchableOpacity
                           onPress={() => setActive(!active)}
@@ -388,7 +388,7 @@ const ItemInformation = ({onPress}) => {
                   {active == true ? (
                     <FlatList
                       data={data2}
-                      keyExtractor={(item, index) => item + index.toString()}
+                      keyExtractor={(item, index) =>index.toString()}
                       renderItem={({item}) => (
                         <TouchableOpacity
                           onPress={() => setActive(!active)}
@@ -435,11 +435,11 @@ const ItemInformation = ({onPress}) => {
                   />
                   <Icon name="caretdown" type="antdesign" size={16} />
                 </TouchableOpacity>
-  {/* ToolTip Start */}
+               {/* ToolTip Start */}
 
-  <Tooltip
-                contentStyle={
-                  IsTablet
+                <Tooltip
+                 contentStyle={
+                 IsTablet
                     ? styles.ContainerToolTip
                     : styles.ContainerToolTipMobile
                 }
@@ -525,7 +525,7 @@ const ItemInformation = ({onPress}) => {
               activeOpacity={0.6}
               onPress={() =>{IsTablet ? setBarCodeModal(!barcodeModal):  navigation.navigate('BarCodeScane');}}
               >
-              <View style={styles.barcodeContainer}>
+              <View style={IsTablet ? styles.barcodeContainer: styles.barcodeContainerMobile}>
                 <CustomText
                   label={t('Barcode')}
                   textStyle={styles.barcodeText}
@@ -556,6 +556,10 @@ const ItemInformation = ({onPress}) => {
                 />
               </View>
             </View>
+            {!IsTablet ? 
+            <CustomTextInput multiline={true}
+             numberOfLines={5} inputStyle={!IsTablet? styles.InputCntainerMobile1 : null } />
+        : null  }
           </View>
           {IsTablet ? (
             <View style={styles.nextButton}>
@@ -628,7 +632,7 @@ const ItemInformation = ({onPress}) => {
             <ScrollView style={styles.scrollViewCon}>
               <FlatList
                 data={data}
-                keyExtractor={(item, index) => item + index.toString()}
+                keyExtractor={(item, index) =>index.toString()}
                 renderItem={({item}) => (
                   <TouchableOpacity
                     onPress={() => [setActive(true), setselectedColor(item.id)]}
@@ -659,7 +663,7 @@ const ItemInformation = ({onPress}) => {
               {active == true ? (
                 <FlatList
                   data={data1}
-                  keyExtractor={(item, index) => item + index.toString()}
+                  keyExtractor={(item, index) =>index.toString()}
                   renderItem={({item}) => (
                     <TouchableOpacity
                       onPress={() => [
@@ -694,7 +698,7 @@ const ItemInformation = ({onPress}) => {
               {Second == true ? (
                 <FlatList
                   data={data2}
-                  keyExtractor={(item, index) => item + index.toString()}
+                  keyExtractor={(item, index) =>index.toString()}
                   renderItem={({item}) => (
                     <TouchableOpacity
                       // onPress={() => setThirdcategory()}
@@ -829,6 +833,15 @@ const styles = ScaledSheet.create({
     borderWidth: '0.7@s',
     borderRadius: '3@s',
     padding: '5@s',
+  },
+  barcodeContainerMobile: {
+    borderColor: colors.borderColor,
+    borderWidth: '0.7@s',
+    borderRadius: '3@s',
+    padding: '5@s',
+    padding: '7@s',
+    height:'33@s',
+
   },
   borderCodeHeaderText: {
     fontSize: '16@ms',
@@ -1062,4 +1075,18 @@ const styles = ScaledSheet.create({
   RBSheetData: {
     marginHorizontal: '5%',
   },
+  InputCntainerMobile:{
+    // backgroundColor:'red',
+    // paddingBottom:'4@s'
+    height:'35@s'
+  },
+  InputCntainerMobile1:{
+    // backgroundColor:'red',
+    // paddingBottom:'4@s'
+    height:'80@s',
+    alignItems:'flex-start',
+    padding:"5@s"
+    
+  },
+  
 });

@@ -27,12 +27,6 @@ const Specification = ({moveForward, goPrev}) => {
   const [customField, setCustomField] = useState(false);
   const navigation = useNavigation();
 
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    {label: 'Apple', value: 'apple'},
-    {label: 'Banana', value: 'banana'},
-  ]);
   return (
     <>
       <ScrollView
@@ -76,22 +70,30 @@ const Specification = ({moveForward, goPrev}) => {
               textStyle={styles.categoryRequired}
             />
             <CustomText label={t('Brand')} textStyle={styles.inputTitle} />
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <View
-                style={
-                  IsTablet ? {width: '90%'} : styles.SpecificationMobileDrop
-                }>
-                <DropDown placeholder="Apple" />
-              </View>
+            <View style={{zIndex: 1}}>
+              <View style={styles.MainRowContainer}>
+                <View
+                  style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
+                  <DropDown
+                    CustomtextStyle={{zIndex: 10}}
+                    multiple={true}
+                    DropDownCustomStyle={!IsTablet ? styles.dropSSd : null}
+                    placeholder="Apple"
+                  />
+                </View>
 
-              <TouchableOpacity
-                onPress={() => navigation.navigate('CustomValue')}
-                style={
-                  IsTablet ? styles.plusContainer : styles.plusContainerMobile
-                }>
-                <Icon name="plus" type="antdesign" color={colors.primary} />
-              </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('CustomValue')}
+                  style={
+                    IsTablet
+                      ? styles.plusContainer
+                      : [styles.plusContainerMobile]
+                  }>
+                  <Icon name="plus" type="antdesign" color={colors.primary} />
+                </TouchableOpacity>
+              </View>
             </View>
+
             <CustomText label={t('Color')} textStyle={styles.inputTitle} />
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <View style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
@@ -100,115 +102,121 @@ const Specification = ({moveForward, goPrev}) => {
                     !IsTablet ? styles.DropDownMobileCustom : null
                   }
                 />
-                {/* <DropDown multiple={true}/> */}
-                {/* <CustomDropDown multiple={true}  /> */}
               </View>
 
               <TouchableOpacity
-              onPress={() => navigation.navigate('CustomValue')}
+                onPress={() => navigation.navigate('CustomValue')}
                 style={
-                  IsTablet ? styles.plusContainer : [styles.plusContainerMobile]
+                  IsTablet
+                    ? styles.plusContainer
+                    : [styles.plusContainerMobile1]
                 }>
                 <Icon name="plus" type="antdesign" color={colors.primary} />
               </TouchableOpacity>
             </View>
 
+            <View style={{zIndex: 1}}>
+              <CustomText
+                label={t('Screen_size')}
+                textStyle={styles.inputTitle1}
+              />
+              <View style={styles.MainRowContainer}>
+                <View
+                  style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
+                  <DropDown
+                    CustomtextStyle={{zIndex: 10}}
+                    multiple={true}
+                    DropDownCustomStyle={!IsTablet ? styles.dropSSd : null}
+                    placeholder="15.3"
+                  />
+                </View>
+
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('CustomValue')}
+                  style={
+                    IsTablet
+                      ? styles.plusContainer
+                      : [styles.plusContainerMobile]
+                  }>
+                  <Icon name="plus" type="antdesign" color={colors.primary} />
+                </TouchableOpacity>
+              </View>
+            </View>
             <CustomText label={t('Capacity')} textStyle={styles.inputTitle} />
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.MainRowContainer}>
               <View style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
                 <MultiSelectDropDown
                   CustomDropdownStyle={
                     !IsTablet ? styles.DropDownMobileCustom : null
                   }
                 />
-                {/* <DropDown multiple={true}/> */}
-                {/* <CustomDropDown multiple={true}  /> */}
               </View>
               <TouchableOpacity
-              onPress={() => navigation.navigate('CustomValue')}
+                onPress={() => navigation.navigate('CustomValue')}
                 style={
-                  IsTablet ? styles.plusContainer : styles.plusContainerMobile
+                  IsTablet ? styles.plusContainer : styles.plusContainerMobile1
                 }>
                 <Icon name="plus" type="antdesign" color={colors.primary} />
               </TouchableOpacity>
             </View>
-            <CustomText
-              label={t('Screen_size')}
-              textStyle={styles.inputTitle}
-            />
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <View style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
-                <DropDown
-                  DropDownCustomStyle={!IsTablet ? styles.dropSSd : null}
-                  placeholder="15.3"
-                />
+
+            <View style={{zIndex: 1}}>
+              <CustomText
+                label={t('StorageType')}
+                textStyle={styles.inputTitle}
+              />
+
+              <View style={styles.MainRowContainer}>
+                <View
+                  style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
+                  <DropDown
+                    DropDownCustomStyle={!IsTablet ? styles.dropSSd : null}
+                    placeholder="SSD"
+                  />
+                </View>
+
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('CustomValue')}
+                  style={
+                    IsTablet
+                      ? styles.plusContainer
+                      : [styles.plusContainerMobile, {marginTop: 10}]
+                  }>
+                  <Icon name="plus" type="antdesign" color={colors.primary} />
+                </TouchableOpacity>
               </View>
-
-              <TouchableOpacity
-              onPress={() => navigation.navigate('CustomValue')}
-                style={
-                  IsTablet
-                    ? styles.plusContainer
-                    : [styles.plusContainerMobile, {marginTop: '3%'}]
-                }>
-                <Icon name="plus" type="antdesign" color={colors.primary} />
-              </TouchableOpacity>
             </View>
-            <CustomText
-              label={t('StorageType')}
-              textStyle={styles.inputTitle}
-            />
 
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <View style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
-                <DropDown
-                  DropDownCustomStyle={!IsTablet ? styles.dropSSd : null}
-                  placeholder="SSD"
-                />
-              </View>
-
-              <TouchableOpacity
-              onPress={() => navigation.navigate('CustomValue')}
-                style={
-                  IsTablet
-                    ? styles.plusContainer
-                    : [styles.plusContainerMobile, {marginTop: 10}]
-                }>
-                <Icon name="plus" type="antdesign" color={colors.primary} />
-              </TouchableOpacity>
-            </View>
             <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
               <CustomText label={t('display')} textStyle={styles.inputTitle} />
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={styles.MainRowContainer}>
                 <View style={styles.customRadioOne} />
                 <CustomText label={t('yes')} textStyle={styles.yesText} />
               </View>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={styles.MainRowContainer}>
                 <View style={styles.customRadioInActive} />
                 <CustomText label={t('no')} textStyle={styles.yesText} />
               </View>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={styles.MainRowContainer}>
                 <View style={styles.customRadioInActive} />
                 <CustomText label={t('Both')} textStyle={styles.yesText} />
               </View>
             </View>
 
             <CustomText label={t('Capacity')} textStyle={styles.inputTitle} />
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.MainRowContainer}>
               <View style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
                 <MultiSelectDropDown
                   CustomDropdownStyle={
                     !IsTablet ? styles.DropDownMobileCustom : null
                   }
                 />
-                {/* <DropDown multiple={true}/> */}
-                {/* <CustomDropDown multiple={true}  /> */}
               </View>
 
               <TouchableOpacity
-              onPress={() => navigation.navigate('CustomValue')}
+                onPress={() => navigation.navigate('CustomValue')}
                 style={
-                  IsTablet ? styles.plusContainer : styles.plusContainerMobile
+                  IsTablet ? styles.plusContainer : styles.plusContainerMobile2
                 }>
                 <Icon name="plus" type="antdesign" color={colors.primary} />
               </TouchableOpacity>
@@ -216,16 +224,7 @@ const Specification = ({moveForward, goPrev}) => {
             {!IsTablet ? (
               <TouchableOpacity
                 onPress={() => setCustomField(!customField)}
-                style={{
-                  backgroundColor: colors.blurPrimary,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flexDirection: 'row',
-                  height: 40,
-                  marginVertical: '5%',
-                  borderRadius: 5,
-                  overflow: 'hidden',
-                }}>
+                style={styles.CreateFieldsContainer}>
                 <Icon
                   name="plus"
                   type="antdesign"
@@ -249,7 +248,7 @@ const Specification = ({moveForward, goPrev}) => {
                 textStyle={styles.backText}
                 onPress={goPrev}
               />
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={styles.MainRowContainer}>
                 <TouchableOpacity
                   activeOpacity={0.6}
                   style={styles.addCustomField}
@@ -410,7 +409,7 @@ const styles = ScaledSheet.create({
     marginHorizontal: '2@s',
     elevation: 5,
     flexDirection: 'row',
-    // justifyContent:'center'
+
     alignItems: 'center',
     marginTop: 10,
   },
@@ -504,6 +503,13 @@ const styles = ScaledSheet.create({
     color: colors.textPrime,
     textTransform: 'uppercase',
   },
+  inputTitle1: {
+    fontSize: '10@ms',
+    fontFamily: fonts.bold,
+    color: colors.textPrime,
+
+    paddingBottom: '5@s',
+  },
   inputTitle: {
     fontSize: '10@ms',
     fontFamily: fonts.bold,
@@ -539,12 +545,34 @@ const styles = ScaledSheet.create({
   plusContainerMobile: {
     backgroundColor: colors.blurPrimary,
     marginHorizontal: '10@s',
+
+    borderRadius: '4@s',
+    height: '45@s',
+    width: '43@s',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  plusContainerMobile2: {
+    backgroundColor: colors.blurPrimary,
+    marginHorizontal: '10@s',
+
+    borderRadius: '4@s',
+    height: '45@s',
+    width: '43@s',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: '15@s',
+  },
+  plusContainerMobile1: {
+    backgroundColor: colors.blurPrimary,
+    marginHorizontal: '10@s',
     // padding: '8@s',
     borderRadius: '4@s',
     height: '45@s',
     width: '43@s',
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: '16@s',
   },
   backText: {
     fontSize: '12@ms',
@@ -579,12 +607,10 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: '3@s',
-    // paddingHorizontal: '10@s',
-    // marginRight: '10@s',
-    // paddingVertical: '3@s',
+
     width: '100%',
     textAlign: 'center',
-    // justifyContent:'center'
+
     height: 40,
     marginVertical: 20,
   },
@@ -679,8 +705,10 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
   },
   ColorMobileView: {
-    height: '60%',
+    // height: '60%',
     width: '85%',
+    // marginBottom:'2@s'
+    // backgroundColor:'red',
   },
   DropDownMobileCustom: {
     height: '45@s',
@@ -690,7 +718,9 @@ const styles = ScaledSheet.create({
   },
   dropSSd: {
     backgroundColor: colors.dullWhite,
-    height: '10@s',
+    height: '20@vs',
+    marginBottom: '17@s',
+    // zIndex:1
   },
   BackbottomButtonContainerMobile: {
     backgroundColor: colors.blurPrimary,
@@ -724,5 +754,19 @@ const styles = ScaledSheet.create({
     color: colors.black,
     fontSize: '15@s',
     fontFamily: fonts.bold,
+  },
+  MainRowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  CreateFieldsContainer: {
+    backgroundColor: colors.blurPrimary,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    height: 40,
+    marginVertical: '5%',
+    borderRadius: 5,
+    overflow: 'hidden',
   },
 });
