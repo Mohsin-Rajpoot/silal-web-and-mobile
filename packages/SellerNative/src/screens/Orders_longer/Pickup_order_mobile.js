@@ -20,7 +20,7 @@ import OpenModal from './molecules/OpenModal';
 import CustomButton from '@SilalApp/common/components/native/CustomButton';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 
-export default function Acceptance_order_mobile({navigation}) {
+export default function Pickup_order_mobile({navigation,route}) {
   console.log(navigation);
   const {t} = useTranslation();
   const [keyboardStatus, setKeyboardStatus] = useState(false);
@@ -72,11 +72,13 @@ export default function Acceptance_order_mobile({navigation}) {
       date: '12.11.2021 14:18',
       item: '2',
       totalPrice: '$ 129.00',
-      rightIconPress: () =>
+      rightIconPress: () => {
+        
         navigation.navigate('TabStack', {
           screen: 'OrderStack',
-          params: {screen: 'LongOrderDetails'},
-        }),
+          params: {screen: 'LongOrderDetails', params:{waiting:true}},
+        });
+      },
     },
     {
       id: 2,
@@ -193,7 +195,7 @@ export default function Acceptance_order_mobile({navigation}) {
             <OrderItem
               key={item.id}
               rightIconChange
-              pending
+              waiting
               orderId={item.orderId}
               customerName={item.customerName}
               item={item.item}
@@ -613,7 +615,7 @@ export default function Acceptance_order_mobile({navigation}) {
             }}>
             <View style={{width: '100%'}}>
               <TouchableOpacity
-              style={{alignSelf:'flex-end'}}
+                style={{alignSelf: 'flex-end'}}
                 onPress={() => {
                   setCalendar(false);
                   setFilter(true);
@@ -625,22 +627,41 @@ export default function Acceptance_order_mobile({navigation}) {
                   size={verticalScale(18)}
                 />
               </TouchableOpacity>
-              <View style={{height:verticalScale(300)}}>
-              <Calendar />
+              <View style={{height: verticalScale(300)}}>
+                <Calendar />
               </View>
-              <View style={{height: verticalScale(10),}} />
-              <View style={{flexDirection:'row',alignItems:'center'}}>
-                  <View style={styles.thisWeekCont}>
-                  <CustomText label={t("this_week")} fontFamily={fonts.LatoMedium} fontSize={15} color={colors.primary} />
-                  </View>
-                  <View style={styles.thisWeekCont}>
-                  <CustomText label={t("Past week")} fontFamily={fonts.LatoMedium} fontSize={15} color={colors.primary} />
-                  </View>
-                  <View style={styles.thisWeekCont}>
-                  <CustomText label={t("this_month")} fontFamily={fonts.LatoMedium} fontSize={15} color={colors.primary} />
-                  </View>
+              <View style={{height: verticalScale(10)}} />
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={styles.thisWeekCont}>
+                  <CustomText
+                    label={t('this_week')}
+                    fontFamily={fonts.LatoMedium}
+                    fontSize={15}
+                    color={colors.primary}
+                  />
+                </View>
+                <View style={styles.thisWeekCont}>
+                  <CustomText
+                    label={t('Past week')}
+                    fontFamily={fonts.LatoMedium}
+                    fontSize={15}
+                    color={colors.primary}
+                  />
+                </View>
+                <View style={styles.thisWeekCont}>
+                  <CustomText
+                    label={t('this_month')}
+                    fontFamily={fonts.LatoMedium}
+                    fontSize={15}
+                    color={colors.primary}
+                  />
+                </View>
               </View>
-              <CustomButton textStyle={{fontSize:verticalScale(13)}} text={t("Apply")} containerStyle={styles.applyBtn} />
+              <CustomButton
+                textStyle={{fontSize: verticalScale(13)}}
+                text={t('Apply')}
+                containerStyle={styles.applyBtn}
+              />
             </View>
           </CustomModal>
         )}
@@ -715,18 +736,18 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  thisWeekCont:{
-    paddingVertical:'3@vs',
-    paddingHorizontal:'8@s',
-    backgroundColor:colors.Primary20,
-    borderRadius:'5@vs',
-    justifyContent:'center',
-    alignItems:'center',
-    marginRight:'10@s'
+  thisWeekCont: {
+    paddingVertical: '3@vs',
+    paddingHorizontal: '8@s',
+    backgroundColor: colors.Primary20,
+    borderRadius: '5@vs',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: '10@s',
   },
-  applyBtn:{
+  applyBtn: {
     width: '100%',
     height: '45@vs',
-    marginTop:'30@vs'
-  }
+    marginTop: '30@vs',
+  },
 });

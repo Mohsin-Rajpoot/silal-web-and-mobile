@@ -13,6 +13,7 @@ import OrderIdScreen from '../screens/orders/Archive/OrderIdScreen';
 import Acceptance_order_mobile from '../screens/Orders_longer/Acceptance_order_mobile'
 import LongOrderDetails from '../screens/Orders_longer/molecules/LongOrderDetails';
 import Acceptance_orders from '../screens/Orders_longer/Acceptance_orders'
+import Pickup_order_mobile from '../screens/Orders_longer/Pickup_order_mobile';
 const Stack = createNativeStackNavigator();
 // const navTheme = {
 //   ...DefaultTheme,
@@ -39,6 +40,7 @@ const OrderStack = () => {
       <Stack.Screen name='Acceptance_order_mobile' component={Acceptance_order_mobile}/>
       <Stack.Screen name='LongOrderDetails' component={LongOrderDetails}/>
       <Stack.Screen name='Acceptance_orders' component={Acceptance_orders}/>
+      <Stack.Screen name='Pickup_order_mobile' component={Pickup_order_mobile}/>
     </Stack.Navigator>
     // </NavigationContainer>
   );

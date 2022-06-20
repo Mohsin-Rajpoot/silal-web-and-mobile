@@ -33,7 +33,10 @@ const OrderItem = ({
   price,
   image,
   imgText1,
-  imgText2
+  imgText2,
+  waiting,
+  waitings,
+
 }) => {
   const {t} = useTranslation();
 
@@ -117,10 +120,17 @@ const OrderItem = ({
             fontSize={15}
             fontFamily={fonts.LatoMedium}
           />
-          {pending ? (
+            {waiting ? <View style={styles.waitingCont}>
+              <CustomText
+                label={t("waiting_for_pickup")}
+                color={colors.textWhite}
+                fontFamily={fonts.LatoMedium}
+                fontSize={11}
+              />
+            </View> :  pending ? (
             <View style={styles.pendingCont}>
               <CustomText
-                label="pending"
+                label={t("Pending")}
                 color={colors.textWhite}
                 fontFamily={fonts.LatoMedium}
                 fontSize={11}
@@ -441,6 +451,12 @@ const styles = ScaledSheet.create({
   },
   pendingCont: {
     backgroundColor: colors.orange1,
+    paddingHorizontal: '10@s',
+    paddingVertical: '3@vs',
+    borderRadius: '5@vs',
+  },
+  waitingCont: {
+    backgroundColor: colors.blueDark,
     paddingHorizontal: '10@s',
     paddingVertical: '3@vs',
     borderRadius: '5@vs',

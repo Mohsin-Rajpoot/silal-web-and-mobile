@@ -16,10 +16,10 @@ import {
   Button,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+
 import {useTranslation} from 'react-i18next';
 // import { Image, SvgXml } from 'react-native-svg';
 import Svg, {
@@ -34,7 +34,9 @@ import Svg, {
 import DatePicker from './../../components/DatePicker';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {Searchbar} from 'react-native-paper';
-import {Picker} from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker'
+import Pickup_order_mobile from './Pickup_order_mobile'
+
 
 const {width, height} = Dimensions.get('window');
 
@@ -368,7 +370,7 @@ export default function Archive_orders({title, navigation}) {
     return <View style={{height: 1, backgroundColor: '#EBEEEF'}}></View>;
   };
 
-  return (
+  return !IsTablet ? <Pickup_order_mobile navigation={navigation} /> : (
     <View style={{height: '100%', padding: 20}}>
       <View style={{flexDirection: 'row'}}>
         <View>

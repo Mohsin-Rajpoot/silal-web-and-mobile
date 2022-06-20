@@ -5,10 +5,10 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import fonts from '@SilalApp/common/assets/fonts';
 import colors from '@SilalApp/common/assets/colors';
 import { Icon } from 'react-native-elements';
-const OpenModal = ({onPress,text}) => {
+const OpenModal = ({onPress,text,color}) => {
   return (
     <TouchableOpacity activeOpacity={0.6} onPress={onPress} style={styles.mainContainer}>
-      <CustomText label={text} fontSize={15} color={colors.gray50} fontFamily={fonts.latoBold} />
+      <CustomText label={text} fontSize={15} color={color || colors.black50} fontFamily={fonts.latoBold} />
       <Icon type='antdesign' name='caretdown' color={colors.light_grey50} size={verticalScale(10)} />
     </TouchableOpacity>
   )
@@ -27,7 +27,8 @@ const styles = ScaledSheet.create({
         padding:'12@vs',
         borderRadius:'10@vs',
         paddingRight:'20@s',
-        marginBottom:'10@vs'
+        marginBottom:'10@vs',
+        backgroundColor:colors.textWhite
 
     }
 })
