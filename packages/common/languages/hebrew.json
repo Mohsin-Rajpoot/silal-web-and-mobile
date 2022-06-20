@@ -498,6 +498,8 @@
     "Save_changes":"שמור שינויים",
     "Are_you_sure_you_want_to_delete_this_folder":"האם אתה בטוח שברצונך למחוק את התיקיה הזו?",
     "Yes_Delete":"כן, מחק",
-    "0_00_303_0_453553":"0 00 303 0 453553"
+    "0_00_303_0_453553":"0 00 303 0 453553",
+    "awaitingAcceptance":"Awaiting acceptance (18)",
+    "accepted":"Accepted (2)"
   }
 }

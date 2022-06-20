@@ -498,7 +498,9 @@
     "Save_changes":"احفظ التغييرات",
     "Are_you_sure_you_want_to_delete_this_folder":"هل أنت متأكد أنك تريد حذف هذا المجلد؟",
     "Yes_Delete":"نعم ، احذف",
-    "0_00_303_0_453553":"0 00 303 0 453553"
+    "0_00_303_0_453553":"0 00 303 0 453553",
 
+    "awaitingAcceptance":"Awaiting acceptance (18)",
+    "accepted":"Accepted (2)"
   }
 }
