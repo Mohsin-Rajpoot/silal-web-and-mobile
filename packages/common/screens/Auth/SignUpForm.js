@@ -12,11 +12,13 @@ import { Icon } from "react-native-elements";
 import colors from "../../assets/colors";
 import ThirdPage from "./SignUpFormPages/ThirdPage";
 import { useTranslation } from "react-i18next";
+
+import IsTablet from "../../components/native/IsTablet";
 const SignUpForm = ({ navigation }) => {
   const { t } = useTranslation();
   const ref = useRef(null);
   const [page, setPage] = useState(0);
-
+  const isTab = IsTablet;
   const goprev = () => {
     if (page > 0) {
       const newStep = Math.max(0, page - 1);
@@ -51,9 +53,19 @@ const SignUpForm = ({ navigation }) => {
   return (
     <>
       <HeaderBack name={`${t("Step")} ${page + 1}/3`} />
-      <View style={styles.headerContainer}>
+      {!isTab ? (
+        <CustomText
+          label={t("questionnaire")}
+          textStyle={styles.questionnaire}
+        />
+      ) : (
+        <View />
+      )}
+      <View
+        style={!isTab ? styles.headerContainerMobile : styles.headerContainer}
+      >
         <Header
-          label={t("Basic_information")}
+          label={!isTab ? t("basicInfo") : t("Basic_information")}
           textStyle={styles.headerText}
           textStyleInActive={styles.headerTextInactive}
           page={0}
@@ -76,7 +88,7 @@ const SignUpForm = ({ navigation }) => {
       </View>
 
       <PagerView
-        style={{ flex: 1 }}
+        style={{ flex: 1, margin: 10 }}
         initialPage={0}
         scrollEnabled={false}
         ref={ref}
@@ -92,21 +104,29 @@ const SignUpForm = ({ navigation }) => {
         </View>
       </PagerView>
       <View style={styles.outerContainer}>
-        <TouchableOpacity
-          activeOpacity={0.6}
-          onPress={goprev}
-          style={styles.backIconInnerContainer}
-        >
-          <Icon name="arrowleft" type="antdesign" color={colors.black} size={28}/>
+        {!isTab ? (
+          <View />
+        ) : (
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={goprev}
+            style={styles.backIconInnerContainer}
+          >
+            <Icon
+              name="arrowleft"
+              type="antdesign"
+              color={colors.black}
+              size={28}
+            />
 
-          <CustomText label={t("back")} textStyle={styles.backText} />
-        </TouchableOpacity>
-
+            <CustomText label={t("back")} textStyle={styles.backText} />
+          </TouchableOpacity>
+        )}
         <AuthButton
-  
           name={page == 2 ? t("Submit") : t("Next_step")}
-     
-          buttonStyling={styles.formButton}
+          buttonStyling={
+            !IsTablet ? styles.formButtonMobile : styles.formButton
+          }
           onPress={moveForward}
         />
       </View>

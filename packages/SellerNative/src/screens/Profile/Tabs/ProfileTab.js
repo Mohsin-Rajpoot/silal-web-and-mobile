@@ -26,7 +26,7 @@ import {
   heightPercentageToDP as height,
 } from 'react-native-responsive-screen';
 import {useTranslation} from 'react-i18next';
-
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const Profile = () => {
   const {t} = useTranslation();
   const [isEdit, setIsEdit] = useState(false);
@@ -40,37 +40,59 @@ const Profile = () => {
       style={styles.mainContainer}
       showsHorizontalScrollIndicator={false}
       showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        <View style={styles.profileMainContainer}>
+      <View style={!IsTablet ? styles.containerMobile : styles.container}>
+        <View
+          style={
+            !IsTablet
+              ? styles.profileMainContainerMobile
+              : styles.profileMainContainer
+          }>
           <ImageBackground
             resizeMode="cover"
             source={require('../../../Assets/image8.png')}
-            style={styles.imgContainer}
+            style={!IsTablet ? styles.imgContainerMobile : styles.imgContainer}
           />
 
-          <View style={{top: -90}}>
-            <View style={styles.imageborderRadius}>
-              <ImageBackground
-                source={require('../../../Assets/profile.png')}
-                style={styles.profileImage}>
-                {isEdit ? (
-                  <Icon
-                    name="camera-plus-outline"
-                    type="material-community"
-                    size={moderateScale(40)}
-                    color={colors.textWhite}
-                  />
-                ) : (
-                  <View />
-                )}
-              </ImageBackground>
+          <View style={{top: !IsTablet ? -35 : -90}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'flex-end',
+                justifyContent: 'space-between',
+              }}>
+              <View style={styles.imageborderRadius}>
+                <ImageBackground
+                  source={require('../../../Assets/profile.png')}
+                  style={styles.profileImage}>
+                  {isEdit ? (
+                    <Icon
+                      name="camera-plus-outline"
+                      type="material-community"
+                      size={moderateScale(40)}
+                      color={colors.textWhite}
+                    />
+                  ) : (
+                    <View />
+                  )}
+                </ImageBackground>
+              </View>
+              {!IsTablet && !isEdit ? (
+                <CustomButton
+                  textStyle={styles.buttonTextStyleMobile}
+                  containerStyle={styles.buttonContainerStyleMobile}
+                  text={t('EditProfile')}
+                  onPress={() => setIsEdit(!isEdit)}
+                />
+              ) : (
+                <View />
+              )}
             </View>
             {isEdit ? <EditBox /> : <TimingBox />}
           </View>
         </View>
 
         <View style={styles.updateButtonContainer}>
-          {!isEdit ? (
+          {!isEdit && IsTablet ? (
             <>
               <CustomButton
                 onPress={() => setIsEdit(!isEdit)}
@@ -199,8 +221,12 @@ const Profile = () => {
                 containerStyle={styles.cancelButton}
               />
               <CustomButton
-                textStyle={styles.editBtn}
-                containerStyle={styles.editButtonContainer}
+                textStyle={!IsTablet ? styles.editBtnMobile : styles.editBtn}
+                containerStyle={
+                  !IsTablet
+                    ? styles.editButtonContainerMobile
+                    : styles.editButtonContainer
+                }
                 text={t('SaveChanges')}
               />
             </View>
@@ -337,6 +363,13 @@ const styles = ScaledSheet.create({
     marginRight: '12@s',
     marginBottom: '5@s',
   },
+  buttonContainerStyleMobile: {
+    backgroundColor: colors.primary,
+    width: '30%',
+    borderRadius: '8@s',
+    marginRight: '20@s',
+    marginTop:'40@vs'
+  },
   cancelButton: {
     backgroundColor: colors.light_grey,
     borderRadius: '4@s',
@@ -345,6 +378,12 @@ const styles = ScaledSheet.create({
     backgroundColor: colors.primary,
     borderRadius: '4@s',
     marginLeft: '7@s',
+  },
+  editButtonContainerMobile: {
+    backgroundColor: colors.primary,
+    borderRadius: '4@s',
+    marginLeft: '7@s',
+  
   },
   buttonContainerStyle1: {
     backgroundColor: colors.primaryBlur,
@@ -358,6 +397,11 @@ const styles = ScaledSheet.create({
     backgroundColor: '#fff',
     marginTop: '10@s',
     marginRight: '10@s',
+  },
+  profileMainContainerMobile: {
+    width: '100%',
+    backgroundColor: '#fff',
+    marginTop: '10@s',
   },
   imageborderRadius: {
     width: '80@s',
@@ -384,6 +428,13 @@ const styles = ScaledSheet.create({
     color: colors.textWhite,
     margin: '4@s',
   },
+  buttonTextStyleMobile: {
+    fontFamily: fonts.LatoSemiBold,
+    fontSize: '12@vs',
+    color: colors.textWhite,
+    paddingHorizontal: '1@s',
+    marginVertical: '3@s',
+  },
   buttonTextStyle1: {
     fontFamily: fonts.PoppinsSemiBold,
     fontSize: '12@ms',
@@ -392,6 +443,12 @@ const styles = ScaledSheet.create({
   },
   container: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+  },
+  containerMobile: {
+    flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
@@ -406,6 +463,14 @@ const styles = ScaledSheet.create({
     borderRadius: '4@s',
     overflow: 'hidden',
     justifyContent: 'space-between',
+    alignSelf: 'center',
+  },
+  imgContainerMobile: {
+    width: '100%',
+    height: '150@vs',
+    overflow: 'hidden',
+    justifyContent: 'space-between',
+    alignSelf: 'center',
   },
   addressBox: {
     alignSelf: 'flex-end',
@@ -428,10 +493,16 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.textWhite,
   },
+  editBtnMobile: {
+    paddingVertical: '5@s',
+    fontSize: '11@ms',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.textWhite,
+  },
   editCancel: {
     paddingHorizontal: '15@s',
     paddingVertical: '4@s',
-    color: colors.textPrimaryBlur,
+    color: colors.textPrimary,
     fontSize: '12@ms',
     fontFamily: fonts.PoppinsSemiBold,
   },

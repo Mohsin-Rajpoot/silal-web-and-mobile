@@ -10,6 +10,7 @@ import OpenTab from './Tabs/OpenTab';
 import PaymentTab from './Tabs/Payment';
 import TransactionTab from './Tabs/Transaction';
 import {useTranslation} from 'react-i18next';
+import {SafeAreaView} from 'react-native-safe-area-context';
 const Profile = ({navigation}) => {
   const {t} = useTranslation();
   const ref = useRef(null);
@@ -25,7 +26,7 @@ const Profile = ({navigation}) => {
     setPage(page);
   };
   return (
-    <View style={styles.mainContainer}>
+    <SafeAreaView style={styles.mainContainer}>
       <Header label={t('Profile')} onPress={() => navigation.openDrawer()} />
       <Tabs tabs={tabs} page={page} onChangeTab={onChangeTab} />
       <PagerView
@@ -46,7 +47,7 @@ const Profile = ({navigation}) => {
           <TransactionTab />
         </View>
       </PagerView>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -55,7 +56,8 @@ export default Profile;
 const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
-    paddingHorizontal: '15@s',
     backgroundColor: colors.profileBackground,
+    width:"100%",
+    alignSelf:"center"
   },
 });

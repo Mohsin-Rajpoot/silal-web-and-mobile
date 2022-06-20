@@ -19,13 +19,23 @@ const styles = ScaledSheet.create({
     
   },
   button1: {
-    backgroundColor: 'rgba(90, 179, 168, 0.2)',
+    backgroundColor: colors.blurPrimary,
     width: wp('65%'),
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
     borderRadius: "4@s",
     margin:'5@s'
+  },
+  buttonMobile: {
+    backgroundColor: colors.blurPrimary1,
+    width: wp('90%'),
+    alignSelf: "center",
+    alignItems: "center",
+    padding: "10@s",
+    borderRadius: "5@s",
+    margin:'5@s',
+    marginBottom:"20@s"
   },
   buttonText: {
     fontSize: "11@ms",

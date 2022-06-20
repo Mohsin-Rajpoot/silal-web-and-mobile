@@ -27,18 +27,20 @@ import Svg, {
   G,
 } from 'react-native-svg';
 import {ScrollView} from 'react-native-gesture-handler';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import colors from '@SilalApp/common/assets/colors';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import OrderFullViewMobile from './OrderFullViewMobile';
 const {width, height} = Dimensions.get('window');
 
 const App = ({navigation, route}) => {
-  const {t}=useTranslation();
+  const {t} = useTranslation();
   const status = route?.params?.status;
   const [color, setColor] = useState('green');
   const [cancel_text, set_cancel_text] = useState('');
   const [modal_cancel, setmodal_cancel] = useState(false);
   const toastRef = useRef();
-  console.log('--Status', status)
+  console.log('--Status', status);
 
   useEffect(() => {
     const detectLogin = async () => {
@@ -103,16 +105,16 @@ const App = ({navigation, route}) => {
       <View
         style={{flexDirection: 'row', marginTop: 20, paddingHorizontal: 20}}>
         <View style={{width: '50%'}}>
-          <Text style={{fontFamily: 'Lato-regular'}}>{t("Item")}</Text>
+          <Text style={{fontFamily: 'Lato-regular'}}>{t('Item')}</Text>
         </View>
         <View style={{width: '15%'}}>
           <Text style={{fontFamily: 'Lato-regular'}}>Q-ty</Text>
         </View>
         <View style={{width: '17%'}}>
-          <Text style={{fontFamily: 'Lato-regular'}}>{t("price")}</Text>
+          <Text style={{fontFamily: 'Lato-regular'}}>{t('price')}</Text>
         </View>
         <View style={{width: '18%'}}>
-          <Text style={{fontFamily: 'Lato-regular'}}>{t("total-price")}</Text>
+          <Text style={{fontFamily: 'Lato-regular'}}>{t('total-price')}</Text>
         </View>
       </View>
     );
@@ -180,7 +182,7 @@ const App = ({navigation, route}) => {
                     fontFamily: 'Lato-Bold',
                     color: 'black',
                   }}>
-                  {t("Note")}:
+                  {t('Note')}:
                 </Text>
                 <Text style={{marginLeft: 10, fontFamily: 'Lato-Regular'}}>
                   Please do not add onion and fry it without oil. I'm allergic.
@@ -207,9 +209,9 @@ const App = ({navigation, route}) => {
         }}>
         <View>
           <Text style={{color: '#CCD4D6', fontFamily: 'Poppins-SemiBold'}}>
-           {t("Delivery")}
+            {t('Delivery')}
           </Text>
-          <Text style={styles.bottom_bar_text}>{t("Order_total")}</Text>
+          <Text style={styles.bottom_bar_text}>{t('Order_total')}</Text>
         </View>
         <View style={{alignItems: 'flex-end'}}>
           <Text style={{color: '#CCD4D6'}}>$2.00</Text>
@@ -221,12 +223,12 @@ const App = ({navigation, route}) => {
   const Details = () => {
     return (
       <View style={{padding: 10, backgroundColor: 'white', borderRadius: 5}}>
-        <Text style={styles.header_order_txt}>{t("Detail")}</Text>
+        <Text style={styles.header_order_txt}>{t('Detail')}</Text>
         <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
           <View style={{width: '50%'}}>
             <Text
               style={{color: '#CCD4D6', fontSize: 15, fontFamily: 'Lato-Bold'}}>
-             {t("Customer")}
+              {t('Customer')}
             </Text>
             <Text
               style={{
@@ -298,7 +300,7 @@ const App = ({navigation, route}) => {
           <View style={{width: '50%'}}>
             <Text
               style={{color: '#CCD4D6', fontSize: 15, fontFamily: 'Lato-Bold'}}>
-              {t("Driver")}
+              {t('Driver')}
             </Text>
             <Text
               style={{
@@ -379,7 +381,7 @@ const App = ({navigation, route}) => {
             borderRadius: 5,
             padding: 10,
           }}>
-          <Text style={styles.header_order_txt}>{t("History")}</Text>
+          <Text style={styles.header_order_txt}>{t('History')}</Text>
           <View style={{flexDirection: 'row', marginTop: 20}}>
             <View style={{alignItems: 'center'}}>
               <View
@@ -387,26 +389,26 @@ const App = ({navigation, route}) => {
                   height: 20,
                   width: 20,
                   borderRadius: 30,
-                  backgroundColor: '#5AB3A8',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
                   height: 40,
                   width: 2,
-                  backgroundColor: '#5AB3A8',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
                   height: 20,
                   width: 20,
                   borderRadius: 30,
-                  backgroundColor: '#5AB3A8',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
                   height: 40,
                   width: 2,
-                  backgroundColor: '#5AB3A8',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
@@ -421,7 +423,7 @@ const App = ({navigation, route}) => {
                   style={{
                     height: 10,
                     width: 10,
-                    backgroundColor: '#5AB3A8',
+                    backgroundColor: colors.primary,
                     borderRadius: 30,
                   }}></View>
               </View>
@@ -429,7 +431,7 @@ const App = ({navigation, route}) => {
                 style={{
                   height: 40,
                   width: 2,
-                  backgroundColor: '#5AB3A8',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
@@ -444,7 +446,7 @@ const App = ({navigation, route}) => {
                   style={{
                     height: 10,
                     width: 10,
-                    backgroundColor: '#5AB3A8',
+                    backgroundColor: colors.primary,
                     borderRadius: 30,
                   }}></View>
               </View>
@@ -452,7 +454,7 @@ const App = ({navigation, route}) => {
             <View style={{marginLeft: 10}}>
               <View style={{marginTop: -3}}>
                 <Text style={[styles.history_title, {color: '#002733'}]}>
-                 {t("Order_created")}
+                  {t('Order_created')}
                 </Text>
                 <Text style={[styles.history_date, {color: '#002733'}]}>
                   10.22.2021 14.47
@@ -460,7 +462,7 @@ const App = ({navigation, route}) => {
               </View>
               <View style={{marginTop: 33}}>
                 <Text style={[styles.history_title, {color: '#002733'}]}>
-                  {t("Order_Preperation")}
+                  {t('Order_Preperation')}
                 </Text>
                 <Text style={[styles.history_date, {color: '#002733'}]}>
                   10.22.2021 14.47
@@ -468,7 +470,7 @@ const App = ({navigation, route}) => {
               </View>
               <View style={{marginTop: 33}}>
                 <Text style={[styles.history_title, {color: '#CCD4D6'}]}>
-                  {t("order_picked")}
+                  {t('order_picked')}
                 </Text>
                 <Text style={[styles.history_date, {color: '#CCD4D6'}]}>
                   10.22.2021 14.47
@@ -476,7 +478,7 @@ const App = ({navigation, route}) => {
               </View>
               <View style={{marginTop: 33}}>
                 <Text style={[styles.history_title, {color: '#CCD4D6'}]}>
-                  {t("order_Delivered")}
+                  {t('order_Delivered')}
                 </Text>
                 <Text style={[styles.history_date, {color: '#CCD4D6'}]}>
                   10.22.2021 14.47
@@ -486,13 +488,14 @@ const App = ({navigation, route}) => {
           </View>
           <TouchableOpacity
             style={{
-              backgroundColor:colors.primaryBlur,
+              backgroundColor: colors.primaryBlur,
               borderRadius: 5,
               padding: 10,
               alignItems: 'center',
               marginTop: 15,
             }}>
-            <Text style={{color: colors.primary, fontFamily: 'Poppins-SemiBold'}}>
+            <Text
+              style={{color: colors.primary, fontFamily: 'Poppins-SemiBold'}}>
               Change estimation time
             </Text>
           </TouchableOpacity>
@@ -513,35 +516,35 @@ const App = ({navigation, route}) => {
                   width: '38%',
                 }}>
                 <Text style={{color: 'white', fontFamily: 'Poppins-SemiBold'}}>
-                 {t("Cancel_order")}
+                  {t('Cancel_order')}
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={{
-                  backgroundColor: '#5AB3A8',
+                  backgroundColor: colors.primary,
                   borderRadius: 5,
                   padding: 10,
                   alignItems: 'center',
                   width: '58%',
                 }}>
                 <Text style={{color: 'white', fontFamily: 'Poppins-SemiBold'}}>
-                  {t("ready_for_pickup")}
+                  {t('ready_for_pickup')}
                 </Text>
               </TouchableOpacity>
             </View>
-          ):(
+          ) : (
             <TouchableOpacity
-            style={{
-              backgroundColor: '#5AB3A8',
-              borderRadius: 5,
-              padding: 10,
-              alignItems: 'center',
-              marginTop: 10,
-            }}>
-            <Text style={{color: 'white', fontFamily: 'Poppins-SemiBold'}}>
-              {t("ready_for_pickup")}
-            </Text>
-          </TouchableOpacity>
+              style={{
+                backgroundColor: '#5AB3A8',
+                borderRadius: 5,
+                padding: 10,
+                alignItems: 'center',
+                marginTop: 10,
+              }}>
+              <Text style={{color: 'white', fontFamily: 'Poppins-SemiBold'}}>
+                {t('ready_for_pickup')}
+              </Text>
+            </TouchableOpacity>
           )}
         </View>
       </ScrollView>
@@ -558,9 +561,7 @@ const App = ({navigation, route}) => {
               alignItems: 'center',
               justifyContent: 'space-between',
             }}>
-            <Text style={styles.modal_heading}>
-              {t("Indicate_reason")}
-            </Text>
+            <Text style={styles.modal_heading}>{t('Indicate_reason')}</Text>
             <TouchableOpacity onPress={() => setmodal_cancel(!modal_cancel)}>
               <Entypo
                 name="cross"
@@ -569,7 +570,7 @@ const App = ({navigation, route}) => {
             </TouchableOpacity>
           </View>
           <Text style={{color: '#002733', fontSize: 15, marginTop: 5}}>
-            {t("we_notify_client")}
+            {t('we_notify_client')}
           </Text>
 
           <View style={{marginTop: 20, width: 450}}>
@@ -601,7 +602,7 @@ const App = ({navigation, route}) => {
               <TouchableOpacity
                 onPress={() => setmodal_cancel(!modal_cancel)}
                 style={[styles.modal_save_btn, {backgroundColor: '#CCD4D6'}]}>
-                <Text style={{color: 'black'}}>{t("Cancel")}</Text>
+                <Text style={{color: 'black'}}>{t('Cancel')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
@@ -644,7 +645,7 @@ const App = ({navigation, route}) => {
                 //     ToastAndroid.showWithGravityAndOffset('Preperation time is changed',ToastAndroid.LONG,ToastAndroid.BOTTOM,25,50);
                 //     }}
                 style={styles.modal_save_btn}>
-                <Text style={{color: 'white'}}>{t("Submit")}</Text>
+                <Text style={{color: 'white'}}>{t('Submit')}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -653,7 +654,9 @@ const App = ({navigation, route}) => {
     );
   };
 
-  return (
+  return !IsTablet ? (
+    <OrderFullViewMobile />
+  ) : (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -687,7 +690,7 @@ const App = ({navigation, route}) => {
               <Text
                 style={{
                   padding: 5,
-                  backgroundColor: '#E6F4F2',
+                  backgroundColor: colors.bluish,
                   borderRadius: 5,
                   marginLeft: 10,
                   fontSize: 11,
@@ -705,6 +708,7 @@ const App = ({navigation, route}) => {
               14:58:15
             </Text>
           </View>
+
           <View style={{height: '95%'}}>
             {order_list_header()}
             {order_list_data()}
@@ -746,8 +750,8 @@ const App = ({navigation, route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
-    backgroundColor: '#E5E5E5',
+    backgroundColor: colors.profileBackground,
+    margin: 20,
     // justifyContent: 'center',
     // alignItems: 'center'
   },

@@ -17,6 +17,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {useTranslation} from 'react-i18next';
 import CommonTab from '../../components/CommonTab';
 import {Icon, CheckBox} from 'react-native-elements';
+import Accepted from './molecule/Accepted';
 
 import {
   widthPercentageToDP as width,
@@ -24,6 +25,7 @@ import {
 } from 'react-native-responsive-screen';
 
 import colors from '@SilalApp/common/assets/colors/index';
+import SellerTools from './molecule/SellerTools';
 import fonts from '@SilalApp/common/assets/fonts/index';
 import DaySelect from '../../components/DaySelection';
 import CustomModal from '@SilalApp/common/components/native/CustomModal';
@@ -31,8 +33,10 @@ import Timer from '../../components/Timer';
 import Toast from 'react-native-easy-toast';
 import CustomText from '@SilalApp/common/components/CustomText';
 import {CustomButton} from '@SilalApp/common/components/native';
-import {ScaledSheet} from 'react-native-size-matters';
+import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
 import ItemDetail from './molecule';
+import {SwipeListView} from 'react-native-swipe-list-view';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const Order = ({navigation}) => {
   const {t} = useTranslation();
   const toastRef = useRef();
@@ -97,6 +101,7 @@ const Order = ({navigation}) => {
       price: '$ 120.00',
     },
   ];
+  const data3 = [{id: 1}];
   const onChangeTab = page => {
     ref?.current?.setPageWithoutAnimation(page);
     setPage(page);
@@ -133,62 +138,66 @@ const Order = ({navigation}) => {
       // </View>
       <View
         style={{
-          paddingVertical: 15,
+          paddingVertical: 5,
           flex: 1,
           flexDirection: 'row',
           alignItems: 'center',
+          // backgroundColor:'red',
+          // width:'10%'
         }}>
         <CommonTab tabs={tabs} page={page} onChangeTab={onChangeTab} />
-        <View style={styles.sideTabContainer}>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => setNoteModal(!noteModal)}>
-            <View style={styles.tabNewItemsContainer}>
-              <Icon
-                name="pluscircle"
-                type="antdesign"
-                size={18}
-                color={colors.primary}
-              />
-              <Text style={styles.noteText}>{t('Note')}</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => setModal(!modal)}>
-            <View style={styles.tabNewItemsContainer}>
-              <Icon
-                name="timer"
-                type="material-community"
-                size={18}
-                color={colors.primary}
-              />
-              <Text style={styles.noteText}>40 MIN</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => setContactModal(!contactModal)}>
-            <View style={styles.tabNewItemsContainer}>
-              <Icon
-                name="exclamationcircle"
-                type="antdesign"
-                size={18}
-                color={colors.textPrimaryBlur}
-                style={styles.cautionIcon}
-              />
-            </View>
-          </TouchableOpacity>
-          <DaySelect
-            day={t('Start_shift')}
-            containerStyle={styles.shiftContainer}
-            buttonSize={'large'}
-            textStyle={styles.textStyleShift}
-            activelabel={t('End_shift')}
-            state={activeShift}
-            setState={setActiveShift}
-          />
-        </View>
+        {IsTablet && (
+          <View style={styles.sideTabContainer}>
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={() => setNoteModal(!noteModal)}>
+              <View style={styles.tabNewItemsContainer}>
+                <Icon
+                  name="pluscircle"
+                  type="antdesign"
+                  size={18}
+                  color={colors.primary}
+                />
+                <Text style={styles.noteText}>{t('Note')}</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={() => setModal(!modal)}>
+              <View style={styles.tabNewItemsContainer}>
+                <Icon
+                  name="timer"
+                  type="material-community"
+                  size={18}
+                  color={colors.primary}
+                />
+                <Text style={styles.noteText}>40 MIN</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={() => setContactModal(!contactModal)}>
+              <View style={styles.tabNewItemsContainer}>
+                <Icon
+                  name="exclamationcircle"
+                  type="antdesign"
+                  size={18}
+                  color={colors.textPrimaryBlur}
+                  style={styles.cautionIcon}
+                />
+              </View>
+            </TouchableOpacity>
+            <DaySelect
+              day={t('Start_shift')}
+              containerStyle={styles.shiftContainer}
+              buttonSize={'large'}
+              textStyle={styles.textStyleShift}
+              activelabel={t('End_shift')}
+              state={activeShift}
+              setState={setActiveShift}
+            />
+          </View>
+        )}
         {/* <TouchableOpacity
           onPress={() => tabclick('0', 'current')}
           style={[
@@ -245,15 +254,15 @@ const Order = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{backgroundColor: '#f4f7f8', flex: 1}}>
-      <View style={{flexDirection: 'row', alignItems: 'center', height: '15%'}}>
-        <View style={{padding: 15}}>
+    <SafeAreaView style={{backgroundColor: colors.background, flex: 1}}>
+      <View style={{flexDirection: 'row', alignItems: 'center', height: !IsTablet ? '10%' :'12%'}}>
+        <View style={{padding: 5}}>
           <TouchableOpacity
             activeOpacity={0.6}
             onPress={() => navigation.openDrawer()}>
             <MaterialCommunityIcons
               name="reorder-horizontal"
-              size={20}
+              size={verticalScale(22)}
               style={{marginLeft: 10}}
               color={'#000000'}
             />
@@ -262,11 +271,12 @@ const Order = ({navigation}) => {
 
         {Header()}
       </View>
+
       <View style={{flex: 1}}>
         <PagerView
-          style={{flex: 1}}
+          style={{flex:1}}
           initialPage={0}
-          scrollEnabled={true}
+          // scrollEnabled={false}
           ref={ref}>
           <View key={'1'}>
             <Current_orders title="Received" navigation={navigation} />
@@ -275,7 +285,7 @@ const Order = ({navigation}) => {
             <Pre_orders />
           </View>
           <View key={'3'}>
-            <Archive_orders />
+            <Archive_orders navigation={navigation} />
           </View>
         </PagerView>
       </View>
@@ -283,7 +293,7 @@ const Order = ({navigation}) => {
         isModalVisible={modal}
         setModalVisible={setModal}
         modalWrapperStyle={{
-          marginHorizontal: width(30),
+          marginHorizontal: width(25),
           marginVertical: height(30),
           justifyContent: 'center',
         }}
@@ -398,7 +408,8 @@ const Order = ({navigation}) => {
           style={{width: '100%'}}
           contentContainerStyle={{
             flexGrow: 1,
-          }}>
+          }}
+          >
           <View style={{width: '100%'}}>
             <TouchableOpacity
               activeOpacity={0.6}
@@ -656,21 +667,49 @@ const Order = ({navigation}) => {
               <CustomText label="Ehllo" />
             </View>
           ) : addNote == 2 ? (
-            <View style={styles.noteDetail}>
-              <TouchableOpacity activeOpacity={0.6}>
-                <View style={{marginHorizontal: 10, marginVertical: 5}}>
-                  <CustomText
-                    label="20 November 2021"
-                    textStyle={styles.date}
-                  />
-                  <CustomText
-                    label="Sed ut perspiciatis unde omnis iste natus error sit volupta..."
-                    textStyle={styles.noteDetailText}
-                  />
-                </View>
+            <>
+              <SwipeListView
+                data={data3}
+                renderItem={(data, rowMap) => (
+                  <View>
+                    <View style={styles.noteDetail}>
+                      <CustomText
+                        label="20 November 2021"
+                        textStyle={styles.date}
+                      />
+                      <CustomText
+                        label="Sed ut perspiciatis unde omnis iste natus error sit volupta..."
+                        textStyle={styles.noteDetailText}
+                      />
+                    </View>
 
-                <View style={styles.borderView} />
-              </TouchableOpacity>
+                    <View style={styles.borderView} />
+                  </View>
+                )}
+                renderHiddenItem={(data, rowMap) => (
+                  <View style={styles.rowBack}>
+                    <View
+                      style={{
+                        position: 'absolute',
+                        right: 1,
+                        marginVertical: 5,
+                      }}>
+                      <TouchableOpacity
+                        style={[
+                          styles.BackButtons,
+                          {backgroundColor: '#FB5C5C'},
+                        ]}>
+                        <Text style={styles.BackButtonsText}>Delete</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                )}
+                rightOpenValue={-90}
+              />
+
+              {/* <View style={styles.noteDetail}>
+         
+
               <View style={{marginHorizontal: 10, marginVertical: 5}}>
                 <CustomText label="17 November 2021" textStyle={styles.date} />
                 <CustomText
@@ -689,7 +728,8 @@ const Order = ({navigation}) => {
               </View>
 
               <View style={styles.borderView} />
-            </View>
+            </View> */}
+            </>
           ) : (
             <View />
           )}
@@ -776,7 +816,8 @@ const styles = ScaledSheet.create({
     width: '100%',
     backgroundColor: colors.background,
     alignSelf: 'center',
-    borderRadius: '4@s',
+    // borderRadius: '4@s',
+    marginVertical: 5,
   },
   quantityTitle: {
     fontSize: '15@ms',
@@ -856,7 +897,14 @@ const styles = ScaledSheet.create({
     padding: '5@s',
     borderRadius: '4@s',
   },
-
+  BackButtons: {
+    // backgroundColor: '#FF8B00',
+    height: 77,
+    width: 85,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // borderRadius: 5,
+  },
   maiLContainer: {
     width: 45,
     height: 45,
@@ -869,6 +917,11 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.bold,
     color: colors.black,
     textTransform: 'uppercase',
+  },
+  BackButtonsText: {
+    color: '#fff',
+    fontSize: 15,
+    fontFamily: fonts.LatoMedium,
   },
   mail: {
     fontSize: 13,
@@ -910,7 +963,7 @@ const styles = ScaledSheet.create({
   sideTabContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '61%',
+    width: '36%',
     justifyContent: 'flex-end',
   },
   noteText: {
@@ -976,5 +1029,9 @@ const styles = ScaledSheet.create({
     // flexDirection:'row',
     // backgroundColor:'red',
     padding: 10,
+  },
+  rowBack: {
+    height: 55,
+    backgroundColor: '#fff',
   },
 });

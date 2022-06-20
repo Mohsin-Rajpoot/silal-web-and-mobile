@@ -8,6 +8,8 @@ import CommonStyle from "../../../styles";
 import colors from "../../../assets/colors";
 import DropDownPicker from "react-native-dropdown-picker";
 import { useTranslation } from "react-i18next";
+import IsTablet from "../../../components/native/IsTablet";
+
 const SecondPage = () => {
   const { t } = useTranslation();
   const [text, setText] = useState("");
@@ -25,16 +27,26 @@ const SecondPage = () => {
       >
         <View style={{ flexDirection: "row", marginTop: 30 }}>
           <CustomText
-            label={t("Owner_phone")}
+            label={t("Business_Phone")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
         <PhoneInput
-          containerStyle={CommonStyle.phoneNumberInput}
-          textContainerStyle={styles.textContainer}
+          containerStyle={
+            !IsTablet
+              ? CommonStyle.phoneNumberInputMobile
+              : CommonStyle.phoneNumberInput
+          }
+          textContainerStyle={
+            !IsTablet ? styles.textContainerMobile : styles.textContainer
+          }
           textInputProps={{ fontSize: 12, padding: 0, marginTop: 0 }}
-          countryPickerButtonStyle={styles.countyPickerContainer}
+          countryPickerButtonStyle={
+            !IsTablet
+              ? styles.countyPickerContainerMobile
+              : styles.countyPickerContainer
+          }
           textInputStyle={{ color: colors.gray }}
           codeTextStyle={styles.codeText}
           defaultCode="RU"
@@ -46,29 +58,13 @@ const SecondPage = () => {
         />
         <View style={{ flexDirection: "row", marginTop: 30 }}>
           <CustomText
-            label={t("business_name")}
+            label={t("Business_address")}
             textStyle={styles.formTextHeading}
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
-        <TextInput placeholderText={t("Street_name")} />
-        <View style={styles.addressContainer}>
-          <View style={styles.addressInputContainer}>
-            <TextInput
-              placeholderText={t("office/number")}
-              inputStyle={styles.addressInput}
-            />
-          </View>
-          <View>
-            <View style={styles.addressInputContainer}>
-              <TextInput
-                placeholderText={t("zip_code")}
-                inputStyle={styles.addressInput}
-              />
-            </View>
-          </View>
-
-          <View style={styles.addressInputContainer}>
+        {!IsTablet ? (
+          <View style={styles.addressInputContainerMobile}>
             <DropDownPicker
               open={open}
               value={value}
@@ -77,12 +73,63 @@ const SecondPage = () => {
               setValue={setValue}
               setItems={setItems}
               placeholder={t("city")}
-              style={styles.dropDownStyle1}
+              style={styles.dropDownStyle12}
               placeholderStyle={styles.dropDownPlaceHolder}
               dropDownContainerStyle={styles.dropdownContainer}
               iconContainerStyle={{ backgroundColor: "red" }}
             />
           </View>
+        ) : (
+          <View />
+        )}
+        <TextInput placeholderText={t("Street_name")} />
+        <View style={styles.addressContainer}>
+          <View
+            style={
+              !IsTablet
+                ? styles.addressInputContainerMobile1
+                : styles.addressInputContainer
+            }
+          >
+            <TextInput
+              placeholderText={t("office/number")}
+              inputStyle={styles.addressInput}
+            />
+          </View>
+          {!IsTablet ? <View style={{ width: 10 }} /> : <View />}
+          <View>
+            <View
+              style={
+                !IsTablet
+                  ? styles.addressInputContainerMobile1
+                  : styles.addressInputContainer
+              }
+            >
+              <TextInput
+                placeholderText={t("zip_code")}
+                inputStyle={styles.addressInput}
+              />
+            </View>
+          </View>
+          {IsTablet ? (
+            <View style={styles.addressInputContainer}>
+              <DropDownPicker
+                open={open}
+                value={value}
+                items={items}
+                setOpen={setOpen}
+                setValue={setValue}
+                setItems={setItems}
+                placeholder={t("city")}
+                style={styles.dropDownStyle12}
+                placeholderStyle={styles.dropDownPlaceHolder}
+                dropDownContainerStyle={styles.dropdownContainer}
+                iconContainerStyle={{ backgroundColor: "red" }}
+              />
+            </View>
+          ) : (
+            <View />
+          )}
         </View>
         <View style={{ flexDirection: "row", marginTop: 30 }}>
           <CustomText

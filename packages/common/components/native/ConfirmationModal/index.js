@@ -11,6 +11,7 @@ import { Icon } from "react-native-elements";
 import colors from "../../../assets/colors";
 import fonts from "../../../assets/fonts";
 import CustomButton from "../CustomButton";
+import IsTablet from "../IsTablet";
 const CustomModal = (props) => {
   return (
     <View>
@@ -33,27 +34,33 @@ const CustomModal = (props) => {
                   label="Are you sure?"
                   textStyle={styles.areYouSureText}
                 />
-                <TouchableOpacity
-                  activeOpacity={0.6}
-                  onPress={() => props.setModalVisible(false)}
-                >
-                  <Icon
-                    name="cross"
-                    type="entypo"
-                    color={colors.light_grey}
-                    size={40}
-                  />
-                </TouchableOpacity>
+                {IsTablet ? (
+                  <TouchableOpacity
+                    activeOpacity={0.6}
+                    onPress={() => props.setModalVisible(false)}
+                  >
+                    <Icon
+                      name="cross"
+                      type="entypo"
+                      color={colors.light_grey}
+                      size={40}
+                    />
+                  </TouchableOpacity>
+                ) : null}
               </View>
             )}
             <CustomText label={props?.detail} textStyle={styles.detailText} />
             <View style={styles.buttonContainer}>
               <CustomButton
-                textStyle={styles.cancelButton}
+                textStyle={
+                  IsTablet ? styles.cancelButton : styles.cancelButtonMobile
+                }
                 text="Cancel"
                 containerStyle={
                   props.logoutDetail
-                    ? styles.buttonContainerMainActive
+                    ? IsTablet
+                      ? styles.buttonContainerMainActive
+                      : styles.buttonContainerMainActiveMobile
                     : styles.buttonContainerMain
                 }
                 onPress={() => props.setModalVisible(false)}
@@ -61,8 +68,10 @@ const CustomModal = (props) => {
               <CustomButton
                 containerStyle={styles.buttonContainerActive}
                 text={props.Active}
-                textStyle={styles.activeButton}
-                onPress={props.onPress}
+                textStyle={
+                  IsTablet ? styles.activeButton : styles.activeButtonMobile
+                }
+                onPress={props.onPress && props.setModalVisible(false)}
               />
             </View>
           </View>
@@ -77,6 +86,11 @@ export default CustomModal;
 const styles = ScaledSheet.create({
   buttonContainerMain: {
     backgroundColor: colors.light_grey,
+    marginTop: "10@s",
+    margin: "10@ms",
+  },
+  buttonContainerMainActiveMobile: {
+    backgroundColor: "#005d21",
     marginTop: "10@s",
     margin: "10@ms",
   },
@@ -104,8 +118,22 @@ const styles = ScaledSheet.create({
     fontSize: "14@ms",
     fontFamily: fonts.PoppinsSemiBold,
   },
+
+  cancelButtonMobile: {
+    paddingHorizontal: "30@ms",
+    paddingVertical: "5@ms",
+    fontSize: "14@ms",
+    fontFamily: fonts.PoppinsSemiBold,
+  },
+
   activeButton: {
     paddingHorizontal: "30@ms",
+    paddingVertical: "5@ms",
+    fontSize: "14@ms",
+    fontFamily: fonts.PoppinsSemiBold,
+  },
+  activeButtonMobile: {
+    paddingHorizontal: "10@ms",
     paddingVertical: "5@ms",
     fontSize: "14@ms",
     fontFamily: fonts.PoppinsSemiBold,

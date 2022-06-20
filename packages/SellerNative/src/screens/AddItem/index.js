@@ -9,20 +9,24 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
-import {
-  CustomButton,
-  LockOnLandscape,
-} from '@SilalApp/common/components/native';
-import {Picker} from '@react-native-picker/picker';
 import {CheckBox} from 'react-native-elements';
 import Svg, {Path} from 'react-native-svg';
 import Feather from 'react-native-vector-icons/Feather';
+import Entypo from 'react-native-vector-icons/Entypo';
 // import Camera from "../../components/Camera"
 import Tooltip from 'react-native-walkthrough-tooltip';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useTranslation} from 'react-i18next';
+import Menu, {
+  MenuTrigger,
+  MenuOptions,
+  MenuOption,
+} from 'react-native-popup-menu';
+import {color} from 'react-native-elements/dist/helpers';
+import colors from '@SilalApp/common/assets/colors';
+import fonts from '@SilalApp/common/assets/fonts';
 const Secondary = '#002733';
-let Primary = '#5AB3A8';
+let Primary = colors.primary;
 const AddItem = ({navigation}) => {
   const {t} = useTranslation();
   const [selectedCategory, setselectedCategory] = useState();
@@ -31,6 +35,9 @@ const AddItem = ({navigation}) => {
   const [loader, setLoader] = useState(false);
   const [order_state, set_order_state] = useState('All');
   const [showTip, setTip] = useState(false);
+  const [selected_Category, set_selected_Category] = useState('Salad');
+
+  console.log('*****************', selected_Category);
   //     const CameraPicker = () => {
   //         // alert('fhfhfh')
   // return(
@@ -149,7 +156,8 @@ const AddItem = ({navigation}) => {
   return (
     <SafeAreaView
       style={{width: '100%', alignSelf: 'center', backgroundColor: '#f1f1f1'}}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      {/* <ScrollView showsVerticalScrollIndicator={false}> */}
+     
         <View style={{width: '100%', alignSelf: 'center'}}>
           {order_state == 'All' ? (
             <View
@@ -190,15 +198,15 @@ const AddItem = ({navigation}) => {
                               style={{
                                 color: '#fff',
                                 fontSize: 13,
-                                fontFamily: 'Lato-Regular',
+                                fontFamily: fonts.LatoRegular,
                               }}>
                               Didn't find an appropriate Category ?
                               <Text
                                 style={{
-                                  color: '#5AB3A8',
+                                  color: colors.primary,
                                   fontSize: 13,
                                   lineHeight: 20,
-                                  fontFamily: 'Poppins-SemiBold',
+                                  fontFamily: fonts.PoppinsSemiBold,
                                   marginHorizontal: 5,
                                 }}>
                                 Contact Us
@@ -215,7 +223,7 @@ const AddItem = ({navigation}) => {
                             onPress={() => setTip(true)}>
                             <AntDesign
                               name="questioncircle"
-                              style={{color: '#5AB3A8', fontSize: 19}}
+                              style={{color: colors.primary, fontSize: 19}}
                             />
                           </TouchableOpacity>
                         </Tooltip>
@@ -223,25 +231,79 @@ const AddItem = ({navigation}) => {
                     </View>
                   </View>
                   <View style={{flexDirection: 'row'}}>
+                    {/* /// */}
+
                     <View style={styles.dropdownbox}>
-                      <Picker
-                        selectedValue={selectedCategory}
-                        onValueChange={(itemValue, itemIndex) =>
-                          setselectedCategory(itemValue)
-                        }>
-                        <Picker.Item label={t('Salads')} value="java" />
-                        <Picker.Item label={t('Salad_special')} value="js" />
-                      </Picker>
+                      <Menu>
+                        <MenuTrigger onPress={() => {}}>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                              paddingVertical: 5,
+                              paddingHorizontal: 7,
+                            }}>
+                            <Text>{selected_Category}</Text>
+                            <Entypo
+                              name="chevron-down"
+                              style={[
+                                styles.cross_icon,
+                                {color: '#4C6870', fontSize: 20},
+                              ]}
+                            />
+                          </View>
+                        </MenuTrigger>
+                        <MenuOptions customStyles={{optionText: {padding: 5}}}>
+                          <MenuOption
+                            onSelect={set_selected_Category}
+                            value="Salad"
+                            text="Salad"
+                          />
+                          <MenuOption
+                            onSelect={set_selected_Category}
+                            value="Berger"
+                            text="Berger"
+                          />
+                        </MenuOptions>
+                      </Menu>
                     </View>
+
+
                     <View style={styles.dropdownbox}>
-                      <Picker
-                        selectedValue={Cusine}
-                        onValueChange={(itemValue, itemIndex) =>
-                          setCusine(itemValue)
-                        }>
-                        <Picker.Item label={t('Cusine')} value="java" />
-                        <Picker.Item label={t('Cuisine_special')} value="js" />
-                      </Picker>
+                      <Menu>
+                        <MenuTrigger onPress={() => {}}>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                              paddingVertical: 5,
+                              paddingHorizontal: 7,
+                            }}>
+                            <Text>{selected_Category}</Text>
+                            <Entypo
+                              name="chevron-down"
+                              style={[
+                                styles.cross_icon,
+                                {color: '#4C6870', fontSize: 20},
+                              ]}
+                            />
+                          </View>
+                        </MenuTrigger>
+                        <MenuOptions customStyles={{optionText: {padding: 5}}}>
+                          <MenuOption
+                            onSelect={set_selected_Category}
+                            value="Salad"
+                            text="Salad"
+                          />
+                          <MenuOption
+                            onSelect={set_selected_Category}
+                            value="Berger"
+                            text="Berger"
+                          />
+                        </MenuOptions>
+                      </Menu>
                     </View>
                   </View>
 
@@ -312,7 +374,7 @@ const AddItem = ({navigation}) => {
                       paddingTop: 17,
                       color: Secondary,
                       fontSize: 17,
-                      fontFamily: 'Lato-Regular',
+                      fontFamily: fonts.LatoRegular,
                     }}>
                     {t('Allergies')}
                   </Text>
@@ -338,7 +400,7 @@ const AddItem = ({navigation}) => {
                             marginLeft: -13,
                             color: Secondary,
                             fontSize: 17,
-                            fontFamily: 'Lato-Regular',
+                            fontFamily: fonts.LatoRegular,
                           }}>
                           {item.Text}
                         </Text>
@@ -351,14 +413,14 @@ const AddItem = ({navigation}) => {
                       paddingTop: 17,
                       color: Secondary,
                       fontSize: 17,
-                      fontFamily: 'Lato-Regular',
+                      fontFamily: fonts.LatoRegular,
                     }}>
                     {t('food_Preferences')}
                   </Text>
                   <FlatList
                     data={data2}
                     numColumns={4}
-                    style={{marginBottom: 10, height: 50}}
+                    style={{marginBottom: 10, }}
                     renderItem={({item}) => (
                       <View style={{flexDirection: 'row', width: '25%'}}>
                         <CheckBox
@@ -373,7 +435,7 @@ const AddItem = ({navigation}) => {
                             marginLeft: -13,
                             color: Secondary,
                             fontSize: 17,
-                            fontFamily: 'Lato-Regular',
+                            fontFamily: fonts.LatoRegular,
                           }}>
                           {item.SecondListText}
                         </Text>
@@ -396,7 +458,7 @@ const AddItem = ({navigation}) => {
                     style={{
                       color: Secondary,
                       fontSize: 15,
-                      fontFamily: 'Poppins-SemiBold',
+                      fontFamily: fonts.PoppinsSemiBold,
                       paddingVertical: 15,
                     }}>
                     {t('Select_customisations')}
@@ -414,7 +476,7 @@ const AddItem = ({navigation}) => {
                         {
                           marginLeft: -4,
                           fontSize: 15,
-                          fontFamily: 'Lato-Regular',
+                          fontFamily: fonts.LatoRegular,
                           backgroundColor: '#F2F4F5',
                           width: '29%',
                           marginHorizontal: 10,
@@ -428,7 +490,7 @@ const AddItem = ({navigation}) => {
                         styles.IngrediantsTextInput,
                         {
                           fontSize: 15,
-                          fontFamily: 'Lato-Regular',
+                          fontFamily: fonts.LatoRegular,
                           backgroundColor: '#F2F4F5',
                           width: '29%',
                           marginHorizontal: 10,
@@ -442,7 +504,7 @@ const AddItem = ({navigation}) => {
                         styles.IngrediantsTextInput,
                         {
                           fontSize: 15,
-                          fontFamily: 'Lato-Regular',
+                          fontFamily: fonts.LatoRegular,
                           backgroundColor: '#F2F4F5',
                           width: '29%',
                           marginHorizontal: 10,
@@ -647,7 +709,7 @@ const AddItem = ({navigation}) => {
                       {
                         marginLeft: -4,
                         fontSize: 15,
-                        fontFamily: 'Lato-Regular',
+                        fontFamily: fonts.LatoRegular,
                         backgroundColor: '#fff',
                         width: '90%',
                         marginHorizontal: 10,
@@ -664,7 +726,7 @@ const AddItem = ({navigation}) => {
                     borderRadius: 5,
                     elevation: 1,
                     alignItems: 'center',
-                    height: 440,
+                    height: 390,
                     paddingVertical: 17,
                   }}>
                   <View>
@@ -679,8 +741,8 @@ const AddItem = ({navigation}) => {
                             {
                               marginVertical: 10,
                               backgroundColor: '#F2F4F5',
-                              width: '44%',
-                              height: 130,
+                              width: '43%',
+                              height: 120,
                               alignSelf: 'center',
                             },
                           ]}>
@@ -744,14 +806,14 @@ const AddItem = ({navigation}) => {
                           position: 'absolute',
                           right: 20,
                           fontSize: 12,
-                          bottom: 5,
+                          bottom: 10,
                           fontFamily: 'Lato-Semibold',
                           color: '#CCD4D6',
                         }}>
                         2 mb max
                       </Text>
                     </View>
-                    <View style={{alignItems: 'center', marginBottom: 20}}>
+                    <View style={{alignItems: 'center', }}>
                       <TouchableOpacity
                         // onPress={() => navigation.navigate('Camera')}
                         // <Camera/>
@@ -797,7 +859,7 @@ const AddItem = ({navigation}) => {
                         paddingTop: 17,
                         color: Secondary,
                         fontSize: 17,
-                        fontFamily: 'Lato-Regular',
+                        fontFamily: fonts.LatoRegular,
                         marginHorizontal: 10,
                       }}>
                       {t('Imen_qualities')} (!)
@@ -824,7 +886,7 @@ const AddItem = ({navigation}) => {
                               marginLeft: -13,
                               color: Secondary,
                               fontSize: 17,
-                              fontFamily: 'Lato-Regular',
+                              fontFamily: fonts.LatoRegular,
                             }}>
                             {item.Text}
                           </Text>
@@ -853,7 +915,7 @@ const AddItem = ({navigation}) => {
                           styles.IngrediantsTextInput,
                           {
                             fontSize: 15,
-                            fontFamily: 'Lato-Regular',
+                            fontFamily: fonts.LatoRegular,
                             backgroundColor: '#fff',
                             width: '50%',
                             marginHorizontal: 14,
@@ -864,7 +926,7 @@ const AddItem = ({navigation}) => {
                         style={{
                           color: Secondary,
                           fontSize: 17,
-                          fontFamily: 'Lato-Regular',
+                          fontFamily: fonts.LatoRegular,
                         }}>
                         {t('minutes')}
                       </Text>
@@ -876,7 +938,8 @@ const AddItem = ({navigation}) => {
           ) : null}
           {order_state == 'completed' ? <Text>Harris</Text> : null}
         </View>
-      </ScrollView>
+      
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 };
@@ -890,9 +953,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingLeft: 15,
     fontSize: 17,
-    fontFamily: 'Lato-Regular',
+    fontFamily: fonts.LatoRegular,
     alignSelf: 'center',
     borderColor: '#CCD4D6',
+    height:40
   },
   IngrediantsTextInput: {
     width: '23%',
@@ -900,6 +964,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.3,
     borderColor: '#CCD4D6',
     paddingHorizontal: 10,
+    height:40
   },
   IngrediantsTextInput1: {
     width: '13%',
@@ -907,19 +972,20 @@ const styles = StyleSheet.create({
   TextfieldTitle: {
     color: Secondary,
     fontSize: 14,
-    fontFamily: 'Lato-Regular',
+    fontFamily: fonts.LatoRegular,
     marginHorizontal: 20,
     paddingVertical: 10,
     width: '43%',
   },
   dropdownbox: {
-    height: 50,
+    height: 30,
     width: '45%',
     elevation: 0.7,
     borderRadius: 5,
-    borderColor: Secondary,
+    borderColor: '#C2CCCF',
     marginVertical: 5,
     marginHorizontal: 15,
+    borderWidth: 1,
   },
   CustomizationBox: {
     backgroundColor: '#F2F4F5',
@@ -954,7 +1020,7 @@ const styles = StyleSheet.create({
   HeaderButtonText: {
     color: '#fff',
     textAlign: 'center',
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: fonts.PoppinsSemiBold,
   },
   // ////////State
   archive_orders_tab: {

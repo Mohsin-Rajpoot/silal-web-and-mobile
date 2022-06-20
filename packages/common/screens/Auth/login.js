@@ -16,17 +16,58 @@ import PhoneNumber from "../../components/native/PhoneNumberInput";
 import HeaderBack from "../../components/native/HeaderBack";
 import colors from "../../assets/colors";
 import { useTranslation } from "react-i18next";
+import * as userAction from "../../store/User/actions";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../../Loader";
+import DeviceInfo from "react-native-device-info";
 const Login = ({ navigation, route }) => {
   const { t } = useTranslation();
+  const isTab = DeviceInfo.isTablet();
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.User);
+  console.log("Loading", loading);
   const data = route?.params;
+  const init = {
+    password: "",
+    email: "",
+    error: "",
+  };
   const [active, setActive] = useState(1);
-  const [text, setText] = useState("");
+  const [text, setText] = useState(init);
+
+  // const rules = [
+  //   {
+  //     isValid: validateEmail(text.email),
+  //     message: 'Email should be valid',
+  //   },
+  //   {
+  //     isValid: validatePassword(text.password),
+  //     message: 'Password should be greater than 8 and must contain atleast one capital alphabet, one small alphabet and one digit',
+  //   }
+  // ]
+
   const goForgerPassword = () => {
     navigation.navigate("ForgetPassword");
   };
   const goBack = () => {
     navigation.pop();
   };
+  const loginFunction = (data) => {
+    var rePass = /^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    var re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,9})$/;
+    if (re.test(text.password) === false) {
+      return setText({
+        ...text,
+        error:
+          "Password should be greater than 8 and must contain atleast one capital alphabet, one small alphabet and one digit",
+      });
+    } else if (rePass.test(text.email) === false) {
+      return setText({ ...text, error: "Email should be valid" });
+    } else {
+      dispatch(userAction.userLoginSaga(data));
+    }
+  };
+
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
       <HeaderBack
@@ -39,33 +80,64 @@ const Login = ({ navigation, route }) => {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       >
-        <LoginSignUpButton active={active} setActive={setActive} />
+        <LoginSignUpButton
+          active={active}
+          setActive={setActive}
+          isTab={isTab}
+        />
 
-        <View style={styles.innerContainer}>
+        <View
+          style={!isTab ? styles.innerContainerMobile : styles.innerContainer}
+        >
           {active == 2 ? (
             <View>
               <Text style={styles.phoneNumberText}>{t("email")}</Text>
-              <TextInput placeholderText="email.example@gmail.com" />
+              <TextInput
+                placeholderText="email.example@gmail.com"
+                onChangeText={(value) => {
+                  setText({ ...text, email: value });
+                }}
+                value={text.email}
+                isTab={isTab}
+              />
+              {text.error ? (
+                <Text style={styles.errorMessage}>{text.error}</Text>
+              ) : (
+                <View />
+              )}
               <Text style={styles.phoneNumberText}>{t("Password")}</Text>
               <TextInput
                 placeholderText={t("Enter_password")}
                 secureText={true}
                 password={true}
+                onChangeText={(value) => setText({ ...text, password: value })}
+                value={text.password}
+                isTab={isTab}
               />
             </View>
           ) : active == 1 ? (
             <View>
               <Text style={styles.phoneNumberText}>{t("phone_number")}</Text>
               <PhoneInput
-                containerStyle={CommonStyle.phoneNumberInput}
-                textContainerStyle={styles.textContainer}
+                containerStyle={
+                  !isTab
+                    ? CommonStyle.phoneNumberInputMobile
+                    : CommonStyle.phoneNumberInput
+                }
+                textContainerStyle={
+                  !isTab ? styles.textContainerMobile : styles.textContainer
+                }
                 textInputProps={{
                   fontSize: 12,
                   padding: 0,
                   marginTop: 0,
                   maxLength: 10,
                 }}
-                countryPickerButtonStyle={styles.countyPickerContainer}
+                countryPickerButtonStyle={
+                  !isTab
+                    ? styles.countyPickerContainerMobile
+                    : styles.countyPickerContainer
+                }
                 textInputStyle={{ color: colors.black }}
                 codeTextStyle={styles.codeText}
                 defaultCode="RU"
@@ -80,9 +152,10 @@ const Login = ({ navigation, route }) => {
             <View />
           )}
         </View>
+        {loading && <Loader />}
         <View style={{ flexGrow: 1 }} />
         <Button
-          changeColor={true}
+          buttonStyling={!isTab ? styles.button1Mobile1 : styles.button2}
           name={
             data?.params?.signUp
               ? t("next")
@@ -90,20 +163,24 @@ const Login = ({ navigation, route }) => {
               ? t("login")
               : t("Continue")
           }
-          onPress={() =>
-            navigation.navigate("Verification", {
-              params: {
-                activeTab: data?.params?.signUp ? 4 : null,
-                active: active,
-              },
-            })
-          }
+          onPress={() => {
+            loginFunction(text);
+            setTimeout(() => {
+              navigation.navigate("Verification", {
+                params: {
+                  activeTab: data?.params?.signUp ? 4 : null,
+                  active: active,
+                },
+              });
+            }, 1000);
+          }}
         />
         <View
           style={{
             flexDirection: "row",
             alignSelf: "center",
             marginVertical: 15,
+            alignItems: "center",
           }}
         >
           {data?.params?.signUp ? (

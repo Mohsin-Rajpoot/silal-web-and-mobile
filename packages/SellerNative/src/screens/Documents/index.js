@@ -12,26 +12,31 @@ import colors from '@SilalApp/common/assets/colors';
 import CustomButton from '@SilalApp/common/components/native/CustomButton';
 import fonts from '@SilalApp/common/assets/fonts';
 import {Icon} from 'react-native-elements';
-import {useTranslation} from 'react-i18next'
+import {useTranslation} from 'react-i18next';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import { ScrollView } from 'react-native-gesture-handler';
 const Documents = ({navigation}) => {
-  const {t}=useTranslation();
+  const {t} = useTranslation();
   return (
-    <View
+    <SafeAreaView
       style={{
-        backgroundColor: colors.white,
+        backgroundColor: IsTablet? colors.profileBackground :colors.textWhite,
         flex: 1,
-        paddingHorizontal: scale(15),
-      }}>
-      <Header label={t("Document")} onPress={()=>navigation.openDrawer()} />
+        paddingHorizontal: IsTablet? scale(15): scale(5),
 
-      <View style={styles.mainContainer}>
-        <View style={styles.container}>
+      }}>
+        <ScrollView>
+      <Header label={t('Document')} onPress={() => navigation.openDrawer()} />
+
+      <View style={IsTablet ? styles.mainContainer :styles.mainContainerMobile}>
+        <View style={IsTablet? styles.container: styles.containerMobile}>
           <View>
             <CustomText textStyle={styles.documentTitleText} label="ITIN" />
             <TextInput
               placeholder="314-23-N1348"
               placeholderTextColor={colors.black}
-              style={styles.textInputtitle}
+              style={IsTablet? styles.textInputtitle: styles.textInputtitleMobile}
               borderRadius={moderateScale(5)}
               borderWidth={moderateScale(2)}
               borderColor={colors.borderColor}
@@ -43,7 +48,7 @@ const Documents = ({navigation}) => {
           <View style={{marginTop: verticalScale(20)}}>
             <CustomText
               textStyle={styles.documentTitleText}
-              label={t("CheckingAccount")}
+              label={t('CheckingAccount')}
             />
             <TextInput
               placeholder="2345 5445 7922 2054"
@@ -58,7 +63,8 @@ const Documents = ({navigation}) => {
             />
           </View>
         </View>
-        <View style={styles.exportButton}>
+        {IsTablet ?
+        <TouchableOpacity style={IsTablet?  styles.exportButton : styles.exportButtonMobile}>
           <Icon
             name="exit-outline"
             type="ionicon"
@@ -66,10 +72,24 @@ const Documents = ({navigation}) => {
             size={28}
             style={{transform: [{rotate: '-90deg'}]}}
           />
-          <CustomText label={t("Export")} textStyle={styles.buttonText} />
-        </View>
+          <CustomText label={t('Export')} textStyle={styles.buttonText} />
+        </TouchableOpacity>
+       :null }
       </View>
-    </View>
+</ScrollView>
+{!IsTablet ?
+        <TouchableOpacity style={IsTablet?  styles.exportButton : styles.exportButtonMobile}>
+          <Icon
+            name="exit-outline"
+            type="ionicon"
+            color={colors.textWhite}
+            size={28}
+            style={{transform: [{rotate: '-90deg'}]}}
+          />
+          <CustomText label={t('Export')} textStyle={styles.buttonTextMobile} />
+        </TouchableOpacity>
+       :null }
+    </SafeAreaView>
   );
 };
 
@@ -82,6 +102,12 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  mainContainerMobile: {
+    width: '100%',
+    marginTop: '20@s',
+    // flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   exportButton: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -92,12 +118,31 @@ const styles = ScaledSheet.create({
     borderRadius: '5@ms',
     marginHorizontal: '10@ms',
   },
+  exportButtonMobile:{
+    flexDirection: 'row',
+    justifyContent: 'center',
+    backgroundColor: colors.primary,
+    // alignSelf: 'flex-start',
+    paddingHorizontal: '15@ms',
+    paddingVertical: '5@ms',
+    borderRadius: '5@ms',
+    marginHorizontal: '10@ms', 
+  },
   buttonText: {
     fontSize: '13@ms',
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.textWhite,
 
     marginLeft: '5@ms',
+  },
+  buttonTextMobile:{
+    fontSize: '13@ms',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.textWhite,
+    marginLeft: '5@ms',
+    paddingTop:'6@s'
+    // justifyContent:'center',
+    // textAlignVertical:'center'
   },
   documentTitleText: {
     fontSize: '10@ms',
@@ -115,8 +160,14 @@ const styles = ScaledSheet.create({
     padding: '15@ms',
     borderRadius: '5@ms',
   },
+  containerMobile:{
+    width: '100%',
+    backgroundColor: colors.textWhite,
+    padding: '15@ms',
+    borderRadius: '5@ms',
+  },
   inputContainer: {
-    height: '40@s',
+    height: '100@s',
     width: '100%',
   },
   exportBtn: {

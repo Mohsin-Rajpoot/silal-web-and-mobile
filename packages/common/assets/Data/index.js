@@ -9,7 +9,7 @@ export const screens = [
   {
     id: 1,
     image: require("../images/Rectangle.png"),
-    heading: "Amet minim mollit non",
+    heading: "Amet minim mollit non" ,
     body: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint",
   },
   {

@@ -3,7 +3,8 @@ import React, { useState, useRef } from "react";
 import MultiSelect from "react-native-multiple-select";
 import colors from "../../../assets/colors";
 import { ScaledSheet } from "react-native-size-matters";
-const MultiSelectDropDown = () => {
+import fonts from "../../../assets/fonts";
+const MultiSelectDropDown = (props) => {
   const [itemSelect, setItemSelect] = useState([]);
   const ref = useRef();
   const items = [
@@ -49,7 +50,7 @@ const MultiSelectDropDown = () => {
     setItemSelect(SelectedItem);
   };
   return (
-    <View style={{ marginTop: 10 }}>
+    <View style={[{ marginTop: 2},]}>
       <MultiSelect
         hideTags
         items={items}
@@ -60,7 +61,7 @@ const MultiSelectDropDown = () => {
         selectText={"Pick Items"}
         searchInputPlaceholderText="Search Items..."
         onChangeInput={(text) => console.log(text)}
-        altFontFamily="ProximaNova-Light"
+        altFontFamily={fonts.LatoSemiBold}
         tagRemoveIconColor={colors.black}
         tagBorderColor={colors.primary}
         tagTextColor={colors.primary}
@@ -68,14 +69,18 @@ const MultiSelectDropDown = () => {
         selectedItemIconColor={colors.primary}
         itemTextColor="#000"
         displayKey="name"
-        searchInputStyle={{ color: "#CCC" }}
+        searchInputStyle={{ color: "#CCC", }}
         submitButtonColor={colors.primary}
         submitButtonText="Submit"
         styleItemsContainer={{ backgroundColor: "transparent" }}
         // styleTextDropdown={{ backgroundColor: "green" }}
         // styleDropdownMenu={{ backgroundColor: "blue" }}
-        styleSelectorContainer={{ backgroundColor: "black" }}
-        styleDropdownMenuSubsection={styles.mainContainerSelector}
+        styleSelectorContainer={{backgroundColor: "black"}}
+        styleDropdownMenuSubsection={[styles.mainContainerSelector,props.CustomDropdownStyle]}
+        // styleInputGroup={{backgroundColor:"red"}}
+        // styleListContainer={{backgroundColor:"blue"}}
+        styleTextDropdown={{marginHorizontal:10}}
+        styleTextDropdownSelected={{marginHorizontal:10}}
       />
       <View style={{marginTop:10,}}>
         {ref?.current?.getSelectedItemsExt(itemSelect)}
