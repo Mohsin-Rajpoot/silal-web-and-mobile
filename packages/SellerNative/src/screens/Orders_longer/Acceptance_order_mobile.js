@@ -26,7 +26,8 @@ export default function Acceptance_order_mobile({navigation}) {
   const [filter, setFilter] = useState(false);
   const [method, setMethod] = useState(false);
   const [order, setOrder] = useState(false);
-
+  const [allMethod,setAllMethod] = useState(0)
+  
   const InputRef = useRef();
 
   useEffect(() => {
@@ -43,7 +44,8 @@ export default function Acceptance_order_mobile({navigation}) {
       hideSubscription.remove();
     };
   }, []);
-
+   const methodArray = [t('allMethods'),t('Delivery'),t("Pickup")]
+   const orderArray = [t('all-orders'),]
   const dataArray = [
     {
       id: 1,

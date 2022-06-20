@@ -501,6 +501,11 @@
     "0_00_303_0_453553":"0 00 303 0 453553",
 
     "awaitingAcceptance":"Awaiting acceptance (18)",
-    "accepted":"Accepted (2)"
+    "accepted":"Accepted (2)",
+    "Picked":"Picked",
+    "Characteristics":"Characteristics",
+    "inStock":"In stock",
+    "receivingMethod":"Receiving method",
+    "allMethods":"All methods"
   }
 }
