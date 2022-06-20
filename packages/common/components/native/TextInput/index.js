@@ -22,11 +22,12 @@ const index = ({
   isTab,
   selectionColor,
   withLabel,
+  onPress
 }) => {
   const [showPassword, setShowPassword] = useState(!secureText ? true : false);
   const [text, setText] = useState("");
   return (
-    <View>
+    <TouchableOpacity onPress={onPress} disabled={!onPress}>
      
       <View
         style={[
@@ -87,7 +88,7 @@ const index = ({
           </>
         )}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

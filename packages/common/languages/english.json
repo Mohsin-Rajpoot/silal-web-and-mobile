@@ -499,7 +499,16 @@
     "Save_changes":"Save Changes",
     "Are_you_sure_you_want_to_delete_this_folder":"Are you sure you want to delete this folder?",
     "Yes_Delete":"Yes, Delete",
-    "0_00_303_0_453553":"0 00 303 0 453553"
+    "0_00_303_0_453553":"0 00 303 0 453553",
+    "awaitingAcceptance":"Awaiting acceptance (18)",
+    "accepted":"Accepted (2)",
+    
+    "Picked":"Picked",
+    "Characteristics":"Characteristics",
+    "inStock":"In stock",
+    "receivingMethod":"Receiving method",
+    "allMethods":"All methods"
+
 
   
    
