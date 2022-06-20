@@ -17,6 +17,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {useTranslation} from 'react-i18next';
 import CommonTab from '../../components/CommonTab';
 import {Icon, CheckBox} from 'react-native-elements';
+import Accepted from './molecule/Accepted';
 
 import {
   widthPercentageToDP as width,
@@ -24,6 +25,7 @@ import {
 } from 'react-native-responsive-screen';
 
 import colors from '@SilalApp/common/assets/colors/index';
+import SellerTools from './molecule/SellerTools';
 import fonts from '@SilalApp/common/assets/fonts/index';
 import DaySelect from '../../components/DaySelection';
 import CustomModal from '@SilalApp/common/components/native/CustomModal';
@@ -31,9 +33,10 @@ import Timer from '../../components/Timer';
 import Toast from 'react-native-easy-toast';
 import CustomText from '@SilalApp/common/components/CustomText';
 import {CustomButton} from '@SilalApp/common/components/native';
-import {ScaledSheet} from 'react-native-size-matters';
+import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
 import ItemDetail from './molecule';
 import {SwipeListView} from 'react-native-swipe-list-view';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const Order = ({navigation}) => {
   const {t} = useTranslation();
   const toastRef = useRef();
@@ -135,7 +138,7 @@ const Order = ({navigation}) => {
       // </View>
       <View
         style={{
-          paddingVertical: 15,
+          paddingVertical: 5,
           flex: 1,
           flexDirection: 'row',
           alignItems: 'center',
@@ -143,56 +146,58 @@ const Order = ({navigation}) => {
           // width:'10%'
         }}>
         <CommonTab tabs={tabs} page={page} onChangeTab={onChangeTab} />
-        <View style={styles.sideTabContainer}>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => setNoteModal(!noteModal)}>
-            <View style={styles.tabNewItemsContainer}>
-              <Icon
-                name="pluscircle"
-                type="antdesign"
-                size={18}
-                color={colors.primary}
-              />
-              <Text style={styles.noteText}>{t('Note')}</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => setModal(!modal)}>
-            <View style={styles.tabNewItemsContainer}>
-              <Icon
-                name="timer"
-                type="material-community"
-                size={18}
-                color={colors.primary}
-              />
-              <Text style={styles.noteText}>40 MIN</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => setContactModal(!contactModal)}>
-            <View style={styles.tabNewItemsContainer}>
-              <Icon
-                name="exclamationcircle"
-                type="antdesign"
-                size={18}
-                color={colors.textPrimaryBlur}
-                style={styles.cautionIcon}
-              />
-            </View>
-          </TouchableOpacity>
-          <DaySelect
-            day={t('Start_shift')}
-            containerStyle={styles.shiftContainer}
-            buttonSize={'large'}
-            textStyle={styles.textStyleShift}
-            activelabel={t('End_shift')}
-            state={activeShift}
-            setState={setActiveShift}
-          />
-        </View>
+        {IsTablet && (
+          <View style={styles.sideTabContainer}>
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={() => setNoteModal(!noteModal)}>
+              <View style={styles.tabNewItemsContainer}>
+                <Icon
+                  name="pluscircle"
+                  type="antdesign"
+                  size={18}
+                  color={colors.primary}
+                />
+                <Text style={styles.noteText}>{t('Note')}</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={() => setModal(!modal)}>
+              <View style={styles.tabNewItemsContainer}>
+                <Icon
+                  name="timer"
+                  type="material-community"
+                  size={18}
+                  color={colors.primary}
+                />
+                <Text style={styles.noteText}>40 MIN</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={() => setContactModal(!contactModal)}>
+              <View style={styles.tabNewItemsContainer}>
+                <Icon
+                  name="exclamationcircle"
+                  type="antdesign"
+                  size={18}
+                  color={colors.textPrimaryBlur}
+                  style={styles.cautionIcon}
+                />
+              </View>
+            </TouchableOpacity>
+            <DaySelect
+              day={t('Start_shift')}
+              containerStyle={styles.shiftContainer}
+              buttonSize={'large'}
+              textStyle={styles.textStyleShift}
+              activelabel={t('End_shift')}
+              state={activeShift}
+              setState={setActiveShift}
+            />
+          </View>
+        )}
         {/* <TouchableOpacity
           onPress={() => tabclick('0', 'current')}
           style={[
@@ -249,15 +254,15 @@ const Order = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{backgroundColor: '#f4f7f8', flex: 1}}>
-      <View style={{flexDirection: 'row', alignItems: 'center', height: '15%'}}>
-        <View style={{padding: 15}}>
+    <SafeAreaView style={{backgroundColor: colors.background, flex: 1}}>
+      <View style={{flexDirection: 'row', alignItems: 'center', height: !IsTablet ? '10%' :'12%'}}>
+        <View style={{padding: 5}}>
           <TouchableOpacity
             activeOpacity={0.6}
             onPress={() => navigation.openDrawer()}>
             <MaterialCommunityIcons
               name="reorder-horizontal"
-              size={20}
+              size={verticalScale(22)}
               style={{marginLeft: 10}}
               color={'#000000'}
             />
@@ -266,11 +271,12 @@ const Order = ({navigation}) => {
 
         {Header()}
       </View>
+
       <View style={{flex: 1}}>
         <PagerView
-          style={{flex: 1}}
+          style={{flex:1}}
           initialPage={0}
-          scrollEnabled={false}
+          // scrollEnabled={false}
           ref={ref}>
           <View key={'1'}>
             <Current_orders title="Received" navigation={navigation} />
@@ -279,7 +285,7 @@ const Order = ({navigation}) => {
             <Pre_orders />
           </View>
           <View key={'3'}>
-            <Archive_orders />
+            <Archive_orders navigation={navigation} />
           </View>
         </PagerView>
       </View>
@@ -402,7 +408,8 @@ const Order = ({navigation}) => {
           style={{width: '100%'}}
           contentContainerStyle={{
             flexGrow: 1,
-          }}>
+          }}
+          >
           <View style={{width: '100%'}}>
             <TouchableOpacity
               activeOpacity={0.6}
@@ -661,7 +668,7 @@ const Order = ({navigation}) => {
             </View>
           ) : addNote == 2 ? (
             <>
-                 <SwipeListView
+              <SwipeListView
                 data={data3}
                 renderItem={(data, rowMap) => (
                   <View>
@@ -684,8 +691,8 @@ const Order = ({navigation}) => {
                     <View
                       style={{
                         position: 'absolute',
-                        right:1,
-                        marginVertical:5
+                        right: 1,
+                        marginVertical: 5,
                       }}>
                       <TouchableOpacity
                         style={[
@@ -699,8 +706,8 @@ const Order = ({navigation}) => {
                 )}
                 rightOpenValue={-90}
               />
-  
-            {/* <View style={styles.noteDetail}>
+
+              {/* <View style={styles.noteDetail}>
          
 
               <View style={{marginHorizontal: 10, marginVertical: 5}}>
@@ -810,7 +817,7 @@ const styles = ScaledSheet.create({
     backgroundColor: colors.background,
     alignSelf: 'center',
     // borderRadius: '4@s',
-    marginVertical:5
+    marginVertical: 5,
   },
   quantityTitle: {
     fontSize: '15@ms',

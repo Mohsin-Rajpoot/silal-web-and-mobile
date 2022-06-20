@@ -1,5 +1,4 @@
 import {
-  StyleSheet,
   Text,
   View,
   TouchableOpacity,
@@ -25,6 +24,7 @@ const Header = ({
   Notification,
   rightPress,
   dostIcon,
+  treeDot
 }) => {
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
@@ -83,12 +83,12 @@ const Header = ({
             {!dostIcon ? (
               <View />
             ) : (
-              <Icon
-                name="dots-three-vertical"
-                type="entypo"
-                size={verticalScale(16)}
-                color={colors.gray50}
-              />
+             treeDot ? <View /> :  <Icon
+             name="dots-three-vertical"
+             type="entypo"
+             size={verticalScale(16)}
+             color={colors.gray50}
+           />
             )}
           </TouchableOpacity>
         ) : (

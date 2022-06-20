@@ -1,16 +1,28 @@
 const colors = {
   sidebar: "#4C6870",
   primary: "#05AE4B",
- 
+  orange1:"#F2A341",
+  orange1Light:"rgba(242, 163, 65, 0.2)",
   blurPrimary: "#CDEFDB",
   blurPrimary1: "#82D6A5",
+  Primary20: "rgba(205, 239, 219, 1)",
   primary1: "#5AB3A8",
+  lightBlue1:"#0747A6",
   light_grey: "#CCD4D6",
+  light_grey50:"rgba(204, 212, 214, 1)",
+  blue50:"rgba(1, 143, 251, 1)",
+  blue10:"rgba(0, 141, 166, 1)",
+  mehndi50:"rgba(76, 112, 97, 1)",
   purple: "#8777D9",
+  purple1: "#6554C0",
+  purpleLight1: "#EAE6FF",
   black: "#002733",
+  black50:"rgba(0, 39, 51, 1)",
   light_blue: "#DEEBFF",
   dark_blue: "#0052CC",
   light_green: "#34C759",
+  green50:"rgba(54, 179, 126, 1)",
+  green10:"rgba(230, 252, 255, 1)",
   red: "#FF5630",
   orange: "#FF8F73",
   white: "#E5E5E5",
@@ -62,6 +74,7 @@ const colors = {
   grayColor:"#809399",
   dullWhiteColor:"'#F2F2F2",
   purpleLight:"#E7E4F7",
+  purple50:"rgba(101, 84, 192, 1)",
   blueDark:"#0065FF",
   lightBlue:"#CCE0FF",
   text1: "rgba(76, 104, 112, 0.3)",
@@ -69,6 +82,13 @@ const colors = {
   borderColorSecondary:"rgba(0, 39, 51, 0.05)",
   gray50:'rgba(76, 104, 112, 0.5)',
   grayColorLight:"rgba(204, 212, 214, 0.5)",
-  redLightColor:"rgba(250, 225, 218, 1)"
+  redLightColor:"rgba(250, 225, 218, 1)",
+  red40:"rgba(255, 86, 48, 1)",
+  boxBg:'#E5EAEB',
+  red20:'rgba(255, 69, 69, 1)',
+  gray70:'rgba(255, 255, 255, 0.7)',
+  gray20:"rgba(250, 250, 250, 1)",
+  iconColor:"rgba(255, 255, 255, 1)"
 };
+
 export default colors;
