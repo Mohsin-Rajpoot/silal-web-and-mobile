@@ -1,11 +1,11 @@
-import styled from "styled-components"
-import { selectArrow } from './AllImages'
+import styled from "styled-components";
+import { selectArrow } from "./AllImages";
 
 const CardStyled = styled.div`
   background: #ffffff;
   box-shadow: 0px 5px 10px -2px rgba(196, 214, 220, 0.25);
   border-radius: 5px;
-  padding: ${props => props.padding ? props.padding : '20px'};
+  padding: ${(props) => (props.padding ? props.padding : "20px")};
   margin-bottom: 20px;
   &.bg-grey {
     background-color: #e5eaeb;
@@ -18,7 +18,7 @@ const CardStyled = styled.div`
     margin: -20px -20px 15px -20px;
     border-bottom: 1px solid rgba(0, 39, 51, 0.08);
     h1 {
-      font-family: 'Poppins';
+      font-family: "Poppins";
       font-weight: 700;
       font-size: 16px;
       line-height: 24px;
@@ -36,23 +36,23 @@ const Heading = styled.h1`
 `;
 
 const Button = styled.button`
-  background: ${props => props.bg ? props.bg : '#05AE4B'};
+  background: ${(props) => (props.bg ? props.bg : "#05AE4B")};
   border-radius: 5px;
   border: none;
   padding: 0 20px;
   min-width: 100px;
-  width: ${props => props.width};
-  height: ${props => props.height ? props.height : '40px'};
+  width: ${(props) => props.width};
+  height: ${(props) => (props.height ? props.height : "40px")};
   white-space: nowrap;
-  color: ${props => props.color ? props.color : 'white'};
+  color: ${(props) => (props.color ? props.color : "white")};
   font-weight: 600;
   font-size: 15px;
   transition: 0.2s all;
-  margin-bottom: ${props => props.mb};
-  margin-top: ${props => props.mt};
+  margin-bottom: ${(props) => props.mb};
+  margin-top: ${(props) => props.mt};
   &:hover {
-    background: '#CDEFDB';
-    color: '#05AE4B';
+    background: "#CDEFDB";
+    color: "#05AE4B";
     transform: scale(1.01);
   }
   &:disabled {
@@ -63,7 +63,7 @@ const Button = styled.button`
     }
   }
   &.grey {
-    background: #CCD4D6;
+    background: #ccd4d6;
     color: rgba(0, 39, 51, 0.5);
   }
   &.w-230 {
@@ -76,14 +76,14 @@ const Button = styled.button`
     margin-right: 10px;
   }
   &.delete {
-    background-color: #DE350B;
+    background-color: #de350b;
   }
   &.hover-fill {
     background-color: white;
-    color: #05AE4B;
-    border: 1px solid #05AE4B;
+    color: #05ae4b;
+    border: 1px solid #05ae4b;
     &:hover {
-      background-color: #05AE4B;
+      background-color: #05ae4b;
       color: white !important;
       svg {
         path {
@@ -101,22 +101,22 @@ const ButtonText = styled.button`
   height: 40px;
   white-space: nowrap;
   color: var(--theme-clr);
-  font-weight: ${props => props.weight ? props.weight : '600'};
-  font-size: ${props => props.size ? props.size : '15px'};
+  font-weight: ${(props) => (props.weight ? props.weight : "600")};
+  font-size: ${(props) => (props.size ? props.size : "15px")};
   transition: 0.2s all;
 `;
 
 const TableStyled = styled.div`
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   button[data-testid] {
-    background: #F2F4F5;
+    background: #f2f4f5;
     border-radius: 50%;
     width: 28px;
     height: 28px;
     margin: auto;
   }
   &.modal-table {
-    background: #FAFAFA;
+    background: #fafafa;
     max-height: 228px;
     overflow-y: auto;
     padding: 14px;
@@ -129,7 +129,7 @@ const TableStyled = styled.div`
       height: 30px;
     }
     .rdt_TableRow {
-      background: #FAFAFA;
+      background: #fafafa;
       min-height: 42px;
     }
   }
@@ -194,12 +194,12 @@ const TableStyled = styled.div`
       background: #ff5630;
     }
     &.bank {
-      background: #FFFAE6;
-      color: #FF8B00;
+      background: #fffae6;
+      color: #ff8b00;
     }
     &.credit {
-      background: #E6FCFF;
-      color: #008DA6;
+      background: #e6fcff;
+      color: #008da6;
     }
   }
   .action-btn {
@@ -238,7 +238,7 @@ const TableStyled = styled.div`
       }
     }
   }
-  input[type=checkbox] {
+  input[type="checkbox"] {
     transform: scale(1.16);
   }
 `;
@@ -316,7 +316,7 @@ const ThemeAccordion = styled.div`
 
 const RangeSlider = styled.div`
   width: 100%;
-  font-family: 'lato';
+  font-family: "lato";
   ul {
     li {
       margin-right: 20px;
@@ -339,7 +339,7 @@ const RangeSlider = styled.div`
         margin-right: 0;
       }
       &.current {
-        color: #CCD4D6;
+        color: #ccd4d6;
         margin: 0 auto;
         &::before {
           content: none;
@@ -455,15 +455,15 @@ const NavStyled = styled.nav`
 `;
 
 const FlexContainer = styled.div`
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 `;
 
 const HeadingStyled = styled.h1`
-  font-size:${(props) => props.size && (props.size)};
-  font-weight:${(props) => props.weight && (props.weight)};
-  color:${(props) => props.color ? props.color : "#002733"};
-  margin:${(props) => props.margin ? props.margin : "0"};
+  font-size: ${(props) => props.size && props.size};
+  font-weight: ${(props) => props.weight && props.weight};
+  color: ${(props) => (props.color ? props.color : "#002733")};
+  margin: ${(props) => (props.margin ? props.margin : "0")};
   a {
     color: var(--theme-clr);
     text-decoration: none;
@@ -479,11 +479,11 @@ const Title = styled.h6`
 `;
 
 const Label = styled.label`
-  font-family: 'lato', sans-serif;
+  font-family: "lato", sans-serif;
   font-weight: 600;
-  font-size: ${(props) => props.size ? props.size : "12px"};
+  font-size: ${(props) => (props.size ? props.size : "12px")};
   line-height: 120%;
-  color: ${(props) => props.color ? props.color : "#002733"};
+  color: ${(props) => (props.color ? props.color : "#002733")};
   margin-bottom: 7px;
 `;
 
@@ -495,7 +495,7 @@ const Select = styled.select`
   padding: 9px 10px 8px;
   width: 100%;
   height: 39px;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #e8e8e8;
   border-radius: 5px;
   margin-bottom: 20px;
   font-weight: 400;
@@ -514,12 +514,12 @@ const Textarea = styled.textarea`
   padding: 10px;
   height: 105px;
   width: 100%;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #e8e8e8;
   border-radius: 5px;
   resize: none;
   margin-bottom: 20px;
   &::placeholder {
-    color: #CCD4D6;
+    color: #ccd4d6;
   }
   &.small {
     height: 60px;
@@ -529,7 +529,7 @@ const Textarea = styled.textarea`
 const Input = styled.input`
   width: 100%;
   height: 39px;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #e8e8e8;
   border-radius: 5px;
   padding: 9px 15px 8px 10px;
   margin-bottom: 20px;
@@ -539,14 +539,14 @@ const Input = styled.input`
   letter-spacing: -0.408px;
   color: #002733;
   &::placeholder {
-    color: #CCD4D6;
+    color: #ccd4d6;
   }
 `;
 
 const EditButton = styled.button`
   width: 24px;
   height: 24px;
-  background: #4C6870;
+  background: #4c6870;
   border: none;
   border-radius: 3px;
   margin-left: 5px;
@@ -572,11 +572,11 @@ const ThemeModal = styled.div`
     border: none;
   }
   .text {
-    font-family: 'lato';
+    font-family: "lato";
     font-weight: 400;
     font-size: 15px;
     line-height: 150%;
-    color: #4C6870;
+    color: #4c6870;
     margin: 0;
     span {
       color: #002733;
@@ -584,7 +584,7 @@ const ThemeModal = styled.div`
     }
   }
   .refusal-textarea {
-    background: #F2F4F5;
+    background: #f2f4f5;
     height: 126px;
     border: none;
   }
@@ -608,12 +608,12 @@ const UploadImages = styled.div`
       right: 7px;
     }
     .checkbox,
-    .checkmark  {
+    .checkmark {
       width: 16px;
       height: 16px;
     }
     .checkmark {
-      border: 2px solid #CCD4D6;
+      border: 2px solid #ccd4d6;
     }
     .checkbox .checkmark:after {
       left: 4px;
@@ -627,13 +627,13 @@ const UploadImages = styled.div`
     font-size: 12px;
     line-height: 120%;
     text-align: right;
-    color: #CCD4D6;
+    color: #ccd4d6;
     margin-bottom: 9px;
   }
   button {
     width: 100%;
     height: 39px;
-    background: #4C6870;
+    background: #4c6870;
     border-radius: 5px;
     font-weight: 500;
     font-size: 15px;
@@ -647,21 +647,21 @@ const UploadImages = styled.div`
 const UsedItemTag = styled.div`
   padding: 5px 10px;
   height: 28px;
-  background: #F2A341;
+  background: #f2a341;
   border-radius: 5px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 15px;
   line-height: 120%;
   letter-spacing: -0.408px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 0 5px 10px 0;
 `;
 
 const UploadImageSmallContainer = styled.div`
   width: 36px;
   height: 36px;
-  border: 1px solid #CCD4D6;
+  border: 1px solid #ccd4d6;
   border-radius: 5px;
   position: relative;
   display: flex;
@@ -684,7 +684,7 @@ const UploadImageSmallContainer = styled.div`
 const UploadedImageSmallContainer = styled.div`
   width: 100%;
   height: 87px;
-  border: 1px solid #C4C4C4;
+  border: 1px solid #c4c4c4;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -726,7 +726,7 @@ const SimpleNav = styled.div`
 `;
 
 const Description = styled.p`
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 17px;
   line-height: 140%;
@@ -739,7 +739,7 @@ const Radio = styled.label`
   position: relative;
   cursor: pointer;
   user-select: none;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 15px;
   line-height: 120%;
@@ -759,7 +759,7 @@ const Radio = styled.label`
     height: 20px;
     width: 20px;
     background-color: transparent;
-    border: 2px solid #E8E8E8;
+    border: 2px solid #e8e8e8;
     border-radius: 50%;
   }
   &:hover input ~ .checkmark {
@@ -788,26 +788,26 @@ const Radio = styled.label`
 `;
 
 const Suggestions = styled.div`
-  font-family: 'lato';
+  font-family: "lato";
   padding: 5px;
   height: 26px;
-  background: #E6F4F2;
+  background: #e6f4f2;
   border-radius: 5px;
   font-weight: 500;
   font-size: 13px;
   line-height: 120%;
-  color: #5AB3A8;
+  color: #5ab3a8;
   margin-bottom: 8px;
   margin-right: 5px;
 `;
 
 const Tag = styled.div`
-  font-family: 'lato', sans-serif;
+  font-family: "lato", sans-serif;
   font-weight: 400;
   font-size: 15px;
   line-height: 130%;
-  color: #0052CC;
-  background-color: #DEEBFF;
+  color: #0052cc;
+  background-color: #deebff;
   padding: 8px 20px;
   margin-right: 10px;
   border-radius: 5px;
@@ -818,7 +818,7 @@ const Switch = styled.div`
   display: inline-block;
   width: 60px;
   height: 32px;
-  input { 
+  input {
     opacity: 0;
     width: 100%;
     height: 100%;
@@ -830,10 +830,10 @@ const Switch = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #5AB3A8;
+    background-color: rgba(120, 120, 128, 0.16);
     border: 0.5px solid rgba(204, 212, 214, 0.5);
     border-radius: 34px;
-    transition: .4s;
+    transition: 0.4s;
     z-index: -1;
     cursor: pointer;
     &::before {
@@ -844,26 +844,154 @@ const Switch = styled.div`
       left: 2px;
       bottom: 2px;
       background-color: white;
-      box-shadow: -2px 2px 7px rgba(0, 39, 51, 0.14), -4px 4px 4px rgba(0, 39, 51, 0.02);
+      box-shadow: -2px 2px 7px rgba(0, 39, 51, 0.14),
+        -4px 4px 4px rgba(0, 39, 51, 0.02);
       border-radius: 50%;
-      transition: .4s;
+      transition: 0.4s;
     }
   }
   input:checked + .slider {
-    background-color: #CACFD0;
+    background-color: #05ae4b;
   }
   input:focus + .slider {
-    box-shadow: 0 0 1px #CACFD0;
+    box-shadow: 0 0 1px #cacfd0;
   }
   input:checked + .slider:before {
     transform: translateX(28px);
   }
 `;
 const Margin = styled.div`
-  margin: ${props => props.margin};
+  margin: ${(props) => props.margin};
+`;
+
+const SecurityPrefrence = styled.div`
+  display: flex;
+  .display {
+    justify-content: space-between;
+  }
+
+  h1 {
+    font-family: "Poppins";
+    font-weight: 700;
+    font-size: 19px;
+    color: #002733;
+  }
+  p {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #002733;
+  }
+  .text {
+    padding: 22px 0px;
+  }
+  .form {
+    width: 80%;
+  }
+  .form-check-input {
+    width: 39px;
+    height: 19px;
+  }
+  .right {
+    // border:2px solid yellow;
+  }
+
+  .butns {
+    text-align: right;
+  }
+  .btn1 {
+    background: #ccd4d6;
+    color: #4c7061;
+    border: none;
+    margin: 5px;
+  }
+  .btn2 {
+    background: #05ae4b;
+    color: #ffffff;
+    border: none;
+    margin: 5px;
+  }
+`;
+
+const ModalStyle = styled.div`
+  .modal-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    color: #414342;
+    margin: 0;
+  }
+  .modal-header {
+    padding: 20px 20px 15px 20px;
+    border: none;
+  }
+  .modal-body {
+    padding: 0 20px 15px 20px;
+  }
+  .modal-footer {
+    padding: 0 20px 20px 20px;
+    border: none;
+  }
+  .text {
+    font-family: "lato";
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    color: #4c6870;
+    margin: 0;
+    span {
+      color: #002733;
+      font-weight: 500;
+    }
+  }
+  .refusal-textarea {
+    background: #f2f4f5;
+    height: 126px;
+    border: none;
+  }
+  .btn1 {
+    background: #ccd4d6;
+    color: #4c7061;
+    border: none;
+    margin: 5px;
+  }
+  .btn2 {
+    background: #05ae4b;
+    color: #ffffff;
+    border: none;
+    margin: 5px;
+  }
+`;
+const WorkStyle = styled.div`
+  border: 2px solid red;
+  .left {
+    border: 2px solid yellow;
+  }
+  .right {
+    border: 2px solid orange;
+  }
+  .row {
+    justify-content: space-around;
+  }
+`;
+
+const SellerIdStyle = styled.div`
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  .text {
+    font-weight: 500;
+    font-size: 15px;
+    color: #979797;
+  }
 `;
 
 export {
+  SellerIdStyle,
+  WorkStyle,
+  ModalStyle,
+  SecurityPrefrence,
   CardStyled,
   Heading,
   Button,

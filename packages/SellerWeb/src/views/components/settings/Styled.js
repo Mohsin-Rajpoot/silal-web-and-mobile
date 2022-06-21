@@ -20,6 +20,12 @@ const SettingBtn = styled.button`
     .icon {
         margin-right: 10px;
     }
+    .input{
+            position: absolute;
+            z-index: 2;
+            right: 20px;
+            position:relative;
+    }
     &.red {
         color: #DE350B;
     }
