@@ -110,7 +110,7 @@ const LongOrderDetails = ({navigation,route}) => {
                 picked={item.picked}
                 inStock={item.inStock}
                 price={item.price}
-                characteristics="nczk"
+                characteristics={item.characteristics}
               />
             </View>
           );

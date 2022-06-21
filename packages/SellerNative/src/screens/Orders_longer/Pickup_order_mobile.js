@@ -353,11 +353,42 @@ export default function Pickup_order_mobile({navigation,route}) {
                   </TouchableOpacity>
                 </View>
               </View>
-              <CustomButton
-                textStyle={styles.btnText}
-                text={t('Apply')}
-                containerStyle={styles.btn}
-              />
+              {allMethod || allOrder ? (
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View style={{width: '48%'}}>
+                    <CustomButton
+                    onPress={()=> {
+                      setAllMethod(0)
+                      setAllOrder(0)
+                    }}
+                      textStyle={[styles.btnText, {color: colors.mehndi50}]}
+                      text={t('Clear')}
+                      containerStyle={[
+                        styles.btn,
+                        {backgroundColor: colors.light_grey50},
+                      ]}
+                    />
+                  </View>
+                  <View style={{width: '48%'}}>
+                    <CustomButton
+                      textStyle={styles.btnText}
+                      text={t('Apply')}
+                      containerStyle={styles.btn}
+                    />
+                  </View>
+                </View>
+              ) : (
+                <CustomButton
+                  textStyle={styles.btnText}
+                  text={t('Apply')}
+                  containerStyle={styles.btn}
+                />
+              )}
             </View>
           </CustomModal>
         )}

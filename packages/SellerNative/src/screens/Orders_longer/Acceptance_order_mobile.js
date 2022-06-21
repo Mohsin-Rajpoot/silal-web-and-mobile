@@ -351,11 +351,42 @@ export default function Acceptance_order_mobile({navigation}) {
                   </TouchableOpacity>
                 </View>
               </View>
-              <CustomButton
-                textStyle={styles.btnText}
-                text={t('Apply')}
-                containerStyle={styles.btn}
-              />
+              {allMethod || allOrder ? (
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View style={{width: '48%'}}>
+                    <CustomButton
+                    onPress={()=> {
+                      setAllMethod(0)
+                      setAllOrder(0)
+                    }}
+                      textStyle={[styles.btnText, {color: colors.mehndi50}]}
+                      text={t('Clear')}
+                      containerStyle={[
+                        styles.btn,
+                        {backgroundColor: colors.light_grey50},
+                      ]}
+                    />
+                  </View>
+                  <View style={{width: '48%'}}>
+                    <CustomButton
+                      textStyle={styles.btnText}
+                      text={t('Apply')}
+                      containerStyle={styles.btn}
+                    />
+                  </View>
+                </View>
+              ) : (
+                <CustomButton
+                  textStyle={styles.btnText}
+                  text={t('Apply')}
+                  containerStyle={styles.btn}
+                />
+              )}
             </View>
           </CustomModal>
         )}
@@ -613,7 +644,7 @@ export default function Acceptance_order_mobile({navigation}) {
             }}>
             <View style={{width: '100%'}}>
               <TouchableOpacity
-              style={{alignSelf:'flex-end'}}
+                style={{alignSelf: 'flex-end'}}
                 onPress={() => {
                   setCalendar(false);
                   setFilter(true);
@@ -625,22 +656,41 @@ export default function Acceptance_order_mobile({navigation}) {
                   size={verticalScale(18)}
                 />
               </TouchableOpacity>
-              <View style={{height:verticalScale(300)}}>
-              <Calendar />
+              <View style={{height: verticalScale(300)}}>
+                <Calendar />
               </View>
-              <View style={{height: verticalScale(10),}} />
-              <View style={{flexDirection:'row',alignItems:'center'}}>
-                  <View style={styles.thisWeekCont}>
-                  <CustomText label={t("this_week")} fontFamily={fonts.LatoMedium} fontSize={15} color={colors.primary} />
-                  </View>
-                  <View style={styles.thisWeekCont}>
-                  <CustomText label={t("Past week")} fontFamily={fonts.LatoMedium} fontSize={15} color={colors.primary} />
-                  </View>
-                  <View style={styles.thisWeekCont}>
-                  <CustomText label={t("this_month")} fontFamily={fonts.LatoMedium} fontSize={15} color={colors.primary} />
-                  </View>
+              <View style={{height: verticalScale(10)}} />
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={styles.thisWeekCont}>
+                  <CustomText
+                    label={t('this_week')}
+                    fontFamily={fonts.LatoMedium}
+                    fontSize={15}
+                    color={colors.primary}
+                  />
+                </View>
+                <View style={styles.thisWeekCont}>
+                  <CustomText
+                    label={t('Past week')}
+                    fontFamily={fonts.LatoMedium}
+                    fontSize={15}
+                    color={colors.primary}
+                  />
+                </View>
+                <View style={styles.thisWeekCont}>
+                  <CustomText
+                    label={t('this_month')}
+                    fontFamily={fonts.LatoMedium}
+                    fontSize={15}
+                    color={colors.primary}
+                  />
+                </View>
               </View>
-              <CustomButton textStyle={{fontSize:verticalScale(13)}} text={t("Apply")} containerStyle={styles.applyBtn} />
+              <CustomButton
+                textStyle={{fontSize: verticalScale(13)}}
+                text={t('Apply')}
+                containerStyle={styles.applyBtn}
+              />
             </View>
           </CustomModal>
         )}
@@ -715,18 +765,18 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  thisWeekCont:{
-    paddingVertical:'3@vs',
-    paddingHorizontal:'8@s',
-    backgroundColor:colors.Primary20,
-    borderRadius:'5@vs',
-    justifyContent:'center',
-    alignItems:'center',
-    marginRight:'10@s'
+  thisWeekCont: {
+    paddingVertical: '3@vs',
+    paddingHorizontal: '8@s',
+    backgroundColor: colors.Primary20,
+    borderRadius: '5@vs',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: '10@s',
   },
-  applyBtn:{
+  applyBtn: {
     width: '100%',
     height: '45@vs',
-    marginTop:'30@vs'
-  }
+    marginTop: '30@vs',
+  },
 });
