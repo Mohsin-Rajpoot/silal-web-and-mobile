@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./style";
 import DeviceInfo from "react-native-device-info";
-const index = ({ name, onPress, changeColor, buttonStyling }) => {
+const Button = ({ name, onPress, changeColor, buttonStyling }) => {
   const isTab = DeviceInfo.isTablet();
   return (
     <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
@@ -25,4 +25,4 @@ const index = ({ name, onPress, changeColor, buttonStyling }) => {
   );
 };
 
-export default index;
+export default Button;

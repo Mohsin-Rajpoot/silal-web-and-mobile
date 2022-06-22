@@ -20,6 +20,7 @@ import * as userAction from "../../store/User/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../Loader";
 import DeviceInfo from "react-native-device-info";
+import CustomText from "../../components/CustomText";
 const Login = ({ navigation, route }) => {
   const { t } = useTranslation();
   const isTab = DeviceInfo.isTablet();
@@ -34,17 +35,6 @@ const Login = ({ navigation, route }) => {
   };
   const [active, setActive] = useState(1);
   const [text, setText] = useState(init);
-
-  // const rules = [
-  //   {
-  //     isValid: validateEmail(text.email),
-  //     message: 'Email should be valid',
-  //   },
-  //   {
-  //     isValid: validatePassword(text.password),
-  //     message: 'Password should be greater than 8 and must contain atleast one capital alphabet, one small alphabet and one digit',
-  //   }
-  // ]
 
   const goForgerPassword = () => {
     navigation.navigate("ForgetPassword");
@@ -84,30 +74,43 @@ const Login = ({ navigation, route }) => {
           active={active}
           setActive={setActive}
           isTab={isTab}
+          signUp={data?.params?.signUp}
+          firstLabel={data?.params?.signupEmail ? "email" : ""}
         />
 
         <View
           style={!isTab ? styles.innerContainerMobile : styles.innerContainer}
         >
-          {active == 2 ? (
+          {data?.params?.signupEmail ? (
             <View>
               <Text style={styles.phoneNumberText}>{t("email")}</Text>
               <TextInput
-                placeholderText="email.example@gmail.com"
+                placeholderText={"email.example@gmail.com"}
                 onChangeText={(value) => {
                   setText({ ...text, email: value });
                 }}
                 value={text.email}
                 isTab={isTab}
               />
-              {text.error ? (
+              {/* {text.error ? (
                 <Text style={styles.errorMessage}>{text.error}</Text>
               ) : (
                 <View />
-              )}
+              )} */}
               <Text style={styles.phoneNumberText}>{t("Password")}</Text>
               <TextInput
                 placeholderText={t("Enter_password")}
+                secureText={true}
+                password={true}
+                onChangeText={(value) => setText({ ...text, password: value })}
+                value={text.password}
+                isTab={isTab}
+              />
+              <Text style={styles.phoneNumberText}>
+                {t("Confirm_password")}
+              </Text>
+              <TextInput
+                placeholderText={t("EnterPasswordAgain")}
                 secureText={true}
                 password={true}
                 onChangeText={(value) => setText({ ...text, password: value })}
@@ -145,7 +148,7 @@ const Login = ({ navigation, route }) => {
                 onChangeText={(value) => setText(value)}
                 // onChangeFormattedText={(value) => setText(value)}
                 value={text}
-                placeholder={t("phone_number")}
+                // placeholder={t("phone_number")}
               />
             </View>
           ) : (
@@ -153,7 +156,18 @@ const Login = ({ navigation, route }) => {
           )}
         </View>
         {loading && <Loader />}
+
         <View style={{ flexGrow: 1 }} />
+        {data?.params?.signupEmail ? (
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => navigation.navigate("SellerInformation")}
+          >
+            <CustomText label={t("skip")} textStyle={styles.SkipText} />
+          </TouchableOpacity>
+        ) : (
+          <View />
+        )}
         <Button
           buttonStyling={!isTab ? styles.button1Mobile1 : styles.button2}
           name={
@@ -163,12 +177,17 @@ const Login = ({ navigation, route }) => {
               ? t("login")
               : t("Continue")
           }
+          s
           onPress={() => {
             loginFunction(text);
             setTimeout(() => {
               navigation.navigate("Verification", {
                 params: {
-                  activeTab: data?.params?.signUp ? 4 : null,
+                  activeTab: data?.params?.signupEmail
+                    ? 5
+                    : data?.params?.signUp
+                    ? 4
+                    : null,
                   active: active,
                 },
               });

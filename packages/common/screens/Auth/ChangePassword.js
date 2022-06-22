@@ -9,6 +9,7 @@ import styles from "./style";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Button from "../../components/native/AuthButton";
 import { useTranslation } from "react-i18next";
+import IsTablet from "../../components/native/IsTablet";
 const ChangePassword = ({ navigation }) => {
   const { t } = useTranslation();
   const goBack = () => {
@@ -16,7 +17,10 @@ const ChangePassword = ({ navigation }) => {
   };
   return (
     <View style={CommonStyle.mainContainer}>
-      <HeaderBack onGoBack={goBack} name={t('Reset_password')}  />
+      <HeaderBack
+        onGoBack={goBack}
+        name={!IsTablet ? t("Reset_password") : ""}
+      />
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
@@ -28,13 +32,16 @@ const ChangePassword = ({ navigation }) => {
             label={t("Password")}
             textStyle={styles.phoneNumberText}
           />
-          <TextInput placeholderText={t("Enter_password")} secureText={true} />
+          <TextInput
+            placeholderText={!IsTablet ? "" : t("Enter_password")}
+            secureText={true}
+          />
           <CustomText
-            label={t("Change_password")}
+            label={t("Confirm_password")}
             textStyle={styles.phoneNumberText}
           />
           <TextInput
-            placeholderText={t("Confirm_password")}
+            placeholderText={!IsTablet ? "" : t("Enter_password")}
             secureText={true}
           />
           <View style={styles.changePassword}>

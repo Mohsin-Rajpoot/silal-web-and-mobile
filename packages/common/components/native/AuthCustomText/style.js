@@ -5,24 +5,26 @@ import {
   heightPercentageToDP as hp,
   listenOrientationChange as lor,
   removeOrientationListener as rol,
-} from 'react-native-responsive-screen-hooks';
+} from "react-native-responsive-screen-hooks";
 import fonts from "../../../assets/fonts";
-
+import IsTablet from "../IsTablet";
 const styles = ScaledSheet.create({
-  mainContainer:{
-    width:wp('60%'),
-    justifyContent:'center',
-    alignSelf:'center'
+  mainContainer: {
+    width: wp(!IsTablet ? "90%" : "60%"),
+    justifyContent: "center",
+    alignSelf: "center",
   },
   fistsText: {
     fontSize: "14@ms",
     color: colors.black,
     textAlign: "center",
+    marginTop:'5@s'
   },
   secondText: {
     fontSize: "14@ms",
     color: colors.black,
-    fontFamily:fonts.LatoBold,
+    fontFamily: fonts.LatoBold,
+    marginTop:'5@s'
   },
 });
 

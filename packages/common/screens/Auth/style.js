@@ -8,6 +8,7 @@ import {
   removeOrientationListener as rol,
 } from "react-native-responsive-screen-hooks";
 import fonts from "../../assets/fonts";
+import IsTablet from "../../components/native/IsTablet";
 const styles = ScaledSheet.create({
   innerContainer: {
     width: "75%",
@@ -20,15 +21,15 @@ const styles = ScaledSheet.create({
     flexGrow: 1,
   },
   dropDownStyle1: {
-    width: wp('65%'), 
+    width: wp("65%"),
     backgroundColor: "red",
   },
   phoneNumberText: {
-    color: colors.textPrimary,
+    color: colors.textPrimeColor,
     marginBottom: "5@ms",
     fontSize: "12@ms",
     fontFamily: fonts.LatoBold,
-    marginTop: "5@ms",
+    marginTop: "10@ms",
   },
   codeText: {
     fontSize: "12@ms",
@@ -72,41 +73,43 @@ const styles = ScaledSheet.create({
     fontSize: 12,
   },
   bottomText: {
-    fontSize: "11@ms",
-    color: colors.textPrimary,
+    fontSize: "11@vs",
+    color: colors.textPrimeColor,
     fontFamily: fonts.LatoMedium,
   },
   nestedBottomText: {
-    fontSize: "12@ms",
+    fontSize: "11@vs",
     color: colors.primary,
-    fontFamily: fonts.LatoMedium,
+    fontFamily: fonts.LatoBold,
   },
   optStyling: {
     marginVertical: "30@s",
-    width: wp("60%"),
+    width: wp(!IsTablet ? "85%" : "60%"),
     flexDirection: "row",
     alignItems: "center",
     alignSelf: "center",
     fontSize: "12@ms",
     color: colors.black,
+    fontWeight: "600",
   },
   optContainer: {
     borderWidth: "1@s",
     borderColor: colors.otpBorder,
-    borderRadius: "5@s",
+    borderRadius: IsTablet ? "5@s" : "8@s",
     height: "40@s",
     width: "30@s",
     fontSize: "12@ms",
     color: colors.black,
     textAlign: "center",
+    fontWeight: "600",
   },
   optContainerMobile: {
-    // borderWidth: "1@s",
-    // borderColor: colors.otpBorder,
+    borderWidth: "1@s",
+    borderColor: colors.dullWhite,
     backgroundColor: colors.dullWhite,
     borderRadius: "5@s",
-    height: "40@s",
-    width: "30@s",
+    height: "45@s",
+    width: "38@s",
     fontSize: "12@ms",
     color: colors.black,
     textAlign: "center",
@@ -124,7 +127,7 @@ const styles = ScaledSheet.create({
     margin: "3@s",
   },
   passwordWarningText: {
-    fontSize: "10@ms",
+    fontSize: "10@vs",
     color: colors.light_grey,
     paddingHorizontal: "2@s",
   },
@@ -134,12 +137,37 @@ const styles = ScaledSheet.create({
   },
   choseAccountShopping: {
     backgroundColor: colors.black,
-    width: "40@s",
-    height: "40@s",
+    width: "35@s",
+    height: "35@s",
     borderRadius: "99@s",
     alignSelf: "center",
     marginTop: "10@s",
   },
+  choseAccountShopping3: {
+    backgroundColor: colors.black,
+    width: "35@s",
+    height: "35@s",
+    borderRadius: "99@s",
+    alignSelf: "center",
+    marginTop: "10@s",
+    opacity: 0.03,
+  },
+  choseAccountReview: {
+    width: "58@s",
+    height: "34@s",
+    alignSelf: "center",
+    marginTop: "10@s",
+    position: "absolute",
+    top: -23,
+  },
+  underReview: {
+    fontSize: "8@vs",
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.black,
+    alignSelf: "center",
+    marginTop: "10@s",
+  },
+
   choseAccountShoppingMobile: {
     backgroundColor: colors.black,
     width: "45@vs",
@@ -147,10 +175,18 @@ const styles = ScaledSheet.create({
     borderRadius: "99@s",
     alignSelf: "center",
     marginHorizontal: "10@s",
+    overflow: "hidden",
+  },
+  choseAccountShoppingMobileReview: {
+    width: "60@s",
+    height: "50@s",
+    alignSelf: "flex-end",
+    marginHorizontal: "10@s",
+    overflow: "hidden",
   },
   choseMainContainer: {
     width: "125@s",
-    height: "100@s",
+    height: "90@s",
     backgroundColor: colors.blurPrimary,
     borderRadius: "5@s",
     margin: "5@s",
@@ -158,7 +194,7 @@ const styles = ScaledSheet.create({
     borderColor: colors.primary,
   },
   choseMainContainerMobile: {
-    width: '100%',
+    width: "100%",
     height: "90@s",
     flexDirection: "row",
     alignItems: "center",
@@ -167,26 +203,47 @@ const styles = ScaledSheet.create({
     margin: "5@s",
     borderWidth: "1@s",
     borderColor: colors.primary,
-    alignSelf:"center"
+    alignSelf: "center",
   },
   choseMainContainer1: {
     width: "125@s",
-    height: "100@s",
+    height: "90@s",
+    backgroundColor: colors.darkGray,
+    borderRadius: "4@s",
+    margin: "5@s",
+    borderWidth: "0.5@s",
+    borderColor: colors.borderColor,
+  },
+  choseMainContainer2: {
+    width: "30%",
+    height: "85@s",
     backgroundColor: "transparent",
     borderRadius: "4@s",
     margin: "5@s",
     borderWidth: "0.5@s",
-    borderColor: "rgba(205, 205, 208, 0.5)",
+    borderColor: colors.borderColor,
   },
   choseMainContainer1Mobile: {
-    width: '100%',
+    width: "98%",
     height: "90@s",
-    backgroundColor: colors.dullWhite,
+    backgroundColor: colors.darkGray,
     borderRadius: "8@s",
     margin: "5@s",
     flexDirection: "row",
     alignItems: "center",
-    alignSelf:"center"
+    alignSelf: "center",
+    // borderWidth: "0.5@s",
+    // borderColor: "rgba(205, 205, 208, 0.5)",
+  },
+  choseMainContainer1Mobileother: {
+    width: "98%",
+    height: "90@s",
+    backgroundColor: colors.dullWhite,
+    borderRadius: "10@s",
+    margin: "5@s",
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "center",
     // borderWidth: "0.5@s",
     // borderColor: "rgba(205, 205, 208, 0.5)",
   },
@@ -195,7 +252,7 @@ const styles = ScaledSheet.create({
     color: colors.black,
     textAlign: "center",
     fontFamily: fonts.PoppinsMedium,
-    marginVertical: "5@s",
+    marginTop: "5@s",
   },
   accountDetail: {
     fontSize: "10@ms",
@@ -204,9 +261,23 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.LatoMedium,
     marginBottom: "10@s",
   },
+  accountDetail1: {
+    fontSize: "10@ms",
+    color: colors.light_grey,
+    textAlign: "center",
+    fontFamily: fonts.LatoMedium,
+    marginBottom: "10@s",
+  },
   heading: {
-    fontSize: "21@ms",
+    fontSize: "20@vs",
     color: colors.primary,
+    fontFamily: fonts.bold,
+    textAlign: "center",
+    margin: "5@ms",
+  },
+  headingMobile: {
+    fontSize: "18@vs",
+    color: colors.black,
     fontFamily: fonts.bold,
     textAlign: "center",
     margin: "5@ms",
@@ -217,10 +288,40 @@ const styles = ScaledSheet.create({
     textAlign: "center",
     fontFamily: fonts.LatoRegular,
     marginHorizontal: "5@s",
+    lineHeight: "15@s",
+  },
+  bodyMobile: {
+    fontSize: "12@ms",
+    color: colors.textPrimeColor,
+    textAlign: "center",
+    fontFamily: fonts.LatoRegular,
+    marginHorizontal: "5@s",
+  },
+  imageView: {
+    width: "45%",
+    height: "30%",
+    backgroundColor: colors.primary,
+    alignSelf: "center",
+    justifyContent: "center",
+    borderRadius: "15@vs",
+  },
+  imageViewMobile: {
+    width: "70%",
+    height: "34%",
+    backgroundColor: colors.primary,
+    alignSelf: "center",
+    justifyContent: "center",
+    borderRadius: "10@vs",
   },
   onBoardingDetailconatiner: {
     width: wp("58%"),
     alignItems: "center",
+    marginTop: "10%",
+  },
+  onBoardingDetailconatinerMobile: {
+    width: wp("90%"),
+    alignItems: "center",
+    marginTop: "15@vs",
   },
   screenImage: {
     resizeMode: "contain",
@@ -245,9 +346,7 @@ const styles = ScaledSheet.create({
   },
   screenContainer: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
-    marginTop:"-15@s"
   },
   skipbutton: {
     fontSize: "12@ms",
@@ -255,7 +354,15 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.LatoBold,
     alignSelf: "flex-end",
     margin: "15@ms",
-    marginVertical:'22@vs'
+    marginVertical: "22@vs",
+  },
+  skipbuttonMobile: {
+    fontSize: "13@vs",
+    color: colors.black,
+    fontFamily: fonts.LatoSemiBold,
+    alignSelf: "flex-end",
+    margin: "15@ms",
+    marginVertical: "22@vs",
   },
   signUpDetailText: {
     fontSize: "11@ms",
@@ -296,12 +403,12 @@ const styles = ScaledSheet.create({
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginHorizontal:"2@s"
+    marginHorizontal: "2@s",
   },
   headerContainerMobile: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginHorizontal:"15@s"
+    marginHorizontal: "15@s",
   },
   headerText: {
     fontSize: "12@ms",
@@ -322,6 +429,12 @@ const styles = ScaledSheet.create({
   },
   formTextHeading: {
     fontSize: "11@ms",
+    fontFamily: fonts.LatoSemiBold,
+    color: colors.black,
+    paddingHorizontal: "2@s",
+  },
+  formTextHeadingMobile: {
+    fontSize: "11@ms",
     fontFamily: fonts.LatoBold,
     color: colors.textPrimeColor,
     paddingHorizontal: "2@s",
@@ -329,8 +442,8 @@ const styles = ScaledSheet.create({
   addressContainer: {
     flexDirection: "row",
     marginTop: "10@s",
-    justifyContent:"space-between",
-    width:"100%",
+    justifyContent: "space-between",
+    width: "100%",
   },
   formTextHeadingOptional: {
     fontSize: "12@ms",
@@ -341,6 +454,7 @@ const styles = ScaledSheet.create({
   addressInputContainer: {
     width: wp("30%"),
   },
+
   addressInputContainerMobile1: {
     width: wp("44%"),
   },
@@ -364,6 +478,7 @@ const styles = ScaledSheet.create({
     color: colors.light_grey,
     textAlign: "center",
     alignSelf: "center",
+    marginBottom: "5@s",
   },
   outerContainer: {
     flexDirection: "row",
@@ -402,6 +517,15 @@ const styles = ScaledSheet.create({
     borderRadius: "8@s",
     margin: "5@s",
   },
+  formButton1: {
+    backgroundColor: colors.primary,
+    width: wp("65%"),
+    alignSelf: "center",
+    alignItems: "center",
+    padding: "10@s",
+    borderRadius: "5@s",
+    margin: "5@s",
+  },
   dropDownStyle: {
     backgroundColor: "transparent",
     borderColor: colors.borderColor,
@@ -411,7 +535,11 @@ const styles = ScaledSheet.create({
     backgroundColor: "transparent",
     borderColor: colors.borderColor,
     height: "45@ms",
-    // marginVertical:50
+  },
+  dropDownStyleMoBile: {
+    backgroundColor: colors.dullWhite,
+    borderColor: colors.borderColor,
+    height: "45@ms",
   },
   dropDownPlaceHolder: {
     color: colors.light_grey,
@@ -450,7 +578,7 @@ const styles = ScaledSheet.create({
     marginBottom: "10@s",
   },
   accountSelectionInActive: {
-    backgroundColor: "transparent",
+    backgroundColor: colors.dullColor,
     width: wp("31%"),
     flexDirection: "row",
     borderRadius: "4@s",
@@ -475,9 +603,9 @@ const styles = ScaledSheet.create({
     color: colors.black,
   },
   accountSelectionDec: {
-    fontSize: "10@ms",
-    fontFamily: fonts.LatoRegular,
-    color: colors.black,
+    fontSize: "8@vs",
+    fontFamily: fonts.LatoSemiBold,
+    color: colors.black40,
     marginVertical: "3@s",
     marginRight: "15@s",
   },
@@ -542,7 +670,7 @@ const styles = ScaledSheet.create({
     borderRadius: "99@s",
     alignSelf: "center",
   },
-  
+
   customRadioInactive: {
     backgroundColor: "transparent",
     width: "5@s",
@@ -610,7 +738,7 @@ const styles = ScaledSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     borderRadius: "2@s",
-    borderColor:colors.textPrimaryBlur,
+    borderColor: colors.textPrimaryBlur,
     width: "15@s",
     height: "15@s",
   },
@@ -656,7 +784,7 @@ const styles = ScaledSheet.create({
     alignSelf: "center",
     textAlign: "center",
     lineHeight: "30@s",
-    marginTop:"10@s"
+    marginTop: "10@s",
   },
   checkout_text: {
     fontSize: "11@ms",
@@ -686,7 +814,7 @@ const styles = ScaledSheet.create({
     padding: "10@s",
     borderRadius: "5@s",
     justifyContent: "space-between",
-    backgroundColor:colors.dullWhite
+    backgroundColor: colors.dullWhite,
   },
   fromText: {
     marginRight: "5@s",
@@ -732,6 +860,16 @@ const styles = ScaledSheet.create({
     marginHorizontal: "10@s",
     borderRadius: "4@s",
   },
+  letsGoButton: {
+    backgroundColor: colors.primary,
+    width: wp("90%"),
+    alignSelf: "center",
+    alignItems: "center",
+    padding: "10@s",
+    borderRadius: "8@s",
+    margin: "5@s",
+    marginBottom: "20@s",
+  },
   buttonMobile: {
     backgroundColor: colors.primary,
     width: wp("90%"),
@@ -751,27 +889,27 @@ const styles = ScaledSheet.create({
     margin: "5@s",
   },
   button1Mobile1: {
-    backgroundColor: colors.blurPrimary1,
+    backgroundColor: colors.primaryGreenColor,
     width: wp("90%"),
     alignSelf: "center",
     alignItems: "center",
-    padding: "10@s",
-    borderRadius: "4@s",
+    padding: "15@s",
+    borderRadius: "10@s",
     margin: "5@s",
   },
   button: {
     backgroundColor: colors.primary,
-    width: wp("65%"),
+    width: wp("70%"),
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
     borderRadius: "4@s",
     margin: "5@s",
-    marginVertical:'1@s'
+    marginVertical: "1@s",
   },
   button1: {
     backgroundColor: colors.blurPrimary,
-    width: wp("65%"),
+    width: wp("70%"),
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
@@ -793,6 +931,46 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.bold,
     marginLeft: "10@s",
     marginBottom: "10@s",
+  },
+  sellerIdText: {
+    fontSize: "12@vs",
+    color: colors.black,
+    fontFamily: fonts.LatoMedium,
+  },
+  oppsText: {
+    fontSize: "20@vs",
+    fontFamily: fonts.bold,
+    color: colors.primary,
+    alignSelf: "center",
+  },
+  opsDetail: {
+    fontSize: "15@vs",
+    fontFamily: fonts.LatoSemiBold,
+    color: colors.black,
+    alignSelf: "center",
+    textAlign: "center",
+    lineHeight: !IsTablet ? "21@s" : "18@s",
+    marginHorizontal: "10@s",
+  },
+  SkipText: {
+    fontSize: "13@vs",
+    fontFamily: fonts.LatoBold,
+    color: colors.textPrimeColor,
+    alignSelf: "center",
+    marginBottom: "10@s",
+  },
+  SellerInformationTitle: {
+    fontSize: "22@vs",
+    fontFamily: fonts.LatoBold,
+    color: colors.black,
+    marginLeft: "5@s",
+  },
+  SoonText: {
+    fontSize: "10@vs",
+    fontFamily: fonts.PoppinsMedium,
+    color: colors.black,
+    alignSelf: "center",
+    marginTop: "4@s",
   },
 });
 

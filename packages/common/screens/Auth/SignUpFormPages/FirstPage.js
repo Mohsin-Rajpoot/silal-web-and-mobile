@@ -8,6 +8,7 @@ import CommonStyle from "../../../styles";
 import colors from "../../../assets/colors";
 import { useTranslation } from "react-i18next";
 import IsTablet from "../../../components/native/IsTablet";
+import { verticalScale } from "react-native-size-matters";
 const FirstPage = () => {
   const { t } = useTranslation();
   const [text, setText] = useState("");
@@ -18,19 +19,35 @@ const FirstPage = () => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
-        <View style={{ flexDirection: "row", marginTop: 5 }}>
+        <View style={{ flexDirection: "row", marginTop: 25 }}>
           <CustomText
-            label={t("owner_name")}
-            textStyle={styles.formTextHeading}
+            label={!IsTablet ? t("ownerName") : t("business_name")}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
-        <TextInput placeholderText={t("enter_full_name")} />
-        <View style={{ height: 30 }} />
+        <View style={{ width: !IsTablet ? "100%" : "50%" }}>
+          <TextInput placeholderText={t("Enter_name")} isTab={IsTablet} />
+        </View>
+        <View style={{ flexDirection: "row", marginTop: verticalScale(10) }}>
+          <CustomText
+            label={t("owner_name")}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
+          />
+          <CustomText label="*" textStyle={styles.star} />
+        </View>
+        <TextInput placeholderText={t("enter_full_name")} isTab={IsTablet} />
+        <View style={{ height: 10 }} />
         <View style={{ flexDirection: "row", marginTop: 5 }}>
           <CustomText
             label={t("Owner_phone")}
-            textStyle={styles.formTextHeading}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
@@ -59,14 +76,63 @@ const FirstPage = () => {
           placeholder={t("phone_number")}
         />
 
-        <View style={{ flexDirection: "row", marginTop: 25 }}>
+        <View style={{ flexDirection: "row", marginTop: verticalScale(10) }}>
           <CustomText
-            label={t("business_name")}
-            textStyle={styles.formTextHeading}
+            label={t("business_email")}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
           />
-          <CustomText label="*" textStyle={styles.star} />
+          <CustomText label={!IsTablet ? " " : "*"} textStyle={styles.star} />
         </View>
-        <TextInput placeholderText={t("Enter_name")} />
+        <TextInput placeholderText={"example@example.com"} isTab={IsTablet} />
+
+        <View style={{ flexDirection: "row", marginTop: verticalScale(10) }}>
+          <CustomText
+            label={t("Business_profile")}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
+          />
+          {!IsTablet ? (
+            <CustomText label=" " textStyle={styles.star} />
+          ) : (
+            <CustomText label={t("optional")} textStyle={styles.optionalText} />
+          )}
+        </View>
+        <TextInput
+          placeholderText={"https://www.instagram.com/silal.app"}
+          isTab={IsTablet}
+        />
+
+        <View style={{ flexDirection: "row", marginTop: verticalScale(10) }}>
+          <CustomText
+            label={!IsTablet ? t("anotherUserProfile") : t("socialMediaWeb")}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
+          />
+         {!IsTablet ? (
+            <CustomText label=" " textStyle={styles.star} />
+          ) : (
+            <CustomText label={t("optional")} textStyle={styles.optionalText} />
+          )}
+        </View>
+        <TextInput
+          placeholderText={"https://www.facebook.com/silal.app"}
+          isTab={IsTablet}
+        />
+
+        <View style={{ flexDirection: "row", marginTop: verticalScale(10) }}>
+          <CustomText
+            label={t("BusinessTexId")}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
+          />
+          <CustomText label={!IsTablet ? " " : "*"} textStyle={styles.star} />
+        </View>
+        <TextInput placeholderText={t("000-000-000")} isTab={IsTablet} />
       </ScrollView>
     </View>
   );

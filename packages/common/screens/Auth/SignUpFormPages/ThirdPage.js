@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
+  ImageBackground,
 } from "react-native";
 import React, { useState } from "react";
 import CustomText from "../../../components/CustomText";
@@ -60,10 +61,12 @@ const ThirdPage = () => {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       >
-        <View style={{ flexDirection: "row", marginVertical: 15 }}>
+        <View style={{ flexDirection: "row", marginTop: verticalScale(10) }}>
           <CustomText
-            label={t("select_type")}
-            textStyle={styles.formTextHeading}
+            label={!IsTablet ? t("SellerType") : t("select_type")}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
@@ -111,13 +114,13 @@ const ThirdPage = () => {
                   textStyle={styles.accountTitles}
                 />
                 <CustomText
-                  label="Some text for clarification to distinguish the concepts and more information"
+                  label="Some text for clarification to distinguish the concepts"
                   textStyle={styles.accountSelectionDec}
                 />
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.6} onPress={() => setActive(1)}>
+          <TouchableOpacity activeOpacity={0.6}>
             <View
               style={[
                 active == 1 && !IsTablet
@@ -154,14 +157,37 @@ const ThirdPage = () => {
                   textStyle={styles.accountTitles}
                 />
                 <CustomText
-                  label="Some text for clarification to distinguish the concepts and more information"
+                  label="Some text for clarification to distinguish the concepts"
                   textStyle={styles.accountSelectionDec}
                 />
+              </View>
+              <View
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: colors.dullColor,
+                }}
+              >
+                <ImageBackground
+                  source={require("../../../../SellerNative/assets/images/Rectangle.png")}
+                  style={{
+                    position: "absolute",
+                    width: verticalScale(38),
+                    height: verticalScale(30),
+                    flexDirection: "row",
+                    alignSelf: "flex-end",
+                    right: 10,
+                    justifyContent: "center",
+                  }}
+                >
+                  <CustomText label={t("Soon")} textStyle={styles.SoonText} />
+                </ImageBackground>
               </View>
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity activeOpacity={0.6} onPress={() => setActive(2)}>
+          <TouchableOpacity activeOpacity={0.6}>
             <View
               style={[
                 active == 2 && !IsTablet
@@ -198,17 +224,42 @@ const ThirdPage = () => {
                   textStyle={styles.accountTitles}
                 />
                 <CustomText
-                  label="Some text for clarification to distinguish the concepts and more information"
+                  label="Some text for clarification to distinguish the concepts"
                   textStyle={styles.accountSelectionDec}
                 />
+              </View>
+              <View
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: colors.dullColor,
+                }}
+              >
+                <ImageBackground
+                  source={require("../../../../SellerNative/assets/images/Rectangle.png")}
+                  style={{
+                    position: "absolute",
+                    width: verticalScale(38),
+                    height: verticalScale(30),
+                    flexDirection: "row",
+                    alignSelf: "flex-end",
+                    right: 10,
+                    justifyContent: "center",
+                  }}
+                >
+                  <CustomText label={t("Soon")} textStyle={styles.SoonText} />
+                </ImageBackground>
               </View>
             </View>
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", marginVertical: 5 }}>
           <CustomText
-            label={t("main_category")}
-            textStyle={styles.formTextHeading}
+            label={t("Category")}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
@@ -220,7 +271,7 @@ const ThirdPage = () => {
           setValue={setValue}
           setItems={setItems}
           placeholder="Groceries"
-          style={styles.dropDownStyle}
+          style={!IsTablet ? styles.dropDownStyleMoBile : styles.dropDownStyle}
           placeholderStyle={styles.dropDownPlaceHolder}
           dropDownContainerStyle={styles.dropdownContainer}
           iconContainerStyle={{ backgroundColor: "red" }}
@@ -233,7 +284,9 @@ const ThirdPage = () => {
         >
           <CustomText
             label={t("Accept_payment")}
-            textStyle={styles.formTextHeading}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
@@ -292,8 +345,25 @@ const ThirdPage = () => {
           }}
         >
           <CustomText
+            label={t("StoreSlogan")}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
+          />
+          <CustomText label="*" textStyle={styles.star} />
+        </View>
+        <TextInput placeholderText={t("SloganPlaceholder")} isTab={IsTablet} />
+        <View
+          style={{
+            flexDirection: "row",
+            marginTop: verticalScale(!IsTablet ? 20 : 10),
+          }}
+        >
+          <CustomText
             label={t("store_description")}
-            textStyle={styles.formTextHeading}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
@@ -303,11 +373,14 @@ const ThirdPage = () => {
           }
           inputStyle={styles.detailInput}
           multiLine={true}
+          isTab={IsTablet}
         />
-        <View style={{ flexDirection: "row", marginVertical: 15 }}>
+        <View style={{ flexDirection: "row", marginTop: verticalScale(12) }}>
           <CustomText
             label={t("working_hours")}
-            textStyle={styles.formTextHeading}
+            textStyle={
+              !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
+            }
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>

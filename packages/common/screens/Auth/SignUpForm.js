@@ -52,7 +52,7 @@ const SignUpForm = ({ navigation }) => {
   };
   return (
     <>
-      <HeaderBack name={`${t("Step")} ${page + 1}/3`} />
+      <HeaderBack name={`${t("Step")} ${page + 1}/3`} onGoBack={goprev} />
       {!isTab ? (
         <CustomText
           label={t("questionnaire")}
@@ -72,14 +72,14 @@ const SignUpForm = ({ navigation }) => {
           active={page}
         />
         <Header
-          label={t("Contacts")}
+          label={!IsTablet ? t("location_info") : t("Location_info")}
           textStyleInActive={styles.headerTextInactive}
           textStyle={styles.headerText}
           page={1}
           active={page}
         />
         <Header
-          label={t("Detail")}
+          label={t("moreDetail")}
           textStyleInActive={styles.headerTextInactive}
           textStyle={styles.headerText}
           page={2}
