@@ -54,7 +54,7 @@ const Wrapper = styled.div`
     background: transparent;
   }
   .selected {
-    color: #5ab3a8;
+    color: #05ae4b;
   }
 `;
 

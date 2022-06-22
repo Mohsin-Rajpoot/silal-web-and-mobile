@@ -118,7 +118,7 @@ const styles = ScaledSheet.create({
     },
   },
   PreviewHeader: {
-    color: '#5AB3A8',
+    color: '#05AE4B',
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 12,
@@ -193,7 +193,7 @@ const styles = ScaledSheet.create({
     fontFamily: 'Lato-Regular',
   },
   ModalTertiaryButton: {
-    borderColor: '#5AB3A8',
+    borderColor: '#05AE4B',
     borderWidth: 2,
     height: 40,
     width: 170,
@@ -202,11 +202,11 @@ const styles = ScaledSheet.create({
     borderRadius: 5,
   },
   ButtonText: {
-    color: '#5AB3A8',
+    color: '#05AE4B',
     fontFamily: 'Poppins-SemiBold',
   },
   PrimaryButtonModal: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     height: 40,
     width: 170,
     justifyContent: 'center',
@@ -221,10 +221,10 @@ const styles = ScaledSheet.create({
   ToastMainView: {
     flexDirection: 'row',
     marginVertical: 0,
-    position:'absolute',
-    left:-420,
-    backgroundColor:'#fff',
-    elevation:2
+    position: 'absolute',
+    left: -420,
+    backgroundColor: '#fff',
+    elevation: 2,
   },
   IconToast: {
     color: 'green',

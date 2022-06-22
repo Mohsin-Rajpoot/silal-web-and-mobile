@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Wrapper = styled.button`
   padding: 11px 15px;
   color: ${(props) => (props.textcolor ? "#ffffff" : "#4C6870")};
-  background: ${(props) => (props.primary ? "#5ab3a8" : "#F5F5F5")};
+  background: ${(props) => (props.primary ? "#05AE4B" : "#F5F5F5")};
   background-color: ${(props) => props.bg};
   width: ${(props) => props.width};
   font-size: 17px;

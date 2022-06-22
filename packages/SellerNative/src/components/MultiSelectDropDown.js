@@ -1,68 +1,63 @@
-import React, { useState } from 'react'
-import { Text, View } from 'react-native'
-import SelectBox from 'react-native-multi-selectbox'
-import { xorBy } from 'lodash'
+import React, {useState} from 'react';
+import {Text, View} from 'react-native';
+import SelectBox from 'react-native-multi-selectbox';
+import {xorBy} from 'lodash';
 
 const K_OPTIONS = [
-    {
-        item: 'Juventus',
-        id: 'JUVE',
-    },
-    {
-        item: 'Real Madrid',
-        id: 'RM',
-    },
-
-]
+  {
+    item: 'Juventus',
+    id: 'JUVE',
+  },
+  {
+    item: 'Real Madrid',
+    id: 'RM',
+  },
+];
 
 function MultiSelectDropDown() {
+  const [selectedTeams, setSelectedTeams] = useState([]);
+  console.log(selectedTeams, 'harris');
+  return (
+    <View style={{width: '90%'}}>
+      <SelectBox
+        label=""
+        options={K_OPTIONS}
+        onMultiSelect={onMultiChange()}
+        onTapClose={onMultiChange()}
+        isMulti
+        // hideInputFilter={false}
+        selectedValues={selectedTeams}
+        inputFilterStyle={{}}
+        optionsLabelStyle={{}}
+        inputFilterContainerStyle={{}}
+        arrowIconColor={'#002733'}
+        searchIconColor={'gray'}
+        toggleIconColor={'gray'}
+        inputPlaceholder={'List all contained allergens'}
+        optionContainerStyle={{}}
+        multiListEmptyLabelStyle={{
+          borderRadius: 5,
+          // borderWidth: 1,
+          // backgroundColor:'red'
+        }}
+        containerStyle={{
+          borderRadius: 5,
+          borderColor: '#05AE4B',
+          borderWidth: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        multiOptionsLabelStyle={{}}
+      />
+    </View>
+  );
 
-    const [selectedTeams, setSelectedTeams] = useState([])
-    console.log(selectedTeams, "harris")
-    return (
-        <View style={{ width: '90%', }}>
-                
-            
-            <SelectBox
-                label=""
-                options={K_OPTIONS}
-                onMultiSelect={onMultiChange()}
-                onTapClose={onMultiChange()}
-                isMulti
-                // hideInputFilter={false}
-                selectedValues={selectedTeams}
-                inputFilterStyle={{ }}
-                optionsLabelStyle={{ }}
-                inputFilterContainerStyle={{  }} 
-                arrowIconColor={ '#002733'} 
-                searchIconColor={ 'gray'} 
-                
-                toggleIconColor={'gray'}    
-                inputPlaceholder={'List all contained allergens'}  
-                optionContainerStyle ={{  }}
-                multiListEmptyLabelStyle={{
-                  borderRadius:5,  
-                // borderWidth: 1,
-                // backgroundColor:'red'
-              }}
-              containerStyle={{borderRadius:5,borderColor: '#5AB3A8',
-              borderWidth: 1,justifyContent: 'center',alignItems: 'center',
-            }}
-                multiOptionsLabelStyle={{  }}
-            />
-        </View>
-    )
-
-    function onMultiChange() {
-        return (item) => setSelectedTeams(xorBy(selectedTeams, [item], 'id'))
-    }
-
-
+  function onMultiChange() {
+    return item => setSelectedTeams(xorBy(selectedTeams, [item], 'id'));
+  }
 }
 
-export default MultiSelectDropDown
-
-
+export default MultiSelectDropDown;
 
 // import React, { Component, Fragment } from 'react';
 // import SearchableDropdown from 'react-native-searchable-dropdown';
@@ -80,8 +75,7 @@ export default MultiSelectDropDown
 //     id: 3,
 //     name: 'Ruby',
 //   },
- 
-  
+
 // ];
 // export default class App extends React.Component {
 //   constructor(props) {
@@ -121,14 +115,14 @@ export default MultiSelectDropDown
 //             padding: 10,
 //             marginTop: 2,
 //             // backgroundColor: 'red',
-//             // borderColor: '#5AB3A8',
+//             // borderColor: '#05AE4B',
 //             // borderWidth: 1,
 //             // borderRadius : 5,
 //           }}
 //           itemTextStyle={{ color: '#222' }}
 //           itemsContainerStyle={{
 //             padding: 5, borderWidth: 2,
-//             borderColor: '#5AB3A8', borderRadius: 5,
+//             borderColor: '#05AE4B', borderRadius: 5,
 //             backgroundColor: 'red', maxHeight: 140, flax: 1
 //           }}
 //           items={items}
@@ -141,7 +135,7 @@ export default MultiSelectDropDown
 //               style: {
 //                 padding: 12,
 //                 borderWidth: 1,
-//                 borderColor: '#5AB3A8',
+//                 borderColor: '#05AE4B',
 //                 borderRadius: 5,
 //               },
 //               // onTextChange: text => console.log(text),
@@ -159,8 +153,6 @@ export default MultiSelectDropDown
 //     );
 //   }
 // }
-
-
 
 // import { StyleSheet, Text, View } from 'react-native'
 // import React from 'react'
@@ -182,11 +174,9 @@ export default MultiSelectDropDown
 //       },
 // ]
 
-
-
 //   return (
 //     <View>
-     
+
 //     </View>
 //   )
 // }

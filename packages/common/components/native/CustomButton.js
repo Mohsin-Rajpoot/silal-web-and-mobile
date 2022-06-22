@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   mainbutton_PRIMARY: {
-    backgroundColor: "#5AB3A8",
+    backgroundColor: "#05AE4B",
     fontFamily: "Poppins-SemiBold",
   },
   mainbutton_TERTIARY: {},

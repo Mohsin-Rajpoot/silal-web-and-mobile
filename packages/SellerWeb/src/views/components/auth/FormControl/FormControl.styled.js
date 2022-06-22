@@ -14,7 +14,7 @@ export const Label = styled.label`
   justify-content: space-between;
   align-items: center;
   span {
-    color: #5ab3a8;
+    color: #05ae4b;
   }
   .special {
     color: #ccd4d6;
@@ -37,7 +37,7 @@ export const Input = styled.div`
       color: #ccd4d6;
     }
     :hover {
-      border: 1px solid #5ab3a8;
+      border: 1px solid #05ae4b;
       box-shadow: -1px 0px 8px 3px rgb(90 179 168 / 62%);
     }
   }

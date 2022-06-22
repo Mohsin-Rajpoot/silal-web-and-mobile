@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Clints from '../screens/Clints';
@@ -9,19 +9,17 @@ import OrderStack from './OrderStack';
 import Order from '../screens/orders/Order';
 import {useTranslation} from 'react-i18next';
 import ProductStack from './ProductStack';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import colors from '@SilalApp/common/assets/colors';
 import HomeStack from './HomeStack';
 const Tab = createBottomTabNavigator();
 
 const TabStack = () => {
   return (
-  
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#5AB3A8',
-        
+        tabBarActiveTintColor: '#05AE4B',
       }}
       initialRouteName="HomeStack">
       <Tab.Screen
@@ -40,7 +38,7 @@ const TabStack = () => {
         component={OrderStack}
         options={{
           tabBarLabel: t('Order'),
-          unmountOnBlur:true,
+          unmountOnBlur: true,
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="bus" color={color} size={size} />
           ),
@@ -51,7 +49,7 @@ const TabStack = () => {
         component={Clints}
         options={{
           tabBarLabel: t('client'),
-          unmountOnBlur:true,
+          unmountOnBlur: true,
           tabBarIcon: ({color, size}) => (
             <Ionicons name="people-sharp" color={color} size={size} />
           ),
@@ -62,17 +60,16 @@ const TabStack = () => {
         component={ProductStack}
         options={{
           tabBarLabel: t('products'),
-          unmountOnBlur:true,
+          unmountOnBlur: true,
           tabBarIcon: ({color, size}) => (
             <Ionicons name="pricetag" color={color} size={size} />
           ),
         }}
       />
     </Tab.Navigator>
-  
   );
 };
 
 export default TabStack;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

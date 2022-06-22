@@ -115,13 +115,13 @@ const Order = ({navigation}) => {
   const Header = () => {
     return (
       // <View style={{ paddingVertical: 15,flex:1, flexDirection: 'row',}}>
-      //   <TouchableOpacity onPress={()=>set_order_state('current')}  style={[styles.order_button,{backgroundColor:order_state=='current'? '#5AB3A8':null,width:200}]}>
+      //   <TouchableOpacity onPress={()=>set_order_state('current')}  style={[styles.order_button,{backgroundColor:order_state=='current'? '#05AE4B':null,width:200}]}>
       //     <Text style={[styles.order_button_text,{color:order_state=='current'?'white':'#4C6870'}]}>Current orders</Text>
       //   </TouchableOpacity>
-      //   <TouchableOpacity onPress={()=>set_order_state('preorder')}  style={[styles.order_button,{backgroundColor:order_state=='preorder'? '#5AB3A8':null,width:200}]}>
+      //   <TouchableOpacity onPress={()=>set_order_state('preorder')}  style={[styles.order_button,{backgroundColor:order_state=='preorder'? '#05AE4B':null,width:200}]}>
       //     <Text style={[styles.order_button_text,{color:order_state=='preorder'?'white':'#4C6870'}]}>Pre-orders <Text style={{color:'#CCD4D6',}}>(8)</Text></Text>
       //   </TouchableOpacity>
-      //   <TouchableOpacity onPress={()=>set_order_state('archive')}  style={[styles.order_button,{backgroundColor:order_state=='archive'? '#5AB3A8':null,width:120}]}>
+      //   <TouchableOpacity onPress={()=>set_order_state('archive')}  style={[styles.order_button,{backgroundColor:order_state=='archive'? '#05AE4B':null,width:120}]}>
       //     <Text style={[styles.order_button_text,{color:order_state=='archive'?'white':'#4C6870'}]}>Archive</Text>
       //   </TouchableOpacity>
       // </View>
@@ -132,7 +132,7 @@ const Order = ({navigation}) => {
           style={[
             styles.order_button,
             {
-              backgroundColor: current_order_state == true ? '#5AB3A8' : null,
+              backgroundColor: current_order_state == true ? '#05AE4B' : null,
               width: 200,
             },
           ]}>
@@ -149,7 +149,7 @@ const Order = ({navigation}) => {
           style={[
             styles.order_button,
             {
-              backgroundColor: pre_order_state == true ? '#5AB3A8' : null,
+              backgroundColor: pre_order_state == true ? '#05AE4B' : null,
               width: 200,
             },
           ]}>
@@ -166,7 +166,7 @@ const Order = ({navigation}) => {
           style={[
             styles.order_button,
             {
-              backgroundColor: archive_order_state == true ? '#5AB3A8' : null,
+              backgroundColor: archive_order_state == true ? '#05AE4B' : null,
               width: 120,
             },
           ]}>
@@ -420,7 +420,7 @@ const Order = ({navigation}) => {
                   <CheckBox
                     checked={check}
                     onPress={() => setcheck(index)}
-                    checkedColor="#5AB3A8"
+                    checkedColor="#05AE4B"
                     uncheckedColor="#CCD4D6"
                   />
                   <CustomText
@@ -437,7 +437,7 @@ const Order = ({navigation}) => {
                   <CheckBox
                     checked={check}
                     onPress={() => setcheck(index)}
-                    checkedColor="#5AB3A8"
+                    checkedColor="#05AE4B"
                     uncheckedColor="#CCD4D6"
                   />
                   <CustomText
@@ -454,7 +454,7 @@ const Order = ({navigation}) => {
                   <CheckBox
                     checked={check}
                     onPress={() => setcheck(index)}
-                    checkedColor="#5AB3A8"
+                    checkedColor="#05AE4B"
                     uncheckedColor="#CCD4D6"
                   />
                   <CustomText
@@ -471,7 +471,7 @@ const Order = ({navigation}) => {
                   <CheckBox
                     checked={check}
                     onPress={() => setcheck(index)}
-                    checkedColor="#5AB3A8"
+                    checkedColor="#05AE4B"
                     uncheckedColor="#CCD4D6"
                   />
                   <CustomText
@@ -488,7 +488,7 @@ const Order = ({navigation}) => {
                   <CheckBox
                     checked={check}
                     onPress={() => setcheck(index)}
-                    checkedColor="#5AB3A8"
+                    checkedColor="#05AE4B"
                     uncheckedColor="#CCD4D6"
                   />
                   <CustomText
@@ -574,7 +574,7 @@ const Order = ({navigation}) => {
                 <CheckBox
                   checked={check}
                   onPress={() => setcheck(0)}
-                  checkedColor="#5AB3A8"
+                  checkedColor="#05AE4B"
                   uncheckedColor="#CCD4D6"
                 />
                 <TextInput
@@ -593,7 +593,7 @@ const Order = ({navigation}) => {
             </View>
           ) : addNote == 2 ? (
             <>
-                 <SwipeListView
+              <SwipeListView
                 data={data3}
                 renderItem={(data, rowMap) => (
                   <View>
@@ -616,8 +616,8 @@ const Order = ({navigation}) => {
                     <View
                       style={{
                         position: 'absolute',
-                        right:1,
-                        marginVertical:5
+                        right: 1,
+                        marginVertical: 5,
                       }}>
                       <TouchableOpacity
                         style={[
@@ -631,8 +631,8 @@ const Order = ({navigation}) => {
                 )}
                 rightOpenValue={-90}
               />
-  
-            {/* <View style={styles.noteDetail}>
+
+              {/* <View style={styles.noteDetail}>
          
 
               <View style={{marginHorizontal: 10, marginVertical: 5}}>
@@ -742,7 +742,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     alignSelf: 'center',
     // borderRadius: '4@s',
-    marginVertical:5
+    marginVertical: 5,
   },
   quantityTitle: {
     fontSize: '15@ms',
@@ -935,13 +935,13 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     alignSelf: 'center',
     borderRadius: 5,
-    marginLeft: 10
+    marginLeft: 10,
   },
   order_button_text: {
     color: 'white',
     fontFamily: 'Poppins-SemiBold',
     fontSize: 16,
-    letterSpacing: 1
+    letterSpacing: 1,
   },
   order_container: {
     // flexDirection:'row',

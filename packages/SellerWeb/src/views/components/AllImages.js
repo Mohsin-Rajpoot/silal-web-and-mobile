@@ -28,6 +28,7 @@ import restaurantBg from "../../assets/images/restaurant-bg.png";
 import Cart from "../../assets/images/svg/cart.svg";
 import BellIcon from "../../assets/images/svg/bell_icon.svg";
 import Award from "../../assets/images/svg/award.svg";
+
 import { ReactComponent as Menu } from "../../assets/images/svg/menu.svg";
 import { ReactComponent as Home } from "../../assets/images/svg/home.svg";
 import { ReactComponent as Order } from "../../assets/images/svg/order.svg";

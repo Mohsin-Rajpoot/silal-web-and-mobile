@@ -251,7 +251,7 @@ const Home = ({navigation}) => {
                 <View style={styles.ImgeViewBKG}>
                   <Ionicons
                     name="cart-outline"
-                    style={{fontSize: 30, color: '#5AB3A8'}}
+                    style={{fontSize: 30, color: '#05AE4B'}}
                   />
                 </View>
                 <StatisticWhiteBoxTitle Title={t('Total_orders')} />
@@ -290,7 +290,7 @@ const Home = ({navigation}) => {
                 <View style={styles.ImgeViewBKG}>
                   <MaterialCommunityIcons
                     name="medal-outline"
-                    style={{fontSize: 30, color: '#5AB3A8'}}
+                    style={{fontSize: 30, color: '#05AE4B'}}
                   />
                 </View>
                 <StatisticWhiteBoxTitle Title={t('Total_rating')} />
@@ -677,7 +677,7 @@ const Home = ({navigation}) => {
                         <CheckBox
                           checked={checked}
                           onPress={() => setchecked(!checked)}
-                          checkedColor="#5AB3A8"
+                          checkedColor="#05AE4B"
                           uncheckedColor="#CCD4D6"
                         />
                       </View>
@@ -714,7 +714,7 @@ const Home = ({navigation}) => {
           <CheckBox
             checked={checked}
             onPress={() => setchecked(!checked)}
-            checkedColor="#5AB3A8"
+            checkedColor="#05AE4B"
             uncheckedColor="#CCD4D6"
           />
         </View>
@@ -826,7 +826,7 @@ const styles = StyleSheet.create({
     height: 38,
     width: 36,
     borderRadius: 18,
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     marginVertical: 30,
   },
   FlatListBadge: {

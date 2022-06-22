@@ -364,7 +364,7 @@ const RangeSlider = styled.div`
   .slider-range::-moz-range-thumb {
     width: 40px;
     height: 40px;
-    border: 2px solid #5ab3a8;
+    border: 2px solid #05ae4b;
     cursor: pointer;
     background-color: #fff;
     border-radius: 50%;
@@ -386,7 +386,7 @@ const RangeSlider = styled.div`
     height: 35px;
     border-radius: 50%;
     background-color: #fff;
-    border: 2px solid #5ab3a8;
+    border: 2px solid #05ae4b;
     cursor: pointer;
     /* &:before{
         content:"";
@@ -796,7 +796,7 @@ const Suggestions = styled.div`
   font-weight: 500;
   font-size: 13px;
   line-height: 120%;
-  color: #5ab3a8;
+  color: #05ae4b;
   margin-bottom: 8px;
   margin-right: 5px;
 `;
@@ -945,6 +945,38 @@ const ModalStyle = styled.div`
       font-weight: 500;
     }
   }
+
+  .admins {
+    font-family: "lato";
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    color: #4c6870;
+    margin: 31px 0px;
+  }
+
+  .mainteners {
+    font-family: "lato";
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    color: #4c6870;
+    margin: 31px 0px;
+  }
+
+  .colored {
+    font-weight: 600;
+    font-size: 13px;
+    color: #05ae4b;
+  }
+  .card {
+    font-weight: 600;
+    font-size: 13px;
+    padding: 8px;
+    background: rgba(220, 238, 221, 0.5);
+    border: 1px solid #cdefdb;
+    border-radius: 5px;
+  }
   .refusal-textarea {
     background: #f2f4f5;
     height: 126px;
@@ -964,13 +996,6 @@ const ModalStyle = styled.div`
   }
 `;
 const WorkStyle = styled.div`
-  border: 2px solid red;
-  .left {
-    border: 2px solid yellow;
-  }
-  .right {
-    border: 2px solid orange;
-  }
   .row {
     justify-content: space-around;
   }
@@ -979,15 +1004,55 @@ const WorkStyle = styled.div`
 const SellerIdStyle = styled.div`
   background: #ffffff;
   border-radius: 5px;
-  padding: 10px;
+  padding: 25px;
   .text {
     font-weight: 500;
     font-size: 15px;
     color: #979797;
   }
+  .questionMark {
+    margin: 2px;
+    margin-left: 8px;
+  }
+  .butn {
+    text-align: right;
+    margin-top: 43px;
+  }
+  .btn2 {
+    background: #05ae4b;
+    color: #ffffff;
+    border: none;
+    margin: 5px;
+    padding: 9px 40px;
+  }
 `;
-
+const SellerWorkStyle = styled.div`
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 15px;
+  .content {
+    padding-left: 23px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #002733;
+  }
+  form-check-label {
+    font-weight: 400;
+    font-size: 15px;
+    color: #002733;
+  }
+  .btn1 {
+    color: #ffffff;
+    border: none;
+    margin: 5px;
+    padding: 9px 40px;
+    background: #de350b;
+    border-radius: 5px;
+  }
+`;
 export {
+  SellerWorkStyle,
   SellerIdStyle,
   WorkStyle,
   ModalStyle,

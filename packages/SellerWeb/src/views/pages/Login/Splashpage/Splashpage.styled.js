@@ -4,7 +4,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #5ab3a8;
+  background: #05ae4b;
   height: 100%;
   .title {
     text-align: center;

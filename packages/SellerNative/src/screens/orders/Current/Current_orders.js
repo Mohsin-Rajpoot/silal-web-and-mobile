@@ -8,14 +8,10 @@ import {
   FlatList,
   TextInput,
   Modal,
-
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Svg, {
-  Path,
-  Rect,
-} from 'react-native-svg';
+import Svg, {Path, Rect} from 'react-native-svg';
 import {Slider, Icon} from 'react-native-elements';
 import Toast from 'react-native-easy-toast';
 import SwipeButton from 'rn-swipe-button';
@@ -181,7 +177,7 @@ export default function Current_orders({title, navigation}) {
           }}
           containerStyles={{borderRadius: 5, height: 40}}
           railStyles={{
-            backgroundColor: '#5AB3A8',
+            backgroundColor: '#05AE4B',
             borderRadius: 5,
             opacity: 0.6,
             height: 45,
@@ -274,7 +270,7 @@ export default function Current_orders({title, navigation}) {
             <Text
               style={{
                 marginRight: 20,
-                color: '#5AB3A8',
+                color: '#05AE4B',
                 fontFamily: 'Poppins-Regular',
               }}>
               Change estimation time
@@ -327,7 +323,7 @@ export default function Current_orders({title, navigation}) {
             </Text>
             <Text
               style={{
-                color: '#5AB3A8',
+                color: '#05AE4B',
                 fontSize: 18,
                 fontWeight: '700',
                 width: 150,
@@ -368,13 +364,13 @@ export default function Current_orders({title, navigation}) {
                       width: 30,
                       borderRadius: 20,
                       borderWidth: 2,
-                      borderColor: '#5AB3A8',
+                      borderColor: '#05AE4B',
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
                     <View
                       style={{
-                        backgroundColor: '#5AB3A8',
+                        backgroundColor: '#05AE4B',
                         height: 10,
                         width: 10,
                         borderRadius: 20,
@@ -580,7 +576,7 @@ export default function Current_orders({title, navigation}) {
           style={{
             flexDirection: 'row',
             padding: 10,
-            backgroundColor: '#5AB3A8',
+            backgroundColor: '#05AE4B',
             borderBottomLeftRadius: 5,
             borderBottomRightRadius: 5,
             alignItems: 'center',
@@ -644,7 +640,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     paddingBottom: 10,
- 
   },
   order_header: {
     flex: 1,
@@ -686,7 +681,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   accept_btn: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
@@ -714,7 +709,7 @@ const styles = StyleSheet.create({
   },
   ready_btn: {
     flex: 1,
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     borderRadius: 5,
     alignItems: 'center',
     paddingVertical: 10,
@@ -741,7 +736,7 @@ const styles = StyleSheet.create({
   modal_save_btn: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     width: 210,
     padding: 10,
     borderRadius: 5,

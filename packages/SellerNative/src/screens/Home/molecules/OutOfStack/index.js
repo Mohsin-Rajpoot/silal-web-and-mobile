@@ -75,7 +75,7 @@ export default function Archive_orders({title, navigation}) {
             <CheckBox
               checked={checked}
               onPress={() => setchecked(!checked)}
-              checkedColor="#5AB3A8"
+              checkedColor="#05AE4B"
               uncheckedColor="#CCD4D6"
             />
           </View>

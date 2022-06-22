@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components"
-import { collpaseArrow } from "./AllImages"
+import { createGlobalStyle } from "styled-components";
+import { collpaseArrow } from "./AllImages";
 
 const GlobalStyle = createGlobalStyle`
 :root {
@@ -97,7 +97,7 @@ span {
     height: 30px;
     padding: 0 10px;
     background: #F2F4F5;
-    border: 1px solid #5AB3A8;
+    border: 1px solid #05AE4B;
     border-radius: 5px;
     cursor: pointer;
     input {
@@ -401,7 +401,7 @@ hr {
     font-family: 'Poppins';
     width: 15px;
     height: 15px;
-    background: #5AB3A8;
+    background: #05AE4B;
     font-weight: 500;
     font-size: 11px;
     line-height: 14px;
@@ -500,7 +500,7 @@ hr {
 }
 .save-note-hover:hover {
     background: rgba(90, 179, 168, 0.2);
-    color: #5AB3A8;
+    color: #05AE4B;
 }
 .detail-modal {
     .modal-dialog {
@@ -531,4 +531,4 @@ hr {
 }
 `;
 
-export default GlobalStyle
+export default GlobalStyle;

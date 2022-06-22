@@ -75,7 +75,7 @@ const styles = ScaledSheet.create({
     marginTop: 5,
   },
   accept_btn: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
@@ -102,7 +102,7 @@ const styles = ScaledSheet.create({
   },
   ready_btn: {
     flex: 1,
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     borderRadius: 5,
     alignItems: 'center',
     paddingVertical: 10,
@@ -171,7 +171,7 @@ const styles = ScaledSheet.create({
     justifyContent: 'space-between',
   },
   modal_recuring: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,

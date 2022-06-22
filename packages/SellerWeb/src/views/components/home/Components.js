@@ -36,7 +36,7 @@ const StatisticGraphStyle = styled.div`
       font-family: "Poppins";
       font-weight: 500;
       font-size: 13px;
-      color: #5ab3a8;
+      color: #05ae4b;
       background: rgba(90, 179, 168, 0.15);
       border-radius: 5px;
       padding: 10px;
@@ -197,9 +197,9 @@ const HotProductStyled = styled.div`
   &:last-of-type {
     margin-bottom: 0;
   }
-  .center{
-    background-color: #CDEFDB;
-    color: #05AE4B;
+  .center {
+    background-color: #cdefdb;
+    color: #05ae4b;
   }
   img {
     border-radius: 5px;
@@ -339,7 +339,7 @@ const NotificationMenu = styled.div`
     span {
       padding: 5px 10px;
       height: 24px;
-      background: #5ab3a8;
+      background: #05ae4b;
       border-radius: 5px;
       margin: 0 0 0 8px;
       font-style: normal;
@@ -384,7 +384,7 @@ const NotificationBtn = styled.button`
       position: absolute;
       top: 9px;
       right: 12px;
-      background: #5ab3a8;
+      background: #05ae4b;
       border-radius: 50%;
       width: 6px;
       height: 6px;

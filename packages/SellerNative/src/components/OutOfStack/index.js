@@ -132,65 +132,126 @@ export default function Archive_orders({ title, navigation }) {
     const render_all_oredrs = (item, index) => {
 
         return (
-            <View>
-                <View
-                    //    style={}
-                    style={[styles.render_all_orders, { backgroundColor: index == selected_index ? '#E6F4F2' : 'white' }]}
-                >
-                    <View>
-                        <CheckBox
-                            checked={item.checked == true || item.checked == 'true' ? true : false}
-                            onPress={() => setcheck(index)}
-                            checkedColor="#5AB3A8"
-                            uncheckedColor="#CCD4D6"
-                        />
+          <View>
+            <View
+              //    style={}
+              style={[
+                styles.render_all_orders,
+                {
+                  backgroundColor:
+                    index == selected_index ? '#E6F4F2' : 'white',
+                },
+              ]}>
+              <View>
+                <CheckBox
+                  checked={
+                    item.checked == true || item.checked == 'true'
+                      ? true
+                      : false
+                  }
+                  onPress={() => setcheck(index)}
+                  checkedColor="#05AE4B"
+                  uncheckedColor="#CCD4D6"
+                />
+              </View>
+              <View
+                style={[
+                  styles.render_all_order_single,
+                  {width: '10%', marginTop: 5},
+                ]}>
+                <Image
+                  source={require('../../Assets/Dress.png')}
+                  style={{height: 40, width: 40, resizeMode: 'contain'}}
+                />
+              </View>
+              <View style={[styles.render_all_order_single, {width: '10%'}]}>
+                <Text style={{fontFamily: 'Lato-Regular'}}>Man's T-shirt</Text>
+              </View>
+              <View
+                style={[
+                  styles.render_all_order_single,
+                  {
+                    width: '15%',
+                    justifyContent: 'flex-start',
+                    flexDirection: 'row',
+                    left: 20,
+                  },
+                ]}>
+                <Text style={{fontFamily: 'Lato-Regular'}}>Clothing</Text>
+              </View>
+              <View
+                style={[
+                  styles.render_all_order_single,
+                  {
+                    width: '10%',
+                    justifyContent: 'flex-start',
+                    flexDirection: 'row',
+                  },
+                ]}>
+                <Text style={{}}>0</Text>
+              </View>
+              <View style={[{width: '14%'}]}>
+                <Text
+                  style={{
+                    fontFamily: 'Lato-Regular',
+                    textAlign: 'left',
+                    justifyContent: 'flex-start',
+                  }}>
+                  2
+                </Text>
+                <Text style={{fontFamily: 'Lato-Regular', fontSize: 10}}>
+                  Variants on: Size, Color
+                </Text>
+              </View>
+              <View
+                style={[
+                  styles.render_all_order_single,
+                  {
+                    width: '10%',
+                    backgroundColor: '#FFAB00',
+                    borderRadius: 5,
+                  },
+                ]}>
+                <Text style={{fontFamily: 'Lato-Regular', color: '#fff'}}>
+                  Low of stock
+                </Text>
+              </View>
+              <View style={[styles.render_all_order_single, {width: '14%'}]}>
+                <Text style={{fontFamily: 'Lato-Regular'}}>$ 120.00</Text>
+              </View>
+              <View style={[styles.render_all_order_single, {width: '8%'}]}>
+                <Menu>
+                  <MenuTrigger
+                    onPress={() => {
+                      set_selected_index(index);
+                    }}
+                    style={styles.trigger}>
+                    <View
+                      style={{
+                        height: 40,
+                        width: 40,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}>
+                      <Entypo
+                        name="dots-three-vertical"
+                        style={[
+                          styles.cross_icon,
+                          {color: '#4C6870', fontSize: 20},
+                        ]}
+                      />
                     </View>
-                    <View style={[styles.render_all_order_single, { width: '10%', marginTop: 5 }]}>
-                        <Image source={require('../../Assets/Dress.png')} style={{ height: 40, width: 40, resizeMode: 'contain' }} />
-                    </View>
-                    <View style={[styles.render_all_order_single, { width: '10%', }]}>
-                        <Text style={{ fontFamily: 'Lato-Regular', }}>Man's T-shirt</Text>
-                    </View>
-                    <View style={[styles.render_all_order_single, { width: '15%', justifyContent: 'flex-start', flexDirection: 'row', left: 20 }]}>
-                        <Text style={{ fontFamily: 'Lato-Regular' }}>Clothing</Text>
-                    </View>
-                    <View style={[styles.render_all_order_single, { width: '10%', justifyContent: 'flex-start', flexDirection: 'row' }]}>
-                        <Text style={{}}>0</Text>
-                    </View>
-                    <View style={[{ width: '14%', }]}>
-                        <Text style={{ fontFamily: 'Lato-Regular', textAlign: 'left', justifyContent: 'flex-start', }}>2</Text>
-                        <Text style={{ fontFamily: 'Lato-Regular', fontSize: 10, }}>Variants on: Size, Color</Text>
-                    </View>
-                    <View style={[styles.render_all_order_single, {
-                        width: '10%',
-                        backgroundColor: '#FFAB00',
-                        borderRadius: 5,
-
-                    }]}>
-                        <Text style={{ fontFamily: 'Lato-Regular', color: "#fff" }}>Low of stock</Text>
-                    </View>
-                    <View style={[styles.render_all_order_single, { width: '14%', }]}>
-                        <Text style={{ fontFamily: 'Lato-Regular', }}>$ 120.00</Text>
-                    </View>
-                    <View style={[styles.render_all_order_single, { width: '8%', }]} >
-                        <Menu>
-                            <MenuTrigger onPress={() => { set_selected_index(index) }} style={styles.trigger}>
-                                <View style={{ height: 40, width: 40, alignItems: 'center', justifyContent: 'center' }}>
-                                    <Entypo name='dots-three-vertical' style={[styles.cross_icon, { color: '#4C6870', fontSize: 20 }]} />
-                                </View>
-                            </MenuTrigger>
-                            <MenuOptions customStyles={{ optionText: { padding: 5 } }}>
-                                <MenuOption value="Normal" text='Update current stack' />
-                                <MenuOption value="Normal" text='Delete' />
-                            </MenuOptions>
-                        </Menu>
-                    </View>
-                </View>
-                <View style={{ borderBottomWidth: 0.9, borderColor: '#00273314' }} />
-
+                  </MenuTrigger>
+                  <MenuOptions customStyles={{optionText: {padding: 5}}}>
+                    <MenuOption value="Normal" text="Update current stack" />
+                    <MenuOption value="Normal" text="Delete" />
+                  </MenuOptions>
+                </Menu>
+              </View>
             </View>
-
-        )
+            <View style={{borderBottomWidth: 0.9, borderColor: '#00273314'}} />
+          </View>
+        );
     }
 
     const header_alloredrs = () => {

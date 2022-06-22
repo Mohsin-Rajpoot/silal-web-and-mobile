@@ -106,7 +106,8 @@ const DetailedAnalytics = ({navigation}) => {
                     Your notifications
                   </Text>
                   <View style={styles.NewNotification}>
-                  <Text style={{color: colors.textWhite,}}>3 New</Text></View>
+                    <Text style={{color: colors.textWhite}}>3 New</Text>
+                  </View>
                 </View>
 
                 <FlatList
@@ -116,11 +117,13 @@ const DetailedAnalytics = ({navigation}) => {
                   renderItem={({item}) => (
                     <View>
                       <View style={{flexDirection: 'row', marginVertical: 15}}>
-                      <View style={styles.ImageVIew}>
-                      <Image source={require('../Assets/Icon.png')} style={styles.ImageModal} />
-                    </View>
+                        <View style={styles.ImageVIew}>
+                          <Image
+                            source={require('../Assets/Icon.png')}
+                            style={styles.ImageModal}
+                          />
+                        </View>
                         <View style={styles.ModelDesign}>
-                          
                           <Text style={styles.ModalNotificationTitle}>
                             Silal Management
                           </Text>
@@ -168,8 +171,11 @@ const DetailedAnalytics = ({navigation}) => {
                     <View>
                       <View style={{flexDirection: 'row', marginVertical: 15}}>
                         <View style={styles.ImageVIew}>
-                      <Image source={require('../Assets/Icon.png')} style={styles.ImageModal} />
-                    </View>
+                          <Image
+                            source={require('../Assets/Icon.png')}
+                            style={styles.ImageModal}
+                          />
+                        </View>
                         <View style={styles.ModelDesign}>
                           <Text style={styles.ModalNotificationTitle}>
                             Silal Management
@@ -206,7 +212,12 @@ const DetailedAnalytics = ({navigation}) => {
         </View>
 
         <ScrollView>
-          <View style={{flexDirection: 'row', marginVertical: 20,marginHorizontal:10}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              marginVertical: 20,
+              marginHorizontal: 10,
+            }}>
             <View style={{width: '65%'}}>
               <View style={styles.GrphBackground}>
                 <View style={styles.GraphHeader}>
@@ -319,8 +330,9 @@ const styles = StyleSheet.create({
     height: 30,
     width: 60,
     borderRadius: 5,
-    marginTop: 10,  justifyContent:'center',alignItems:'center'
-   
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   ImageVIew: {
     backgroundColor: '#0065FF33',
@@ -389,7 +401,7 @@ const styles = StyleSheet.create({
   SecondColumn: {
     height: 40,
     width: '80%',
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     borderRadius: 5,
     justifyContent: 'space-between',
     alignItems: 'center',

@@ -21,14 +21,16 @@ import {
 
 const Sidebar = ({ sideBar, setSideBar }) => {
   const closeSidebar = () => {
-    setSideBar(false)
-  }
-  const clientPath = window.location.href.indexOf("client") > -1 ? true : false
-  const productPath = window.location.href.indexOf("product") > -1 ? true : false
-  const offersPath = window.location.href.indexOf("offers") > -1 ? true : false
-  const profilePath = window.location.href.indexOf("profile") > -1 ? true : false
-  const orderPath = window.location.href.indexOf("orders") > -1 ? true : false
-  const { pathname } = useLocation()
+    setSideBar(false);
+  };
+  const clientPath = window.location.href.indexOf("client") > -1 ? true : false;
+  const productPath =
+    window.location.href.indexOf("product") > -1 ? true : false;
+  const offersPath = window.location.href.indexOf("offers") > -1 ? true : false;
+  const profilePath =
+    window.location.href.indexOf("profile") > -1 ? true : false;
+  const orderPath = window.location.href.indexOf("orders") > -1 ? true : false;
+  const { pathname } = useLocation();
 
   return (
     <>
@@ -57,67 +59,65 @@ const Sidebar = ({ sideBar, setSideBar }) => {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion> */}
-        <div className="logo-text text-white">Silal Service</div>
+        <div className="logo-text">Silal Service</div>
         <Link
           to="/statistics"
           className={
             pathname == "/statistics" ||
-              pathname == "/reviews" ||
-              pathname == "/out-of-stock"
-              ? "active" : ""
+            pathname == "/reviews" ||
+            pathname == "/out-of-stock"
+              ? "active"
+              : ""
           }
         >
           <DashboardIcon />
           Dashboard
         </Link>
-        <Link
-          to="/orders/current-order"
-          className={orderPath && "active"}>
+        <Link to="/orders/current-order" className={orderPath && "active"}>
           <Order />
           Orders
         </Link>
-        <Link
-          to="/client/database"
-          className={clientPath && ("active")}>
+        <Link to="/client/database" className={clientPath && "active"}>
           <Clients />
           Clients
         </Link>
-        <Link
-          to="/product/products"
-          className={productPath && ("active")}>
+        <Link to="/product/products" className={productPath && "active"}>
           <Product />
           Products
         </Link>
-        <Link
-          to="/profile/profile"
-          className={profilePath && 'active'}>
+        <Link to="/profile/profile" className={profilePath && "active"}>
           <ProfileIcon />
           Profile
         </Link>
-        <Link to="/offers" className={offersPath && ("active")}>
+        <Link to="/offers" className={offersPath && "active"}>
           <OffersIcon />
           Offers
         </Link>
         <Link
           to="/documents"
-          className={pathname == "/documents" ? "active" : ""}>
+          className={pathname == "/documents" ? "active" : ""}
+        >
           <DocumentIcon />
           Documents
         </Link>
         <Link
           to="/contact-us"
-          className={pathname == "/contact-us" ? "active" : ""}>
+          className={pathname == "/contact-us" ? "active" : ""}
+        >
           <ContactUs />
           Contact us
         </Link>
-        <Link to="/about-us"
-          className={pathname == "/about-us" ? "active" : ""}>
+        <Link
+          to="/about-us"
+          className={pathname == "/about-us" ? "active" : ""}
+        >
           <AboutIcon />
           About app
         </Link>
         <Link
           to="/settings"
-          className={pathname == "/settings" ? "active" : ""}>
+          className={pathname == "/settings" ? "active" : ""}
+        >
           <SettingsIcon />
           Settings
         </Link>
@@ -133,21 +133,22 @@ const SidebarStyled = styled.aside`
   min-height: 100vh;
   margin-left: -200px;
   transition: 0.3s margin-left ease;
-  background: #4c6870;
+  background: #ffffff;
   /* border-radius: 0px 20px 20px 0px; */
   overflow-y: auto;
   padding: 43px 0px;
   &.active {
-    margin-left:0px;
+    margin-left: 0px;
   }
   .logo-text {
+    color: #05ae4b;
     font-weight: 700;
     font-size: 16px;
     line-height: 25px;
     letter-spacing: 0.35px;
-    margin-bottom:45px;
-    padding-left:18px;
-    padding-right:18px;
+    margin-bottom: 45px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
   .sidebar-close {
     cursor: pointer;
@@ -228,7 +229,7 @@ const SidebarStyled = styled.aside`
     }
   }
   a {
-    color: white;
+    color: black;
     font-weight: 500;
     font-size: 13px;
     display: block;
@@ -238,10 +239,10 @@ const SidebarStyled = styled.aside`
       width: 18px;
       height: 18px;
       margin-right: 10px;
-      fill: white;
+      fill: #ccd4d6;
       fill-opacity: 1;
       path {
-        fill: white;
+        fill: #ccd4d6;
         fill-opacity: 1;
       }
     }

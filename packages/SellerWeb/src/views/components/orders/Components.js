@@ -36,11 +36,11 @@ const ReceivedOrder = ({ orderNumber, time, clockIcon }) => {
       </div>
       <span className="more lato f-bold">3 more</span>
       <div className="butn">
-      <Button width="100%">Click to accept order</Button>
+        <Button width="100%">Click to accept order</Button>
       </div>
-      
+
       {/* <div className='mt-3'>
-                <SwipeableButton color='#5AB3A8' text='Slide to confirm order' />
+                <SwipeableButton color='#05AE4B' text='Slide to confirm order' />
             </div> */}
       {/* <ReactSwipeButton /> */}
     </ReceivedOrderStyled>
@@ -248,71 +248,71 @@ const PreOrder = ({ orderNumber, time, modalDelHandle, modalDragHandle }) => {
 };
 
 const ReceivedOrderStyled = styled.div`
-    background: #FFFFFF;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-    transition: 0.2s all;
-    &:hover {
-        transform: scale(1.02);
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  transition: 0.2s all;
+  &:hover {
+    transform: scale(1.02);
+  }
+  a {
+    text-decoration: none;
+  }
+  .between {
+    margin-bottom: 18px;
+    h1 {
+      font-size: 15px;
+      color: #ccd4d6;
+      margin: 0;
+      span {
+        color: #002733;
+        margin: 0 0 0 5px;
+      }
     }
-    a {
-        text-decoration: none;
+    h2 {
+      font-size: 15px;
+      text-align: right;
+      color: #002733;
+      margin: 0;
     }
-    .between {
-        margin-bottom: 18px;
-        h1 {
-            font-size: 15px;
-            color: #CCD4D6;
-            margin: 0;
-            span {
-                color: #002733;
-                margin: 0 0 0 5px;
-            }
-        }
-        h2 {
-            font-size: 15px;
-            text-align: right;
-            color: #002733;
-            margin: 0;
-        }
+  }
+  .order-detail {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 10px;
+    span:first-of-type {
+      min-width: 10px;
+      display: block;
     }
-    .order-detail {
-        display: flex;
-        align-items: baseline;
-        margin-bottom: 10px;
-        span:first-of-type {
-            min-width: 10px;
-            display: block;
-        }
-        span {
-            font-size: 15px;
-            letter-spacing: -0.408px;
-            color: #002733;
-        }
-        img {
-            margin: 0 7px;
-        }
+    span {
+      font-size: 15px;
+      letter-spacing: -0.408px;
+      color: #002733;
     }
-    .more {
-        font-weight: 500;
-        font-size: 12px;
-        color: #5AB3A8;
-        background: rgba(90, 179, 168, 0.15);
-        border-radius: 4px;
-        padding: 2px 5px;
-        margin-bottom: 10px;
-        margin-left: 34px;
-        cursor: pointer;
+    img {
+      margin: 0 7px;
     }
-    .clock-icon {
-        padding: 3px 11px;
-        background: #F2A341;
-        border-radius: 0px 0px 5px 5px;
-        height: 33px;
-        width: 50px;
-        margin: -10px 10px 0 0;
-    }
+  }
+  .more {
+    font-weight: 500;
+    font-size: 12px;
+    color: #05ae4b;
+    background: rgba(90, 179, 168, 0.15);
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin-bottom: 10px;
+    margin-left: 34px;
+    cursor: pointer;
+  }
+  .clock-icon {
+    padding: 3px 11px;
+    background: #f2a341;
+    border-radius: 0px 0px 5px 5px;
+    height: 33px;
+    width: 50px;
+    margin: -10px 10px 0 0;
+  }
 `;
 
 const AcceptedOrderStyled = styled.div`
@@ -409,7 +409,7 @@ const PickupCard = styled.div`
     overflow-y: auto;
   }
   .bottom {
-    background: #5ab3a8;
+    background: #05ae4b;
     border-radius: 0px 0px 5px 5px;
     height: 65px;
     width: 100%;
@@ -653,7 +653,7 @@ const OrderDetailsStyled = styled.div`
 
 const OrderHistoryStyled = styled.div`
   .track-list-main {
-    border-left: 2px solid #5ab3a8;
+    border-left: 2px solid #05ae4b;
     margin-left: 10px;
     .track-item {
       position: relative;
@@ -669,7 +669,7 @@ const OrderHistoryStyled = styled.div`
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background-color: #5ab3a8;
+        background-color: #05ae4b;
         z-index: 10;
       }
       &:after {
@@ -792,7 +792,7 @@ const AddNoteButton = styled.button`
   position: absolute;
   bottom: 20px;
   right: 16px;
-  background: #5ab3a8;
+  background: #05ae4b;
   border: 0;
   box-shadow: 0px 15px 20px -8px rgba(115, 213, 201, 0.4);
   width: 60px;
@@ -820,8 +820,8 @@ const CheckNote = styled.div`
       }
     }
     input:checked ~ .checkmark {
-      border-color: #5ab3a8;
-      background-color: #5ab3a8;
+      border-color: #05ae4b;
+      background-color: #05ae4b;
       &::after {
         border-color: white;
       }
@@ -887,8 +887,8 @@ const ModalNotes = styled.div`
       }
     }
     input:checked ~ .checkmark {
-      border-color: #5ab3a8;
-      background-color: #5ab3a8;
+      border-color: #05ae4b;
+      background-color: #05ae4b;
       &::after {
         border-color: white;
       }

@@ -24,7 +24,7 @@ import Menu, {
 } from 'react-native-popup-menu';
 import {color} from 'react-native-elements/dist/helpers';
 const Secondary = '#002733';
-let Primary = '#5AB3A8';
+let Primary = '#05AE4B';
 const AddItem = ({navigation}) => {
   const {t} = useTranslation();
   const [selectedCategory, setselectedCategory] = useState();
@@ -200,7 +200,7 @@ const AddItem = ({navigation}) => {
                               Didn't find an appropriate Category ?
                               <Text
                                 style={{
-                                  color: '#5AB3A8',
+                                  color: '#05AE4B',
                                   fontSize: 13,
                                   lineHeight: 20,
                                   fontFamily: 'Poppins-SemiBold',
@@ -220,7 +220,7 @@ const AddItem = ({navigation}) => {
                             onPress={() => setTip(true)}>
                             <AntDesign
                               name="questioncircle"
-                              style={{color: '#5AB3A8', fontSize: 19}}
+                              style={{color: '#05AE4B', fontSize: 19}}
                             />
                           </TouchableOpacity>
                         </Tooltip>
@@ -387,7 +387,7 @@ const AddItem = ({navigation}) => {
                               : false
                           }
                           onPress={() => setcheck(index)}
-                          checkedColor="#5AB3A8"
+                          checkedColor="#05AE4B"
                           uncheckedColor="#CCD4D6"
                         />
                         <Text
@@ -422,7 +422,7 @@ const AddItem = ({navigation}) => {
                         <CheckBox
                           checked={checked}
                           onPress={() => setchecked(!checked)}
-                          checkedColor="#5AB3A8"
+                          checkedColor="#05AE4B"
                           uncheckedColor="#CCD4D6"
                         />
                         <Text
@@ -809,7 +809,7 @@ const AddItem = ({navigation}) => {
                         2 mb max
                       </Text>
                     </View>
-                    <View style={{alignItems: 'center', }}>
+                    <View style={{alignItems: 'center'}}>
                       <TouchableOpacity
                         // onPress={() => navigation.navigate('Camera')}
                         // <Camera/>
@@ -873,7 +873,7 @@ const AddItem = ({navigation}) => {
                                 : false
                             }
                             onPress={() => setcheck(index)}
-                            checkedColor="#5AB3A8"
+                            checkedColor="#05AE4B"
                             uncheckedColor="#CCD4D6"
                           />
                           <Text

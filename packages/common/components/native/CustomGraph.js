@@ -98,91 +98,135 @@ export default function CustomGraph() {
         setGraphValue([...values])
     }, [])
     return (
-        <>
+      <>
+        <View style={styles.container}>
+          <View style={[styles.innercontainer, { height: windowWidthF / 1.2 }]}>
+            <View
+              style={{
+                height: windowHeightF / 1.21,
+                width: windowHeightF,
+                flexDirection: "row",
+              }}
+            >
+              <View style={{ marginTop: 2 }}>
+                <View style={styles.graphHorizontalLinesView}>
+                  <Text style={styles.digits}>
+                    $
+                    {ValueFirst > 999999
+                      ? 1 + "M"
+                      : (ValueFirst / 1000).toFixed(1)}
+                  </Text>
+                  <View style={styles.horizontalLine} />
+                </View>
+                <View style={styles.graphHorizontalLinesView}>
+                  <Text style={styles.digits}>
+                    ${(ValueFirst / 1000 / 2).toFixed(1)}
+                  </Text>
+                  <View style={styles.horizontalLine} />
+                </View>
+                <View style={styles.graphHorizontalLinesView}>
+                  <Text style={styles.digits}>
+                    ${(ValueFirst / 1000 / 2).toFixed(1)}
+                  </Text>
 
-            <View style={styles.container}>
-                <View style={[styles.innercontainer,{height: windowWidthF / 1.2,}]}>
-                    <View style={{ height: windowHeightF / 1.21, width: windowHeightF, flexDirection: "row" }}>
-                        <View style={{ marginTop: 2 }}>
-                            <View style={styles.graphHorizontalLinesView}>
-                                <Text style={styles.digits}>${ValueFirst > 999999 ? 1 + "M" : (ValueFirst / 1000).toFixed(1)}</Text>
-                                <View style={styles.horizontalLine} />
-                            </View>
-                            <View style={styles.graphHorizontalLinesView}>
-                                <Text style={styles.digits}>${((ValueFirst / 1000) / 2).toFixed(1)}</Text>
-                                <View style={styles.horizontalLine} />
-                            </View>
-                            <View style={styles.graphHorizontalLinesView}>
-                                <Text style={styles.digits}>${((ValueFirst / 1000) / 2).toFixed(1)}</Text>
+                  <View style={styles.horizontalLine} />
+                </View>
+                <View style={styles.graphHorizontalLinesView}>
+                  <Text style={styles.digits}>
+                    ${(ValueFirst / 1000 / 2).toFixed(1)}
+                  </Text>
 
-                                <View style={styles.horizontalLine} />
-                            </View>
-                            <View style={styles.graphHorizontalLinesView}>
-
-                                <Text style={styles.digits}>${((ValueFirst / 1000) / 2).toFixed(1)}</Text>
-
-                                <View style={styles.horizontalLine} />
-                            </View>
-                            <View style={styles.graphHorizontalLinesView}>
-                                <Text style={styles.digits}>${ValueFirst * 0}</Text>
-                                <View style={styles.horizontalLine} />
-                            </View>
-                            {/* <View style={styles.graphHorizontalLinesView}>
+                  <View style={styles.horizontalLine} />
+                </View>
+                <View style={styles.graphHorizontalLinesView}>
+                  <Text style={styles.digits}>${ValueFirst * 0}</Text>
+                  <View style={styles.horizontalLine} />
+                </View>
+                {/* <View style={styles.graphHorizontalLinesView}>
                                 <Text style={styles.digits}>${ValueFirst * 0}</Text>
                                 <View style={styles.horizontalLine} />
                             </View> */}
-                        </View>
+              </View>
 
-                        <View style={[styles.monthNameView,{left: windowHeightF / 12,height: windowHeightF / 1.3,}]}>
-                            <FlatList
-                                horizontal={true}
-                                showsHorizontalScrollIndicator={false}
-                                data={graphValue}
-                                renderItem={({ item, index }) =>
-                                    <View style={{
-                                        width: windowHeightF / 20, height: 218, marginRight: 25,
-                                        // backgroundColor:'yellow',
-                                        justifyContent: 'flex-end',
-                                    }}>
-                                        <View style={{ position: "absolute", flexDirection: "row", }}>
-                                            <LinearGradient colors={['#73D5C9', '#5AB3A8',]} style={{ borderRadius: 15 }}>
-                                                <Animatable.View style={{
-                                                    width: 38, height: item.id == 1 ?
-                                                        animateFun(item.earnedBarHeight, fadeAnim16) : item.id == 2 ?
-                                                            animateFun(item.earnedBarHeight, fadeAnim17) : item.id == 3 ?
-                                                                animateFun(item.earnedBarHeight, fadeAnim18) : item.id == 4 ?
-                                                                    animateFun(item.earnedBarHeight, fadeAnim19) : item.id == 5 ?
-                                                                        animateFun(item.earnedBarHeight, fadeAnim20) : item.id == 6 ?
-                                                                            animateFun(item.earnedBarHeight, fadeAnim21) : item.id == 7 ?
-                                                                                animateFun(item.earnedBarHeight, fadeAnim30)
-                                                                                : 0
-                                                }}
-                                                />
-                                            </LinearGradient>
-                                        </View>
-                                        <View style={styles.durationListTextView}>
-                                            <Text style={[styles.quarterlySepText]}>28 PM</Text>
-                                            <Text style={{ position: 'absolute', bottom: -10, paddingHorizontal: 5, fontFamily: 'Lato-Semibold', fontSize: 13, color: '#002733' }}>$ 230</Text>
-
-                                        </View>
-
-                                    </View>
-
-
-                                }
-
-
-                                keyExtractor={item => item._id}
-                                style={{
-
-                                    // backgroundColor:'green',
-                                }}
-                            />
-                        </View>
+              <View
+                style={[
+                  styles.monthNameView,
+                  { left: windowHeightF / 12, height: windowHeightF / 1.3 },
+                ]}
+              >
+                <FlatList
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}
+                  data={graphValue}
+                  renderItem={({ item, index }) => (
+                    <View
+                      style={{
+                        width: windowHeightF / 20,
+                        height: 218,
+                        marginRight: 25,
+                        // backgroundColor:'yellow',
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <View
+                        style={{ position: "absolute", flexDirection: "row" }}
+                      >
+                        <LinearGradient
+                          colors={["#73D5C9", "#05AE4B"]}
+                          style={{ borderRadius: 15 }}
+                        >
+                          <Animatable.View
+                            style={{
+                              width: 38,
+                              height:
+                                item.id == 1
+                                  ? animateFun(item.earnedBarHeight, fadeAnim16)
+                                  : item.id == 2
+                                  ? animateFun(item.earnedBarHeight, fadeAnim17)
+                                  : item.id == 3
+                                  ? animateFun(item.earnedBarHeight, fadeAnim18)
+                                  : item.id == 4
+                                  ? animateFun(item.earnedBarHeight, fadeAnim19)
+                                  : item.id == 5
+                                  ? animateFun(item.earnedBarHeight, fadeAnim20)
+                                  : item.id == 6
+                                  ? animateFun(item.earnedBarHeight, fadeAnim21)
+                                  : item.id == 7
+                                  ? animateFun(item.earnedBarHeight, fadeAnim30)
+                                  : 0,
+                            }}
+                          />
+                        </LinearGradient>
+                      </View>
+                      <View style={styles.durationListTextView}>
+                        <Text style={[styles.quarterlySepText]}>28 PM</Text>
+                        <Text
+                          style={{
+                            position: "absolute",
+                            bottom: -10,
+                            paddingHorizontal: 5,
+                            fontFamily: "Lato-Semibold",
+                            fontSize: 13,
+                            color: "#002733",
+                          }}
+                        >
+                          $ 230
+                        </Text>
+                      </View>
                     </View>
-                </View>
+                  )}
+                  keyExtractor={(item) => item._id}
+                  style={
+                    {
+                      // backgroundColor:'green',
+                    }
+                  }
+                />
+              </View>
             </View>
-        </>
+          </View>
+        </View>
+      </>
     );
 };
 

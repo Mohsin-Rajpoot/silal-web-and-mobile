@@ -18,6 +18,7 @@ import {
   RemoveIcon,
   BackArrow,
 } from "../../components/AllImages";
+
 import InviteWorkForce from "./InviteWorkForce";
 
 const Settings = ({ sideBar, setSideBar }) => {

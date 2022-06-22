@@ -287,7 +287,7 @@ export default function Archive_orders({title, navigation}) {
                 borderBottomWidth: 1,
                 borderRightWidth: 1,
                 borderLeftWidth: 6,
-                borderColor: '#5AB3A8',
+                borderColor: '#05AE4B',
                 paddingHorizontal: 20,
               }}
               keyExtractor={(item, index) => index.toString()}
@@ -518,7 +518,7 @@ export default function Archive_orders({title, navigation}) {
         {active && (
           <TouchableOpacity
             style={{
-              backgroundColor: '#5AB3A8',
+              backgroundColor: '#05AE4B',
               width: 150,
               height: 40,
               marginLeft: 20,
@@ -709,36 +709,35 @@ export default function Archive_orders({title, navigation}) {
           </View>
         </View>
       ) : null}
-      <View style={{width:"100%"}}>
-      {header_alloredrs()}
-   
+      <View style={{width: '100%'}}>
+        {header_alloredrs()}
 
-      <FlatList
-        // ListHeaderComponent={header_alloredrs}
-        ItemSeparatorComponent={item_seperator}
-        //   style={{paddingHorizontal:10}}
-        keyExtractor={(item, index) => index.toString()}
-        data={data}
-        renderItem={({item, index}) => render_all_oredrs(index)}
-      />
+        <FlatList
+          // ListHeaderComponent={header_alloredrs}
+          ItemSeparatorComponent={item_seperator}
+          //   style={{paddingHorizontal:10}}
+          keyExtractor={(item, index) => index.toString()}
+          data={data}
+          renderItem={({item, index}) => render_all_oredrs(index)}
+        />
 
-      <View style={styles.pagination_view}>
-        <Text style={{fontFamily: 'Lato-Regular'}}>Showing 1-9 of 86</Text>
-        <View style={styles.pagination_numbring}>
-          <Ionicons
-            name="chevron-back"
-            style={{color: '#d1d8da', fontSize: 24}}
-          />
-          <Text style={{fontFamily: 'Lato-Regular', color: 'black'}}>1</Text>
-          <Text>2</Text>
-          <Text>3</Text>
-          <Text>4</Text>
-          <MaterialCommunityIcons
-            name="chevron-right-circle"
-            style={{color: '#4c6870', fontSize: 24}}
-          />
+        <View style={styles.pagination_view}>
+          <Text style={{fontFamily: 'Lato-Regular'}}>Showing 1-9 of 86</Text>
+          <View style={styles.pagination_numbring}>
+            <Ionicons
+              name="chevron-back"
+              style={{color: '#d1d8da', fontSize: 24}}
+            />
+            <Text style={{fontFamily: 'Lato-Regular', color: 'black'}}>1</Text>
+            <Text>2</Text>
+            <Text>3</Text>
+            <Text>4</Text>
+            <MaterialCommunityIcons
+              name="chevron-right-circle"
+              style={{color: '#4c6870', fontSize: 24}}
+            />
+          </View>
         </View>
-      </View>
       </View>
       <Modal
         animationType="slide"
@@ -833,7 +832,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   accept_btn: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
@@ -860,7 +859,7 @@ const styles = StyleSheet.create({
   },
   ready_btn: {
     flex: 1,
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     borderRadius: 5,
     alignItems: 'center',
     paddingVertical: 10,
@@ -887,7 +886,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginTop: 10,
     padding: 10,
-    
   },
   modelTextTitle: {
     borderRadius: 5,
@@ -942,7 +940,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   modal_recuring: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,

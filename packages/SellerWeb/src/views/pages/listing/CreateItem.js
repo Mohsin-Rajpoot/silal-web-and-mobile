@@ -41,15 +41,15 @@ const CreateItem = () => {
         </div>
         <div className="d-flex align-items-center">
           <Button
-            bg="#5AB3A833"
-            color="#5AB3A8"
+            bg="#05AE4B33"
+            color="#05AE4B"
             className="mb-26 hover-clr-white"
           >
             Save as tempalate
           </Button>
           <Button
-            bg="#5AB3A833"
-            color="#5AB3A8"
+            bg="#05AE4B33"
+            color="#05AE4B"
             className="mx-3 hover-clr-white mb-26 w-148"
           >
             Save as draft

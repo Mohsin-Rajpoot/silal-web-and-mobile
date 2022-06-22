@@ -559,7 +559,7 @@ const Clints = () => {
                   </View>
 
                   <TouchableOpacity style={styles.MoreOrderShow}>
-                    <Text style={{color: '#5AB3A8'}}>3 more</Text>
+                    <Text style={{color: '#05AE4B'}}>3 more</Text>
                   </TouchableOpacity>
 
                   <View style={{flexDirection: 'row'}}>

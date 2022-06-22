@@ -55,10 +55,10 @@ const Wrapper = styled.div`
     position: absolute;
     bottom: 68px;
     width: 100%;
-    @media (max-height: 620px) {
-      position: static;
-      margin-top: 50px;
-    }
+    position: static;
+    margin-top: 50px;
+    // @media (max-height: 620px) {
+    // }
   }
 `;
 

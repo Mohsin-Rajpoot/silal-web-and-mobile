@@ -79,7 +79,7 @@ function Loginpage() {
                     dropdownIcon={
                       <Icon
                         icon="ant-design:caret-down-filled"
-                        color="#5ab3a8"
+                        color="#05AE4B"
                       />
                     }
                   />

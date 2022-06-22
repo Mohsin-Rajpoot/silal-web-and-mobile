@@ -4,6 +4,7 @@ import { HeadingStyled, WorkStyle } from "../../components/Style";
 import styled from "styled-components";
 import { Row, Col } from "react-bootstrap";
 import SellerId from "./Common/SellerId";
+import SellerWork from "./Common/SellerWork";
 
 const InviteWorkForce = ({ back }) => {
   return (
@@ -27,7 +28,25 @@ const InviteWorkForce = ({ back }) => {
             <SellerId />
           </Col>
           <Col lg={4} className="right">
-            hi its four
+            <h4>Current workforce</h4>
+            <SellerWork
+              id={"#43439"}
+              name={"Ali MUHAMMAD"}
+              register={"#19819"}
+              date={"10/5/2022"}
+            />
+            <SellerWork
+              id={"#43439"}
+              name={"Ali MUHAMMAD"}
+              register={"#19819"}
+              date={"10/5/2022"}
+            />
+            <SellerWork
+              id={"#43439"}
+              name={"Ali MUHAMMAD"}
+              register={"#19819"}
+              date={"10/5/2022"}
+            />
           </Col>
         </Row>
       </>

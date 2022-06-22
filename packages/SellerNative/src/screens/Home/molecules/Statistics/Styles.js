@@ -55,7 +55,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 20,
     justifyContent: 'space-evenly',
-    marginHorizontal: 3, 
+    marginHorizontal: 3,
   },
   One: {
     backgroundColor: '#fff',
@@ -103,7 +103,7 @@ const styles = ScaledSheet.create({
     height: 38,
     width: 36,
     borderRadius: 18,
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     marginVertical: 30,
   },
   FlatListBadge: {

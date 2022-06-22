@@ -44,16 +44,13 @@ const Statistics = () => {
   ];
 
   return (
-    <View style={{flex:1}}>
+    <View style={{flex: 1}}>
       <TitleHeading />
       <View style={styles.MainWhiteDiv}>
         <View style={styles.One}>
           <View style={styles.WhiteDive}>
             <View style={styles.ImgeViewBKG}>
-              <Image
-                source={images.currency}
-                style={styles.CurrencyImage}
-              />
+              <Image source={images.currency} style={styles.CurrencyImage} />
             </View>
             <StatisticWhiteBoxTitle Title="Total Sales" />
             <View
@@ -77,7 +74,7 @@ const Statistics = () => {
             <View style={styles.ImgeViewBKG}>
               <Ionicons
                 name="cart-outline"
-                style={{fontSize: 30, color: '#5AB3A8'}}
+                style={{fontSize: 30, color: '#05AE4B'}}
               />
             </View>
             <StatisticWhiteBoxTitle Title="Total Orders" />
@@ -85,7 +82,7 @@ const Statistics = () => {
               style={[styles.PercentageBkgGreen, {backgroundColor: '#FFEBE6'}]}>
               <View style={styles.TextInGreenDiv}>
                 <Text style={[styles.PercentageTextColor, {color: '#FF5630'}]}>
-                  - 4 % 
+                  - 4 %
                 </Text>
                 <Ionicons name="arrow-down" style={styles.VectorIconView} />
               </View>
@@ -97,10 +94,7 @@ const Statistics = () => {
         <View style={styles.One}>
           <View style={styles.WhiteDive}>
             <View style={styles.ImgeViewBKG}>
-              <Image
-                source={images.bellIcon}
-                style={styles.CurrencyImage}
-              />
+              <Image source={images.bellIcon} style={styles.CurrencyImage} />
             </View>
             <StatisticWhiteBoxTitle Title="Out-of-stock items" />
           </View>
@@ -112,7 +106,7 @@ const Statistics = () => {
             <View style={styles.ImgeViewBKG}>
               <MaterialCommunityIcons
                 name="medal-outline"
-                style={{fontSize: 30, color: '#5AB3A8'}}
+                style={{fontSize: 30, color: '#05AE4B'}}
               />
             </View>
             <StatisticWhiteBoxTitle Title="Total Rating" />

@@ -41,7 +41,7 @@ const Home = ({navigation}) => {
     if (x_value == '0') {
       set_acceptance_order_state(true);
       set_pickup_order_state(false);
-      setPreparing(false)
+      setPreparing(false);
     } else if (x_value == '1') {
       set_acceptance_order_state(false);
       set_pickup_order_state(false);
@@ -49,7 +49,7 @@ const Home = ({navigation}) => {
     } else if (x_value == '2') {
       set_acceptance_order_state(false);
       set_pickup_order_state(true);
-      setPreparing(false)
+      setPreparing(false);
     }
   };
   const Header = () => {
@@ -61,7 +61,7 @@ const Home = ({navigation}) => {
             styles.order_button,
             {
               backgroundColor:
-                acceptance_order_state == true ? '#5AB3A8' : null,
+                acceptance_order_state == true ? '#05AE4B' : null,
               width: 250,
             },
           ]}>
@@ -78,7 +78,7 @@ const Home = ({navigation}) => {
           style={[
             styles.order_button,
             {
-              backgroundColor: preparing == true ? '#5AB3A8' : null,
+              backgroundColor: preparing == true ? '#05AE4B' : null,
               width: 250,
             },
           ]}>
@@ -95,7 +95,7 @@ const Home = ({navigation}) => {
           style={[
             styles.order_button,
             {
-              backgroundColor: pickup_order_state == true ? '#5AB3A8' : null,
+              backgroundColor: pickup_order_state == true ? '#05AE4B' : null,
               width: 250,
             },
           ]}>
@@ -116,7 +116,9 @@ const Home = ({navigation}) => {
       {/* <LockOnLandscape /> */}
       <View style={{flexDirection: 'row', alignItems: 'center', height: '15%'}}>
         <View style={{padding: 15}}>
-          <TouchableOpacity activeOpacity={0.6} onPress={()=>navigation.openDrawer()}>
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => navigation.openDrawer()}>
             <MaterialCommunityIcons
               name="reorder-horizontal"
               size={20}
@@ -142,8 +144,7 @@ const Home = ({navigation}) => {
         ref={scrollref}
         horizontal
         scrollEnabled={false}
-        style={{flex:1}}
-        >
+        style={{flex: 1}}>
         <View style={{width: width, height: '100%'}}>
           <Acceptance_orders navigation={navigation} />
         </View>

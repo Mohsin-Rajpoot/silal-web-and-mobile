@@ -1,4 +1,4 @@
-import { ScaledSheet } from 'react-native-size-matters';
+import {ScaledSheet} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import {
   widthPercentageToDP as wp,
@@ -23,8 +23,7 @@ const styles = ScaledSheet.create({
     zIndex: 0,
     marginVertical: 5,
     borderWidth: 0.6,
-    borderColor: "#F2F4F5"
-
+    borderColor: '#F2F4F5',
   },
   FlatListMainView: {
     width: '31%',
@@ -33,7 +32,6 @@ const styles = ScaledSheet.create({
     marginVertical: 10,
     justifyContent: 'space-between',
     marginHorizontal: 10,
-
   },
   FlatListMainView2: {
     width: '45%',
@@ -68,7 +66,7 @@ const styles = ScaledSheet.create({
     paddingVertical: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     width: '100%',
     paddingHorizontal: 15,
     borderTopRightRadius: 5,
@@ -87,7 +85,7 @@ const styles = ScaledSheet.create({
     fontSize: 20,
     zIndex: 1,
     color: '#B3BEC2',
-    marginRight: -24
+    marginRight: -24,
   },
   ClintPageMainheading: {
     fontFamily: 'Poppins-Bold',
@@ -103,8 +101,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 10,
     marginHorizontal: 17,
-    paddingVertical: 2
-
+    paddingVertical: 2,
   },
   title: {
     fontSize: 18,
@@ -113,22 +110,35 @@ const styles = ScaledSheet.create({
   },
   cross_icon: {
     color: '#CCD4D6',
-
   },
   SecondModalCompleteView: {
-    width: 100, backgroundColor: '#36B37E', alignItems: 'center', justifyContent: 'center', marginHorizontal: 10, borderRadius: 5, height: 20, width: 76, marginVertical: 5
+    width: 100,
+    backgroundColor: '#36B37E',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 10,
+    borderRadius: 5,
+    height: 20,
+    width: 76,
+    marginVertical: 5,
   },
   SecondModalContainer: {
     flexDirection: 'row',
   },
   SecondViewCompleteText: {
-    color: '#fff', fontFamily: 'Lato-Medium', fontSize: 11
+    color: '#fff',
+    fontFamily: 'Lato-Medium',
+    fontSize: 11,
   },
   SecondModalIcon: {
-    fontSize: 30, color: '#002733', fontFamily: 'Poppins-SemiBold'
+    fontSize: 30,
+    color: '#002733',
+    fontFamily: 'Poppins-SemiBold',
   },
   SecondModalText: {
-    fontSize: 19, color: '#002733', fontFamily: 'Poppins-SemiBold'
+    fontSize: 19,
+    color: '#002733',
+    fontFamily: 'Poppins-SemiBold',
   },
   centeredView: {
     flex: 1,
@@ -162,10 +172,10 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop:-30
+    marginTop: -30,
   },
   modal_recuring: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,
@@ -217,16 +227,26 @@ const styles = ScaledSheet.create({
   FlatStyle: {
     paddingTop: 5,
     flexDirection: 'row',
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   SecondModalTile: {
-    width: 330, fontFamily: 'Lato-Regular', color: '#002733', paddingHorizontal: 5, marginVertical: 5
+    width: 330,
+    fontFamily: 'Lato-Regular',
+    color: '#002733',
+    paddingHorizontal: 5,
+    marginVertical: 5,
   },
   CrossIconSecondModal: {
-    width: 20, color: '#CCD4D6', fontSize: 18, marginVertical: 5
+    width: 20,
+    color: '#CCD4D6',
+    fontSize: 18,
+    marginVertical: 5,
   },
   IdSecondModal: {
-    width: 20, fontFamily: 'Lato-Regular', color: '#002733', marginVertical: 5
+    width: 20,
+    fontFamily: 'Lato-Regular',
+    color: '#002733',
+    marginVertical: 5,
   },
 
   MoreOrderShow: {
@@ -248,7 +268,6 @@ const styles = ScaledSheet.create({
     paddingHorizontal: 25,
   },
   CreditCard: {
-
     paddingVertical: 10,
     textAlign: 'right',
     color: '#002733',
@@ -274,8 +293,6 @@ const styles = ScaledSheet.create({
     color: '#002733',
     marginHorizontal: 5,
     marginTop: 5,
-  }
-
-
+  },
 });
 export default styles;

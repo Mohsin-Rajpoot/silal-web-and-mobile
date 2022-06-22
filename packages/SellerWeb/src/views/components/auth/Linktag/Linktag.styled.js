@@ -6,7 +6,7 @@ const Wrapper = styled.div`
     width: 100%;
     padding: 11px 15px;
     color: ${(props) => (props.textcolor ? "#ffffff" : "#4C6870")};
-    background: ${(props) => (props.primary ? "#5ab3a8" : "#F5F5F5")};
+    background: ${(props) => (props.primary ? "#05AE4B" : "#F5F5F5")};
     display: ${(props) => (props.blockitem ? "block" : "inline-block")};
     font-size: 17px;
     font-weight: 700;
@@ -20,8 +20,8 @@ const Wrapper = styled.div`
     transition: 0.3s ease;
     :hover {
       background: transparent;
-      color: #5ab3a8;
-      border: 1px solid #5ab3a8;
+      color: #05ae4b;
+      border: 1px solid #05ae4b;
     }
   }
 `;

@@ -80,10 +80,10 @@ const Wrapper = styled.div`
     position: absolute;
     bottom: 30px;
     width: 100%;
-    @media (max-height: 620px) {
-      position: static;
-      margin-top: 50px;
-    }
+    margin-top: 50px;
+    position: static;
+    // @media (max-height: 620px) {
+    // }
     .forgot-pass-text {
       font-size: 15px;
       font-weight: 500;
@@ -93,7 +93,7 @@ const Wrapper = styled.div`
         text-decoration: none;
         margin-left: 10px;
         font-weight: bold;
-        color: #5ab3a8;
+        color: #05ae4b;
       }
     }
   }

@@ -54,12 +54,12 @@ const Wrapper = styled.div`
           }
         }
         .valid {
-          color: #5ab3a8;
+          color: #05ae4b;
           font-weight: bold;
         }
       }
       .valid {
-        color: #5ab3a8;
+        color: #05ae4b;
         font-weight: bold;
       }
     }
@@ -69,13 +69,14 @@ const Wrapper = styled.div`
     position: absolute;
     bottom: 68px;
     width: 100%;
-    @media (max-height: 620px) {
-      position: static;
-      margin-top: 50px;
-    }
+    position: satic;
+    margin-top: 50px;
+    // @media (max-height: 620px) {
+    //   position: static;
+    // }
   }
   .contains {
-    color: #5ab3a8;
+    color: #05ae4b;
     font-weight: bold;
   }
 `;

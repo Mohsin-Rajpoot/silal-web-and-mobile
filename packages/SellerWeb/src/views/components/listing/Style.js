@@ -17,7 +17,7 @@ const Wrapper = styled.div`
       &.active,
       .complete {
         .step-counter {
-          background: #5ab3a8;
+          background: #05ae4b;
         }
         .step-name {
           color: #002733;
@@ -54,14 +54,14 @@ const Wrapper = styled.div`
       background: #ccd4d6;
       border-radius: 5px;
       &.active {
-        background: #5ab3a8;
+        background: #05ae4b;
       }
     }
   }
   .info-hover {
     &:hover {
       .info-sign {
-        background-color: #5ab3a8;
+        background-color: #05ae4b;
       }
     }
   }
@@ -70,8 +70,8 @@ const Wrapper = styled.div`
     margin-left: 10px;
     width: 20px;
     height: 20px;
-    background: #5ab3a833;
-    color: #5ab3a8;
+    background: #05ae4b33;
+    color: #05ae4b;
   }
   .info-div {
     left: 40px;
@@ -116,16 +116,16 @@ const Wrapper = styled.div`
     width: 95%;
   }
   .react-select-3-listbox {
-    color: #5ab3a8;
+    color: #05ae4b;
   }
   . css-1s2u09g-control {
     padding: 5px;
     border: none;
     outline: none;
-    border-color: #5ab3a8;
+    border-color: #05ae4b;
   }
   .css-1rhbuit-multiValue {
-    background: #5ab3a8;
+    background: #05ae4b;
     border-radius: 5px;
     color: #ffff;
 

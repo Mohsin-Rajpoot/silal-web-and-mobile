@@ -116,7 +116,7 @@ export default function Pre_orders({title, navigation}) {
           </Text>
         </View>
         <View style={styles.more_order}>
-          <Text style={{color: '#5AB3A8'}}>3 more</Text>
+          <Text style={{color: '#05AE4B'}}>3 more</Text>
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
           <TouchableOpacity
@@ -195,7 +195,7 @@ export default function Pre_orders({title, navigation}) {
           </Text>
         </View>
         <View style={styles.more_order}>
-          <Text style={{color: '#5AB3A8'}}>3 more</Text>
+          <Text style={{color: '#05AE4B'}}>3 more</Text>
         </View>
 
         <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
@@ -530,7 +530,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   accept_btn: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
@@ -558,7 +558,7 @@ const styles = StyleSheet.create({
   },
   ready_btn: {
     flex: 1,
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     borderRadius: 5,
     alignItems: 'center',
     paddingVertical: 10,
@@ -594,7 +594,7 @@ const styles = StyleSheet.create({
   modal_save_btn: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     width: 210,
     padding: 10,
     borderRadius: 5,

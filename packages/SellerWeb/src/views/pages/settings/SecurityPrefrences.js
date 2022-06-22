@@ -211,7 +211,7 @@ function SecurityPrefrences({ back }) {
           </Col>
         </Row>
         <Modal
-          className="d-flex justify-content-center model"
+          className="d-flex justify-content-center "
           show={showEmailModel}
           onHide={handleCloseEmailModel}
           centered
