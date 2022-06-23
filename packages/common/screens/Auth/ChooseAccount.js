@@ -108,8 +108,10 @@ const ChooseAccount = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={{ flex: 0.95 }} />
+      <View style={{ flex: 1}} />
+      
       <AuthButton
+      // buttonStyling={{}}
         onPress={() => navigation.navigate("MainStack")}
         name={t("Continue")}
       />

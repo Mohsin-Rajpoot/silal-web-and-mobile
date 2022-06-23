@@ -705,10 +705,7 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
   },
   ColorMobileView: {
-    // height: '60%',
     width: '85%',
-    // marginBottom:'2@s'
-    // backgroundColor:'red',
   },
   DropDownMobileCustom: {
     height: '45@s',

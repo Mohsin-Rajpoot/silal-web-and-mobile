@@ -86,9 +86,9 @@ const GettingStarted = ({ navigation, route }) => {
                     </Text>
                   </TouchableOpacity>
 
-                  <Text style={styles.checkout_text}> and</Text>
+                  <Text style={styles.checkout_text}>and</Text>
                   <TouchableOpacity activeOpacity={0.6}>
-                    <Text style={styles.checkoutInnerText}> FAQS</Text>
+                    <Text style={styles.checkoutInnerText}>FAQS</Text>
                   </TouchableOpacity>
                 </View>
               </>

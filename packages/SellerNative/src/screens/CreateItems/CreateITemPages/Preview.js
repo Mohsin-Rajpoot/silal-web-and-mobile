@@ -21,11 +21,12 @@ import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import Swiper from 'react-native-swiper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Svg, {Path} from 'react-native-svg';
-// import Icon from 'react-native-vector-icons/Icon'
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import DropDown from '@SilalApp/common/components/native/DropDown';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {CheckBox} from 'react-native-elements';
+import {useNavigation} from '@react-navigation/native';
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 const Preview = ({moveForward, goPrev}) => {
@@ -34,6 +35,8 @@ const Preview = ({moveForward, goPrev}) => {
   const [SubCategory, setSubCategory] = useState('');
   const [Color, setColor] = useState('');
   const [Openmodal, setOpenmodal] = useState(false);
+  const [checked, setchecked] = useState(false);
+  const navigation = useNavigation();
 
   const buttonn = [
     {
@@ -126,13 +129,7 @@ const Preview = ({moveForward, goPrev}) => {
           </View>
         </View>
       ) : (
-        <ScrollView
-          style={{
-            flex: 1,
-            // backgroundColor: 'green',
-
-            // height: '100%',
-          }}>
+        <ScrollView style={{flex: 1}}>
           <View style={styles.containerMobile}>
             <View style={styles.HeaderMainViewMobile}>
               <View style={styles.greenCircleMobile}>
@@ -175,8 +172,7 @@ const Preview = ({moveForward, goPrev}) => {
                   return (
                     <View key={index}>
                       <Image
-                        // key={e}
-                        resizeMode="stretch"
+                        resizeMode="contain"
                         style={styles.wrap1}
                         source={e.image}
                       />
@@ -185,12 +181,15 @@ const Preview = ({moveForward, goPrev}) => {
                 })}
               </ScrollView>
               <View style={styles.OffPercentage}>
-                <Text style={styles.OffPercentageText}>15%</Text>
+                <CustomText
+                  label={t('15%')}
+                  textStyle={styles.OffPercentageText}
+                />
               </View>
               <View style={styles.wrapDots}>
                 {images.map((e, index) => (
                   <Text
-                    key={e}
+                    key={index}
                     style={imgactive == index ? styles.dotactive : styles.dot}>
                     ●
                   </Text>
@@ -198,15 +197,27 @@ const Preview = ({moveForward, goPrev}) => {
               </View>
             </View>
           </View>
-          <View style={styles.description}>
-            <Text style={styles.textDescription}>
-              SmartPhone Apple Iphone 12 64 GB,Red
-            </Text>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <View>
-              <Text style={styles.textDescription1}>$ 883.73</Text>
-              <Text style={styles.orignalPrice}>$ 990.50</Text>
+              <CustomText
+                label={t('SmartPhone_Apple_Iphone_12_64_GB_Red')}
+                textStyle={styles.textDescription}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: 'column',
+                alignContent: 'center',
+                marginLeft: -50,
+              }}>
+              <CustomText
+                label={t('883_73')}
+                textStyle={styles.textDescription1}
+              />
+              <CustomText label={t('990_50')} textStyle={styles.orignalPrice} />
             </View>
           </View>
+
           <View style={styles.whiteboxcotaier}>
             <View style={styles.WhiteBox}>
               <View style={{flexDirection: 'row'}}>
@@ -214,12 +225,19 @@ const Preview = ({moveForward, goPrev}) => {
                   name="star"
                   style={{fontSize: 18, color: 'yellow'}}
                 />
-                <Text style={styles.starRaitingText}>4.8</Text>
-                <Text style={styles.starRaitingReview}>(150)</Text>
+                <CustomText
+                  label={t('4_8')}
+                  textStyle={styles.starRaitingText}
+                />
+                <CustomText
+                  label={t('150')}
+                  textStyle={styles.starRaitingReview}
+                />
               </View>
-              <Text style={styles.starRaitingReviewDetailText}>
-                150 reviews
-              </Text>
+              <CustomText
+                label={t('150_reviews')}
+                textStyle={styles.starRaitingReviewDetailText}
+              />
             </View>
             <View style={styles.WhiteBox}>
               <View style={{flexDirection: 'row'}}>
@@ -246,10 +264,15 @@ const Preview = ({moveForward, goPrev}) => {
                     fill="#05AE4B"
                   />
                 </Svg>
-
-                <Text style={styles.starRaitingText1}>Delivery Time</Text>
+                <CustomText
+                  label={t('Delivery_Time')}
+                  textStyle={styles.starRaitingText1}
+                />
               </View>
-              <Text style={styles.starRaitingReview1}>30-40 Minutes</Text>
+              <CustomText
+                label={t('30_40_Minutes')}
+                textStyle={styles.starRaitingReview1}
+              />
             </View>
             <View style={styles.WhiteBox}>
               <View style={{flexDirection: 'row'}}>
@@ -276,27 +299,24 @@ const Preview = ({moveForward, goPrev}) => {
                     fill="#05AE4B"
                   />
                 </Svg>
-                {/* <Svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 56 50"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <Path
-                    d="M2.99848 27.7954C3.93416 22.4506 8.21064 17.8604 14.2685 15.146C19.2509 12.9135 19.275 12.9135 23 12.9135C27.9104 12.9135 31.5646 12.9135 35 12.9135L41.6922 8.99707V16.1158L41.6542 16.1178C45.5364 18.2553 48.5044 21.2101 50.0373 24.6386H56V34.0615H50.5305C49.1143 38.3588 45.5199 42.048 40.612 44.4613V49.9971H31.5646V47.1676C30.0837 47.3706 28.5598 47.4868 26.9965 47.4868C25.2773 47.4868 23.6037 47.3524 21.9834 47.108V49.9961H12.9372V44.2209C7.26356 41.2914 3.42575 36.6446 2.87297 31.327H0V27.7934H2.99848V27.7954ZM39.5318 24.3083C40.9201 24.3083 42.0447 23.4113 42.0447 22.3071C42.0447 21.201 40.9188 20.305 39.5318 20.305C38.1448 20.305 37.0202 21.202 37.0202 22.3071C37.0202 23.4123 38.1448 24.3083 39.5318 24.3083Z"
-                    fill="#05AE4B"
-                  />
-                  <Path
-                    d="M25.0213 15.5186C29.4287 15.2123 32.7686 11.6135 32.4814 7.48153C32.1943 3.34951 28.3877 0.248459 23.9813 0.554693C19.5727 0.861079 16.2328 4.4588 16.5199 8.59081C16.8071 12.7228 20.6127 15.825 25.0213 15.5186ZM24.0032 8.73622C22.3913 8.34914 29.5931 8.8215 29.5 7.48153C29.4156 6.26701 21.4254 5.8645 22.9805 5.46502L29.5 10.3471L24.8447 2.35264L24.9292 3.56818C25.9194 3.54173 25.4792 4.38987 25.9805 4.57617L26.4805 5.57617C26.086 5.45168 25.6849 5.06877 24.6242 5.14249C23.6666 5.20905 21.4536 5.6895 21.4805 6.07617C21.5121 6.53071 23.9784 6.71363 25.2617 7.06774C27.0527 7.52607 21.9 8.33389 21.9863 9.57617C22.0717 10.8051 27.1285 11.8205 25.4552 12.2148L25.5531 13.6237L24.1095 13.724L26.7783 13.724C25.7904 13.7503 30.0817 12.4803 29.5 12.2148L21.8038 10.3471C22.4444 10.6209 23.3323 10.8506 24.2899 10.784C25.1302 10.7256 29.5384 10.8994 29.5 10.3471C29.4646 9.82155 25.1154 9.00613 24.0032 8.73622Z"
-                    fill="#05AE4B"
-                  />
-                </Svg> */}
-                <Text style={styles.starRaitingText1}>Delivery Cost</Text>
+                <CustomText
+                  label={t('Delivery_Cost')}
+                  textStyle={styles.starRaitingText1}
+                />
               </View>
-              <Text style={styles.starRaitingReviewDetailText01}>$ 3-6</Text>
+              <CustomText
+                label={t('3_6')}
+                textStyle={styles.starRaitingReviewDetailText01}
+              />
             </View>
           </View>
           <View>
+            <View style={{height: 70, zIndex: 1}}>
+              <DropDown
+                DropDownCustomStyle={styles.dropSSd1}
+                placeholder="Specification"
+              />
+            </View>
             <Text style={styles.ColorHeading}>
               Color :<Text style={styles.colorheading2}> red</Text>
             </Text>
@@ -347,13 +367,10 @@ const Preview = ({moveForward, goPrev}) => {
                     Color == '1' ? colors.primary : colors.light_grey,
                 },
               ]}>
-              <Text
-                style={{
-                  color: colors.textWhite,
-                  fontFamily: fonts.PoppinsSemiBold,
-                }}>
-                64 GB
-              </Text>
+              <CustomText
+                label={t('64_GB')}
+                textStyle={styles.productsattribut}
+              />
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -365,13 +382,10 @@ const Preview = ({moveForward, goPrev}) => {
                     Color == '2' ? colors.primary : colors.light_grey,
                 },
               ]}>
-              <Text
-                style={{
-                  color: colors.textWhite,
-                  fontFamily: fonts.PoppinsSemiBold,
-                }}>
-                128 GB
-              </Text>
+              <CustomText
+                label={t('128_GB')}
+                textStyle={styles.productsattribut}
+              />
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -383,29 +397,23 @@ const Preview = ({moveForward, goPrev}) => {
                     Color == '3' ? colors.primary : colors.light_grey,
                 },
               ]}>
-              <Text
-                style={{
+              <CustomText
+                label={t('512_GB')}
+                textStyle={{
                   color: colors.textWhite,
                   fontFamily: fonts.PoppinsSemiBold,
-                }}>
-                512 GB
-              </Text>
+                }}
+              />
             </TouchableOpacity>
           </View>
-          <View style={{}}>
-            <View style={styles.ColorMobileView}>
-              <DropDown
-                DropDownCustomStyle={styles.dropSSd}
-                placeholder="Description"
-              />
-            </View>
-            <View>
-              <DropDown
-                DropDownCustomStyle={styles.dropSSd1}
-                placeholder="Specification"
-              />
-            </View>
+
+          <View style={styles.ColorMobileView}>
+            <DropDown
+              DropDownCustomStyle={styles.dropSSd}
+              placeholder="Description"
+            />
           </View>
+
           <View style={styles.divider} />
 
           <View style={{flexDirection: 'row'}}>
@@ -437,42 +445,57 @@ const Preview = ({moveForward, goPrev}) => {
               <View style={styles.ModalContainer}>
                 <View style={styles.ModeView}>
                   <View style={styles.ModalTitle}>
-                    <Text style={styles.ModalHeading}>
-                      Delete this item from folder?
-                    </Text>
-                    <Entypo
-                      onPress={() => setOpenmodal(false)}
-                      name="cross"
-                      style={styles.deleteModalCrossIcon}
+                    <CustomText
+                      label={t('Publish_item')}
+                      textStyle={styles.ModalHeading}
+                    />
+                  </View>
+                  <CustomText
+                    label={t(
+                      'The_product_will_appear_in_the_buyers_app_after_moderation',
+                    )}
+                    textStyle={styles.ModalParagraph}
+                  />
+
+                  <View style={styles.CheckBoxView}>
+                    <CheckBox
+                      checked={checked}
+                      onPress={() => setchecked(!checked)}
+                      checkedColor={colors.primary}
+                      uncheckedColor={colors.gray}
+                      style={{width: 40}}
+                    />
+                    <CustomText
+                      label={t('Add_item_to_Seller_Brief')}
+                      textStyle={styles.ModalParagraphSecond}
                     />
                   </View>
 
-                  <Text style={styles.ModalParagraph}>
-                    Are you sure you want to delete the
-                    <Text
-                      style={{fontFamily: fonts.LatoBold, color: colors.black}}>
-                      #723DN2
-                    </Text>
-                    item from Salads folder?
-                  </Text>
                   <View style={styles.ModalButtonContainer}>
                     <TouchableOpacity
                       onPress={() => setOpenmodal(false)}
                       style={[
-                        {backgroundColor: colors.light_grey},
+                        {backgroundColor: colors.blurPrimary},
                         styles.Buttonss,
                       ]}>
-                      <Text style={styles.DeleteModal}>Cancel</Text>
+                      <CustomText
+                        label={t('Save_as_draft')}
+                        textStyle={styles.DeleteModal}
+                      />
                     </TouchableOpacity>
                     <TouchableOpacity
+                      onPress={() => navigation.navigate('Home')}
                       style={[
                         {backgroundColor: colors.primary},
                         styles.Buttonss,
                       ]}>
-                      <Text
-                        style={[{color: colors.textWhite}, styles.DeleteModal]}>
-                        Delete
-                      </Text>
+                      <CustomText
+                        label={t('Submit_listing')}
+                        textStyle={[
+                          styles.DeleteModal,
+                          {color: colors.textWhite},
+                        ]}
+                      />
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -488,7 +511,6 @@ const Preview = ({moveForward, goPrev}) => {
 };
 
 export default Preview;
-//
 const styles = ScaledSheet.create({
   mainContainer: {
     backgroundColor: colors.textWhite,
@@ -510,6 +532,7 @@ const styles = ScaledSheet.create({
     width: '100%',
     height: '1@s',
   },
+
   buttonContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -543,7 +566,6 @@ const styles = ScaledSheet.create({
 
   containerMobile: {
     marginTop: '5@vs',
-    // backgroundColor:'red',
   },
 
   HeaderMainViewMobile: {
@@ -551,10 +573,8 @@ const styles = ScaledSheet.create({
     height: '40@vs',
     borderRadius: 5,
     overflow: 'hidden',
-    // marginHorizontal: '10@s',
     elevation: 5,
     flexDirection: 'row',
-
     alignItems: 'center',
     marginTop: 10,
   },
@@ -639,40 +659,31 @@ const styles = ScaledSheet.create({
   OffPercentageText: {
     color: colors.textWhite,
     fontFamily: fonts.bold,
-    textAlign: 'center',
     fontSize: '17@s',
+    alignSelf: 'center',
   },
   description: {
-    justifyContent: 'space-between',
     flexDirection: 'row',
     marginTop: '15@vs',
-    // backgroundColor:'red'
-    // top: '-13%',
   },
-  description2: {
-    // justifyContent: 'space-between',
-    flexDirection: 'row',
-    // marginTop: '23@s',
-  },
+
   textDescription: {
     fontSize: '14@s',
     fontFamily: fonts.bold,
     paddingTop: '3%',
     color: colors.black,
-    width: '50%',
-    // height:200
+    width: '70%',
+    height: '60@s',
   },
   textDescription3: {
     fontSize: '14@s',
     fontFamily: fonts.bold,
-    // paddingTop:'3%',
     color: colors.black,
   },
   textDescription1: {
-    fontSize: '28@s',
+    fontSize: '18@s',
     fontFamily: fonts.bold,
     color: colors.black,
-    width: '100%',
   },
   orignalPrice: {
     textAlign: 'right',
@@ -771,19 +782,22 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.PoppinsSemiBold,
   },
   ColorMobileView: {
-    height: 100,
+    // height: 100,
     width: '100%',
     marginVertical: '10@vs',
-    // marginBottom:300
+    // marginBottom:"50@s",
+    zIndex: 1,
   },
   dropSSd: {
     backgroundColor: colors.dullWhite,
     height: '10@s',
+    marginBottom: '20@s',
   },
   dropSSd1: {
     backgroundColor: colors.dullWhite,
-    height: '10@s',
-    marginBottom: 130,
+    // height: '10@s',
+    // marginBottom:"20@s",
+    marginVertical: '10@vs',
   },
   BackbottomButtonContainerMobile: {
     backgroundColor: colors.blurPrimary,
@@ -826,33 +840,40 @@ const styles = ScaledSheet.create({
     backgroundColor: 'rgba(0,0,0,0.8)',
   },
   ModeView: {
-    height: '140@vs',
+    height: '170@vs',
     width: '310@s',
     backgroundColor: colors.textWhite,
     borderRadius: 5,
     elevation: 0.2,
   },
   ModalTitle: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     paddingHorizontal: 20,
     marginTop: 13,
+    alignSelf: 'center',
   },
   ModalHeading: {
-    color: '#414342',
-    fontSize: 17,
-    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.black,
+    fontSize: '15@s',
+    fontFamily: fonts.bold,
   },
   deleteModalCrossIcon: {
     fontSize: 25,
     color: colors.light_grey,
   },
   ModalParagraph: {
-    color: colors.textPrimary,
+    color: colors.textPrimeColor,
     fontFamily: fonts.LatoRegular,
-    paddingHorizontal: 20,
-    fontSize: 15,
-    marginVertical: 15,
+    paddingHorizontal: '20@s',
+    fontSize: '15@s',
+    marginVertical: '15@s',
+    textAlign: 'center',
+  },
+  ModalParagraphSecond: {
+    color: colors.textPrimeColor,
+    fontFamily: fonts.LatoRegular,
+    fontSize: '15@s',
+    textAlign: 'center',
+    left: '-15@s',
   },
   ModalButtonContainer: {
     flexDirection: 'row',
@@ -863,8 +884,8 @@ const styles = ScaledSheet.create({
   },
   Buttonss: {
     width: '45%',
-    height: 45,
-    borderRadius: 5,
+    height: '40@s',
+    borderRadius: '5@s',
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 10,
@@ -872,5 +893,18 @@ const styles = ScaledSheet.create({
   DeleteModal: {
     fontFamily: fonts.PoppinsSemiBold,
     fontSize: 15,
+    color: colors.primary,
+  },
+  CheckBoxView: {
+    flexDirection: 'row',
+    width: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    // backgroundColor:'red'
+  },
+  productsattribut: {
+    color: colors.textWhite,
+    fontFamily: fonts.PoppinsSemiBold,
   },
 });

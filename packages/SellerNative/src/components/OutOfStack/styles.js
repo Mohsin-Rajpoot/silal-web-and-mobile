@@ -261,5 +261,25 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.black,
   },
+  MainContainer: {
+    height: '90%',
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    backgroundColor: colors.textWhite,
+    elevation: 1,
+    borderWidth: 1,
+    borderColor: colors.textWhite,
+    borderRadius: 5,
+    width: '95%',
+    padding: 20,
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  DotsButton: {
+    height: 40,
+    width: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 export default styles;

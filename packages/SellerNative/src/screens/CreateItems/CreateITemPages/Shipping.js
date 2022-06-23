@@ -13,13 +13,14 @@ import fonts from '@SilalApp/common/assets/fonts';
 import {useTranslation} from 'react-i18next';
 import {Icon} from 'react-native-elements';
 import CustomTextInput from '@SilalApp/common/components/native/TextInput';
-import {Checkbox} from 'native-base';
+import {Checkbox} from 'native-base'; 
 import {CheckBox} from 'react-native-elements';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {CustomButton} from '@SilalApp/common/components/native';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import Tooltip from 'react-native-walkthrough-tooltip';
 import AntDesign from 'react-native-vector-icons/AntDesign'
+
 const Shipping = ({moveForward, goPrev}) => {
   const {t} = useTranslation();
   const [active, setActive] = useState(false);
@@ -157,6 +158,8 @@ const Shipping = ({moveForward, goPrev}) => {
               />
               <View style={{width: '90%', marginTop: 10}}>
                 <CustomTextInput
+                inputStyle={styles.Dimentions}
+                inputTextStyle={styles.Placeholdertext}
                   placeholderText={'300'}
                   placeholderTextColor={colors.black}
                   keyboardType={'numeric'}
@@ -170,6 +173,8 @@ const Shipping = ({moveForward, goPrev}) => {
               />
               <View style={{width: '90%', marginTop: 10}}>
                 <CustomTextInput
+                inputStyle={styles.Dimentions}
+                inputTextStyle={styles.Placeholdertext}
                   placeholderText={'300'}
                   placeholderTextColor={colors.black}
                   keyboardType={'numeric'}
@@ -183,6 +188,8 @@ const Shipping = ({moveForward, goPrev}) => {
               />
               <View style={{width: '90%', marginTop: 10, marginRight: 10}}>
                 <CustomTextInput
+                inputStyle={styles.Dimentions}
+                inputTextStyle={styles.Placeholdertext}
                   placeholderText={'300'}
                   placeholderTextColor={colors.black}
                   keyboardType={'numeric'}
@@ -190,7 +197,7 @@ const Shipping = ({moveForward, goPrev}) => {
               </View>
             </View>
           </View>
-          <View style={{height: 25}} />
+          <View style={{height: 15}} />
         </View>
         <View style={styles.divider} />
 
@@ -297,6 +304,8 @@ const Shipping = ({moveForward, goPrev}) => {
               />
               <View style={{width: '90%', marginTop: 10}}>
                 <CustomTextInput
+                 inputStyle={styles.Dimentions}
+                 inputTextStyle={styles.Placeholdertext}
                   placeholderText={'300'}
                   placeholderTextColor={colors.black}
                   keyboardType={'numeric'}
@@ -308,6 +317,8 @@ const Shipping = ({moveForward, goPrev}) => {
               <CustomText label={t('Kg')} textStyle={styles.categoryRequired} />
               <View style={{width: '90%', marginTop: 10, marginRight: 10}}>
                 <CustomTextInput
+                 inputStyle={styles.Dimentions}
+                 inputTextStyle={styles.Placeholdertext}
                   placeholderText={'300'}
                   placeholderTextColor={colors.black}
                   keyboardType={'numeric'}
@@ -544,4 +555,11 @@ const styles = ScaledSheet.create({
     textAlign: 'center',
     paddingVertical: 2,
   },
+  Dimentions:{
+    height:'35@s'
+  },
+  Placeholdertext:{
+    paddingHorizontal:'10@s',
+    justifyContent:'center',alignItems:'center',
+  }
 });

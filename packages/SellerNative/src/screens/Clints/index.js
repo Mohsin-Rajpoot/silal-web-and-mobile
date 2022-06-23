@@ -1,7 +1,6 @@
 import React, {useState, useRef} from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
   Text,
   View,
   Dimensions,
@@ -11,8 +10,6 @@ import {
   ScrollView,
   Image,
   Modal,
-  KeyboardAvoidingView,
-  Button,
 } from 'react-native';
 import ModalViewS from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -28,6 +25,7 @@ import {moderateScale, verticalScale} from 'react-native-size-matters';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import fonts from '@SilalApp/common/assets/fonts';
+import {useTranslation} from 'react-i18next';
 
 var windowWidth = Dimensions.get('window').width;
 var windowHeight = Dimensions.get('window').height;
@@ -36,10 +34,8 @@ const Clints = ({navigation}) => {
   const [choseData, setchoseData] = useState('Sort by');
   const [ModalVisible, setModalVisible] = useState(false);
   const [ismodalVisible, setisModalVisible] = useState(false);
-
-
-const [filter, setfilter]=useState('')
-
+  const [filter, setfilter] = useState('');
+  const {t} = useTranslation();
   const changeModalVisibilty = bool => {
     setModalVisible(bool);
   };
@@ -47,51 +43,9 @@ const [filter, setfilter]=useState('')
     setchoseData(option);
   };
 
-  
   const Sheet = useRef();
   const Sheet_state = useRef();
 
-  const dataBs = [
-    {
-      id: '1',
-    },
-    {
-      id: '2',
-    },
-  ];
-  const [state_arr, set_state_arr] = useState([
-    {
-      id: '1',
-      Title: 'Apparel',
-      name: 'Apparel',
-      TotalOrders: '59',
-      Sum_of_orders: '$ 426.67',
-    },
-
-    {
-      id: '2',
-      Title: 'Cosmetics/ Makeup',
-      name: 'Makeup',
-      TotalOrders: '59',
-      Sum_of_orders: '$ 426.67',
-    },
-    {
-      id: '3',
-      Title: 'Jewelry & Accessories',
-      name: 'Jewelry',
-      TotalOrders: '59',
-      Sum_of_orders: '$ 426.67',
-    },
-    {
-      id: '4',
-      Title: 'Hair',
-      name: 'Hair',
-      TotalOrders: '59',
-      Sum_of_orders: '$ 426.67',
-    },
-  ]);
-
-  // /////////
   const data = [
     {
       id: '1',
@@ -244,53 +198,44 @@ const [filter, setfilter]=useState('')
   ] = useState(false);
 
   const [SecondModalVisible, setSecondModalVisible] = useState(false);
-// ////
+  // ////
 
-const footer = () => {
-  return (
-    <View style={{marginTop:10}}>
-    <View style={!IsTablet ? styles.ButtonShow : styles.ButtonHide}>
-        <TouchableOpacity style={styles.hideButton}>
-          <Text style={styles.HideButtonText}>Load More</Text>
-        </TouchableOpacity>
+  const footer = () => {
+    return (
+      <View style={{marginTop: 10}}>
+        <View style={!IsTablet ? styles.ButtonShow : styles.ButtonHide}>
+          <TouchableOpacity style={styles.hideButton}>
+            <Text style={styles.HideButtonText}>{t('Load_more')}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      </View>
-  );
-};
+    );
+  };
 
-
-// ////////
   const sheet_data = () => {
     return (
       <View style={styles.sheet}>
         <View style={styles.sheet_head_view}>
           <TouchableOpacity onPress={() => Sheet.current.close()}>
-            {/* <AntDesign name="closecircle" size={24} color="#dadce2" /> */}
             <Entypo style={styles.CrossIconbts} name="cross" />
           </TouchableOpacity>
         </View>
-        <View
-          style={{
-            justifyContent: 'center',
-            alignSelf: 'center',
-            zIndex: 1,
-            marginTop: -33,
-          }}>
+        <View style={styles.BottomSheetContiner}>
           <Text style={{fontFamily: fonts.LatoBold, fontSize: 17}}>
-            Sort By
+            {t('Sort_By')}
           </Text>
         </View>
 
         <View style={styles.mianviewText}>
           <View style={styles.BottomSheetTextHead}>
-            <TouchableOpacity onPress={()=>setfilter('newest')}>
+            <TouchableOpacity onPress={() => setfilter('newest')}>
               <Text
                 style={{
-                  color: filter == 'newest' ? '#05AE4B': '#002733' ,
+                  color: filter == 'newest' ? colors.primary : colors.black,
                   paddingVertical: 5,
                   fontFamily: fonts.LatoMedium,
                 }}>
-                Newest first
+                {t('Newest_first')}
               </Text>
             </TouchableOpacity>
             {filter == 'newest' ? (
@@ -311,14 +256,14 @@ const footer = () => {
           </View>
 
           <View style={styles.BottomSheetTextHead}>
-            <TouchableOpacity onPress={()=>setfilter('oldest')}>
+            <TouchableOpacity onPress={() => setfilter('oldest')}>
               <Text
                 style={{
-                  color: filter == 'oldest' ?'#05AE4B': '#002733' ,
+                  color: filter == 'oldest' ? colors.primary : colors.black,
                   paddingVertical: 5,
                   fontFamily: fonts.LatoMedium,
                 }}>
-                Oldest first
+                {t('oldest_first')}
               </Text>
             </TouchableOpacity>
             {filter == 'oldest' ? (
@@ -338,10 +283,10 @@ const footer = () => {
             ) : null}
           </View>
           <View style={styles.BottomSheetTextHead}>
-            <TouchableOpacity onPress={()=>setfilter('AZ')}>
+            <TouchableOpacity onPress={() => setfilter('AZ')}>
               <Text
                 style={{
-                  color: filter == 'AZ' ?'#05AE4B': '#002733'  ,
+                  color: filter == 'AZ' ? colors.primary : colors.black,
                   paddingVertical: 5,
                   fontFamily: fonts.LatoMedium,
                 }}>
@@ -366,14 +311,14 @@ const footer = () => {
           </View>
 
           <View style={styles.BottomSheetTextHead}>
-            <TouchableOpacity onPress={()=>setfilter('ZA')}>
+            <TouchableOpacity onPress={() => setfilter('ZA')}>
               <Text
                 style={{
-                  color: filter == 'ZA' ?'#05AE4B': '#002733' ,
+                  color: filter == 'ZA' ? colors.primary : colors.black,
                   paddingVertical: 5,
                   fontFamily: fonts.LatoMedium,
                 }}>
-                Z-A
+                {t('Z_A')}
               </Text>
             </TouchableOpacity>
             {filter == 'ZA' ? (
@@ -397,24 +342,6 @@ const footer = () => {
     );
   };
 
-  // //////////////
-
-// const footer = () => {
-//   return (
-//     <View style={{marginTop:10}}>
-//     <View style={!IsTablet ? styles.ButtonShow : styles.ButtonHide}>
-//         <TouchableOpacity style={styles.hideButton}>
-//           <Text style={styles.HideButtonText}>Load More</Text>
-//         </TouchableOpacity>
-//       </View>
-//       </View>
-//   );
-// };
-
-
- 
-  // //////////////
-
   const Customer_Data = () => {
     return (
       <>
@@ -423,36 +350,42 @@ const footer = () => {
             set_show_modal_Customer_Data(!show_modal_Customer_Data)
           }
           style={styles.CustomerMainTitle}>
-          <Text style={styles.ModalDropdown}>CUSTOMER DATA</Text>
+          <Text style={styles.ModalDropdown}></Text>
 
           {show_modal_Customer_Data == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           )}
         </TouchableOpacity>
         {show_modal_Customer_Data == true ? (
           <View style={{marginTop: 10}}>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Customer name</Text>
-              <Text style={styles.modal_title_second}>Willson Genemal</Text>
+              <Text style={styles.modal_title_first}>
+                {' '}
+                {t('customer_name')}
+              </Text>
+              <Text style={styles.modal_title_second}>
+                {' '}
+                {t('Willson_Genemal')}
+              </Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Customer ID</Text>
-              <Text style={styles.modal_title_second}>133</Text>
+              <Text style={styles.modal_title_first}> {t('Customer_ID')}</Text>
+              <Text style={styles.modal_title_second}> 133</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Phone</Text>
+              <Text style={styles.modal_title_first}> {t('phone')}</Text>
               <Text style={styles.modal_title_second}>*** *** **** 112</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Address</Text>
+              <Text style={styles.modal_title_first}> {t('address')}</Text>
               <Text style={styles.modal_title_second}>
                 2715 Ash Dr. San Jose
               </Text>
@@ -469,32 +402,38 @@ const footer = () => {
         <TouchableOpacity
           onPress={() => set_show_modal_Driver_Data(!show_modal_Driver_Data)}
           style={styles.CustomerMainTitle}>
-          <Text style={styles.ModalDropdown}>DRIVER DATA</Text>
+          <Text style={styles.ModalDropdown}> {t('driver_data')}</Text>
 
           {show_modal_Driver_Data == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           )}
         </TouchableOpacity>
         {show_modal_Driver_Data == true ? (
           <View style={{marginTop: 10}}>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Driver name</Text>
-              <Text style={styles.modal_title_second}>Willson Genemal</Text>
+              <Text style={styles.modal_title_first}> {t('Driver_name')}</Text>
+              <Text style={styles.modal_title_second}>
+                {' '}
+                {t('Willson_Genemal')}
+              </Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Delivery time</Text>
+              <Text style={styles.modal_title_first}>
+                {' '}
+                {t('Delivery_time')}
+              </Text>
               <Text style={styles.modal_title_second}>37 minutes</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Phone</Text>
+              <Text style={styles.modal_title_first}>{t('phone')}</Text>
               <Text style={styles.modal_title_second}>*** *** **** 112</Text>
             </View>
           </View>
@@ -513,32 +452,32 @@ const footer = () => {
             )
           }
           style={styles.CustomerMainTitle}>
-          <Text style={styles.ModalDropdown}>ORDER DETAILS</Text>
+          <Text style={styles.ModalDropdown}>{t('order_details')}</Text>
 
           {show_modal_SecondModal_order_details == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           )}
         </TouchableOpacity>
         {show_modal_SecondModal_order_details == true ? (
           <View style={{marginTop: 10}}>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Order created</Text>
+              <Text style={styles.modal_title_first}>{t('Order_created')}</Text>
               <Text style={styles.modal_title_second}>13.11.2021</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Payment</Text>
-              <Text style={styles.modal_title_second}>$ 13.00</Text>
+              <Text style={styles.modal_title_first}>{t('Payment')}</Text>
+              <Text style={styles.modal_title_second}>'$ 13.00</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Credit card</Text>
+              <Text style={styles.modal_title_first}>{t('credit_card')}</Text>
               <Text style={styles.modal_title_second}>**** **** **** 3782</Text>
             </View>
 
@@ -570,37 +509,41 @@ const footer = () => {
             set_show_modal_Personal_data(!show_modal_Personal_data)
           }
           style={styles.CustomerMainTitle}>
-          <Text style={styles.ModalDropdown}>PERSONAL DATA</Text>
+          <Text style={styles.ModalDropdown}>{t('personal_Data')}</Text>
 
           {show_modal_Personal_data == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           )}
         </TouchableOpacity>
         {show_modal_Personal_data == true ? (
           <View style={{marginTop: 10}}>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Total orders</Text>
+              <Text style={styles.modal_title_first}>{t('Total_orders')}</Text>
               <Text style={styles.modal_title_second}>43</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Sum of orders</Text>
-              <Text style={styles.modal_title_second}>$ 423.90</Text>
+              <Text style={styles.modal_title_first}>{t('Sumof_order')}</Text>
+              <Text style={styles.modal_title_second}>{t('$ 423.90')}</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Average amount</Text>
+              <Text style={styles.modal_title_first}>
+                {t('Average_amount')}
+              </Text>
               <Text style={styles.modal_title_second}>$ 13</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Credit card</Text>
-              <Text style={styles.modal_title_second}>**** **** **** 4543</Text>
+              <Text style={styles.modal_title_first}>{t('credit_card')}</Text>
+              <Text style={styles.modal_title_second}>
+                **** **** **** 4543{' '}
+              </Text>
             </View>
           </View>
         ) : null}
@@ -615,17 +558,17 @@ const footer = () => {
             set_show_modal_Favourite_item(!show_modal_Favourite_item)
           }
           style={styles.CustomerMainTitle}>
-          <Text style={styles.ModalDropdown}>FAVOURITE ITEMS (3)</Text>
+          <Text style={styles.ModalDropdown}>{t('FAVOURITE_ITEMS')}</Text>
 
           {show_modal_Favourite_item == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           )}
         </TouchableOpacity>
@@ -651,8 +594,8 @@ const footer = () => {
                   <Text
                     style={{
                       fontSize: 13,
-                      color: '#002733',
-                      fontFamily: 'Lato-Regular',
+                      color: colors.black,
+                      fontFamily: fonts.LatoRegular,
                       paddingVertical: 10,
                     }}>
                     Chicken burger in cheese sauce with mushrooms
@@ -660,7 +603,7 @@ const footer = () => {
                   <Text
                     style={{
                       fontSize: 13,
-                      color: '#002733',
+                      color: colors.black,
                       fontFamily: fonts.PoppinsSemiBold,
                     }}>
                     $ 4.00
@@ -683,16 +626,16 @@ const footer = () => {
             set_show_modal_order_details(!show_modal_order_details)
           }
           style={styles.CustomerMainTitle}>
-          <Text style={styles.ModalDropdown}>ORDER DETAILS</Text>
+          <Text style={styles.ModalDropdown}>{t('order_details')}</Text>
           {show_modal_order_details == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black', fontSize: 16}]}
+              style={[styles.cross_icon, {color: colors.black, fontSize: 16}]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black', fontSize: 16}]}
+              style={[styles.cross_icon, {color: colors.black, fontSize: 16}]}
             />
           )}
         </TouchableOpacity>
@@ -702,7 +645,7 @@ const footer = () => {
               <EvilIcons name="search" style={[styles.SearchIcon]} />
               <TextInput
                 placeholder="Search by order #"
-                placeholderTextColor="#B3BEC2"
+                placeholderTextColor={colors.gray_light}
                 paddingHorizontal={32}
                 style={[styles.Input, {width: '97%'}]}
               />
@@ -722,9 +665,9 @@ const footer = () => {
                         style={{
                           fontSize: 18,
                           paddingTop: 5,
-                          color: '#CCD4D6',
+                          color: colors.light_grey,
                         }}>
-                        ORDER ID
+                        {t('order_id')}
                       </Text>
                       <Text style={styles.OrderIdentityCode}>
                         {item.Identity}
@@ -737,7 +680,7 @@ const footer = () => {
                   <View style={styles.FlatStyle}>
                     <Text
                       style={{
-                        color: '#002733',
+                        color: colors.black,
                         fontSize: 17,
                         paddingHorizontal: 4,
                       }}>
@@ -748,12 +691,12 @@ const footer = () => {
                         name="cross"
                         size={17}
                         style={{paddingTop: 3, paddingHorizontal: 4}}
-                        color={'#CCD4D6'}
+                        color={colors.light_grey}
                       />
                     </TouchableOpacity>
                     <Text
                       style={{
-                        color: '#002733',
+                        color: colors.black,
                         fontSize: 17,
                         paddingHorizontal: 4,
                       }}>
@@ -764,7 +707,7 @@ const footer = () => {
                   <View style={styles.FlatStyle}>
                     <Text
                       style={{
-                        color: '#002733',
+                        color: colors.black,
                         fontSize: 17,
                         paddingHorizontal: 4,
                       }}>
@@ -774,17 +717,9 @@ const footer = () => {
                       name="cross"
                       size={17}
                       style={{paddingTop: 3, paddingHorizontal: 4}}
-                      color={'#CCD4D6'}
+                      color={colors.light_grey}
                     />
-                    <Text
-                      style={{
-                        color: '#002733',
-                        fontSize: 17,
-                        width: 250,
-                        paddingHorizontal: 4,
-                      }}>
-                      {item.order2}
-                    </Text>
+                    <Text style={styles.ItemId2}>{item.order2}</Text>
                   </View>
 
                   <TouchableOpacity style={styles.MoreOrderShow}>
@@ -792,11 +727,13 @@ const footer = () => {
                   </TouchableOpacity>
 
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={styles.paymentMethod}>PAYMENT METHOD</Text>
-                    <Text style={[styles.CreditCard]}>CREDIT CARD</Text>
+                    <Text style={styles.paymentMethod}>
+                      {t('payment_method')}
+                    </Text>
+                    <Text style={[styles.CreditCard]}> {t('credit_card')}</Text>
                   </View>
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={[styles.paymentMethod]}>CARD DATA</Text>
+                    <Text style={[styles.paymentMethod]}>{t('card_data')}</Text>
                     <Text style={styles.CreditCard}>**** **** **** 3782</Text>
                   </View>
                 </TouchableOpacity>
@@ -841,7 +778,7 @@ const footer = () => {
                   style={styles.crossButtonModal}>
                   <Entypo
                     name="cross"
-                    style={[{color: '#4C6870', fontSize: 30}]}
+                    style={[{color: colors.sidebar, fontSize: 30}]}
                   />
                 </TouchableOpacity>
 
@@ -870,15 +807,15 @@ const footer = () => {
 
                         {/* /// */}
                         <Text style={styles.orderid_text}>
-                          Cameron Williamson
+                          {t('Willson_Genemal')}
                         </Text>
                         <View style={styles.modal_recuring}>
                           <Text
                             style={{
-                              color: 'white',
-                              fontFamily: 'Lato-Regular',
+                              color: colors.textWhite,
+                              fontFamily: fonts.LatoRegular,
                             }}>
-                            Recurring client
+                            {t('recurring_client')}
                           </Text>
                         </View>
                       </View>
@@ -886,15 +823,19 @@ const footer = () => {
                     <View style={{flexDirection: 'row'}}>
                       <Text
                         style={{
-                          color: '#CCD4D6',
-                          fontFamily: 'Lato-Bold',
+                          color: colors.light_grey,
+                          fontFamily: fonts.LatoBold,
                           width: 110,
                         }}>
-                        CUSTOMER ID
+                        {t('Customer_Id')}
                       </Text>
 
-                      <Text style={{color: '#002733', fontFamily: 'Lato-Bold'}}>
-                        #644
+                      <Text
+                        style={{
+                          color: colors.black,
+                          fontFamily: fonts.LatoBold,
+                        }}>
+                        {t('#644')}
                       </Text>
                     </View>
                   </View>
@@ -917,12 +858,12 @@ const footer = () => {
                           style={styles.SecondModalIcon}
                         />
                         <Text style={styles.SecondModalText}>
-                          Order #723DN8
+                          {t('Order #723DN8')}
                         </Text>
                       </TouchableOpacity>
                       <View style={styles.SecondModalCompleteView}>
                         <Text style={styles.SecondViewCompleteText}>
-                          Completed
+                          {t('completed')}
                         </Text>
                       </View>
                     </View>
@@ -950,68 +891,64 @@ const footer = () => {
               ? styles.ClintPageMainheadingMobile
               : styles.ClintPageMainheading
           }>
-          Clients database
+          {t('Clients_database')}
         </Text>
         <View style={!IsTablet ? styles.SearchBarMobile : styles.SearchBar}>
           <EvilIcons name="search" style={styles.SearchIcon} />
           <TextInput
             placeholder="Search by orders #, phone or name..."
-            placeholderTextColor="#B3BEC2"
+            placeholderTextColor={colors.gray_light}
             paddingHorizontal={32}
             style={!IsTablet ? styles.InputMobile : styles.Input}
           />
           {/* Bottom Sheet */}
-          { !IsTablet == true ?
-          <>
-          <TouchableOpacity
-            onPress={() => Sheet.current.open()}
-            style={{paddingHorizontal: 15}}>
-            <Svg
-              width="44"
-              height="40"
-              viewBox="0 0 44 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <Rect width="44" height="40" rx="8" fill="white" />
-              <Path
-                d="M17.2434 13.5781C17.5689 13.2526 18.0965 13.2526 18.4219 13.5781L21.7553 16.9114C22.0807 17.2368 22.0807 17.7645 21.7553 18.0899C21.4298 18.4153 20.9022 18.4153 20.5768 18.0899L18.666 16.1792V25.834C18.666 26.2942 18.2929 26.6673 17.8327 26.6673C17.3724 26.6673 16.9993 26.2942 16.9993 25.834V16.1792L15.0886 18.0899C14.7632 18.4153 14.2355 18.4153 13.9101 18.0899C13.5847 17.7645 13.5847 17.2368 13.9101 16.9114L17.2434 13.5781ZM25.3327 23.8221V14.1673C25.3327 13.7071 25.7058 13.334 26.166 13.334C26.6263 13.334 26.9994 13.7071 26.9994 14.1673V23.8221L28.9101 21.9114C29.2355 21.586 29.7632 21.586 30.0886 21.9114C30.414 22.2368 30.414 22.7645 30.0886 23.0899L26.7553 26.4232C26.599 26.5795 26.387 26.6673 26.166 26.6673C25.945 26.6673 25.733 26.5795 25.5768 26.4232L22.2434 23.0899C21.918 22.7645 21.918 22.2368 22.2434 21.9114C22.5689 21.586 23.0965 21.586 23.4219 21.9114L25.3327 23.8221Z"
-                fill="#C9D2D4"
-              />
-              <Rect
-                x="0.5"
-                y="0.5"
-                width="43"
-                height="39"
-                rx="7.5"
-                stroke="#E8E8E8"
-                stroke-opacity="0.5"
-              />
-            </Svg>
-          </TouchableOpacity>
-          <RBSheet
-            ref={Sheet}
-            animationType="slide"
-            closeOnPressMask={true}
-            closeOnDragDown={false}
-            dragFromTopOnly
-            height={windowWidth * 0.8}
-            openDuration={250}
-            customStyles={{
-              container: {
-                // flex:1,
-                borderTopLeftRadius: 10,
-                borderTopRightRadius: 10,
-                backgroundColor: '#F8F8F8',
-              },
-            }}>
-            {sheet_data()}
-          </RBSheet> 
-          </>
-          : 
-          null}
-
-        
-         
+          {!IsTablet == true ? (
+            <>
+              <TouchableOpacity
+                onPress={() => Sheet.current.open()}
+                style={{paddingHorizontal: 15}}>
+                <Svg
+                  width="44"
+                  height="40"
+                  viewBox="0 0 44 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <Rect width="44" height="40" rx="8" fill="white" />
+                  <Path
+                    d="M17.2434 13.5781C17.5689 13.2526 18.0965 13.2526 18.4219 13.5781L21.7553 16.9114C22.0807 17.2368 22.0807 17.7645 21.7553 18.0899C21.4298 18.4153 20.9022 18.4153 20.5768 18.0899L18.666 16.1792V25.834C18.666 26.2942 18.2929 26.6673 17.8327 26.6673C17.3724 26.6673 16.9993 26.2942 16.9993 25.834V16.1792L15.0886 18.0899C14.7632 18.4153 14.2355 18.4153 13.9101 18.0899C13.5847 17.7645 13.5847 17.2368 13.9101 16.9114L17.2434 13.5781ZM25.3327 23.8221V14.1673C25.3327 13.7071 25.7058 13.334 26.166 13.334C26.6263 13.334 26.9994 13.7071 26.9994 14.1673V23.8221L28.9101 21.9114C29.2355 21.586 29.7632 21.586 30.0886 21.9114C30.414 22.2368 30.414 22.7645 30.0886 23.0899L26.7553 26.4232C26.599 26.5795 26.387 26.6673 26.166 26.6673C25.945 26.6673 25.733 26.5795 25.5768 26.4232L22.2434 23.0899C21.918 22.7645 21.918 22.2368 22.2434 21.9114C22.5689 21.586 23.0965 21.586 23.4219 21.9114L25.3327 23.8221Z"
+                    fill="#C9D2D4"
+                  />
+                  <Rect
+                    x="0.5"
+                    y="0.5"
+                    width="43"
+                    height="39"
+                    rx="7.5"
+                    stroke="#E8E8E8"
+                    stroke-opacity="0.5"
+                  />
+                </Svg>
+              </TouchableOpacity>
+              <RBSheet
+                ref={Sheet}
+                animationType="slide"
+                closeOnPressMask={true}
+                closeOnDragDown={false}
+                dragFromTopOnly
+                height={windowWidth * 0.8}
+                openDuration={250}
+                customStyles={{
+                  container: {
+                    // flex:1,
+                    borderTopLeftRadius: 10,
+                    borderTopRightRadius: 10,
+                    backgroundColor: colors.dullWhite,
+                  },
+                }}>
+                {sheet_data()}
+              </RBSheet>
+            </>
+          ) : null}
         </View>
 
         <TouchableOpacity
@@ -1033,15 +970,7 @@ const footer = () => {
               />
             </Svg>
           </View>
-          <Text
-            style={{
-              marginVertical: 10,
-              fontSize: 20,
-              fontFamily: 'Lato-Regular',
-              color: '#002733',
-            }}>
-            {choseData}
-          </Text>
+          <Text style={styles.SortedDrop}>{choseData}</Text>
           <AntDesign name="down" style={styles.SortBy} />
         </TouchableOpacity>
         <ModalViewS
@@ -1089,28 +1018,20 @@ const footer = () => {
                       ? styles.ButtonFlatListMobile
                       : styles.ButtonFlatList
                   }>
-                  Reccuring client
+                  {t('reccuring_Client')}
                 </Text>
               </View>
               <View style={styles.OrderFlat}>
                 <View style={styles.ClintDataBaseDate}>
-                  <Text style={styles.FlatIdDynamic}>Client ID :</Text>
+                  <Text style={styles.FlatIdDynamic}>{t('Client_id')}:</Text>
                   <Text style={styles.OrderFlat}>{item.ID}</Text>
                 </View>
                 <View style={styles.ClintDataBaseDate}>
-                  <Text style={styles.FlatIdDynamic}>Total orders:</Text>
+                  <Text style={styles.FlatIdDynamic}>{t('total_order')}:</Text>
                   <Text style={styles.OrderFlat}>{item.TotalOrders}</Text>
                 </View>
-                <View
-                  style={[
-                    styles.ClintDataBaseDate,
-                    {
-                      borderBottomLeftRadius: 5,
-                      borderBottomRightRadius: 5,
-                      elevation: 0.4,
-                    },
-                  ]}>
-                  <Text style={styles.FlatIdDynamic}>Sum of orders:</Text>
+                <View style={[styles.ClintDataBaseDate, styles.ClintData1]}>
+                  <Text style={styles.FlatIdDynamic}>{t('Sumof_order')}:</Text>
                   <Text style={styles.OrderFlat}> {item.Sum_of_orders}</Text>
                 </View>
               </View>
@@ -1119,9 +1040,6 @@ const footer = () => {
         )}
         keyExtractor={item => item.id}
       />
-     
-      {/* </View> */}
-      {/* </KeyboardAvoidingView> */}
     </SafeAreaView>
   );
 };

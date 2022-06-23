@@ -63,7 +63,7 @@ const OnBoarding = ({ navigation }) => {
   };
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={{flex:1}}> 
+      <ScrollView contentContainerStyle={{ flex: 1 }}>
         {page == 3 ? (
           <View />
         ) : (
@@ -141,7 +141,7 @@ const OnBoarding = ({ navigation }) => {
                       justifyContent: "center",
                       flexDirection: "row",
                     }}
-                   >
+                  >
                     <Text
                       style={{
                         fontSize: 20,
@@ -186,7 +186,7 @@ const OnBoarding = ({ navigation }) => {
                       }}
                     />
                   </View>
-                  <View style={{height:120}}/>
+                  <View style={{ height: 120 }} />
                   <View style={{ flex: 0.6, justifyContent: "flex-end" }}>
                     <AuthButton
                       buttonStyling={

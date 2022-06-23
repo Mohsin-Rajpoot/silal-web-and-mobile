@@ -120,9 +120,9 @@ const ItemDetails = ({
           <CheckBox
             checked={checked}
             onPress={() => setchecked(!checked)}
-            checkedColor="#5AB3A8"
-            uncheckedColor="#CCD4D6"
-            backgroundColor={'red'}
+            checkedColor={colors.primary}
+            uncheckedColor={colors.light_grey}
+            // backgroundColor={'red'}
           />
         )}
         <Icon
