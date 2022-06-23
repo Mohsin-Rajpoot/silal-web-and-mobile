@@ -1,4 +1,4 @@
-import {View, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {ScaledSheet, verticalScale} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
@@ -6,6 +6,7 @@ import fonts from '@SilalApp/common/assets/fonts';
 import CustomText from '@SilalApp/common/components/CustomText';
 import {Icon} from 'react-native-elements';
 import {useTranslation} from 'react-i18next';
+import images from '../../../../../assets/images';
 
 const OrderItem = ({
   orderId,
@@ -22,7 +23,20 @@ const OrderItem = ({
   date,
   paymentHide,
   item,
-  headerHide
+  headerHide,
+  containerStyle,
+  status,
+  itemId,
+  picked,
+  characteristics,
+  inStock,
+  price,
+  image,
+  imgText1,
+  imgText2,
+  waiting,
+  waitings,
+
 }) => {
   const {t} = useTranslation();
 
@@ -30,92 +44,133 @@ const OrderItem = ({
     <TouchableOpacity
       activeOpacity={0.6}
       onPress={onPress}
-      style={styles.mainContainer}>
-      {headerHide ? <View /> : <View style={styles.header}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <CustomText
-            label={t('order_id')}
-            color={colors.light_grey50}
-            fontFamily={fonts.LatoMedium}
-            fontSize={13}
-          />
-          <View style={{width: 5}} />
-          <CustomText
-            label={orderId}
-            color={colors.black50}
-            fontFamily={fonts.LatoMedium}
-            fontSize={13}
-          />
-        </View>
-        {rightIconChange ? (
-          <TouchableOpacity
-            onPress={rightIconPress}
-            style={styles.rightIconStyle}>
-            <Icon
-              type="ntypo"
-              name="chevron-right"
-              color={colors.black50}
-              size={verticalScale(22)}
-            />
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity activeOpacity={0.6} onPress={iconPress}>
-            <Icon
-              type="entypo"
-              color={colors.textPrimaryBlur}
-              size={verticalScale(16)}
-              name="dots-three-vertical"
-            />
-          </TouchableOpacity>
-        )}
-      </View>}
-      <View style={styles.container}>
-        <CustomText
-          label={t('Status')}
-          color={colors.textPrimaryBlur}
-          fontSize={15}
-          fontFamily={fonts.LatoMedium}
-        />
-        {pending ? (
-          <View style={styles.pendingCont}>
+      disabled={!onPress}
+      style={[styles.mainContainer, containerStyle]}>
+      {image && (
+        <View style={styles.imgMainCont}>
+          <View style={styles.imgCont}>
+            <Image style={styles.img} source={image} />
+          </View>
+          <View>
             <CustomText
-              label="pending"
-              color={colors.textWhite}
+              fontSize={15}
               fontFamily={fonts.LatoMedium}
-              fontSize={11}
-            />
-          </View>
-        ) : (
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            {isComplete ? (
-              <View style={styles.completeCont}>
-                <CustomText
-                  label={t('completed')}
-                  color={colors.textWhite}
-                  fontFamily={fonts.LatoMedium}
-                  fontSize={11}
-                />
-              </View>
-            ) : (
-              <View
-                style={[styles.completeCont, {backgroundColor: colors.red40}]}>
-                <CustomText
-                  label={t('cancelled')}
-                  color={colors.textWhite}
-                  fontFamily={fonts.LatoMedium}
-                  fontSize={11}
-                />
-              </View>
-            )}
-            <Icon
-              type="ntypo"
-              name="chevron-right"
+              marginBottom={verticalScale(5)}
               color={colors.black50}
-              size={verticalScale(22)}
+              label={imgText1}
+            />
+            <CustomText
+              fontSize={14}
+              fontFamily={fonts.LatoMedium}
+              color={colors.black50}
+              label={imgText2}
             />
           </View>
-        )}
-      </View>
+        </View>
+      )}
+      {headerHide ? (
+        <View />
+      ) : (
+        <View style={styles.header}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <CustomText
+              label={t('order_id')}
+              color={colors.light_grey50}
+              fontFamily={fonts.LatoMedium}
+              fontSize={13}
+            />
+            <View style={{width: 5}} />
+            <CustomText
+              label={orderId}
+              color={colors.black50}
+              fontFamily={fonts.LatoMedium}
+              fontSize={13}
+            />
+          </View>
+          {rightIconChange ? (
+            <TouchableOpacity
+              onPress={rightIconPress}
+              style={styles.rightIconStyle}>
+              <Icon
+                type="ntypo"
+                name="chevron-right"
+                color={colors.black50}
+                size={verticalScale(22)}
+              />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity activeOpacity={0.6} onPress={iconPress}>
+              <Icon
+                type="entypo"
+                color={colors.textPrimaryBlur}
+                size={verticalScale(16)}
+                name="dots-three-vertical"
+              />
+            </TouchableOpacity>
+          )}
+        </View>
+      )}
+      {status ? (
+        <View />
+      ) : (
+        <View style={styles.container}>
+          <CustomText
+            label={t('Status')}
+            color={colors.textPrimaryBlur}
+            fontSize={15}
+            fontFamily={fonts.LatoMedium}
+          />
+            {waiting ? <View style={styles.waitingCont}>
+              <CustomText
+                label={t("waiting_for_pickup")}
+                color={colors.textWhite}
+                fontFamily={fonts.LatoMedium}
+                fontSize={11}
+              />
+            </View> :  pending ? (
+            <View style={styles.pendingCont}>
+              <CustomText
+                label={t("Pending")}
+                color={colors.textWhite}
+                fontFamily={fonts.LatoMedium}
+                fontSize={11}
+              />
+            </View>
+          ) : (
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              {isComplete ? (
+                <View style={styles.completeCont}>
+                  <CustomText
+                    label={t('completed')}
+                    color={colors.textWhite}
+                    fontFamily={fonts.LatoMedium}
+                    fontSize={11}
+                  />
+                </View>
+              ) : (
+                <View
+                  style={[
+                    styles.completeCont,
+                    {backgroundColor: colors.red40},
+                  ]}>
+                  <CustomText
+                    label={t('cancelled')}
+                    color={colors.textWhite}
+                    fontFamily={fonts.LatoMedium}
+                    fontSize={11}
+                  />
+                </View>
+              )}
+              <Icon
+                type="ntypo"
+                name="chevron-right"
+                color={colors.black50}
+                size={verticalScale(22)}
+              />
+            </View>
+          )}
+        </View>
+      )}
       {customerName && (
         <View style={[styles.container, {backgroundColor: 'transparent'}]}>
           <CustomText
@@ -236,20 +291,102 @@ const OrderItem = ({
           </View>
         </>
       )}
-      {totalPrice && <View style={styles.container}>
-        <CustomText
-          label={t('total-price')}
-          color={colors.textPrimaryBlur}
-          fontSize={15}
-          fontFamily={fonts.LatoMedium}
-        />
-        <CustomText
-          label={totalPrice}
-          color={colors.black50}
-          fontFamily={fonts.LatoMedium}
-          fontSize={15}
-        />
-      </View>}
+      {totalPrice && (
+        <View style={styles.container}>
+          <CustomText
+            label={t('total-price')}
+            color={colors.textPrimaryBlur}
+            fontSize={15}
+            fontFamily={fonts.LatoMedium}
+          />
+          <CustomText
+            label={totalPrice}
+            color={colors.black50}
+            fontFamily={fonts.LatoMedium}
+            fontSize={15}
+          />
+        </View>
+      )}
+      {itemId && (
+        <View style={styles.container}>
+          <CustomText
+            label={t('Item_id')}
+            color={colors.textPrimaryBlur}
+            fontSize={15}
+            fontFamily={fonts.LatoMedium}
+          />
+          <CustomText
+            label={itemId}
+            color={colors.black50}
+            fontFamily={fonts.LatoMedium}
+            fontSize={15}
+          />
+        </View>
+      )}
+      {picked && (
+        <View style={[styles.container, {backgroundColor: 'transparent'}]}>
+          <CustomText
+            label={t('Picked')}
+            color={colors.textPrimaryBlur}
+            fontSize={15}
+            fontFamily={fonts.LatoMedium}
+          />
+          <CustomText
+            label={picked}
+            color={colors.black50}
+            fontFamily={fonts.LatoMedium}
+            fontSize={15}
+          />
+        </View>
+      )}
+      {characteristics && (
+        <View style={styles.container}>
+          <CustomText
+            label={t('Characteristics')}
+            color={colors.textPrimaryBlur}
+            fontSize={15}
+            fontFamily={fonts.LatoMedium}
+          />
+          <CustomText
+            label={characteristics}
+            color={colors.black50}
+            fontFamily={fonts.LatoMedium}
+            fontSize={15}
+          />
+        </View>
+      )}
+      {inStock && (
+        <View style={[styles.container, {backgroundColor: 'transparent'}]}>
+          <CustomText
+            label={t('inStock')}
+            color={colors.textPrimaryBlur}
+            fontSize={15}
+            fontFamily={fonts.LatoMedium}
+          />
+          <CustomText
+            label={inStock}
+            color={colors.black50}
+            fontFamily={fonts.LatoMedium}
+            fontSize={15}
+          />
+        </View>
+      )}
+      {price && (
+        <View style={styles.container}>
+          <CustomText
+            label={t('price')}
+            color={colors.textPrimaryBlur}
+            fontSize={15}
+            fontFamily={fonts.LatoMedium}
+          />
+          <CustomText
+            label={price}
+            color={colors.black50}
+            fontFamily={fonts.LatoMedium}
+            fontSize={15}
+          />
+        </View>
+      )}
     </TouchableOpacity>
   );
 };
@@ -317,5 +454,27 @@ const styles = ScaledSheet.create({
     paddingHorizontal: '10@s',
     paddingVertical: '3@vs',
     borderRadius: '5@vs',
+  },
+  waitingCont: {
+    backgroundColor: colors.blueDark,
+    paddingHorizontal: '10@s',
+    paddingVertical: '3@vs',
+    borderRadius: '5@vs',
+  },
+  imgMainCont: {
+    flexDirection: 'row',
+  },
+  imgCont: {
+    width: '80@vs',
+    height: '80@vs',
+    borderRadius: '8@vs',
+    overflow: 'hidden',
+    marginBottom: '8@vs',
+    marginRight: '8@s',
+  },
+  img: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'stretch',
   },
 });

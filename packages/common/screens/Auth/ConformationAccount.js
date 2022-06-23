@@ -17,13 +17,18 @@ import styles from "./style";
 import Toast from "react-native-easy-toast";
 import IsTablet from "../../components/native/IsTablet";
 import { verticalScale } from "react-native-size-matters";
-const GettingStarted = ({ navigation, route }) => {
+import colors from "../../assets/colors";
+const ConformationAccount = ({ navigation, route }) => {
   const { t } = useTranslation();
   const toastRef = useRef();
   const data = route?.params;
   const goToSignUpForm = () => {
-    navigation.navigate("SignUpForm");
+    navigation.navigate("Login", { params: { signUp: true } });
   };
+
+  const goToChoseAccount=()=>{
+    navigation.navigate('ChooseAccount')
+  }
   const goToMainStack = () => {
     setTimeout(() => {
       navigation.navigate("MainStack");
@@ -57,69 +62,57 @@ const GettingStarted = ({ navigation, route }) => {
         showsVerticalScrollIndicator={false}
       >
         <View style={{ flexGrow: 1 }}>
-          <HeaderBack name={t("Registration")} onGoBack={goBack} />
+          {!IsTablet ? (
+            <HeaderBack name={t("Welcome")} onGoBack={goBack} />
+          ) : (
+            <View />
+          )}
 
-          <View style={{ width: "70%", alignSelf: "center" }}>
-            {data?.params?.gettingStarted ? (
-              <View />
-            ) : (
-              <HeaderHeading
-                headingName={t("Fill_out_questionnaire")}
-                headingDetail={t("questionnaire_detail")}
-              />
-            )}
+          <View
+            style={{ width: !IsTablet ? "90%" : "70%", alignSelf: "center" }}
+          >
             <CommonIcon />
-            {data?.params?.gettingStarted ? (
-              <>
-                <HeaderHeading
-                  headingName={"Wait for the information to be verified"}
-                  headingDetail={
-                    "Verification usually takes up to 1 hour. We suggest you familiarize yourself with the instructions for working with the application."
-                  }
-                  headerStyle={styles.headingDetail}
-                />
-                <View style={{ flexDirection: "row", alignSelf: "center" }}>
-                  <Text style={styles.checkout_text}>Checkout our</Text>
-                  <TouchableOpacity activeOpacity={0.6}>
-                    <Text style={styles.checkoutInnerText}>
-                      {" "}
-                      Terms of Service
-                    </Text>
-                  </TouchableOpacity>
-
-                  <Text style={styles.checkout_text}>and</Text>
-                  <TouchableOpacity activeOpacity={0.6}>
-                    <Text style={styles.checkoutInnerText}>FAQS</Text>
-                  </TouchableOpacity>
-                </View>
-              </>
-            ) : (
-              <View />
-            )}
+            <CustomText label={t("opps")} textStyle={styles.oppsText} />
+            <CustomText label={t("OppsDetail")} textStyle={styles.opsDetail} />
+            <View
+              style={{
+                flexDirection: !IsTablet ? "column" : "row",
+                alignItems: "center",
+                marginVertical: verticalScale(50),
+                alignSelf: "center",
+              }}
+            >
+              <CustomText
+                label={t("SellerInviteId")}
+                textStyle={styles.sellerIdText}
+              />
+              <CustomText
+                label={"#908432812"}
+                textStyle={[styles.sellerIdText, { color: colors.primary }]}
+              />
+            </View>
           </View>
         </View>
         <View style={{ marginBottom: 30 }}>
           <AuthButton
-            name={
-              data?.params?.gettingStarted
-                ? "How to work"
-                : !IsTablet
-                ? t("Start")
-                : t("Start_your_own_business")
+            name={t("CreatebussinessAccount")}
+            onPress={goToSignUpForm}
+            buttonStyling={
+              !IsTablet ? styles.formButtonMobile : styles.formButton1
             }
-            onPress={() => {
-              data?.params?.gettingStarted
-                ? showToast() & goToMainStack()
-                : goToSignUpForm();
-            }}
+          />
+          <AuthButton
+            name={t("contactBusinessowner")}
+            onPress={goToSignUpForm}
             buttonStyling={
               !IsTablet
-                ? styles.formButtonMobile
-                : [
+                ? [
                     styles.formButtonMobile,
-                    { width: "65%", borderRadius: verticalScale(5) },
+                    { backgroundColor: colors.Primary20 },
                   ]
+                : [styles.formButton1, { backgroundColor: colors.Primary20 }]
             }
+            changeColor={true}
           />
         </View>
         <Toast
@@ -136,4 +129,4 @@ const GettingStarted = ({ navigation, route }) => {
   );
 };
 
-export default GettingStarted;
+export default ConformationAccount;

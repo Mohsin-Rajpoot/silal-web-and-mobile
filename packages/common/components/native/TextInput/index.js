@@ -12,7 +12,7 @@ const index = ({
   inputStyle,
   secureText,
   multiLine,
-  password, 
+  password,
   search,
   placeholderTextColor,
   inputTextStyle,
@@ -22,19 +22,18 @@ const index = ({
   isTab,
   selectionColor,
   withLabel,
+  onPress,
 }) => {
   const [showPassword, setShowPassword] = useState(!secureText ? true : false);
   const [text, setText] = useState("");
   return (
-    <View>
-     
+    <TouchableOpacity onPress={onPress} disabled={!onPress}>
       <View
         style={[
           !isTab
             ? CommonStyle.textInputStylesMobile
             : CommonStyle.textInputStyles,
           inputStyle,
-          
         ]}
       >
         {text.length ? (
@@ -87,7 +86,7 @@ const index = ({
           </>
         )}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

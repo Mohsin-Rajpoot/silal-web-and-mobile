@@ -21,6 +21,9 @@ import Order_full_view from '../screens/orders/Current/Order_full_view';
 import CreateItems from '../screens/CreateItems';
 import BarCodeScane from '../screens/CreateItems/CreateITemPages/BarCodeScane';
 import CustomValue from '../screens/CreateItems/CreateITemPages/CustomValue';
+import CreateItem from '../screens/CreateItems/index';
+import BarCodeScane from '../screens/CreateItems/CreateITemPages/BarCodeScane';
+import CustomValue from '../screens/CreateItems/CreateITemPages/CustomValue'
 import Animated, {interpolate, useSharedValue} from 'react-native-reanimated';
 import {View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';

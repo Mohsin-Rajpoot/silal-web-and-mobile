@@ -64,7 +64,7 @@ export default function Acceptance_orders({title, navigation}) {
   const [date2, setdate2] = useState();
   const [active, setActive] = useState(false);
 
-  const InputRef = useRef();
+  // const InputRef = useRef();
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -73,7 +73,7 @@ export default function Acceptance_orders({title, navigation}) {
     });
     const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
       //   alert('Keyboard Hidden')
-      InputRef.current.blur();
+      // InputRef.current.blur();
       setKeyboardStatus('Keyboard Hidden');
     });
 

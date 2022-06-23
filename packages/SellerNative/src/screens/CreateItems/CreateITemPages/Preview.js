@@ -18,7 +18,7 @@ import {useTranslation} from 'react-i18next';
 import {CustomButton} from '@SilalApp/common/components/native';
 import PreviewComponent from '../../../components/Preview';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
-import Swiper from 'react-native-swiper';
+// import Swiper from 'react-native-swiper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Svg, {Path} from 'react-native-svg';
 import Entypo from 'react-native-vector-icons/Entypo';

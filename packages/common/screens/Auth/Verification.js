@@ -10,6 +10,7 @@ import Button from "../../components/native/AuthButton";
 import AuthCustomText from "../../components/native/AuthCustomText";
 import { useTranslation } from "react-i18next";
 import DeviceInfo from "react-native-device-info";
+import colors from "../../assets/colors";
 const Verification = ({ route, navigation }) => {
   const { params } = route?.params;
   const { t } = useTranslation();
@@ -19,11 +20,19 @@ const Verification = ({ route, navigation }) => {
   const goToChangePassword = () => {
     navigation.navigate("ChangePassword");
   };
-  const goGettingStarted = () => {
-    navigation.navigate("GettingStarted");
+  const goSignUpDetail = () => {
+    navigation.navigate("Login", {
+      params: { signUp: true, signupEmail: true },
+    });
+  };
+  const goSellerInformation = () => {
+    navigation.navigate("SellerInformation");
   };
   const goChooseAccount = () => {
     navigation.navigate("ChooseAccount");
+  };
+  const goToConformationAccount = () => {
+    navigation.navigate("ConformationAccount");
   };
   const goToSignUpForm = () => {
     navigation.navigate("SignUpForm");
@@ -33,7 +42,10 @@ const Verification = ({ route, navigation }) => {
   };
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
-      <HeaderBack name={t("verification")} onGoBack={goBack} />
+      <HeaderBack
+        name={params.active == 3 ? t("Reset_password") : t("verification")}
+        onGoBack={goBack}
+      />
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
@@ -73,14 +85,15 @@ const Verification = ({ route, navigation }) => {
             autoFocusOnLoad={true}
             pinCount={
               params?.active == 1
-                ? 5
+                ? 6
                 : params?.active == 2
                 ? 6
                 : params?.active == 3
                 ? 6
-                : 5
+                : 6
             }
             style={styles.optStyling}
+            codeInputHighlightStyle={{ borderColor: colors.primary }}
             codeInputFieldStyle={
               !isTab ? styles.optContainerMobile : styles.optContainer
             }
@@ -99,10 +112,12 @@ const Verification = ({ route, navigation }) => {
                 ? goToChangePassword()
                 : params?.active == 2
                 ? goChooseAccount()
+                : params?.activeTab == 5
+                ? goSellerInformation()
                 : params?.activeTab == 4
-                ? goGettingStarted()
+                ? goSignUpDetail()
                 : params?.active == 1
-                ? goChooseAccount()
+                ? goToConformationAccount()
                 : goToSignUpForm();
             }}
           />

@@ -16,11 +16,12 @@ const styles = ScaledSheet.create({
   },
   phoneNumberInputMobile: {
     height: "40@vs",
-    width: "100%",
+    width: "98%",
     backgroundColor: colors.dullWhite,
     padding: 0,
     margin: 0,
-    borderRadius: "5@s",
+    borderRadius: "8@s",
+    alignSelf: "center",
   },
   searchIconContainer: {
     flexDirection: "row",
@@ -36,13 +37,14 @@ const styles = ScaledSheet.create({
   },
   textInputStyles: {
     alignSelf: "center",
-    borderWidth: "0.3@s",
-    borderColor: colors.light_grey,
+    borderWidth: "1@s",
+    borderColor: colors.borderColor,
     width: "100%",
     borderRadius: "4@ms",
     height: "40@vs",
     flexDirection: "row",
     alignItems: "center",
+    backgroundColor: "transparent",
   },
   textInputStylesMobile: {
     alignSelf: "center",
@@ -66,7 +68,7 @@ const styles = ScaledSheet.create({
     lineHeight: 22,
   },
   CommonView: {
-    width: "85%",
+    width: "92%",
     alignSelf: "center",
     flex: 1,
   },
@@ -84,7 +86,7 @@ const styles = ScaledSheet.create({
     backgroundColor: colors.primary,
     alignSelf: "center",
     borderRadius: "10@s",
-    marginTop:"150@vs"
+    marginTop: "40@vs",
   },
 });
 export default styles;
