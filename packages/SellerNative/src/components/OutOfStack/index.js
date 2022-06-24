@@ -4,12 +4,18 @@ import {
   View,
   FlatList,
   Image,
-  TouchableHighlight,
+  TouchableOpacity,
   ScrollView,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import images from '../../../assets/images';
+import {
+  widthPercentageToDP as width,
+  heightPercentageToDP as height,
+} from 'react-native-responsive-screen';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import CustomModal from '@SilalApp/common/components/native/CustomModal';
 import Menu, {
   MenuProvider,
   MenuTrigger,
@@ -313,17 +319,68 @@ export default function Archive_orders({title, navigation}) {
             />
           </View>
         </View>
+        <TouchableOpacity
+          onPress={() => {
+            setShowModal(true);
+          }}>
+          <CustomText label="OPEN MODAL" />
+        </TouchableOpacity>
         <FlatList
           data={dataItem}
           keyExtractor={(item, index) => item + index.toString()}
           renderItem={({item}) => (
             <ItemDetails
               checkedState={checked}
-              onPress={() => console.log('helo')}
+              onPress={() => console.log('hello')}
             />
           )}
         />
-        <View style={{height: 200}} />
+        {
+          <CustomModal
+            isModalVisible={ShowModal}
+            setModalVisible={setShowModal}
+            modalWrapperStyle={{
+              marginHorizontal: width(0),
+              marginVertical: height(0),
+              marginTop: height(80),
+              justifyContent: 'center',
+            }}
+            modalContainerStyle={{
+              borderRadius: 12,
+              backgroundColor: 'white',
+            }}>
+            <View
+              style={{
+                width: '100%',
+                height: '100%',
+                paddingHorizontal: scale(10),
+              }}>
+              <TouchableOpacity
+                activeOpacity={0.6}
+                onPress={() => console.log('Update')}
+                style={styles.modalCont}>
+                <Image style={styles.plusIconStyle} source={images.plusIcon} />
+                <CustomText
+                  fontSize={17}
+                  fontFamily={fonts.LatoMedium}
+                  label={t('Update current stock')}
+                />
+              </TouchableOpacity>
+              <View style={styles.divider} />
+              <TouchableOpacity
+                activeOpacity={0.6}
+                onPress={() => console.log('delete')}
+                style={styles.modalCont}>
+                <Image style={styles.plusIconStyle} source={images.deledIcon} />
+                <CustomText
+                  fontSize={17}
+                  fontFamily={fonts.LatoMedium}
+                  label={t('delete')}
+                />
+              </TouchableOpacity>
+            </View>
+          </CustomModal>
+        }
       </ScrollView>
     </View>
   ) : (
@@ -341,7 +398,6 @@ export default function Archive_orders({title, navigation}) {
         padding: 20,
         justifyContent: 'center',
         alignSelf: 'center',
-
       }}>
       {header_alloredrs()}
       <FlatList

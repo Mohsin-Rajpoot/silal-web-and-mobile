@@ -263,5 +263,22 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.PoppinsSemiBold,
     color: colors.black,
   },
+  plusIconStyle: {
+    width: '18@vs',
+    height: '18@vs',
+    resizeMode: 'contain',
+    marginRight: '15@s',
+  },
+  divider: {
+    backgroundColor: colors.underLine,
+    width: '100%',
+    height: '1@s',
+  },
+  modalCont: {
+    paddingTop: '15@vs',
+    paddingBottom: '20@vs',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });
 export default styles;

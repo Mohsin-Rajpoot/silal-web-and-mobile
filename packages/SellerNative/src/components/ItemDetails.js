@@ -131,7 +131,7 @@ const ItemDetails = ({
         onPress={() => {
           onPress
             ? onPress
-            : navigation.navigate('OrderStack', {screen: 'FullOrderDetail'});
+            : navigation.navigate('OrderStack', {screen: 'FullOrderDetail'})
         }}
         style={[
           styles.mainContainer,

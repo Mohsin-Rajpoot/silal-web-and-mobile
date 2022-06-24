@@ -10,6 +10,8 @@ const images = {
     crossIcon:require('./crossIcon.png'),        
     alarmIcon:require('./alarmIcon.png'),        
     filterIcon:require('./filterIcon.png'),        
+    plusIcon:require('./plusIcon.png'),        
+    deledIcon:require('./deledIcon.png'),        
 }
 
 export default images

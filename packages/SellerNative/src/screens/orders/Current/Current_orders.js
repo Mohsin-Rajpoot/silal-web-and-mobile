@@ -93,7 +93,8 @@ export default function Current_orders({title, navigation}) {
 
   const render_received = item => {
     return (
-      <TouchableOpacity
+     <ScrollView>
+       <TouchableOpacity
         onPress={() => navigate_to_fullview()}
         style={styles.single_order}>
         <View style={styles.order_header}>
@@ -140,11 +141,11 @@ export default function Current_orders({title, navigation}) {
               <View style={{flexDirection: 'row'}}>
                 <Text
                   style={{
-                    color: '#002733',
+                    color: colors.black,
                     fontSize: 15,
                     fontFamily: 'Lato-Bold',
                   }}>
-                  The order #247HW9 has been moved to Accepted
+                 {t("theOrderTost")}
                 </Text>
                 <TouchableOpacity
                   onPress={() => {
@@ -199,7 +200,7 @@ export default function Current_orders({title, navigation}) {
           // thumbIconStyles={{width:130,height:120,marginLeft:7}}
           thumbIconBackgroundColor="transparent" //(Optional)
           thumbIconBorderColor="transparent" //(Optional)
-          railBackgroundColor="#F2F2F2" //(Optional)
+          railBackgroundColor={colors.dullWhiteColor} //(Optional)
           railBorderColor="transparent" //(Optional)
         />
         {/* <TouchableOpacity
@@ -217,12 +218,14 @@ export default function Current_orders({title, navigation}) {
           <Text style={styles.accept_btn_txt}>Slide to accept order</Text>
         </TouchableOpacity> */}
       </TouchableOpacity>
+     </ScrollView>
     );
   };
 
   const render_accepted = item => {
     return (
-      <TouchableOpacity
+     <ScrollView>
+       <TouchableOpacity
         onPress={() => navigate_to_fullview()}
         style={styles.single_order}>
         <View style={styles.order_header}>
@@ -292,11 +295,13 @@ export default function Current_orders({title, navigation}) {
           </TouchableOpacity>
         </View>
       </TouchableOpacity>
+     </ScrollView>
     );
   };
   const render_ready_pickup = () => {
     return (
-      <TouchableOpacity
+   <ScrollView>
+       <TouchableOpacity
         onPress={() => navigate_to_fullview()}
         style={[
           !IsTablet ? styles.single_orderMobile : styles.single_order,
@@ -307,6 +312,7 @@ export default function Current_orders({title, navigation}) {
           21 min ago
         </Text>
       </TouchableOpacity>
+   </ScrollView>
     );
   };
 
@@ -336,7 +342,7 @@ export default function Current_orders({title, navigation}) {
               onPress={() => set_modal_timer_visible(!modal_timer_visible)}>
               <Entypo
                 name="cross"
-                style={[styles.cross_icon, {color: '#4C6870', fontSize: 25}]}
+                style={[styles.cross_icon, {color: colors.sidebar, fontSize: 25}]}
               />
             </TouchableOpacity>
           </View>
@@ -349,8 +355,8 @@ export default function Current_orders({title, navigation}) {
               minimumValue={-15}
               step={5}
               // allowTouchTrack
-              minimumTrackTintColor="#CCD4D6"
-              maximumTrackTintColor="#CCD4D6"
+              minimumTrackTintColor={colors.light_grey}
+              maximumTrackTintColor={colors.light_grey}
               // trackStyle={{ height: 5, backgroundColor: '#CCD4D6' }}
               thumbStyle={{
                 height: 30,
@@ -388,7 +394,7 @@ export default function Current_orders({title, navigation}) {
                   style={{
                     height: 10,
                     width: 2,
-                    backgroundColor: '#CCD4D6',
+                    backgroundColor: colors.light_grey,
                   }}></View>
                 <Text>-15 min</Text>
               </View>
@@ -397,7 +403,7 @@ export default function Current_orders({title, navigation}) {
                   style={{
                     height: 10,
                     width: 2,
-                    backgroundColor: '#CCD4D6',
+                    backgroundColor: colors.light_grey,
                   }}></View>
                 <Text>-10 min</Text>
               </View>
@@ -406,7 +412,7 @@ export default function Current_orders({title, navigation}) {
                   style={{
                     height: 10,
                     width: 2,
-                    backgroundColor: '#CCD4D6',
+                    backgroundColor: colors.light_grey,
                   }}></View>
                 <Text>-5 min</Text>
               </View>
@@ -415,16 +421,16 @@ export default function Current_orders({title, navigation}) {
                   style={{
                     height: 10,
                     width: 2,
-                    backgroundColor: '#CCD4D6',
+                    backgroundColor: colors.light_grey,
                   }}></View>
-                <Text style={{color: '#CCD4D6'}}>(19:22 PM)</Text>
+                <Text style={{color: colors.light_grey}}>(19:22 PM)</Text>
               </View>
               <View style={{alignItems: 'center', justifyContent: 'center'}}>
                 <View
                   style={{
                     height: 10,
                     width: 2,
-                    backgroundColor: '#CCD4D6',
+                    backgroundColor: colors.light_grey,
                   }}></View>
                 <Text>5 min</Text>
               </View>
@@ -433,7 +439,7 @@ export default function Current_orders({title, navigation}) {
                   style={{
                     height: 10,
                     width: 2,
-                    backgroundColor: '#CCD4D6',
+                    backgroundColor: colors.light_grey,
                   }}></View>
                 <Text>10 min</Text>
               </View>
@@ -442,7 +448,7 @@ export default function Current_orders({title, navigation}) {
                   style={{
                     height: 10,
                     width: 2,
-                    backgroundColor: '#CCD4D6',
+                    backgroundColor: colors.light_grey,
                   }}></View>
                 <Text>15 min</Text>
               </View>
@@ -454,7 +460,7 @@ export default function Current_orders({title, navigation}) {
             <View>
               <TextInput
                 placeholder="+30 min"
-                placeholderTextColor="#CCD4D6"
+                placeholderTextColor={colors.light_grey}
                 value={manual_time}
                 keyboardType="decimal-pad"
                 // keyboardType="phone-pad"
@@ -464,7 +470,7 @@ export default function Current_orders({title, navigation}) {
                   borderRadius: 5,
                   width: 120,
                   height: 40,
-                  borderColor: '#CCD4D6',
+                  borderColor: colors.light_grey,
                   marginLeft: 10,
                 }}
                 // style={CommonStyle.inputTextStyle}
@@ -479,7 +485,7 @@ export default function Current_orders({title, navigation}) {
             }}>
             <TouchableOpacity
               onPress={() => set_modal_timer_visible(!modal_timer_visible)}
-              style={[styles.modal_save_btn, {backgroundColor: '#CCD4D6'}]}>
+              style={[styles.modal_save_btn, {backgroundColor: colors.light_grey}]}>
               <Text style={{color: 'black'}}>Cancel</Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -493,7 +499,7 @@ export default function Current_orders({title, navigation}) {
                     />
                     <Text
                       style={{
-                        color: '#002733',
+                        color: colors.black,
                         fontSize: 15,
                         fontFamily: 'Lato-Bold',
                         marginLeft: 10,
@@ -530,8 +536,7 @@ export default function Current_orders({title, navigation}) {
 
   return (
     <>
-      <ScrollView contentContainerStyle={{flexGrow:1}}>
-        <View style={{paddingHorizontal: scale(10)}}>
+       <View style={{paddingHorizontal: scale(10)}}>
           {!IsTablet ? (
             <SellerTools
               onPress={() => navigation.navigate('SellerToolScreen')}
@@ -564,7 +569,7 @@ export default function Current_orders({title, navigation}) {
           {(!IsTablet && activeTab == 2) || IsTablet ? (
             <View
               style={{
-                backgroundColor: '#E5EAEB',
+                backgroundColor: colors.boxBg,
                 width: !IsTablet ? '95%' : '40%',
                 marginLeft: !IsTablet ? 10 : 10,
                 borderRadius: 5,
@@ -583,7 +588,7 @@ export default function Current_orders({title, navigation}) {
           {(!IsTablet && activeTab == 0) || IsTablet ? (
             <View
               style={{
-                backgroundColor: '#E5EAEB',
+                backgroundColor: colors.boxBg,
                 width: !IsTablet ? '95%' : '40%',
                 marginLeft: 10,
                 borderRadius: 5,
@@ -599,7 +604,7 @@ export default function Current_orders({title, navigation}) {
           {(!IsTablet && activeTab == 1) || IsTablet ? (
             <View
               style={{
-                backgroundColor: '#4C6870',
+                backgroundColor: colors.textPrimary,
                 width: !IsTablet ? '95%' : '16%',
                 marginLeft: 10,
                 borderRadius: 5,
@@ -608,7 +613,7 @@ export default function Current_orders({title, navigation}) {
               
               }}>
               <Text style={[styles.title, {color: 'white'}]}>
-                Ready for pickup
+               {t("readyForPickup")}
               </Text>
               <FlatList
                 keyExtractor={(item, index) => index.toString()}
@@ -671,11 +676,10 @@ export default function Current_orders({title, navigation}) {
             {render_modal_view()}
           </Modal>
         </View>
-      </ScrollView>
     </>
   );
 }
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   title: {
     fontSize: 18,
     // fontWeight:'700',
@@ -684,7 +688,7 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   single_order: {
-    backgroundColor: 'white',
+    backgroundColor: colors.textWhite,
     marginHorizontal: 15,
     marginVertical: 5,
     borderRadius: 5,
@@ -717,7 +721,7 @@ const styles = StyleSheet.create({
     marginRight: verticalScale(2),
   },
   order_timer: {
-    backgroundColor: '#F2A341',
+    backgroundColor: colors.orange1,
     borderRadius: '0 0 5 5',
   },
   order_title: {
@@ -731,13 +735,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cross_icon: {
-    color: '#CCD4D6',
+    color: colors.light_grey,
     fontSize: 20,
   },
   more_order: {
-    width: 70,
+    width: '50@s',
     backgroundColor: colors.primaryBlurColor,
-    padding: 3,
+    padding: '2@vs',
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
@@ -771,6 +775,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 10,
     alignItems: 'center',
+    justifyContent:'space-between',
     marginLeft: !IsTablet ? 10 : 0,
   },
   order_recve_loc_viewMobile: {
@@ -779,17 +784,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   changeEstimateTime: {
-    fontSize: verticalScale(10),
+    fontSize: verticalScale(8),
     fontFamily: fonts.bold,
     color: colors.primary,
-    marginVertical: verticalScale(5),
   },
   ready_btn: {
-    flex: 1,
     backgroundColor: colors.primary,
-    borderRadius: 5,
+    borderRadius: '5@vs',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: '5@vs',
+    paddingHorizontal:'20@vs',
     justifyContent: 'center',
   },
   ready_btnMobile: {
@@ -827,13 +831,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   onway: {
-    color: 'white',
+    color: colors.textWhite,
     fontFamily: 'Lato-Regular',
   },
 
   toast: {
-    backgroundColor: '#FFFFFF',
-    // marginHorizontal:30,
+    backgroundColor: colors.textWhite,
     paddingVertical: 10,
     paddingHorizontal: 20,
     shadowColor: '#000',
