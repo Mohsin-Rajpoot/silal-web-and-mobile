@@ -77,7 +77,11 @@ const ThirdPage = () => {
               : styles.accountMainContainer
           }
         >
-          <TouchableOpacity activeOpacity={0.6} onPress={() => setActive(0)}>
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => setActive(0)}
+            style={{ width: "31%" }}
+          >
             <View
               style={[
                 active == 0 && !IsTablet
@@ -120,7 +124,7 @@ const ThirdPage = () => {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.6}>
+          <TouchableOpacity activeOpacity={0.6} style={{ width: "31%" }}>
             <View
               style={[
                 active == 1 && !IsTablet
@@ -166,7 +170,6 @@ const ThirdPage = () => {
                   position: "absolute",
                   width: "100%",
                   height: "100%",
-                  backgroundColor: colors.dullColor,
                 }}
               >
                 <ImageBackground
@@ -187,7 +190,7 @@ const ThirdPage = () => {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity activeOpacity={0.6}>
+          <TouchableOpacity activeOpacity={0.6} style={{ width: "31%" }}>
             <View
               style={[
                 active == 2 && !IsTablet
@@ -233,7 +236,6 @@ const ThirdPage = () => {
                   position: "absolute",
                   width: "100%",
                   height: "100%",
-                  backgroundColor: colors.dullColor,
                 }}
               >
                 <ImageBackground

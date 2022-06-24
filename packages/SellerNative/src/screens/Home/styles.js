@@ -1,4 +1,4 @@
-import {ScaledSheet} from 'react-native-size-matters';
+import {ScaledSheet, verticalScale} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import {
   widthPercentageToDP as wp,
@@ -12,20 +12,20 @@ import fonts from '@SilalApp/common/assets/fonts';
 const styles = ScaledSheet.create({
   container: {
     backgroundColor: colors.backgroundColor,
-    width:"100%",
-    flex:1, 
-    height:"100%"
+    width: '100%',
+    flex: 1,
+    height: '100%',
   },
   ModalMainButton: {
-    height: 50,
-    width: 50,
+    height: verticalScale(35),
+    width: verticalScale(35),
     justifyContent: 'center',
     alignItems: 'center',
   },
   BadgeContainer: {
     position: 'absolute',
-    top: !IsTablet ? '14@vs' : '6@vs',
-    right: !IsTablet ? '11@ms' : '2@ms',
+    top: !IsTablet ? '10@vs' : '11@vs',
+    right: !IsTablet ? '11@ms' : '11@ms',
     backgroundColor: colors.textWhite,
     height: '9@ms',
     width: '9@ms',

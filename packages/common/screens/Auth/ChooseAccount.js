@@ -28,7 +28,7 @@ const ChooseAccount = ({ navigation }) => {
       <View style={{ flex: 1 }}>
         {IsTablet ? (
           <>
-            <View style={{ height: 30 }} />
+            <View style={{ height: verticalScale(25) }} />
             <HeaderHeading headingName={t("choseAStore")} />
           </>
         ) : (
@@ -46,7 +46,7 @@ const ChooseAccount = ({ navigation }) => {
             flexDirection: !isTab ? "column" : "row",
             width: !isTab ? "90%" : "80%",
             alignSelf: "center",
-            justifyContent: "space-between",
+            justifyContent: "space-evenly",
           }}
         >
           <TouchableOpacity activeOpacity={0.6}>
@@ -322,7 +322,7 @@ const ChooseAccount = ({ navigation }) => {
           name={t("Continue")}
         />
       </View>
-      <View style={{ height: 80 }} />
+      <View style={{ height: verticalScale(80) }} />
     </ScrollView>
   );
 };

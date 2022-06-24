@@ -46,7 +46,12 @@ const DetailedAnalytics = ({navigation}) => {
   return (
     <SafeAreaView style={styles.ConTAINER}>
       <View style={styles.Inercontsiner}>
-        <Header title="Detail_analytics" goBack={goBack} navigation={navigation} />
+        <Header
+          title={t('Detail_analytics')}
+          goBack={goBack}
+          navigation={navigation}
+          showIcon={!IsTablet ? true : false}
+        />
         <ScrollView>
           <View
             style={{
@@ -68,9 +73,11 @@ const DetailedAnalytics = ({navigation}) => {
                   <Text style={styles.TitleTextGraph}>{t('Revenue')}</Text>
                   <Calender />
                 </View>
-                <CustomGraph />
+                <View style={{height: verticalScale(!IsTablet ? 270 : 400)}}>
+                  <CustomGraph />
+                </View>
               </View>
-              
+
               <View
                 style={
                   !IsTablet
@@ -86,7 +93,6 @@ const DetailedAnalytics = ({navigation}) => {
                 </View>
                 <CustomGraph />
               </View>
-              
             </View>
 
             {!IsTablet ? (
@@ -98,8 +104,13 @@ const DetailedAnalytics = ({navigation}) => {
                   marginHorizontal: 30,
                 }}>
                 <View style={styles.SecondColumn}>
-                  <Text style={{fontFamily: fonts.PoppinsSemiBold, color: colors.textWhite}}>
-                    Revenue
+                  <Text
+                    style={{
+                      fontFamily: fonts.PoppinsSemiBold,
+                      color: colors.textWhite,
+                      fontSize: verticalScale(9),
+                    }}>
+                    {t('Revenue')}
                   </Text>
                 </View>
                 <FlatList
@@ -228,6 +239,6 @@ const styles = ScaledSheet.create({
     color: colors.black,
     paddingVertical: 4,
     paddingHorizontal: 4,
-    fontSize: 13,
+    fontSize: '9@vs',
   },
 });

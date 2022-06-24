@@ -107,7 +107,7 @@ const Reviews = () => {
                   justifyContent: 'flex-start',
                 }}
                 modalContainerStyle={{
-                  borderRadius: 2,
+                  borderRadius: 10,
                   backgroundColor: 'white',
                 }}>
                 <ScrollView contentContainerStyle={{flexGrow: 1, width: '85%'}}>
@@ -115,8 +115,7 @@ const Reviews = () => {
                     <View style={{flexDirection: 'row'}}>
                       <View
                         style={{
-                          width: '85%',
-                          marginHorizontal: verticalScale(10),
+                          width: '90%',
                         }}>
                         <CustomText
                           label={t('Reply_to_review')}
@@ -173,7 +172,12 @@ const Reviews = () => {
                           )}
                         </View>
                         {!IsTablet ? (
-                          <View style={{marginHorizontal: 10, marginTop: 4}}>
+                          <View
+                            style={{
+                              marginHorizontal: verticalScale(2),
+                              marginTop: verticalScale(5),
+                              marginBottom: verticalScale(5),
+                            }}>
                             <Raiting />
                           </View>
                         ) : (
@@ -202,7 +206,7 @@ const Reviews = () => {
                     <View
                       style={{
                         borderRadius: 8,
-                        width: '95%',
+                        width: '100%',
                         backgroundColor: colors.dropDownBackground,
                         alignSelf: 'center',
                       }}>
@@ -228,7 +232,7 @@ const Reviews = () => {
                           flexDirection: 'row',
                           flexWrap: 'wrap',
                           width: '100%',
-                          marginHorizontal: verticalScale(10),
+                          marginHorizontal: verticalScale(2),
                         }}>
                         {tagData.map((item, index) => {
                           return (
@@ -248,7 +252,7 @@ const Reviews = () => {
                         flexDirection: !IsTablet ? 'column' : 'row',
                         justifyContent: 'space-between',
                         marginVertical: 5,
-                        width: !IsTablet ? '90%' : '80%',
+                        width: !IsTablet ? '93%' : '80%',
                         alignSelf: !IsTablet ? 'center' : 'flex-end',
                         marginRight: scale(10),
                       }}>
@@ -271,161 +275,179 @@ const Reviews = () => {
                 </ScrollView>
               </CustomModal>
               <View>
-              <FlatList
-                data={data2}
-                numColumns={1}
-                nestedScrollEnabled={true}
-                style={{marginBottom: 5,}}
-                renderItem={({item}) => (
-                  <View style={{flexDirection: 'column'}}>
-                    <View
-                      style={{
-                        flexDirection: !IsTablet ? 'column' : 'row',
-                      }}>
+                <FlatList
+                  data={data2}
+                  numColumns={1}
+                  nestedScrollEnabled={true}
+                  style={{marginBottom: 5}}
+                  renderItem={({item}) => (
+                    <View style={{flexDirection: 'column'}}>
                       <View
-                        style={
-                          !IsTablet
-                            ? styles.FlatListParagraphTitleMobile
-                            : styles.FlatListParagraphTitle
-                        }>
+                        style={{
+                          flexDirection: !IsTablet ? 'column' : 'row',
+                          alignItems: 'center',
+                        }}>
                         <View
-                          style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            width: !IsTablet ? '100%' : '80%',
-                          }}>
-                          <Text style={styles.ReviewsFlatListSecondaryMain}>
-                            {item.Title}
-                          </Text>
+                          style={
+                            !IsTablet
+                              ? styles.FlatListParagraphTitleMobile
+                              : styles.FlatListParagraphTitle
+                          }>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              width: !IsTablet ? '100%' : '80%',
+                            }}>
+                            <Text style={styles.ReviewsFlatListSecondaryMain}>
+                              {item.Title}
+                            </Text>
+                            {!IsTablet ? (
+                              <Text style={styles.timeDuration}>
+                                {item.time}
+                              </Text>
+                            ) : null}
+                            {IsTablet ? (
+                              <View
+                                style={{
+                                  width: '100%',
+                                  flexDirection: 'row',
+                                  justifyContent: 'space-between',
+                                  alignItems: 'center',
+                                }}>
+                                {IsTablet && (
+                                  <View style={{width: '32%'}}>
+                                    <Raiting />
+                                  </View>
+                                )}
+
+                                {IsTablet ? (
+                                  <Text style={styles.timeDuration}>
+                                    {item.time}
+                                  </Text>
+                                ) : (
+                                  <View />
+                                )}
+                              </View>
+                            ) : (
+                              <View />
+                            )}
+                          </View>
                           {!IsTablet ? (
-                            <Text style={styles.timeDuration}>{item.time}</Text>
-                          ) : null}
-                          {IsTablet ? (
                             <View
                               style={{
-                                width: '100%',
-                                flexDirection: 'row',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
+                                marginHorizontal: verticalScale(4),
+                                marginTop: 10,
                               }}>
-                              {IsTablet && (
-                                <View style={{width: '32%'}}>
-                                  <Raiting />
-                                </View>
-                              )}
-
-                              {IsTablet ? (
-                                <Text style={styles.timeDuration}>
-                                  {item.time}
-                                </Text>
-                              ) : (
-                                <View />
-                              )}
+                              <Raiting />
                             </View>
                           ) : (
                             <View />
                           )}
                         </View>
-                        <View style={{}}></View>
-                        {!IsTablet ? (
-                          <View style={{marginHorizontal: 10, marginTop: 10}}>
-                            <Raiting />
-                          </View>
-                        ) : (
-                          <View />
-                        )}
                       </View>
-                    </View>
-                    <View
-                      style={
-                        !IsTablet
-                          ? styles.TextParagraphFlatMobile
-                          : styles.TextParagraphFlat
-                      }>
-                      <Text style={styles.FirstParagraphContent}>
-                        {item.Paragraph}
-                      </Text>
-                      <Text
+                      <View
                         style={
                           !IsTablet
-                            ? styles.ParagraphSecondMobile
-                            : styles.ParagraphSecond
+                            ? styles.TextParagraphFlatMobile
+                            : styles.TextParagraphFlat
                         }>
-                        {' '}
                         <Text
-                          style={{
-                            fontFamily: fonts.LatoMedium,
-                            color: colors.black,
-                            fontSize: verticalScale(12),
-                          }}>
-                          Order :{' '}
-                        </Text>{' '}
-                        {item.aboutOrder}
-                      </Text>
-                    </View>
-                    {!IsTablet ? (
-                      <View />
-                    ) : IsTablet && isReply == true ? (
-                      <View
-                        style={{
-                          borderColor: '#E8E8E8',
-                          borderWidth: 1,
-                          borderRadius: 5,
-                          width: '74%',
-                          alignSelf: 'flex-end',
-                          marginHorizontal: verticalScale(12),
-                          marginVertical: moderateScale(8),
-                        }}>
-                        <TextInput
-                          placeholder="Type here"
-                          multiline={true}
-                          textAlignVertical="top"
-                          style={{height: 80}}
-                        />
-                      </View>
-                    ) : null}
-                    <View
-                      style={{
-                        flexDirection: !IsTablet ? 'column' : 'row',
-                        justifyContent: 'space-between',
-                        marginVertical: '3%',
-                        width: !IsTablet ? '85%' : '73%',
-                        alignSelf: !IsTablet ? 'center' : 'flex-end',
-                        marginRight: scale(10),
-                        // marginHorizontal: IsTablet? '50%': null,
-                      }}>
-                      <CustomButton
-                        text={isReply == true ? 'Submit' : 'Reply'}
-                        containerStyle={
-                          !IsTablet ? styles.submitBtnMobile : styles.submitBtn
-                        }
-                        onPress={() => {
-                          setModalData(item);
-                          setVisible(!IsTablet ? !visible : false);
-                          setisReply(!isReply);
-                        }}
-                      />
-                      <TouchableOpacity
-                        style={
-                          !IsTablet ? styles.contactBtn : styles.contactBtnTab
-                        }>
+                          style={[
+                            styles.FirstParagraphContent,
+                            {
+                              marginHorizontal: verticalScale(
+                                !IsTablet ? 8 : 0,
+                              ),
+                              marginBottom: verticalScale(4),
+                            },
+                          ]}>
+                          {item.Paragraph}
+                        </Text>
                         <Text
                           style={
                             !IsTablet
-                              ? styles.ContactButtonMobile
-                              : styles.ContactButton
+                              ? styles.ParagraphSecondMobile
+                              : styles.ParagraphSecond
                           }>
-                          {t('contact_support')}
+                          {' '}
+                          <Text
+                            style={{
+                              fontFamily: fonts.LatoMedium,
+                              color: colors.black,
+                              fontSize: verticalScale(11),
+                            }}>
+                            Order :{' '}
+                          </Text>{' '}
+                          {item.aboutOrder}
                         </Text>
-                      </TouchableOpacity>
+                      </View>
+                      {!IsTablet ? (
+                        <View />
+                      ) : IsTablet && isReply == true ? (
+                        <View
+                          style={{
+                            borderColor: '#E8E8E8',
+                            borderWidth: 1,
+                            borderRadius: 5,
+                            width: '78%',
+                            alignSelf: 'flex-end',
+                            marginHorizontal: verticalScale(12),
+                            marginVertical: moderateScale(8),
+                          }}>
+                          <TextInput
+                            placeholder="Type here"
+                            multiline={true}
+                            textAlignVertical="top"
+                            style={{height: 80}}
+                          />
+                        </View>
+                      ) : null}
+                      <View
+                        style={{
+                          flexDirection: !IsTablet ? 'column' : 'row',
+                          justifyContent: 'space-between',
+                          marginVertical: '3%',
+                          width: !IsTablet ? '93%' : '78%',
+                          alignSelf: !IsTablet ? 'center' : 'flex-end',
+                          marginRight: scale(!IsTablet ? 0 : 10),
+                          alignItems: 'center',
+                          // marginHorizontal: IsTablet? '50%': null,
+                        }}>
+                        <CustomButton
+                          text={isReply == true ? t('Submit') : t('reply')}
+                          containerStyle={
+                            !IsTablet
+                              ? styles.submitBtnMobile
+                              : styles.submitBtn
+                          }
+                          onPress={() => {
+                            setModalData(item);
+                            setVisible(!IsTablet ? !visible : false);
+                            setisReply(!isReply);
+                          }}
+                        />
+                        <TouchableOpacity
+                          style={
+                            !IsTablet ? styles.contactBtn : styles.contactBtnTab
+                          }>
+                          <Text
+                            style={
+                              !IsTablet
+                                ? styles.ContactButtonMobile
+                                : styles.ContactButton
+                            }>
+                            {t('contact_support')}
+                          </Text>
+                        </TouchableOpacity>
+                      </View>
+                      <View style={styles.BorderLine} />
+                      <View style={{height: verticalScale(10)}} />
                     </View>
-                    <View style={styles.BorderLine} />
-                    <View style={{height: 100}} />
-                  </View>
-                )}
-                keyExtractor={item => item.id}
-              />
+                  )}
+                  keyExtractor={item => item.id}
+                />
               </View>
             </View>
             <View

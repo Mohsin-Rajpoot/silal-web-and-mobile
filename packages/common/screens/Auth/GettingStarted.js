@@ -78,7 +78,7 @@ const GettingStarted = ({ navigation, route }) => {
                   }
                   headerStyle={styles.headingDetail}
                 />
-                <View style={{ flexDirection: "row", alignSelf: "center" }}>
+                {/* <View style={{ flexDirection: "row", alignSelf: "center" }}>
                   <Text style={styles.checkout_text}>Checkout our</Text>
                   <TouchableOpacity activeOpacity={0.6}>
                     <Text style={styles.checkoutInnerText}>
@@ -91,7 +91,7 @@ const GettingStarted = ({ navigation, route }) => {
                   <TouchableOpacity activeOpacity={0.6}>
                     <Text style={styles.checkoutInnerText}> FAQS</Text>
                   </TouchableOpacity>
-                </View>
+                </View> */}
               </>
             ) : (
               <View />

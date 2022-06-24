@@ -30,6 +30,7 @@ import {moderateScale, verticalScale} from 'react-native-size-matters';
 import Tab from './molecule/Tab';
 import PagerView from 'react-native-pager-view';
 import fonts from '@SilalApp/common/assets/fonts';
+
 const Home = ({navigation}) => {
   var {width} = Dimensions.get('screen');
   const {t} = useTranslation();
@@ -194,13 +195,16 @@ const Home = ({navigation}) => {
         </View> */}
       </View>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <View style={{margin: verticalScale(10)}}>
-       
+        <View style={{marginHorizontal: verticalScale(5)}}>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
-            <MaterialCommunityIcons
-              name="menu"
-              size={moderateScale(!IsTablet ? 26 : 22)}
-              style={styles.BambergIcon}
+            <Image
+              source={require('../../Assets/menu-expand.png')}
+              resizeMode="contain"
+              style={{
+                width: verticalScale(28),
+                height: verticalScale(30),
+                marginRight: IsTablet ? verticalScale(5) : 0,
+              }}
             />
           </TouchableOpacity>
         </View>
@@ -220,7 +224,7 @@ const Home = ({navigation}) => {
               styles.ModalMainButton,
               {
                 backgroundColor: modalVisible == true ? '#4C6870' : null,
-                borderRadius: modalVisible == true ? 25 : null,
+                borderRadius: modalVisible == true ? 99 : null,
               },
             ]}>
             <MaterialCommunityIcons
@@ -248,7 +252,7 @@ const Home = ({navigation}) => {
         <View style={styles.ModalHeightwidth}>
           <ScrollView style={{height: 610}}>
             <View style={{flexDirection: 'row'}}>
-              <Text style={styles.NotificationTitle}>Your notifications</Text>
+              <Text style={styles.NotificationTitle}>{t("YourNotification")}</Text>
               <Text style={styles.NewNotification}>3 New</Text>
             </View>
 

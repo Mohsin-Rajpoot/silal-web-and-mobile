@@ -298,8 +298,8 @@ const styles = ScaledSheet.create({
     marginHorizontal: "5@s",
   },
   imageView: {
-    width: "45%",
-    height: "30%",
+    width: "110@vs",
+    height: "110@vs",
     backgroundColor: colors.primary,
     alignSelf: "center",
     justifyContent: "center",
@@ -377,38 +377,41 @@ const styles = ScaledSheet.create({
     textAlign: "center",
   },
   SignformHeader: {
-    width: wp("32%"),
+    width: "100%",
     backgroundColor: colors.primary,
     height: "5@s",
     borderRadius: "5@s",
   },
   SignformHeaderMobile: {
-    width: wp("29%"),
+    width: "100%",
     backgroundColor: colors.primary,
     height: "5@s",
     borderRadius: "5@s",
   },
   SignUpHeaderInactive: {
-    width: wp("32%"),
+    width: "100%",
     backgroundColor: colors.grayLight,
     height: "5@s",
     borderRadius: "5@s",
   },
   SignUpHeaderInactiveMobile: {
-    width: wp("28%"),
+    width: "100%",
     backgroundColor: colors.grayLight,
     height: "5@s",
     borderRadius: "5@s",
   },
   headerContainer: {
     flexDirection: "row",
-    justifyContent: "space-around",
     marginHorizontal: "2@s",
+    width:"98%",
+    justifyContent:'space-between',
+    alignSelf:"center"
   },
   headerContainerMobile: {
     flexDirection: "row",
-    justifyContent: "space-around",
-    marginHorizontal: "15@s",
+    width:"95%",
+    alignSelf:"center",
+    justifyContent:"space-around"
   },
   headerText: {
     fontSize: "12@ms",
@@ -482,9 +485,8 @@ const styles = ScaledSheet.create({
   },
   outerContainer: {
     flexDirection: "row",
-    alignSelf: "flex-end",
-    marginHorizontal: "15@s",
-    marginBottom: "10@s",
+    width: "100%",
+    justifyContent: !IsTablet ? "center" : "flex-end",
   },
   backIconInnerContainer: {
     flexDirection: "row",
@@ -501,7 +503,7 @@ const styles = ScaledSheet.create({
   },
   formButton: {
     backgroundColor: colors.blurPrimary1,
-    width: wp("38%"),
+    width: "100%",
     alignSelf: "center",
     alignItems: "center",
     padding: "6@s",
@@ -535,6 +537,13 @@ const styles = ScaledSheet.create({
     backgroundColor: "transparent",
     borderColor: colors.borderColor,
     height: "45@ms",
+
+  },
+  dropDownStyle13: {
+    backgroundColor: "transparent",
+    borderColor: colors.borderColor,
+    height: "45@ms",
+    width:"100%"
   },
   dropDownStyleMoBile: {
     backgroundColor: colors.dullWhite,
@@ -548,10 +557,13 @@ const styles = ScaledSheet.create({
   accountMainContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems:"center",
+    width:"100%",
   },
   accountMainContainerMobile: {
     flexDirection: "column",
     justifyContent: "space-between",
+
   },
   dropdownContainer: {
     backgroundColor: colors.light_grey,
@@ -559,7 +571,7 @@ const styles = ScaledSheet.create({
   },
   accountSelection: {
     backgroundColor: colors.primaryBlur,
-    width: wp("31%"),
+    width: "100%",
     flexDirection: "row",
     borderRadius: "4@s",
     borderWidth: "0.5@s",
@@ -579,7 +591,7 @@ const styles = ScaledSheet.create({
   },
   accountSelectionInActive: {
     backgroundColor: colors.dullColor,
-    width: wp("31%"),
+    width: "100%",
     flexDirection: "row",
     borderRadius: "4@s",
     borderWidth: "1@s",
@@ -899,7 +911,7 @@ const styles = ScaledSheet.create({
   },
   button: {
     backgroundColor: colors.primary,
-    width: wp("70%"),
+    width: "65%",
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
@@ -909,7 +921,7 @@ const styles = ScaledSheet.create({
   },
   button1: {
     backgroundColor: colors.blurPrimary,
-    width: wp("70%"),
+    width: "65%",
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
@@ -958,6 +970,7 @@ const styles = ScaledSheet.create({
     color: colors.textPrimeColor,
     alignSelf: "center",
     marginBottom: "10@s",
+    marginTop: "5@s",
   },
   SellerInformationTitle: {
     fontSize: "22@vs",

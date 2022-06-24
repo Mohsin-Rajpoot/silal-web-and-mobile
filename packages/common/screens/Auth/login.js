@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../Loader";
 import DeviceInfo from "react-native-device-info";
 import CustomText from "../../components/CustomText";
+import { verticalScale } from "react-native-size-matters";
 const Login = ({ navigation, route }) => {
   const { t } = useTranslation();
   const isTab = DeviceInfo.isTablet();
@@ -81,7 +82,7 @@ const Login = ({ navigation, route }) => {
         <View
           style={!isTab ? styles.innerContainerMobile : styles.innerContainer}
         >
-          {data?.params?.signupEmail ? (
+          {data?.params?.signupEmail || active == 2 ? (
             <View>
               <Text style={styles.phoneNumberText}>{t("email")}</Text>
               <TextInput
@@ -91,6 +92,7 @@ const Login = ({ navigation, route }) => {
                 }}
                 value={text.email}
                 isTab={isTab}
+                inputStyle={{borderRadius:verticalScale(8)}}
               />
               {/* {text.error ? (
                 <Text style={styles.errorMessage}>{text.error}</Text>
@@ -105,18 +107,28 @@ const Login = ({ navigation, route }) => {
                 onChangeText={(value) => setText({ ...text, password: value })}
                 value={text.password}
                 isTab={isTab}
+                inputStyle={{borderRadius:verticalScale(8)}}
               />
-              <Text style={styles.phoneNumberText}>
-                {t("Confirm_password")}
-              </Text>
-              <TextInput
-                placeholderText={t("EnterPasswordAgain")}
-                secureText={true}
-                password={true}
-                onChangeText={(value) => setText({ ...text, password: value })}
-                value={text.password}
-                isTab={isTab}
-              />
+              {active == 2 ? (
+                <View />
+              ) : (
+                <>
+                  <Text style={styles.phoneNumberText}>
+                    {t("Confirm_password")}
+                  </Text>
+                  <TextInput
+                    placeholderText={t("EnterPasswordAgain")}
+                    secureText={true}
+                    password={true}
+                    onChangeText={(value) =>
+                      setText({ ...text, password: value })
+                    }
+                    value={text.password}
+                    isTab={isTab}
+                    inputStyle={{borderRadius:verticalScale(8)}}
+                  />
+                </>
+              )}
             </View>
           ) : active == 1 ? (
             <View>

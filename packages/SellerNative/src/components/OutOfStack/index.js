@@ -23,6 +23,8 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import {scale, verticalScale} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import ItemDetails from '../ItemDetails';
+import {t} from 'i18next';
+import fonts from '@SilalApp/common/assets/fonts';
 // import { useFocusEffect } from '@react-navigation/native';
 export default function Archive_orders({title, navigation}) {
   const [checked, setchecked] = useState(false);
@@ -250,28 +252,28 @@ export default function Archive_orders({title, navigation}) {
           <Text style={styles.all_orders_heading_txt}></Text>
         </View>
         <View style={[styles.all_orders, {width: '12%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Photo</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('photo')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '8%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Item name</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('item_name')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '14%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Category</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Category')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '12%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Remaining</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('remaining')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '15%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Variant</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Variant')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '12%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Status</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Status')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '14%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Price</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('price')}</Text>
         </View>
         <View style={[styles.all_orders, {width: '8%'}]}>
-          <Text style={styles.all_orders_heading_txt}>Action</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Action')}</Text>
         </View>
       </View>
     );
@@ -291,7 +293,7 @@ export default function Archive_orders({title, navigation}) {
             justifyContent: 'space-between',
             marginBottom: verticalScale(10),
           }}>
-          <CustomText label="15 items" textStyle={styles.itemText} />
+          <CustomText label={'15 ' + t('items')} textStyle={styles.itemText} />
           <View
             style={{
               flexDirection: 'row',
@@ -305,16 +307,21 @@ export default function Archive_orders({title, navigation}) {
               uncheckedColor="#CCD4D6"
             />
             <CustomText
-              label="Select all"
+              label={t('selectALL')}
               marginLeft={scale(-15)}
-              color={colors.textPrimary}
+              color={colors.textPrimaryBlur}
             />
           </View>
         </View>
         <FlatList
           data={dataItem}
           keyExtractor={(item, index) => item + index.toString()}
-          renderItem={({item}) => <ItemDetails checkedState={checked} />}
+          renderItem={({item}) => (
+            <ItemDetails
+              checkedState={checked}
+              onPress={() => console.log('helo')}
+            />
+          )}
         />
         <View style={{height: 200}} />
       </ScrollView>
@@ -322,10 +329,10 @@ export default function Archive_orders({title, navigation}) {
   ) : (
     <View
       style={{
-        height: 570,
+        height: '90%',
         paddingVertical: 10,
         paddingHorizontal: 10,
-        backgroundColor: '#fff',
+        backgroundColor: colors.textWhite,
         elevation: 1,
         borderWidth: 1,
         borderColor: '#fff',
@@ -334,6 +341,7 @@ export default function Archive_orders({title, navigation}) {
         padding: 20,
         justifyContent: 'center',
         alignSelf: 'center',
+
       }}>
       {header_alloredrs()}
       <FlatList
@@ -342,7 +350,14 @@ export default function Archive_orders({title, navigation}) {
         renderItem={({item, index}) => render_all_oredrs(item, index)}
       />
       <View style={styles.pagination_view}>
-        <Text style={{fontFamily: 'Lato-Regular'}}>Showing 1-9 of 86</Text>
+        <Text
+          style={{
+            fontFamily: fonts.LatoRegular,
+            color: colors.textPrimeColor,
+            fontSize: verticalScale(11),
+          }}>
+          Showing 1-9 of 86
+        </Text>
         <View style={styles.pagination_numbring}>
           <Ionicons
             name="chevron-back"

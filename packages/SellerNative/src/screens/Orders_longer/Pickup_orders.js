@@ -63,7 +63,7 @@ export default function Archive_orders({title, navigation}) {
   const [date2, setdate2] = useState();
   const [active, setActive] = useState(false);
 
-  const InputRef = useRef();
+  // const InputRef = useRef();
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -72,7 +72,7 @@ export default function Archive_orders({title, navigation}) {
     });
     const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
       //   alert('Keyboard Hidden')
-      InputRef.current.blur();
+      // InputRef.current.blur();
       setKeyboardStatus('Keyboard Hidden');
     });
 
@@ -385,7 +385,7 @@ export default function Archive_orders({title, navigation}) {
           />
           {/* <Icon style={styles.searchIcon} name="ios-search" size={20} color="#000"/> */}
           <TextInput
-            ref={InputRef}
+            // ref={InputRef}
             style={styles.input}
             placeholder={'Search'}
             placeholderTextColor={'#B3BEC2'}

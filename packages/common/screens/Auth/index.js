@@ -63,174 +63,187 @@ const OnBoarding = ({ navigation }) => {
   };
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={{ flex: 1 }}>
-        {page == 3 ? (
-          <View />
-        ) : (
-          <View
-            style={{
-              alignItems: "center",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            {!isTab && (page == 1 || page == 2) ? (
-              isTab && page == 3 ? (
-                <View />
-              ) : (
-                <TouchableOpacity activeOpacity={0.6} onPress={() => goBack()}>
-                  <View style={styles.backIcon}>
-                    <Icon
-                      name="chevron-back-sharp"
-                      type="ionicon"
-                      size={24}
-                      color={colors.primary}
-                    />
-                  </View>
-                </TouchableOpacity>
-              )
-            ) : (
-              <View />
-            )}
-
-            <TouchableOpacity activeOpacity={0.6} onPress={() => setPage(3)}>
-              <Text
-                style={!isTab ? styles.skipbuttonMobile : styles.skipbutton}
-              >
-                {!isTab && page == 2 ? "" : t("skip")}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        )}
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={{ flex: 1 }}>
-          <AppIntroSlider
-            showNextButton={false}
-            showDoneButton={false}
-            ref={ref}
-            data={screens}
-            keyExtractor={(item, index) => {
-              item?.id + index.toString();
-            }}
-            dotStyle={page == 3 || (!isTab && page == 2) ? null : styles.dot}
-            onSlideChange={(index) => setPage(index)}
-            activeDotStyle={
-              page == 3 || (!isTab && page == 2) ? null : styles.underScore
-            }
-            renderItem={({ item, index }) => (
-              <View style={styles.screenContainer}>
-                <View style={{ height: "15%" }} />
-                <View
-                  style={!isTab ? styles.imageViewMobile : styles.imageView}
-                />
-                <View
-                  style={
-                    !isTab
-                      ? styles.onBoardingDetailconatinerMobile
-                      : styles.onBoardingDetailconatiner
-                  }
-                >
-                  <Text style={!isTab ? styles.headingMobile : styles.heading}>
-                    {item?.heading}
-                  </Text>
-                  <Text style={!isTab ? styles.bodyMobile : styles.body}>
-                    {" "}
-                    {item?.body}
-                  </Text>
-                </View>
-                {!isTab && page == 2 ? (
-                  <>
-                    <View style={{ flex: 1 }} />
-                    <AuthButton
-                      buttonStyling={styles.letsGoButton}
-                      name={t("letsGo")}
-                      onPress={() => setPage(3)}
-                      isTab={isTab}
-                      s
-                    />
-                  </>
-                ) : (
+          {page == 3 ? (
+            <View />
+          ) : (
+            <View
+              style={{
+                alignItems: "center",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              {!isTab && (page == 1 || page == 2) ? (
+                isTab && page == 3 ? (
                   <View />
-                )}
-                {page == 3 ? (
-                  <>
-                    <View
-                      style={{
-                        width: !isTab ? "90%" : "65%",
-                        justifyContent: "center",
-                        flexDirection: "row",
-                      }}
+                ) : (
+                  <TouchableOpacity
+                    activeOpacity={0.6}
+                    onPress={() => goBack()}
+                  >
+                    <View style={styles.backIcon}>
+                      <Icon
+                        name="chevron-back-sharp"
+                        type="ionicon"
+                        size={24}
+                        color={colors.primary}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                )
+              ) : (
+                <View />
+              )}
+
+              <TouchableOpacity activeOpacity={0.6} onPress={() => setPage(3)}>
+                <Text
+                  style={!isTab ? styles.skipbuttonMobile : styles.skipbutton}
+                >
+                  {!isTab && page == 2 ? "" : t("skip")}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+          <View style={{ flex: 1 }}>
+            <AppIntroSlider
+              showNextButton={false}
+              showDoneButton={false}
+              ref={ref}
+              data={screens}
+              keyExtractor={(item, index) => {
+                item?.id + index.toString();
+              }}
+              dotStyle={page == 3 || (!isTab && page == 2) ? null : styles.dot}
+              onSlideChange={(index) => setPage(index)}
+              activeDotStyle={
+                page == 3 || (!isTab && page == 2) ? null : styles.underScore
+              }
+              renderItem={({ item, index }) => (
+                <View style={styles.screenContainer}>
+                  <View style={{ height: "15%" }} />
+                  <View
+                    style={!isTab ? styles.imageViewMobile : styles.imageView}
+                  />
+                  <View
+                    style={
+                      !isTab
+                        ? styles.onBoardingDetailconatinerMobile
+                        : styles.onBoardingDetailconatiner
+                    }
+                  >
+                    <Text
+                      style={!isTab ? styles.headingMobile : styles.heading}
                     >
-                      <Text
+                      {item?.heading}
+                    </Text>
+                    <Text style={!isTab ? styles.bodyMobile : styles.body}>
+                      {" "}
+                      {item?.body}
+                    </Text>
+                  </View>
+                  {!isTab && page == 2 ? (
+                    <>
+                      <View style={{ flex: 1 }} />
+                      <AuthButton
+                        buttonStyling={styles.letsGoButton}
+                        name={t("letsGo")}
+                        onPress={() => setPage(3)}
+                        isTab={isTab}
+                        s
+                      />
+                    </>
+                  ) : (
+                    <View />
+                  )}
+                  {page == 3 ? (
+                    <>
+                      <View
                         style={{
-                          fontSize: verticalScale(14),
-                          color: colors.black,
-                          alignSelf: "flex-start",
-                          fontFamily: fonts.bold,
+                          width: !isTab ? "90%" : "65%",
+                          justifyContent: "center",
+                          flexDirection: "row",
                         }}
                       >
-                        {t("ChangeLanguage")}
-                      </Text>
-                    </View>
+                        <Text
+                          style={{
+                            fontSize: verticalScale(14),
+                            color: colors.black,
+                            alignSelf: "flex-start",
+                            fontFamily: fonts.bold,
+                          }}
+                        >
+                          {t("ChangeLanguage")}
+                        </Text>
+                      </View>
 
-                    <View
-                      style={{
-                        width: !isTab ? "90%" : "65%",
-                        alignSelf: "center",
-                        marginBottom: 25,
-                        marginBottom: 5,
-                      }}
-                    >
-                      <DropDownPicker
-                        open={open}
-                        value={value}
-                        items={items}
-                        setOpen={setOpen}
-                        setValue={setValue}
-                        setItems={setItems}
-                        placeholder="Select Language"
-                        style={styles.dropDownStyle12}
-                        placeholderStyle={styles.dropDownPlaceHolder}
-                        dropDownContainerStyle={styles.dropdownContainer}
-                        iconContainerStyle={{ backgroundColor: "red" }}
-                        onChangeValue={(language) => {
-                          i18n.changeLanguage(language).then(() => {
-                            I18nManager.forceRTL(
-                              language === "ar" || language === "he"
-                            );
-                            RNRestart.Restart();
-                          });
-                          Preference.setWhiteList([]);
-                          Preference.set("languageValue", language);
+                      <View
+                        style={{
+                          width: !isTab ? "90%" : "65%",
+                          alignSelf: "center",
+                          marginBottom: 25,
+                          marginBottom: 5,
                         }}
-                      />
-                    </View>
-                    <View style={{ height: 120 }} />
-                    <View style={{ flex: 0.6, justifyContent: "flex-end" }}>
-                      <AuthButton
-                        buttonStyling={
-                          !isTab ? styles.buttonMobile : styles.button
-                        }
-                        name={t("signup")}
-                        onPress={goToSignUp}
-                        isTab={isTab}
-                      />
-                      <AuthButton
-                        buttonStyling={
-                          !isTab ? styles.button1Mobile : styles.button1
-                        }
-                        name={t("login")}
-                        changeColor={true}
-                        onPress={goToLogin}
-                        isTab={isTab}
-                      />
-                    </View>
-                  </>
-                ) : (
-                  <View />
-                )}
-              </View>
-            )}
-          />
+                      >
+                        <DropDownPicker
+                          open={open}
+                          value={value}
+                          items={items}
+                          setOpen={setOpen}
+                          setValue={setValue}
+                          setItems={setItems}
+                          placeholder="Select Language"
+                          style={styles.dropDownStyle12}
+                          placeholderStyle={styles.dropDownPlaceHolder}
+                          dropDownContainerStyle={styles.dropdownContainer}
+                          iconContainerStyle={{ backgroundColor: "red" }}
+                          onChangeValue={(language) => {
+                            i18n.changeLanguage(language).then(() => {
+                              I18nManager.forceRTL(
+                                language === "ar" || language === "he"
+                              );
+                              RNRestart.Restart();
+                            });
+                            Preference.setWhiteList([]);
+                            Preference.set("languageValue", language);
+                          }}
+                        />
+                      </View>
+                      <View style={{ height: verticalScale(80) }} />
+                      <View
+                        style={{
+                          flex: 0.6,
+                          justifyContent: "flex-end",
+                          width: "100%",
+                        }}
+                      >
+                        <AuthButton
+                          buttonStyling={
+                            !isTab ? styles.buttonMobile : styles.button
+                          }
+                          name={t("signup")}
+                          onPress={goToSignUp}
+                          isTab={isTab}
+                        />
+                        <AuthButton
+                          buttonStyling={
+                            !isTab ? styles.button1Mobile : styles.button1
+                          }
+                          name={t("login")}
+                          changeColor={true}
+                          onPress={goToLogin}
+                          isTab={isTab}
+                        />
+                      </View>
+                    </>
+                  ) : (
+                    <View />
+                  )}
+                </View>
+              )}
+            />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

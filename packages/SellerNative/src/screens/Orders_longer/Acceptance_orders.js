@@ -501,7 +501,7 @@ export default function Acceptance_orders({title, navigation}) {
           />
           {/* <Icon style={styles.searchIcon} name="ios-search" size={20} color="#000"/> */}
           <TextInput
-            ref={InputRef}
+            // ref={InputRef}
             style={styles.input}
             placeholder={t('Search')}
             placeholderTextColor={'#B3BEC2'}

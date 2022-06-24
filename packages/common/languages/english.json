@@ -553,6 +553,8 @@
     "SellerType":"Select seller’s type",
     "StoreSlogan":"Store Slogan",
     "SloganPlaceholder":"What’s a slogan that describes your business?",
-    "Soon":"SOON"
+    "Soon":"SOON",
+    "outOfStock":"Out-of-stock items",
+    "YourNotification":"Your notifications"
   }
 }

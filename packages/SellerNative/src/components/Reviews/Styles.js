@@ -7,6 +7,7 @@ import {
   removeOrientationListener as rol,
 } from 'react-native-responsive-screen-hooks';
 import fonts from '@SilalApp/common/assets/fonts';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const styles = ScaledSheet.create({
   Title: {
     color: '#002733',
@@ -37,10 +38,10 @@ const styles = ScaledSheet.create({
   },
 
   ReviewsFlatListSecondaryMain: {
-    paddingHorizontal: '10@s',
+    marginLeft: !IsTablet ? '2@vs' : '5@s',
     color: colors.black,
     fontFamily: fonts.LatoBold,
-    fontSize: '10@vs',
+    fontSize: !IsTablet ? '11@vs' : '9@vs',
     lineHeight: 20,
   },
   DividerRow: {
@@ -96,12 +97,13 @@ const styles = ScaledSheet.create({
     width: '95%',
   },
   TextParagraphFlat: {
-    marginHorizontal: 30,
-    marginLeft: 165,
+    width: '78%',
+    alignSelf: 'flex-end',
     marginVertical: 1,
+    marginRight: '10@s',
   },
   TextParagraphFlatMobile: {
-    marginHorizontal: '10@s',
+    marginHorizontal: '3@s',
     marginVertical: 1,
     flexDirection: 'column-reverse',
   },
@@ -109,15 +111,17 @@ const styles = ScaledSheet.create({
     color: colors.black,
     fontSize: '10@vs',
     fontFamily: fonts.LatoRegular,
-    lineHeight: 24,
+    lineHeight: IsTablet ? 22 : 17,
+    marginTop: '5@s',
+
   },
+
   ParagraphSecond: {
     fontSize: '9@vs',
-    paddingVertical: 5,
+    paddingVertical: verticalScale(8),
     backgroundColor: colors.dullWhite,
     borderRadius: '4@s',
     padding: '5@s',
-    marginTop: 5,
     lineHeight: 26,
     fontFamily: fonts.LatoRegular,
   },
@@ -131,6 +135,7 @@ const styles = ScaledSheet.create({
     paddingHorizontal: '5@s',
     lineHeight: 20,
     fontFamily: fonts.LatoRegular,
+    marginHorizontal: '8@s',
   },
   ParagraphSecondMobile1: {
     fontSize: '10@vs',
@@ -169,7 +174,7 @@ const styles = ScaledSheet.create({
     backgroundColor: colors.textWhite,
     elevation: 2,
     borderRadius: '4@s',
-    height: '40%',
+    height: '18%',
   },
   SecondViewMainContainerMobile: {
     width: '93%',
@@ -210,12 +215,12 @@ const styles = ScaledSheet.create({
     opacity: 0.1,
   },
   TitleView: {
-    fontFamily: 'Lato-Regular',
+    fontFamily: fonts.LatoRegular,
     color: colors.black,
-    fontSize: '8@vs',
+    fontSize: '9@vs',
   },
   TitleViewMobile: {
-    fontFamily: 'Lato-Regular',
+    fontFamily: fonts.LatoRegular,
     color: colors.black,
     fontSize: '12@vs',
   },
@@ -234,11 +239,13 @@ const styles = ScaledSheet.create({
   submitBtnMobile: {
     width: '100%',
     borderRadius: '10@s',
+    padding: '10@s',
+    marginVertical: '5@s',
+    alignSelf: 'center',
     // marginHorizontal:'40@s'
-    
   },
   submitBtn: {
-    width: '100%',
+    width: '25%',
   },
   contactBtn: {
     justifyContent: 'center',
@@ -277,7 +284,7 @@ const styles = ScaledSheet.create({
     fontSize: '11@vs',
     fontFamily: fonts.LatoRegular,
     color: colors.textPrimeColor,
-    marginLeft: '10@s',
+    marginLeft: '5@s',
     marginTop: '5@s',
   },
   tagContainer: {

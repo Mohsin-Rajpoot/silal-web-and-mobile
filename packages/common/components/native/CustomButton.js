@@ -2,42 +2,48 @@ import React from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import colors from "../../assets/colors";
 import fonts from "../../assets/fonts";
-import { ScaledSheet,verticalScale } from "react-native-size-matters";
+import { ScaledSheet, verticalScale } from "react-native-size-matters";
 import IsTablet from "./IsTablet";
-import {Icon} from 'react-native-elements';
+import { Icon } from "react-native-elements";
 
 export default function CustomButton({
   text,
   onPress,
   type = "PRIMARY",
-  navigation,
   containerStyle,
   textStyle,
   leftIcon,
   iconName,
-  iconType
+  iconType,
 }) {
   return (
     <TouchableOpacity
-    onPress={onPress}
-    activeOpacity={0.6}
-    style={[
-      !IsTablet ? styles.mainbuttonMobile : styles.mainbutton,
-      styles[`mainbutton_${type}`],
-      containerStyle,
-    ]}
-  >
-    {leftIcon && <Icon size={verticalScale(14)} color={colors.textWhite} type={iconType} name={iconName} />}
-    <Text
+      onPress={onPress}
+      activeOpacity={0.6}
       style={[
-        !IsTablet ? styles.buttonTextMobile : styles.buttonText,
-        styles[`buttonText_${type}`],
-        textStyle,
+        !IsTablet ? styles.mainbuttonMobile : styles.mainbutton,
+        styles[`mainbutton_${type}`],
+        containerStyle,
       ]}
     >
-      {text}
-    </Text>
-  </TouchableOpacity>
+      {leftIcon && (
+        <Icon
+          size={verticalScale(14)}
+          color={colors.textWhite}
+          type={iconType}
+          name={iconName}
+        />
+      )}
+      <Text
+        style={[
+          !IsTablet ? styles.buttonTextMobile : styles.buttonText,
+          styles[`buttonText_${type}`],
+          textStyle,
+        ]}
+      >
+        {text}
+      </Text>
+    </TouchableOpacity>
   );
 }
 
@@ -54,13 +60,11 @@ const styles = ScaledSheet.create({
   mainbuttonMobile: {
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: '7@vs',
-    paddingVertical: '4@vs',
-    marginVertical: 5,
+    padding: "4@s",
     alignSelf: "center",
-    borderRadius: '8@s',
-    flexDirection:'row',
-    alignItems:'center'
+    borderRadius: "8@s",
+    flexDirection: "row",
+    alignItems: "center",
   },
   mainbutton_PRIMARY: {
     backgroundColor: colors.primary,
@@ -72,6 +76,7 @@ const styles = ScaledSheet.create({
     fontSize: "10@vs",
     letterSpacing: 1,
     fontFamily: fonts.PoppinsSemiBold,
+    marginTop: verticalScale(1),
   },
   buttonText: {
     color: colors.textWhite,
@@ -81,7 +86,8 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.PoppinsSemiBold,
   },
   buttonText_TERTIARY: {
-    color: "#4C6870",
+    color: colors.textPrimeColor,
     fontFamily: fonts.PoppinsSemiBold,
+    marginHorizontal: verticalScale(4),
   },
 });

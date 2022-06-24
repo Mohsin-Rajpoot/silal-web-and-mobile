@@ -24,7 +24,8 @@ import {useTranslation} from 'react-i18next';
 import {Icon} from 'react-native-elements';
 import colors from '@SilalApp/common/assets/colors';
 import {moderateScale, verticalScale} from 'react-native-size-matters';
-import { LockOnLandscape } from '@SilalApp/common/components/native';
+import {LockOnLandscape} from '@SilalApp/common/components/native';
+import CustomText from '@SilalApp/common/components/CustomText';
 var {width} = Dimensions.get('screen');
 const Statistics = ({}) => {
   const [screenWidth, setScreenWidth] = useState(width);
@@ -100,7 +101,7 @@ const Statistics = ({}) => {
       id: 2,
       image: require('../../Assets/CartHome.png'),
       title: 'Total_orders',
-      percentage: '-3%',
+      percentage: '-4%',
       Amount: '398',
       lowOrders: 1,
       rating: false,
@@ -108,9 +109,9 @@ const Statistics = ({}) => {
     {
       id: 3,
       image: require('../../Assets/Bellicon.png'),
-      title: 'out of stock item',
+      title: !IsTablet ? 'out_of_stock_item' : 'outOfStock',
       // percentage: '11.1%',
-      Amount: '9',
+      Amount: '6',
       lowOrders: 2,
       rating: false,
     },
@@ -118,15 +119,15 @@ const Statistics = ({}) => {
       id: 4,
       image: require('../../Assets/madal.png'),
       title: 'Total_rating',
-      percentage: '11.1%',
+      percentage: '0.8%',
       Amount: '4.8',
       lowOrders: 0,
       rating: true,
     },
   ];
   return (
-    <ScrollView contentContainerStyle={{width:"100%", flexGrow:1}}>
-       <LockOnLandscape
+    <ScrollView contentContainerStyle={{width: '100%', flexGrow: 1}}>
+      <LockOnLandscape
         onPress={() => console.log('Harris')}
         width={screenWidth}
         setWidth={setScreenWidth}
@@ -140,23 +141,24 @@ const Statistics = ({}) => {
             <View style={!IsTablet ? styles.OneMobile : styles.One}>
               <View
                 style={!IsTablet ? styles.WhiteDiveMobile : styles.WhiteDive}>
-                <View style={{flexDirection: 'row'}}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <View style={styles.ImgeViewBKG}>
                     <Image
                       source={item.image}
                       style={
                         !IsTablet
-                          ? styles.CurrencyImageMobile 
+                          ? styles.CurrencyImageMobile
                           : styles.CurrencyImage
                       }
                     />
                   </View>
+
                   <StatisticWhiteBoxTitle Title={t(item.title)} />
                 </View>
                 {!IsTablet ? (
                   <View />
                 ) : item.lowOrders == 2 ? (
-                  <View style={{width: '30%'}} />
+                  <View style={{width: '10%'}} />
                 ) : (
                   <View
                     style={[
@@ -175,7 +177,7 @@ const Statistics = ({}) => {
                         {item.percentage}{' '}
                       </Text>
                       <Ionicons
-                        name="arrow-up"
+                        name={item.lowOrders == 1 ? 'arrow-down' : 'arrow-up'}
                         style={
                           item.lowOrders == 1
                             ? styles.TotalDataInactive
@@ -204,7 +206,12 @@ const Statistics = ({}) => {
                   {item.Amount}
                 </Text>
               </View>
-              {!IsTablet ? (
+              {!IsTablet && item.lowOrders == 2 ? (
+                <CustomText
+                  label={t('RenewItem')}
+                  textStyle={styles.renewItem}
+                />
+              ) : !IsTablet && (item.lowOrders == 1 || item.lowOrders == 0) ? (
                 <View
                   style={[
                     !IsTablet
@@ -274,7 +281,7 @@ const Statistics = ({}) => {
               data={data}
               numColumns={1}
               nestedScrollEnabled={true}
-              style={{marginBottom: 10, height: 360}}
+              style={{marginBottom: 10, height: 460}}
               renderItem={({item}) => (
                 <View style={styles.FlatListMainView}>
                   <View>

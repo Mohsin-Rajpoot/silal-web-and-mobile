@@ -1,10 +1,4 @@
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  FlatList,
-} from 'react-native';
+import {Text, View, TouchableOpacity, ScrollView, FlatList} from 'react-native';
 import React, {useState} from 'react';
 import {ScaledSheet} from 'react-native-size-matters';
 import Modal from 'react-native-modal';
@@ -24,7 +18,7 @@ const Header = ({
   Notification,
   rightPress,
   dostIcon,
-  treeDot
+  treeDot,
 }) => {
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
@@ -55,7 +49,6 @@ const Header = ({
           style={{
             flexDirection: 'row',
             alignItems: 'center',
-
           }}>
           <MaterialCommunityIcons
             name="keyboard-backspace"
@@ -82,13 +75,15 @@ const Header = ({
           <TouchableOpacity onPress={rightPress}>
             {!dostIcon ? (
               <View />
+            ) : treeDot ? (
+              <View />
             ) : (
-             treeDot ? <View /> :  <Icon
-             name="dots-three-vertical"
-             type="entypo"
-             size={verticalScale(16)}
-             color={colors.gray50}
-           />
+              <Icon
+                name="dots-three-vertical"
+                type="entypo"
+                size={verticalScale(16)}
+                color={colors.gray50}
+              />
             )}
           </TouchableOpacity>
         ) : (
@@ -101,18 +96,23 @@ const Header = ({
             style={[
               styles.ModalMainButton,
               {
-                backgroundColor: modalVisible == true ? '#4C6870' : null,
-                borderRadius: modalVisible == true ? 25 : null,
+                backgroundColor:
+                  modalVisible == true ? colors.textPrimeColor : null,
+                borderRadius: modalVisible == true ? 99 : null,
               },
             ]}>
             <MaterialCommunityIcons
-              size={verticalScale(20)}
+              size={verticalScale(modalVisible ? 16 : 20)}
               color={modalVisible == true ? colors.textWhite : colors.black}
               name={'bell-outline'}
             />
             <Badge
               // value={'9'}
-              containerStyle={styles.BadgeContainer}
+              containerStyle={
+                modalVisible
+                  ? styles.BadgeContainerVisble
+                  : styles.BadgeContainer
+              }
               badgeStyle={styles.badgeStyle}
             />
           </TouchableOpacity>
@@ -130,7 +130,9 @@ const Header = ({
         <View style={styles.ModalHeightwidth}>
           <ScrollView style={{height: 610}}>
             <View style={{flexDirection: 'row'}}>
-              <Text style={styles.NotificationTitle}>Your notifications</Text>
+              <Text style={styles.NotificationTitle}>
+                {t('YourNotification')}
+              </Text>
               <Text style={styles.NewNotification}>3 New</Text>
             </View>
 
@@ -187,9 +189,6 @@ const Header = ({
               renderItem={({item}) => (
                 <View>
                   <View style={{flexDirection: 'row', marginVertical: 15}}>
-                    {/* <View style={styles.ImageVIew}>
-                <Image source={require('../../Assets/Icon.png')} style={styles.ImageModal} />
-              </View> */}
                     <View style={styles.ModelDesign}>
                       <Text style={styles.ModalNotificationTitle}>
                         Silal Management
@@ -242,22 +241,29 @@ const styles = ScaledSheet.create({
     marginLeft: '10@s',
   },
   ModalMainButton: {
-    position: 'absolute',
     right: 22,
-    marginHorizontal: 20,
-    height: 50,
-    width: 50,
+    height: verticalScale(35),
+    width: verticalScale(35),
     justifyContent: 'center',
     alignItems: 'center',
   },
   BadgeContainer: {
     position: 'absolute',
-    top: 10,
-    right: 7,
+    top: verticalScale(10),
+    right: verticalScale(8),
     backgroundColor: colors.textWhite,
-    height: 16,
-    width: 16,
-    borderRadius: 8,
+    height: verticalScale(12),
+    width: verticalScale(12),
+    borderRadius: verticalScale(99),
+  },
+  BadgeContainerVisble: {
+    position: 'absolute',
+    top: verticalScale(10),
+    right: verticalScale(8),
+    backgroundColor: colors.textWhite,
+    height: verticalScale(9),
+    width: verticalScale(9),
+    borderRadius: verticalScale(99),
   },
   badgeStyle: {
     backgroundColor: colors.primary,

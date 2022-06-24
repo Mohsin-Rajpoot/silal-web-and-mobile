@@ -71,11 +71,11 @@ export default function CustomGraph() {
   const fadeAnim30 = useRef(new Animated.Value(0)).current;
 
   const [graphValue, setGraphValue] = useState([
-    { id: 1, earned: 18200, earnedBarHeight: 0, duration: "1/3" },
+    { id: 1, earned: 10200, earnedBarHeight: 0, duration: "1/3" },
     { id: 2, earned: 10314, earnedBarHeight: 0, duration: "1/10" },
     { id: 3, earned: 9984, earnedBarHeight: 0, duration: "1/17" },
-    { id: 4, earned: 11624, earnedBarHeight: 0, duration: "1/24" },
-    { id: 5, earned: 11023, earnedBarHeight: 0, duration: "1/31" },
+    { id: 4, earned: 10624, earnedBarHeight: 0, duration: "1/24" },
+    { id: 5, earned: 10023, earnedBarHeight: 0, duration: "1/31" },
     { id: 6, earned: 9400, earnedBarHeight: 0, duration: "2/7" },
   ]);
 
@@ -99,7 +99,12 @@ export default function CustomGraph() {
   return (
     <>
       <View style={styles.container}>
-        <View style={[styles.innercontainer, { height: verticalScale(300) }]}>
+        <View
+          style={[
+            styles.innercontainer,
+            { height: verticalScale(!IsTablet ? 280 : 180) },
+          ]}
+        >
           <View
             style={{
               height: windowHeightF / 1.21,
@@ -232,7 +237,9 @@ export default function CustomGraph() {
                       </LinearGradient>
                     </View>
                     <View style={styles.durationListTextView}>
-                      <Text style={[styles.quarterlySepText]}>28 PM</Text>
+                      <Text style={[styles.quarterlySepText]}>
+                        {!IsTablet ? "8:00" : "8 AM"}
+                      </Text>
                       {!IsTablet ? (
                         <View />
                       ) : (

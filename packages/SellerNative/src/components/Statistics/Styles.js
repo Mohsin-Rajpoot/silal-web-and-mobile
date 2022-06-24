@@ -11,21 +11,24 @@ import fonts from '@SilalApp/common/assets/fonts';
 const styles = ScaledSheet.create({
   WhiteDive: {
     flexDirection: 'row',
-    paddingVertical: 5,
-    justifyContent: 'space-evenly',
+    paddingVertical: verticalScale(4),
+    justifyContent:"space-around",
     paddingTop: 10,
+    width:"100%",
+    alignItems:"center"
   },
   WhiteDiveMobile: {
     flexDirection: 'column',
   },
   ImgeViewBKG: {
-    height: '32@vs',
-    width: '32@vs',
+    height: '30@vs',
+    width: '30@vs',
     backgroundColor: colors.primaryBlurColor,
     borderRadius: '99@s',
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
+    marginHorizontal:"5@s"
   },
   CurrencyImage: {
     height: '20@vs',
@@ -87,9 +90,9 @@ const styles = ScaledSheet.create({
   },
   One: {
     backgroundColor: colors.textWhite,
-    width: '23%',
+    width: '24%',
     elevation: 2,
-    borderRadius: 5,
+    borderRadius: "5@s",
     marginVertical: 15,
     padding: '1@s',
   },
@@ -101,6 +104,7 @@ const styles = ScaledSheet.create({
     margin: '5@s',
     borderRadius: '8@s',
     paddingHorizontal: '5@s',
+    alignItems:"flex-start"
   },
   DollorSign: {
     justifyContent: 'center',
@@ -245,16 +249,16 @@ const styles = ScaledSheet.create({
     marginTop: '10@s',
   },
   GraphButtonText: {
-    fontFamily: 'Poppins-Medium',
+    fontFamily: fonts.PoppinsMedium,
     fontSize: '10@vs',
     textAlignVertical: 'center',
     color: colors.primary,
   },
   GraphButton: {
-    backgroundColor: colors.blurPrimary,
+    backgroundColor: colors.Primary20,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5,
+    borderRadius: '5@s',
     paddingHorizontal: '7@s',
     paddingVertical: '5@s',
     flexDirection: 'row',
@@ -273,5 +277,12 @@ const styles = ScaledSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
   },
+  renewItem:{
+    fontSize:"10@vs",
+    color:colors.primary,
+    fontFamily:fonts.LatoRegular,
+    marginLeft:"6@s"
+  }
+  
 });
 export default styles;

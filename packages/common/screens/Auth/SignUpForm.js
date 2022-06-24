@@ -14,6 +14,7 @@ import ThirdPage from "./SignUpFormPages/ThirdPage";
 import { useTranslation } from "react-i18next";
 
 import IsTablet from "../../components/native/IsTablet";
+import { verticalScale } from "react-native-size-matters";
 const SignUpForm = ({ navigation }) => {
   const { t } = useTranslation();
   const ref = useRef(null);
@@ -64,27 +65,33 @@ const SignUpForm = ({ navigation }) => {
       <View
         style={!isTab ? styles.headerContainerMobile : styles.headerContainer}
       >
-        <Header
-          label={!isTab ? t("basicInfo") : t("Basic_information")}
-          textStyle={styles.headerText}
-          textStyleInActive={styles.headerTextInactive}
-          page={0}
-          active={page}
-        />
-        <Header
-          label={!IsTablet ? t("location_info") : t("Location_info")}
-          textStyleInActive={styles.headerTextInactive}
-          textStyle={styles.headerText}
-          page={1}
-          active={page}
-        />
-        <Header
-          label={t("moreDetail")}
-          textStyleInActive={styles.headerTextInactive}
-          textStyle={styles.headerText}
-          page={2}
-          active={page}
-        />
+        <View style={{ width: "32%" }}>
+          <Header
+            label={!isTab ? t("basicInfo") : t("Basic_information")}
+            textStyle={styles.headerText}
+            textStyleInActive={styles.headerTextInactive}
+            page={0}
+            active={page}
+          />
+        </View>
+        <View style={{ width: "32%" }}>
+          <Header
+            label={!IsTablet ? t("location_info") : t("Location_info")}
+            textStyleInActive={styles.headerTextInactive}
+            textStyle={styles.headerText}
+            page={1}
+            active={page}
+          />
+        </View>
+        <View style={{ width: "32%" }}>
+          <Header
+            label={t("moreDetail")}
+            textStyleInActive={styles.headerTextInactive}
+            textStyle={styles.headerText}
+            page={2}
+            active={page}
+          />
+        </View>
       </View>
 
       <PagerView
@@ -122,13 +129,21 @@ const SignUpForm = ({ navigation }) => {
             <CustomText label={t("back")} textStyle={styles.backText} />
           </TouchableOpacity>
         )}
-        <AuthButton
-          name={page == 2 ? t("Submit") : t("Next_step")}
-          buttonStyling={
-            !IsTablet ? styles.formButtonMobile : styles.formButton
-          }
-          onPress={moveForward}
-        />
+        <View
+          style={{
+            width: "40%",
+            marginRight: verticalScale(!IsTablet ? 0 : 10),
+          }}
+        >
+          <AuthButton
+            name={page == 2 ? t("Submit") : t("Next_step")}
+            buttonStyling={
+              !IsTablet ? styles.formButtonMobile : styles.formButton
+            }
+            onPress={moveForward}
+          />
+          <View style={{ height: verticalScale(10) }} />
+        </View>
       </View>
     </>
   );

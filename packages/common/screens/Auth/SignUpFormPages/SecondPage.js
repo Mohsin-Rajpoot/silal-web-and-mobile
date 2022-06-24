@@ -112,6 +112,7 @@ const SecondPage = () => {
               alignItems: "center",
               justifyContent: "space-between",
               width: !IsTablet ? "100%" : "65%",
+     
             }}
           >
             <View
@@ -141,7 +142,7 @@ const SecondPage = () => {
                   style={
                     !IsTablet
                       ? styles.dropDownStyleMoBile
-                      : styles.dropDownStyle12
+                      : styles.dropDownStyle13
                   }
                   placeholderStyle={styles.dropDownPlaceHolder}
                   dropDownContainerStyle={styles.dropdownContainer}
@@ -176,7 +177,7 @@ const SecondPage = () => {
                   style={
                     !IsTablet
                       ? styles.dropDownStyleMoBile
-                      : styles.dropDownStyle12
+                      : styles.dropDownStyle13
                   }
                   placeholderStyle={styles.dropDownPlaceHolder}
                   dropDownContainerStyle={styles.dropdownContainer}
@@ -209,7 +210,7 @@ const SecondPage = () => {
                 style={
                   !IsTablet
                     ? styles.dropDownStyleMoBile
-                    : styles.dropDownStyle12
+                    : styles.dropDownStyle13
                 }
                 placeholderStyle={styles.dropDownPlaceHolder}
                 dropDownContainerStyle={styles.dropdownContainer}

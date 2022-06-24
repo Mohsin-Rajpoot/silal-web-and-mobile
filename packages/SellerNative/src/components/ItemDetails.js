@@ -20,6 +20,7 @@ const ItemDetails = ({
   imgContainer,
   payment,
   marginBottom,
+  onPress,
 }) => {
   const {t} = useTranslation();
   const navigation = useNavigation();
@@ -37,25 +38,25 @@ const ItemDetails = ({
     {
       id: 2,
       dt: t('Category'),
-      dd: "Man's T-shirt",
+      dd: 'Clothing',
       bgColor: colors.background,
     },
     {
       id: 3,
       dt: t('Quantity'),
-      dd: "Man's T-shirt",
+      dd: '0',
       bgColor: colors.background,
     },
     {
       id: 4,
       dt: t('Variant'),
-      dd: "Man's T-shirt",
+      dd: '2 (Size, Color)',
       bgColor: colors.background,
     },
     {
       id: 5,
       dt: t('price'),
-      dd: "Man's T-shirt",
+      dd: '$ 120.00',
       bgColor: colors.background,
     },
   ];
@@ -92,15 +93,7 @@ const ItemDetails = ({
     },
   ];
   return (
-    <TouchableOpacity
-      activeOpacity={0.6}
-      onPress={() =>
-        navigation.navigate('OrderStack', {screen: 'FullOrderDetail'})
-      }
-      style={[
-        styles.mainContainer,
-        {marginBottom: marginBottom || verticalScale(8)},
-      ]}>
+    <>
       <View
         style={{
           flexDirection: 'row',
@@ -133,55 +126,66 @@ const ItemDetails = ({
         />
       </View>
       <View style={styles.bottomLine} />
-      {imgContainer ? (
-        <View />
-      ) : (
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-          <View style={styles.imageContainer}>
-            <Image
-              style={styles.image}
-              source={require('../Assets/image8.png')}
-            />
-          </View>
-          <View style={styles.outOfstackContainer}>
-            <CustomText
-              label={t('out_of_stock_item')}
-              textStyle={styles.outOfstack}
-            />
-          </View>
-        </View>
-      )}
-      <FlatList
-        data={payment ? dataArray1 : dataArray}
-        keyExtractor={(item, index) => {}}
-        renderItem={({item}) => {
-          return (
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                backgroundColor: item.bgColor,
-                padding: verticalScale(10),
-                margin: verticalScale(5),
-                borderRadius: verticalScale(8),
-              }}>
-              <CustomText label={item.dt} textStyle={styles.itemTitle} />
-              <CustomText
-                label={item.dd}
-                color={colors.black}
-                textStyle={styles.itemTitle}
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => {
+          onPress
+            ? onPress
+            : navigation.navigate('OrderStack', {screen: 'FullOrderDetail'});
+        }}
+        style={[
+          styles.mainContainer,
+          {marginBottom: marginBottom || verticalScale(8)},
+        ]}>
+        {imgContainer ? (
+          <View />
+        ) : (
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <View style={styles.imageContainer}>
+              <Image
+                style={styles.image}
+                source={require('../Assets/image8.png')}
               />
             </View>
-          );
-        }}
-      />
-    </TouchableOpacity>
+            <View style={styles.outOfstackContainer}>
+              <CustomText
+                label={t('out_of_stock_item')}
+                textStyle={styles.outOfstack}
+              />
+            </View>
+          </View>
+        )}
+        <FlatList
+          data={payment ? dataArray1 : dataArray}
+          keyExtractor={(item, index) => {}}
+          renderItem={({item}) => {
+            return (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  backgroundColor: item.bgColor,
+                  padding: verticalScale(10),
+                  margin: verticalScale(5),
+                  borderRadius: verticalScale(8),
+                }}>
+                <CustomText label={item.dt} textStyle={styles.itemTitle} />
+                <CustomText
+                  label={item.dd}
+                  textStyle={[styles.itemTitle, {color: colors.black}]}
+                />
+              </View>
+            );
+          }}
+        />
+      </TouchableOpacity>
+    </>
   );
 };
 

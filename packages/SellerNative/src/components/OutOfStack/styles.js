@@ -1,4 +1,4 @@
-import {ScaledSheet} from 'react-native-size-matters';
+import {ScaledSheet, verticalScale} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import {
   widthPercentageToDP as wp,
@@ -211,7 +211,9 @@ const styles = ScaledSheet.create({
     marginLeft: 10,
   },
   all_orders_heading_txt: {
-    fontFamily: 'Lato-Bold',
+    fontFamily: fonts.LatoBold,
+    color: colors.black,
+    fontSize: '9@vs',
   },
   toast: {
     backgroundColor: '#FFFFFF',

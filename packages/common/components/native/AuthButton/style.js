@@ -10,7 +10,7 @@ import fonts from "../../../assets/fonts";
 const styles = ScaledSheet.create({
   button: {
     backgroundColor: colors.blurPrimary1,
-    width: wp("65%"),
+    width:"65%",
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",
@@ -19,7 +19,7 @@ const styles = ScaledSheet.create({
   },
   button1: {
     backgroundColor: colors.blurPrimary,
-    width: wp("65%"),
+    width: "65%",
     alignSelf: "center",
     alignItems: "center",
     padding: "10@s",

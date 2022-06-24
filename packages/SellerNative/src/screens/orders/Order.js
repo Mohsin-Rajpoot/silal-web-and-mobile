@@ -8,6 +8,7 @@ import {
   Dimensions,
   FlatList,
   TextInput,
+  Image,
 } from 'react-native';
 import Current_orders from './Current/Current_orders';
 import Pre_orders from './Pre_orders';
@@ -125,25 +126,12 @@ const Order = ({navigation}) => {
   // };
   const Header = () => {
     return (
-      // <View style={{ paddingVertical: 15,flex:1, flexDirection: 'row',}}>
-      //   <TouchableOpacity onPress={()=>set_order_state('current')}  style={[styles.order_button,{backgroundColor:order_state=='current'? '#5AB3A8':null,width:200}]}>
-      //     <Text style={[styles.order_button_text,{color:order_state=='current'?'white':'#4C6870'}]}>Current orders</Text>
-      //   </TouchableOpacity>
-      //   <TouchableOpacity onPress={()=>set_order_state('preorder')}  style={[styles.order_button,{backgroundColor:order_state=='preorder'? '#5AB3A8':null,width:200}]}>
-      //     <Text style={[styles.order_button_text,{color:order_state=='preorder'?'white':'#4C6870'}]}>Pre-orders <Text style={{color:'#CCD4D6',}}>(8)</Text></Text>
-      //   </TouchableOpacity>
-      //   <TouchableOpacity onPress={()=>set_order_state('archive')}  style={[styles.order_button,{backgroundColor:order_state=='archive'? '#5AB3A8':null,width:120}]}>
-      //     <Text style={[styles.order_button_text,{color:order_state=='archive'?'white':'#4C6870'}]}>Archive</Text>
-      //   </TouchableOpacity>
-      // </View>
       <View
         style={{
           paddingVertical: 5,
           flex: 1,
           flexDirection: 'row',
           alignItems: 'center',
-          // backgroundColor:'red',
-          // width:'10%'
         }}>
         <CommonTab tabs={tabs} page={page} onChangeTab={onChangeTab} />
         {IsTablet && (
@@ -255,16 +243,24 @@ const Order = ({navigation}) => {
 
   return (
     <SafeAreaView style={{backgroundColor: colors.background, flex: 1}}>
-      <View style={{flexDirection: 'row', alignItems: 'center', height: !IsTablet ? '10%' :'12%'}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          height: !IsTablet ? '8%' : '10%',
+        }}>
         <View style={{padding: 5}}>
           <TouchableOpacity
             activeOpacity={0.6}
             onPress={() => navigation.openDrawer()}>
-            <MaterialCommunityIcons
-              name="reorder-horizontal"
-              size={verticalScale(22)}
-              style={{marginLeft: 10}}
-              color={'#000000'}
+            <Image
+              source={require('../../Assets/menu-expand.png')}
+              resizeMode="contain"
+              style={{
+                width: verticalScale(28),
+                height: verticalScale(30),
+                marginRight: IsTablet ? verticalScale(5) : 0,
+              }}
             />
           </TouchableOpacity>
         </View>
@@ -274,9 +270,9 @@ const Order = ({navigation}) => {
 
       <View style={{flex: 1}}>
         <PagerView
-          style={{flex:1}}
+          style={{flex: 1}}
           initialPage={0}
-          // scrollEnabled={false}
+          scrollEnabled={false}
           ref={ref}>
           <View key={'1'}>
             <Current_orders title="Received" navigation={navigation} />
@@ -408,8 +404,7 @@ const Order = ({navigation}) => {
           style={{width: '100%'}}
           contentContainerStyle={{
             flexGrow: 1,
-          }}
-          >
+          }}>
           <View style={{width: '100%'}}>
             <TouchableOpacity
               activeOpacity={0.6}
