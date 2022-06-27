@@ -175,7 +175,7 @@ const Order = ({navigation}) => {
                 />
               </View>
             </TouchableOpacity>
-            <DaySelect
+            {/* <DaySelect
               day={t('Start_shift')}
               containerStyle={styles.shiftContainer}
               buttonSize={'large'}
@@ -183,7 +183,8 @@ const Order = ({navigation}) => {
               activelabel={t('End_shift')}
               state={activeShift}
               setState={setActiveShift}
-            />
+            /> */}
+            <CustomText label={t('Start_shift')} />
           </View>
         )}
         {/* <TouchableOpacity

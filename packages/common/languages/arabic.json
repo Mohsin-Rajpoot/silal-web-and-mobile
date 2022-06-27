@@ -554,6 +554,8 @@
     "SloganPlaceholder": "What’s a slogan that describes your business?",
     "Soon":"SOON",
     "outOfStock":"Out-of-stock items",
-    "YourNotification":"Your notifications"
+    "YourNotification":"Your notifications",
+    " theOrderTost":" The order #247HW9 has been moved to Accepted",
+    " readyForPickup":" Ready for pickup"
   }
 }
