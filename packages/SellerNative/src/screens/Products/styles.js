@@ -181,15 +181,8 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     width: '100%',
     height: '100%',
-
-    // backgroundColor: 'rgba(0,0,0,0.8)'
   },
   ModeView: {
-    // height: "100%",
-    // width: '100%',
-    // backgroundColor: colors.red,
-    // borderRadius:'15@s',
-    // paddingVertical:'15@vs',
     elevation: 0.2,
     height: '90%',
   },

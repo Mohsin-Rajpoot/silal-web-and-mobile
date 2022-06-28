@@ -13,7 +13,9 @@ import Documents from '../screens/Documents';
 import Offers from '../screens/offers/Offers';
 import ContactUs from '../screens/ContactUs';
 import Setting from '../screens/Setting';
-import PreOrderSettings from '../screens/Setting/molecule/PreOrderSettings'
+import PreOrderSettings from '../screens/Setting/molecule/PreOrderSettings';
+import SecurityPreferance from '../screens/Setting/molecule/SecurityPreferance';
+import EmailSettings from '../screens/Setting/molecule/EmailSettings';
 import AdminCodeScreen from '../screens/Setting/molecule/AdminCodeScreen';
 import AboutApp from '../screens/AboutApp';
 import LongerOrder from '../screens/Orders_longer/Longer_orders';
@@ -22,8 +24,8 @@ import CreateItems from '../screens/CreateItems';
 import BarCodeScane from '../screens/CreateItems/CreateITemPages/BarCodeScane';
 import CustomValue from '../screens/CreateItems/CreateITemPages/CustomValue';
 import CreateItem from '../screens/CreateItems/index';
-import BarCodeScane from '../screens/CreateItems/CreateITemPages/BarCodeScane';
-import CustomValue from '../screens/CreateItems/CreateITemPages/CustomValue'
+import NumberSettings from '../screens/Setting/molecule/NumberSettings';
+import PasswordSettings from '../screens/Setting/molecule/PasswordSettings';
 import Animated, {interpolate, useSharedValue} from 'react-native-reanimated';
 import {View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -47,6 +49,11 @@ const Screens = ({navigation, style}) => {
         <Stack.Screen name="ContactUs" component={ContactUs} />
         <Stack.Screen name="Setting" component={Setting} />
         <Stack.Screen name="PreOrderSettings" component={PreOrderSettings} />
+        <Stack.Screen name="SecurityPreferance" component={SecurityPreferance}/>
+        <Stack.Screen name="EmailSettings" component={EmailSettings}/>
+        <Stack.Screen name="PasswordSettings" component={PasswordSettings}/>
+        <Stack.Screen name="NumberSettings" component={NumberSettings}/>
+
         <Stack.Screen name="AdminCodeScreen" component={AdminCodeScreen} />
         <Stack.Screen name="AboutApp" component={AboutApp} />
         <Stack.Screen name="longerOrder" component={LongerOrder} />
@@ -54,9 +61,6 @@ const Screens = ({navigation, style}) => {
         <Stack.Screen name="CreateItems" component={CreateItems} />
         <Stack.Screen name="BarCodeScane" component={BarCodeScane} />
         <Stack.Screen name="CustomValue" component={CustomValue} />
-
-
-        
       </Stack.Navigator>
     </Animated.View>
   );

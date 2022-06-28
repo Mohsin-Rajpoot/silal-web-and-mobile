@@ -10,9 +10,9 @@ const DropDown = (props) => {
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
   ]);
-  React.useEffect(()=>{
+  React.useEffect(() => {
     // alert(props.multiple)
-  },[])
+  }, []);
 
   return (
     <DropDownPicker
@@ -23,10 +23,9 @@ const DropDown = (props) => {
       setOpen={setOpen}
       setValue={setValue}
       setItems={setItems}
-      
       placeholder={props.placeholder}
       labelStyle={styles.textStyle}
-      listItemLabelStyle={[styles.textStyle,props.CustomtextStyle]}
+      listItemLabelStyle={[styles.textStyle, props.CustomtextStyle]}
       placeholderStyle={[
         styles.textStyle,
         {
@@ -35,16 +34,18 @@ const DropDown = (props) => {
       ]}
       dropDownContainerStyle={{
         borderColor: colors.borderColor,
-        zIndex:0
-   
+        zIndex: 0,
       }}
-      style={[{
-        borderColor: colors.borderColor,
-        borderRadius: 8,
-        height:props.height|| 62,
-        backgroundColor:props.backgroundColor,
-        borderWidth:props.borderWidth
-      },props.DropDownCustomStyle]}
+      style={[
+        {
+          borderColor: colors.borderColor,
+          borderRadius: 8,
+          height: props.height || 62,
+          backgroundColor: props.backgroundColor,
+          borderWidth: props.borderWidth,
+        },
+        props.DropDownCustomStyle,
+      ]}
       // onChangeValue={()=> se}
     />
   );
@@ -56,10 +57,8 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.LatoRegular,
     color: colors.black,
     // backgroundColor:'red',
-    zIndex:1,
+    zIndex: 1,
     // backgroundColor:'red'
-
-    
   },
 });
 export default DropDown;
