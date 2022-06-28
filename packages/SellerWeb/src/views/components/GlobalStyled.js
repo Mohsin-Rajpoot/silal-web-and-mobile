@@ -529,6 +529,12 @@ hr {
     width: 775px;
     overflow-y: auto;
 }
+
+    .pre {
+    padding: 0px 219px 20px 20px;
+    
+  }
+
 `;
 
 export default GlobalStyle;

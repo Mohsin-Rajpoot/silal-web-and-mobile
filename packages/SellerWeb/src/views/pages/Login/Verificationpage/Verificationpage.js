@@ -79,7 +79,7 @@ function Verificationpage() {
             primary={true}
             textcolor={true}
             blockitem={true}
-            to="/splash"
+            to="/choosestore"
           />
         </div>
       </div>

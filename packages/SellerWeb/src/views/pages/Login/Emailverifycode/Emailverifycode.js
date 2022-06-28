@@ -80,7 +80,7 @@ function Emailverifycode() {
             primary={true}
             textcolor={true}
             blockitem={true}
-            to="/createnewpassword"
+            to="/verification"
           />
         </div>
       </div>

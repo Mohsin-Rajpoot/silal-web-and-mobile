@@ -34,7 +34,7 @@ const Sidebar = ({ sideBar, setSideBar }) => {
 
   return (
     <>
-      <SidebarStyled className={sideBar ? "active" : ""}>
+      <SidebarStyled className={sideBar ? "active" : null}>
         {/* <Close
           className="sidebar-close"
           onClick={closeSidebar}
@@ -63,9 +63,9 @@ const Sidebar = ({ sideBar, setSideBar }) => {
         <Link
           to="/statistics"
           className={
-            pathname == "/statistics" ||
-            pathname == "/reviews" ||
-            pathname == "/out-of-stock"
+            pathname === "/statistics" ||
+            pathname === "/reviews" ||
+            pathname === "/out-of-stock"
               ? "active"
               : ""
           }
@@ -95,28 +95,28 @@ const Sidebar = ({ sideBar, setSideBar }) => {
         </Link>
         <Link
           to="/documents"
-          className={pathname == "/documents" ? "active" : ""}
+          className={pathname === "/documents" ? "active" : ""}
         >
           <DocumentIcon />
           Documents
         </Link>
         <Link
           to="/contact-us"
-          className={pathname == "/contact-us" ? "active" : ""}
+          className={pathname === "/contact-us" ? "active" : ""}
         >
           <ContactUs />
           Contact us
         </Link>
         <Link
           to="/about-us"
-          className={pathname == "/about-us" ? "active" : ""}
+          className={pathname === "/about-us" ? "active" : ""}
         >
           <AboutIcon />
           About app
         </Link>
         <Link
           to="/settings"
-          className={pathname == "/settings" ? "active" : ""}
+          className={pathname === "/settings" ? "active" : ""}
         >
           <SettingsIcon />
           Settings

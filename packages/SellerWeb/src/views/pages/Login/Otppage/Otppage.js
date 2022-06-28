@@ -86,7 +86,7 @@ function Otppage() {
             primary={true}
             textcolor={true}
             blockitem={true}
-            to="/splash"
+            to="/resetpassword"
           />
         </div>
       </div>

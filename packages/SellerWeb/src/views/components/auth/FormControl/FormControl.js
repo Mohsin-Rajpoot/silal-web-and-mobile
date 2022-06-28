@@ -5,6 +5,7 @@ import Customselect from "../Customselect/Customselect";
 import { Icon } from "@iconify/react";
 
 export default function FormControl({
+  style,
   htmlFor,
   specialLabelClassName,
   labelValue,
@@ -33,6 +34,7 @@ export default function FormControl({
       {input && (
         <Input>
           <input
+            style={style}
             type={type}
             id={htmlFor}
             value={inputValue}
@@ -51,7 +53,14 @@ export default function FormControl({
           )}
         </Input>
       )}
-      {select && <Customselect options={options} dropdownIcon={dropdownIcon} />}
+
+      {select && (
+        <Customselect
+          style={style}
+          options={options}
+          dropdownIcon={dropdownIcon}
+        />
+      )}
       {textarea && <Textarea></Textarea>}
     </Wrapper>
   );

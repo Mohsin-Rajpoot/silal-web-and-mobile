@@ -43,6 +43,9 @@ const Wrapper = styled.div`
           color: #4c6870;
         }
         .row {
+          border: 1px solid #ededed;
+          border-radius: 10px;
+          margin-top: 5px;
           display: flex;
           justify-content: center;
           align-items: center;

@@ -72,8 +72,9 @@ function Loginpage() {
             <motion.div className="form-control-mobile" animate={animate1}>
               <FormControl labelValue="Phone Number" htmlFor="PhoneNumber" />
               <div className="row">
-                <div className="col1">
+                <div className="col1 col">
                   <FormControl
+                    style={{ border: "none", padding: "5px" }}
                     select={true}
                     options={options}
                     dropdownIcon={
@@ -84,8 +85,9 @@ function Loginpage() {
                     }
                   />
                 </div>
-                <div className="col2">
+                <div className="col2 col">
                   <FormControl
+                    style={{ border: "none" }}
                     input={true}
                     inputValue={formValue}
                     type="text"
@@ -134,7 +136,7 @@ function Loginpage() {
             primary={true}
             textcolor={true}
             blockitem={true}
-            to={showNumForm ? "otp" : "verification"}
+            to={showNumForm ? "otp" : "newsplash"}
           />
         </div>
         <div className="forgot-pass-text">

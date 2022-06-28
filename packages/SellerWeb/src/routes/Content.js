@@ -20,6 +20,7 @@ const Content = ({ setSideBar, sideBar }) => {
         <Suspense fallback={loading}>
           <Switch>
             {routes.map((route, idx) => {
+              console.log(route.path);
               return (
                 route.component && (
                   <Route

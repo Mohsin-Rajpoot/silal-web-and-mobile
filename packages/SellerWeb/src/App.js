@@ -5,6 +5,9 @@ import Layout from "@SilalApp/sellerweb/src/routes/Layout";
 import { Provider } from "react-redux";
 import { store, persistor } from "./store/store";
 import { PersistGate } from "redux-persist/integration/react";
+import Statistics from "./views/pages/home/Statistics";
+import Splashpage from "./views/pages/Login/Splashpage/Splashpage";
+
 // import SecurityPrefrences from "./views/pages/settings/SecurityPrefrences";
 
 const App = () => {
@@ -13,8 +16,9 @@ const App = () => {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <GlobalStyle />
-          {/* <SecurityPrefrences/> */}
+          {/* <Statistics /> */}
           <Layout />
+          {/* <Splashpage /> */}
         </PersistGate>
       </Provider>
     </div>

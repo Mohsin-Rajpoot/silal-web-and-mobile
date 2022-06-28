@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background: #05ae4b;
-  height: 100%;
+  // height: 100%;
   .title {
     text-align: center;
     color: #ffffff;
@@ -15,6 +15,7 @@ const Wrapper = styled.div`
       border: none;
       border-radius: 30px;
       background: #ffffff;
+      margin-top: 100px;
     }
     h2 {
       font-size: 68px;

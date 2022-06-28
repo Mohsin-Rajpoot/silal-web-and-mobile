@@ -9,6 +9,7 @@ const Wrapper = styled.div`
     border-radius: 10px;
     margin-bottom: 10px;
     margin-top: 20px;
+    margin-left: 350px;
   }
   h1 {
     font-family: "Lato";

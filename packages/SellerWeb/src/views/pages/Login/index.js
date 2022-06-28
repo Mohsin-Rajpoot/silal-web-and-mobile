@@ -8,6 +8,7 @@ import Resetpass from "./Resetpassword/Resetpass";
 import Emailverifycode from "./Emailverifycode/Emailverifycode";
 import Createnewpassword from "./Createnewpassword/Createnewpassword";
 import Splashpage from "./Splashpage/Splashpage";
+import Layout from "../../../routes/Layout";
 
 function index() {
   return (

@@ -19,11 +19,11 @@ function Splashpage() {
       <div className="title">
         <div className="whitebox"></div>
         <h2>Silal</h2>
-        <p>Management</p>
+        <p>For Sellers</p>
       </div>
     </Wrapper>
   ) : (
-    <Redirect to="/statistics" />
+    <Redirect to="/splash1" />
   );
 }
 
