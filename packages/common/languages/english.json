@@ -557,6 +557,31 @@
     "outOfStock":"Out-of-stock items",
     "YourNotification":"Your notifications",
     " theOrderTost":" The order #247HW9 has been moved to Accepted",
-    " readyForPickup":" Ready for pickup"
+    " readyForPickup":" Ready for pickup",
+    "inviteWorkforce":"Invite workforce",
+
+
+
+    "addNewWorkforce":"Add new workforce",
+    "SellerID":"Seller ID:",
+    "sellerIdDetails":"Seller ID is available directly after registering through Silal or on your profile, or in the screen where you choose the business to manage",
+    "assignWorkerAs":"Assign worker as:",
+    "Admin":"Admin",
+    "Maintainer":"Maintainer",
+    "grantAccess":"Grant access",
+    "currentWorkforce":"Current workforce",
+    "sellerName":"Seller Name:",
+    "registeredBySeller":"Registered by Seller:",
+    "registeredOn":"Registered on:",
+    "Revoke":"Revoke",
+    "grantingAccess":"Granting Access",
+    "grantingAccessDetails":"Granting others user access is a way to allow them to help you manage your store, access given can be of 2 types, Admins or Maintainers:",
+    "adminsCan":"Admins can:",
+    "adminsCannot":"Admins can't:",
+    "noteFromSilal":"Note from Silal:",
+    "noteFromSilalDetail":" Please make sure that the entered seller ID is the exact one, remember, you can revoke access anytime from this page."
+
+
+    
   }
 }

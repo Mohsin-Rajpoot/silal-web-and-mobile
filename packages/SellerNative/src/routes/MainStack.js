@@ -26,6 +26,7 @@ import {View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import colors from '@SilalApp/common/assets/colors';
+import InviteWorkforce from '../screens/Setting/molecule/InviteWorkforce';
 import OfferStack from './OfferStack';
 // import ContactUs from '../screens/ContactUs';
 // import Setting from '../screens/Setting';
@@ -43,6 +44,7 @@ const Screens = ({navigation, style}) => {
         <Stack.Screen name="Offers" component={OfferStack} />
         <Stack.Screen name="ContactUs" component={ContactUs} />
         <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen name="InviteWorkforce" component={InviteWorkforce} />
         <Stack.Screen name="PreOrderSettings" component={PreOrderSettings} />
         <Stack.Screen name="AdminCodeScreen" component={AdminCodeScreen} />
         <Stack.Screen name="AboutApp" component={AboutApp} />

@@ -262,8 +262,7 @@ const Setting = ({navigation}) => {
                     </Text>
                   </View>
 
-                  <Text
-                    style={styles.ConfirmText}>
+                  <Text style={styles.ConfirmText}>
                     Are you sure you want to log out of your Silal account?
                   </Text>
 
@@ -283,10 +282,10 @@ const Setting = ({navigation}) => {
                       onPress={() => setOpenmodal(false)}
                       style={[
                         {backgroundColor: colors.blurPrimary},
-                        styles.ButtonssDeleteMobile
-                      
+                        styles.ButtonssDeleteMobile,
                       ]}>
-                      <Text style={[styles.DeleteModal, {color:colors.primary}]}>
+                      <Text
+                        style={[styles.DeleteModal, {color: colors.primary}]}>
                         Log out
                       </Text>
                     </TouchableOpacity>
@@ -355,7 +354,67 @@ const Setting = ({navigation}) => {
                 </View>
               </TouchableOpacity>
             )}
-           
+
+            {!IsTablet ? (
+              <TouchableOpacity
+                activeOpacity={0.6}
+                onPress={() => navigation.navigate('InviteWorkforce')}>
+                <View
+                  style={
+                    IsTablet
+                      ? styles.langaugeContainer
+                      : styles.langaugeContainerMobile
+                  }>
+                  <CustomText
+                    label={t('inviteWorkforce')}
+                    textStyle={styles.logoutText}
+                  />
+                  <TextWithIcon
+                    textStyle={styles.langaugeTet}
+                    label={
+                      active == 0
+                        ? t('English')
+                        : active == 1
+                        ? t('Arabic')
+                        : active == 2
+                        ? t('hebrew')
+                        : null
+                    }
+                    customStyle={styles.languageChildren}
+                  />
+                </View>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                activeOpacity={0.6}
+                onPress={() => navigation.navigate('InviteWorkforce')}>
+                <View
+                  style={
+                    IsTablet
+                      ? styles.langaugeContainer
+                      : styles.langaugeContainerMobile
+                  }>
+                  <CustomText
+                    label={t('inviteWorkforce')}
+                    textStyle={styles.logoutText}
+                  />
+                  <TextWithIcon
+                    textStyle={styles.langaugeTet}
+                    label={
+                      active == 0
+                        ? t('English')
+                        : active == 1
+                        ? t('Arabic')
+                        : active == 2
+                        ? t('hebrew')
+                        : null
+                    }
+                    customStyle={styles.languageChildren}
+                  />
+                </View>
+              </TouchableOpacity>
+            )}
+
             {IsTablet ? (
               <TouchableOpacity
                 activeOpacity={0.6}
@@ -375,7 +434,8 @@ const Setting = ({navigation}) => {
             ) : (
               <TouchableOpacity
                 activeOpacity={0.6}
-                onPress={() => setOpenmodal(!Openmodal)}>
+                // onPress={() => setOpenmodal(!Openmodal)}
+              >
                 <View
                   style={
                     IsTablet
@@ -503,16 +563,18 @@ const Setting = ({navigation}) => {
         <ConfirmationModal
           isModalVisible={isVisible}
           setModalVisible={setVisible}
-          modalWrapperStyle={IsTablet ? styles.DeleteMoadalContainer : styles.DeleteMoadalContainerMobile  }
-        
+          modalWrapperStyle={
+            IsTablet
+              ? styles.DeleteMoadalContainer
+              : styles.DeleteMoadalContainerMobile
+          }
           detail={'This action is irrevocable. You can’t restore your account.'}
           Active="Yes, delete"
         />
         <ConfirmationModal
           isModalVisible={isVisibleLogout}
           setModalVisible={setVisibleLogout}
-          modalWrapperStyle={styles.DeleteAccount
-          }
+          modalWrapperStyle={styles.DeleteAccount}
           logoutDetail="Log out from Silal Seller?"
           detail={'Are you sure you want to log out of your Silal account?'}
           Active={t('Logout')}
@@ -891,7 +953,7 @@ const styles = ScaledSheet.create({
     // alignSelf: 'center',
     paddingVertical: '20@s',
     justifyContent: 'space-evenly',
-    marginHorizontal:30
+    marginHorizontal: 30,
   },
   ButtonssDeleteMobile: {
     width: '110@s',
@@ -900,37 +962,36 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 10,
-    overflow:'hidden'
+    overflow: 'hidden',
   },
   ModalWrapperDeleteMobile: {
     marginHorizontal: width(10),
     marginVertical: height(41),
   },
-  ConfirmText:{
+  ConfirmText: {
     textAlign: 'center',
     // paddingHorizontal: 90,
-    paddingTop:'20@s',
-    color:'#4C7061',
-    fontFamily:fonts.LatoRegular
+    paddingTop: '20@s',
+    color: '#4C7061',
+    fontFamily: fonts.LatoRegular,
   },
   DeleteModal: {
     fontFamily: fonts.PoppinsSemiBold,
     fontSize: 15,
   },
-  DeleteAccount:{
-
+  DeleteAccount: {
     marginHorizontal: width(25),
     marginVertical: height(33),
     justifyContent: 'flex-start',
     borderRadius: 15,
   },
-  DeleteMoadalContainer:{
+  DeleteMoadalContainer: {
     marginHorizontal: width(20),
     marginVertical: height(33),
     justifyContent: 'flex-start',
     borderRadius: 15,
   },
-  DeleteMoadalContainerMobile:{
+  DeleteMoadalContainerMobile: {
     marginHorizontal: width(5),
     marginVertical: height(39.5),
     justifyContent: 'flex-start',
