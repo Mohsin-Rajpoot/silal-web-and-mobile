@@ -19,28 +19,30 @@ function SellerWork({ id, name, register, date }) {
           <p>Registred on: {date}</p>
           <Row>
             <Col lg={6}>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                />
-                <label class="form-check-label" for="flexRadioDefault1">
-                  Admin
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                  checked
-                />
-                <label class="form-check-label" for="flexRadioDefault2">
-                  Maintainer
-                </label>
+              <div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Admin
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault2"
+                    checked
+                  />
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Maintainer
+                  </label>
+                </div>
               </div>
             </Col>
             <Col lg={6}>

@@ -105,8 +105,8 @@ const Wrapper = styled.div`
     width: 232px;
     height: 170px;
     background: #cdefdb;
-    border: 1px solid #05ae4b;
     border-radius: 10px;
+    cursor: pointer;
   }
 
   .store2 {
@@ -114,6 +114,7 @@ const Wrapper = styled.div`
     height: 170px;
     background: rgba(4, 26, 33, 0.3);
     border-radius: 11px;
+    cursor: pointer;
   }
   .img1 {
     padding: 22px;
@@ -130,12 +131,19 @@ const Wrapper = styled.div`
   .store2 {
     margin: 10px;
   }
+  .store1:hover {
+    border: 1px solid #05ae4b;
+  }
+  .store2:hover {
+    border: 1px solid #05ae4b;
+  }
   .box {
     box-sizing: border-box;
     padding-top: 25px;
     background: #ffffff;
     border: 1px solid rgba(205, 205, 208, 0.5);
     border-radius: 10px;
+    cursor: pointer;
   }
   .img3 {
     border-radius: 50%;

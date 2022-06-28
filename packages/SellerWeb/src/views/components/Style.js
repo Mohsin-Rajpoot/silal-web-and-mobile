@@ -869,6 +869,10 @@ const SecurityPrefrence = styled.div`
   .display {
     justify-content: space-between;
   }
+  .form-check-input:checked {
+    background-color: #05ae4b;
+    // border-color: pink;
+  }
 
   h1 {
     font-family: "Poppins";
@@ -1005,6 +1009,10 @@ const SellerIdStyle = styled.div`
   background: #ffffff;
   border-radius: 5px;
   padding: 25px;
+  .form-check-input:checked {
+    background-color: #05ae4b;
+    // border-color: pink;
+  }
   .text {
     font-weight: 500;
     font-size: 15px;
@@ -1031,6 +1039,10 @@ const SellerWorkStyle = styled.div`
   border-radius: 5px;
   padding: 15px;
   margin-top: 15px;
+  .form-check-input:checked {
+    background-color: #05ae4b;
+    // border-color: pink;
+  }
   .content {
     padding-left: 23px;
     font-weight: 500;

@@ -90,9 +90,9 @@ function SellerId() {
             </div>
             <div className="card">
               <p className="cardText">
-                <span className="colored"> Note from Silal: </span>Please make sure that the entered
-                seller ID is the exact one, remember, you can revoke access
-                anytime from this page.
+                <span className="colored"> Note from Silal: </span>Please make
+                sure that the entered seller ID is the exact one, remember, you
+                can revoke access anytime from this page.
               </p>
             </div>
           </Modal.Body>

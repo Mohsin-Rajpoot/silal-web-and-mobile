@@ -102,11 +102,7 @@ function SecurityPrefrences({ back }) {
             <SettingBtn className="between">
               Require E-mail code for MFA
               <Form>
-                <Form.Check
-                  type="switch"
-                  id="custom-switch"
-                  variant="success"
-                />
+                <Form.Check type="switch" id="custom-switch" variant="danger" />
               </Form>
             </SettingBtn>
 
@@ -115,6 +111,7 @@ function SecurityPrefrences({ back }) {
               <Form className="formI">
                 <Form.Check
                   type="switch"
+                  // className="form-check-input"
                   id="custom-switch"
                   variant="success"
                 />

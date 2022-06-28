@@ -80,6 +80,13 @@ function Loginpage() {
         <Link to="/otp">
           <Button className="btn3 next">Next</Button>
         </Link>
+        <div>
+          <h6>
+            By signing up, you agree to the{" "}
+            <span className="colored">Terms of Service</span> and
+            <span className="colored"> Privacy Policy </span>
+          </h6>
+        </div>
       </div>
     </Wrapper>
   );
@@ -169,5 +176,16 @@ const Wrapper = styled.div`
     margin: 5px;
     width: 80%;
     margin-top: 300px;
+  }
+  h6{
+    margin:5px;
+font-weight: 500;
+font-size: 15px;
+color: #4C7061;
+  }
+  .colored{
+font-weight: 500;
+
+    color:#05AE4B;
   }
 `;

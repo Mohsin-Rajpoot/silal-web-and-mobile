@@ -41,17 +41,17 @@ const Nav = ({ sideBar, setSideBar }) => {
         </div>
         <div className="d-flex">
           <Link
-            to="/"
+            // to="/"
             className={`nav-link-btn active ${
-              location.pathname == "/current-order" ? "active" : ""
+              location.pathname === "/current-order" ? "active" : ""
             }`}
           >
             Current
           </Link>
           <Link
-            to="/"
+            // to="/"
             className={`nav-link-btn ${
-              location.pathname == "/archive-order" ? "active" : ""
+              location.pathname === "/archive-order" ? "active" : ""
             }`}
           >
             Past
