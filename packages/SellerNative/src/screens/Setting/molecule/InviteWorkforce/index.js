@@ -69,12 +69,13 @@ const InviteWorkforce = ({navigation}) => {
         <GrantAccessComp grantPress={() => setGrantModal(true)} />
 
         <View style={{width: IsTablet ? '45%' : '100%'}}>
+          <View style={{height: verticalScale(!IsTablet ? 10 : 0)}} />
           <CustomText
             label={t('currentWorkforce')}
             fontSize={!IsTablet ? 14 : 13}
             fontFamily={!IsTablet ? fonts.LatoBold : fonts.bold}
             color={colors.black}
-            textStyle={{bottom: 35}}
+            textStyle={{bottom: !IsTablet ? 15 : 35}}
           />
 
           {currentWorkArray.map((item, index) => {

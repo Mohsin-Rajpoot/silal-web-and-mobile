@@ -242,6 +242,7 @@ const OnBoarding = ({ navigation }) => {
                           onPress={goToLogin}
                           isTab={isTab}
                         />
+                        
                       </View>
                     </>
                   ) : (
@@ -251,8 +252,11 @@ const OnBoarding = ({ navigation }) => {
               )}
             />
           </View>
+        
         </View>
+          <View style={{height:verticalScale(10)}}/>
       </ScrollView>
+     
     </SafeAreaView>
   );
 };
