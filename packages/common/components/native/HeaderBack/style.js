@@ -33,5 +33,10 @@ const styles = ScaledSheet.create({
     color: colors.black,
     margin: "5@s",
   },
+  headerText:{
+    fontSize:'14@vs',
+    fontFamily:fonts.LatoBold,
+    color:colors.black
+  }
 });
 export default styles;

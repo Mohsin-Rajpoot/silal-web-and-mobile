@@ -92,7 +92,7 @@ const Login = ({ navigation, route }) => {
                 }}
                 value={text.email}
                 isTab={isTab}
-                inputStyle={{borderRadius:verticalScale(8)}}
+                inputStyle={{ borderRadius: verticalScale(8) }}
               />
               {/* {text.error ? (
                 <Text style={styles.errorMessage}>{text.error}</Text>
@@ -107,7 +107,7 @@ const Login = ({ navigation, route }) => {
                 onChangeText={(value) => setText({ ...text, password: value })}
                 value={text.password}
                 isTab={isTab}
-                inputStyle={{borderRadius:verticalScale(8)}}
+                inputStyle={{ borderRadius: verticalScale(8) }}
               />
               {active == 2 ? (
                 <View />
@@ -125,7 +125,7 @@ const Login = ({ navigation, route }) => {
                     }
                     value={text.password}
                     isTab={isTab}
-                    inputStyle={{borderRadius:verticalScale(8)}}
+                    inputStyle={{ borderRadius: verticalScale(8) }}
                   />
                 </>
               )}

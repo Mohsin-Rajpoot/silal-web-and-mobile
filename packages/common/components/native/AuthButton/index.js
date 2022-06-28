@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./style";
 import DeviceInfo from "react-native-device-info";
-const Button = ({ name, onPress, changeColor, buttonStyling }) => {
+const Button = ({ name, onPress, changeColor, buttonStyling ,textStyle}) => {
   const isTab = DeviceInfo.isTablet();
   return (
     <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
@@ -17,7 +17,7 @@ const Button = ({ name, onPress, changeColor, buttonStyling }) => {
             : styles.button,
         ]}
       >
-        <Text style={[changeColor ? styles.buttonText1 : styles.buttonText]}>
+        <Text style={[changeColor ? styles.buttonText1 : styles.buttonText,textStyle]}>
           {name}
         </Text>
       </View>

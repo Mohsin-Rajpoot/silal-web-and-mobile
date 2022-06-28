@@ -85,9 +85,9 @@ const OnBoarding = ({ navigation }) => {
                   >
                     <View style={styles.backIcon}>
                       <Icon
-                        name="chevron-back-sharp"
-                        type="ionicon"
-                        size={24}
+                        name="chevron-left"
+                        type="entypo"
+                        size={verticalScale(22)}
                         color={colors.primary}
                       />
                     </View>
@@ -122,7 +122,7 @@ const OnBoarding = ({ navigation }) => {
               }
               renderItem={({ item, index }) => (
                 <View style={styles.screenContainer}>
-                  <View style={{ height: "15%" }} />
+                  <View style={{ height: verticalScale(70) }} />
                   <View
                     style={!isTab ? styles.imageViewMobile : styles.imageView}
                   />
@@ -139,7 +139,6 @@ const OnBoarding = ({ navigation }) => {
                       {item?.heading}
                     </Text>
                     <Text style={!isTab ? styles.bodyMobile : styles.body}>
-                      {" "}
                       {item?.body}
                     </Text>
                   </View>
@@ -147,11 +146,11 @@ const OnBoarding = ({ navigation }) => {
                     <>
                       <View style={{ flex: 1 }} />
                       <AuthButton
+                        textStyle={{ fontSize: verticalScale(14) }}
                         buttonStyling={styles.letsGoButton}
                         name={t("letsGo")}
                         onPress={() => setPage(3)}
                         isTab={isTab}
-                        s
                       />
                     </>
                   ) : (
@@ -159,6 +158,7 @@ const OnBoarding = ({ navigation }) => {
                   )}
                   {page == 3 ? (
                     <>
+                      <View style={{ height: verticalScale(10) }} />
                       <View
                         style={{
                           width: !isTab ? "90%" : "65%",
@@ -210,7 +210,7 @@ const OnBoarding = ({ navigation }) => {
                           }}
                         />
                       </View>
-                      <View style={{ height: verticalScale(80) }} />
+                      <View style={{ height: verticalScale(50) }} />
                       <View
                         style={{
                           flex: 0.6,
@@ -219,16 +219,23 @@ const OnBoarding = ({ navigation }) => {
                         }}
                       >
                         <AuthButton
+                          textStyle={{ fontSize: verticalScale(14) }}
                           buttonStyling={
-                            !isTab ? styles.buttonMobile : styles.button
+                            !isTab ? styles.letsGoButton : styles.button
                           }
                           name={t("signup")}
                           onPress={goToSignUp}
                           isTab={isTab}
                         />
                         <AuthButton
+                          textStyle={{ fontSize: verticalScale(14) }}
                           buttonStyling={
-                            !isTab ? styles.button1Mobile : styles.button1
+                            !isTab
+                              ? [
+                                  styles.letsGoButton,
+                                  { backgroundColor: colors.blurPrimary },
+                                ]
+                              : styles.button1
                           }
                           name={t("login")}
                           changeColor={true}

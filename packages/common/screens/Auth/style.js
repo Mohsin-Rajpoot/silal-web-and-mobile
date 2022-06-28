@@ -276,11 +276,10 @@ const styles = ScaledSheet.create({
     margin: "5@ms",
   },
   headingMobile: {
-    fontSize: "18@vs",
+    fontSize: "20@vs",
     color: colors.black,
     fontFamily: fonts.bold,
     textAlign: "center",
-    margin: "5@ms",
   },
   body: {
     fontSize: "12@ms",
@@ -291,11 +290,12 @@ const styles = ScaledSheet.create({
     lineHeight: "15@s",
   },
   bodyMobile: {
-    fontSize: "12@ms",
+    fontSize: "14@vs",
     color: colors.textPrimeColor,
     textAlign: "center",
     fontFamily: fonts.LatoRegular,
-    marginHorizontal: "5@s",
+    marginHorizontal: "15@s",
+    lineHeight:24
   },
   imageView: {
     width: "110@vs",
@@ -307,11 +307,12 @@ const styles = ScaledSheet.create({
   },
   imageViewMobile: {
     width: "70%",
-    height: "34%",
+    height: "35%",
     backgroundColor: colors.primary,
     alignSelf: "center",
     justifyContent: "center",
     borderRadius: "10@vs",
+    marginBottom:'40@vs'
   },
   onBoardingDetailconatiner: {
     width: wp("58%"),
@@ -868,19 +869,22 @@ const styles = ScaledSheet.create({
   },
   backIcon: {
     backgroundColor: colors.blurPrimary,
-    padding: "3@s",
-    marginHorizontal: "10@s",
+    marginLeft: "10@s",
     borderRadius: "4@s",
+    width: '30@vs',
+    height: '30@vs',
+    justifyContent:'center',
+    alignItems:'center'
   },
   letsGoButton: {
     backgroundColor: colors.primary,
     width: wp("90%"),
-    alignSelf: "center",
+    height: '50@vs',
+    borderRadius: "10@vs",
     alignItems: "center",
-    padding: "10@s",
-    borderRadius: "8@s",
-    margin: "5@s",
-    marginBottom: "20@s",
+    justifyContent:'center',
+    marginBottom:'10@vs',
+    alignSelf:'center'
   },
   buttonMobile: {
     backgroundColor: colors.primary,

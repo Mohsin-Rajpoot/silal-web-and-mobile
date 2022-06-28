@@ -180,7 +180,7 @@ const styles = ScaledSheet.create({
   },
   btn: {
     width: '35%',
-    height: '23@vs',
+    height: '25@vs',
     borderRadius: '5@vs',
     backgroundColor: colors.red10,
     padding:0
