@@ -5,7 +5,7 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import {Icon} from 'react-native-elements';
 import colors from '@SilalApp/common/assets/colors';
 import fonts from '@SilalApp/common/assets/fonts';
-
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const SettingHeader = ({title, backPress}) => {
   return (
     <View style={styles.mainContainer}>
@@ -30,5 +30,8 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    width: IsTablet ? '20%' : '100%',
+    marginTop: !IsTablet ? 0 : '10@s',
+    
   },
 });

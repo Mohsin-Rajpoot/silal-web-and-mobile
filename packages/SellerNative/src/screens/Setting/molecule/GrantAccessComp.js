@@ -7,14 +7,22 @@ import fonts from '@SilalApp/common/assets/fonts';
 import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
 import {useTranslation} from 'react-i18next';
 import {Icon} from 'react-native-elements';
-
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const GrantAccessComp = ({grantPress}) => {
   const {t} = useTranslation();
   const [checkBox, setCheckBox] = useState(false);
   const [checkBox1, setCheckBox1] = useState(true);
 
   return (
-    <View style={styles.mainContainer}>
+    <View
+      style={[
+        styles.mainContainer,
+        {
+          width: IsTablet ? '48%' : '100%',
+          marginTop: IsTablet ? verticalScale(20) : 0,
+          height: IsTablet ? verticalScale(300) : verticalScale(300),
+        },
+      ]}>
       <CustomText
         fontSize={15}
         color={colors.black}
