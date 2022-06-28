@@ -1,7 +1,7 @@
 import {View, ScrollView, Text} from 'react-native';
 import React, {useState} from 'react';
 import CustomText from '@SilalApp/common/components/CustomText';
-import {ScaledSheet, verticalScale} from 'react-native-size-matters';
+import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
 import SettingHeader from '../SettingHeader';
 import {useTranslation} from 'react-i18next';
 import GrantAccessComp from '../GrantAccessComp';
@@ -26,7 +26,7 @@ const InviteWorkforce = ({navigation}) => {
       sellerName: ' Ali Muhammad',
       registerBy: ' #894230',
       registerOn: ' 10/06/2022',
-      onPress: () => console.log('revoke'),
+      onPress: () => setRevokeModal(true),
     },
     {
       id: 2,
@@ -34,7 +34,7 @@ const InviteWorkforce = ({navigation}) => {
       sellerName: ' Ali Muhammad',
       registerBy: ' #894230',
       registerOn: ' 10/06/2022',
-      onPress: () => console.log('revoke'),
+      onPress: () => setRevokeModal(true),
     },
     {
       id: 3,
@@ -42,7 +42,7 @@ const InviteWorkforce = ({navigation}) => {
       sellerName: ' Ali Muhammad',
       registerBy: ' #894230',
       registerOn: ' 10/06/2022',
-      onPress: () => console.log('revoke'),
+      onPress: () => setRevokeModal(true),
     },
   ];
   const {t} = useTranslation();
@@ -194,109 +194,63 @@ const InviteWorkforce = ({navigation}) => {
             </ScrollView>
           </CustomModal>
         )}
-        {revokeModal && (
-          <CustomModal
-            isModalVisible={revokeModal}
-            setModalVisible={setRevokeModal}
-            modalWrapperStyle={{
-              marginHorizontal: width(3),
-              marginVertical: height(20),
-            }}>
-            <View style={styles.modalMainCont}>
+      </View>
+      {revokeModal && (
+        <CustomModal
+          isModalVisible={revokeModal}
+          setModalVisible={setRevokeModal}
+          modalWrapperStyle={{
+            marginHorizontal: width(IsTablet ? 25 : 3),
+            marginVertical: height(IsTablet ? 27 : 38),
+          }}>
+          <View style={styles.modalMainCont}>
+            <CustomText
+              label={t('areyouSure')}
+              fontSize={16}
+              fontFamily={fonts.bold}
+              color={colors.black}
+              marginBottom={verticalScale(5)}
+            />
+            <View style={{marginHorizontal: scale(20)}}>
               <CustomText
-                label={t('grantingAccess')}
-                marginBottom={verticalScale(8)}
-                fontSize={16}
-                fontFamily={fonts.LatoBold}
-                color={colors.black}
-              />
-              <CustomText
-                textStyle={{textAlign: 'center', lineHeight: 24}}
-                label={t('grantingAccessDetails')}
-                marginBottom={verticalScale(15)}
+                label={t('areyouSureDetail')}
+                marginBottom={verticalScale(3)}
                 fontSize={15}
                 fontFamily={fonts.LatoMedium}
                 color={colors.black}
-              />
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <CustomText
-                  fontSize={15}
-                  fontFamily={fonts.LatoMedium}
-                  color={colors.black}
-                  label={t('adminsCan')}
-                />
-                <CustomText
-                  label="att1,att1,att1,att1"
-                  fontSize={15}
-                  fontFamily={fonts.LatoMedium}
-                  color={colors.black}
-                />
-              </View>
-              <View style={{height: verticalScale(5)}} />
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <CustomText
-                  fontSize={15}
-                  fontFamily={fonts.LatoMedium}
-                  color={colors.black}
-                  label={t('adminsCannot')}
-                />
-                <CustomText
-                  label="att1,att1,att1,att1"
-                  fontSize={15}
-                  fontFamily={fonts.LatoMedium}
-                  color={colors.black}
-                />
-              </View>
-              <View style={{height: verticalScale(40)}} />
-
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <CustomText
-                  fontSize={15}
-                  fontFamily={fonts.LatoMedium}
-                  color={colors.black}
-                  label={t('adminsCan')}
-                />
-                <CustomText
-                  label="att1,att1,att1,att1"
-                  fontSize={15}
-                  fontFamily={fonts.LatoMedium}
-                  color={colors.black}
-                />
-              </View>
-              <View style={{height: verticalScale(5)}} />
-
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <CustomText
-                  fontSize={15}
-                  fontFamily={fonts.LatoMedium}
-                  color={colors.black}
-                  label={t('adminsCannot')}
-                />
-                <CustomText
-                  label="att1,att1,att1,att1"
-                  fontSize={15}
-                  fontFamily={fonts.LatoMedium}
-                  color={colors.black}
-                />
-              </View>
-              <View style={styles.noteContainer}>
-                <Text style={[styles.noteText]}>
-                  {t('noteFromSilal')}
-                  <Text style={{color: colors.mehndi50}}>
-                    {t('noteFromSilalDetail')}
-                  </Text>
-                </Text>
-              </View>
-              <CustomButton
-                onPress={() => setGrantModal(false)}
-                textStyle={{fontSize: verticalScale(15)}}
-                text={t('Ok')}
-                containerStyle={styles.okBtn}
+                textStyle={{textAlign: 'center', lineHeight: 24}}
               />
             </View>
-          </CustomModal>
-        )}
-      </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}>
+              <View style={{width: '48%'}}>
+                <CustomButton
+                  onPress={() => setRevokeModal(false)}
+                  textStyle={{fontSize: verticalScale(13)}}
+                  text={t('Cancel')}
+                  containerStyle={styles.cancelBtn}
+                />
+              </View>
+              <View style={{width: '48%'}}>
+                <CustomButton
+                  onPress={() => setRevokeModal(false)}
+                  textStyle={{fontSize: verticalScale(13), color: colors.red10}}
+                  text={t('yes')}
+                  containerStyle={[
+                    styles.cancelBtn,
+                    {backgroundColor: colors.redLight},
+                  ]}
+                />
+              </View>
+            </View>
+          </View>
+        </CustomModal>
+      )}
     </ScrollView>
   );
 };
@@ -339,5 +293,11 @@ const styles = ScaledSheet.create({
     width: '100%',
     height: '40@vs',
     marginTop: '8@vs',
+  },
+  cancelBtn: {
+    width: '100%',
+    height: '40@vs',
+    borderRadius: '10@vs',
+    marginTop: '15@vs',
   },
 });
