@@ -14,7 +14,8 @@ import {
   heightPercentageToDP as height,
 } from 'react-native-responsive-screen';
 import {CustomButton} from '@SilalApp/common/components/native';
-
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import Header from '../../../Profile/moleclues/Header';
 const InviteWorkforce = ({navigation}) => {
   const [grantModal, setGrantModal] = useState(false);
   const [revokeModal, setRevokeModal] = useState(false);
@@ -47,141 +48,160 @@ const InviteWorkforce = ({navigation}) => {
   const {t} = useTranslation();
 
   return (
-    <ScrollView style={styles.mainContainer}>
+    <ScrollView contentContainerStyle={[{flexGrow: 1}, styles.mainContainer]}>
+      {IsTablet ? (
+        <Header label={t('Setting')} onPress={() => navigation.openDrawer()} />
+      ) : (
+        <View />
+      )}
+
       <SettingHeader
         backPress={() => navigation.goBack()}
         title={t('addNewWorkforce')}
       />
-      <View style={{height: verticalScale(15)}} />
-      <GrantAccessComp grantPress={() => setGrantModal(true)} />
-      <CustomText
-        label={t('currentWorkforce')}
-        fontSize={14}
-        fontFamily={fonts.LatoBold}
-        color={colors.black}
-        marginBottom={verticalScale(10)}
-      />
-      {currentWorkArray.map((item, index) => {
-        return (
-          <CurrentWorkforceCompo
-            key={item.id}
-            sellerId={item.sellerId}
-            sellerName={item.sellerName}
-            registerBy={item.registerBy}
-            registerOn={item.registerOn}
-            revokePress={item.onPress}
+
+      <View
+        style={{
+          flex: 1,
+          flexDirection: !IsTablet ? 'column' : 'row',
+          justifyContent: 'space-between',
+        }}>
+        <GrantAccessComp grantPress={() => setGrantModal(true)} />
+
+        <View style={{width: IsTablet ? '45%' : '100%'}}>
+          <CustomText
+            label={t('currentWorkforce')}
+            fontSize={!IsTablet ? 14 : 13}
+            fontFamily={!IsTablet ? fonts.LatoBold : fonts.bold}
+            color={colors.black}
+            textStyle={{bottom: 35}}
           />
-        );
-      })}
-      {grantModal && (
-        <CustomModal
-          isModalVisible={grantModal}
-          setModalVisible={setGrantModal}
-          modalWrapperStyle={{
-            marginHorizontal: width(3),
-            marginVertical: height(20),
-          }}>
-          <View style={styles.modalMainCont}>
-            <CustomText
-              label={t('grantingAccess')}
-              marginBottom={verticalScale(8)}
-              fontSize={16}
-              fontFamily={fonts.LatoBold}
-              color={colors.black}
-            />
-            <CustomText
-              textStyle={{textAlign: 'center', lineHeight: 24}}
-              label={t('grantingAccessDetails')}
-              marginBottom={verticalScale(15)}
-              fontSize={15}
-              fontFamily={fonts.LatoMedium}
-              color={colors.black}
-            />
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <CustomText
-                fontSize={15}
-                fontFamily={fonts.LatoMedium}
-                color={colors.black}
-                label={t('adminsCan')}
-              />
-              <CustomText
-                label="att1,att1,att1,att1"
-                fontSize={15}
-                fontFamily={fonts.LatoMedium}
-                color={colors.black}
-              />
-            </View>
-            <View style={{height: verticalScale(5)}} />
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <CustomText
-                fontSize={15}
-                fontFamily={fonts.LatoMedium}
-                color={colors.black}
-                label={t('adminsCannot')}
-              />
-              <CustomText
-                label="att1,att1,att1,att1"
-                fontSize={15}
-                fontFamily={fonts.LatoMedium}
-                color={colors.black}
-              />
-            </View>
-            <View style={{height: verticalScale(40)}} />
 
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <CustomText
-                fontSize={15}
-                fontFamily={fonts.LatoMedium}
-                color={colors.black}
-                label={t('adminsCan')}
+          {currentWorkArray.map((item, index) => {
+            return (
+              <CurrentWorkforceCompo
+                key={item.id}
+                sellerId={item.sellerId}
+                sellerName={item.sellerName}
+                registerBy={item.registerBy}
+                registerOn={item.registerOn}
+                revokePress={item.onPress}
               />
-              <CustomText
-                label="att1,att1,att1,att1"
-                fontSize={15}
-                fontFamily={fonts.LatoMedium}
-                color={colors.black}
-              />
-            </View>
-            <View style={{height: verticalScale(5)}} />
+            );
+          })}
+        </View>
+        {grantModal && (
+          <CustomModal
+            isModalVisible={grantModal}
+            setModalVisible={setGrantModal}
+            modalWrapperStyle={{
+              marginHorizontal: width(!IsTablet ? 3 : 25),
+              marginVertical: height(!IsTablet ? 15 : 10),
+            }}>
+            <ScrollView contentContainerStyle={styles.modalMainCont1}>
+              <View style={styles.modalMainCont}>
+                <CustomText
+                  label={t('grantingAccess')}
+                  marginBottom={verticalScale(8)}
+                  fontSize={16}
+                  fontFamily={fonts.LatoBold}
+                  color={colors.black}
+                />
+                <CustomText
+                  textStyle={{textAlign: 'center', lineHeight: 24}}
+                  label={t('grantingAccessDetails')}
+                  marginBottom={verticalScale(15)}
+                  fontSize={15}
+                  fontFamily={fonts.LatoMedium}
+                  color={colors.black}
+                />
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <CustomText
+                    fontSize={15}
+                    fontFamily={fonts.LatoMedium}
+                    color={colors.black}
+                    label={t('adminsCan')}
+                  />
+                  <CustomText
+                    label="att1,att1,att1,att1"
+                    fontSize={15}
+                    fontFamily={fonts.LatoMedium}
+                    color={colors.black}
+                  />
+                </View>
+                <View style={{height: verticalScale(5)}} />
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <CustomText
+                    fontSize={15}
+                    fontFamily={fonts.LatoMedium}
+                    color={colors.black}
+                    label={t('adminsCannot')}
+                  />
+                  <CustomText
+                    label="att1,att1,att1,att1"
+                    fontSize={15}
+                    fontFamily={fonts.LatoMedium}
+                    color={colors.black}
+                  />
+                </View>
+                <View style={{height: verticalScale(40)}} />
 
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <CustomText
-                fontSize={15}
-                fontFamily={fonts.LatoMedium}
-                color={colors.black}
-                label={t('adminsCannot')}
-              />
-              <CustomText
-                label="att1,att1,att1,att1"
-                fontSize={15}
-                fontFamily={fonts.LatoMedium}
-                color={colors.black}
-              />
-            </View>
-            <View style={styles.noteContainer}>
-              <Text style={[styles.noteText]}>
-                {t('noteFromSilal')}
-                <Text style={{color: colors.mehndi50}}>
-                  {t('noteFromSilalDetail')}
-                </Text>
-              </Text>
-            </View>
-            <CustomButton
-              onPress={() => setGrantModal(false)}
-              textStyle={{fontSize: verticalScale(15)}}
-              text={t('Ok')}
-              containerStyle={styles.okBtn}
-            />
-          </View>
-        </CustomModal>
-      )}
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <CustomText
+                    fontSize={15}
+                    fontFamily={fonts.LatoMedium}
+                    color={colors.black}
+                    label={t('adminsCan')}
+                  />
+                  <CustomText
+                    label="att1,att1,att1,att1"
+                    fontSize={15}
+                    fontFamily={fonts.LatoMedium}
+                    color={colors.black}
+                  />
+                </View>
+                <View style={{height: verticalScale(5)}} />
+
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <CustomText
+                    fontSize={15}
+                    fontFamily={fonts.LatoMedium}
+                    color={colors.black}
+                    label={t('adminsCannot')}
+                  />
+                  <CustomText
+                    label="att1,att1,att1,att1"
+                    fontSize={15}
+                    fontFamily={fonts.LatoMedium}
+                    color={colors.black}
+                  />
+                </View>
+                <View style={styles.noteContainer}>
+                  <Text style={[styles.noteText]}>
+                    {t('noteFromSilal')}
+                    <Text style={{color: colors.mehndi50}}>
+                      {t('noteFromSilalDetail')}
+                    </Text>
+                  </Text>
+                </View>
+                <CustomButton
+                  onPress={() => setGrantModal(false)}
+                  textStyle={{fontSize: verticalScale(15)}}
+                  text={t('Ok')}
+                  containerStyle={styles.okBtn}
+                />
+              </View>
+            </ScrollView>
+          </CustomModal>
+        )}
+      </View>
       {revokeModal && (
         <CustomModal
           isModalVisible={revokeModal}
           setModalVisible={setRevokeModal}
           modalWrapperStyle={{
-            marginHorizontal: width(3),
-            marginVertical: height(38),
+            marginHorizontal: width(IsTablet ? 25 : 3),
+            marginVertical: height(IsTablet ? 27 : 38),
           }}>
           <View style={styles.modalMainCont}>
             <CustomText
@@ -210,7 +230,7 @@ const InviteWorkforce = ({navigation}) => {
               }}>
               <View style={{width: '48%'}}>
                 <CustomButton
-                  onPress={() => setGrantModal(false)}
+                  onPress={() => setRevokeModal(false)}
                   textStyle={{fontSize: verticalScale(13)}}
                   text={t('Cancel')}
                   containerStyle={styles.cancelBtn}
@@ -218,7 +238,7 @@ const InviteWorkforce = ({navigation}) => {
               </View>
               <View style={{width: '48%'}}>
                 <CustomButton
-                  onPress={() => setGrantModal(false)}
+                  onPress={() => setRevokeModal(false)}
                   textStyle={{fontSize: verticalScale(13), color: colors.red10}}
                   text={t('yes')}
                   containerStyle={[
@@ -235,18 +255,22 @@ const InviteWorkforce = ({navigation}) => {
   );
 };
 
-
 export default InviteWorkforce;
 
 const styles = ScaledSheet.create({
   mainContainer: {
     padding: '15@vs',
-    flex: 1,
     backgroundColor: colors.background,
   },
   modalMainCont: {
     width: '100%',
     height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: '5@s',
+  },
+  modalMainCont1: {
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: '5@s',
