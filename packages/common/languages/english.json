@@ -579,7 +579,10 @@
     "adminsCan":"Admins can:",
     "adminsCannot":"Admins can't:",
     "noteFromSilal":"Note from Silal:",
-    "noteFromSilalDetail":" Please make sure that the entered seller ID is the exact one, remember, you can revoke access anytime from this page."
+    "noteFromSilalDetail":" Please make sure that the entered seller ID is the exact one, remember, you can revoke access anytime from this page.",
+    "areyouSure":"Are you sure?",
+    "areyouSureDetail":"Granting access to seller #89347 will allow him to view/manage your store"
+
 
 
     
