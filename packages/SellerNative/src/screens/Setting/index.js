@@ -73,12 +73,13 @@ const Setting = ({navigation}) => {
   return (
     <>
       <SafeAreaView style={styles.mainContainer}>
+        <View style={{marginHorizontal:'2%',}}>
         <Header label={t('Setting')} onPress={() => navigation.openDrawer()} />
         {rightArrow ? (
           <View />
         ) : (
           <>
-            <View style={IsTablet ? styles.container : styles.containerMobile}>
+            <View style={IsTablet ? styles.container : [styles.containerMobile,{marginTop:'5%'}]}>
               <TextWithIcon
                 label={t('PreOrderSetting')}
                 onPress={
@@ -90,7 +91,7 @@ const Setting = ({navigation}) => {
               />
             </View>
             {!IsTablet ? (
-              <View style={!IsTablet ? styles.containerMobile : null}>
+              <View style={!IsTablet ? [styles.containerMobile,{marginTop:'5%'}] : null}>
                 <TextWithIcon
                   label={t('Admin_Code')}
                   onPress={() => navigation.navigate('AdminCodeScreen')}
@@ -273,7 +274,7 @@ const Setting = ({navigation}) => {
                         {backgroundColor: colors.primary},
                         styles.ButtonssDeleteMobile,
                       ]}>
-                      <Text style={[{color: '#fff'}, styles.DeleteModal]}>
+                      <Text style={[{color: colors.textWhite}, styles.DeleteModal]}>
                         Cancel
                       </Text>
                     </TouchableOpacity>
@@ -303,7 +304,7 @@ const Setting = ({navigation}) => {
                   style={
                     IsTablet
                       ? styles.langaugeContainer
-                      : styles.langaugeContainerMobile
+                      : [styles.langaugeContainerMobile, {marginTop:'5%'}]
                   }>
                   <CustomText
                     label={t('language')}
@@ -415,6 +416,23 @@ const Setting = ({navigation}) => {
               </TouchableOpacity>
             )}
 
+            {/* .... */}
+            <View style={IsTablet ? styles.container1: [styles.containerMobile,{marginTop:'5%'}]}>
+              <TextWithIcon
+                label={t('Securitypreferences')}
+                onPress={
+                  () => navigation.navigate('SecurityPreferance')
+                  // setRightArrow(true);
+                  // setLeftArrow(true);
+                }
+                customStyle={styles.PreOrder}
+              />
+            </View>
+           
+      
+
+            {/* ...... */}
+           
             {IsTablet ? (
               <TouchableOpacity
                 activeOpacity={0.6}
@@ -440,7 +458,7 @@ const Setting = ({navigation}) => {
                   style={
                     IsTablet
                       ? styles.logoutContainer
-                      : styles.logoutContainerMobile
+                      : [styles.logoutContainerMobile, {marginTop:'5%'}]
                   }>
                   <CustomText
                     label={t('Logout')}
@@ -450,7 +468,7 @@ const Setting = ({navigation}) => {
               </TouchableOpacity>
             )}
 
-            <View style={{width: IsTablet ? '35%' : '95%'}}>
+            <View style={{width: IsTablet ? '35%' : '95%',marginTop: !IsTablet ?'5%':null}}>
               <TouchableOpacity
                 activeOpacity={0.6}
                 onPress={() => setVisible(!isVisible)}>
@@ -580,6 +598,17 @@ const Setting = ({navigation}) => {
           Active={t('Logout')}
           onPress={() => navigation.navigate('AuthStack')}
         />
+
+
+
+
+
+
+
+
+
+
+</View>
       </SafeAreaView>
       <CustomModal
         isModalVisible={modal}
@@ -837,20 +866,21 @@ const styles = ScaledSheet.create({
   langaugeContainerMobile: {
     backgroundColor: colors.textWhite,
     width: '95%',
-    padding: '9@s',
     borderRadius: '4@s',
     marginBottom: '5@s',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginVertical: '10@s',
+    height:'35@vs',
+    paddingHorizontal:'10@s'
+   
   },
   logoutContainer: {
     backgroundColor: colors.textWhite,
     width: '35%',
     padding: '9@s',
     borderRadius: '4@s',
-    marginTop: '10@s',
+    // marginTop: '10@s',
     marginBottom: '5@s',
   },
   logoutContainerMobile: {
@@ -860,8 +890,9 @@ const styles = ScaledSheet.create({
     borderRadius: '4@s',
     // marginTop: '10@s',
     // marginBottom: '5@s',
-    marginVertical: '15@s',
-    paddingVertical: '10@s',
+    // marginVertical: '5@s',
+    // paddingVertical: '10@s',
+    height:'33@vs'
   },
   logoutText: {
     fontSize: '12@ms',
@@ -906,9 +937,14 @@ const styles = ScaledSheet.create({
     marginTop: 30,
     marginBottom: 0,
   },
+  container1: {
+    width: '35%',
+    // marginTop: 30,
+    marginBottom: 0,
+  },
   containerMobile: {
     width: '95%',
-    marginTop: 30,
+    // marginTop: 10,
     marginBottom: 0,
     flexDirection: 'row',
   },

@@ -1,20 +1,8 @@
 import React, {useRef, useState} from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  ScrollView,
-  StyleSheet,
-  Dimensions,
-  FlatList,
-} from 'react-native';
-import Modal from 'react-native-modal';
-import {Icon, Badge} from 'react-native-elements';
+import {View, Text, SafeAreaView, ScrollView, FlatList} from 'react-native';
 import colors from '@SilalApp/common/assets/colors';
 import fonts from '@SilalApp/common/assets/fonts';
 import {CustomGraph, Calender} from '@SilalApp/common/components/native';
-import {moderateScale, verticalScale} from 'react-native-size-matters';
 import {useTranslation} from 'react-i18next';
 import {ScaledSheet} from 'react-native-size-matters';
 import Header from '../components/Header';

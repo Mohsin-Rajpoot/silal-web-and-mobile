@@ -26,10 +26,8 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
   },
   Header_ViewMobile: {
-   
     flexDirection: 'column',
     marginVertical: 15,
-     
   },
   Title_Header: {
     fontFamily: fonts.bold,
@@ -183,14 +181,10 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     width: '100%',
     height: '100%',
-    // backgroundColor: 'rgba(0,0,0,0.8)'
   },
   ModeView: {
-    height: 160,
-    width: 410,
-    backgroundColor: colors.textWhite,
-    borderRadius: 5,
     elevation: 0.2,
+    height: '90%',
   },
   ModalTitle: {
     flexDirection: 'row',
@@ -198,6 +192,7 @@ const styles = ScaledSheet.create({
     paddingHorizontal: 20,
     marginTop: 10,
   },
+
   ModalTitleMobile: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -212,11 +207,12 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.PoppinsSemiBold,
   },
   ModalHeadingMobile: {
-    color: '#414342',
+    color: colors.textPrimeColor,
     fontSize: '12@s',
     fontFamily: fonts.PoppinsSemiBold,
-    width: 250,
-    marginHorizontal: 15,
+    // width: 250,
+    marginHorizontal: '15@s',
+    textAlign: 'center',
   },
   ModalParagraph: {
     color: colors.textPrimary,
@@ -267,11 +263,11 @@ const styles = ScaledSheet.create({
     paddingHorizontal: 19,
   },
   WrapperModalMobile: {
-    // backgroundColor: 'red',
+    backgroundColor: colors.textWhite,
     justifyContent: 'center',
     marginHorizontal: width(5),
-    marginVertical: height(29),
-    paddingHorizontal: 19,
+    marginVertical: height(35),
+    // paddingHorizontal: 19,
   },
   EditModalHeader: {
     width: '100%',
@@ -281,24 +277,25 @@ const styles = ScaledSheet.create({
     marginTop: '10@s',
   },
   EditModalHeaderMobile: {
-    width: '110%',
+    width: '100%',
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
-    position: 'absolute',
-    top: -30,
-    // backgroundColor:'red'
+    marginVertical: '10@vs',
   },
-  notesTitle: {
-    // marginTop: '5@s',
+
+  CoverPhoto: {
+    flexDirection: 'row',
+    alignContent: 'flex-start',
+    backgroundColor: 'red',
+    width: '100%',
   },
   ImageMoadalMain: {
-    height: 250,
-    width: 350,
+    // height: 250,
+    // width: 350,
     justifyContent: 'center',
     alignSelf: 'center',
     resizeMode: 'contain',
-    zIndex: 0,
+    // zIndex: 0,
     borderRadius: 5,
     // alignItems:'center'
   },
@@ -306,7 +303,7 @@ const styles = ScaledSheet.create({
     height: 130,
     width: 400,
     resizeMode: 'contain',
-    zIndex: 0,
+    // zIndex: 0,
     borderRadius: 5,
     // marginTop: -10,
     // alignItems:'center'
@@ -343,7 +340,8 @@ const styles = ScaledSheet.create({
   },
   NameFolderMobile: {
     flexDirection: 'row',
-    width: '100%',
+    width: '97%',
+    marginVertical: '3%',
   },
   InputModelMobile: {
     borderWidth: 1,
@@ -393,14 +391,21 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.LatoMedium,
     marginVertical: 10,
     justifyContent: 'flex-start',
-    marginLeft: -10,
+  },
+  TitleModelInputMobile1: {
+    color: colors.black,
+    fontSize: 15,
+    fontFamily: fonts.LatoMedium,
+
+    justifyContent: 'flex-start',
+    // marginLeft: -10,
   },
   ModalWrapperDelete: {
     marginHorizontal: width(30),
     marginVertical: height(37),
   },
   ModalWrapperDeleteMobile: {
-    marginHorizontal: width(5),
+    marginHorizontal: width(7),
     marginVertical: height(38),
   },
   ButtonssDelete: {
@@ -412,9 +417,9 @@ const styles = ScaledSheet.create({
     marginHorizontal: 10,
   },
   ButtonssDeleteMobile: {
-    width: '35%',
-    height: 45,
-    borderRadius: 5,
+    width: '45%',
+    height: '35@vs',
+    borderRadius: '5@s',
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 10,
@@ -442,28 +447,35 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.PoppinsSemiBold,
   },
   saveButtonText: {
-    color:colors.textWhite,
+    color: colors.textWhite,
     justifyContent: 'center',
     alignSelf: 'center',
-    fontSize: "16@s",
+    fontSize: '16@s',
     fontFamily: fonts.PoppinsSemiBold,
   },
-  headerButtonMobile:{
-    right: 17
+  headerButtonMobile: {
+    right: 17,
   },
-  headerButtonMobile:{
-    position:'absolute',
-    left:0,
-    top:90
+  headerButtonMobile: {
+    position: 'absolute',
+    left: 0,
+    top: 90,
   },
-  headermbilemargin:{
-    marginTop:'40@s'
+  headermbilemargin: {
+    marginTop: '40@s',
   },
-  deleteClose:{
-    fontSize: 25, color: '#CCD4D6'
+  deleteClose: {
+    fontSize: 25,
+    color: '#CCD4D6',
   },
-  deleteCloseMbile:{
-    display:'none'
-  }
+  deleteCloseMbile: {
+    display: 'none',
+  },
+  DeleteFolerButton: {
+    justifyContent: 'center',
+    alignSelf: 'center',
+    fontSize: 15,
+    fontFamily: fonts.bold,
+  },
 });
 export default styles;

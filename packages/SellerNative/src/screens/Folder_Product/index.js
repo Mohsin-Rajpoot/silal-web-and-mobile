@@ -11,9 +11,11 @@ import {
   Image,
   Dimensions,
   SafeAreaView,
+  ImageBackground,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Menu, {
   MenuProvider,
@@ -21,17 +23,12 @@ import Menu, {
   MenuOptions,
   MenuOption,
 } from 'react-native-popup-menu';
+import CustomText from '@SilalApp/common/components/CustomText';
 import {CheckBox, SearchBar} from 'react-native-elements';
-import {
-  CustomButton,
-  LockOnLandscape,
-  SearchBox,
-} from '@SilalApp/common/components/native';
+import {CustomButton, SearchBox} from '@SilalApp/common/components/native';
 import CustomModal from '@SilalApp/common/components/native/CustomModal';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import Octicons from 'react-native-vector-icons/Octicons';
-
-import {Picker} from '@react-native-picker/picker';
 import Foundation from 'react-native-vector-icons/Foundation';
 // import MultiSelectDropDown from '../../components/MultiSelectDropDown';
 import colors from '@SilalApp/common/assets/colors';
@@ -40,6 +37,11 @@ import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import Svg, {Rect, Path, G} from 'react-native-svg';
 import fonts from '@SilalApp/common/assets/fonts';
+import MultiSelectDropDown from '@SilalApp/common/components/native/MultipleSelectDrop';
+import {useTranslation} from 'react-i18next';
+import CustomTextInput from '@SilalApp/common/components/native/TextInput';
+import Toast from 'react-native-easy-toast';
+import {isTablet} from 'react-native-device-info';
 
 var windowWidth = Dimensions.get('window').width;
 
@@ -51,7 +53,7 @@ export default function Archive_orders({title, navigation}) {
   const [loader, setLoader] = useState(false);
   const [Openmodal, setOpenmodal] = useState(false);
   const [Showmodal, setShowmodal] = useState(false);
-
+  const {t} = useTranslation();
   const Sheet = useRef();
   const [selected_Category, set_selected_Category] = useState('Salad');
   const setcheck = index => {
@@ -60,6 +62,17 @@ export default function Archive_orders({title, navigation}) {
     data[index] = val;
     setTimeout(() => {
       setData(data);
+      setTimeout(() => {
+        setLoader(!loader);
+      }, 100);
+    }, 200);
+  };
+  const setcheckMobile = index => {
+    const val = data4[index];
+    val.checked = !val.checked;
+    data4[index] = val;
+    setTimeout(() => {
+      setData4(data4);
       setTimeout(() => {
         setLoader(!loader);
       }, 100);
@@ -131,7 +144,7 @@ export default function Archive_orders({title, navigation}) {
       title: 'Slide to accept order',
     },
   ];
-  const data4 = [
+  const [data4, setData4] = useState([
     {
       id: '1',
     },
@@ -144,32 +157,30 @@ export default function Archive_orders({title, navigation}) {
     {
       id: '4',
     },
-  ];
-  const data5 = [
-    {
-      id: '1',
-    },
-    {
-      id: '2',
-    },
-    {
-      id: '3',
-    },
-    {
-      id: '4',
-    },
-  ];
+  ]);
 
-  // const sheet_data = () => {
-  //   return (
-
-  //   );
-  // };
-
+  const toastRef = useRef();
+  const showToast = () => {
+    return toastRef.current.show(
+      <View style={styles.ToastMainView}>
+        <Ionicons name="md-checkmark-circle" style={styles.IconToast} />
+        <Text style={styles.ToastParagraph}>
+          {t('Questionnaire_sent_successfully')}
+        </Text>
+        <TouchableOpacity
+          onPress={() => {
+            toastRef.current.close(), alert('undo');
+          }}>
+          <Text style={styles.ActionToast}>{t('OK')}</Text>
+        </TouchableOpacity>
+      </View>,
+      3000,
+    );
+  };
   footer = () => {
     return (
       <TouchableOpacity style={styles.headerStyle}>
-        <Text style={styles.footerText}>Load More</Text>
+        <Text style={styles.footerText}>{t('Load_more')}</Text>
       </TouchableOpacity>
     );
   };
@@ -177,174 +188,6 @@ export default function Archive_orders({title, navigation}) {
   const render_all_oredrs = (item, index) => {
     return (
       <View>
-        {/* <View style={{marginHorizontal: 5, marginVertical: 4}}>
-          <Modal
-            visible={Showmodal}
-            animationType="slideInRight"
-            transparent={true}
-            style={{}}>
-            <View style={styles.ModalContainerPreview}>
-              <TouchableOpacity style={styles.ShowmodalOpenButton}>
-                <Entypo
-                  name="cross"
-                  style={styles.closeShowmodalicon}
-                  onPress={() => setShowmodal(false)}
-                />
-              </TouchableOpacity>
-              <ScrollView>
-                <TouchableOpacity style={styles.SaveButton}>
-                  <Text style={styles.Savetext}>Save</Text>
-                </TouchableOpacity>
-
-                <Image
-                  source={require('../../Assets/image134.png')}
-                  style={styles.ImageMoadalMain}
-                />
-                <View style={styles.IconOnMainImageView}>
-                  <View style={styles.InnerViewMainImage}>
-                    <Octicons name="pencil" style={styles.IconePencilMain} />
-                  </View>
-                </View>
-                <View style={{marginHorizontal: 40}}>
-                  <Text style={styles.ModalSubTitle}>Item</Text>
-                  <View>
-                    <Text style={styles.dropDownModalTitle}>
-                      Item description
-                    </Text>
-                    <TextInput
-                      multiline={true}
-                      textAlignVertical="top"
-                      placeholder="Amet minim mollit non 
-                                        deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-                                        duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-                      placeholderTextColor="#002733"
-                      style={styles.TextInputMAinView}
-                    />
-                  </View>
-                  <View style={{marginTop: 15}}>
-                    <Text style={styles.dropDownModalTitle}>
-                      Nutritional value
-                    </Text>
-                    <FlatList
-                      data={data4}
-                      numColumns={2}
-                      style={{marginBottom: 10}}
-                      showsVerticalScrollIndicator={false}
-                      renderItem={({item}) => (
-                        <View style={styles.CalViewFaltModal}>
-                          <TextInput
-                            placeholder="313 cal"
-                            placeholderTextColor="#002733"
-                            style={styles.CalInputFaltModal}
-                          />
-                        </View>
-                      )}
-                      keyExtractor={item => item.id}
-                    />
-                  </View>
-                  <Text style={styles.AddViewModal}>Add-ons</Text>
-                  <View style={styles.grayViewContainer}>
-                    <View style={{flexDirection: 'row'}}>
-                      <Text style={styles.ToppingTitle}>
-                        Toppings:
-                        <Text style={{color: '#4C6870', fontSize: 13}}>
-                          Lettuce, Cheese, Tomatoes, Pickle
-                        </Text>
-                      </Text>
-                      <View style={styles.WhitePencilBkgView}>
-                        <Foundation
-                          name="pencil"
-                          style={{fontSize: 20, color: '#fff'}}
-                        />
-                      </View>
-                    </View>
-                    <FlatList
-                      data={data4}
-                      numColumns={3}
-                      style={{marginBottom: 10}}
-                      showsVerticalScrollIndicator={false}
-                      renderItem={({item}) => (
-                        <TouchableOpacity style={styles.FlatLettuce}>
-                          <Text
-                            style={{
-                              color: '#4C6870',
-                              fontFamily: 'Lato-Regular',
-                            }}>
-                            Lettuce
-                          </Text>
-                        </TouchableOpacity>
-                      )}
-                      keyExtractor={item => item.id}
-                    />
-                  </View>
-                  <View style={styles.grayViewContainer}>
-                    <View style={{flexDirection: 'row'}}>
-                      <Text style={styles.ToppingTitle}>
-                        Sauces:{' '}
-                        <Text style={{color: '#4C6870', fontSize: 13}}>
-                          Ketchup, Maynoaise, BBQ
-                        </Text>
-                      </Text>
-                      <View style={styles.WhitePencilBkgView}>
-                        <Foundation
-                          name="pencil"
-                          style={{fontSize: 20, color: '#fff'}}
-                        />
-                      </View>
-                    </View>
-
-                    <FlatList
-                      data={data4}
-                      numColumns={3}
-                      style={{marginBottom: 10}}
-                      showsVerticalScrollIndicator={false}
-                      renderItem={({item}) => (
-                        <TouchableOpacity style={styles.FlatLettuce}>
-                          <Text style={styles.TextStyleFlatModal}>Ketchup</Text>
-                        </TouchableOpacity>
-                      )}
-                      keyExtractor={item => item.id}
-                    />
-                  </View>
-                  <View style={[styles.grayViewContainer, {marginBottom: 20}]}>
-                    <View style={{flexDirection: 'row'}}>
-                      <Text style={styles.ToppingTitle}>
-                        Drinks:{' '}
-                        <Text style={{color: '#4C6870', fontSize: 13}}>
-                          Pepsi, Nestea, Coca-cola, Water, 7UP
-                        </Text>
-                      </Text>
-                      <View style={styles.WhitePencilBkgView}>
-                        <Foundation
-                          name="pencil"
-                          style={{fontSize: 20, color: '#fff'}}
-                        />
-                      </View>
-                    </View>
-
-                    <FlatList
-                      data={data4}
-                      numColumns={3}
-                      style={{marginBottom: 10}}
-                      showsVerticalScrollIndicator={false}
-                      renderItem={({item}) => (
-                        <TouchableOpacity style={styles.FlatLettuce}>
-                          <Text style={styles.TextStyleFlatModal}>Nestea</Text>
-                        </TouchableOpacity>
-                      )}
-                      keyExtractor={item => item.id}
-                    />
-                  </View>
-                  <View style={{marginBottom: 40}}>
-                    <View style={styles.BottomButtonModal}>
-                      <CustomButton text="Edit listing" />
-                    </View>
-                  </View>
-                </View>
-              </ScrollView>
-            </View>
-          </Modal>
-        </View> */}
         <View style={styles.modelContainerStyle}>
           <Modal
             visible={Openmodal}
@@ -354,7 +197,7 @@ export default function Archive_orders({title, navigation}) {
               <View style={styles.ModeView}>
                 <View style={styles.ModalTitle}>
                   <Text style={styles.ModalHeading}>
-                    Delete this item from folder?
+                    {t('Delete_this_item_from_folder')}
                   </Text>
                   <Entypo
                     onPress={() => setOpenmodal(false)}
@@ -364,12 +207,13 @@ export default function Archive_orders({title, navigation}) {
                 </View>
 
                 <Text style={styles.ModalParagraph}>
-                  Are you sure you want to delete the
+                  {t('Are_you_sure_you_want_to_delete_the')}
+
                   <Text
                     style={{fontFamily: fonts.LatoBold, color: colors.black}}>
                     #723DN2
                   </Text>
-                  item from Salads folder?
+                  {t('item_from_Salads_folder')}
                 </Text>
                 <View style={styles.ModalButtonContainer}>
                   <TouchableOpacity
@@ -378,7 +222,7 @@ export default function Archive_orders({title, navigation}) {
                       {backgroundColor: colors.light_grey},
                       styles.Buttonss,
                     ]}>
-                    <Text style={styles.DeleteModal}>Cancel</Text>
+                    <Text style={styles.DeleteModal}>{t('Cancel')}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={[
@@ -387,7 +231,7 @@ export default function Archive_orders({title, navigation}) {
                     ]}>
                     <Text
                       style={[{color: colors.textWhite}, styles.DeleteModal]}>
-                      Delete
+                      {t('delete')}
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -436,25 +280,21 @@ export default function Archive_orders({title, navigation}) {
                   <View
                     style={[
                       styles.render_all_order_single,
-                      
-                       styles.renderAllOrderSingleStyle
-                      
+
+                      styles.renderAllOrderSingleStyle,
                     ]}>
                     <Text style={{fontFamily: fonts.LatoRegular}}>723DN2</Text>
                   </View>
                   <View
                     style={[
                       styles.render_all_order_single,
-                  styles.renderAllOrderSingleSecond,
+                      styles.renderAllOrderSingleSecond,
                     ]}>
                     <Text style={{marginLeft: -15}}>11.14.2021</Text>
                   </View>
                   <View
                     style={[styles.render_all_order_single, {width: '13%'}]}>
-                    <Text
-                      style={styles.renderAllOrderHerading}>
-                      230 g
-                    </Text>
+                    <Text style={styles.renderAllOrderHerading}>230 g</Text>
                   </View>
                   <View
                     style={[
@@ -474,8 +314,7 @@ export default function Archive_orders({title, navigation}) {
                   <View style={[styles.render_all_order_single, {width: '8%'}]}>
                     <Menu>
                       <MenuTrigger style={styles.trigger}>
-                        <View
-                          style={styles.ThreeDots}>
+                        <View style={styles.ThreeDots}>
                           <Entypo
                             name="dots-three-vertical"
                             style={[
@@ -505,8 +344,7 @@ export default function Archive_orders({title, navigation}) {
             )}
             renderHiddenItem={(data, rowMap) => (
               <View style={styles.rowBack}>
-                <View
-                  style={styles.SwperHidenView}>
+                <View style={styles.SwperHidenView}>
                   <TouchableOpacity
                     onPress={() => setShowmodal(true)}
                     style={[
@@ -515,7 +353,7 @@ export default function Archive_orders({title, navigation}) {
                     ]}>
                     <Text
                       style={[styles.BackButtonsText, {color: colors.black}]}>
-                      Edit
+                      {t('edit')}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -525,7 +363,7 @@ export default function Archive_orders({title, navigation}) {
                     ]}>
                     <Text
                       style={[styles.BackButtonsText, {color: colors.black}]}>
-                      Freeze
+                      {t('freeze')}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -534,7 +372,7 @@ export default function Archive_orders({title, navigation}) {
                       styles.BackButtons,
                       {backgroundColor: colors.swiper_red},
                     ]}>
-                    <Text style={styles.BackButtonsText}>Delete</Text>
+                    <Text style={styles.BackButtonsText}>{t('delete')}</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -579,7 +417,7 @@ export default function Archive_orders({title, navigation}) {
               : styles.all_orders,
             {width: '12%'},
           ]}>
-          <Text style={styles.all_orders_heading_txt}>Photo</Text>
+          <Text style={styles.all_orders_heading_txt}> {t('photo')}</Text>
         </View>
         <View
           style={[
@@ -588,7 +426,7 @@ export default function Archive_orders({title, navigation}) {
               : styles.all_orders,
             {width: '8%'},
           ]}>
-          <Text style={styles.all_orders_heading_txt}>Item name</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('item_name')} </Text>
         </View>
         <View
           style={[
@@ -597,7 +435,7 @@ export default function Archive_orders({title, navigation}) {
               : styles.all_orders,
             {width: '14%'},
           ]}>
-          <Text style={styles.all_orders_heading_txt}>Item ID</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Item_id')} </Text>
         </View>
         <View
           style={[
@@ -606,7 +444,9 @@ export default function Archive_orders({title, navigation}) {
               : styles.all_orders,
             {width: '12%'},
           ]}>
-          <Text style={styles.all_orders_heading_txt}>Last purchase</Text>
+          <Text style={styles.all_orders_heading_txt}>
+            {t('Last_purchase')}{' '}
+          </Text>
         </View>
         <View
           style={[
@@ -615,7 +455,7 @@ export default function Archive_orders({title, navigation}) {
               : styles.all_orders,
             {width: '15%'},
           ]}>
-          <Text style={styles.all_orders_heading_txt}>Weight</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Weight')}</Text>
         </View>
         <View
           style={[
@@ -624,7 +464,7 @@ export default function Archive_orders({title, navigation}) {
               : styles.all_orders,
             {width: '12%'},
           ]}>
-          <Text style={styles.all_orders_heading_txt}>On stock</Text>
+          <Text style={styles.all_orders_heading_txt}> {t('on_stock')}</Text>
         </View>
         <View
           style={[
@@ -633,7 +473,7 @@ export default function Archive_orders({title, navigation}) {
               : styles.all_orders,
             {width: '14%'},
           ]}>
-          <Text style={styles.all_orders_heading_txt}>Price</Text>
+          <Text style={styles.all_orders_heading_txt}> {t('price')}</Text>
         </View>
         <View
           style={[
@@ -642,262 +482,341 @@ export default function Archive_orders({title, navigation}) {
               : styles.all_orders,
             {width: '8%'},
           ]}>
-          <Text style={styles.all_orders_heading_txt}>Action</Text>
+          <Text style={styles.all_orders_heading_txt}>{t('Action')}</Text>
         </View>
       </View>
     );
   };
   return (
     <SafeAreaView style={styles.Container}>
-      {/* Delete Modal Blure Start */}
-
-      <CustomModal
-        isModalVisible={Openmodal}
-        setModalVisible={setOpenmodal}
-        modalWrapperStyle={
-          !IsTablet
-            ? styles.ModalWrapperDeleteMobile
-            : styles.ModalWrapperDelete
-        }
-        modalContainerStyle={{
-          borderRadius: 2,
-          backgroundColor: colors.textWhite,
-        }}>
-        <View style={styles.ModalContainer}>
-          <View style={styles.ModeViewDeleteMobile}>
-            <Text
-              style={{
-                justifyContent: 'center',
-                alignSelf: 'center',
-                fontSize: 15,
-                fontFamily: fonts.bold,
-              }}>
-              Delete folder?
-            </Text>
-            <View
-              style={!IsTablet ? styles.ModalTitleMobile : styles.ModalTitle}>
-              <Text
-                style={
-                  !IsTablet ? styles.ModalHeadingMobile : styles.ModalHeading
-                }>
-                Are you sure you want to delete this folder?
-              </Text>
-            </View>
-
-            <View
-              style={
-                !IsTablet
-                  ? styles.ModalButtonContainerMobile
-                  : styles.ModalButtonContainer
-              }>
-              <TouchableOpacity
-                onPress={() => setOpenmodal(false)}
-                style={[
-                  {backgroundColor: colors.primary},
-                  !IsTablet
-                    ? styles.ButtonssDeleteMobile
-                    : styles.ButtonssDelete,
-                ]}>
-                <Text style={[{color: colors.textWhite}, styles.DeleteModal]}>
-                  Cancel
-                </Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => setOpenmodal(false)}
-                style={[
-                  {backgroundColor: 'rgba(222, 53, 11, 0.2)'},
-                  !IsTablet
-                    ? styles.ButtonssDeleteMobile
-                    : styles.ButtonssDelete,
-                ]}>
-                <Text style={[styles.DeleteModal, {color: colors.lightRed}]}>
-                  Yes, Delete
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      </CustomModal>
-
-      {/* Delete modal blur end */}
-
-      <Modal
-        visible={Showmodal}
-        animationType="slide"
-        transparent={true}
-         >
-           <View style={styles.ModalContainerPreview1}>
-        <View 
-          style={
-            IsTablet
-              ? styles.ModalContainerPreview
-              : styles.ModalContainerPreviewMobile
-          }>
-          <TouchableOpacity
+      <Modal visible={Showmodal} animationType="slide" transparent={true}>
+        <View style={styles.ModalContainerPreview1}>
+          <View
             style={
-              !IsTablet
-                ? styles.ShowmodalOpenButtonMobile
-                : styles.ShowmodalOpenButton
+              IsTablet
+                ? styles.ModalContainerPreview
+                : styles.ModalContainerPreviewMobile
             }>
-            <Entypo
-              name="cross"
-              style={
-                IsTablet
-                  ? styles.closeShowmodalicon
-                  : styles.closeShowmodaliconMobile
-              }
-              onPress={() => setShowmodal(false)}
-            />
-          </TouchableOpacity>
-          <ScrollView>
-            <TouchableOpacity style={styles.SaveButton}>
-              <Text style={styles.Savetext}>Save</Text>
-            </TouchableOpacity>
-
-            <Image
-              source={require('../../Assets/image134.png')}
-              style={styles.ImageMoadalMain}
-            />
-            <View style={styles.IconOnMainImageView}>
-              <View style={styles.InnerViewMainImage}>
-                <Octicons name="pencil" style={styles.IconePencilMain} />
+            {IsTablet ? (
+              <TouchableOpacity
+                style={
+                  !IsTablet
+                    ? styles.ShowmodalOpenButtonMobile
+                    : styles.ShowmodalOpenButton
+                }>
+                <Entypo
+                  name="cross"
+                  style={
+                    IsTablet
+                      ? styles.closeShowmodalicon
+                      : styles.closeShowmodaliconMobile
+                  }
+                  onPress={() => setShowmodal(false)}
+                />
+              </TouchableOpacity>
+            ) : (
+              <View style={{flexDirection: 'column'}}>
+                <TouchableOpacity
+                  onPress={() => setShowmodal(false)}
+                  style={{flexDirection: 'row', marginHorizontal: 15}}>
+                  <MaterialCommunityIcons
+                    name="keyboard-backspace"
+                    style={styles.backButtonModalArrowmobile}
+                  />
+                  <Text style={styles.backButtonModalmobile}>
+                    {t('Salad with shrimps and..')}
+                  </Text>
+                </TouchableOpacity>
+                <Text style={styles.subHeadingModal}>{t('Salads')}</Text>
               </View>
-            </View>
-            <View style={{marginHorizontal: 40}}>
-              <Text style={styles.ModalSubTitle}>Item</Text>
-              <View>
-                <Text style={styles.dropDownModalTitle}>Item description</Text>
-                <TextInput
-                  multiline={true}
-                  textAlignVertical="top"
-                  placeholder="Amet minim mollit non 
+            )}
+            <ScrollView>
+              {IsTablet ? (
+                <TouchableOpacity style={styles.SaveButton}>
+                  <Text style={styles.Savetext}>{t('Save')}</Text>
+                </TouchableOpacity>
+              ) : null}
+              <View
+                style={{
+                  marginVertical: IsTablet ? '5%' : '3%',
+                  marginHorizontal: '10%',
+                }}>
+                <ImageBackground
+                  source={require('../../Assets/image134.png')}
+                  style={styles.ImageMoadalMain}>
+                  {IsTablet ? (
+                    <View style={styles.IconOnMainImageView}>
+                      <View style={styles.InnerViewMainImage}>
+                        <Octicons
+                          name="pencil"
+                          style={styles.IconePencilMain}
+                        />
+                      </View>
+                    </View>
+                  ) : null}
+                </ImageBackground>
+              </View>
+              {!IsTablet ? (
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    width: '90%',
+                  }}>
+                  <CustomButton
+                    containerStyle={styles.ChangePhotoButton}
+                    textStyle={{color: colors.black}}
+                    text="Change_Photo"
+                  />
+                  <TouchableOpacity style={styles.ModalButtonMobile}>
+                    <Image
+                      source={require('../../Assets/li_trash-2.png')}
+                      style={styles.DelIcon}
+                    />
+                  </TouchableOpacity>
+                </View>
+              ) : null}
+              <View style={{marginHorizontal: 40}}>
+                <Text style={styles.ModalSubTitle}>{t('Item')}</Text>
+                {/* ////// */}
+                <View style={{marginTop: '5%'}}>
+                  <CustomText
+                    label={t('Category')}
+                    textStyle={
+                      !IsTablet
+                        ? styles.formTextHeading
+                        : styles.dropDownModalTitle
+                    }
+                  />
+                </View>
+                <View
+                  style={!IsTablet ? styles.ColorMobileView : styles.ColorView}>
+                  <MultiSelectDropDown
+                    CustomDropdownStyle={
+                      !IsTablet
+                        ? styles.DropDownMobileCustom
+                        : styles.DropDownCustom
+                    }
+                  />
+                </View>
+
+                {/* /// */}
+                <View style={styles.MobileContainerView}>
+                  <View style={{flexDirection: 'row'}}>
+                    <CustomText
+                      label={t('item_name')}
+                      textStyle={
+                        !IsTablet
+                          ? styles.formTextHeading
+                          : styles.dropDownModalTitle
+                      }
+                    />
+                  </View>
+                  <View>
+                    <CustomText
+                      label={80 + ' ' + t('Character_left')}
+                      textStyle={
+                        !IsTablet
+                          ? styles.formTextHeading
+                          : styles.dropDownModalTitle
+                      }
+                    />
+                  </View>
+                </View>
+                <View style={{marginBottom: '5%'}}>
+                  <CustomTextInput
+                    inputTextStyle={{paddingHorizontal: 2}}
+                    inputStyle={!IsTablet ? styles.InputCntainerMobile : null}
+                    placeholderText={t('item_name')}
+                  />
+                </View>
+
+                {/* ///////// */}
+
+                <View>
+                  <CustomText
+                    label={t('Item_Description')}
+                    textStyle={
+                      !IsTablet
+                        ? [styles.formTextHeading, {marginBottom: '3%'}]
+                        : styles.dropDownModalTitle
+                    }
+                  />
+
+                  <TextInput
+                    multiline={true}
+                    textAlignVertical="top"
+                    placeholder="Amet minim mollit non 
                                         deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
                                         duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-                  placeholderTextColor={colors.black}
-                  style={styles.TextInputMAinView}
-                />
-              </View>
-              <View style={{marginTop: 15}}>
-                <Text style={styles.dropDownModalTitle}>Nutritional value</Text>
-                <FlatList
-                  data={data4}
-                  numColumns={2}
-                  style={{marginBottom: 10}}
-                  showsVerticalScrollIndicator={false}
-                  renderItem={({item}) => (
-                    <View style={styles.CalViewFaltModal}>
-                      <TextInput
-                        placeholder="313 cal"
-                        placeholderTextColor={colors.black}
-                        style={styles.CalInputFaltModal}
-                      />
-                    </View>
-                  )}
-                  keyExtractor={item => item.id}
-                />
-              </View>
-              <Text style={styles.AddViewModal}>Add-ons</Text>
-              <View style={styles.grayViewContainer}>
-                <View style={{flexDirection: 'row'}}>
-                  <Text style={styles.ToppingTitle}>
-                    Toppings:
-                    <Text style={{color: colors.sidebar, fontSize: 13}}>
-                      Lettuce, Cheese, Tomatoes, Pickle
-                    </Text>
-                  </Text>
-                  <View style={styles.WhitePencilBkgView}>
-                    <Foundation
-                      name="pencil"
-                      style={{fontSize: 20, color: colors.textWhite}}
-                    />
-                  </View>
+                    placeholderTextColor={colors.black}
+                    style={styles.TextInputMAinView}
+                  />
                 </View>
-                <FlatList
-                  data={data4}
-                  numColumns={3}
-                  style={{marginBottom: 10}}
-                  showsVerticalScrollIndicator={false}
-                  renderItem={({item}) => (
-                    <TouchableOpacity style={styles.FlatLettuce}>
-                      <Text
-                        style={{
-                          color: colors.sidebar,
-                          fontFamily: fonts.LatoRegular,
-                        }}>
-                        Lettuce
+
+                <View
+                  style={!IsTablet ? styles.ColorMobileView : styles.ColorView}>
+                  <CustomText
+                    label={t('Allergies')}
+                    textStyle={
+                      !IsTablet
+                        ? [styles.formTextHeading, {marginBottom: '3%'}]
+                        : styles.dropDownModalTitle
+                    }
+                  />
+                  <MultiSelectDropDown
+                    CustomDropdownStyle={
+                      !IsTablet
+                        ? styles.DropDownMobileCustom
+                        : styles.DropDownCustom
+                    }
+                  />
+                </View>
+                <View style={{marginTop: '3%'}}>
+                  <CustomText
+                    label={t('Nutritional_value')}
+                    textStyle={
+                      !IsTablet
+                        ? [styles.formTextHeading]
+                        : styles.dropDownModalTitle
+                    }
+                  />
+
+                  <FlatList
+                    data={data4}
+                    numColumns={2}
+                    style={{marginBottom: 10}}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({item}) => (
+                      <View style={styles.CalViewFaltModal}>
+                        <TextInput
+                          placeholder="313 cal"
+                          placeholderTextColor={colors.black}
+                          style={styles.CalInputFaltModal}
+                        />
+                      </View>
+                    )}
+                    keyExtractor={item => item.id}
+                  />
+                </View>
+                <Text style={styles.AddViewModal}>{t('Add_ons')}</Text>
+                <View style={styles.grayViewContainer}>
+                  <View style={{flexDirection: 'row'}}>
+                    <Text style={styles.ToppingTitle}>
+                      {t('topping')}
+
+                      <Text style={{color: colors.sidebar, fontSize: 13}}>
+                        {t('Lettuce_Cheese_Tomatoes_Pickle')}
                       </Text>
-                    </TouchableOpacity>
-                  )}
-                  keyExtractor={item => item.id}
-                />
-              </View>
-              <View style={styles.grayViewContainer}>
-                <View style={{flexDirection: 'row'}}>
-                  <Text style={styles.ToppingTitle}>
-                    Sauces:
-                    <Text style={{color: colors.sidebar, fontSize: 13}}>
-                      Ketchup, Maynoaise, BBQ
                     </Text>
-                  </Text>
-                  <View style={styles.WhitePencilBkgView}>
-                    <Foundation
-                      name="pencil"
-                      style={{fontSize: 20, color: colors.textWhite}}
+                    {IsTablet ? (
+                      <View style={styles.WhitePencilBkgView}>
+                        <Foundation
+                          name="pencil"
+                          style={{fontSize: 20, color: colors.textWhite}}
+                        />
+                      </View>
+                    ) : null}
+                  </View>
+                  <FlatList
+                    data={data4}
+                    numColumns={3}
+                    style={{marginBottom: 10}}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({item}) => (
+                      <TouchableOpacity style={styles.FlatLettuce}>
+                        <Text
+                          style={{
+                            color: colors.sidebar,
+                            fontFamily: fonts.LatoRegular,
+                          }}>
+                          {t('Lettuce')}
+                        </Text>
+                      </TouchableOpacity>
+                    )}
+                    keyExtractor={item => item.id}
+                  />
+                </View>
+                <View style={styles.grayViewContainer}>
+                  <View style={{flexDirection: 'row'}}>
+                    <Text style={styles.ToppingTitle}>
+                      {t('Sauces')}:
+                      <Text style={{color: colors.sidebar, fontSize: 13}}>
+                        Ketchup, Maynoaise, BBQ
+                      </Text>
+                    </Text>
+                    {IsTablet ? (
+                      <View style={styles.WhitePencilBkgView}>
+                        <Foundation
+                          name="pencil"
+                          style={{fontSize: 20, color: colors.textWhite}}
+                        />
+                      </View>
+                    ) : null}
+                  </View>
+
+                  <FlatList
+                    data={data4}
+                    numColumns={3}
+                    style={{marginBottom: 10}}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({item}) => (
+                      <TouchableOpacity style={styles.FlatLettuce}>
+                        <Text style={styles.TextStyleFlatModal}>
+                          {t('ketchup')}
+                        </Text>
+                      </TouchableOpacity>
+                    )}
+                    keyExtractor={item => item.id}
+                  />
+                </View>
+                <View style={[styles.grayViewContainer, {marginBottom: 20}]}>
+                  <View style={{flexDirection: 'row'}}>
+                    <Text style={styles.ToppingTitle}>
+                      {t('drinks')}:
+                      <Text style={{color: colors.sidebar, fontSize: 13}}>
+                        Pepsi, Nestea, Coca-cola, Water, 7UP
+                      </Text>
+                    </Text>
+                    {IsTablet ? (
+                      <View style={styles.WhitePencilBkgView}>
+                        <Foundation
+                          name="pencil"
+                          style={{fontSize: 20, color: colors.textWhite}}
+                        />
+                      </View>
+                    ) : null}
+                  </View>
+
+                  <FlatList
+                    data={data4}
+                    numColumns={3}
+                    style={{marginBottom: 10}}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({item}) => (
+                      <TouchableOpacity style={styles.FlatLettuce}>
+                        <Text style={styles.TextStyleFlatModal}>Nestea</Text>
+                      </TouchableOpacity>
+                    )}
+                    keyExtractor={item => item.id}
+                  />
+                </View>
+                <View style={{marginBottom: 40}}>
+                  <View>
+                    <CustomButton
+                      onPress={() => setShowmodal(false)}
+                      containerStyle={
+                        IsTablet
+                          ? styles.BottomButtonModal
+                          : styles.BottomButtonModalMobile
+                      }
+                      text="Edit listing"
                     />
                   </View>
                 </View>
-
-                <FlatList
-                  data={data4}
-                  numColumns={3}
-                  style={{marginBottom: 10}}
-                  showsVerticalScrollIndicator={false}
-                  renderItem={({item}) => (
-                    <TouchableOpacity style={styles.FlatLettuce}>
-                      <Text style={styles.TextStyleFlatModal}>Ketchup</Text>
-                    </TouchableOpacity>
-                  )}
-                  keyExtractor={item => item.id}
-                />
               </View>
-              <View style={[styles.grayViewContainer, {marginBottom: 20}]}>
-                <View style={{flexDirection: 'row'}}>
-                  <Text style={styles.ToppingTitle}>
-                    Drinks:{' '}
-                    <Text style={{color: colors.sidebar, fontSize: 13}}>
-                      Pepsi, Nestea, Coca-cola, Water, 7UP
-                    </Text>
-                  </Text>
-                  <View style={styles.WhitePencilBkgView}>
-                    <Foundation
-                      name="pencil"
-                      style={{fontSize: 20, color: colors.textWhite}}
-                    />
-                  </View>
-                </View>
-
-                <FlatList
-                  data={data4}
-                  numColumns={3}
-                  style={{marginBottom: 10}}
-                  showsVerticalScrollIndicator={false}
-                  renderItem={({item}) => (
-                    <TouchableOpacity style={styles.FlatLettuce}>
-                      <Text style={styles.TextStyleFlatModal}>Nestea</Text>
-                    </TouchableOpacity>
-                  )}
-                  keyExtractor={item => item.id}
-                />
-              </View>
-              <View style={{marginBottom: 40}}>
-                <View style={styles.BottomButtonModal}>
-                  <CustomButton text="Edit listing" />
-                </View>
-              </View>
-            </View>
-          </ScrollView>
-        </View>
+            </ScrollView>
+          </View>
         </View>
       </Modal>
 
@@ -923,7 +842,7 @@ export default function Archive_orders({title, navigation}) {
               style={
                 !IsTablet ? styles.backButtonpagemobile : styles.backButtonpage
               }>
-              Salads
+              {t('Salads')}
             </Text>
           </TouchableOpacity>
 
@@ -931,37 +850,12 @@ export default function Archive_orders({title, navigation}) {
             <SearchBox customStyle={{width: '30%'}} placeholder="Search" />
           ) : (
             <View style={{flexDirection: 'row'}}>
-              <TextInput
-                type={SearchBar}
-                style={{
-                  height: 40,
-                  backgroundColor: colors.textWhite,
-                  borderRadius: 5,
-                  elevation: 5,
-                  width: '85%',
-                }}
-              />
+              <TextInput type={SearchBar} style={styles.SearchBarStyle} />
               <TouchableOpacity
-                onPress={() => navigation.navigate('ItemCreaterFirstStep')}
-                style={{
-                  backgroundColor: colors.primary,
-                  width: 40,
-                  height: 40,
-                  borderRadius: 5,
-                  overflow: 'hidden',
-                  marginHorizontal: 7,
-                }}>
-                <Octicons
-                  name="plus"
-                  style={{
-                    fontSize: 20,
-                    color: colors.textWhite,
-                    justifyContent: 'center',
-                    alignSelf: 'center',
-                    alignItems: 'center',
-                    paddingVertical: 10,
-                  }}
-                />
+                onPress={() => navigation.navigate('CreateItems')}
+                style={styles.AddButtonModal}>
+                
+                <Octicons name="plus" style={styles.PlusIcon} />
               </TouchableOpacity>
             </View>
           )}
@@ -969,26 +863,16 @@ export default function Archive_orders({title, navigation}) {
           {IsTablet ? (
             <View style={{right: 10, position: 'relative'}}>
               <CustomButton
-                text="Add new item"
+                text={t('add_new_item')}
                 containerStyle={styles.AddButtonStyle}
                 onPress={() => navigation.navigate('ItemCreaterFirstStep')}
               />
-              {/* <MultiSelectDropDown/> */}
             </View>
           ) : null}
         </View>
       </View>
       {IsTablet ? (
-        <View
-          style={{
-            backgroundColor: colors.textWhite,
-            width: '100%',
-            paddingVertical: 12,
-            paddingHorizontal: 10,
-            elevation: 1,
-            borderRadius: 5,
-            marginVertical: 10,
-          }}>
+        <View style={styles.TabViewContainer}>
           <View
             style={{
               width: '98%',
@@ -1012,15 +896,13 @@ export default function Archive_orders({title, navigation}) {
             style={{marginBottom: 90}}
             ListFooterComponent={footer}
             // showsVerticalScrollIndicator={false}
-            renderItem={({item}) => (
+            renderItem={({item, index}) => (
               <View style={styles.flatMobileViewe}>
                 <View style={styles.mobileContainerSecond}>
                   <View>
                     <CheckBox
-                      checked={check1}
-                      onPress={() => setCheck1(!check1)}
-                      // onPress={() => setShowmodal(!Showmodal)}
-
+                      checked={item.checked == true ? true : false}
+                      onPress={() => setcheckMobile(index)}
                       checkedColor={colors.primary}
                       uncheckedColor={colors.light_grey}
                     />
@@ -1047,7 +929,7 @@ export default function Archive_orders({title, navigation}) {
                           // flex:1,
                           borderTopLeftRadius: 10,
                           borderTopRightRadius: 10,
-                          backgroundColor: '#F8F8F8',
+                          backgroundColor: colors.textWhite,
                         },
                       }}>
                       <View style={styles.sheet}>
@@ -1058,19 +940,13 @@ export default function Archive_orders({title, navigation}) {
                                 setShowmodal(true);
                               }, 1000);
                           }}
-                          // onPress={()=>{Sheet.current.close(),setShowmodal(true)}}
                           style={styles.ModalContant}>
                           <Octicons
                             name="pencil"
                             fontSize={15}
-                            style={{
-                              height: 18,
-                              width: 18,
-                              marginHorizontal: 10,
-                              color: colors.gray,
-                            }}
+                            style={styles.PencilIcon}
                           />
-                          <Text>Edit</Text>
+                          <Text>{t('edit')}</Text>
                         </TouchableOpacity>
                         <View style={styles.borderbotomview} />
                         <TouchableOpacity style={styles.ModalContant}>
@@ -1087,56 +963,25 @@ export default function Archive_orders({title, navigation}) {
                               />
                             </Svg>
                           </View>
-                          <Text>Freez</Text>
+                          <Text> {t('freeze')}</Text>
                         </TouchableOpacity>
                         <View style={styles.borderbotomview} />
                         <TouchableOpacity
-                          onPress={
-                            () => {
-                              Sheet.current.close(),
-                                setTimeout(() => {
-                                  setOpenmodal(!Openmodal);
-                                }, 1000);
-                            }
-                            // () => setOpenmodal(!Openmodal)
-                          }
+                          onPress={() => showToast()}
                           style={styles.ModalContant}>
                           <Image
                             source={require('../../Assets/li_trash-2.png')}
                             style={{height: 18, width: 18, marginHorizontal: 8}}
                           />
 
-                          <Text style={{color: '#FF4545CC'}}>Delete</Text>
+                          <Text style={{color: '#FF4545CC'}}>
+                            {' '}
+                            {t('delete')}
+                          </Text>
                         </TouchableOpacity>
                         <View style={styles.borderbotomview} />
                       </View>
                     </RBSheet>
-                    {/* <Menu>
-                      <MenuTrigger style={styles.trigger}>
-                        <View style={styles.tyrigerIcon}>
-                          <Entypo
-                            name="dots-three-vertical"
-                            style={[
-                              styles.cross_icon,
-                              {color: '#4C6870', fontSize: 20},
-                            ]}
-                          />
-                        </View>
-                      </MenuTrigger>
-                      <MenuOptions customStyles={{optionText: {padding: 5}}}>
-                        <MenuOption
-                          onSelect={() => setShowmodal(true)}
-                          value="Normal"
-                          text="Edit"
-                        />
-                        <MenuOption value="Normal" text="Freeze Listing" />
-                        <MenuOption
-                          onSelect={() => setOpenmodal(true)}
-                          value="Normal"
-                          text="Delete"
-                        />
-                      </MenuOptions>
-                    </Menu> */}
                   </View>
                 </View>
                 <View
@@ -1155,28 +1000,37 @@ export default function Archive_orders({title, navigation}) {
                   </Text>
                 </View>
                 <View style={styles.EvenRow}>
-                  <Text style={{}}>item id</Text>
-                  <Text style={{}}>last</Text>
+                  <Text style={{}}>{t('Item_id')}</Text>
+                  <Text style={{}}> {t('last')}</Text>
                 </View>
                 <View style={styles.Oddrow}>
-                  <Text style={{}}>Last purchase</Text>
-                  <Text style={{}}>last</Text>
+                  <Text style={{}}> {t('Last_purchase')}</Text>
+                  <Text style={{}}> {t('last')}</Text>
                 </View>
                 <View style={styles.EvenRow}>
-                  <Text style={{}}>Weight</Text>
-                  <Text style={{}}>last</Text>
+                  <Text style={{}}> {t('Weight')}</Text>
+                  <Text style={{}}> {t('last')}</Text>
                 </View>
                 <View style={styles.Oddrow}>
-                  <Text style={{}}>On stock</Text>
-                  <Text style={{}}>last</Text>
+                  <Text style={{}}>{t('on_stock')} </Text>
+                  <Text style={{}}> {t('last')}</Text>
                 </View>
                 <View style={styles.EvenRow}>
-                  <Text style={{}}>Price</Text>
-                  <Text style={{}}>last</Text>
+                  <Text style={{}}> {t('price')}</Text>
+                  <Text style={{}}> {t('last ')}</Text>
                 </View>
               </View>
             )}
             keyExtractor={item => item.id}
+          />
+          <Toast
+            ref={toastRef}
+            style={styles.Tost}
+            position="top"
+            fadeInDuration={750}
+            fadeOutDuration={800}
+            opacity={1}
+            textStyle={{color: 'red'}}
           />
         </View>
       )}

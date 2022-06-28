@@ -13,7 +13,6 @@ import {CheckBox} from 'react-native-elements';
 import Svg, {Path} from 'react-native-svg';
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
-// import Camera from "../../components/Camera"
 import Tooltip from 'react-native-walkthrough-tooltip';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useTranslation} from 'react-i18next';
@@ -22,10 +21,9 @@ import Menu, {
   MenuOptions,
   MenuOption,
 } from 'react-native-popup-menu';
-import {color} from 'react-native-elements/dist/helpers';
 import colors from '@SilalApp/common/assets/colors';
 import fonts from '@SilalApp/common/assets/fonts';
-const Secondary = '#002733';
+const Secondary =colors.black ;
 let Primary = colors.primary;
 const AddItem = ({navigation}) => {
   const {t} = useTranslation();
@@ -155,23 +153,19 @@ const AddItem = ({navigation}) => {
 
   return (
     <SafeAreaView
-      style={{width: '100%', alignSelf: 'center', backgroundColor: '#f1f1f1'}}>
+      style={{width: '100%', alignSelf: 'center', backgroundColor: colors.profileBackground }}>
       {/* <ScrollView showsVerticalScrollIndicator={false}> */}
      
         <View style={{width: '100%', alignSelf: 'center'}}>
           {order_state == 'All' ? (
             <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                marginHorizontal: 10,
-                marginBottom: 5,
-                marginTop: 5,
-              }}>
+              style={styles.SecondColoumn
+               
+              }>
               <View style={{width: '60%'}}>
                 <View
                   style={{
-                    backgroundColor: '#fff',
+                    backgroundColor: colors.textWhite,
                     elevation: 0.7,
                     borderRadius: 5,
                   }}>
@@ -366,7 +360,7 @@ const AddItem = ({navigation}) => {
                     marginVertical: 20,
                     paddingHorizontal: 20,
                     elevation: 1,
-                    borderColor: '#CCD4D6',
+                    borderColor: colors.light_grey,
                     borderWidth: 0.3,
                   }}>
                   <Text
@@ -451,7 +445,7 @@ const AddItem = ({navigation}) => {
                     marginVertical: 5,
                     paddingHorizontal: 20,
                     elevation: 1,
-                    borderColor: '#CCD4D6',
+                    borderColor: colors.light_grey,
                     borderWidth: 0.3,
                   }}>
                   <Text
@@ -477,7 +471,7 @@ const AddItem = ({navigation}) => {
                           marginLeft: -4,
                           fontSize: 15,
                           fontFamily: fonts.LatoRegular,
-                          backgroundColor: '#F2F4F5',
+                          backgroundColor: colors.dropDownBackground,
                           width: '29%',
                           marginHorizontal: 10,
                         },
@@ -491,7 +485,7 @@ const AddItem = ({navigation}) => {
                         {
                           fontSize: 15,
                           fontFamily: fonts.LatoRegular,
-                          backgroundColor: '#F2F4F5',
+                          backgroundColor: colors.dropDownBackground,
                           width: '29%',
                           marginHorizontal: 10,
                         },
@@ -505,7 +499,7 @@ const AddItem = ({navigation}) => {
                         {
                           fontSize: 15,
                           fontFamily: fonts.LatoRegular,
-                          backgroundColor: '#F2F4F5',
+                          backgroundColor: colors.dropDownBackground,
                           width: '29%',
                           marginHorizontal: 10,
                         },
@@ -740,7 +734,7 @@ const AddItem = ({navigation}) => {
                             styles.CustomizationBox,
                             {
                               marginVertical: 10,
-                              backgroundColor: '#F2F4F5',
+                              backgroundColor: colors.dropDownBackground,
                               width: '43%',
                               height: 120,
                               alignSelf: 'center',
@@ -808,7 +802,7 @@ const AddItem = ({navigation}) => {
                           fontSize: 12,
                           bottom: 10,
                           fontFamily: 'Lato-Semibold',
-                          color: '#CCD4D6',
+                          color: colors.light_grey,
                         }}>
                         2 mb max
                       </Text>
@@ -850,7 +844,7 @@ const AddItem = ({navigation}) => {
                       borderRadius: 5,
                       marginVertical: 38,
                       elevation: 1,
-                      borderColor: '#CCD4D6',
+                      borderColor: colors.light_grey,
                       borderWidth: 0.3,
                       width: '100%',
                     }}>
@@ -955,14 +949,14 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontFamily: fonts.LatoRegular,
     alignSelf: 'center',
-    borderColor: '#CCD4D6',
+    borderColor: colors.light_grey,
     height:40
   },
   IngrediantsTextInput: {
     width: '23%',
     borderRadius: 5,
     borderWidth: 0.3,
-    borderColor: '#CCD4D6',
+    borderColor: colors.light_grey,
     paddingHorizontal: 10,
     height:40
   },
@@ -977,6 +971,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     width: '43%',
   },
+  SecondColoumn:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 10,
+    marginBottom: 5,
+    marginTop: 5,
+  },
   dropdownbox: {
     height: 30,
     width: '45%',
@@ -988,13 +989,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   CustomizationBox: {
-    backgroundColor: '#F2F4F5',
+    backgroundColor: colors.dropDownBackground,
     width: '29%',
     marginHorizontal: 10,
     backgroundColor: Primary,
     borderRadius: 5,
     borderWidth: 0.3,
-    borderColor: '#CCD4D6',
+    borderColor: colors.light_grey,
     height: 140,
   },
   SearchIcon: {
@@ -1018,7 +1019,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   HeaderButtonText: {
-    color: '#fff',
+    color: colors.textWhite,
     textAlign: 'center',
     fontFamily: fonts.PoppinsSemiBold,
   },

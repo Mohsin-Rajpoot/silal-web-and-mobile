@@ -35,7 +35,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
   return (
     <SafeAreaView style={styles.MainContainer}>
       <ScrollView style={styles.Container}>
-        <View style={{width: '100%', alignSelf: 'center'}}>
+        <View style={styles.BackHeaderTitle}>
           <View style={styles.Header}>
             <TouchableOpacity
               onPress={() => navigation.goBack()}
@@ -60,12 +60,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                   />
                   <View style={styles.MobileViewModal}>
                     <View
-                      style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        marginHorizontal: 10,
-                        marginVertical: 10,
-                      }}>
+                      style={styles.ModalHeading}>
                       <Ionicons
                         name="chevron-back-sharp"
                         style={styles.IconModalMobile}
@@ -82,7 +77,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                   <ScrollView>
                     <View style={{marginHorizontal: 45}}>
                       <Text style={styles.TitleModalPreview}>
-                        Nepolitana Pizza, 30 sm {' '}
+                        Nepolitana Pizza, 30 sm
                       </Text>
 
                       <Text style={styles.paragaphPreview}>
@@ -249,7 +244,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                             {backgroundColor: colors.primary},
                             styles.Buttonss,
                           ]}>
-                          <Text style={[{color: '#fff'}, styles.DeleteModal]}>
+                          <Text style={[{color: colors.textWhite}, styles.DeleteModal]}>
                             {t('Save_as_draft')}
                           </Text>
                         </TouchableOpacity>

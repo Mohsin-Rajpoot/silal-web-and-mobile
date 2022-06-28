@@ -166,6 +166,14 @@ const styles = ScaledSheet.create({
     width: '100%',
     height: '1@s',
   },
+  RbSheetHeader:{
+    backgroundColor: colors.textWhite,
+    paddingHorizontal: 10,
+   marginVertical:'5%'
+  },
+  HeaderRbsheet:{
+    flexDirection: 'row', marginTop: 5, marginVertical: '5%',paddingTop:'3%'
+  }
 
  
 });

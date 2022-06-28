@@ -166,7 +166,7 @@ const Drawer = props => {
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.6}
-        onPress={() => props.navigation.navigate('CreateItem')}>
+        onPress={() => props.navigation.navigate('CreateItems')}>
         <View style={styles.textwithIcon}>
           <Image
             source={require('../../Assets/recipt.png')}
@@ -225,11 +225,8 @@ const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.textPrimeColor,
-    // width:'100%',
     borderTopRightRadius: '15@vs',
     borderBottomRightRadius: '15@vs',
-    // borderTopRightRadius: 30,
-    //     borderBottomRightRadius: 30,
     paddingVertical: '23@vs',
     paddingLeft: '10@s',
     paddingRight: '13@s',

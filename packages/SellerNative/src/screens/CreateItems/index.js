@@ -81,39 +81,29 @@ const CreateItem = ({navigation}) => {
           },
         }}>
         <View
-          style={{
-            backgroundColor: 'white',
-            paddingHorizontal: 10,
-            marginTop: 35,
-          }}>
-          <TouchableOpacity style={{flexDirection: 'row',marginTop:5,marginVertical:10}}>
-            <Octicons
-              name="pencil"
-              style={styles.IconHeaderSheet}
-            />
+          style={styles.RbSheetHeader}>
+          <TouchableOpacity
+            style={[styles.HeaderRbsheet,{}]}>
+            <Octicons name="pencil" style={styles.IconHeaderSheet} />
             <Text style={styles.headerSheetText}>Save as draft</Text>
           </TouchableOpacity>
           <View style={styles.divider} />
-          <TouchableOpacity style={{flexDirection: 'row',marginTop:30,marginVertical:10}}>
-            <Octicons
-              name="stack"
-              style={styles.IconHeaderSheet}
+          <TouchableOpacity
+            style={styles.HeaderRbsheet}>
+            <Octicons name="stack" style={styles.IconHeaderSheet} />
+            <Text style={styles.headerSheetText}>Save as template</Text>
+          </TouchableOpacity>
+          <View style={styles.divider} />
+          <TouchableOpacity
+            style={styles.HeaderRbsheet}>
+            <Image
+              source={require('../../Assets/li_trash-2.png')}
+              style={{width: 20, height: 20, marginHorizontal: 10}}
             />
             <Text style={styles.headerSheetText}>Save as template</Text>
           </TouchableOpacity>
           <View style={styles.divider} />
-          <TouchableOpacity style={{flexDirection: 'row',marginTop:20,marginVertical:10}}>
-          <Image
-            source={require('../../Assets/li_trash-2.png')}
-            style={{width: 20, height: 20,marginHorizontal:10}}
-          />
-            <Text style={styles.headerSheetText}>Save as template</Text>
-          </TouchableOpacity>
-          <View style={styles.divider} />
-          {/* <Image
-            source={require('../../Assets/li_trash-2.png')}
-            style={{width: 30, height: 30}}
-          /> */}
+         
         </View>
       </RBSheet>
 
@@ -148,13 +138,15 @@ const CreateItem = ({navigation}) => {
           </View>
         ) : (
           <View style={styles.createnewItemContainerMobile}>
-            <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity
+              onPress={() => goToGettingStarted()}
+              style={{flexDirection: 'row'}}>
               <Icon name="arrowleft" type="antdesign" size={20} />
               <CustomText
                 label={t('create_new_item')}
                 textStyle={styles.createItemText}
               />
-            </View>
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => Sheet_Header.current.open()}>
               <Entypo
                 name="dots-three-vertical"
@@ -204,6 +196,3 @@ const CreateItem = ({navigation}) => {
 };
 
 export default CreateItem;
-
-
- 

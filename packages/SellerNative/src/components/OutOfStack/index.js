@@ -29,7 +29,10 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import {scale, verticalScale} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import ItemDetails from '../ItemDetails';
+<<<<<<< HEAD
 import {t} from 'i18next';
+=======
+>>>>>>> 1f2f6b8f21d706669e9225604fc72c54fbe81a4d
 import fonts from '@SilalApp/common/assets/fonts';
 // import { useFocusEffect } from '@react-navigation/native';
 export default function Archive_orders({title, navigation}) {
@@ -139,7 +142,7 @@ export default function Archive_orders({title, navigation}) {
         <View
           style={[
             styles.render_all_orders,
-            {backgroundColor: index == selected_index ? '#E6F4F2' : 'white'},
+            {backgroundColor: index == selected_index ? colors.blurPrimary : colors.textWhite},
           ]}>
           <View>
             <CheckBox
@@ -147,8 +150,8 @@ export default function Archive_orders({title, navigation}) {
                 item.checked == true || item.checked == 'true' ? true : false
               }
               onPress={() => setcheck(index)}
-              checkedColor="#5AB3A8"
-              uncheckedColor="#CCD4D6"
+              checkedColor={colors.primary}
+              uncheckedColor={colors.light_grey}
             />
           </View>
           <View
@@ -162,7 +165,7 @@ export default function Archive_orders({title, navigation}) {
             />
           </View>
           <View style={[styles.render_all_order_single, {width: '10%'}]}>
-            <Text style={{fontFamily: 'Lato-Regular'}}>Man's T-shirt</Text>
+            <Text style={{fontFamily: fonts.LatoRegular}}>Man's T-shirt</Text>
           </View>
           <View
             style={[
@@ -174,7 +177,7 @@ export default function Archive_orders({title, navigation}) {
                 left: 20,
               },
             ]}>
-            <Text style={{fontFamily: 'Lato-Regular'}}>Clothing</Text>
+            <Text style={{fontFamily: fonts.LatoRegular}}>Clothing</Text>
           </View>
           <View
             style={[
@@ -190,13 +193,13 @@ export default function Archive_orders({title, navigation}) {
           <View style={[{width: '14%'}]}>
             <Text
               style={{
-                fontFamily: 'Lato-Regular',
+                fontFamily: fonts.LatoRegular,
                 textAlign: 'left',
                 justifyContent: 'flex-start',
               }}>
               2
             </Text>
-            <Text style={{fontFamily: 'Lato-Regular', fontSize: 10}}>
+            <Text style={{fontFamily: fonts.LatoRegular, fontSize: 10}}>
               Variants on: Size, Color
             </Text>
           </View>
@@ -205,16 +208,16 @@ export default function Archive_orders({title, navigation}) {
               styles.render_all_order_single,
               {
                 width: '10%',
-                backgroundColor: '#FFAB00',
+                backgroundColor: colors.orange,
                 borderRadius: 5,
               },
             ]}>
-            <Text style={{fontFamily: 'Lato-Regular', color: '#fff'}}>
+            <Text style={{fontFamily: fonts.LatoRegular, color: colors.textWhite}}>
               Low of stock
             </Text>
           </View>
           <View style={[styles.render_all_order_single, {width: '14%'}]}>
-            <Text style={{fontFamily: 'Lato-Regular'}}>$ 120.00</Text>
+            <Text style={{fontFamily: fonts.LatoRegular}}>$ 120.00</Text>
           </View>
           <View style={[styles.render_all_order_single, {width: '8%'}]}>
             <Menu>
@@ -224,17 +227,12 @@ export default function Archive_orders({title, navigation}) {
                 }}
                 style={styles.trigger}>
                 <View
-                  style={{
-                    height: 40,
-                    width: 40,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.DotsButton}>
                   <Entypo
                     name="dots-three-vertical"
                     style={[
                       styles.cross_icon,
-                      {color: '#4C6870', fontSize: 20},
+                      {color: colors.sidebar, fontSize: 20},
                     ]}
                   />
                 </View>
@@ -246,7 +244,7 @@ export default function Archive_orders({title, navigation}) {
             </Menu>
           </View>
         </View>
-        <View style={{borderBottomWidth: 0.9, borderColor: '#00273314'}} />
+        <View style={{borderBottomWidth: 0.9, borderColor: colors.borderColor}} />
       </View>
     );
   };
@@ -309,8 +307,8 @@ export default function Archive_orders({title, navigation}) {
             <CheckBox
               checked={checked}
               onPress={() => setchecked(!checked)}
-              checkedColor="#5AB3A8"
-              uncheckedColor="#CCD4D6"
+              checkedColor={colors.primary}
+              uncheckedColor={colors.light_grey}
             />
             <CustomText
               label={t('selectALL')}
@@ -385,20 +383,7 @@ export default function Archive_orders({title, navigation}) {
     </View>
   ) : (
     <View
-      style={{
-        height: '90%',
-        paddingVertical: 10,
-        paddingHorizontal: 10,
-        backgroundColor: colors.textWhite,
-        elevation: 1,
-        borderWidth: 1,
-        borderColor: '#fff',
-        borderRadius: 5,
-        width: '95%',
-        padding: 20,
-        justifyContent: 'center',
-        alignSelf: 'center',
-      }}>
+      style={styles.MainContainer}>
       {header_alloredrs()}
       <FlatList
         keyExtractor={(item, index) => index.toString()}
@@ -417,15 +402,15 @@ export default function Archive_orders({title, navigation}) {
         <View style={styles.pagination_numbring}>
           <Ionicons
             name="chevron-back"
-            style={{color: '#d1d8da', fontSize: 24}}
+            style={{color: colors.gray50, fontSize: 24}}
           />
-          <Text style={{fontFamily: 'Lato-Regular', color: 'black'}}>1</Text>
+          <Text style={{fontFamily: fonts.LatoBold, color:colors.black}}>1</Text>
           <Text>2</Text>
           <Text>3</Text>
           <Text>4</Text>
           <MaterialCommunityIcons
             name="chevron-right-circle"
-            style={{color: '#4c6870', fontSize: 24}}
+            style={{color: colors.gray50, fontSize: 24}}
           />
         </View>
       </View>

@@ -70,6 +70,7 @@
     "react-native-swipe-list-view": "^3.2.9",
     "react-native-swipeable-rating": "^0.2.1",
     "react-native-swiper": "^1.6.0",
+    "react-native-switch-toggle": "^2.2.1",
     "react-native-table-component": "^1.2.2",
     "react-native-tags-input": "^1.0.10",
     "react-native-toast-message": "^2.1.1",

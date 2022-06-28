@@ -21,8 +21,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tooltip from 'react-native-walkthrough-tooltip';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import RBSheet from 'react-native-raw-bottom-sheet';
-// import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 var windowWidth = Dimensions.get('window').width;
 
 const ItemInformation = ({onPress}) => {
@@ -36,8 +35,7 @@ const ItemInformation = ({onPress}) => {
 
   const [selectedColor, setselectedColor] = useState('');
   const [SubCategory, setSubCategory] = useState('');
-  const navigation = useNavigation(); 
-
+  const navigation = useNavigation();
 
   const Sheet = useRef();
   const Sheet_Header = useRef();
@@ -45,120 +43,111 @@ const ItemInformation = ({onPress}) => {
     {
       id: '1',
       Category: 'First Some Category',
-
       selectedColor: false,
     },
     {
       id: '2',
       Category: 'First Some Category',
-
       selectedColor: false,
     },
     {
       id: '3',
       Category: 'First Some Category',
-
       selectedColor: false,
     },
     {
       id: '4',
       Category: 'First Some Category',
-
       selectedColor: false,
     },
     {
       id: '5',
       Category: 'First Some Category',
-
       selectedColor: false,
     },
   ]);
   const data = [
     {
-      id: '01',
+      id: '6',
       selectedColor: false,
       Category: 'Second Some Category',
     },
     {
-      id: '02',
-      Category: 'Second Some Category',
-
-      selectedColor: false,
-    },
-    {
-      id: '03',
+      id: '7',
       Category: 'Second Some Category',
       selectedColor: false,
     },
     {
-      id: '04',
+      id: '8',
       Category: 'Second Some Category',
       selectedColor: false,
     },
     {
-      id: '05',
+      id: '9',
+      Category: 'Second Some Category',
+      selectedColor: false,
+    },
+    {
+      id: '10',
       Category: 'Second Some Category',
       selectedColor: false,
     },
   ];
   const data2 = [
     {
-      id: '10',
+      id: '11',
       Category: 'Second Some Category',
       selectedColor: false,
     },
     {
-      id: '20',
+      id: '12',
       Category: 'Second Some Category',
       selectedColor: false,
     },
     {
-      id: '30',
+      id: '13',
       Category: 'Second Some Category',
       selectedColor: false,
     },
     {
-      id: '06',
+      id: '14',
       selectedColor: false,
       Category: 'Second Some Category',
     },
     {
-      id: '07',
+      id: '15',
       Category: 'Second Some Category',
-
       selectedColor: false,
     },
     {
-      id: '08',
+      id: '16',
       Category: 'Second Some Category',
-
       selectedColor: false,
     },
     {
-      id: '09',
+      id: '17',
       Category: 'Second Some Category',
-
       selectedColor: false,
     },
   ];
   const data3 = [
     {
-      id: '10',
+      id: '18',
       Category: 'Some Category',
       selectedColor: false,
     },
     {
-      id: '20',
+      id: '19',
       Category: 'Some category',
       selectedColor: false,
     },
     {
-      id: '30',
+      id: '20',
       Category: 'Computers',
       selectedColor: false,
     },
   ];
- 
+
   return (
     <>
       {/* <KeyboardAwareScrollView> */}
@@ -169,7 +158,7 @@ const ItemInformation = ({onPress}) => {
           <View style={styles.headerTitleContainer}>
             {IsTablet ? (
               <CustomText
-                label={t('item_information' )}
+                label={t('item_information')}
                 textStyle={styles.headerTitle}
               />
             ) : (
@@ -195,7 +184,7 @@ const ItemInformation = ({onPress}) => {
               }}>
               <View style={{flexDirection: 'row'}}>
                 <CustomText
-                  label={t('item_name')}
+                  label={t('item_name dsss')}
                   textStyle={styles.formTextHeading}
                 />
                 <CustomText label="*" textStyle={styles.star} />
@@ -210,7 +199,9 @@ const ItemInformation = ({onPress}) => {
               </View>
             </View>
             <View style={styles.textInputContainer}>
-              <CustomTextInput />
+              <CustomTextInput
+                inputStyle={!IsTablet ? styles.InputCntainerMobile : null}
+              />
               {/* ToolTip Start */}
 
               <Tooltip
@@ -287,7 +278,6 @@ const ItemInformation = ({onPress}) => {
               </Tooltip>
 
               {/* ToolTip End */}
-         
             </View>
             <View
               style={{
@@ -310,7 +300,12 @@ const ItemInformation = ({onPress}) => {
                 />
               </View>
             </View>
-            <CustomTextInput placeholderText={t('item_name')} />
+            <CustomTextInput
+              inputTextStyle={{paddingHorizontal: 2}}
+              inputStyle={!IsTablet ? styles.InputCntainerMobile : null}
+              placeholderText={t('item_name')}
+            />
+
             <View
               style={{
                 flexDirection: 'row',
@@ -366,8 +361,8 @@ const ItemInformation = ({onPress}) => {
                   {active == false ? (
                     <FlatList
                       data={data1}
-                      keyExtractor={(item, index) => item + index.toString()}
-                      renderItem={({item}) => (
+                      keyExtractor={(item, index) => index.toString()}
+                      renderItem={({item, index}) => (
                         <TouchableOpacity
                           onPress={() => setActive(!active)}
                           style={[styles.catContainer, styles.RBSheetData]}>
@@ -388,7 +383,7 @@ const ItemInformation = ({onPress}) => {
                   {active == true ? (
                     <FlatList
                       data={data2}
-                      keyExtractor={(item, index) => item + index.toString()}
+                      keyExtractor={(item, index) => index.toString()}
                       renderItem={({item}) => (
                         <TouchableOpacity
                           onPress={() => setActive(!active)}
@@ -412,8 +407,6 @@ const ItemInformation = ({onPress}) => {
             </RBSheet>
 
             {/* RB Sheet End */}
-            
-
 
             <View style={!IsTablet ? styles.Categorymobile : null}>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -435,81 +428,81 @@ const ItemInformation = ({onPress}) => {
                   />
                   <Icon name="caretdown" type="antdesign" size={16} />
                 </TouchableOpacity>
-  {/* ToolTip Start */}
+                {/* ToolTip Start */}
 
-  <Tooltip
-                contentStyle={
-                  IsTablet
-                    ? styles.ContainerToolTip
-                    : styles.ContainerToolTipMobile
-                }
-                isVisible={showTip1}
-                content={
-                  <Text
-                    style={{
-                      color: fonts.textWhite,
-                      fontSize: 13,
-                      fontFamily: fonts.LatoRegular,
-                      color: colors.textWhite,
-                    }}>
-                    Didn’t find an appropriate Item Name? Contact us and we'll
-                    add it! and we'll add it!
-                  </Text>
-                }
-                onClose={() => setTip1(false)}
-                placement="bottom"
-                showChildInTooltip={false}
-                accessible={false}>
-                <TouchableOpacity
-                  style={
+                <Tooltip
+                  contentStyle={
                     IsTablet
-                      ? [
-                          styles.TooltipButton,
-                          {
-                            backgroundColor:
-                              showTip1 == true
-                                ? colors.primary
-                                : colors.blurPrimary,
-                          },
-                        ]
-                      : [
-                          styles.TooltipButtonMobile,
-                          {
-                            backgroundColor:
-                              showTip1 == true
-                                ? colors.primary
-                                : colors.blurPrimary,
-                          },
-                        ]
+                      ? styles.ContainerToolTip
+                      : styles.ContainerToolTipMobile
                   }
-                  onPress={() => setTip1(true)}>
-                  <AntDesign
-                    name="question"
+                  isVisible={showTip1}
+                  content={
+                    <Text
+                      style={{
+                        color: fonts.textWhite,
+                        fontSize: 13,
+                        fontFamily: fonts.LatoRegular,
+                        color: colors.textWhite,
+                      }}>
+                      Didn’t find an appropriate Item Name? Contact us and we'll
+                      add it! and we'll add it!
+                    </Text>
+                  }
+                  onClose={() => setTip1(false)}
+                  placement="bottom"
+                  showChildInTooltip={false}
+                  accessible={false}>
+                  <TouchableOpacity
                     style={
                       IsTablet
                         ? [
-                            styles.TooltipText,
+                            styles.TooltipButton,
                             {
-                              color:
+                              backgroundColor:
                                 showTip1 == true
-                                  ? colors.textWhite
-                                  : colors.primary,
+                                  ? colors.primary
+                                  : colors.blurPrimary,
                             },
                           ]
                         : [
-                            styles.TooltipTextMobile,
+                            styles.TooltipButtonMobile,
                             {
-                              color:
+                              backgroundColor:
                                 showTip1 == true
-                                  ? colors.textWhite
-                                  : colors.primary,
+                                  ? colors.primary
+                                  : colors.blurPrimary,
                             },
                           ]
                     }
-                  />
-                </TouchableOpacity>
-              </Tooltip>
-                 {/* /////Tol Tip End */}
+                    onPress={() => setTip1(true)}>
+                    <AntDesign
+                      name="question"
+                      style={
+                        IsTablet
+                          ? [
+                              styles.TooltipText,
+                              {
+                                color:
+                                  showTip1 == true
+                                    ? colors.textWhite
+                                    : colors.primary,
+                              },
+                            ]
+                          : [
+                              styles.TooltipTextMobile,
+                              {
+                                color:
+                                  showTip1 == true
+                                    ? colors.textWhite
+                                    : colors.primary,
+                              },
+                            ]
+                      }
+                    />
+                  </TouchableOpacity>
+                </Tooltip>
+                {/* /////Tol Tip End */}
               </View>
             </View>
             <View style={{flexDirection: 'row'}}>
@@ -519,20 +512,26 @@ const ItemInformation = ({onPress}) => {
               />
               <CustomText label="*" textStyle={styles.star} />
             </View>
-
-        
+ 
             <TouchableOpacity
               activeOpacity={0.6}
-              onPress={() =>{IsTablet ? setBarCodeModal(!barcodeModal):  navigation.navigate('BarCodeScane');}}
-              >
-              <View style={styles.barcodeContainer}>
+              onPress={() => {
+                IsTablet
+                  ? setBarCodeModal(!barcodeModal)
+                  : navigation.navigate('BarCodeScane');
+              }}>
+              <View
+                style={
+                  IsTablet
+                    ? styles.barcodeContainer
+                    : styles.barcodeContainerMobile
+                }>
                 <CustomText
                   label={t('Barcode')}
                   textStyle={styles.barcodeText}
                 />
               </View>
             </TouchableOpacity>
-            
 
             <View
               style={{
@@ -548,7 +547,7 @@ const ItemInformation = ({onPress}) => {
                 />
                 <CustomText label="*" textStyle={styles.star} />
               </View>
-            
+
               <View>
                 <CustomText
                   label={1000 + ' ' + t('Character_left')}
@@ -556,6 +555,13 @@ const ItemInformation = ({onPress}) => {
                 />
               </View>
             </View>
+            {!IsTablet ? (
+              <CustomTextInput
+                multiline={true}
+                numberOfLines={5}
+                inputStyle={!IsTablet ? styles.InputCntainerMobile1 : null}
+              />
+            ) : null}
           </View>
           {IsTablet ? (
             <View style={styles.nextButton}>
@@ -565,11 +571,11 @@ const ItemInformation = ({onPress}) => {
         </View>
       </ScrollView>
       {!IsTablet ? (
-      <CustomButton
-        containerStyle={!IsTablet ? {height: 40, width: '90%'} : null}
-        text={t('Next_step')}
-        onPress={onPress}
-      />
+        <CustomButton
+          containerStyle={!IsTablet ? {height: 40, width: '90%'} : null}
+          text={t('Next_step')}
+          onPress={onPress}
+        />
       ) : null}
       <CustomModal
         isModalVisible={categoryModal}
@@ -628,7 +634,7 @@ const ItemInformation = ({onPress}) => {
             <ScrollView style={styles.scrollViewCon}>
               <FlatList
                 data={data}
-                keyExtractor={(item, index) => item + index.toString()}
+                keyExtractor={(item, index) => index.toString()}
                 renderItem={({item}) => (
                   <TouchableOpacity
                     onPress={() => [setActive(true), setselectedColor(item.id)]}
@@ -659,7 +665,7 @@ const ItemInformation = ({onPress}) => {
               {active == true ? (
                 <FlatList
                   data={data1}
-                  keyExtractor={(item, index) => item + index.toString()}
+                  keyExtractor={(item, index) => index.toString()}
                   renderItem={({item}) => (
                     <TouchableOpacity
                       onPress={() => [
@@ -694,7 +700,7 @@ const ItemInformation = ({onPress}) => {
               {Second == true ? (
                 <FlatList
                   data={data2}
-                  keyExtractor={(item, index) => item + index.toString()}
+                  keyExtractor={(item, index) => index.toString()}
                   renderItem={({item}) => (
                     <TouchableOpacity
                       // onPress={() => setThirdcategory()}
@@ -829,6 +835,14 @@ const styles = ScaledSheet.create({
     borderWidth: '0.7@s',
     borderRadius: '3@s',
     padding: '5@s',
+  },
+  barcodeContainerMobile: {
+    borderColor: colors.borderColor,
+    borderWidth: '0.7@s',
+    borderRadius: '3@s',
+    padding: '5@s',
+    padding: '7@s',
+    height: '33@s',
   },
   borderCodeHeaderText: {
     fontSize: '16@ms',
@@ -1061,5 +1075,17 @@ const styles = ScaledSheet.create({
   },
   RBSheetData: {
     marginHorizontal: '5%',
+  },
+  InputCntainerMobile: {
+    // backgroundColor:'red',
+    // paddingBottom:'4@s'
+    height: '35@s',
+  },
+  InputCntainerMobile1: {
+    // backgroundColor:'red',
+    // paddingBottom:'4@s'
+    height: '80@s',
+    alignItems: 'flex-start',
+    padding: '5@s',
   },
 });

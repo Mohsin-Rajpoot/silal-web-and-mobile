@@ -65,8 +65,8 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     marginHorizontal: '20@s',
   },
-  mainModalandSearcbar:{
-flexDirection:'row'
+  mainModalandSearcbar: {
+    flexDirection: 'row',
   },
   SearchBar: {flexDirection: 'row', alignItems: 'center'},
   FlatListMainView: {
@@ -99,6 +99,17 @@ flexDirection:'row'
     backgroundColor: '#fff',
     paddingHorizontal: 10,
     paddingVertical: 10,
+  },
+  ItemId2:{
+    color: colors.black,
+    fontSize: 17,
+    width: 250,
+    paddingHorizontal: 4,
+  },
+  ClintData1: {
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5,
+    elevation: 0.4,
   },
   OrderFlat: {
     color: colors.black,
@@ -176,11 +187,12 @@ flexDirection:'row'
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 2,
+    marginTop: 5,
     flexDirection: 'row',
     paddingHorizontal: 10,
     marginHorizontal: 17,
     paddingVertical: 2,
+    height: '36@vs',
   },
   title: {
     fontSize: 18,
@@ -206,7 +218,7 @@ flexDirection:'row'
   },
   SecondViewCompleteText: {
     color: colors.textWhite,
-    fontFamily:fonts.LatoMedium,
+    fontFamily: fonts.LatoMedium,
     fontSize: 11,
   },
   SecondModalIcon: {
@@ -243,22 +255,21 @@ flexDirection:'row'
     elevation: 5,
   },
 
-  CloseMainModalMobile:{
-    flexDirection:'row',
-    justifyContent:'flex-end',
-    marginVertical:15,
-  
+  CloseMainModalMobile: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginVertical: 15,
   },
-  CloseMainModal:{
-display:'none'
-  
+  CloseMainModal: {
+    display: 'none',
   },
-  crossButtonModal:{
-    
-    flexDirection:'row',justifyContent:'flex-end',marginTop:IsTablet ? '8@s': '15%', display: IsTablet ? null : true,
-   
+  crossButtonModal: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginTop: IsTablet ? '8@s' : '15%',
+    display: IsTablet ? null : true,
   },
-  
+
   modalViewMobile: {
     height: '100%',
     width: '100%',
@@ -284,15 +295,13 @@ display:'none'
     alignItems: 'center',
     justifyContent: 'space-between',
     // marginTop:-20
-    
   },
   modal_headerMobile: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     // marginTop:-20
-    paddingVertical:'10@s'
-    
+    paddingVertical: '10@s',
   },
   modal_recuring: {
     backgroundColor: colors.primary,
@@ -438,9 +447,9 @@ display:'none'
     backgroundColor: colors.blurPrimary,
     height: '35@vs',
     width: '290@s',
-    borderRadius:5,
-    overflow:'hidden',
-    marginBottom:10
+    borderRadius: 5,
+    overflow: 'hidden',
+    marginBottom: 10,
   },
   HideButtonText: {
     color: colors.primary,
@@ -449,29 +458,41 @@ display:'none'
     alignSelf: 'center',
     alignItems: 'center',
     textAlignVertical: 'center',
-    fontFamily:fonts.PoppinsSemiBold,
-    fontSize:"13@s",
+    fontFamily: fonts.PoppinsSemiBold,
+    fontSize: '13@s',
   },
-  CrossIconbts:{
-    color:colors.black,
-    fontSize:20,
-    padding:15
-    
+  CrossIconbts: {
+    color: colors.black,
+    fontSize: 20,
+    padding: 15,
   },
-  sheet_head_view:{
-    justifyContent:'flex-end',
-    flexDirection:'row',
-    zIndex:0
+  sheet_head_view: {
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
+    zIndex: 0,
   },
-  BottomSheetTextHead:{
-    borderBottomWidth:1,
-    borderBottomColor:'rgba(0, 39, 51, 0.08)',
-    marginHorizontal:'10@s',
-    marginVertical:'5@vs',
-    flexDirection:'row',justifyContent:'space-between'
+  BottomSheetTextHead: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0, 39, 51, 0.08)',
+    marginHorizontal: '10@s',
+    marginVertical: '5@vs',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  mianviewText:{
-    marginTop:'12@vs'
-  }
+  mianviewText: {
+    marginTop: '12@vs',
+  },
+  BottomSheetContiner: {
+    justifyContent: 'center',
+    alignSelf: 'center',
+    zIndex: 1,
+    marginTop: -33,
+  },
+  SortedDrop: {
+    marginVertical: 10,
+    fontSize: 20,
+    fontFamily: fonts.LatoRegular,
+    color: colors.black,
+  },
 });
 export default styles;

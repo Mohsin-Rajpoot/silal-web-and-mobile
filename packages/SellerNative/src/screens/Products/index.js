@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
   Text,
   View,
   FlatList,
   TouchableOpacity,
-  Modal,
   ScrollView,
   Image,
   TextInput,
@@ -16,30 +14,20 @@ import colors from '@SilalApp/common/assets/colors';
 import CustomText from '@SilalApp/common/components/CustomText';
 import {Icon, CheckBox} from 'react-native-elements';
 import styles from './styles';
-import {
-  CustomButton,
-  LockOnLandscape,
-  SearchBox,
-} from '@SilalApp/common/components/native';
+import {CustomButton, SearchBox} from '@SilalApp/common/components/native';
 import Svg, {Circle, Path} from 'react-native-svg';
 import {useTranslation} from 'react-i18next';
 import Menu, {
-  MenuProvider,
   MenuTrigger,
   MenuOptions,
   MenuOption,
 } from 'react-native-popup-menu';
-import {
-  widthPercentageToDP as width,
-  heightPercentageToDP as height,
-} from 'react-native-responsive-screen';
 import CustomModal from '@SilalApp/common/components/native/CustomModal';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Foundation from 'react-native-vector-icons/Foundation';
 import fonts from '@SilalApp/common/assets/fonts';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
-import {moderateScale, verticalScale} from 'react-native-size-matters';
+import {moderateScale} from 'react-native-size-matters';
 
 const Products = ({navigation}) => {
   const {t} = useTranslation();
@@ -263,6 +251,19 @@ const Products = ({navigation}) => {
                     />
                   </TouchableOpacity>
                 </View>
+                <View
+                  style={
+                    !IsTablet ? styles.NameFolderMobile : styles.NameFolder
+                  }>
+                  <CustomText
+                    label={t('Cover_Photo')}
+                    textStyle={
+                      !IsTablet
+                        ? styles.TitleModelInputMobile1
+                        : styles.TitleModelInput
+                    }
+                  />
+                </View>
 
                 <Image
                   source={require('../../Assets/editmodal.png')}
@@ -280,7 +281,7 @@ const Products = ({navigation}) => {
                   }>
                   <Ionicons
                     name="md-image"
-                    color="#fff"
+                    color={colors.textWhite}
                     style={{
                       fontSize: 35,
                       paddingVertical: 2,
@@ -291,9 +292,6 @@ const Products = ({navigation}) => {
                     label={t('Change cover picture')}
                     textStyle={styles.modelimageoverly}
                   />
-                  {/* <Text style={styles.modelimageoverly}>
-                    Change cover picture
-                  </Text> */}
                 </View>
 
                 <View
@@ -308,22 +306,57 @@ const Products = ({navigation}) => {
                         : styles.TitleModelInput
                     }
                   />
-                  {/* <Text
-                    style={
-                      !IsTablet
-                        ? styles.TitleModelInputMobile
-                        : styles.TitleModelInput
-                    }>
-                    Folder name
-                  </Text> */}
                 </View>
                 <TextInput
                   style={
                     !IsTablet ? styles.InputModelMobile : styles.InputModel
                   }
-                  placeholderTextColor="#002733"
+                  placeholderTextColor={colors.black}
                   placeholder="Salads"
                 />
+                {/* /// */}
+
+                <View
+                  style={
+                    !IsTablet
+                      ? styles.ModalButtonContainerMobile
+                      : styles.ModalButtonContainer
+                  }>
+                  <TouchableOpacity
+                    onPress={() => setContactModal(false)}
+                    style={[
+                      {backgroundColor: colors.light_grey},
+                      !IsTablet
+                        ? styles.ButtonssDeleteMobile
+                        : styles.ButtonssDelete,
+                    ]}>
+                    <CustomText
+                      label={t('Cancel')}
+                      textStyle={[
+                        {color: colors.textPrimary},
+                        styles.DeleteModal,
+                      ]}
+                    />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    onPress={() => setOpenmodal(false)}
+                    style={[
+                      {backgroundColor: colors.primary},
+                      !IsTablet
+                        ? styles.ButtonssDeleteMobile
+                        : styles.ButtonssDelete,
+                    ]}>
+                    <CustomText
+                      label={t('Save')}
+                      textStyle={[
+                        styles.DeleteModal,
+                        {color: colors.textWhite},
+                      ]}
+                    />
+                  </TouchableOpacity>
+                </View>
+
                 <View style={{flexDirection: 'row'}}>
                   <View>
                     {/* <TouchableOpacity
@@ -342,7 +375,7 @@ const Products = ({navigation}) => {
                             : styles.saveButtonText,
                         ]}
                       /> */}
-                      {/* <Text
+                    {/* <Text
                         style={[
                           {color: '#4C7061'},
                           !IsTablet
@@ -369,7 +402,7 @@ const Products = ({navigation}) => {
                             : styles.saveButtonText
                         }
                       /> */}
-                      {/* <Text
+                    {/* <Text
                         style={
                           !IsTablet
                             ? styles.saveButtonTextMobile
@@ -393,21 +426,11 @@ const Products = ({navigation}) => {
                   ? styles.ModalWrapperDeleteMobile
                   : styles.ModalWrapperDelete
               }
-              modalContainerStyle={{
-                borderRadius: 2,
-                backgroundColor: 'white',
-              }}>
+              // modalContainerStyle={styles.ModelDeleteMobileStyle}
+            >
               <View style={styles.ModalContainer}>
                 <View style={styles.ModeView}>
-                  <Text
-                    style={{
-                      justifyContent: 'center',
-                      alignSelf: 'center',
-                      fontSize: 15,
-                      fontFamily: fonts.bold,
-                    }}>
-                    Delete folder?
-                  </Text>
+                  <Text style={styles.DeleteFolerButton}>Delete folder?</Text>
                   <View
                     style={
                       !IsTablet ? styles.ModalTitleMobile : styles.ModalTitle
@@ -458,9 +481,6 @@ const Products = ({navigation}) => {
                           styles.DeleteModal,
                         ]}
                       />
-                      {/* <Text style={[{color:colors.textWhite}, styles.DeleteModal]}>
-                        Cancel
-                      </Text> */}
                     </TouchableOpacity>
 
                     <TouchableOpacity
@@ -475,10 +495,6 @@ const Products = ({navigation}) => {
                         label={t('Yes_Delete')}
                         textStyle={[styles.DeleteModal, {color: '#DE350B'}]}
                       />
-
-                      {/* <Text style={[styles.DeleteModal, {color: '#DE350B'}]}>
-                        Yes, Delete
-                      </Text> */}
                     </TouchableOpacity>
                   </View>
                 </View>

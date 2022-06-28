@@ -11,7 +11,12 @@ const styles = ScaledSheet.create({
   MainContainer: {
     width: '100%',
     alignSelf: 'center',
-    backgroundColor: colors.textWhite,
+    backgroundColor: colors.profileBackground,
+  },
+  BackHeaderTitle: {
+    width: '100%',
+    alignSelf: 'center',
+    backgroundColor: colors.profileBackground,
   },
   archive_orders_tab: {
     borderWidth: 5,
@@ -52,7 +57,7 @@ const styles = ScaledSheet.create({
   backTitle: {
     fontSize: 25,
     color: colors.black,
-    fontFamily:  fonts.bold,
+    fontFamily: fonts.bold,
   },
   ModalContainer: {
     justifyContent: 'center',
@@ -131,12 +136,12 @@ const styles = ScaledSheet.create({
     // backgroundColor: colors.textWhite,
     // position: 'absolute',
     // right: 0,
-    backgroundColor: 'rgba(0,0,0,0.5)'
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
-  ModalContainePreviewMain:{
+  ModalContainePreviewMain: {
     width: '40%',
     height: '100%',
-    backgroundColor:colors.textWhite,
+    backgroundColor: colors.textWhite,
     position: 'absolute',
     right: 0,
   },
@@ -157,6 +162,12 @@ const styles = ScaledSheet.create({
     borderTopRightRadius: 8,
     zIndexL: 0,
   },
+  ModalHeading: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 10,
+    marginVertical: 10,
+  },
   IconModalMobile: {
     fontSize: 25,
     color: colors.black,
@@ -165,7 +176,7 @@ const styles = ScaledSheet.create({
     height: 40,
     width: 40,
     borderRadius: 20,
-    backgroundColor: '#CCD4D680',
+    backgroundColor: colors.darkGray,
     position: 'absolute',
     right: 60,
     top: 300,
@@ -178,7 +189,7 @@ const styles = ScaledSheet.create({
   TitleModalPreview: {
     color: colors.black,
     fontSize: 16,
-    fontFamily:  fonts.bold,
+    fontFamily: fonts.bold,
   },
   paragaphPreview: {
     fontSize: 15,
@@ -224,19 +235,18 @@ const styles = ScaledSheet.create({
   TextPrimaryButton: {
     color: colors.textWhite,
     fontFamily: fonts.LatoSemiBold,
-    
   },
-  TertiaryButtonText:{
-// color:colors.primary,
-// backgroundColor:'red'
+  TertiaryButtonText: {
+    // color:colors.primary,
+    // backgroundColor:'red'
   },
   ToastMainView: {
     flexDirection: 'row',
     marginVertical: 0,
-    position:'absolute',
-    left:-420,
-    backgroundColor:colors.textWhite,
-    elevation:2
+    position: 'absolute',
+    left: -420,
+    backgroundColor: colors.textWhite,
+    elevation: 2,
   },
   IconToast: {
     color: colors.primary,
