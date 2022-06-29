@@ -29,10 +29,7 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import {scale, verticalScale} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import ItemDetails from '../ItemDetails';
-<<<<<<< HEAD
-import {t} from 'i18next';
-=======
->>>>>>> 1f2f6b8f21d706669e9225604fc72c54fbe81a4d
+import {useTranslation} from 'react-i18next';
 import fonts from '@SilalApp/common/assets/fonts';
 // import { useFocusEffect } from '@react-navigation/native';
 export default function Archive_orders({title, navigation}) {
@@ -40,7 +37,7 @@ export default function Archive_orders({title, navigation}) {
   const [loader, setLoader] = useState(false);
   const [ShowModal, setShowModal] = useState(false);
   const [selected_index, set_selected_index] = useState('');
-
+  const {t} = useTranslation();
   const setcheck = index => {
     console.log(index, 'Harris Saleem');
     const val = data[index];
@@ -142,7 +139,10 @@ export default function Archive_orders({title, navigation}) {
         <View
           style={[
             styles.render_all_orders,
-            {backgroundColor: index == selected_index ? colors.blurPrimary : colors.textWhite},
+            {
+              backgroundColor:
+                index == selected_index ? colors.blurPrimary : colors.textWhite,
+            },
           ]}>
           <View>
             <CheckBox
@@ -212,7 +212,8 @@ export default function Archive_orders({title, navigation}) {
                 borderRadius: 5,
               },
             ]}>
-            <Text style={{fontFamily: fonts.LatoRegular, color: colors.textWhite}}>
+            <Text
+              style={{fontFamily: fonts.LatoRegular, color: colors.textWhite}}>
               Low of stock
             </Text>
           </View>
@@ -226,8 +227,7 @@ export default function Archive_orders({title, navigation}) {
                   set_selected_index(index);
                 }}
                 style={styles.trigger}>
-                <View
-                  style={styles.DotsButton}>
+                <View style={styles.DotsButton}>
                   <Entypo
                     name="dots-three-vertical"
                     style={[
@@ -244,7 +244,9 @@ export default function Archive_orders({title, navigation}) {
             </Menu>
           </View>
         </View>
-        <View style={{borderBottomWidth: 0.9, borderColor: colors.borderColor}} />
+        <View
+          style={{borderBottomWidth: 0.9, borderColor: colors.borderColor}}
+        />
       </View>
     );
   };
@@ -382,8 +384,7 @@ export default function Archive_orders({title, navigation}) {
       </ScrollView>
     </View>
   ) : (
-    <View
-      style={styles.MainContainer}>
+    <View style={styles.MainContainer}>
       {header_alloredrs()}
       <FlatList
         keyExtractor={(item, index) => index.toString()}
@@ -404,7 +405,9 @@ export default function Archive_orders({title, navigation}) {
             name="chevron-back"
             style={{color: colors.gray50, fontSize: 24}}
           />
-          <Text style={{fontFamily: fonts.LatoBold, color:colors.black}}>1</Text>
+          <Text style={{fontFamily: fonts.LatoBold, color: colors.black}}>
+            1
+          </Text>
           <Text>2</Text>
           <Text>3</Text>
           <Text>4</Text>
