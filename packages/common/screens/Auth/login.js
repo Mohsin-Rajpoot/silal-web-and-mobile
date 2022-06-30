@@ -22,26 +22,61 @@ import Loader from "../../Loader";
 import DeviceInfo from "react-native-device-info";
 import CustomText from "../../components/CustomText";
 import { verticalScale } from "react-native-size-matters";
+import { CheckBox, Icon } from "react-native-elements";
+import IsTablet from "../../components/native/IsTablet";
+
 const Login = ({ navigation, route }) => {
   const { t } = useTranslation();
   const isTab = DeviceInfo.isTablet();
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.User);
-  console.log("Loading", loading);
+
   const data = route?.params;
   const init = {
     password: "",
     email: "",
-    error: "",
   };
   const [active, setActive] = useState(1);
   const [text, setText] = useState(init);
+  const [check, setcheck] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [error, setError] = useState("");
 
   const goForgerPassword = () => {
     navigation.navigate("ForgetPassword");
   };
   const goBack = () => {
     navigation.pop();
+  };
+
+  const SignUpWithPhone = (data) => {
+    if (data.length < 8) {
+      setError(t("EnterValidPhone"));
+    } else {
+      dispatch(
+        userAction.userSignUpSaga({
+          data,
+          cb: (res) => {
+            if (res == "Email Verified") {
+              setTimeout(() => {
+                navigation.navigate("Verification", {
+                  params: {
+                    phone: phone,
+                    activeTab: data?.params?.signupEmail
+                      ? 5
+                      : data?.params?.signUp
+                      ? 4
+                      : null,
+                    active: active,
+                    
+                  },
+                });
+              }, 1000);
+            }
+          },
+        })
+      );
+    }
   };
   const loginFunction = (data) => {
     var rePass = /^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
@@ -157,16 +192,24 @@ const Login = ({ navigation, route }) => {
                 codeTextStyle={styles.codeText}
                 defaultCode="RU"
                 layout="second"
-                onChangeText={(value) => setText(value)}
-                // onChangeFormattedText={(value) => setText(value)}
+                onChangeFormattedText={(value) => setPhone(value)}
                 value={text}
                 // placeholder={t("phone_number")}
               />
+              {error.length > 1 ? (
+                <CustomText
+                  label={error}
+                  textStyle={CommonStyle.errorMessage}
+                />
+              ) : (
+                <View />
+              )}
             </View>
           ) : (
             <View />
           )}
         </View>
+
         {loading && <Loader />}
 
         <View style={{ flexGrow: 1 }} />
@@ -191,19 +234,7 @@ const Login = ({ navigation, route }) => {
           }
           s
           onPress={() => {
-            loginFunction(text);
-            setTimeout(() => {
-              navigation.navigate("Verification", {
-                params: {
-                  activeTab: data?.params?.signupEmail
-                    ? 5
-                    : data?.params?.signUp
-                    ? 4
-                    : null,
-                  active: active,
-                },
-              });
-            }, 1000);
+            data?.params?.signUp ? SignUpWithPhone(phone) : loginFunction(text);
           }}
         />
         <View
@@ -212,20 +243,43 @@ const Login = ({ navigation, route }) => {
             alignSelf: "center",
             marginVertical: 15,
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           {data?.params?.signUp ? (
-            <View style={{ justifyContent: "center" }}>
+            <View
+              style={{
+                alignSelf: "center",
+                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <View style={{ flexDirection: "row", alignItems: "center" }}>
+                {!IsTablet ? (
+                  <View style={{ width: verticalScale(35) }}>
+                    <CheckBox
+                      checked={check}
+                      onPress={() => setcheck(!check)}
+                      checkedColor="#5AB3A8"
+                      uncheckedColor="#CCD4D6"
+                      size={20}
+                    />
+                  </View>
+                ) : (
+                  <View />
+                )}
                 <Text style={styles.signUpDetailText}>
                   {t("by_signing_up")}
                 </Text>
+
                 <TouchableOpacity activeOpacity={0.6}>
                   <Text style={styles.termCondition}>
                     {" "}
                     {t("Terms-of-services")}{" "}
                   </Text>
                 </TouchableOpacity>
+
                 <Text style={styles.signUpDetailText}>{t("and")}</Text>
                 <TouchableOpacity activeOpacity={0.6}>
                   <Text style={styles.termCondition}>

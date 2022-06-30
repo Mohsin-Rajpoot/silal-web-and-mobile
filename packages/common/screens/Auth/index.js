@@ -25,7 +25,7 @@ import { Icon } from "react-native-elements";
 import DeviceInfo from "react-native-device-info";
 import { verticalScale } from "react-native-size-matters";
 const OnBoarding = ({ navigation }) => {
-  const { t } = useTranslation();
+  const { t , i18n} = useTranslation();
   const isTab = DeviceInfo.isTablet();
 
   const getLang = Preference.get("languageValue");

@@ -40,7 +40,7 @@ const Clints = ({navigation}) => {
     setModalVisible(bool);
   };
   const setData = option => {
-    setchoseData(option);
+    setchoseData(JSON.stringify(option));
   };
 
   const Sheet = useRef();
@@ -382,7 +382,7 @@ const Clints = ({navigation}) => {
             </View>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}> {t('phone')}</Text>
-              <Text style={styles.modal_title_second}>*** *** **** 112</Text>
+              <Text style={styles.modal_title_second}>* * ** 112</Text>
             </View>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}> {t('address')}</Text>
@@ -434,7 +434,7 @@ const Clints = ({navigation}) => {
             </View>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>{t('phone')}</Text>
-              <Text style={styles.modal_title_second}>*** *** **** 112</Text>
+              <Text style={styles.modal_title_second}>* * ** 112</Text>
             </View>
           </View>
         ) : null}
@@ -478,7 +478,7 @@ const Clints = ({navigation}) => {
             </View>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>{t('credit_card')}</Text>
-              <Text style={styles.modal_title_second}>**** **** **** 3782</Text>
+              <Text style={styles.modal_title_second}>** ** ** 3782</Text>
             </View>
 
             <FlatList
@@ -542,7 +542,7 @@ const Clints = ({navigation}) => {
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>{t('credit_card')}</Text>
               <Text style={styles.modal_title_second}>
-                **** **** **** 4543{' '}
+                ** ** ** 4543{' '}
               </Text>
             </View>
           </View>
@@ -734,7 +734,7 @@ const Clints = ({navigation}) => {
                   </View>
                   <View style={{flexDirection: 'row'}}>
                     <Text style={[styles.paymentMethod]}>{t('card_data')}</Text>
-                    <Text style={styles.CreditCard}>**** **** **** 3782</Text>
+                    <Text style={styles.CreditCard}>** ** ** 3782</Text>
                   </View>
                 </TouchableOpacity>
               )}
@@ -805,7 +805,6 @@ const Clints = ({navigation}) => {
                           />
                         </TouchableOpacity>
 
-                        {/* /// */}
                         <Text style={styles.orderid_text}>
                           {t('Willson_Genemal')}
                         </Text>
@@ -950,11 +949,11 @@ const Clints = ({navigation}) => {
             </>
           ) : null}
         </View>
-
+        {IsTablet ? 
         <TouchableOpacity
           onPress={() => changeModalVisibilty(true)}
           style={[
-            !IsTablet ? {display: 'none'} : styles.modelTextTitle,
+            styles.modelTextTitle,
             {backgroundColor: colors.textWhite, elevation: 0.5},
           ]}>
           <View style={{paddingHorizontal: 5}}>
@@ -973,7 +972,10 @@ const Clints = ({navigation}) => {
           <Text style={styles.SortedDrop}>{choseData}</Text>
           <AntDesign name="down" style={styles.SortBy} />
         </TouchableOpacity>
-        <ModalViewS
+        :
+        null
+        }
+        <ModalView
           transparent={true}
           animationType="fade"
           onBackdropPress={() => changeModalVisibilty(false)}
@@ -983,7 +985,7 @@ const Clints = ({navigation}) => {
             changeModalVisibilty={changeModalVisibilty}
             setData={setData}
           />
-        </ModalViewS>
+        </ModalView>
       </View>
       {/* <View style={{ marginTop: 5, marginBottom: 120 }}> */}
       <FlatList
