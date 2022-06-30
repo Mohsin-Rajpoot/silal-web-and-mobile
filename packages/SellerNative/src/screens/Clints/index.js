@@ -40,7 +40,7 @@ const Clints = ({navigation}) => {
     setModalVisible(bool);
   };
   const setData = option => {
-    setchoseData(option);
+    setchoseData(JSON.stringify(option));
   };
 
   const Sheet = useRef();
@@ -805,7 +805,6 @@ const Clints = ({navigation}) => {
                           />
                         </TouchableOpacity>
 
-                        {/* /// */}
                         <Text style={styles.orderid_text}>
                           {t('Willson_Genemal')}
                         </Text>
@@ -950,11 +949,11 @@ const Clints = ({navigation}) => {
             </>
           ) : null}
         </View>
-
+        {IsTablet ? 
         <TouchableOpacity
           onPress={() => changeModalVisibilty(true)}
           style={[
-            !IsTablet ? {display: 'none'} : styles.modelTextTitle,
+            styles.modelTextTitle,
             {backgroundColor: colors.textWhite, elevation: 0.5},
           ]}>
           <View style={{paddingHorizontal: 5}}>
@@ -973,6 +972,9 @@ const Clints = ({navigation}) => {
           <Text style={styles.SortedDrop}>{choseData}</Text>
           <AntDesign name="down" style={styles.SortBy} />
         </TouchableOpacity>
+        :
+        null
+        }
         <ModalViewS
           transparent={true}
           animationType="fade"
@@ -991,7 +993,6 @@ const Clints = ({navigation}) => {
         numColumns={!IsTablet ? '1' : '3'}
         ListFooterComponent={footer}
         style={!IsTablet ? styles.FlatListMobileMain : styles.FlatListMain}
-        // showsVerticalScrollIndicator={false}
         renderItem={({item}) => (
           <View
             style={

@@ -11,11 +11,11 @@ import {color} from 'react-native-reanimated';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const styles = ScaledSheet.create({
   ContainerClients: {
-    backgroundColor: '#E5E5E5',
+    backgroundColor: colors.backGround,
     paddingHorizontal: '15@s',
   },
   ContainerClientsMobile: {
-    backgroundColor: '#E5E5E5',
+    backgroundColor: colors.backGround,
     paddingHorizontal: '15@s',
   },
   BambergIcon: {
@@ -25,7 +25,8 @@ const styles = ScaledSheet.create({
   },
   FlatListMobileMain: {
     marginBottom: '10@s',
-    height: '73%',
+    height: '80%',
+    width:'100%'
   },
   FlatListMain: {
     marginBottom: '30@vs',
@@ -71,7 +72,7 @@ const styles = ScaledSheet.create({
   SearchBar: {flexDirection: 'row', alignItems: 'center'},
   FlatListMainView: {
     width: '30%',
-    backgroundColor: '#F4F7F8',
+    backgroundColor: colors.ImageBack,
     borderRadius: 5,
     marginVertical: 10,
     justifyContent: 'space-between',
@@ -79,7 +80,7 @@ const styles = ScaledSheet.create({
   },
   FlatListMainViewMobile: {
     width: '320@s',
-    backgroundColor: '#F4F7F8',
+    backgroundColor: colors.ImageBack,
     borderRadius: 5,
     marginVertical: '5@s',
     // justifyContent: 'space-between',
@@ -96,7 +97,7 @@ const styles = ScaledSheet.create({
   },
   ClintDataBaseDate: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: colors.textWhite,
     paddingHorizontal: 10,
     paddingVertical: 10,
   },
@@ -123,13 +124,13 @@ const styles = ScaledSheet.create({
     fontSize: 13,
   },
   TitleMainTextFlat: {
-    color: '#fff',
+    color: colors.textWhite,
     fontFamily: fonts.LatoRegular,
     fontSize: '10@s',
     // paddingTop: 4,
   },
   TitleMainTextFlatMobile: {
-    color: '#fff',
+    color: colors.textWhite,
     fontFamily: fonts.LatoRegular,
     fontSize: '15@s',
     // paddingTop: ,
@@ -245,7 +246,7 @@ const styles = ScaledSheet.create({
     alignSelf: 'flex-end',
     backgroundColor: 'white',
     padding: 20,
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -276,7 +277,7 @@ const styles = ScaledSheet.create({
     alignSelf: 'flex-end',
     backgroundColor: 'white',
     padding: 20,
-    shadowColor: '#000',
+    shadowColor: colors.textWhite,
     shadowOffset: {
       width: 0,
       height: 2,
