@@ -35,7 +35,10 @@ import OpeningHours from "./views/pages/profile/OpeningHours";
 import TransactionLedger from "./views/pages/profile/TransactionLedger";
 import Reviews from "./views/pages/home/Reviews";
 import OutOfStock from "./views/pages/home/OutOfStock";
-
+import QuestionaireSplash from "./views/pages/Questionaire/QuestionaireSplash";
+import Form from "./views/pages/Questionaire/Form/Form";
+import SubmitReq from "./views/pages/Questionaire/SubmitReq";
+import CreateNewItem from "./views/pages/listing/CreateItem";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -59,9 +62,16 @@ ReactDOM.render(
           component={Emailverifycode}
         />
         <Route path="/splash2" exact={true} component={Splash2} />
+        <Route path="/create-new-item" component={CreateNewItem} />
 
         <Route path="/" exact={true} component={Splashpage} />
+
         <Route path="/resetpassword" exact={true} component={Resetpass} />
+        <Route
+          path="/questionaire-splash"
+          exact={true}
+          component={QuestionaireSplash}
+        />
 
         {/* <Route path="/statistics" exact={true} component={Statistics} /> */}
         <Route path="/client" component={ClientContainer} />
@@ -75,6 +85,9 @@ ReactDOM.render(
         <Route path="/settings" component={Settings} />
         <Route path="/profile/payment-history" component={PaymentHistory} />
         <Route path="/profile/opening-hours" component={OpeningHours} />
+        <Route path="/questionaire-form" component={Form} />
+        <Route path="/submit-questionaire-form" component={SubmitReq} />
+
         <Route
           path="/profile/transaction-ledger"
           component={TransactionLedger}

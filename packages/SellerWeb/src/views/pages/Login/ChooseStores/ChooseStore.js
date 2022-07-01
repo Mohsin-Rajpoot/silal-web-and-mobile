@@ -51,7 +51,7 @@ function ChooseStore() {
           <span className="separate">#908432812</span>
         </p>
         <div className="butns text-center">
-          <Link to="/statistics">
+          <Link to="/questionaire-splash">
             <Button className="btn2"> continue</Button>
           </Link>
         </div>

@@ -20,17 +20,17 @@ function SellerInfo() {
           type={"text"}
           placeholder={"Enter full name"}
         />{" "}
-        <FormInput
+        {/* <FormInput
           label={"Personal Email"}
           type={"text"}
           placeholder={"Email address"}
-        />{" "}
-        <FormInput
+        />{" "} */}
+        {/* <FormInput
           label={"ID Number"}
           asterik={"*"}
           type={"text"}
           placeholder={"Your ID number"}
-        />
+        /> */}
       </div>
 
       <div className="butns">
