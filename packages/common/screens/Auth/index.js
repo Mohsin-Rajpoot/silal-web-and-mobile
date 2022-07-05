@@ -233,7 +233,7 @@ const OnBoarding = ({ navigation }) => {
                             !isTab
                               ? [
                                   styles.letsGoButton,
-                                  { backgroundColor: colors.blurPrimary },
+                                  { backgroundColor: colors.blurPrimary , marginBottom:verticalScale(250)},
                                 ]
                               : styles.button1
                           }
@@ -242,7 +242,7 @@ const OnBoarding = ({ navigation }) => {
                           onPress={goToLogin}
                           isTab={isTab}
                         />
-                        
+                     
                       </View>
                     </>
                   ) : (
@@ -254,7 +254,7 @@ const OnBoarding = ({ navigation }) => {
           </View>
         
         </View>
-          <View style={{height:verticalScale(10)}}/>
+
       </ScrollView>
      
     </SafeAreaView>

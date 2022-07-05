@@ -645,6 +645,15 @@
     "Update_password": "Update password",
     "Number_Changed_Sucessfully": "Number_Changed_Sucessfully",
     "Verify_password": "Verify password",
-    "EnterValidPhone":"Enter valid phone number"
+    "EnterValidPhone": "Enter valid phone number",
+    "enter_valid_email": "kindly enter valid email",
+    "password_error": "Password should be greater than 8 and must contain atleast one capital alphabet, one small alphabet and one digit",
+    "validCode": "Please enter valid code",
+    "alreadyusedPhone": "Phone is already in use by an account, you may want to login instead",
+    "Account_verified": "Account Verified",
+    "Enter_validCode": "kindly enter valid code",
+    "Code_Expired": "Code has been expired kindly resend code",
+    "alreadyusedEmail": "Email is already in use by an account, you may want to login instead",
+    "alreadySentEmail":"OTP Email was already sent"
   }
 }

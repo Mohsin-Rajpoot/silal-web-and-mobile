@@ -120,6 +120,7 @@ const styles = ScaledSheet.create({
     borderBottomColor: colors.gray,
     fontFamily: fonts.LatoMedium,
     fontSize: "11@ms",
+    color:colors.black
   },
   passwordWaring: {
     flexDirection: "row",
@@ -989,6 +990,9 @@ const styles = ScaledSheet.create({
     alignSelf: "center",
     marginTop: "4@s",
   },
+  timer:{
+
+  }
 });
 
 export default styles;

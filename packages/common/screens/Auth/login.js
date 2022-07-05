@@ -41,7 +41,7 @@ const Login = ({ navigation, route }) => {
   const [check, setcheck] = useState(false);
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
-
+  const [email, setEmail] = useState("");
   const goForgerPassword = () => {
     navigation.navigate("ForgetPassword");
   };
@@ -50,28 +50,30 @@ const Login = ({ navigation, route }) => {
   };
 
   const SignUpWithPhone = (data) => {
-    if (data.length < 8) {
+    if (data.length < 10) {
       setError(t("EnterValidPhone"));
     } else {
       dispatch(
         userAction.userSignUpSaga({
           data,
           cb: (res) => {
-            if (res == "Email Verified") {
+            if (res.http_status_code == 201) {
               setTimeout(() => {
                 navigation.navigate("Verification", {
                   params: {
                     phone: phone,
+                    expireTimer: res.expiration_date,
                     activeTab: data?.params?.signupEmail
                       ? 5
                       : data?.params?.signUp
                       ? 4
                       : null,
                     active: active,
-                    
                   },
                 });
               }, 1000);
+            } else if (res.http_status_code == 409) {
+              setError(t("alreadyusedPhone"));
             }
           },
         })
@@ -82,18 +84,96 @@ const Login = ({ navigation, route }) => {
     var rePass = /^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
     var re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,9})$/;
     if (re.test(text.password) === false) {
-      return setText({
-        ...text,
-        error:
-          "Password should be greater than 8 and must contain atleast one capital alphabet, one small alphabet and one digit",
-      });
+      return setError(t("password_error"));
     } else if (rePass.test(text.email) === false) {
-      return setText({ ...text, error: "Email should be valid" });
+      return setError(t("enter_valid_email"));
     } else {
       dispatch(userAction.userLoginSaga(data));
     }
   };
+  const signUpWithEmail = (data) => {
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    if (reg.test(data) === false) {
+      console.log("Email is Not Correct");
+      setError(t("enter_valid_email"));
+    } else
+      dispatch(
+        userAction.userSignupWithEmail({
+          data,
+          cb: (res) => {
+            console.log("Response Email", res);
 
+            if (res.http_status_code == 201) {
+              setTimeout(() => {
+                setError("");
+                navigation.navigate("Verification", {
+                  params: {
+                    email: email,
+                    expireTimer: res.expiration_date,
+                    activeTab: data?.params?.signupEmail
+                      ? 5
+                      : data?.params?.signUp
+                      ? 4
+                      : null,
+                    active: 2,
+                  },
+                });
+              }, 1000);
+            } else if (res.http_status_code == 409) {
+              setError(t("alreadyusedEmail"));
+            } else if (res.http_status_code == 429) {
+              setError(t("alreadySentEmail"));
+              setTimeout(() => {
+                setError("");
+                navigation.navigate("Verification", {
+                  params: {
+                    email: email,
+                    expireTimer: res.expiration_date,
+                    activeTab: data?.params?.signupEmail
+                      ? 5
+                      : data?.params?.signUp
+                      ? 4
+                      : null,
+                    active: 2,
+                  },
+                });
+              }, 1000);
+            }
+          },
+        })
+      );
+  };
+  const loginWithPhone = (data) => {
+    if (data.length < 10) {
+      setError(t("EnterValidPhone"));
+    } else {
+      dispatch(
+        userAction.userloginWithPhoneSaga({
+          data,
+          cb: (res) => {
+            if (res.http_status_code == 200) {
+              setTimeout(() => {
+                navigation.navigate("Verification", {
+                  params: {
+                    phone: phone,
+                    expireTimer: res.expiration_date,
+                    activeTab: data?.params?.signupEmail
+                      ? 5
+                      : data?.params?.signUp
+                      ? 4
+                      : null,
+                    active: active,
+                  },
+                });
+              }, 1000);
+            } else if (res.http_status_code == 409) {
+              setError(t("alreadyusedPhone"));
+            }
+          },
+        })
+      );
+    }
+  };
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
       <HeaderBack
@@ -113,7 +193,7 @@ const Login = ({ navigation, route }) => {
           signUp={data?.params?.signUp}
           firstLabel={data?.params?.signupEmail ? "email" : ""}
         />
-
+        {console.log("----dataInfo", active)}
         <View
           style={!isTab ? styles.innerContainerMobile : styles.innerContainer}
         >
@@ -123,19 +203,27 @@ const Login = ({ navigation, route }) => {
               <TextInput
                 placeholderText={"email.example@gmail.com"}
                 onChangeText={(value) => {
-                  setText({ ...text, email: value });
+                  setEmail(value);
                 }}
-                value={text.email}
+                value={email}
                 isTab={isTab}
                 inputStyle={{ borderRadius: verticalScale(8) }}
               />
+              {error.length > 1 ? (
+                <CustomText
+                  label={error}
+                  textStyle={CommonStyle.errorMessage}
+                />
+              ) : (
+                <View />
+              )}
               {/* {text.error ? (
                 <Text style={styles.errorMessage}>{text.error}</Text>
               ) : (
                 <View />
               )} */}
-              <Text style={styles.phoneNumberText}>{t("Password")}</Text>
-              <TextInput
+              {/* <Text style={styles.phoneNumberText}>{t("Password")}</Text> */}
+              {/* <TextInput
                 placeholderText={t("Enter_password")}
                 secureText={true}
                 password={true}
@@ -143,8 +231,8 @@ const Login = ({ navigation, route }) => {
                 value={text.password}
                 isTab={isTab}
                 inputStyle={{ borderRadius: verticalScale(8) }}
-              />
-              {active == 2 ? (
+              /> */}
+              {/* {active == 2 ? (
                 <View />
               ) : (
                 <>
@@ -163,7 +251,7 @@ const Login = ({ navigation, route }) => {
                     inputStyle={{ borderRadius: verticalScale(8) }}
                   />
                 </>
-              )}
+              )} */}
             </View>
           ) : active == 1 ? (
             <View>
@@ -234,7 +322,13 @@ const Login = ({ navigation, route }) => {
           }
           s
           onPress={() => {
-            data?.params?.signUp ? SignUpWithPhone(phone) : loginFunction(text);
+            data?.params?.signupEmail && data?.params?.signUp
+              ? signUpWithEmail(email)
+              : data?.params?.signUp
+              ? SignUpWithPhone(phone)
+              : !data.params.signUp && active == 1
+              ? loginWithPhone(phone)
+              : loginFunction(text);
           }}
         />
         <View

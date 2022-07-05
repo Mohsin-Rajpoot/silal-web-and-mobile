@@ -1,5 +1,11 @@
-import { View, Text, SafeAreaView, ScrollView } from "react-native";
-import React, { useState } from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import React, { useState, useEffect } from "react";
 import HeaderBack from "../../components/native/HeaderBack";
 import CommonStyle from "../../styles/index";
 import HeaderHeading from "../../components/headerHeading";
@@ -11,11 +17,20 @@ import AuthCustomText from "../../components/native/AuthCustomText";
 import { useTranslation } from "react-i18next";
 import DeviceInfo from "react-native-device-info";
 import colors from "../../assets/colors";
+import { useDispatch, useSelector } from "react-redux";
+import * as userAction from "../../store/User/actions";
+import Loader from "../../Loader";
+import Toast from "react-native-simple-toast";
 const Verification = ({ route, navigation }) => {
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.User);
   const { params } = route?.params;
   const { t } = useTranslation();
   const isTab = DeviceInfo.isTablet();
   const [code, setCode] = useState("");
+  const [error, setError] = useState("");
+
+  console.log("----Loading", loading);
 
   const goToChangePassword = () => {
     navigation.navigate("ChangePassword");
@@ -39,6 +54,32 @@ const Verification = ({ route, navigation }) => {
   };
   const goBack = () => {
     navigation.pop();
+  };
+
+  const phone_numberVerification_SignUp = (data) => {
+    if (data.length < 4) {
+      setError(t("validCode"));
+    } else {
+      dispatch(
+        userAction.userPhoneVerification_SignUP_Saga({
+          data,
+          cb: (res) => {
+            if (res.http_status_code == 200) {
+              Toast.show(t("Account_verified"));
+              goSignUpDetail();
+            } else if (res.http_status_code == 401) {
+              Toast.show(t("Code_Expired"));
+            }
+          },
+        })
+      );
+    }
+  };
+
+  const resend_verification_code = (data) => {
+    console.log("---data api hit");
+    setCode("");
+    dispatch(userAction.userSignUpSaga({ data }));
   };
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
@@ -83,10 +124,11 @@ const Verification = ({ route, navigation }) => {
 
           {/* <View style={{ flex: 1 }}> */}
           <OTPInputView
+            keyboardType="email-address"
             autoFocusOnLoad={true}
             pinCount={
               params?.active == 1
-                ? 6
+                ? 5
                 : params?.active == 2
                 ? 6
                 : params?.active == 3
@@ -98,14 +140,36 @@ const Verification = ({ route, navigation }) => {
             codeInputFieldStyle={
               !isTab ? styles.optContainerMobile : styles.optContainer
             }
-            handleChange={(value) => setCode(value)}
+            onCodeChanged={(value) => setCode(value)}
           />
-          <CustomText
-            label={t("resend_code") + " 3:23"}
-            textStyle={styles.timerCode}
-          />
+          {error.length > 1 ? (
+            <CustomText label={error} textStyle={CommonStyle.errorMessage} />
+          ) : (
+            <View />
+          )}
+          <TouchableOpacity
+            activeOpacity={0.6}
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={() => resend_verification_code(params.phone)}
+            >
+              <CustomText
+                label={t("resend_code") + " "}
+                textStyle={styles.timerCode}
+              />
+            </TouchableOpacity>
+            <TimerOTP />
+          </TouchableOpacity>
           {/* </View> */}
-          <View style={{ flex: 1 }} />
+          {loading ? <Loader /> : <View />}
+          <View style={{ flexGrow: 1 }} />
+          {console.log("-----Code", code)}
           <Button
             name={params?.active == 3 ? t("Submit") : t("Verify")}
             onPress={() => {
@@ -118,13 +182,53 @@ const Verification = ({ route, navigation }) => {
                 : params?.activeTab == 4
                 ? goSignUpDetail()
                 : params?.active == 1
-                ? goToConformationAccount()
+                ? phone_numberVerification_SignUp({
+                    otp: code,
+                    phone: params.phone,
+                  })
                 : goToSignUpForm();
             }}
           />
         </View>
       </ScrollView>
     </SafeAreaView>
+  );
+};
+
+const TimerOTP = ({ phone, resend }) => {
+  const [minutes, setMinutes] = useState(1);
+  const [seconds, setSeconds] = useState(0);
+  const [isDisable, setDisable] = useState(true);
+
+  useEffect(() => {
+    let myInterval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+      if (seconds === 0) {
+        if (minutes === 0) {
+          setDisable(false);
+          clearInterval(myInterval);
+        } else {
+          setMinutes(minutes - 1);
+          setSeconds(59);
+        }
+      }
+    }, 1000);
+    return () => {
+      clearInterval(myInterval);
+    };
+  }, [seconds]);
+  return (
+    <Text style={styles.timerCode}>
+      {minutes === 0 && seconds === 0 ? (
+        " "
+      ) : (
+        <Text textStyle={styles.timerCode}>
+          {minutes}:{seconds < 10 ? `0${seconds}s` : `${seconds}s`}
+        </Text>
+      )}
+    </Text>
   );
 };
 
