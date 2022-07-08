@@ -8,5 +8,10 @@ export function* rootSaga() {
     fork(user.actionPhoneVerificationSignUpWatcher),
     fork(user.actionSignupWithEmail),
     fork(user.actionLoginWithPhone),
+    fork(user.actionLoginWithEmail),
+    fork(user.actionEmailVerificationWatcher),
+    fork(user.actionAddPersonalInformationWatcher),
+    fork(user.actionEmailVerifcationAfterLoginWatcher),
+    fork(user.actionPhoneVerificationAfterLoginWatcher)
   ]);
 }

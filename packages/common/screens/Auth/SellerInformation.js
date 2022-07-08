@@ -11,15 +11,21 @@ import { verticalScale } from "react-native-size-matters";
 import AuthButton from "../../components/native/AuthButton";
 import { Icon } from "react-native-elements";
 import colors from "../../assets/colors";
-
+import { useDispatch, useSelector } from "react-redux";
+import * as userAction from "../../store/User/actions";
+import Loader from "../../Loader";
+import axios from "axios";
 const SellerInformation = ({ navigation }) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.User);
   const init = {
-    password: "",
-    email: "",
+    first_name: "",
+    last_name: "",
+    id_number: "",
     error: "",
   };
-  const [text, setText] = useState(init);
+  const [information, setInformation] = useState(init);
   const goBack = () => {
     navigation.navigate("Login", {
       params: { signUp: true, signupEmail: true },
@@ -28,6 +34,27 @@ const SellerInformation = ({ navigation }) => {
   const moveForward = () => {
     navigation.navigate("GettingStarted");
   };
+  const add_personalInformation = (data) => {
+
+    if (data.first_name.length == 0) {
+      setInformation({ ...information, error: "Enter name" });
+    } else if (data.last_name.length == 0) {
+      setInformation({ ...information, error: "" });
+    } else if (data.id_number.length == 0) {
+      setInformation({ ...information, error: "enter name" });
+    } else {
+      setInformation({ ...information, error: "" });
+      dispatch(
+        userAction.addPersonalInformation({
+          data,
+          cb: (res) => {
+            console.log("------DataInformation", res);
+          },
+        })
+      );
+    }
+  };
+
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
       <ScrollView
@@ -61,9 +88,9 @@ const SellerInformation = ({ navigation }) => {
           <TextInput
             placeholderText={!IsTablet ? "" : t("enter_full_name")}
             onChangeText={(value) => {
-              setText({ ...text, email: value });
+              setInformation({ ...information, first_name: value });
             }}
-            value={text.email}
+            value={information.first_name}
             isTab={IsTablet}
           />
           <View style={{ flexDirection: "row", marginTop: verticalScale(10) }}>
@@ -80,12 +107,12 @@ const SellerInformation = ({ navigation }) => {
           <TextInput
             placeholderText={!IsTablet ? "" : t("enter_full_name")}
             onChangeText={(value) => {
-              setText({ ...text, email: value });
+              setInformation({ ...information, last_name: value });
             }}
-            value={text.email}
+            value={information.last_name}
             isTab={IsTablet}
           />
-          <View style={{ flexDirection: "row", marginTop: verticalScale(10) }}>
+          {/* <View style={{ flexDirection: "row", marginTop: verticalScale(10) }}>
             <CustomText
               label={t("PersonalEmail")}
               textStyle={
@@ -95,15 +122,15 @@ const SellerInformation = ({ navigation }) => {
               }
             />
             <CustomText label="*" textStyle={styles.star} />
-          </View>
-          <TextInput
+          </View> */}
+          {/* <TextInput
             placeholderText={!IsTablet ? "" : t("email_address")}
             onChangeText={(value) => {
               setText({ ...text, email: value });
             }}
             value={text.email}
             isTab={IsTablet}
-          />
+          /> */}
           <View style={{ flexDirection: "row", marginTop: verticalScale(10) }}>
             <CustomText
               label={!IsTablet ? t("PersonID") : t("ID_Number")}
@@ -118,12 +145,20 @@ const SellerInformation = ({ navigation }) => {
           <TextInput
             placeholderText={!IsTablet ? "" : t("yourID")}
             onChangeText={(value) => {
-              setText({ ...text, email: value });
+              setInformation({ ...information, id_number: value });
             }}
-            value={text.email}
+            value={information.id_number}
             isTab={IsTablet}
           />
         </View>
+        {information.error.length > 1 ? (
+          <CustomText
+            label={information.error}
+            textStyle={CommonStyle.errorMessage}
+          />
+        ) : (
+          <View />
+        )}
         <View style={{ height: verticalScale(!IsTablet ? 260 : 200) }} />
         <View style={styles.outerContainer}>
           {!IsTablet ? (
@@ -158,7 +193,7 @@ const SellerInformation = ({ navigation }) => {
                     ]
                   : styles.formButton
               }
-              onPress={moveForward}
+              onPress={() => add_personalInformation(information)}
             />
           </View>
         </View>

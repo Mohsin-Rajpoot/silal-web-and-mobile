@@ -59,6 +59,7 @@ const Login = ({ navigation, route }) => {
           cb: (res) => {
             if (res.http_status_code == 201) {
               setTimeout(() => {
+                setError("")
                 navigation.navigate("Verification", {
                   params: {
                     phone: phone,
@@ -74,6 +75,8 @@ const Login = ({ navigation, route }) => {
               }, 1000);
             } else if (res.http_status_code == 409) {
               setError(t("alreadyusedPhone"));
+            } else if (res.http_status_code == 429) {
+              setError(t("alreadySentPhone"));
             }
           },
         })
@@ -156,6 +159,7 @@ const Login = ({ navigation, route }) => {
                 navigation.navigate("Verification", {
                   params: {
                     phone: phone,
+                    isLogin: true,
                     expireTimer: res.expiration_date,
                     activeTab: data?.params?.signupEmail
                       ? 5
@@ -168,6 +172,45 @@ const Login = ({ navigation, route }) => {
               }, 1000);
             } else if (res.http_status_code == 409) {
               setError(t("alreadyusedPhone"));
+            } else if (res.http_status_code == 401) {
+              setError(t("noUser"));
+            }
+          },
+        })
+      );
+    }
+  };
+  const loginWithEmail = (data) => {
+    console.log("---Data");
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    if (reg.test(data) === false) {
+      console.log("Email is Not Correct");
+      setError(t("enter_valid_email"));
+    } else {
+      dispatch(
+        userAction.userloginWithEmailSaga({
+          data,
+          cb: (res) => {
+            if (res.http_status_code == 200) {
+              setTimeout(() => {
+                navigation.navigate("Verification", {
+                  params: {
+                    email: email,
+                    isLogin: true,
+                    expireTimer: res.expiration_date,
+                    activeTab: data?.params?.signupEmail
+                      ? 5
+                      : data?.params?.signUp
+                      ? 4
+                      : null,
+                    active: active,
+                  },
+                });
+              }, 1000);
+            } else if (res.http_status_code == 409) {
+              setError(t("alreadyusedPhone"));
+            } else if (res.http_status_code == 401) {
+              setError(t("noUser"));
             }
           },
         })
@@ -193,7 +236,7 @@ const Login = ({ navigation, route }) => {
           signUp={data?.params?.signUp}
           firstLabel={data?.params?.signupEmail ? "email" : ""}
         />
-        {console.log("----dataInfo", active)}
+        {console.log("----dataInfo", active, data.params.signUp)}
         <View
           style={!isTab ? styles.innerContainerMobile : styles.innerContainer}
         >
@@ -210,10 +253,12 @@ const Login = ({ navigation, route }) => {
                 inputStyle={{ borderRadius: verticalScale(8) }}
               />
               {error.length > 1 ? (
-                <CustomText
-                  label={error}
-                  textStyle={CommonStyle.errorMessage}
-                />
+                <>
+                  <CustomText
+                    label={error}
+                    textStyle={CommonStyle.errorMessage}
+                  />
+                </>
               ) : (
                 <View />
               )}
@@ -285,10 +330,17 @@ const Login = ({ navigation, route }) => {
                 // placeholder={t("phone_number")}
               />
               {error.length > 1 ? (
-                <CustomText
-                  label={error}
-                  textStyle={CommonStyle.errorMessage}
-                />
+                <>
+                  <CustomText
+                    label={error}
+                    textStyle={CommonStyle.errorMessage}
+                  />
+                  {error.length > 1 && error.includes("already sent") ? (
+                    <CustomText label={t("ClickHere")} />
+                  ) : (
+                    <View />
+                  )}
+                </>
               ) : (
                 <View />
               )}
@@ -328,6 +380,8 @@ const Login = ({ navigation, route }) => {
               ? SignUpWithPhone(phone)
               : !data.params.signUp && active == 1
               ? loginWithPhone(phone)
+              : !data.params.signUp && active == 2
+              ? loginWithEmail(email)
               : loginFunction(text);
           }}
         />

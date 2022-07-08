@@ -654,6 +654,9 @@
     "Enter_validCode": "kindly enter valid code",
     "Code_Expired": "Code has been expired kindly resend code",
     "alreadyusedEmail": "Email is already in use by an account, you may want to login instead",
-    "alreadySentEmail":"OTP Email was already sent"
+    "alreadySentEmail":"OTP Email was already sent",
+    "noUser":"User not found",
+    "alreadySentPhone":"An Otp was already sent to this phone, Do you want to verify it",
+    "ClickHere":"Click here"
   }
 }

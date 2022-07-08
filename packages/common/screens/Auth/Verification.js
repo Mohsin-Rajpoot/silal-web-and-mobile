@@ -61,14 +61,69 @@ const Verification = ({ route, navigation }) => {
       setError(t("validCode"));
     } else {
       dispatch(
-        userAction.userPhoneVerification_SignUP_Saga({
+        userAction.verify_phone_after_signup({
           data,
           cb: (res) => {
             if (res.http_status_code == 200) {
               Toast.show(t("Account_verified"));
               goSignUpDetail();
             } else if (res.http_status_code == 401) {
-              Toast.show(t("Code_Expired"));
+              Toast.show(t("Enter_validCode"));
+            }
+          },
+        })
+      );
+    }
+  };
+  const phone_numberVerification_AfterLogin = (data) => {
+    if (data.length < 4) {
+      setError(t("validCode"));
+    } else {
+      dispatch(
+        userAction.userPhoneVerification_LOGIN_Saga({
+          data,
+          cb: (res) => {
+            if (res.http_status_code == 200) {
+              Toast.show(t("Account_verified"));
+            } else if (res.http_status_code == 401) {
+              Toast.show(t("Enter_validCode"));
+            }
+          },
+        })
+      );
+    }
+  };
+  const email_numberVerification_AfterLogin = (data) => {
+    if (data.length < 4) {
+      setError(t("validCode"));
+    } else {
+      dispatch(
+        userAction.userEmailVerification({
+          data,
+          cb: (res) => {
+            if (res.http_status_code == 200) {
+              Toast.show(t("Account_verified"));
+            } else if (res.http_status_code == 401) {
+              Toast.show(t("Enter_validCode"));
+            }
+          },
+        })
+      );
+    }
+  };
+  const email_numberVerification_SignUp = (data) => {
+    if (data.length < 5) {
+      setError(t("validCode"));
+    } else {
+      dispatch(
+        userAction.verify_email_after_signup({
+          data,
+          cb: (res) => {
+            if (res.http_status_code == 200) {
+              Toast.show(t("Account_verified"));
+              goSellerInformation();
+            } else if (res.http_status_code == 401) {
+              Toast.show(t("Enter_validCode"));
             }
           },
         })
@@ -117,7 +172,7 @@ const Verification = ({ route, navigation }) => {
               params?.active == 1
                 ? params.phone
                 : params?.active == 2
-                ? "willie.jennings@example.com"
+                ? params.email
                 : ""
             }
           />
@@ -175,12 +230,25 @@ const Verification = ({ route, navigation }) => {
             onPress={() => {
               params.active == 3
                 ? goToChangePassword()
-                : params?.active == 2
-                ? goChooseAccount()
+                : params?.active == 2 && params.isLogin == true
+                ? email_numberVerification_AfterLogin({
+                  otp:code,
+                  email:params.email
+                })
+                : params?.active == 2 && params.email
+                ? email_numberVerification_SignUp({
+                    otp: code,
+                    email: params.email,
+                  })
                 : params?.activeTab == 5
                 ? goSellerInformation()
                 : params?.activeTab == 4
                 ? goSignUpDetail()
+                : params.active == 1 && params.isLogin == true
+                ? phone_numberVerification_AfterLogin({
+                    otp: code,
+                    phone: params.phone,
+                  })
                 : params?.active == 1
                 ? phone_numberVerification_SignUp({
                     otp: code,
@@ -196,7 +264,7 @@ const Verification = ({ route, navigation }) => {
 };
 
 const TimerOTP = ({ phone, resend }) => {
-  const [minutes, setMinutes] = useState(1);
+  const [minutes, setMinutes] = useState(4);
   const [seconds, setSeconds] = useState(0);
   const [isDisable, setDisable] = useState(true);
 
