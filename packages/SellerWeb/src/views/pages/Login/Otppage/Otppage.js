@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Wrapper from "./Otppage.styled";
 import Countdown from "react-countdown";
-// import components
 import Linktag from "../../../components/auth/Linktag/Linktag";
+import { Link } from "react-router-dom";
 import CountdownTimer from "../../../components/auth/Countdowntimer/Countdowntimer";
 import Otpcode from "../../../components/auth/Otpcode/Otpcode";
 import Gobackbuton from "../../../components/auth/Gobackbutton/Gobackbuton";
 import Snackbar from "../../../components/auth/Snackbar/Snackbar";
+import { useHistory } from "react-router-dom";
+import { Button } from "../../../components/Style";
 
 function Otppage() {
   const [resendcodePopup, setResendcodePopup] = useState(false);
   const [targetedTime, setTargetedTime] = useState(5000);
+
   // controlled input
   const [num, setNum] = useState({
     one: "",
@@ -19,7 +22,9 @@ function Otppage() {
     four: "",
     five: "",
   });
-  // controled input value change with auto focus
+  // console.log(history.location.state);
+
+  const use = useHistory();
   function handleChange(e) {
     let v = e.target.value;
     if (v.length > 0) {
@@ -40,6 +45,15 @@ function Otppage() {
       setTargetedTime(300000);
     } else {
       return false;
+    }
+  }
+  // console.log(use);
+
+  function signupEmail() {
+    if (use.location.state === "signup") {
+      use.push("/signupemail", "signupPhoneOtp");
+    } else {
+      use.push("/newsplash", "loginPhoneOtp");
     }
   }
 
@@ -81,13 +95,12 @@ function Otppage() {
           />
         )}
         <div className="form-submit">
-          <Linktag
-            text="Submit"
-            primary={true}
-            textcolor={true}
-            blockitem={true}
-            to="/resetpassword"
-          />
+          <Button
+            onClick={signupEmail}
+            // to={use.location.state === "signup" ? "/signupemail" : "/newsplash"}
+          >
+            Next
+          </Button>
         </div>
       </div>
     </Wrapper>

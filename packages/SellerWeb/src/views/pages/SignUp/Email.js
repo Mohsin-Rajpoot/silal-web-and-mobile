@@ -1,45 +1,16 @@
 import styled from "styled-components";
-import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { Icon } from "@iconify/react";
-import { motion } from "framer-motion";
-import FormControl from "../../components/auth/FormControl/FormControl";
 import Gobackbuton from "../../components/auth/Gobackbutton/Gobackbuton";
+import FormInput from "../settings/Common/FormInput";
 
 function Loginpage() {
-  const use = useHistory();
-  const [formValue, setFormValue] = useState("");
-
-  const options = [
-    {
-      label: "RU + 7",
-      value: "ru",
-      default: true,
-    },
-    {
-      label: "BD + 7",
-      value: "bd",
-      default: false,
-    },
-    {
-      label: "PK + 7",
-      value: "pk",
-      default: false,
-    },
-  ];
-  // animation phone number field
-  const animate1 = {
-    x: [-100, 0],
-    opacity: [0, 1],
-    transition: { duration: 1 },
-  };
-
-  const sendToOtp = () => {
-    use.push("/otp", "signup");
-  };
-  // animation email input field
-
+  const history = useHistory();
+  function handleRoute() {
+    if (history.location.state === "signupPhoneOtp") {
+      history.push("/verification", "signUpEmail");
+    } else return;
+  }
   return (
     <Wrapper>
       <div className="go-back-button">
@@ -52,41 +23,17 @@ function Loginpage() {
           </div>
           <Button className="btn2">Phone Number</Button>
           <div className="form">
-            <motion.div className="form-control-mobile" animate={animate1}>
-              <FormControl labelValue="Phone Number" htmlFor="PhoneNumber" />
-              <div className="row ">
-                <div className="col1 col">
-                  <FormControl
-                    style={{ border: "none", padding: "5px" }}
-                    select={true}
-                    options={options}
-                    dropdownIcon={
-                      <Icon
-                        icon="ant-design:caret-down-filled"
-                        color="#05AE4B"
-                      />
-                    }
-                  />
-                </div>
-                <div className="col2 col">
-                  <FormControl
-                    style={{ border: "none" }}
-                    input={true}
-                    inputValue={formValue}
-                    type="text"
-                    htmlFor="PhoneNumber"
-                    onChange={(e) => setFormValue(e.target.value)}
-                  />
-                </div>
-              </div>
-            </motion.div>
+            <FormInput
+              label={"Email"}
+              placeholder={"email.example@gmail.com"}
+            />
           </div>
         </div>
-        {/* <Link to="/otp"> */}
-        <Button onClick={sendToOtp} className="btn3 next">
+
+        <Button onClick={handleRoute} className="btn3 next">
           Next
         </Button>
-        {/* </Link> */}
+
         <div>
           <h6>
             By signing up, you agree to the{" "}

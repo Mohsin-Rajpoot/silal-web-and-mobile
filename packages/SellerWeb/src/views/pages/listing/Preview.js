@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { Button, CardStyled } from "../../components/Style";
 
-export default function Preview({ step, removeStep }) {
+export default function Preview({ step, remove }) {
   return (
     <>
       <Row>
@@ -11,7 +11,7 @@ export default function Preview({ step, removeStep }) {
           <CardStyled>
             <div className="d-flex"></div>
             <div className="end">
-              <Button width="150px" onClick={removeStep}>
+              <Button width="150px" onClick={remove}>
                 Go Back
               </Button>
             </div>

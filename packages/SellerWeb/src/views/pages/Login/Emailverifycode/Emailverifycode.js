@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import Wrapper from "./Emailverifycode.styled";
 import Linktag from "@SilalApp/sellerweb/src/views/components/auth/Linktag/Linktag";
 import Countdowntimer from "@SilalApp/sellerweb/src/views/components/auth/Countdowntimer/Countdowntimer";
 import Otpcode from "@SilalApp/sellerweb/src/views/components/auth/Otpcode/Otpcode";
 import Gobackbuton from "@SilalApp/sellerweb/src/views/components/auth/Gobackbutton/Gobackbuton";
 import Snackbar from "@SilalApp/sellerweb/src/views/components/auth/Snackbar/Snackbar";
-// countdown timer
+// countdown time
 import Countdown from "react-countdown";
+import styled from "styled-components";
+import { Button } from "../../../components/Style";
+import { useHistory } from "react-router-dom";
 
 function Emailverifycode() {
   const [resendcodePopup, setResendcodePopup] = useState(false);
   const [targetedTime, setTargetedTime] = useState(5000);
+  const history = useHistory();
   // controlled input
   const [num, setNum] = useState({
     one: "",
@@ -20,6 +23,11 @@ function Emailverifycode() {
     five: "",
   });
   // controled input value change with auto focus
+  function handleRoute() {
+    if (history.location.state === "resetpassword") {
+      history.push("/createnewpassword", "resetpasswordemailverify");
+    }
+  }
   function handleChange(e) {
     let v = e.target.value;
     if (v.length > 0) {
@@ -75,13 +83,7 @@ function Emailverifycode() {
           />
         )}
         <div className="form-submit">
-          <Linktag
-            text="Submit"
-            primary={true}
-            textcolor={true}
-            blockitem={true}
-            to="/verification"
-          />
+          <Button onClick={handleRoute}>submit</Button>
         </div>
       </div>
     </Wrapper>
@@ -89,3 +91,59 @@ function Emailverifycode() {
 }
 
 export default Emailverifycode;
+
+const Wrapper = styled.div`
+  height: 100%;
+  font-family: "Lato", sans-serif;
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  margin: auto;
+  .top-row {
+    .title {
+      padding: 50px 0;
+      text-align: center;
+      font-size: 17px;
+      font-weight: bold;
+    }
+    .otp-code {
+      text-align: center;
+      h2 {
+        font-size: 25px;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+      p {
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 1.4;
+        margin-bottom: 50px;
+      }
+    }
+    .resend-otp {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      button {
+        font-size: 15px;
+        font-weight: 500;
+        color: #4c6870;
+        border: none;
+        background: transparent;
+        padding-bottom: 3px;
+        border-bottom: 1px solid #000000;
+        cursor: pointer;
+      }
+    }
+  }
+  .bottom-row {
+    text-align: center;
+    position: absolute;
+    bottom: 68px;
+    width: 100%;
+    position: static;
+    margin-top: 50px;
+    // @media (max-height: 620px) {
+    // }
+  }
+`;

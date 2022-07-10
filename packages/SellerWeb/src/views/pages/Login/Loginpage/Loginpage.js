@@ -12,6 +12,7 @@ function Loginpage() {
   const [formValue, setFormValue] = useState("");
   const [showNumForm, setShowNumForm] = useState(true);
   const [showPass, setShowPass] = useState(false);
+  // console.log(showNumForm);
   // select options
   const options = [
     {
@@ -142,7 +143,7 @@ function Loginpage() {
         <div className="forgot-pass-text">
           <p>
             Trouble signing in?
-            <Link to="resetpassword">Forgot password</Link>
+            <Link to="">Forgot password</Link>
           </p>
         </div>
       </div>

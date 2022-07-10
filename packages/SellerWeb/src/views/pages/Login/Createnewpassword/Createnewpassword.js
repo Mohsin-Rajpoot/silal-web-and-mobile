@@ -6,8 +6,10 @@ import Gobackbuton from "@SilalApp/sellerweb/src/views/components/auth/Gobackbut
 import { motion } from "framer-motion";
 // import icons
 import { Icon } from "@iconify/react";
-
+import { useHistory } from "react-router-dom";
+import { Button } from "../../../components/Style";
 function Createnewpassword() {
+  const history = useHistory();
   const [showPassword, setShowPassword] = useState(true);
   const [showPassword2, setShowPassword2] = useState(true);
   const [password, setPassword] = useState({
@@ -20,6 +22,15 @@ function Createnewpassword() {
   const [number, setNumber] = useState(false);
   const [specialChar, setSpecialChar] = useState(false);
 
+  console.log(history.location.state);
+  function handleRoute() {
+    if (history.location.state === "signUpEmailVerification") {
+      history.push("/sellerinfo", "createNewPassword");
+    }
+    if (history.location.state === "resetpasswordemailverify") {
+      history.push("/login", "createNewPassword");
+    } else return;
+  }
   // password validation
   function handleKeyup() {
     // characters validation 8 -- 20
@@ -120,13 +131,7 @@ function Createnewpassword() {
       </div>
       <div className="bottom-row">
         <div className="form-submit">
-          <Linktag
-            text="Change password"
-            primary={true}
-            textcolor={true}
-            blockitem={true}
-            to="/emailverifycode"
-          />
+          <Button onClick={handleRoute}>Change password</Button>
         </div>
       </div>
     </Wrapper>

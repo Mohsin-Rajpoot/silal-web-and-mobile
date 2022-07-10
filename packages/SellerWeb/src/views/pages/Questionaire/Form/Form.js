@@ -11,7 +11,7 @@ function Form() {
   const [current, setCurrent] = useState(1);
   const [modal, setModal] = useState(false);
 
-  console.log(modal);
+  // console.log(modal);
   return (
     <FormStyle>
       <GlobalStyle />

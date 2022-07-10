@@ -3,9 +3,16 @@ import Wrapper from "./Resetpass.styled";
 import Linktag from "@SilalApp/sellerweb/src/views/components/auth/Linktag/Linktag";
 import FormControl from "@SilalApp/sellerweb/src/views/components/auth/FormControl/FormControl";
 import Gobackbuton from "@SilalApp/sellerweb/src/views/components/auth/Gobackbutton/Gobackbuton";
+import { Button } from "../../../components/Style";
+import { useHistory } from "react-router-dom";
 
 function Resetpass() {
   const [formValue, setFormValue] = useState("");
+  const history = useHistory();
+  function handleRoute() {
+    history.push("/emailverifycode", "resetpassword");
+  }
+
   return (
     <Wrapper>
       <div className="go-back-button">
@@ -31,13 +38,7 @@ function Resetpass() {
       </div>
       <div className="bottom-row">
         <div className="form-submit">
-          <Linktag
-            text="Send Code"
-            primary={true}
-            textcolor={true}
-            blockitem={true}
-            to="/emailverifycode"
-          />
+          <Button onClick={handleRoute}>Send Code</Button>
         </div>
       </div>
     </Wrapper>

@@ -26,6 +26,29 @@ const CardStyled = styled.div`
       margin: 0;
     }
   }
+  .checkBoxes {
+    padding: 13px;
+    h6 {
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      color: rgba(0, 39, 51, 0.5);
+    }
+  }
+  .form-check-input:checked {
+    background-color: #05ae4b;
+  }
+  .form-check {
+    label {
+      font-weight: 400;
+      font-size: 15px;
+      color: #002733;
+    }
+  }
+  .used {
+    padding-left: 39px;
+  }
 `;
 
 const Heading = styled.h1`
@@ -38,7 +61,7 @@ const Heading = styled.h1`
 const Button = styled.button`
   background: ${(props) => (props.bg ? props.bg : "#05AE4B")};
   border-radius: 5px;
-  border: none;
+  border: ${(props) => (props.bg ? props.bg : "none")};
   padding: 0 20px;
   min-width: 100px;
   width: ${(props) => props.width};
@@ -706,7 +729,7 @@ const SimpleNav = styled.div`
   margin-top: 19px;
   display: flex;
   align-items: center;
-  padding-bottom: 25px;
+  // padding-bottom: 25px;
   .menu {
     border: none;
     background-color: transparent;

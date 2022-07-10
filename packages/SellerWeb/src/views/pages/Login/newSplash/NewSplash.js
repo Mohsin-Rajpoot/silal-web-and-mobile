@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function NewSplash() {
+  const history = useHistory();
+  // console.log(history.location.state);
   return (
     <>
       <Wrapper>

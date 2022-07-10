@@ -2,10 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
 import FormInput from "../../settings/Common/FormInput";
+import Gobackbuton from "@SilalApp/sellerweb/src/views/components/auth/Gobackbutton/Gobackbuton";
+import { Link } from "react-router-dom";
 
 function SellerInfo() {
   return (
     <Wrapper>
+      <div className="go-back-button">
+        <Gobackbuton primaryIcon={true} />
+      </div>
       <div className="content">
         <h2>Seller information</h2>
         <FormInput
@@ -34,8 +39,10 @@ function SellerInfo() {
       </div>
 
       <div className="butns">
-        <Button className="btn1">Change number</Button>
-        <Button className="btn2">Verify number</Button>
+        <Button className="btn1">Back</Button>
+        <Link to="/newsplash">
+          <Button className="btn2">Next Step</Button>
+        </Link>
       </div>
     </Wrapper>
   );

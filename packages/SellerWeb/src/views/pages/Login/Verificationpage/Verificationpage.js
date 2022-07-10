@@ -6,7 +6,10 @@ import Countdown from "react-countdown";
 import Otpcode from "@SilalApp/sellerweb/src/views/components/auth/Otpcode/Otpcode";
 import Gobackbuton from "@SilalApp/sellerweb/src/views/components/auth/Gobackbutton/Gobackbuton";
 import Snackbar from "@SilalApp/sellerweb/src/views/components/auth/Snackbar/Snackbar";
+import { useHistory } from "react-router-dom";
+import { Button } from "../../../components/Style";
 function Verificationpage() {
+  const history = useHistory();
   const [resendcodePopup, setResendcodePopup] = useState(false);
   const [targetedTime, setTargetedTime] = useState(5000);
   const [num, setNum] = useState({
@@ -16,6 +19,7 @@ function Verificationpage() {
     four: "",
     five: "",
   });
+  console.log(history.location.state);
   // controled input value change with auto focus
   function handleChange(e) {
     let v = e.target.value;
@@ -31,6 +35,13 @@ function Verificationpage() {
     }
   }
 
+  function handleRoute() {
+    if (history.location.state === "signUpEmail") {
+      history.push("/createnewpassword", "signUpEmailVerification");
+    } else {
+      history.push("/newsplash", "LoginEmailVerification");
+    }
+  }
   // otp resend
   function resendCode(e) {
     if (e.target.textContent === "Resend code") {
@@ -74,13 +85,7 @@ function Verificationpage() {
           />
         )}
         <div className="form-submit">
-          <Linktag
-            text="Verify"
-            primary={true}
-            textcolor={true}
-            blockitem={true}
-            to="/choosestore"
-          />
+          <Button onClick={handleRoute}>Verify </Button>
         </div>
       </div>
     </Wrapper>

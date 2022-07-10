@@ -121,6 +121,13 @@ const Sidebar = ({ sideBar, setSideBar }) => {
           <SettingsIcon />
           Settings
         </Link>
+        <Link
+          to="/create-new-item"
+          className={pathname === "/create-new-item" ? "active" : ""}
+        >
+          <OffersIcon />
+          Create Listing
+        </Link>
       </SidebarStyled>
       {/* <BackDrop className={sideBar ? "active" : ""} /> */}
     </>

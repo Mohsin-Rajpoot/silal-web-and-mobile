@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./index.css";
 // import AuthLayout from "./Auth";
 import Otppage from "./views/pages/Login/Otppage/Otppage";
+import SellerInfo from "./views/pages/Login/SellerInfo/SellerInfo";
 import Verificationpage from "./views/pages/Login/Verificationpage/Verificationpage";
 import Loginpage from "./views/pages/Login/Loginpage/Loginpage";
 import Phone from "./views/pages/SignUp/Phone";
@@ -39,6 +40,10 @@ import QuestionaireSplash from "./views/pages/Questionaire/QuestionaireSplash";
 import Form from "./views/pages/Questionaire/Form/Form";
 import SubmitReq from "./views/pages/Questionaire/SubmitReq";
 import CreateNewItem from "./views/pages/listing/CreateItem";
+import MFA from "./views/pages/MFA/MFA";
+import SignUpPassword from "./views/pages/SignUp/SignUpPassword";
+import Email from "./views/pages/SignUp/Email";
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -51,6 +56,18 @@ ReactDOM.render(
         <Route path="/layout" exact={true} component={Layout} />
         <Route path="/login" exact={true} component={Loginpage} />
         <Route path="/signup" exact={true} component={Phone} />
+        <Route path="/signupemail" exact={true} component={Email} />
+
+        <Route path="/mfa" exact={true} component={MFA} />
+        <Route path="/signuppassword" exact={true} component={SignUpPassword} />
+        <Route path="/sellerinfo" exact={true} component={SellerInfo} />
+
+        <Route
+          path="/createnewpassword"
+          exact={true}
+          component={Createnewpassword}
+        />
+
         <Route
           path="/createnewpassword"
           exact={true}

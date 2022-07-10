@@ -64,16 +64,47 @@ export default function Information({ step, addStep }) {
                 </div>
               </div>
             </div>
-            <div className="mr-30">
-              <Label color="#00273380">
-                Barcode <span style={{ color: "#E42A2A" }}>*</span>
-              </Label>
-              <Input
-                type="text"
-                placeholder="Barcode"
-                readOnly
-                onClick={() => setBarCodeCanvasShow(true)}
-              />
+
+            <div className="mr-30 d-flex ">
+              <div className="col-lg-9">
+                <Label color="#00273380">
+                  Barcode <span style={{ color: "#E42A2A" }}>*</span>
+                </Label>
+                <Input
+                  type="text"
+                  placeholder="Barcode"
+                  readOnly
+                  onClick={() => setBarCodeCanvasShow(true)}
+                />
+              </div>
+              <div className="checkBoxes col-lg-4">
+                <h6>Condition</h6>
+                <div className="d-flex">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault1"
+                    />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      New
+                    </label>
+                  </div>
+                  <div class="form-check used">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault2"
+                      checked
+                    />
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Used
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="between mr-30">
               <Label color="#00273380">

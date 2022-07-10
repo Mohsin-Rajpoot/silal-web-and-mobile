@@ -13,6 +13,8 @@ import {
 import { BackArrow } from "../../components/AllImages";
 import Shipping from "./Shipping";
 import Specifications from "./Specifications";
+import Specifications2 from "./Specifications2";
+
 import Information from "./Information";
 import Preview from "./Preview";
 import Media from "./Media";
@@ -24,7 +26,7 @@ import { SimpleNav } from "../../components/Style";
 const CreateItem = () => {
   const [sideBar, setSideBar] = useState(true);
   const history = useHistory();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(1.0);
 
   const addStep = () => {
     setStep(step + 1);
@@ -92,28 +94,32 @@ const CreateItem = () => {
                 onClick={() => setStep(2)}
               >
                 <h2 className="step-counter">2</h2>
-                <h1 className="step-name">Specifications</h1>
+                <h1 className="step-name">Media</h1>
               </div>
-              <div className={`bar ${step === 3 ? "active" : ""}`}></div>
               <div
-                className={`stepper-item ${step === 3 ? "active" : ""}`}
+                className={`bar ${step === 3 || step === 4 ? "active" : ""}`}
+              ></div>
+              <div
+                className={`stepper-item ${
+                  step === 3 || step === 4 ? "active" : ""
+                }`}
                 onClick={() => setStep(3)}
               >
                 <h2 className="step-counter">3</h2>
-                <h1 className="step-name">Media</h1>
-              </div>
-              <div className={`bar ${step === 4 ? "active" : ""}`}></div>
-              <div
-                className={`stepper-item ${step === 4 ? "active" : ""}`}
-                onClick={() => setStep(4)}
-              >
-                <h2 className="step-counter">4</h2>
-                <h1 className="step-name">Shipping</h1>
+                <h1 className="step-name">Specifications</h1>
               </div>
               <div className={`bar ${step === 5 ? "active" : ""}`}></div>
               <div
                 className={`stepper-item ${step === 5 ? "active" : ""}`}
                 onClick={() => setStep(5)}
+              >
+                <h2 className="step-counter">4</h2>
+                <h1 className="step-name">Shipping</h1>
+              </div>
+              <div className={`bar ${step === 6 ? "active" : ""}`}></div>
+              <div
+                className={`stepper-item ${step === 6 ? "active" : ""}`}
+                onClick={() => setStep(6)}
               >
                 <h2 className="step-counter">5</h2>
                 <h1 className="step-name">Preview</h1>
@@ -121,10 +127,23 @@ const CreateItem = () => {
             </div>
           </CardStyled>
           {step === 1 && <Information step={step} addStep={addStep} />}
-          {step === 2 && <Specifications step={step} addStep={addStep} />}
-          {step === 3 && <Media step={step} addStep={addStep} />}
-          {step === 4 && <Shipping step={step} addStep={addStep} />}
-          {step === 5 && <Preview step={step} addStep={removeStep} />}
+          {step === 2 && (
+            <Media step={step} remove={removeStep} addStep={addStep} />
+          )}
+          {step === 3 && (
+            <Specifications step={step} remove={removeStep} addStep={addStep} />
+          )}
+          {step === 4 && (
+            <Specifications2
+              step={step}
+              remove={removeStep}
+              addStep={addStep}
+            />
+          )}
+          {step === 5 && (
+            <Shipping step={step} remove={removeStep} addStep={addStep} />
+          )}
+          {step === 6 && <Preview step={step} remove={removeStep} />}
         </div>
       </div>
     </Wrapper>
