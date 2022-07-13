@@ -97,6 +97,7 @@ function Otppage() {
         <div className="form-submit">
           <Button
             onClick={signupEmail}
+            style={{ width: "100%" }}
             // to={use.location.state === "signup" ? "/signupemail" : "/newsplash"}
           >
             Next

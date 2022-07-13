@@ -85,7 +85,9 @@ function Verificationpage() {
           />
         )}
         <div className="form-submit">
-          <Button onClick={handleRoute}>Verify </Button>
+          <Button onClick={handleRoute} width={"100%"}>
+            Verify{" "}
+          </Button>
         </div>
       </div>
     </Wrapper>

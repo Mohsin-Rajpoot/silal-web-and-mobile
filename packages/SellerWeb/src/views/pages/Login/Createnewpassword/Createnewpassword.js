@@ -109,6 +109,13 @@ function Createnewpassword() {
           />
         </motion.div>
         {/* password restriction section  */}
+
+        <div className="form-submit">
+          <Button className="mt-3" width={"100%"} onClick={handleRoute}>
+            Change password
+          </Button>
+        </div>
+
         <div className="password-restriction">
           <h3 className="lato-font">Your password should contain:</h3>
           <p className="restriction1">
@@ -127,11 +134,6 @@ function Createnewpassword() {
               special characters
             </span>
           </p>
-        </div>
-      </div>
-      <div className="bottom-row">
-        <div className="form-submit">
-          <Button onClick={handleRoute}>Change password</Button>
         </div>
       </div>
     </Wrapper>

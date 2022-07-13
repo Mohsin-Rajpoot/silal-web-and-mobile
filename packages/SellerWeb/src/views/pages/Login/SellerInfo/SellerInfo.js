@@ -68,11 +68,13 @@ const Wrapper = styled.div`
     color: #4c7061;
     border: none;
     margin: 5px;
+    padding: 11px 73px;
   }
   .btn2 {
     background: #05ae4b;
     color: #ffffff;
     border: none;
     margin: 5px;
+    padding: 11px 53px;
   }
 `;
