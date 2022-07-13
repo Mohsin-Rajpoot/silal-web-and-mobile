@@ -41,7 +41,7 @@ function* signUp({ payload }) {
       payload.cb(response);
     }
   } catch (error) {
-    console.log("======Error", error);
+    console.log("======Error", error.response);
     yield put(actions.setUserError("Please check your internet connection"));
   }
 }
@@ -66,13 +66,15 @@ function* Phone_Verification_signup({ payload }) {
       console.log("----Valid phone");
       payload.cb("Something went wrong");
       yield put(actions.setUserError());
+    }else if(response.http_status_code==429){
+      payload.cb(response)
     }
   } catch (error) {
     if (error.response.data.http_status_code == 401) {
       payload.cb({ http_status_code: 401 });
       yield put(actions.setUserError());
     } else {
-      console.log("------Error", error.response.data);
+      console.log("------Error", error.response.http_status_code);
       yield put(actions.setUserError());
     }
   }

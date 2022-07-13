@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import IsTablet from "../../../components/native/IsTablet";
 import { verticalScale } from "react-native-size-matters";
 
-const SecondPage = () => {
+const SecondPage = ({navigation}) => {
   const { t } = useTranslation();
   const [text, setText] = useState("");
   const [open, setOpen] = useState(false);
@@ -71,6 +71,7 @@ const SecondPage = () => {
                 placeholderText={t("Longitude")}
                 inputStyle={styles.addressInput}
                 isTab={IsTablet}
+            
               />
             </View>
             <View
@@ -96,6 +97,7 @@ const SecondPage = () => {
               placeholderText={t("GPS_location")}
               inputStyle={styles.addressInput}
               isTab={IsTablet}
+              onPress={()=>navigation.navigate("Map")}
             />
           </View>
         </View>

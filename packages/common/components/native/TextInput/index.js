@@ -23,6 +23,7 @@ const index = ({
   selectionColor,
   withLabel,
   onPress,
+ iseditable
 }) => {
   const [showPassword, setShowPassword] = useState(!secureText ? true : false);
   const [text, setText] = useState("");
@@ -65,6 +66,7 @@ const index = ({
           onChangeText={onChangeText}
           keyboardType={keyboardType}
           autoCapitalize={false}
+          editable={iseditable ? iseditable : true}
         />
         {secureText && (
           <>

@@ -57,6 +57,7 @@ const Login = ({ navigation, route }) => {
         userAction.userSignUpSaga({
           data,
           cb: (res) => {
+            console.log("----Res", res)
             if (res.http_status_code == 201) {
               setTimeout(() => {
                 setError("")

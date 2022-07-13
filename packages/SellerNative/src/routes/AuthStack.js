@@ -11,12 +11,13 @@ import Onboarding from '@SilalApp/common/screens/Auth';
 import SignUpForm from '@SilalApp/common/screens/Auth/SignUpForm';
 import ConformationAccount from '@SilalApp/common/screens/Auth/ConformationAccount';
 import SellerInformation from '@SilalApp/common/screens/Auth/SellerInformation';
+import Map from '@SilalApp/common/screens/Map';
 const Stack = createNativeStackNavigator();
 const AuthStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName="SellerInformation">
+      initialRouteName="SignUpForm">
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Verification" component={Verification} />
       <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
@@ -30,6 +31,7 @@ const AuthStack = () => {
         name="ConformationAccount"
         component={ConformationAccount}
       />
+      <Stack.Screen name="Map" component={Map} />
     </Stack.Navigator>
   );
 };

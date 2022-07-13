@@ -104,7 +104,7 @@ const SignUpForm = ({ navigation }) => {
           <FirstPage />
         </View>
         <View key="2">
-          <SecondPage />
+          <SecondPage navigation={navigation} />
         </View>
         <View key="3">
           <ThirdPage />

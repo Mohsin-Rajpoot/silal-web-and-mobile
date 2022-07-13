@@ -1,5 +1,5 @@
 import { View, TouchableOpacity, SafeAreaView, ScrollView } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HeaderBack from "../../components/native/HeaderBack";
 import CommonStyle from "../../styles";
 import IsTablet from "../../components/native/IsTablet";
@@ -35,7 +35,6 @@ const SellerInformation = ({ navigation }) => {
     navigation.navigate("GettingStarted");
   };
   const add_personalInformation = (data) => {
-
     if (data.first_name.length == 0) {
       setInformation({ ...information, error: "Enter name" });
     } else if (data.last_name.length == 0) {
@@ -54,6 +53,31 @@ const SellerInformation = ({ navigation }) => {
       );
     }
   };
+
+  useEffect(async () => {
+    var data = JSON.stringify({
+      first_name: "Saad",
+      last_name: "Butt",
+      id_number: 767857,
+    });
+
+    var config = {
+      method: "post",
+      url: "https://seller.dev.silal.app//api/v1/personal_info",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzUxMiIsImlhdCI6MTY1NzY5NTIyMCwiZXhwIjoxNjY1NDcxMjIwfQ.eyJiZWFyZXIgY29uZmlybWF0aW9uIjoiMzExNjU3Njg0NDIwMjMxOTIyIn0.ipN6xY74h8DkDrpaTRYjuoACWMGWEf1peHZ7utKtdveBAzSkfmWUUIIFWDpz30AvzNnUqPOgaNasdutRUDPOiw",
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+    try {
+      const response = await axios(config);
+      console.log("-----REsponse", response);
+    } catch (error) {
+      console.log("-----REsponseERRir", error);
+    }
+  }, []);
 
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>

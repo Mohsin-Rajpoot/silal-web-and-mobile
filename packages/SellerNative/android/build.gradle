@@ -10,7 +10,7 @@ buildscript {
         //     targetSdkVersion = 16
         // ndkVersion = "21.4.7075529"
         ndkVersion = "23.1.7779620"
-
+googlePlayServicesVersion      = "17.0.0"
     }
     repositories {
         google()

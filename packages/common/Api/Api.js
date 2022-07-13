@@ -97,7 +97,7 @@ axios.interceptors.request.use(
     console.log("---Token", token);
     const requestConfig = config;
     requestConfig.headers = {
-      Authorization: `Bearer eyJhbGciOiJIUzUxMiIsImlhdCI6MTY1NzI3NTI1NCwiZXhwIjoxNjY1MDUxMjU0fQ.eyJiZWFyZXIgY29uZmlybWF0aW9uIjoiMzIxNjU3MjY0NDU0MTk2MTE4In0.SSs8awg_NkSTdBhlZrx_MY3K67JH7hTjq86GMZoKOWqLpm97ZDOz8Pjl0AAwsZq4hOSPuEAyxQohBmA61rvGHQ`,
+      Authorization: `bearer ${token}`,
       Accept: "application/json",
     };
     console.log("RESQUEST", config);
