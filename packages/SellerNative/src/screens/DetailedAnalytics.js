@@ -1,39 +1,15 @@
 import React, {useRef, useState} from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  ScrollView,
-  StyleSheet,
-  Image,
-  FlatList,
-} from 'react-native';
-import Modal from 'react-native-modal';
-import {Icon, Badge} from 'react-native-elements';
+import {View, Text, SafeAreaView, ScrollView, FlatList} from 'react-native';
 import colors from '@SilalApp/common/assets/colors';
 import fonts from '@SilalApp/common/assets/fonts';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import {CustomGraph, Calender} from '@SilalApp/common/components/native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useTranslation} from 'react-i18next';
+import {ScaledSheet} from 'react-native-size-matters';
+import Header from '../components/Header';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const DetailedAnalytics = ({navigation}) => {
-  const data2 = [
-    {
-      id: '1',
-    },
-    {
-      id: '2',
-    },
-    {
-      id: '3',
-    },
-    {
-      id: '4',
-    },
-    {
-      id: '5',
-    },
-  ];
+  const {t} = useTranslation();
+
   const data1 = [
     {
       id: '1',
@@ -52,165 +28,18 @@ const DetailedAnalytics = ({navigation}) => {
       text: 'CHARACTERISTIC 5',
     },
   ];
-  const [modalVisible, setModalVisible] = useState(false);
-
+  const goBack = () => {
+    navigation.pop();
+  };
   return (
     <SafeAreaView style={styles.ConTAINER}>
       <View style={styles.Inercontsiner}>
-        <View style={styles.Header}>
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={{flexDirection: 'row'}}>
-            <MaterialCommunityIcons
-              name="keyboard-backspace"
-              style={{fontSize: 30, color: '#002733', paddingVertical: 3}}
-            />
-
-            <Text style={styles.HeaderTitle}>Detailed analytics</Text>
-          </TouchableOpacity>
-          <View>
-            <TouchableOpacity
-              onPress={() => setModalVisible(!modalVisible)}
-              style={[
-                styles.ModalMainButton,
-                {
-                  backgroundColor: modalVisible == true ? '#4C6870' : null,
-                  borderRadius: modalVisible == true ? 25 : null,
-                },
-              ]}>
-              <MaterialCommunityIcons
-                size={33}
-                color={modalVisible == true ? '#fff' : '#002733'}
-                name={'bell-outline'}
-              />
-              <Badge
-                // value={'9'}
-                containerStyle={styles.BadgeContainer}
-                badgeStyle={styles.badgeStyle}
-              />
-            </TouchableOpacity>
-          </View>
-
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            onBackdropPress={() => setModalVisible(!modalVisible)}
-            onRequestClose={() => {
-              setModalVisible(!modalVisible);
-            }}>
-            <View style={styles.ModalHeightwidth}>
-              <ScrollView style={{height: 610}}>
-                <View style={{flexDirection: 'row'}}>
-                  <Text style={styles.NotificationTitle}>
-                    Your notifications
-                  </Text>
-                  <View style={styles.NewNotification}>
-                    <Text style={{color: colors.textWhite}}>3 New</Text>
-                  </View>
-                </View>
-
-                <FlatList
-                  data={data2}
-                  numColumns={1}
-                  style={{marginBottom: 5}}
-                  renderItem={({item}) => (
-                    <View>
-                      <View style={{flexDirection: 'row', marginVertical: 15}}>
-                        <View style={styles.ImageVIew}>
-                          <Image
-                            source={require('../Assets/Icon.png')}
-                            style={styles.ImageModal}
-                          />
-                        </View>
-                        <View style={styles.ModelDesign}>
-                          <Text style={styles.ModalNotificationTitle}>
-                            Silal Management
-                          </Text>
-                          <Text style={styles.NotificationDescription}>
-                            Your campaign is coming to an end, look at the
-                            statistics and analyze the effectiveness of
-                            advertising.
-                          </Text>
-                          <View style={{flexDirection: 'row'}}>
-                            <MaterialCommunityIcons
-                              name="clock-time-five-outline"
-                              style={styles.ClockIconNotification}
-                            />
-
-                            <Text style={styles.TimeBar}>13 min</Text>
-                          </View>
-                        </View>
-                        <TouchableOpacity>
-                          <AntDesign
-                            name="close"
-                            style={{fontSize: 19, color: '#CCD4D6'}}
-                          />
-                        </TouchableOpacity>
-                      </View>
-                      <View
-                        style={{borderBottomWidth: 1, borderColor: '#CCD4D6'}}
-                      />
-                    </View>
-                  )}
-                  keyExtractor={item => item.id}
-                />
-                <Text
-                  style={{
-                    color: '#CCD4D6',
-                    fontSize: 17,
-                    fontFamily: 'Poppins-SemiBold',
-                  }}>
-                  Previous Notification
-                </Text>
-                <FlatList
-                  data={data2}
-                  numColumns={1}
-                  style={{marginBottom: 5}}
-                  renderItem={({item}) => (
-                    <View>
-                      <View style={{flexDirection: 'row', marginVertical: 15}}>
-                        <View style={styles.ImageVIew}>
-                          <Image
-                            source={require('../Assets/Icon.png')}
-                            style={styles.ImageModal}
-                          />
-                        </View>
-                        <View style={styles.ModelDesign}>
-                          <Text style={styles.ModalNotificationTitle}>
-                            Silal Management
-                          </Text>
-                          <Text style={styles.NotificationDescription}>
-                            Your campaign is coming to an end, look at the
-                            statistics and analyze the effectiveness of
-                            advertising.
-                          </Text>
-                          <View style={{flexDirection: 'row'}}>
-                            <MaterialCommunityIcons
-                              name="clock-time-five-outline"
-                              style={styles.ClockIconNotification}
-                            />
-
-                            <Text style={styles.TimeBar}>Yesterday</Text>
-                          </View>
-                        </View>
-                        <TouchableOpacity>
-                          <AntDesign
-                            name="close"
-                            style={styles.CrossIconNotification}
-                          />
-                        </TouchableOpacity>
-                      </View>
-                      <View style={styles.BorderNotification} />
-                    </View>
-                  )}
-                  keyExtractor={item => item.id}
-                />
-              </ScrollView>
-            </View>
-          </Modal>
-        </View>
-
+        <Header
+          title={t('Detail_analytics')}
+          goBack={goBack}
+          navigation={navigation}
+          showIcon={!IsTablet ? true : false}
+        />
         <ScrollView>
           <View
             style={{
@@ -218,44 +47,75 @@ const DetailedAnalytics = ({navigation}) => {
               marginVertical: 20,
               marginHorizontal: 10,
             }}>
-            <View style={{width: '65%'}}>
-              <View style={styles.GrphBackground}>
-                <View style={styles.GraphHeader}>
-                  <Text style={styles.TitleTextGraph}>Revenue</Text>
+            <View style={{width: !IsTablet ? '100%' : '65%'}}>
+              <View
+                style={
+                  !IsTablet
+                    ? styles.GrphBackgroundMobile
+                    : styles.GrphBackground
+                }>
+                <View
+                  style={
+                    !IsTablet ? styles.GraphHeaderMobile : styles.GraphHeader
+                  }>
+                  <Text style={styles.TitleTextGraph}>{t('Revenue')}</Text>
                   <Calender />
                 </View>
-                <CustomGraph />
+                <View style={{height: verticalScale(!IsTablet ? 270 : 400)}}>
+                  <CustomGraph />
+                </View>
               </View>
-              <View style={[styles.GrphBackground, {marginTop: 10}]}>
-                <View style={styles.GraphHeader}>
-                  <Text style={styles.TitleTextGraph}>Orders</Text>
+
+              <View
+                style={
+                  !IsTablet
+                    ? styles.GrphBackgroundMobile
+                    : styles.GrphBackground
+                }>
+                <View
+                  style={
+                    !IsTablet ? styles.GraphHeaderMobile : styles.GraphHeader
+                  }>
+                  <Text style={styles.TitleTextGraph}>{t('orders')}</Text>
                   <Calender />
                 </View>
                 <CustomGraph />
               </View>
             </View>
-            <View
-              style={{
-                width: '30%',
-                marginHorizontal: 30,
-              }}>
-              <View style={styles.SecondColumn}>
-                <Text style={{fontFamily: 'Poppins-SemiBold', color: '#fff'}}>
-                  Revenue
-                </Text>
+
+            {!IsTablet ? (
+              <View />
+            ) : (
+              <View
+                style={{
+                  width: '30%',
+                  marginHorizontal: 30,
+                }}>
+                <View style={styles.SecondColumn}>
+                  <Text
+                    style={{
+                      fontFamily: fonts.PoppinsSemiBold,
+                      color: colors.textWhite,
+                      fontSize: verticalScale(9),
+                    }}>
+                    {t('Revenue')}
+                  </Text>
+                </View>
+                <FlatList
+                  data={data1}
+                  numColumns={1}
+                  style={{marginBottom: 5}}
+                  renderItem={({item}) => (
+                    <View>
+                      <Text style={styles.SecondColumnFlatData}>
+                        {item.text}
+                      </Text>
+                    </View>
+                  )}
+                  keyExtractor={item => item.id}
+                />
               </View>
-              <FlatList
-                data={data1}
-                numColumns={1}
-                style={{marginBottom: 5}}
-                renderItem={({item}) => (
-                  <View>
-                    <Text style={styles.SecondColumnFlatData}>{item.text}</Text>
-                  </View>
-                )}
-                keyExtractor={item => item.id}
-              />
-            </View>
+            )}
           </View>
         </ScrollView>
       </View>
@@ -263,76 +123,16 @@ const DetailedAnalytics = ({navigation}) => {
   );
 };
 export default DetailedAnalytics;
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   ConTAINER: {
-    backgroundColor: '#E5E5E5',
+    backgroundColor: colors.backgroundColor,
     flex: 1,
+    alignItems: 'center',
   },
   Inercontsiner: {
-    width: '98%',
-
+    width: '100%',
     justifyContent: 'center',
     alignSelf: 'center',
-  },
-  Header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  HeaderTitle: {
-    color: '#002733',
-    fontSize: 25,
-    fontFamily: 'Poppins-Bold',
-  },
-  // ///
-  ModalMainButton: {
-    position: 'absolute',
-    right: 22,
-    marginHorizontal: 20,
-    height: 50,
-    width: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  BadgeContainer: {
-    position: 'absolute',
-    top: 10,
-    right: 7,
-    backgroundColor: colors.textWhite,
-    height: 16,
-    width: 16,
-    borderRadius: 8,
-  },
-  badgeStyle: {
-    backgroundColor: colors.primary,
-    height: 14,
-    width: 14,
-    borderRadius: 7,
-    marginVertical: 1,
-  },
-  ModalHeightwidth: {
-    backgroundColor: colors.textWhite,
-    width: 350,
-    position: 'absolute',
-    top: 29,
-    right: 2,
-    borderRadius: 5,
-    elevation: 1,
-    paddingHorizontal: 15,
-  },
-  NotificationTitle: {
-    marginTop: 15,
-    width: 120,
-    fontFamily: fonts.LatoSemiBold,
-  },
-  NewNotification: {
-    fontFamily: fonts.LatoSemiBold,
-    backgroundColor: colors.primary,
-    height: 30,
-    width: 60,
-    borderRadius: 5,
-    marginTop: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   ImageVIew: {
     backgroundColor: '#0065FF33',
@@ -383,9 +183,18 @@ const styles = StyleSheet.create({
     borderColor: colors.light_grey,
   },
   GrphBackground: {
-    backgroundColor: '#FFFFFF',
-    height: '40.5%',
+    backgroundColor: colors.textWhite,
+    height: '41%',
     borderRadius: 5,
+    marginHorizontal: '5@s',
+    marginBottom: '15@s',
+  },
+  GrphBackgroundMobile: {
+    backgroundColor: colors.textWhite,
+    height: '50%',
+    borderRadius: 5,
+    width: '100%',
+    marginBottom: '10@s',
   },
   GraphHeader: {
     justifyContent: 'space-between',
@@ -393,15 +202,20 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingHorizontal: 10,
   },
+  GraphHeaderMobile: {
+    flexDirection: 'column',
+    paddingTop: 10,
+    paddingHorizontal: 10,
+  },
   TitleTextGraph: {
-    color: '#002733',
-    fontSize: 25,
+    color: colors.black,
+    fontSize: '14@vs',
     fontFamily: 'Poppins-Bold',
   },
   SecondColumn: {
     height: 40,
     width: '80%',
-    backgroundColor: '#05AE4B',
+    backgroundColor: colors.primary,
     borderRadius: 5,
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -409,10 +223,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   SecondColumnFlatData: {
-    fontFamily: 'Poppins-SemiBold',
-    color: '#002733',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.black,
     paddingVertical: 4,
     paddingHorizontal: 4,
-    fontSize: 13,
+    fontSize: '9@vs',
   },
 });

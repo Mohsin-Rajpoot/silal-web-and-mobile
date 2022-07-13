@@ -1,14 +1,29 @@
 import React, {useState, useRef} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  FlatList,
+  ScrollView,
+} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import TextInput from '@SilalApp/common/components/native/TextInput';
 import colors from '@SilalApp/common/assets/colors';
 import fonts from '@SilalApp/common/assets/fonts';
 import {useTranslation} from 'react-i18next';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import {
+  ScaledSheet,
+  scale,
+  moderateScale,
+  verticalScale,
+} from 'react-native-size-matters';
+import ItemDetails from '../../../../components/ItemDetails';
 export default function Archive_orders({title, navigation}) {
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
-
+  const dataItem = [{id: 0}, {id: 1}, {id: 2}, {id: 3}];
   const data = [
     {
       id: '1',
@@ -59,7 +74,7 @@ export default function Archive_orders({title, navigation}) {
       year: '22/03/2022',
     },
   ];
-
+  const itemDetailsArray = [0, 1, 2, 3, 4];
   const render_all_oredrs = () => {
     return (
       <TouchableOpacity
@@ -128,15 +143,36 @@ export default function Archive_orders({title, navigation}) {
     );
   };
 
-  return (
+  return !IsTablet ? (
+    <ScrollView style={{padding: moderateScale(15)}}>
+      {itemDetailsArray.map((item, index) => {
+        return (
+          <ItemDetails
+            marginBottom={verticalScale(20)}
+            key={item}
+            imgContainer
+            checkBoxLabelFirst={t('order_id')}
+            checkBoxLabelSecond=" #723DN2"
+            payment
+            navigation={navigation}
+          />
+        );
+      })}
+    </ScrollView>
+  ) : (
     <View style={{height: '83%', padding: 10}}>
-      <View style={{flexDirection: 'row'}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}>
         <TextInput
           search={true}
           placeholderText={t('Search')}
-          inputStyle={styles.input}
+          inputStyle={!IsTablet ? styles.inputMobile : styles.input}
         />
-        <View style={styles.filter_box}>
+        <View style={!IsTablet ? styles.filter_boxMobile : styles.filter_box}>
           <View style={styles.calndr_date}>
             <Text>16 NOV</Text>
           </View>
@@ -153,7 +189,7 @@ export default function Archive_orders({title, navigation}) {
     </View>
   );
 }
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   bankDetail: {
     fontSize: 14,
     fontFamily: fonts.LatoRegular,
@@ -169,6 +205,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.textWhite,
     height: 55,
   },
+  inputMobile: {
+    width: '85%',
+    backgroundColor: colors.textWhite,
+  },
   title: {
     fontSize: 18,
     fontWeight: '700',
@@ -176,10 +216,16 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   filter_box: {
-    flex: 1,
     justifyContent: 'flex-end',
     flexDirection: 'row',
     alignItems: 'center',
+    width: '20%',
+  },
+  filter_boxMobile: {
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '8%',
   },
   filter: {
     flexDirection: 'row',
@@ -215,8 +261,7 @@ const styles = StyleSheet.create({
   },
   calndr_date: {
     backgroundColor: 'white',
-    height: 40,
-    width: 200,
+
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',

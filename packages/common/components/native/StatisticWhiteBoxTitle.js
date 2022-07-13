@@ -1,21 +1,20 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import colors from "../../assets/colors";
+import fonts from "../../assets/fonts";
+import { ScaledSheet } from "react-native-size-matters";
+import IsTablet from "./IsTablet";
+const StatisticWhiteBoxTitle = ({ navigation, Title }) => {
+  return <Text style={styles.titleInWhiteDiv}>{Title}</Text>;
+};
 
-const StatisticWhiteBoxTitle = ({navigation,Title}) => {
-  return (
-    <View>
-      <Text style={styles.titleInWhiteDiv}>{Title}</Text>
-    </View>
-  )
-}
+export default StatisticWhiteBoxTitle;
 
-export default StatisticWhiteBoxTitle
-
-const styles = StyleSheet.create({
-    titleInWhiteDiv: {
-        fontFamily: 'Poppins-Medium',
-        color: '#4C6870',
-        paddingHorizontal: 10,
-        paddingTop: 10
-      },
-})
+const styles = ScaledSheet.create({
+  titleInWhiteDiv: {
+    fontSize: !IsTablet ? "11@vs" : "9@vs",
+    fontFamily: fonts.LatoMedium,
+    color: colors.textPrimeColor,
+    alignSelf: "center",
+  },
+});

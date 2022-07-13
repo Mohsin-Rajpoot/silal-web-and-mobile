@@ -1,4 +1,10 @@
-import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import React, { useRef } from "react";
 import HeaderHeading from "../../components/headerHeading";
 import HeaderBack from "../../components/native/HeaderBack";
@@ -9,6 +15,8 @@ import CustomText from "../../components/CustomText";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./style";
 import Toast from "react-native-easy-toast";
+import IsTablet from "../../components/native/IsTablet";
+import { verticalScale } from "react-native-size-matters";
 const GettingStarted = ({ navigation, route }) => {
   const { t } = useTranslation();
   const toastRef = useRef();
@@ -43,7 +51,7 @@ const GettingStarted = ({ navigation, route }) => {
     );
   };
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }}>
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
@@ -70,7 +78,7 @@ const GettingStarted = ({ navigation, route }) => {
                   }
                   headerStyle={styles.headingDetail}
                 />
-                <View style={{ flexDirection: "row", alignSelf: "center" }}>
+                {/* <View style={{ flexDirection: "row", alignSelf: "center" }}>
                   <Text style={styles.checkout_text}>Checkout our</Text>
                   <TouchableOpacity activeOpacity={0.6}>
                     <Text style={styles.checkoutInnerText}>
@@ -79,11 +87,11 @@ const GettingStarted = ({ navigation, route }) => {
                     </Text>
                   </TouchableOpacity>
 
-                  <Text style={styles.checkout_text}> and</Text>
+                  <Text style={styles.checkout_text}>and</Text>
                   <TouchableOpacity activeOpacity={0.6}>
-                    <Text style={styles.checkoutInnerText}> FAQS</Text>
+                    <Text style={styles.checkoutInnerText}>FAQS</Text>
                   </TouchableOpacity>
-                </View>
+                </View> */}
               </>
             ) : (
               <View />
@@ -92,12 +100,26 @@ const GettingStarted = ({ navigation, route }) => {
         </View>
         <View style={{ marginBottom: 30 }}>
           <AuthButton
-            name={data?.params?.gettingStarted ? "How to work" : t("Start")}
+            name={
+              data?.params?.gettingStarted
+                ? "How to work"
+                : !IsTablet
+                ? t("Start")
+                : t("Start_your_own_business")
+            }
             onPress={() => {
               data?.params?.gettingStarted
                 ? showToast() & goToMainStack()
                 : goToSignUpForm();
             }}
+            buttonStyling={
+              !IsTablet
+                ? styles.formButtonMobile
+                : [
+                    styles.formButtonMobile,
+                    { width: "65%", borderRadius: verticalScale(5) },
+                  ]
+            }
           />
         </View>
         <Toast
@@ -110,7 +132,7 @@ const GettingStarted = ({ navigation, route }) => {
           textStyle={{ color: "red" }}
         />
       </ScrollView>
-    </>
+    </SafeAreaView>
   );
 };
 

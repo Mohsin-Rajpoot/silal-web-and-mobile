@@ -6,7 +6,17 @@ import fonts from '@SilalApp/common/assets/fonts';
 import colors from '@SilalApp/common/assets/colors';
 import {ScaledSheet} from 'react-native-size-matters';
 import {useTranslation} from 'react-i18next';
-const index = ({day}) => {
+import {Checkbox} from 'native-base';
+const index = ({
+  day,
+  containerStyle,
+  buttonSize,
+  textStyle,
+  activelabel,
+  state,
+  setState,
+  toggleButton,
+}) => {
   const {t} = useTranslation();
   const [active, setActive] = useState(false);
   return (
@@ -21,17 +31,21 @@ const index = ({day}) => {
             : styles.dayText,
         ]}
       />
-      <ToggleSwitch
-        isOn={active}
-        onColor={colors.light_green}
-        offColor={colors.light_grey}
-        labelStyle={{color: 'black', fontWeight: '900'}}
-        size={buttonSize ? buttonSize : 'large'}
-        onToggle={() => {
-          setActive(!active);
-          // setState(true);
-        }}
-      />
+      {day == 'EveryDay' || toggleButton ? (
+        <ToggleSwitch
+          isOn={active}
+          onColor={colors.light_green}
+          offColor={colors.light_grey}
+          labelStyle={{color: 'black', fontWeight: '800'}}
+          size={'medium'}
+          onToggle={() => {
+            setActive(!active);
+            setState(true);
+          }}
+        />
+      ) : (
+        <Checkbox />
+      )}
     </View>
   );
 };
@@ -41,15 +55,16 @@ export default index;
 const styles = ScaledSheet.create({
   daySelectContainer: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    width: '49%',
-    marginVertical: '5@s',
+    alignItems: 'center',
+
+    width: '100%',
+    marginVertical: '10@s',
     justifyContent: 'space-between',
   },
   dayText: {
     fontSize: '13@ms',
     fontFamily: fonts.LatoMedium,
-    color: colors.light_grey,
+    color: colors.black,
     marginHorizontal: 15,
   },
   dayTextActive: {

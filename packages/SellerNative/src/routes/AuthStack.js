@@ -7,22 +7,29 @@ import ForgetPassword from '@SilalApp/common/screens/Auth/ForgetPassword';
 import ChangePassword from '@SilalApp/common/screens/Auth/ChangePassword';
 import GettingStarted from '@SilalApp/common/screens/Auth/GettingStarted';
 import ChooseAccount from '@SilalApp/common/screens/Auth/ChooseAccount';
-import Onboarding from '@SilalApp/common/screens/Auth'
+import Onboarding from '@SilalApp/common/screens/Auth';
 import SignUpForm from '@SilalApp/common/screens/Auth/SignUpForm';
+import ConformationAccount from '@SilalApp/common/screens/Auth/ConformationAccount';
+import SellerInformation from '@SilalApp/common/screens/Auth/SellerInformation';
 const Stack = createNativeStackNavigator();
 const AuthStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName="OnBoarding">
+      initialRouteName="SellerInformation">
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Verification" component={Verification} />
       <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="GettingStarted" component={GettingStarted} />
-      <Stack.Screen name='ChooseAccount' component={ChooseAccount}/>
-      <Stack.Screen name='OnBoarding' component={Onboarding}/>
-      <Stack.Screen name='SignUpForm' component={SignUpForm}/>
+      <Stack.Screen name="ChooseAccount" component={ChooseAccount} />
+      <Stack.Screen name="OnBoarding" component={Onboarding} />
+      <Stack.Screen name="SignUpForm" component={SignUpForm} />
+      <Stack.Screen name="SellerInformation" component={SellerInformation} />
+      <Stack.Screen
+        name="ConformationAccount"
+        component={ConformationAccount}
+      />
     </Stack.Navigator>
   );
 };

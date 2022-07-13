@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
   Text,
   View,
   Dimensions,
@@ -11,7 +10,6 @@ import {
   ScrollView,
   Image,
   Modal,
-  KeyboardAvoidingView,
 } from 'react-native';
 import ModalViewS from 'react-native-modal';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -22,18 +20,32 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {ModalView} from '../../components/ModalView';
 import styles from './styles';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import colors from '@SilalApp/common/assets/colors';
+import {moderateScale, verticalScale} from 'react-native-size-matters';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import fonts from '@SilalApp/common/assets/fonts';
+import {useTranslation} from 'react-i18next';
 
-const Clints = () => {
+var windowWidth = Dimensions.get('window').width;
+var windowHeight = Dimensions.get('window').height;
+
+const Clints = ({navigation}) => {
   const [choseData, setchoseData] = useState('Sort by');
   const [ModalVisible, setModalVisible] = useState(false);
   const [ismodalVisible, setisModalVisible] = useState(false);
-
+  const [filter, setfilter] = useState('');
+  const {t} = useTranslation();
   const changeModalVisibilty = bool => {
     setModalVisible(bool);
   };
   const setData = option => {
-    setchoseData(option);
+    setchoseData(JSON.stringify(option));
   };
+
+  const Sheet = useRef();
+  const Sheet_state = useRef();
+
   const data = [
     {
       id: '1',
@@ -186,6 +198,149 @@ const Clints = () => {
   ] = useState(false);
 
   const [SecondModalVisible, setSecondModalVisible] = useState(false);
+  // ////
+
+  const footer = () => {
+    return (
+      <View style={{marginTop: 10}}>
+        <View style={!IsTablet ? styles.ButtonShow : styles.ButtonHide}>
+          <TouchableOpacity style={styles.hideButton}>
+            <Text style={styles.HideButtonText}>{t('Load_more')}</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  };
+
+  const sheet_data = () => {
+    return (
+      <View style={styles.sheet}>
+        <View style={styles.sheet_head_view}>
+          <TouchableOpacity onPress={() => Sheet.current.close()}>
+            <Entypo style={styles.CrossIconbts} name="cross" />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.BottomSheetContiner}>
+          <Text style={{fontFamily: fonts.LatoBold, fontSize: 17}}>
+            {t('Sort_By')}
+          </Text>
+        </View>
+
+        <View style={styles.mianviewText}>
+          <View style={styles.BottomSheetTextHead}>
+            <TouchableOpacity onPress={() => setfilter('newest')}>
+              <Text
+                style={{
+                  color: filter == 'newest' ? colors.primary : colors.black,
+                  paddingVertical: 5,
+                  fontFamily: fonts.LatoMedium,
+                }}>
+                {t('Newest_first')}
+              </Text>
+            </TouchableOpacity>
+            {filter == 'newest' ? (
+              <View style={{}}>
+                <Svg
+                  width="14"
+                  height="10"
+                  viewBox="0 0 14 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <Path
+                    d="M1.72853 4.3107C1.54799 4.11868 1.29894 4.00571 1.03554 3.99634C0.772144 3.98697 0.515699 4.08197 0.32197 4.26067C0.128242 4.43938 0.0128967 4.68734 0.00101728 4.95064C-0.0108622 5.21393 0.0816843 5.47127 0.258533 5.6667L3.87053 9.5857C4.40753 10.1117 5.20753 10.1117 5.70453 9.6157L6.06853 9.25669C7.38306 7.96392 8.69607 6.66958 10.0075 5.3737L10.0475 5.3337C11.2732 4.12576 12.4926 2.91141 13.7055 1.6907C13.8868 1.50089 13.9862 1.24743 13.9823 0.98499C13.9783 0.722553 13.8714 0.472185 13.6845 0.28791C13.4976 0.103635 13.2457 0.000227559 12.9833 3.75124e-07C12.7208 -0.000226808 12.4688 0.102745 12.2815 0.286696C11.0742 1.50103 9.86085 2.70938 8.64153 3.9117L8.60153 3.9517C7.3448 5.19399 6.08647 6.43466 4.82653 7.6737L1.72853 4.3107Z"
+                    fill="#05AE4B"
+                  />
+                </Svg>
+              </View>
+            ) : null}
+          </View>
+
+          <View style={styles.BottomSheetTextHead}>
+            <TouchableOpacity onPress={() => setfilter('oldest')}>
+              <Text
+                style={{
+                  color: filter == 'oldest' ? colors.primary : colors.black,
+                  paddingVertical: 5,
+                  fontFamily: fonts.LatoMedium,
+                }}>
+                {t('oldest_first')}
+              </Text>
+            </TouchableOpacity>
+            {filter == 'oldest' ? (
+              <View style={{}}>
+                <Svg
+                  width="14"
+                  height="10"
+                  viewBox="0 0 14 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <Path
+                    d="M1.72853 4.3107C1.54799 4.11868 1.29894 4.00571 1.03554 3.99634C0.772144 3.98697 0.515699 4.08197 0.32197 4.26067C0.128242 4.43938 0.0128967 4.68734 0.00101728 4.95064C-0.0108622 5.21393 0.0816843 5.47127 0.258533 5.6667L3.87053 9.5857C4.40753 10.1117 5.20753 10.1117 5.70453 9.6157L6.06853 9.25669C7.38306 7.96392 8.69607 6.66958 10.0075 5.3737L10.0475 5.3337C11.2732 4.12576 12.4926 2.91141 13.7055 1.6907C13.8868 1.50089 13.9862 1.24743 13.9823 0.98499C13.9783 0.722553 13.8714 0.472185 13.6845 0.28791C13.4976 0.103635 13.2457 0.000227559 12.9833 3.75124e-07C12.7208 -0.000226808 12.4688 0.102745 12.2815 0.286696C11.0742 1.50103 9.86085 2.70938 8.64153 3.9117L8.60153 3.9517C7.3448 5.19399 6.08647 6.43466 4.82653 7.6737L1.72853 4.3107Z"
+                    fill="#05AE4B"
+                  />
+                </Svg>
+              </View>
+            ) : null}
+          </View>
+          <View style={styles.BottomSheetTextHead}>
+            <TouchableOpacity onPress={() => setfilter('AZ')}>
+              <Text
+                style={{
+                  color: filter == 'AZ' ? colors.primary : colors.black,
+                  paddingVertical: 5,
+                  fontFamily: fonts.LatoMedium,
+                }}>
+                A-Z
+              </Text>
+            </TouchableOpacity>
+            {filter == 'AZ' ? (
+              <View style={{}}>
+                <Svg
+                  width="14"
+                  height="10"
+                  viewBox="0 0 14 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <Path
+                    d="M1.72853 4.3107C1.54799 4.11868 1.29894 4.00571 1.03554 3.99634C0.772144 3.98697 0.515699 4.08197 0.32197 4.26067C0.128242 4.43938 0.0128967 4.68734 0.00101728 4.95064C-0.0108622 5.21393 0.0816843 5.47127 0.258533 5.6667L3.87053 9.5857C4.40753 10.1117 5.20753 10.1117 5.70453 9.6157L6.06853 9.25669C7.38306 7.96392 8.69607 6.66958 10.0075 5.3737L10.0475 5.3337C11.2732 4.12576 12.4926 2.91141 13.7055 1.6907C13.8868 1.50089 13.9862 1.24743 13.9823 0.98499C13.9783 0.722553 13.8714 0.472185 13.6845 0.28791C13.4976 0.103635 13.2457 0.000227559 12.9833 3.75124e-07C12.7208 -0.000226808 12.4688 0.102745 12.2815 0.286696C11.0742 1.50103 9.86085 2.70938 8.64153 3.9117L8.60153 3.9517C7.3448 5.19399 6.08647 6.43466 4.82653 7.6737L1.72853 4.3107Z"
+                    fill="#05AE4B"
+                  />
+                </Svg>
+              </View>
+            ) : null}
+          </View>
+
+          <View style={styles.BottomSheetTextHead}>
+            <TouchableOpacity onPress={() => setfilter('ZA')}>
+              <Text
+                style={{
+                  color: filter == 'ZA' ? colors.primary : colors.black,
+                  paddingVertical: 5,
+                  fontFamily: fonts.LatoMedium,
+                }}>
+                {t('Z_A')}
+              </Text>
+            </TouchableOpacity>
+            {filter == 'ZA' ? (
+              <View style={{}}>
+                <Svg
+                  width="14"
+                  height="10"
+                  viewBox="0 0 14 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <Path
+                    d="M1.72853 4.3107C1.54799 4.11868 1.29894 4.00571 1.03554 3.99634C0.772144 3.98697 0.515699 4.08197 0.32197 4.26067C0.128242 4.43938 0.0128967 4.68734 0.00101728 4.95064C-0.0108622 5.21393 0.0816843 5.47127 0.258533 5.6667L3.87053 9.5857C4.40753 10.1117 5.20753 10.1117 5.70453 9.6157L6.06853 9.25669C7.38306 7.96392 8.69607 6.66958 10.0075 5.3737L10.0475 5.3337C11.2732 4.12576 12.4926 2.91141 13.7055 1.6907C13.8868 1.50089 13.9862 1.24743 13.9823 0.98499C13.9783 0.722553 13.8714 0.472185 13.6845 0.28791C13.4976 0.103635 13.2457 0.000227559 12.9833 3.75124e-07C12.7208 -0.000226808 12.4688 0.102745 12.2815 0.286696C11.0742 1.50103 9.86085 2.70938 8.64153 3.9117L8.60153 3.9517C7.3448 5.19399 6.08647 6.43466 4.82653 7.6737L1.72853 4.3107Z"
+                    fill="#05AE4B"
+                  />
+                </Svg>
+              </View>
+            ) : null}
+          </View>
+        </View>
+      </View>
+    );
+  };
 
   const Customer_Data = () => {
     return (
@@ -195,36 +350,42 @@ const Clints = () => {
             set_show_modal_Customer_Data(!show_modal_Customer_Data)
           }
           style={styles.CustomerMainTitle}>
-          <Text style={styles.ModalDropdown}>CUSTOMER DATA</Text>
+          <Text style={styles.ModalDropdown}></Text>
 
           {show_modal_Customer_Data == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           )}
         </TouchableOpacity>
         {show_modal_Customer_Data == true ? (
           <View style={{marginTop: 10}}>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Customer name</Text>
-              <Text style={styles.modal_title_second}>Willson Genemal</Text>
+              <Text style={styles.modal_title_first}>
+                {' '}
+                {t('customer_name')}
+              </Text>
+              <Text style={styles.modal_title_second}>
+                {' '}
+                {t('Willson_Genemal')}
+              </Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Customer ID</Text>
-              <Text style={styles.modal_title_second}>133</Text>
+              <Text style={styles.modal_title_first}> {t('Customer_ID')}</Text>
+              <Text style={styles.modal_title_second}> 133</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Phone</Text>
-              <Text style={styles.modal_title_second}>*** *** **** 112</Text>
+              <Text style={styles.modal_title_first}> {t('phone')}</Text>
+              <Text style={styles.modal_title_second}>* * ** 112</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Address</Text>
+              <Text style={styles.modal_title_first}> {t('address')}</Text>
               <Text style={styles.modal_title_second}>
                 2715 Ash Dr. San Jose
               </Text>
@@ -241,33 +402,39 @@ const Clints = () => {
         <TouchableOpacity
           onPress={() => set_show_modal_Driver_Data(!show_modal_Driver_Data)}
           style={styles.CustomerMainTitle}>
-          <Text style={styles.ModalDropdown}>DRIVER DATA</Text>
+          <Text style={styles.ModalDropdown}> {t('driver_data')}</Text>
 
           {show_modal_Driver_Data == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           )}
         </TouchableOpacity>
         {show_modal_Driver_Data == true ? (
           <View style={{marginTop: 10}}>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Driver name</Text>
-              <Text style={styles.modal_title_second}>Willson Genemal</Text>
+              <Text style={styles.modal_title_first}> {t('Driver_name')}</Text>
+              <Text style={styles.modal_title_second}>
+                {' '}
+                {t('Willson_Genemal')}
+              </Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Delivery time</Text>
+              <Text style={styles.modal_title_first}>
+                {' '}
+                {t('Delivery_time')}
+              </Text>
               <Text style={styles.modal_title_second}>37 minutes</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Phone</Text>
-              <Text style={styles.modal_title_second}>*** *** **** 112</Text>
+              <Text style={styles.modal_title_first}>{t('phone')}</Text>
+              <Text style={styles.modal_title_second}>* * ** 112</Text>
             </View>
           </View>
         ) : null}
@@ -285,33 +452,33 @@ const Clints = () => {
             )
           }
           style={styles.CustomerMainTitle}>
-          <Text style={styles.ModalDropdown}>ORDER DETAILS</Text>
+          <Text style={styles.ModalDropdown}>{t('order_details')}</Text>
 
           {show_modal_SecondModal_order_details == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           )}
         </TouchableOpacity>
         {show_modal_SecondModal_order_details == true ? (
           <View style={{marginTop: 10}}>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Order created</Text>
+              <Text style={styles.modal_title_first}>{t('Order_created')}</Text>
               <Text style={styles.modal_title_second}>13.11.2021</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Payment</Text>
-              <Text style={styles.modal_title_second}>$ 13.00</Text>
+              <Text style={styles.modal_title_first}>{t('Payment')}</Text>
+              <Text style={styles.modal_title_second}>'$ 13.00</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Credit card</Text>
-              <Text style={styles.modal_title_second}>**** **** **** 3782</Text>
+              <Text style={styles.modal_title_first}>{t('credit_card')}</Text>
+              <Text style={styles.modal_title_second}>** ** ** 3782</Text>
             </View>
 
             <FlatList
@@ -342,37 +509,39 @@ const Clints = () => {
             set_show_modal_Personal_data(!show_modal_Personal_data)
           }
           style={styles.CustomerMainTitle}>
-          <Text style={styles.ModalDropdown}>PERSONAL DATA</Text>
+          <Text style={styles.ModalDropdown}>{t('personal_Data')}</Text>
 
           {show_modal_Personal_data == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           )}
         </TouchableOpacity>
         {show_modal_Personal_data == true ? (
           <View style={{marginTop: 10}}>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Total orders</Text>
+              <Text style={styles.modal_title_first}>{t('Total_orders')}</Text>
               <Text style={styles.modal_title_second}>43</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Sum of orders</Text>
-              <Text style={styles.modal_title_second}>$ 423.90</Text>
+              <Text style={styles.modal_title_first}>{t('Sumof_order')}</Text>
+              <Text style={styles.modal_title_second}>{t('$ 423.90')}</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Average amount</Text>
+              <Text style={styles.modal_title_first}>
+                {t('Average_amount')}
+              </Text>
               <Text style={styles.modal_title_second}>$ 13</Text>
             </View>
             <View style={styles.modal_fields}>
-              <Text style={styles.modal_title_first}>Credit card</Text>
-              <Text style={styles.modal_title_second}>**** **** **** 4543</Text>
+              <Text style={styles.modal_title_first}>{t('credit_card')}</Text>
+              <Text style={styles.modal_title_second}>** ** ** 4543 </Text>
             </View>
           </View>
         ) : null}
@@ -387,17 +556,17 @@ const Clints = () => {
             set_show_modal_Favourite_item(!show_modal_Favourite_item)
           }
           style={styles.CustomerMainTitle}>
-          <Text style={styles.ModalDropdown}>FAVOURITE ITEMS (3)</Text>
+          <Text style={styles.ModalDropdown}>{t('FAVOURITE_ITEMS')}</Text>
 
           {show_modal_Favourite_item == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black'}]}
+              style={[styles.cross_icon, {color: colors.black}]}
             />
           )}
         </TouchableOpacity>
@@ -413,17 +582,18 @@ const Clints = () => {
                   <Image
                     source={require('../../Assets/image12.png')}
                     style={{
-                      height: 190,
-                      width: 190,
+                      height: !IsTablet ? 150 : 190,
+                      width: !IsTablet ? 150 : 190,
                       resizeMode: 'contain',
                       borderRadius: 5,
+                      overflow: 'hidden',
                     }}
                   />
                   <Text
                     style={{
                       fontSize: 13,
-                      color: '#002733',
-                      fontFamily: 'Lato-Regular',
+                      color: colors.black,
+                      fontFamily: fonts.LatoRegular,
                       paddingVertical: 10,
                     }}>
                     Chicken burger in cheese sauce with mushrooms
@@ -431,8 +601,8 @@ const Clints = () => {
                   <Text
                     style={{
                       fontSize: 13,
-                      color: '#002733',
-                      fontFamily: 'Poppins-SemiBold',
+                      color: colors.black,
+                      fontFamily: fonts.PoppinsSemiBold,
                     }}>
                     $ 4.00
                   </Text>
@@ -454,16 +624,16 @@ const Clints = () => {
             set_show_modal_order_details(!show_modal_order_details)
           }
           style={styles.CustomerMainTitle}>
-          <Text style={styles.ModalDropdown}>ORDER DETAILS</Text>
+          <Text style={styles.ModalDropdown}>{t('order_details')}</Text>
           {show_modal_order_details == true ? (
             <Fontisto
               name="angle-up"
-              style={[styles.cross_icon, {color: 'black', fontSize: 16}]}
+              style={[styles.cross_icon, {color: colors.black, fontSize: 16}]}
             />
           ) : (
             <Fontisto
               name="angle-down"
-              style={[styles.cross_icon, {color: 'black', fontSize: 16}]}
+              style={[styles.cross_icon, {color: colors.black, fontSize: 16}]}
             />
           )}
         </TouchableOpacity>
@@ -473,7 +643,7 @@ const Clints = () => {
               <EvilIcons name="search" style={[styles.SearchIcon]} />
               <TextInput
                 placeholder="Search by order #"
-                placeholderTextColor="#B3BEC2"
+                placeholderTextColor={colors.gray_light}
                 paddingHorizontal={32}
                 style={[styles.Input, {width: '97%'}]}
               />
@@ -493,9 +663,9 @@ const Clints = () => {
                         style={{
                           fontSize: 18,
                           paddingTop: 5,
-                          color: '#CCD4D6',
+                          color: colors.light_grey,
                         }}>
-                        ORDER ID
+                        {t('order_id')}
                       </Text>
                       <Text style={styles.OrderIdentityCode}>
                         {item.Identity}
@@ -508,7 +678,7 @@ const Clints = () => {
                   <View style={styles.FlatStyle}>
                     <Text
                       style={{
-                        color: '#002733',
+                        color: colors.black,
                         fontSize: 17,
                         paddingHorizontal: 4,
                       }}>
@@ -519,12 +689,12 @@ const Clints = () => {
                         name="cross"
                         size={17}
                         style={{paddingTop: 3, paddingHorizontal: 4}}
-                        color={'#CCD4D6'}
+                        color={colors.light_grey}
                       />
                     </TouchableOpacity>
                     <Text
                       style={{
-                        color: '#002733',
+                        color: colors.black,
                         fontSize: 17,
                         paddingHorizontal: 4,
                       }}>
@@ -535,7 +705,7 @@ const Clints = () => {
                   <View style={styles.FlatStyle}>
                     <Text
                       style={{
-                        color: '#002733',
+                        color: colors.black,
                         fontSize: 17,
                         paddingHorizontal: 4,
                       }}>
@@ -545,30 +715,24 @@ const Clints = () => {
                       name="cross"
                       size={17}
                       style={{paddingTop: 3, paddingHorizontal: 4}}
-                      color={'#CCD4D6'}
+                      color={colors.light_grey}
                     />
-                    <Text
-                      style={{
-                        color: '#002733',
-                        fontSize: 17,
-                        width: 250,
-                        paddingHorizontal: 4,
-                      }}>
-                      {item.order2}
-                    </Text>
+                    <Text style={styles.ItemId2}>{item.order2}</Text>
                   </View>
 
                   <TouchableOpacity style={styles.MoreOrderShow}>
-                    <Text style={{color: '#05AE4B'}}>3 more</Text>
+                    <Text style={{color: colors.primary}}>3 more</Text>
                   </TouchableOpacity>
 
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={styles.paymentMethod}>PAYMENT METHOD</Text>
-                    <Text style={[styles.CreditCard]}>CREDIT CARD</Text>
+                    <Text style={styles.paymentMethod}>
+                      {t('payment_method')}
+                    </Text>
+                    <Text style={[styles.CreditCard]}> {t('credit_card')}</Text>
                   </View>
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={[styles.paymentMethod]}>CARD DATA</Text>
-                    <Text style={styles.CreditCard}>**** **** **** 3782</Text>
+                    <Text style={[styles.paymentMethod]}>{t('card_data')}</Text>
+                    <Text style={styles.CreditCard}>** ** ** 3782</Text>
                   </View>
                 </TouchableOpacity>
               )}
@@ -581,133 +745,214 @@ const Clints = () => {
   };
 
   return (
-    <SafeAreaView style={{backgroundColor: '#E5E5E5', paddingHorizontal: 25}}>
-      <KeyboardAvoidingView>
-        <View style={{padding: 20}}>
-          <Modal
-            animationType="slide"
-            transparent={true}
-            onBackdropPress={() => ismodalVisible(false)}
-            visible={ismodalVisible}
-            onRequestClose={() => {
-              setisModalVisible(!ismodalVisible);
-            }}>
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-                <ScrollView>
+    <SafeAreaView
+      style={
+        !IsTablet ? styles.ContainerClientsMobile : styles.ContainerClients
+      }>
+      {/* <KeyboardAvoidingView> */}
+
+      <TouchableOpacity onPress={() => navigation.openDrawer()}>
+        <MaterialCommunityIcons
+          name="menu"
+          size={moderateScale(!IsTablet ? 26 : 22)}
+          style={{marginTop: 10, marginHorizontal: 15}}
+        />
+      </TouchableOpacity>
+
+      <View style={{padding: 5}}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          onBackdropPress={() => ismodalVisible(false)}
+          visible={ismodalVisible}
+          onRequestClose={() => {
+            setisModalVisible(!ismodalVisible);
+          }}>
+          <View style={styles.centeredView}>
+            <View style={IsTablet ? styles.modalView : styles.modalViewMobile}>
+              <ScrollView>
+                <TouchableOpacity
+                  onPress={() => setisModalVisible(!ismodalVisible)}
+                  style={styles.crossButtonModal}>
+                  <Entypo
+                    name="cross"
+                    style={[{color: colors.sidebar, fontSize: 30}]}
+                  />
+                </TouchableOpacity>
+
+                {SecondModalVisible == false ? (
                   <View>
-                    <TouchableOpacity
-                      onPress={() => setisModalVisible(!ismodalVisible)}
-                      style={{
-                        height: 60,
-                        justifyContent: 'flex-end',
-                        flexDirection: 'row',
-                        paddingTop: 25,
-                      }}>
-                      <Entypo
-                        name="cross"
-                        style={[{color: '#4C6870', fontSize: 30}]}
-                      />
-                    </TouchableOpacity>
-                  </View>
-
-                  {SecondModalVisible == false ? (
-                    <View>
-                      <View style={styles.modal_header}>
-                        <View
-                          style={{flexDirection: 'row', alignItems: 'center'}}>
-                          <Text style={styles.orderid_text}>
-                            Cameron Williamson
-                          </Text>
-                          <View style={styles.modal_recuring}>
-                            <Text
-                              style={{
-                                color: 'white',
-                                fontFamily: 'Lato-Regular',
-                              }}>
-                              Recurring client
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                      <View style={{flexDirection: 'row'}}>
-                        <Text
-                          style={{
-                            color: '#CCD4D6',
-                            fontFamily: 'Lato-Bold',
-                            width: 110,
-                          }}>
-                          CUSTOMER ID
-                        </Text>
-
-                        <Text
-                          style={{color: '#002733', fontFamily: 'Lato-Bold'}}>
-                          #644
-                        </Text>
-                      </View>
-                    </View>
-                  ) : null}
-                  {SecondModalVisible == true ? (
-                    <View>
-                      <View style={{flexDirection: 'row', width: 340}}>
+                    <View
+                      style={
+                        !IsTablet
+                          ? styles.modal_headerMobile
+                          : styles.modal_header
+                      }>
+                      <View
+                        style={{flexDirection: 'row', alignItems: 'center'}}>
                         <TouchableOpacity
-                          onPress={() =>
-                            setSecondModalVisible(!SecondModalVisible)
-                          }
-                          style={styles.SecondModalContainer}>
+                          onPress={() => setisModalVisible(!ismodalVisible)}
+                          style={
+                            IsTablet
+                              ? styles.CloseMainModal
+                              : styles.CloseMainModalMobile
+                          }>
                           <MaterialCommunityIcons
                             name="keyboard-backspace"
                             style={styles.SecondModalIcon}
                           />
-                          <Text style={styles.SecondModalText}>
-                            Order #723DN8
-                          </Text>
                         </TouchableOpacity>
-                        <View style={styles.SecondModalCompleteView}>
-                          <Text style={styles.SecondViewCompleteText}>
-                            Completed
+
+                        <Text style={styles.orderid_text}>
+                          {t('Willson_Genemal')}
+                        </Text>
+                        <View style={styles.modal_recuring}>
+                          <Text
+                            style={{
+                              color: colors.textWhite,
+                              fontFamily: fonts.LatoRegular,
+                            }}>
+                            {t('recurring_client')}
                           </Text>
                         </View>
                       </View>
-                      {Customer_Data()}
-                      {Driver_Data()}
-                      {SecondModal_order_details()}
                     </View>
-                  ) : (
-                    <>
-                      {Personal_data()}
-                      {Favourite_item()}
-                      {order_details()}
-                    </>
-                  )}
-                </ScrollView>
-              </View>
-            </View>
-          </Modal>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginVertical: 5,
-            marginHorizontal: 15,
-          }}>
-          <Text style={styles.ClintPageMainheading}>Clients database</Text>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <EvilIcons name="search" style={styles.SearchIcon} />
-            <TextInput
-              placeholder="Search by orders #, phone or name..."
-              placeholderTextColor="#B3BEC2"
-              paddingHorizontal={32}
-              style={styles.Input}
-            />
-          </View>
+                    <View style={{flexDirection: 'row'}}>
+                      <Text
+                        style={{
+                          color: colors.light_grey,
+                          fontFamily: fonts.LatoBold,
+                          width: 110,
+                        }}>
+                        {t('Customer_Id')}
+                      </Text>
 
+                      <Text
+                        style={{
+                          color: colors.black,
+                          fontFamily: fonts.LatoBold,
+                        }}>
+                        {t('#644')}
+                      </Text>
+                    </View>
+                  </View>
+                ) : null}
+                {SecondModalVisible == true ? (
+                  <View>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        width: 340,
+                        marginTop: IsTablet ? 5 : 20,
+                      }}>
+                      <TouchableOpacity
+                        onPress={() =>
+                          setSecondModalVisible(!SecondModalVisible)
+                        }
+                        style={styles.SecondModalContainer}>
+                        <MaterialCommunityIcons
+                          name="keyboard-backspace"
+                          style={styles.SecondModalIcon}
+                        />
+                        <Text style={styles.SecondModalText}>
+                          {t('Order #723DN8')}
+                        </Text>
+                      </TouchableOpacity>
+                      <View style={styles.SecondModalCompleteView}>
+                        <Text style={styles.SecondViewCompleteText}>
+                          {t('completed')}
+                        </Text>
+                      </View>
+                    </View>
+                    {Customer_Data()}
+                    {Driver_Data()}
+                    {SecondModal_order_details()}
+                  </View>
+                ) : (
+                  <>
+                    {Personal_data()}
+                    {Favourite_item()}
+                    {order_details()}
+                  </>
+                )}
+              </ScrollView>
+            </View>
+          </View>
+        </Modal>
+      </View>
+      <View
+        style={!IsTablet ? styles.HeaderSectionMobile : styles.HeaderSection}>
+        <Text
+          style={
+            !IsTablet
+              ? styles.ClintPageMainheadingMobile
+              : styles.ClintPageMainheading
+          }>
+          {t('Clients_database')}
+        </Text>
+        <View style={!IsTablet ? styles.SearchBarMobile : styles.SearchBar}>
+          <EvilIcons name="search" style={styles.SearchIcon} />
+          <TextInput
+            placeholder="Search by orders #, phone or name..."
+            placeholderTextColor={colors.gray_light}
+            paddingHorizontal={32}
+            style={!IsTablet ? styles.InputMobile : styles.Input}
+          />
+          {/* Bottom Sheet */}
+          {!IsTablet == true ? (
+            <>
+              <TouchableOpacity
+                onPress={() => Sheet.current.open()}
+                style={{paddingHorizontal: 15}}>
+                <Svg
+                  width="44"
+                  height="40"
+                  viewBox="0 0 44 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <Rect width="44" height="40" rx="8" fill="white" />
+                  <Path
+                    d="M17.2434 13.5781C17.5689 13.2526 18.0965 13.2526 18.4219 13.5781L21.7553 16.9114C22.0807 17.2368 22.0807 17.7645 21.7553 18.0899C21.4298 18.4153 20.9022 18.4153 20.5768 18.0899L18.666 16.1792V25.834C18.666 26.2942 18.2929 26.6673 17.8327 26.6673C17.3724 26.6673 16.9993 26.2942 16.9993 25.834V16.1792L15.0886 18.0899C14.7632 18.4153 14.2355 18.4153 13.9101 18.0899C13.5847 17.7645 13.5847 17.2368 13.9101 16.9114L17.2434 13.5781ZM25.3327 23.8221V14.1673C25.3327 13.7071 25.7058 13.334 26.166 13.334C26.6263 13.334 26.9994 13.7071 26.9994 14.1673V23.8221L28.9101 21.9114C29.2355 21.586 29.7632 21.586 30.0886 21.9114C30.414 22.2368 30.414 22.7645 30.0886 23.0899L26.7553 26.4232C26.599 26.5795 26.387 26.6673 26.166 26.6673C25.945 26.6673 25.733 26.5795 25.5768 26.4232L22.2434 23.0899C21.918 22.7645 21.918 22.2368 22.2434 21.9114C22.5689 21.586 23.0965 21.586 23.4219 21.9114L25.3327 23.8221Z"
+                    fill="#C9D2D4"
+                  />
+                  <Rect
+                    x="0.5"
+                    y="0.5"
+                    width="43"
+                    height="39"
+                    rx="7.5"
+                    stroke="#E8E8E8"
+                    stroke-opacity="0.5"
+                  />
+                </Svg>
+              </TouchableOpacity>
+              <RBSheet
+                ref={Sheet}
+                animationType="slide"
+                closeOnPressMask={true}
+                closeOnDragDown={false}
+                dragFromTopOnly
+                height={windowWidth * 0.8}
+                openDuration={250}
+                customStyles={{
+                  container: {
+                    // flex:1,
+                    borderTopLeftRadius: 10,
+                    borderTopRightRadius: 10,
+                    backgroundColor: colors.dullWhite,
+                  },
+                }}>
+                {sheet_data()}
+              </RBSheet>
+            </>
+          ) : null}
+        </View>
+        {IsTablet ? (
           <TouchableOpacity
             onPress={() => changeModalVisibilty(true)}
             style={[
               styles.modelTextTitle,
-              {backgroundColor: '#fff', elevation: 0.5},
+              {backgroundColor: colors.textWhite, elevation: 0.5},
             ]}>
             <View style={{paddingHorizontal: 5}}>
               <Svg
@@ -722,77 +967,77 @@ const Clints = () => {
                 />
               </Svg>
             </View>
-            <Text
-              style={{
-                marginVertical: 10,
-                fontSize: 20,
-                fontFamily: 'Lato-Regular',
-                color: '#002733',
-              }}>
-              {choseData}
-            </Text>
+            <Text style={styles.SortedDrop}>{choseData}</Text>
             <AntDesign name="down" style={styles.SortBy} />
           </TouchableOpacity>
-          <ModalViewS
-            transparent={true}
-            animationType="fade"
-            onBackdropPress={() => changeModalVisibilty(false)}
-            visible={ModalVisible}
-            nRequestClose={() => changeModalVisibilty(false)}>
-            <ModalView
-              changeModalVisibilty={changeModalVisibilty}
-              setData={setData}
-            />
-          </ModalViewS>
-        </View>
-        <View style={{marginTop: 5, marginBottom: 10}}>
-          <FlatList
-            data={data}
-            numColumns={3}
-            style={{marginBottom: 30, height: 550}}
-            showsVerticalScrollIndicator={false}
-            renderItem={({item}) => (
-              <View style={styles.FlatListMainView}>
-                <TouchableOpacity
-                  onPress={() => {
-                    setSecondModalVisible(false), setisModalVisible(true);
-                  }}>
-                  <View style={styles.GreenBkgFlat}>
-                    <Text style={styles.TitleMainTextFlat}>{item.Title}</Text>
-                    <Text style={styles.ButtonFlatList}>Reccuring client</Text>
-                  </View>
-                  <View style={styles.OrderFlat}>
-                    <View style={styles.ClintDataBaseDate}>
-                      <Text style={styles.FlatIdDynamic}>Client ID :</Text>
-                      <Text style={styles.OrderFlat}>{item.ID}</Text>
-                    </View>
-                    <View style={styles.ClintDataBaseDate}>
-                      <Text style={styles.FlatIdDynamic}>Total orders:</Text>
-                      <Text style={styles.OrderFlat}>{item.TotalOrders}</Text>
-                    </View>
-                    <View
-                      style={[
-                        styles.ClintDataBaseDate,
-                        {
-                          borderBottomLeftRadius: 5,
-                          borderBottomRightRadius: 5,
-                          elevation: 0.4,
-                        },
-                      ]}>
-                      <Text style={styles.FlatIdDynamic}>Sum of orders:</Text>
-                      <Text style={styles.OrderFlat}>
-                        {' '}
-                        {item.Sum_of_orders}
-                      </Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            )}
-            keyExtractor={item => item.id}
+        ) : null}
+        <ModalView
+          transparent={true}
+          animationType="fade"
+          onBackdropPress={() => changeModalVisibilty(false)}
+          visible={ModalVisible}
+          nRequestClose={() => changeModalVisibilty(false)}>
+          <ModalView
+            changeModalVisibilty={changeModalVisibilty}
+            setData={setData}
           />
-        </View>
-      </KeyboardAvoidingView>
+        </ModalView>
+      </View>
+      {/* <View style={{ marginTop: 5, marginBottom: 120 }}> */}
+      <FlatList
+        data={data}
+        numColumns={!IsTablet ? '1' : '3'}
+        ListFooterComponent={footer}
+        style={!IsTablet ? styles.FlatListMobileMain : styles.FlatListMain}
+        // showsVerticalScrollIndicator={false}
+        renderItem={({item}) => (
+          <View
+            style={
+              !IsTablet
+                ? styles.FlatListMainViewMobile
+                : styles.FlatListMainView
+            }>
+            <TouchableOpacity
+              onPress={() => {
+                setSecondModalVisible(false), setisModalVisible(true);
+              }}>
+              <View style={styles.GreenBkgFlat}>
+                <Text
+                  style={
+                    !IsTablet
+                      ? styles.TitleMainTextFlatMobile
+                      : styles.TitleMainTextFlat
+                  }>
+                  {item.Title}
+                </Text>
+                <Text
+                  style={
+                    !IsTablet
+                      ? styles.ButtonFlatListMobile
+                      : styles.ButtonFlatList
+                  }>
+                  {t('reccuring_Client')}
+                </Text>
+              </View>
+              <View style={styles.OrderFlat}>
+                <View style={styles.ClintDataBaseDate}>
+                  <Text style={styles.FlatIdDynamic}>{t('Client_id')}:</Text>
+                  <Text style={styles.OrderFlat}>{item.ID}</Text>
+                </View>
+                <View style={styles.ClintDataBaseDate}>
+                  <Text style={styles.FlatIdDynamic}>{t('total_order')}:</Text>
+                  <Text style={styles.OrderFlat}>{item.TotalOrders}</Text>
+                </View>
+                <View style={[styles.ClintDataBaseDate, styles.ClintData1]}>
+                  <Text style={styles.FlatIdDynamic}>{t('Sumof_order')}:</Text>
+                  <Text style={styles.OrderFlat}> {item.Sum_of_orders}</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          </View>
+        )}
+        keyExtractor={item => item.id}
+      />
     </SafeAreaView>
   );
 };

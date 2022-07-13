@@ -24,6 +24,7 @@ import {
 } from 'react-native-responsive-screen';
 
 import colors from '@SilalApp/common/assets/colors/index';
+import SellerTools from './molecule/SellerTools';
 import fonts from '@SilalApp/common/assets/fonts/index';
 import DaySelect from '../../components/DaySelection';
 import CustomModal from '@SilalApp/common/components/native/CustomModal';
@@ -31,9 +32,10 @@ import Timer from '../../components/Timer';
 import Toast from 'react-native-easy-toast';
 import CustomText from '@SilalApp/common/components/CustomText';
 import {CustomButton} from '@SilalApp/common/components/native';
-import {ScaledSheet} from 'react-native-size-matters';
+import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
 import ItemDetail from './molecule';
 import {SwipeListView} from 'react-native-swipe-list-view';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const Order = ({navigation}) => {
   const {t} = useTranslation();
   // const [Statistic, setStatistic] = useState(true);
@@ -198,6 +200,7 @@ const Order = ({navigation}) => {
 
         {Header()}
       </View>
+
       <View style={{flex: 1}}>
         <PagerView
           style={{flex: 1}}
@@ -211,7 +214,7 @@ const Order = ({navigation}) => {
             <Pre_orders />
           </View>
           <View key={'3'}>
-            <Archive_orders />
+            <Archive_orders navigation={navigation} />
           </View>
         </PagerView>
       </View>
@@ -219,7 +222,7 @@ const Order = ({navigation}) => {
         isModalVisible={modal}
         setModalVisible={setModal}
         modalWrapperStyle={{
-          marginHorizontal: width(30),
+          marginHorizontal: width(25),
           marginVertical: height(30),
           justifyContent: 'center',
         }}
@@ -846,7 +849,7 @@ const styles = StyleSheet.create({
   BackButtonsText: {
     color: '#fff',
     fontSize: 15,
-    fontFamily: 'Lato-Medium',
+    fontFamily: fonts.LatoMedium,
   },
   mail: {
     fontSize: 13,
@@ -888,7 +891,7 @@ const styles = StyleSheet.create({
   sideTabContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '53%',
+    width: '36%',
     justifyContent: 'flex-end',
   },
   noteText: {

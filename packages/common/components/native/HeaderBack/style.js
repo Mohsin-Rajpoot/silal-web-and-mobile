@@ -5,7 +5,7 @@ const styles = ScaledSheet.create({
   mainContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical:"10@s"
+    marginVertical: "10@s",
   },
   backIconContainer: {
     alignSelf: "center",
@@ -14,18 +14,29 @@ const styles = ScaledSheet.create({
     flexDirection: "row",
     flex: 1,
     justifyContent: "center",
-    marginRight:'15@s'
+    marginRight: "15@s",
   },
   heading: {
     alignSelf: "flex-start",
     color: colors.black,
-    fontSize: "13@ms",
-    fontFamily:fonts.LatoBold
+    fontSize: "12@vs",
+    fontFamily: fonts.LatoBold,
+  },
+  headingMobile: {
+    alignSelf: "flex-start",
+    color: colors.black,
+    fontSize: "11@vs",
+    fontFamily: fonts.LatoMedium,
   },
   icon: {
-    fontSize: "16@ms",
+    fontSize: "16@vs",
     color: colors.black,
     margin: "5@s",
   },
+  headerText:{
+    fontSize:'14@vs',
+    fontFamily:fonts.LatoBold,
+    color:colors.black
+  }
 });
 export default styles;

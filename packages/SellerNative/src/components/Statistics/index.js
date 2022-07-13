@@ -1,5 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Image, FlatList, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  Dimensions,
+  ScrollView,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
@@ -11,10 +18,19 @@ import {
 } from '@SilalApp/common/components/native';
 import styles from './Styles';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
-const Statistics = ({  }) => {
-
-    const navigation = useNavigation(); 
+import {useNavigation} from '@react-navigation/native';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import {useTranslation} from 'react-i18next';
+import {Icon} from 'react-native-elements';
+import colors from '@SilalApp/common/assets/colors';
+import {moderateScale, verticalScale} from 'react-native-size-matters';
+import {LockOnLandscape} from '@SilalApp/common/components/native';
+import CustomText from '@SilalApp/common/components/CustomText';
+var {width} = Dimensions.get('screen');
+const Statistics = ({}) => {
+  const [screenWidth, setScreenWidth] = useState(width);
+  const navigation = useNavigation();
+  const {t} = useTranslation();
   // const [orientation, setOrientation] = useState('LANDSCAPE');
 
   // const determineAndSetOrientation = () => {
@@ -71,92 +87,191 @@ const Statistics = ({  }) => {
       price: '$ 2.50',
     },
   ];
-
+  const DetailData = [
+    {
+      id: 1,
+      image: require('../../Assets/Currency.png'),
+      title: 'Total_sales',
+      percentage: '11.1%',
+      Amount: '$ 6 810.28',
+      lowOrders: 0,
+      rating: false,
+    },
+    {
+      id: 2,
+      image: require('../../Assets/CartHome.png'),
+      title: 'Total_orders',
+      percentage: '-4%',
+      Amount: '398',
+      lowOrders: 1,
+      rating: false,
+    },
+    {
+      id: 3,
+      image: require('../../Assets/Bellicon.png'),
+      title: !IsTablet ? 'out_of_stock_item' : 'outOfStock',
+      // percentage: '11.1%',
+      Amount: '6',
+      lowOrders: 2,
+      rating: false,
+    },
+    {
+      id: 4,
+      image: require('../../Assets/madal.png'),
+      title: 'Total_rating',
+      percentage: '0.8%',
+      Amount: '4.8',
+      lowOrders: 0,
+      rating: true,
+    },
+  ];
   return (
-    <View>
+    <ScrollView contentContainerStyle={{width: '100%', flexGrow: 1}}>
+      <LockOnLandscape
+        onPress={() => console.log('Harris')}
+        width={screenWidth}
+        setWidth={setScreenWidth}
+      />
       <View style={{zIndex: 1}}>
         <TitleHeading Date="Date" />
       </View>
-      <View style={styles.MainWhiteDiv}>
-        <View style={styles.One}>
-          <View style={styles.WhiteDive}>
-            <View style={styles.ImgeViewBKG}>
-              <Image
-                source={require('../../Assets/Currency.png')}
-                style={styles.CurrencyImage}
-              />
-            </View>
-            <StatisticWhiteBoxTitle Title="Total Sales" />
-            <View style={[styles.PercentageBkgGreen, styles.colorgreen]}>
-              <View style={styles.TextInGreenDiv}>
-                <Text style={styles.TotalData}>+11.7% </Text>
-                <Ionicons name="arrow-up" style={styles.TotalData} />
-              </View>
-            </View>
-          </View>
-          <Text style={styles.DollorSign}>$ 6 810.28</Text>
-        </View>
+      <View style={!IsTablet ? styles.MainWhiteDivMobile : styles.MainWhiteDiv}>
+        {DetailData.map((item, index) => {
+          return (
+            <View style={!IsTablet ? styles.OneMobile : styles.One}>
+              <View
+                style={!IsTablet ? styles.WhiteDiveMobile : styles.WhiteDive}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <View style={styles.ImgeViewBKG}>
+                    <Image
+                      source={item.image}
+                      style={
+                        !IsTablet
+                          ? styles.CurrencyImageMobile
+                          : styles.CurrencyImage
+                      }
+                    />
+                  </View>
 
-        <View style={styles.One}>
-          <View style={styles.WhiteDive}>
-            <View style={styles.ImgeViewBKG}>
-              <Ionicons name="cart-outline" style={styles.WhihteDiveIcon} />
-            </View>
-            <StatisticWhiteBoxTitle Title="Total Orders" />
-            <View
-              style={[styles.PercentageBkgGreen, styles.BackgroundLightRed]}>
-              <View style={styles.TextInGreenDiv}>
+                  <StatisticWhiteBoxTitle Title={t(item.title)} />
+                </View>
+                {!IsTablet ? (
+                  <View />
+                ) : item.lowOrders == 2 ? (
+                  <View style={{width: '10%'}} />
+                ) : (
+                  <View
+                    style={[
+                      styles.PercentageBkgGreen,
+                      IsTablet && item.lowOrders == 1
+                        ? styles.colorred
+                        : styles.colorgreen,
+                    ]}>
+                    <View style={styles.TextInGreenDiv}>
+                      <Text
+                        style={
+                          item.lowOrders == 1
+                            ? styles.TotalDataInactive
+                            : styles.TotalData
+                        }>
+                        {item.percentage}{' '}
+                      </Text>
+                      <Ionicons
+                        name={item.lowOrders == 1 ? 'arrow-down' : 'arrow-up'}
+                        style={
+                          item.lowOrders == 1
+                            ? styles.TotalDataInactive
+                            : styles.TotalData
+                        }
+                      />
+                    </View>
+                  </View>
+                )}
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                {item.rating ? (
+                  <Fontisto name="star" style={styles.raitingIcon} />
+                ) : (
+                  <View />
+                )}
                 <Text
-                  style={[styles.PercentageTextColor, styles.VectorIconView]}>
-                  - 4 %
+                  style={
+                    !IsTablet ? styles.DollorSignMobile : styles.DollorSign
+                  }>
+                  {item.Amount}
                 </Text>
-                <Ionicons name="arrow-down" style={styles.VectorIconView} />
               </View>
+              {!IsTablet && item.lowOrders == 2 ? (
+                <CustomText
+                  label={t('RenewItem')}
+                  textStyle={styles.renewItem}
+                />
+              ) : !IsTablet && (item.lowOrders == 1 || item.lowOrders == 0) ? (
+                <View
+                  style={[
+                    !IsTablet
+                      ? styles.PercentageBkgGreenMobile
+                      : styles.PercentageBkgGreen,
+                    !IsTablet && item.lowOrders == 1
+                      ? styles.colorred
+                      : styles.colorgreen,
+                  ]}>
+                  <View style={!IsTablet ? styles.TextInGreenDivMobile : null}>
+                    <Text
+                      style={
+                        item.lowOrders == 1
+                          ? styles.TotalDataInactive
+                          : styles.TotalData
+                      }>
+                      {' '}
+                      {item.percentage}
+                    </Text>
+                    <Ionicons
+                      name={item.lowOrders == 1 ? 'arrow-down' : 'arrow-up'}
+                      style={
+                        item.lowOrders == 1
+                          ? styles.TotalDataInactive
+                          : styles.TotalData
+                      }
+                    />
+                  </View>
+                </View>
+              ) : (
+                <View />
+              )}
             </View>
-          </View>
-          <Text style={styles.DollorSign}>398</Text>
-        </View>
-
-        <View style={styles.One}>
-          <View style={styles.WhiteDive}>
-            <View style={styles.ImgeViewBKG}>
-              <Image
-                source={require('../../Assets/Bellicon.png')}
-                style={styles.CurrencyImage}
-              />
-            </View>
-            <StatisticWhiteBoxTitle Title="Out-of-stock items" />
-          </View>
-          <Text style={styles.DollorSign}>6</Text>
-        </View>
-
-        <View style={[styles.One, {paddingHorizontal: 8}]}>
-          <View style={styles.WhiteDive}>
-            <View style={styles.ImgeViewBKG}>
-              <MaterialCommunityIcons
-                name="medal-outline"
-                style={styles.WhihteDiveIcon}
-              />
-            </View>
-            <StatisticWhiteBoxTitle Title="Total Rating" />
-            <View style={[styles.PercentageBkgGreen, styles.colorgreen]}>
-              <View style={styles.TextInGreenDiv}>
-                <Text style={styles.TotalData}>+11.7% </Text>
-                <Ionicons name="arrow-up" style={styles.TotalData} />
-              </View>
-            </View>
-          </View>
-          <Text style={[styles.DollorSign]}>
-            <Fontisto name="star" style={styles.raitingIcon} />
-            4.8
-          </Text>
-        </View>
+          );
+        })}
       </View>
 
-      <View style={{flexDirection: 'row', marginHorizontal: 30}}>
-        <View style={styles.HotproductMainContainer}>
-          <View style={styles.HotProductPart}>
-            <Text style={styles.headerTitleSecondary}>Hot products</Text>
+      <View
+        style={{
+          flexDirection: !IsTablet ? 'column' : 'row',
+          marginHorizontal: !IsTablet ? verticalScale(15) : 30,
+        }}>
+        <View
+          style={
+            !IsTablet
+              ? styles.HotproductMainContainerMobile
+              : styles.HotproductMainContainer
+          }>
+          <View
+            style={
+              !IsTablet ? styles.HotProductPartMobile : styles.HotProductPart
+            }>
+            <Text
+              style={
+                !IsTablet
+                  ? styles.headerTitleSecondaryMobile
+                  : styles.headerTitleSecondary
+              }>
+              {t('Hot_products')}
+            </Text>
             <View>
               <Calender bg_Calender="done" />
             </View>
@@ -165,13 +280,18 @@ const Statistics = ({  }) => {
             <FlatList
               data={data}
               numColumns={1}
-              style={{marginBottom: 10, height: 350}}
+              nestedScrollEnabled={true}
+              style={{marginBottom: 10, height: 460}}
               renderItem={({item}) => (
                 <View style={styles.FlatListMainView}>
                   <View>
                     <Image source={item.image} style={styles.FlatListImage} />
                   </View>
-                  <View style={{paddingVertical: 10}}>
+                  <View
+                    style={{
+                      width: !IsTablet ? '55%' : '46%',
+                      marginVertical: verticalScale(2),
+                    }}>
                     <Text style={styles.FlatListHeadinText}>{item.Text}</Text>
                     <Text style={styles.FlatListPrice}>{item.price}</Text>
                   </View>
@@ -184,19 +304,30 @@ const Statistics = ({  }) => {
             />
           </View>
         </View>
-        <View style={styles.graphView}>
+        <View style={!IsTablet ? styles.graphViewMobile : styles.graphView}>
           <View style={styles.GraphHeaderView}>
-            <Text style={styles.GraphHeading}>Revenue overview</Text>
+            <Text style={styles.GraphHeading}>{t('Revenue_overView')}</Text>
             <TouchableOpacity
-                 onPress={() => navigation.navigate('DetailedAnalytics')}
+              onPress={() => navigation.navigate('DetailedAnalytics')}
               style={styles.GraphButton}>
-              <Text style={styles.GraphButtonText}>Detailed info</Text>
+              <Text style={styles.GraphButtonText}>{t('Detail_infor')}</Text>
+              {!IsTablet ? (
+                <Icon
+                  name="right"
+                  type="antdesign"
+                  color={colors.primary}
+                  size={10}
+                />
+              ) : (
+                <View />
+              )}
             </TouchableOpacity>
           </View>
           <CustomGraph />
         </View>
       </View>
-    </View>
+      <View style={{height: verticalScale(95)}} />
+    </ScrollView>
   );
 };
 

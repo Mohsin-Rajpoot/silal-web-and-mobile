@@ -1,8 +1,11 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import { Icon } from "react-native-elements";
 import styles from "./style";
-const index = ({ name, backIcon , onGoBack}) => {
+import IsTablet from "../IsTablet";
+import { verticalScale } from "react-native-size-matters";
+import colors from "../../../assets/colors";
+const index = ({ name, backIcon, onGoBack }) => {
   return (
     <View style={styles.mainContainer}>
       {backIcon ? (
@@ -10,16 +13,19 @@ const index = ({ name, backIcon , onGoBack}) => {
       ) : (
         <View style={styles.backIconContainer}>
           <TouchableOpacity activeOpacity={0.6} onPress={onGoBack}>
-          <AntDesign name="left" style={styles.icon} />
+            <Icon type="entypo" name="chevron-left" size={verticalScale(20)} color={colors.black} />
+
           </TouchableOpacity>
-          
         </View>
       )}
       <View style={styles.headingContainer}>
-        <Text style={styles.heading}>{name}</Text>
+        <Text style={!IsTablet ? styles.headerText : styles.heading}>
+          {name}
+        </Text>
       </View>
     </View>
   );
 };
 
 export default index;
+

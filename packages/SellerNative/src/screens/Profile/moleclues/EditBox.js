@@ -1,6 +1,6 @@
 import {Text, View} from 'react-native';
 import React from 'react';
-import {scale, ScaledSheet} from 'react-native-size-matters';
+import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
 import CustomText from '@SilalApp/common/components/CustomText';
 import TextInput from '@SilalApp/common/components/native/TextInput';
 import DropDown from '@SilalApp/common/components/native/DropDown';
@@ -8,34 +8,49 @@ import DropDown from '@SilalApp/common/components/native/DropDown';
 import fonts from '@SilalApp/common/assets/fonts';
 import colors from '@SilalApp/common/assets/colors';
 import {useTranslation} from 'react-i18next';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const EditBox = () => {
   const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <CustomText
+        marginTop={8}
+        marginBottom={5}
+        textStyle={
+          !IsTablet ? styles.textInputTitleMobile : styles.textInputTitle
+        }
+        label={t('Restaurant_name')}
+      />
+      <TextInput
+        inputStyle={
+          !IsTablet ? styles.inputContainerMobile : styles.inputContainer
+        }
+        placeholderText="Rastaurant’s name"
+        placeholderTextColor={colors.black}
+      />
+      <CustomText
         marginBottom={8}
-        textStyle={styles.textInputTitle}
+        textStyle={
+          !IsTablet ? styles.textInputTitleMobile : styles.textInputTitle
+        }
         label={t('Cuisine')}
       />
       {/* <TextInput
         inputStyle={styles.inputContainer}
         placeholderText="Europian"
       /> */}
-      <DropDown placeholder={'Europian'} />
-      <CustomText
-        marginTop={8}
-        marginBottom={5}
-        textStyle={styles.textInputTitle}
-        label={t('Restaurant_name')}
+      <DropDown
+        placeholder={'Europian'}
+        height={verticalScale(35)}
+        backgroundColor={colors.dullWhite}
+        borderWidth={0}
       />
-      <TextInput
-        inputStyle={styles.inputContainer}
-        placeholderText="Rastaurant’s name"
-        placeholderTextColor={colors.black}
-      />
+
       <View style={styles.inputTextWrapper}>
         <CustomText
-          textStyle={styles.textInputTitle}
+          textStyle={
+            !IsTablet ? styles.textInputTitleMobile : styles.textInputTitle
+          }
           fontFamily={fonts.LatoRegular}
           label={t('description')}
         />
@@ -46,15 +61,19 @@ const EditBox = () => {
         />
       </View>
       <TextInput
-        inputStyle={styles.inputContainer}
+        inputStyle={
+          !IsTablet ? styles.inputContainerMobile : styles.inputContainer
+        }
         placeholderText="The slogan will be here mх 40 characters"
         placeholderTextColor={colors.black}
       />
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <CustomText
-        marginTop={8}
-        marginBottom={5}
-         textStyle={styles.textInputTitle}
+          marginTop={8}
+          marginBottom={5}
+          textStyle={
+            !IsTablet ? styles.textInputTitleMobile : styles.textInputTitle
+          }
           label={t('Business_address')}
         />
         <CustomText label="*" textStyle={{color: colors.red, marginTop: 10}} />
@@ -62,29 +81,45 @@ const EditBox = () => {
 
       <View style={[styles.inputTextWrapper, {marginTop: 0}]}>
         <TextInput
-          inputStyle={[styles.inputContainer, {width: '66%', borderRadius: 8}]}
+          inputStyle={[
+            !IsTablet ? styles.inputContainerMobile : styles.inputContainer,
+            {width: '66%', borderRadius: 8},
+          ]}
           placeholderText={t('Street_name')}
           placeholderTextColor={colors.black}
         />
         <TextInput
-          inputStyle={[styles.inputContainer, {width: '32%', borderRadius: 8}]}
+          inputStyle={[
+            !IsTablet ? styles.inputContainerMobile : styles.inputContainer,
+            {width: '32%', borderRadius: 8},
+          ]}
           placeholderText={t('Location_via_Gps')}
           placeholderTextColor={colors.black}
         />
       </View>
       <View style={[styles.inputTextWrapper, {marginTop: 20}]}>
         <TextInput
-          inputStyle={[styles.inputContainer, {width: '32%', borderRadius: 8}]}
+          inputStyle={[
+            !IsTablet ? styles.inputContainerMobile : styles.inputContainer,
+            {width: '32%', borderRadius: 8},
+          ]}
           placeholderText="24/3"
           placeholderTextColor={colors.black}
         />
         <TextInput
-          inputStyle={[styles.inputContainer, {width: '32%', borderRadius: 8}]}
+          inputStyle={[
+            !IsTablet ? styles.inputContainerMobile : styles.inputContainer,
+            {width: '32%', borderRadius: 8},
+          ]}
           placeholderText="233 344"
           placeholderTextColor={colors.black}
         />
         <View style={{width: '32%', borderRadius: 8}}>
-          <DropDown placeholder={'New York'} />
+          <DropDown
+            placeholder={'New York'}
+            backgroundColor={colors.dullWhite}
+            height={verticalScale(41)}
+          />
         </View>
       </View>
     </View>
@@ -97,7 +132,6 @@ const styles = ScaledSheet.create({
   container: {
     backgroundColor: '#fff',
     width: '100%',
-    height: '350@vs',
     padding: '15@ms',
     marginTop: '10@s',
   },
@@ -111,6 +145,12 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.LatoMedium,
     color: colors.black,
   },
+  textInputTitleMobile: {
+    fontSize: '12@ms',
+    fontFamily: fonts.LatoMedium,
+    color: colors.text,
+    marginTop: '10@s',
+  },
   tagButtonContainer: {
     backgroundColor: colors.light_blue,
   },
@@ -121,17 +161,22 @@ const styles = ScaledSheet.create({
     paddingVertical: '4@vs',
   },
   inputContainer: {
-    height: null,
+    height: '30@s',
     borderRadius: '4@s',
     borderColor: colors.borderColor,
     borderWidth: '0.5@s',
-    padding:"4@s"
+  },
+  inputContainerMobile: {
+    height: '40@vs',
+    borderRadius: '8@s',
+    borderColor: colors.dullWhite,
+    borderWidth: '0.5@s',
   },
   inputTextWrapper: {
     flexDirection: 'row',
     marginTop: '8@s',
     marginBottom: '5@s',
     justifyContent: 'space-between',
-    alignItems:"center"
+    alignItems: 'center',
   },
 });

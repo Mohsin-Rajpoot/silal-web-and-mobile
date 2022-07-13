@@ -3,6 +3,10 @@ import { View, TouchableOpacity, Text, Button } from "react-native";
 import DatePicker from "react-native-neat-date-picker";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import moment from "moment";
+import colors from "../../assets/colors";
+import { verticalScale } from "react-native-size-matters";
+import IsTablet from "./IsTablet";
+import { Icon } from "react-native-elements";
 
 const Calender = ({ bg_Calender }) => {
   React.useEffect(() => {
@@ -27,11 +31,11 @@ const Calender = ({ bg_Calender }) => {
     setShowDatePicker(false);
   };
   const colorOptions = {
-    headerColor: "#05AE4B",
-    weekDaysColor: "#05AE4B",
-    selectedDateColor: "#05AE4B",
-    confirmButtonColor: "#05AE4B",
-    selectedDateBackgroundColor: "#05AE4B",
+    headerColor: colors.primary,
+    weekDaysColor: colors.primary,
+    selectedDateColor: colors.primary,
+    confirmButtonColor: colors.primary,
+    selectedDateBackgroundColor: colors.primary,
   };
 
   return (
@@ -39,24 +43,53 @@ const Calender = ({ bg_Calender }) => {
       <TouchableOpacity
         style={{
           flexDirection: "row",
-          backgroundColor: bg_Calender == "Default" ? null : "#E5E5E5",
+          backgroundColor: bg_Calender == "Default" ? null : colors.dullWhite,
           marginTop: 8,
-          width: 140,
-          height: 40,
-          justifyContent: "center",
+          //   width: 140,
+          padding: verticalScale(!IsTablet ? 10 : 5),
+          justifyContent: !IsTablet ? "space-between" : "center",
           alignItems: "center",
           borderRadius: 5,
+
+          marginRight: verticalScale(5),
         }}
         onPress={openDatePicker}
       >
-        <Text style={{ color: "#4C6870" }}>
-          {moment(start_date).format("MMM DD -")}
-          {moment(end_date).format(" MMM DD")}
-        </Text>
-        <MaterialCommunityIcons
-          name="calendar-month-outline"
-          style={{ fontSize: 17, color: "#4C6870", paddingHorizontal: 3 }}
-        />
+        <View
+          style={{
+            flexDirection: !IsTablet ? "row-reverse" : "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text
+            style={{
+              color: colors.textPrimeColor,
+              fontSize: verticalScale(10),
+            }}
+          >
+            {moment(start_date).format("MMM DD -")}
+            {moment(end_date).format(" MMM DD")}
+          </Text>
+          <MaterialCommunityIcons
+            name="calendar-month-outline"
+            style={{
+              fontSize: verticalScale(12),
+              color: colors.textPrimeColor,
+              paddingHorizontal: 3,
+            }}
+          />
+        </View>
+        {!IsTablet ? (
+          <Icon
+            name="keyboard-arrow-down"
+            type="material"
+            size={22}
+            color={colors.sidebar}
+          />
+        ) : (
+          <View />
+        )}
       </TouchableOpacity>
       {/* <Button title={'open'} onPress={openDatePicker} /> */}
       <DatePicker

@@ -1,13 +1,15 @@
 import {ScaledSheet} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import fonts from '@SilalApp/common/assets/fonts';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const styles = ScaledSheet.create({
   mainOuterContainer: {
     backgroundColor: colors.textWhite,
     borderRadius: '5@ms',
     marginVertical: '7@ms',
-    width: '31%',
+    width: !IsTablet ? '100%' : '31%',
     marginRight: '10@ms',
+    padding: !IsTablet ? '5@s' : '0@s',
   },
   headerContainer: {
     flexDirection: 'row',

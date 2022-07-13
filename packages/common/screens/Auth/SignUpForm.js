@@ -12,11 +12,14 @@ import { Icon } from "react-native-elements";
 import colors from "../../assets/colors";
 import ThirdPage from "./SignUpFormPages/ThirdPage";
 import { useTranslation } from "react-i18next";
+
+import IsTablet from "../../components/native/IsTablet";
+import { verticalScale } from "react-native-size-matters";
 const SignUpForm = ({ navigation }) => {
   const { t } = useTranslation();
   const ref = useRef(null);
   const [page, setPage] = useState(0);
-
+  const isTab = IsTablet;
   const goprev = () => {
     if (page > 0) {
       const newStep = Math.max(0, page - 1);
@@ -50,33 +53,49 @@ const SignUpForm = ({ navigation }) => {
   };
   return (
     <>
-      <HeaderBack name={`${t("Step")} ${page + 1}/3`} />
-      <View style={styles.headerContainer}>
-        <Header
-          label={t("Basic_information")}
-          textStyle={styles.headerText}
-          textStyleInActive={styles.headerTextInactive}
-          page={0}
-          active={page}
+      <HeaderBack name={`${t("Step")} ${page + 1}/3`} onGoBack={goprev} />
+      {!isTab ? (
+        <CustomText
+          label={t("questionnaire")}
+          textStyle={styles.questionnaire}
         />
-        <Header
-          label={t("Contacts")}
-          textStyleInActive={styles.headerTextInactive}
-          textStyle={styles.headerText}
-          page={1}
-          active={page}
-        />
-        <Header
-          label={t("Detail")}
-          textStyleInActive={styles.headerTextInactive}
-          textStyle={styles.headerText}
-          page={2}
-          active={page}
-        />
+      ) : (
+        <View />
+      )}
+      <View
+        style={!isTab ? styles.headerContainerMobile : styles.headerContainer}
+      >
+        <View style={{ width: "32%" }}>
+          <Header
+            label={!isTab ? t("basicInfo") : t("Basic_information")}
+            textStyle={styles.headerText}
+            textStyleInActive={styles.headerTextInactive}
+            page={0}
+            active={page}
+          />
+        </View>
+        <View style={{ width: "32%" }}>
+          <Header
+            label={!IsTablet ? t("location_info") : t("Location_info")}
+            textStyleInActive={styles.headerTextInactive}
+            textStyle={styles.headerText}
+            page={1}
+            active={page}
+          />
+        </View>
+        <View style={{ width: "32%" }}>
+          <Header
+            label={t("moreDetail")}
+            textStyleInActive={styles.headerTextInactive}
+            textStyle={styles.headerText}
+            page={2}
+            active={page}
+          />
+        </View>
       </View>
 
       <PagerView
-        style={{ flex: 1 }}
+        style={{ flex: 1, margin: 10 }}
         initialPage={0}
         scrollEnabled={false}
         ref={ref}
@@ -92,23 +111,39 @@ const SignUpForm = ({ navigation }) => {
         </View>
       </PagerView>
       <View style={styles.outerContainer}>
-        <TouchableOpacity
-          activeOpacity={0.6}
-          onPress={goprev}
-          style={styles.backIconInnerContainer}
+        {!isTab ? (
+          <View />
+        ) : (
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={goprev}
+            style={styles.backIconInnerContainer}
+          >
+            <Icon
+              name="arrowleft"
+              type="antdesign"
+              color={colors.black}
+              size={28}
+            />
+
+            <CustomText label={t("back")} textStyle={styles.backText} />
+          </TouchableOpacity>
+        )}
+        <View
+          style={{
+            width: "40%",
+            marginRight: verticalScale(!IsTablet ? 0 : 10),
+          }}
         >
-          <Icon name="arrowleft" type="antdesign" color={colors.black} size={28}/>
-
-          <CustomText label={t("back")} textStyle={styles.backText} />
-        </TouchableOpacity>
-
-        <AuthButton
-  
-          name={page == 2 ? t("Submit") : t("Next_step")}
-     
-          buttonStyling={styles.formButton}
-          onPress={moveForward}
-        />
+          <AuthButton
+            name={page == 2 ? t("Submit") : t("Next_step")}
+            buttonStyling={
+              !IsTablet ? styles.formButtonMobile : styles.formButton
+            }
+            onPress={moveForward}
+          />
+          <View style={{ height: verticalScale(10) }} />
+        </View>
       </View>
     </>
   );

@@ -12,6 +12,7 @@ import ProductStack from './ProductStack';
 import {NavigationContainer} from '@react-navigation/native';
 import colors from '@SilalApp/common/assets/colors';
 import HomeStack from './HomeStack';
+
 const Tab = createBottomTabNavigator();
 
 const TabStack = () => {
@@ -19,7 +20,7 @@ const TabStack = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#05AE4B',
+        tabBarActiveTintColor: colors.primary,
       }}
       initialRouteName="HomeStack">
       <Tab.Screen

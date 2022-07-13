@@ -1,36 +1,53 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
+import colors from "../../assets/colors";
+import fonts from "../../assets/fonts";
+import { ScaledSheet, verticalScale } from "react-native-size-matters";
+import IsTablet from "./IsTablet";
+import { Icon } from "react-native-elements";
 
 export default function CustomButton({
   text,
   onPress,
   type = "PRIMARY",
-  navigation,
   containerStyle,
   textStyle,
+  leftIcon,
+  iconName,
+  iconType,
 }) {
   return (
-    <View>
-      <TouchableOpacity
-        onPress={onPress}
-        activeOpacity={0.6}
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.6}
+      style={[
+        !IsTablet ? styles.mainbuttonMobile : styles.mainbutton,
+        styles[`mainbutton_${type}`],
+        containerStyle,
+      ]}
+    >
+      {leftIcon && (
+        <Icon
+          size={verticalScale(14)}
+          color={colors.textWhite}
+          type={iconType}
+          name={iconName}
+        />
+      )}
+      <Text
         style={[
-          styles.mainbutton,
-          styles[`mainbutton_${type}`],
-          containerStyle,
+          !IsTablet ? styles.buttonTextMobile : styles.buttonText,
+          styles[`buttonText_${type}`],
+          textStyle,
         ]}
       >
-        <Text
-          style={[styles.buttonText, styles[`buttonText_${type}`], textStyle]}
-        >
-          {text}
-        </Text>
-      </TouchableOpacity>
-    </View>
+        {text}
+      </Text>
+    </TouchableOpacity>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   mainbutton: {
     justifyContent: "center",
     alignItems: "center",
@@ -40,19 +57,37 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     borderRadius: 5,
   },
+  mainbuttonMobile: {
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "4@s",
+    alignSelf: "center",
+    borderRadius: "8@s",
+    flexDirection: "row",
+    alignItems: "center",
+  },
   mainbutton_PRIMARY: {
-    backgroundColor: "#05AE4B",
+    backgroundColor: colors.primary,
     fontFamily: "Poppins-SemiBold",
   },
   mainbutton_TERTIARY: {},
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
+  buttonTextMobile: {
+    color: colors.textWhite,
+    fontSize: "10@vs",
     letterSpacing: 1,
-    fontFamily: "Poppins-SemiBold",
+    fontFamily: fonts.PoppinsSemiBold,
+    marginTop: verticalScale(1),
+  },
+  buttonText: {
+    color: colors.textWhite,
+    fontSize: "10@vs",
+    paddingHorizontal: "5@s",
+    letterSpacing: 1,
+    fontFamily: fonts.PoppinsSemiBold,
   },
   buttonText_TERTIARY: {
-    color: "#4C6870",
-    fontFamily: "Poppins-SemiBold",
+    color: colors.textPrimeColor,
+    fontFamily: fonts.PoppinsSemiBold,
+    marginHorizontal: verticalScale(4),
   },
 });

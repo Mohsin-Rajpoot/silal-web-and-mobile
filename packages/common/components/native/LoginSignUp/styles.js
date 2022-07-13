@@ -3,7 +3,7 @@ import colors from "../../../assets/colors";
 import fonts from "../../../assets/fonts";
 const styles = ScaledSheet.create({
   mainContainer: {
-    width: '75%',
+    width: "75%",
     alignSelf: "center",
     flexDirection: "row",
     backgroundColor: colors.garyDark,
@@ -11,8 +11,50 @@ const styles = ScaledSheet.create({
     overflow: "hidden",
     marginVertical: "10@s",
     padding: "1@s",
-    borderWidth:'1@ms',
-    borderColor:colors.borderColor
+    borderWidth: "1@ms",
+    borderColor: colors.borderColor,
+  },
+  mainContainerSignup: {
+    width: "50%",
+    alignSelf: "center",
+    flexDirection: "row",
+    backgroundColor: colors.garyDark,
+    borderRadius: "5@s",
+    overflow: "hidden",
+    marginVertical: "10@s",
+    padding: "1@s",
+    borderWidth: "1@ms",
+    borderColor: colors.borderColor,
+  },
+  mainContainerMobile: {
+    width: "95%",
+    alignSelf: "center",
+    flexDirection: "row",
+    backgroundColor: colors.garyDark,
+    borderRadius: "25@s",
+    overflow: "hidden",
+    marginVertical: "10@s",
+    padding: "1@s",
+    borderWidth: "1@ms",
+    borderColor: colors.borderColor,
+  },
+  mainContainerMobileSignup: {
+    width: "50%",
+    alignSelf: "center",
+    flexDirection: "row",
+    backgroundColor: colors.garyDark,
+    borderRadius: "25@s",
+    overflow: "hidden",
+    marginVertical: "10@s",
+    padding: "1@s",
+    borderWidth: "1@ms",
+    borderColor: colors.borderColor,
+  },
+  activeTabContainerMobile: {
+    alignItems: "center",
+    padding: "10@s",
+    width: "50%",
+    borderRadius: "25@s",
   },
   activeTabContainer: {
     alignItems: "center",
@@ -27,15 +69,36 @@ const styles = ScaledSheet.create({
     width: "50%",
     borderRadius: "3@s",
   },
+  activeBackgroundSignup: {
+    backgroundColor: colors.primary,
+    alignItems: "center",
+    padding: "7@s",
+    width: "100%",
+    borderRadius: "3@s",
+  },
+  activeBackgroundMobile: {
+    backgroundColor: colors.primary,
+    alignItems: "center",
+    padding: "10@s",
+    width: "50%",
+    borderRadius: "25@s",
+  },
+  activeBackgroundMobileSignup: {
+    backgroundColor: colors.primary,
+    alignItems: "center",
+    padding: "10@s",
+    width: "100%",
+    borderRadius: "25@s",
+  },
   textPhone: {
     color: colors.textWhite,
-    fontSize: "13@ms",
-    fontFamily:fonts.LatoBold
+    fontSize: "12@vs",
+    fontFamily: fonts.LatoBold,
   },
   textEmail: {
     color: colors.textPrimary,
-    fontSize: "13@ms",
-    fontFamily:fonts.LatoBold
+    fontSize: "12@vs",
+    fontFamily: fonts.LatoBold,
   },
 });
 

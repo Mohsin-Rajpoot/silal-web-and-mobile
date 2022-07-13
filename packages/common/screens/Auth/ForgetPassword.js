@@ -8,6 +8,7 @@ import styles from "./style";
 import TextInput from "../../components/native/TextInput";
 import Button from "../../components/native/AuthButton";
 import { useTranslation } from "react-i18next";
+import IsTablet from "../../components/native/IsTablet";
 const ForgetPassword = ({ navigation }) => {
   const { t } = useTranslation();
   const goVerification = () => {
@@ -36,7 +37,10 @@ const ForgetPassword = ({ navigation }) => {
         </View>
         <View style={CommonStyle.CommonView}>
           <CustomText label={t("email")} textStyle={styles.phoneNumberText} />
-          <TextInput placeholderText="email.example@gmail.com" />
+          <TextInput
+            placeholderText={!IsTablet ? "" : "email.example@gmail.com"}
+            isTab={IsTablet}
+          />
         </View>
         <Button name={t("Reset")} onPress={goVerification} />
       </ScrollView>

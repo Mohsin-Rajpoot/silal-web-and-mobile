@@ -1,4 +1,4 @@
-import {ScaledSheet} from 'react-native-size-matters';
+import {ScaledSheet, verticalScale} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
 import {
   widthPercentageToDP as wp,
@@ -75,7 +75,7 @@ const styles = ScaledSheet.create({
     marginTop: 5,
   },
   accept_btn: {
-    backgroundColor: '#05AE4B',
+    backgroundColor: '#5AB3A8',
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
@@ -102,7 +102,7 @@ const styles = ScaledSheet.create({
   },
   ready_btn: {
     flex: 1,
-    backgroundColor: '#05AE4B',
+    backgroundColor: '#5AB3A8',
     borderRadius: 5,
     alignItems: 'center',
     paddingVertical: 10,
@@ -170,7 +170,7 @@ const styles = ScaledSheet.create({
     justifyContent: 'space-between',
   },
   modal_recuring: {
-    backgroundColor: '#05AE4B',
+    backgroundColor: '#5AB3A8',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,
@@ -211,7 +211,9 @@ const styles = ScaledSheet.create({
     marginLeft: 10,
   },
   all_orders_heading_txt: {
-    fontFamily: 'Lato-Bold',
+    fontFamily: fonts.LatoBold,
+    color: colors.black,
+    fontSize: '9@vs',
   },
   toast: {
     backgroundColor: '#FFFFFF',
@@ -255,6 +257,48 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  itemText: {
+    fontSize: '18@vs',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.black,
+  },
+  plusIconStyle: {
+    width: '18@vs',
+    height: '18@vs',
+    resizeMode: 'contain',
+    marginRight: '15@s',
+  },
+  divider: {
+    backgroundColor: colors.underLine,
+    width: '100%',
+    height: '1@s',
+  },
+  modalCont: {
+    paddingTop: '15@vs',
+    paddingBottom: '20@vs',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  MainContainer: {
+    height: '90%',
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    backgroundColor: colors.textWhite,
+    elevation: 1,
+    borderWidth: 1,
+    borderColor: colors.textWhite,
+    borderRadius: 5,
+    width: '95%',
+    padding: 20,
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  DotsButton: {
+    height: 40,
+    width: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 export default styles;

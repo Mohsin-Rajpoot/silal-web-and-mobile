@@ -7,48 +7,53 @@ import {
   removeOrientationListener as rol,
 } from 'react-native-responsive-screen-hooks';
 import fonts from '@SilalApp/common/assets/fonts';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.profileBackground,
- 
-  }, 
+  },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '100%',
-    justifyContent:'space-between'
+    width: !IsTablet ? '92%' : '98%',
+    justifyContent: 'space-between',
+    alignSelf: 'center',
   },
   inputContainerMian: {
-    width: '74%',
+    width: !IsTablet ? '83%' : '74%',
+    // marginLeft: !IsTablet ? '8@s' : '0@s',
   },
   buttonContainer: {
-    width: '23%',
-    marginRight:'10@ms'
+    width: !IsTablet ? '10%' : '23%',
+    marginRight: '10@ms',
   },
   inputStyling: {
     backgroundColor: colors.textWhite,
-    height: '35@ms',
+    height: !IsTablet ? '40@ms' : '35@ms',
   },
   buttonStyle: {
-    width:"100%"
+    width: '100%',
   },
   buttonText: {
     fontFamily: fonts.PoppinsSemiBold,
     fontSize: '12@ms',
-    color:colors.textWhite,
-    paddingVertical:'3@s'
+    color: colors.textWhite,
+    paddingVertical: '3@s',
   },
   offerContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent:"space-between"
-
+    justifyContent: 'space-between',
+  },
+  offerContainerMobile: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   modalMainContainer: {
     width: '95%',
     height: '100%',
-    marginTop:"10@s"
+    marginTop: '10@s',
   },
   crossIcon: {
     alignSelf: 'flex-end',
@@ -62,21 +67,20 @@ const styles = ScaledSheet.create({
     width: '100%',
     alignSelf: 'center',
     borderRadius: '4@ms',
-    height:"90@s",
-    resizeMode:"cover"
+    height: '90@s',
+    resizeMode: 'cover',
   },
   offerText: {
     fontSize: '13@ms',
     fontFamily: fonts.PoppinsSemiBold,
     marginTop: '4@s',
     color: colors.black,
-    marginBottom:'3@s'
+    marginBottom: '3@s',
   },
   offerName: {
     fontSize: '9@ms',
     fontFamily: fonts.LatoSemiBold,
     color: colors.black,
-  
   },
   createOffer: {
     flexDirection: 'row',
@@ -161,9 +165,9 @@ const styles = ScaledSheet.create({
   daySelectionContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    backgroundColor:"Yellow",
-    width:"100%",
-    justifyContent:'space-between'
+    backgroundColor: 'Yellow',
+    width: '100%',
+    justifyContent: 'space-between',
   },
   dropDownContainer: {
     paddingVertical: '5@vs',
@@ -227,5 +231,80 @@ const styles = ScaledSheet.create({
     fontFamily: fonts.LatoBold,
     color: colors.black,
   },
+  plusIcon: {
+    backgroundColor: colors.primary,
+    width: '40@ms',
+    height: '40@ms',
+    justifyContent: 'center',
+    borderRadius: '5@s',
+  },
+  tab: {
+    backgroundColor: colors.grayLight,
+    width: '94%',
+    borderRadius: '25@s',
+    marginTop: '5@s',
+    alignSelf: 'center',
+    borderWidth: '0.5@s',
+    borderColor: colors.garyDark,
+    height: '40@ms',
+  },
+  tabButton: {},
+  buttonText1: {
+    width: '100%',
+  },
+  loadMoreButton: {
+    backgroundColor: colors.blurPrimary,
+    width: '90%',
+    marginBottom: '10@s',
+    paddingVertical: '10@s',
+  },
+  loadmoreText: {
+    fontSize: '14@vs',
+    color: colors.primary,
+    fontFamily: fonts.bold,
+  },
+  menuModalContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+  },
+  divider: {
+    height: '1@s',
+    width: '100%',
+    backgroundColor: colors.dullWhite,
+    marginVertical: '15@s',
+  },
+  menuTextTitle: {
+    fontSize: '14@vs',
+    fontFamily: fonts.LatoMedium,
+    color: colors.black,
+    marginLeft: '10@s',
+  },
+  deleteofferText: {
+    fontSize: '13@vs',
+    fontFamily: fonts.bold,
+    color: colors.black,
+    marginBottom: '5@s',
+  },
+  deleteOfferDetail: {
+    fontSize: '11@vs',
+    fontFamily: fonts.LatoRegular,
+    color: colors.textPrimary,
+  },
+  cancelButton:{
+    width:"46%",
+    height:"35@vs"
+  },
+  cancelButton1:{
+    width:"46%",
+    height:"35@vs",
+    backgroundColor:colors.redLight,
+
+  },
+  deleteText:{
+    fontSize:"12@vs",
+    fontFamily:fonts.bold,
+    color:colors.red
+  }
 });
 export default styles;

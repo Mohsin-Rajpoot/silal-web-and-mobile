@@ -4,10 +4,23 @@ import CustomText from '@SilalApp/common/components/CustomText';
 import styles from './style';
 import {Icon} from 'react-native-elements';
 import colors from '@SilalApp/common/assets/colors';
-const index = ({isModal, setModal}) => {
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+
+const index = ({
+  isModal,
+  setModal,
+  navigation,
+  mobileModal,
+  setMobileModal,
+}) => {
   return (
     <View style={styles.mainOuterContainer}>
-      <TouchableOpacity activeOpacity={0.6} onPress={() => setModal(!isModal)}>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => {
+          IsTablet && setModal(!isModal);
+          !IsTablet && setMobileModal(!mobileModal)
+        }}>
         <View style={styles.headerContainer}>
           <View>
             <CustomText label="Sunday Funday" textStyle={styles.dayText} />

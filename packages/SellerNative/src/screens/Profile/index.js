@@ -56,8 +56,8 @@ export default Profile;
 const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
-    paddingHorizontal: '10@s',
     backgroundColor: colors.profileBackground,
-    width:"100%"
+    width:"100%",
+    alignSelf:"center"
   },
 });

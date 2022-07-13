@@ -15,11 +15,13 @@ import {
   ScrollView,
   Button,
 } from 'react-native';
+import Acceptance_order_mobile from './Acceptance_order_mobile';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
 // import { Image, SvgXml } from 'react-native-svg';
 import Svg, {
   Path,
@@ -35,9 +37,11 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {Searchbar} from 'react-native-paper';
 import {Picker} from '@react-native-picker/picker';
 import {useTranslation} from 'react-i18next';
+import CustomText from '@SilalApp/common/components/CustomText';
+import {scale} from 'react-native-size-matters';
 const {width, height} = Dimensions.get('window');
 
-export default function Archive_orders({title, navigation}) {
+export default function Acceptance_orders({title, navigation}) {
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
   const [show_modal_customer_data, set_show_modal_customer_data] =
@@ -60,7 +64,7 @@ export default function Archive_orders({title, navigation}) {
   const [date2, setdate2] = useState();
   const [active, setActive] = useState(false);
 
-  const InputRef = useRef();
+  // const InputRef = useRef();
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -69,7 +73,7 @@ export default function Archive_orders({title, navigation}) {
     });
     const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
       //   alert('Keyboard Hidden')
-      InputRef.current.blur();
+      // InputRef.current.blur();
       setKeyboardStatus('Keyboard Hidden');
     });
 
@@ -480,7 +484,9 @@ export default function Archive_orders({title, navigation}) {
     return <View style={{height: 1, backgroundColor: '#EBEEEF'}}></View>;
   };
 
-  return (
+  return !IsTablet ? (
+    <Acceptance_order_mobile navigation={navigation} />
+  ) : (
     <View style={{height: '100%', padding: 20}}>
       <View style={{flexDirection: 'row'}}>
         <View>
@@ -495,7 +501,7 @@ export default function Archive_orders({title, navigation}) {
           />
           {/* <Icon style={styles.searchIcon} name="ios-search" size={20} color="#000"/> */}
           <TextInput
-            ref={InputRef}
+            // ref={InputRef}
             style={styles.input}
             placeholder={t('Search')}
             placeholderTextColor={'#B3BEC2'}

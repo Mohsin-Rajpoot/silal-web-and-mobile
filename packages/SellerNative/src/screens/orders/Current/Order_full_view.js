@@ -28,15 +28,19 @@ import Svg, {
 } from 'react-native-svg';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
+import colors from '@SilalApp/common/assets/colors';
+import IsTablet from '@SilalApp/common/components/native/IsTablet';
+import OrderFullViewMobile from './OrderFullViewMobile';
 const {width, height} = Dimensions.get('window');
 
 const App = ({navigation, route}) => {
   const {t} = useTranslation();
-  const status = route.params.status;
+  const status = route?.params?.status;
   const [color, setColor] = useState('green');
   const [cancel_text, set_cancel_text] = useState('');
   const [modal_cancel, setmodal_cancel] = useState(false);
   const toastRef = useRef();
+  console.log('--Status', status);
 
   useEffect(() => {
     const detectLogin = async () => {
@@ -385,26 +389,26 @@ const App = ({navigation, route}) => {
                   height: 20,
                   width: 20,
                   borderRadius: 30,
-                  backgroundColor: '#05AE4B',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
                   height: 40,
                   width: 2,
-                  backgroundColor: '#05AE4B',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
                   height: 20,
                   width: 20,
                   borderRadius: 30,
-                  backgroundColor: '#05AE4B',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
                   height: 40,
                   width: 2,
-                  backgroundColor: '#05AE4B',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
@@ -419,7 +423,7 @@ const App = ({navigation, route}) => {
                   style={{
                     height: 10,
                     width: 10,
-                    backgroundColor: '#05AE4B',
+                    backgroundColor: colors.primary,
                     borderRadius: 30,
                   }}></View>
               </View>
@@ -427,7 +431,7 @@ const App = ({navigation, route}) => {
                 style={{
                   height: 40,
                   width: 2,
-                  backgroundColor: '#05AE4B',
+                  backgroundColor: colors.primary,
                 }}></View>
               <View
                 style={{
@@ -442,7 +446,7 @@ const App = ({navigation, route}) => {
                   style={{
                     height: 10,
                     width: 10,
-                    backgroundColor: '#05AE4B',
+                    backgroundColor: colors.primary,
                     borderRadius: 30,
                   }}></View>
               </View>
@@ -484,13 +488,14 @@ const App = ({navigation, route}) => {
           </View>
           <TouchableOpacity
             style={{
-              backgroundColor: '#ADD9D3',
+              backgroundColor: colors.primaryBlur,
               borderRadius: 5,
               padding: 10,
               alignItems: 'center',
               marginTop: 15,
             }}>
-            <Text style={{color: '#4C6870', fontFamily: 'Poppins-SemiBold'}}>
+            <Text
+              style={{color: colors.primary, fontFamily: 'Poppins-SemiBold'}}>
               Change estimation time
             </Text>
           </TouchableOpacity>
@@ -524,12 +529,12 @@ const App = ({navigation, route}) => {
                   width: '38%',
                 }}>
                 <Text style={{color: 'white', fontFamily: 'Poppins-SemiBold'}}>
-                  {t('Cancel')}
+                  {t('Cancel_order')}
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={{
-                  backgroundColor: '#05AE4B',
+                  backgroundColor: colors.primary,
                   borderRadius: 5,
                   padding: 10,
                   alignItems: 'center',
@@ -540,6 +545,19 @@ const App = ({navigation, route}) => {
                 </Text>
               </TouchableOpacity>
             </View>
+          ) : (
+            <TouchableOpacity
+              style={{
+                backgroundColor: '#5AB3A8',
+                borderRadius: 5,
+                padding: 10,
+                alignItems: 'center',
+                marginTop: 10,
+              }}>
+              <Text style={{color: 'white', fontFamily: 'Poppins-SemiBold'}}>
+                {t('ready_for_pickup')}
+              </Text>
+            </TouchableOpacity>
           )}
         </View>
       </ScrollView>
@@ -649,7 +667,9 @@ const App = ({navigation, route}) => {
     );
   };
 
-  return (
+  return !IsTablet ? (
+    <OrderFullViewMobile />
+  ) : (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -683,7 +703,7 @@ const App = ({navigation, route}) => {
               <Text
                 style={{
                   padding: 5,
-                  backgroundColor: '#E6F4F2',
+                  backgroundColor: colors.bluish,
                   borderRadius: 5,
                   marginLeft: 10,
                   fontSize: 11,
@@ -701,6 +721,7 @@ const App = ({navigation, route}) => {
               14:58:15
             </Text>
           </View>
+
           <View style={{height: '95%'}}>
             {order_list_header()}
             {order_list_data()}
