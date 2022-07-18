@@ -6,10 +6,14 @@ import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import FormControl from "../../components/auth/FormControl/FormControl";
 import Gobackbuton from "../../components/auth/Gobackbutton/Gobackbuton";
+import * as userAction from "@SilalApp/common/store/User/actions";
+import { useDispatch } from "react-redux";
 
 function Loginpage() {
-  const use = useHistory();
+  const location = useHistory();
+  const dispatch = useDispatch()
   const [formValue, setFormValue] = useState("");
+  const [error, setError] = useState("")
 
   const options = [
     {
@@ -36,7 +40,31 @@ function Loginpage() {
   };
 
   const sendToOtp = () => {
-    use.push("/otp", "signup");
+    if(!formValue) {
+      setError('Please Enter Phone Number!')
+      return
+    }
+    let data = "+92"+formValue
+    let payload = {
+      data,
+      cb: (res) => {
+        if (res.http_status_code == 201) {
+          setTimeout(() => {
+            setError("")
+          }, 1000);
+        } else if (res.http_status_code == 409) {
+          // setError(t("alreadyusedPhone"));
+          setError("alreadyusedPhone");
+        } else if (res.http_status_code == 429) {
+          // setError(t("alreadySentPhone"));
+          setError("alreadySentPhone");
+        }
+      },
+    }
+    dispatch(
+      userAction.userSignUpSaga(payload)
+    );
+    location.push("/otp", "signup");
   };
   // animation email input field
 
@@ -78,6 +106,9 @@ function Loginpage() {
                     onChange={(e) => setFormValue(e.target.value)}
                   />
                 </div>
+                {error !== ""?
+                  <span className="text-danger">{error}</span>
+                :null}
               </div>
             </motion.div>
           </div>

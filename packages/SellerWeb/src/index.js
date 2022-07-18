@@ -43,9 +43,15 @@ import CreateNewItem from "./views/pages/listing/CreateItem";
 import MFA from "./views/pages/MFA/MFA";
 import SignUpPassword from "./views/pages/SignUp/SignUpPassword";
 import Email from "./views/pages/SignUp/Email";
+import { Provider } from "react-redux";
+// import { persistor, store } from "./store/store";
+import { PersistGate } from "redux-persist/lib/integration/react";
+import { store, persistor } from "@SilalApp/common/Store/SellerStore/store";
 
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
     <BrowserRouter>
       <Switch>
         <Route path="/otp" exact={true} component={Otppage} />
@@ -115,6 +121,8 @@ ReactDOM.render(
         <Route path="/statistics" component={App} />
       </Switch>
     </BrowserRouter>
+    </PersistGate>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
