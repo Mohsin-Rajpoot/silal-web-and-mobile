@@ -545,19 +545,7 @@ const App = ({navigation, route}) => {
                 </Text>
               </TouchableOpacity>
             </View>
-          ) : (
-            <TouchableOpacity
-              style={{
-                backgroundColor: '#5AB3A8',
-                borderRadius: 5,
-                padding: 10,
-                alignItems: 'center',
-                marginTop: 10,
-              }}>
-              <Text style={{color: 'white', fontFamily: 'Poppins-SemiBold'}}>
-                {t('ready_for_pickup')}
-              </Text>
-            </TouchableOpacity>
+          
           )}
         </View>
       </ScrollView>

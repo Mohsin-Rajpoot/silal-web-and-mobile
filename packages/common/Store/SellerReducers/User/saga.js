@@ -3,6 +3,8 @@ import * as actions from "./actions";
 
 import { API, requestPost, requestPut } from "../../../Api/Api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {Platform} from 'react-native'
+
 
 function* login({ payload }) {
   try {
@@ -40,7 +42,8 @@ function* signUp({ payload }) {
       payload.cb(response);
     }
   } catch (error) {
-    console.log("======Error", error.response);
+    console.log("======Error", error.response.data);
+    payload.cb(error.response.data)
     yield put(actions.setUserError("Please check your internet connection"));
   }
 }
@@ -60,7 +63,9 @@ function* Phone_Verification_signup({ payload }) {
     if (response.http_status_code == 200) {
       yield put(actions.setUserSuccess(response));
       payload.cb(response);
-      yield AsyncStorage.setItem("isAuth", response.bearer);
+
+
+
     } else if (response.http_status_code == 401) {
       console.log("----Valid phone");
       payload.cb("Something went wrong");
@@ -275,6 +280,8 @@ function* add_personal_information({ payload }) {
     }
   } catch (error) {
     yield put(actions.setUserError());
+  }
+}
 
 function* createStore({ payload }) {
   console.log("-----Payload", payload);
@@ -284,15 +291,6 @@ function* createStore({ payload }) {
     const response = yield requestPost(
       API.Create_Store,
       payload.data123,
-      // {
-      //   text: payload.data123.text,
-      //   BusinesName: payload.data123.BusinesName,
-      //   BusinessOwner: payload.data123.BusinessOwner,
-      //   BusinessEmail: payload.data123.BusinessEmail,
-      //   socialmediaProfile: payload.data123.socialmediaProfile,
-      //   socialmediaWebsite: payload.data123.socialmediaWebsite,
-      //   BusinesTax_Id: payload.data123.BusinesTax_Id,
-      // },
       true
     );
 
@@ -308,6 +306,9 @@ function* createStore({ payload }) {
     yield put(actions.setUserError("Please check your internet connection"));
   }
 }
+
+
+
 //===============Watchers=============================
 export function* actionLoginWatcher() {
   yield takeLatest(actions.USER_LOGIN_SAGA, login);
@@ -354,6 +355,4 @@ export function* actionPhoneVerificationAfterLoginWatcher() {
     actions.USER_PHONE_VERIFICATION_LOGIN,
     phone_verification_after_login
   );
-export function* actionCreateStoreWatcher() {
-  return yield takeLatest(actions.USER_CREATESTORE_SAGA, createStore);
 }

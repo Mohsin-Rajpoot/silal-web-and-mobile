@@ -16,7 +16,7 @@ import PagerView from 'react-native-pager-view';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useTranslation} from 'react-i18next';
 import CommonTab from '../../components/CommonTab';
-const {width, height} = Dimensions.get('window');
+// const {width, height} = Dimensions.get('window');
 
 import {
   widthPercentageToDP as width,
@@ -24,7 +24,6 @@ import {
 } from 'react-native-responsive-screen';
 
 import colors from '@SilalApp/common/assets/colors/index';
-import SellerTools from './molecule/SellerTools';
 import fonts from '@SilalApp/common/assets/fonts/index';
 import DaySelect from '../../components/DaySelection';
 import CustomModal from '@SilalApp/common/components/native/CustomModal';
@@ -33,7 +32,7 @@ import Toast from 'react-native-easy-toast';
 import CustomText from '@SilalApp/common/components/CustomText';
 import {CustomButton} from '@SilalApp/common/components/native';
 import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
-import ItemDetail from './molecule';
+import ItemDetail from './molecule/';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const Order = ({navigation}) => {

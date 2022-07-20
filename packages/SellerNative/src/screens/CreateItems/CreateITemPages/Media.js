@@ -177,7 +177,7 @@ const Media = ({moveForward, goPrev}) => {
               <View style={styles.imageContainerMain}>
                 <View>
                   <Image
-                    source={require('../../../Assets/image.png')}
+                    source={require('../../../Assets/image8.png')}
                     style={styles.imageStyle}
                   />
                   <CustomText
@@ -498,7 +498,7 @@ const Media = ({moveForward, goPrev}) => {
           </View>
           <View style={styles.innerContainerModal}>
             <Image
-              source={require('../../../Assets/Vector.png')}
+              source={require('../../../Assets/Icon.png')}
               style={styles.imagePlaceholder}
             />
             <View style={{flexDirection: 'row', alignItems: 'center'}}>

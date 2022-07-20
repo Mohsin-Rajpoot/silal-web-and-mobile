@@ -1,5 +1,5 @@
 import { fork, all } from "@redux-saga/core/effects";
-import * as user from "@SilalApp/common/Store/SellerReducers/User/saga";
+import * as user from "../SellerReducers/User/saga";
 export function* rootSaga() {
   yield all([
     fork(user.actionLoginWatcher),

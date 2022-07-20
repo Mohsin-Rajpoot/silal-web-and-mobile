@@ -16,7 +16,7 @@ import PhoneNumber from "../../components/native/PhoneNumberInput";
 import HeaderBack from "../../components/native/HeaderBack";
 import colors from "../../assets/colors";
 import { useTranslation } from "react-i18next";
-import * as userAction from "../../store/User/actions";
+import * as userAction from "../../store/SellerReducers/User/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../Loader";
 import DeviceInfo from "react-native-device-info";
@@ -50,7 +50,7 @@ const Login = ({ navigation, route }) => {
   };
 
   const SignUpWithPhone = (data) => {
-    console.log("************", data)
+    console.log("************", data);
     if (data.length < 8) {
       setError(t("EnterValidPhone"));
     } else {
@@ -58,10 +58,10 @@ const Login = ({ navigation, route }) => {
         userAction.userSignUpSaga({
           data,
           cb: (res) => {
-            console.log("----Res", res)
+            console.log("----Res", res);
             if (res.http_status_code == 201) {
               setTimeout(() => {
-                setError("")
+                setError("");
                 navigation.navigate("Verification", {
                   params: {
                     phone: phone,
@@ -149,6 +149,7 @@ const Login = ({ navigation, route }) => {
       );
   };
   const loginWithPhone = (data) => {
+    console.log("--")
     if (data.length < 10) {
       setError(t("EnterValidPhone"));
     } else {

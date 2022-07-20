@@ -6,8 +6,10 @@ import {Icon} from 'react-native-elements';
 import colors from '@SilalApp/common/assets/colors';
 import Preference from 'react-native-preference';
 import {useTranslation} from 'react-i18next';
-import {store} from './src/store/store';
+import {store, persistor} from '@SilalApp/common/store/SellerStore/nativeStore';
 import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+
 import Menu, {
   MenuProvider,
   MenuTrigger,
@@ -51,7 +53,9 @@ const App = () => {
           }}>
           <MenuProvider>
             <Provider store={store}>
-              <Routes />
+              <PersistGate loading={null} persistor={persistor}>
+                <Routes />
+              </PersistGate>
             </Provider>
           </MenuProvider>
         </ToastProvider>

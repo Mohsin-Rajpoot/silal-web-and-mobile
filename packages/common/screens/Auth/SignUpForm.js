@@ -7,7 +7,7 @@ import FirstPage from "./SignUpFormPages/FirstPage";
 import SecondPage from "./SignUpFormPages/SecondPage";
 import ThirdPage from "./SignUpFormPages/ThirdPage";
 import styles from "./style";
-import * as userAction from "../../store/User/actions";
+import * as userAction from "../../store/SellerReducers/User/actions";
 import CustomText from "../../components/CustomText";
 import AuthButton from "../../components/native/AuthButton";
 import { Icon } from "react-native-elements";
