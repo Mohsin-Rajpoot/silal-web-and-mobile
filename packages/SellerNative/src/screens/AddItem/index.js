@@ -153,7 +153,7 @@ const AddItem = ({navigation}) => {
 
   return (
     <SafeAreaView
-      style={{width: '100%', alignSelf: 'center', backgroundColor: colors.profileBackground }}>
+      style={styles.MainContainer}>
       {/* <ScrollView showsVerticalScrollIndicator={false}> */}
      
         <View style={{width: '100%', alignSelf: 'center'}}>
@@ -1036,4 +1036,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#173b42',
     width: 200,
   },
+  MainContainer:{
+    width: '100%', alignSelf: 'center', backgroundColor: colors.profileBackground 
+  }
 });

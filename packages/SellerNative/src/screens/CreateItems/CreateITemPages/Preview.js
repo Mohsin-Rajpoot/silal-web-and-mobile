@@ -197,8 +197,8 @@ const Preview = ({moveForward, goPrev}) => {
               </View>
             </View>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View>
+          <View style={styles.SencondHeadingTitle}>
+            <View style={{width: '50%'}}>
               <CustomText
                 label={t('SmartPhone_Apple_Iphone_12_64_GB_Red')}
                 textStyle={styles.textDescription}
@@ -208,7 +208,6 @@ const Preview = ({moveForward, goPrev}) => {
               style={{
                 flexDirection: 'column',
                 alignContent: 'center',
-                marginLeft: -50,
               }}>
               <CustomText
                 label={t('883_73')}
@@ -311,7 +310,7 @@ const Preview = ({moveForward, goPrev}) => {
             </View>
           </View>
           <View>
-            <View style={{height: 70, zIndex: 1}}>
+            <View style={{ zIndex: 1,}}>
               <DropDown
                 DropDownCustomStyle={styles.dropSSd1}
                 placeholder="Specification"
@@ -416,7 +415,7 @@ const Preview = ({moveForward, goPrev}) => {
 
           <View style={styles.divider} />
 
-          <View style={{flexDirection: 'row'}}>
+          <View style={{flexDirection: 'row',}}>
             <TouchableOpacity
               onPress={goPrev}
               style={styles.BackbottomButtonContainerMobile}>
@@ -531,6 +530,7 @@ const styles = ScaledSheet.create({
     backgroundColor: colors.underLine,
     width: '100%',
     height: '1@s',
+    marginVertical:'10@s'
   },
 
   buttonContainer: {
@@ -795,13 +795,13 @@ const styles = ScaledSheet.create({
   },
   dropSSd1: {
     backgroundColor: colors.dullWhite,
-    // height: '10@s',
+    height: 40,
     // marginBottom:"20@s",
     marginVertical: '10@vs',
   },
   BackbottomButtonContainerMobile: {
     backgroundColor: colors.blurPrimary,
-    height: '40@s',
+    height: '43@s',
     width: '40@s',
     justifyContent: 'center',
     alignItems: 'center',
@@ -815,7 +815,7 @@ const styles = ScaledSheet.create({
     color: colors.primary,
   },
   ForwordbottomButtonContainerMobile: {
-    marginVertical: 5,
+    marginVertical: 10,
     // height:'100%'
   },
   nextStepMobile: {
@@ -906,5 +906,10 @@ const styles = ScaledSheet.create({
   productsattribut: {
     color: colors.textWhite,
     fontFamily: fonts.PoppinsSemiBold,
+  },
+  SencondHeadingTitle: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
   },
 });

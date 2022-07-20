@@ -5,7 +5,9 @@ const base_url="https://seller.dev.silal.app/";
 
 export const API = {
     BASE_URL:base_url,
-    LOGIN:'/login',   
+    LOGIN:'/login',  
+    SIGNUP_Phone:'/auth_api/v1/sign_up/phone',
+    Create_Store:'/api/v1/stores/' 
 }
 
 export const requestGet = (url, extraHeaders = {}) => {
@@ -25,6 +27,7 @@ export const requestGet = (url, extraHeaders = {}) => {
     });
 }
 export const requestPost = (url,data,isRaw,extraHeaders = {}) => {
+
    let formData = data || {}
     if(!isRaw && data){
         formData=new FormData();
@@ -34,7 +37,6 @@ export const requestPost = (url,data,isRaw,extraHeaders = {}) => {
             }
         }
     }
-  
     return new Promise((resolve, reject) => {
         axios.post(base_url+url,formData,{
             headers: {

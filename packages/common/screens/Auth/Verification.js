@@ -46,6 +46,7 @@ const Verification = ({ route, navigation }) => {
         name={params.active == 3 ? t("Reset_password") : t("verification")}
         onGoBack={goBack}
       />
+      {console.log("-----Params", params)}
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
@@ -73,7 +74,7 @@ const Verification = ({ route, navigation }) => {
             }
             SecondText={
               params?.active == 1
-                ? "+7(934) 455 34 45"
+                ? params.phone
                 : params?.active == 2
                 ? "willie.jennings@example.com"
                 : ""

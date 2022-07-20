@@ -1,3 +1,4 @@
+import React, {useState, useRef} from 'react';
 import {
   View,
   Text,
@@ -6,7 +7,6 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
-import React, {useState, useRef} from 'react';
 import CustomText from '@SilalApp/common/components/CustomText';
 import {CustomButton} from '@SilalApp/common/components/native';
 import {Icon} from 'react-native-elements';
@@ -80,22 +80,18 @@ const CreateItem = ({navigation}) => {
             backgroundColor: colors.textWhite,
           },
         }}>
-        <View
-          style={styles.RbSheetHeader}>
-          <TouchableOpacity
-            style={[styles.HeaderRbsheet,{}]}>
+        <View style={styles.RbSheetHeader}>
+          <TouchableOpacity style={[styles.HeaderRbsheet, {}]}>
             <Octicons name="pencil" style={styles.IconHeaderSheet} />
             <Text style={styles.headerSheetText}>Save as draft</Text>
           </TouchableOpacity>
           <View style={styles.divider} />
-          <TouchableOpacity
-            style={styles.HeaderRbsheet}>
+          <TouchableOpacity style={styles.HeaderRbsheet}>
             <Octicons name="stack" style={styles.IconHeaderSheet} />
             <Text style={styles.headerSheetText}>Save as template</Text>
           </TouchableOpacity>
           <View style={styles.divider} />
-          <TouchableOpacity
-            style={styles.HeaderRbsheet}>
+          <TouchableOpacity style={styles.HeaderRbsheet}>
             <Image
               source={require('../../Assets/li_trash-2.png')}
               style={{width: 20, height: 20, marginHorizontal: 10}}
@@ -103,7 +99,6 @@ const CreateItem = ({navigation}) => {
             <Text style={styles.headerSheetText}>Save as template</Text>
           </TouchableOpacity>
           <View style={styles.divider} />
-         
         </View>
       </RBSheet>
 
@@ -164,8 +159,8 @@ const CreateItem = ({navigation}) => {
             active={page}
             page={0}
           />
-          <Header label="specification" pageNumber={2} active={page} page={1} />
-          <Header label="media" pageNumber={3} active={page} page={2} />
+          <Header label="media" pageNumber={2} active={page} page={1} />
+          <Header label="specification" pageNumber={3} active={page} page={2} />
           <Header label="Shipping" pageNumber={4} active={page} page={3} />
           <Header label="Preview" pageNumber={5} active={page} page={4} />
         </View>
@@ -179,10 +174,10 @@ const CreateItem = ({navigation}) => {
           <ItemInformation onPress={moveForward} />
         </View>
         <View key="2">
-          <Specification moveForward={moveForward} goPrev={goprev} />
+          <Media moveForward={moveForward} goPrev={goprev} />
         </View>
         <View key="3">
-          <Media moveForward={moveForward} goPrev={goprev} />
+          <Specification moveForward={moveForward} goPrev={goprev} />
         </View>
         <View key="4">
           <Shipping moveForward={moveForward} goPrev={goprev} />

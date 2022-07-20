@@ -198,8 +198,6 @@ const Clints = ({navigation}) => {
   ] = useState(false);
 
   const [SecondModalVisible, setSecondModalVisible] = useState(false);
-  // ////
-
   const footer = () => {
     return (
       <View style={{marginTop: 10}}>
@@ -368,11 +366,11 @@ const Clints = ({navigation}) => {
           <View style={{marginTop: 10}}>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>
-                {' '}
+                
                 {t('customer_name')}
               </Text>
               <Text style={styles.modal_title_second}>
-                {' '}
+            
                 {t('Willson_Genemal')}
               </Text>
             </View>
@@ -382,7 +380,7 @@ const Clints = ({navigation}) => {
             </View>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}> {t('phone')}</Text>
-              <Text style={styles.modal_title_second}>*** *** **** 112</Text>
+              <Text style={styles.modal_title_second}>* * ** 112</Text>
             </View>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}> {t('address')}</Text>
@@ -434,7 +432,7 @@ const Clints = ({navigation}) => {
             </View>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>{t('phone')}</Text>
-              <Text style={styles.modal_title_second}>*** *** **** 112</Text>
+              <Text style={styles.modal_title_second}>* * ** 112</Text>
             </View>
           </View>
         ) : null}
@@ -478,7 +476,7 @@ const Clints = ({navigation}) => {
             </View>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>{t('credit_card')}</Text>
-              <Text style={styles.modal_title_second}>**** **** **** 3782</Text>
+              <Text style={styles.modal_title_second}>** ** ** 3782</Text>
             </View>
 
             <FlatList
@@ -542,7 +540,7 @@ const Clints = ({navigation}) => {
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>{t('credit_card')}</Text>
               <Text style={styles.modal_title_second}>
-                **** **** **** 4543{' '}
+                ** ** ** 4543{' '}
               </Text>
             </View>
           </View>
@@ -734,7 +732,7 @@ const Clints = ({navigation}) => {
                   </View>
                   <View style={{flexDirection: 'row'}}>
                     <Text style={[styles.paymentMethod]}>{t('card_data')}</Text>
-                    <Text style={styles.CreditCard}>**** **** **** 3782</Text>
+                    <Text style={styles.CreditCard}>** ** ** 3782</Text>
                   </View>
                 </TouchableOpacity>
               )}

@@ -88,5 +88,12 @@ const styles = ScaledSheet.create({
     borderRadius: "10@s",
     marginTop: "40@vs",
   },
+  errorMessage: {
+    fontSize: "10@vs",
+    color: colors.red,
+    fontFamily: fonts.LatoRegular,
+    marginTop: "5@s",
+    fontStyle: "italic",
+  },
 });
 export default styles;

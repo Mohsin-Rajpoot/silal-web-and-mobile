@@ -35,6 +35,15 @@
 			</dict>
 		</dict>
 	</dict>
+	<!-- ////DatePicker -->
+	<key>UIUserInterfaceStyle</key>
+    <string>Light</string>
+	<!-- ////DatePicker End -->
+
+
+
+
+
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UIAppFonts</key>
@@ -82,25 +91,25 @@
 	<true/>
 	<key>UIRequiresFullScreen~ipad</key>
 	<true/>
-<!-- ffffffff -->
+  <!-- ffffffff -->
 	<key>UISupportedInterfaceOrientations</key>
-<array>
+    <array>
     <string>UIInterfaceOrientationPortrait</string>
     <string>UIInterfaceOrientationPortraitUpsideDown</string>
 	  <!-- <string>UIInterfaceOrientationLandscapeLeft</string> -->
     <!-- <string>UIInterfaceOrientationLandscapeRight</string> -->
-</array>
-<key>UISupportedInterfaceOrientations~ipad</key>
-<array>
+   </array>
+   <key>UISupportedInterfaceOrientations~ipad</key>
+   <array>
     <!-- <string>UIInterfaceOrientationPortrait</string> -->
     <!-- <string>UIInterfaceOrientationPortraitUpsideDown</string> -->
     <string>UIInterfaceOrientationLandscapeLeft</string>
     <string>UIInterfaceOrientationLandscapeRight</string>
-</array>
-<key>UIRequiresFullScreen</key>
-<true/>
-<key>UIRequiresFullScreen~ipad</key>
-<false/>
+  </array>
+   <key>UIRequiresFullScreen</key>
+   <true/>
+   <key>UIRequiresFullScreen~ipad</key>
+   <false/>
 	<!-- <key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
@@ -110,4 +119,5 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
+
 </plist>

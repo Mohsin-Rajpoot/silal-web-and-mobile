@@ -329,6 +329,9 @@ const Shipping = ({moveForward, goPrev}) => {
         </View>
       </View>
       {!IsTablet ? (
+        <>
+           <View style={styles.divider} />
+      
             <View style={{flexDirection: 'row'}}>
               <TouchableOpacity
                 onPress={goPrev}
@@ -349,6 +352,7 @@ const Shipping = ({moveForward, goPrev}) => {
                 />
               </TouchableOpacity>
             </View>
+            </>
           ) : 
       <View style={styles.buttonContainer}>
         <CustomButton
@@ -495,7 +499,7 @@ const styles = ScaledSheet.create({
   },
   BackbottomButtonContainerMobile: {
     backgroundColor: colors.blurPrimary,
-    height: '40@s',
+    height: '43@s',
     width: '40@s',
     justifyContent: 'center',
     alignItems: 'center',
@@ -507,6 +511,9 @@ const styles = ScaledSheet.create({
   BackbottomButtonIconMobile: {
     fontSize: '17@s',
     color: colors.primary,
+  },
+  ForwordbottomButtonContainerMobile:{
+    marginVertical: 10,
   },
   nextStepMobile: {
     fontFamily: fonts.PoppinsSemiBold,

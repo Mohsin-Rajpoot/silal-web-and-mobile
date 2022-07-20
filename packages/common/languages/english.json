@@ -644,6 +644,8 @@
     "Confirm_new_password": "Confirm new password",
     "Update_password": "Update password",
     "Number_Changed_Sucessfully": "Number_Changed_Sucessfully",
-    "Verify_password": "Verify password"
+    "Verify_password": "Verify password",
+    "EnterValidPhone":"Enter valid phone number",
+    "Valid":"Valid"
   }
 }
