@@ -35,7 +35,6 @@ function Otppage() {
     four: "",
     five: "",
   });
-  console.log(num);
 
   const combineOTP = () => {
     let combinestr = "";
@@ -47,7 +46,7 @@ function Otppage() {
     return combinestr;
   };
 
-  const use = useHistory();
+  const history = useHistory();
   function handleChange(e) {
     let v = e.target.value;
     if (v.length > 0) {
@@ -78,7 +77,7 @@ function Otppage() {
       return setError("Please enter Otp code before proceding.");
     }
 
-    if (use.location.state.previousPage === "signup") {
+    if (history.location.state.previousPage === "signup") {
       let payload = {
         data: {
           otp,
@@ -96,25 +95,31 @@ function Otppage() {
           }
         },
       };
-      console.log("Otp", otp);
-      console.log("signup_payload", payload);
       dispatch(userAction.verify_phone_after_signup(payload));
-      use.push("/signupemail", "signupPhoneOtp");
-    } else {
+      history.push("/signupemail", "signupPhoneOtp");
+    } else if (history.location.state.previousPage === "login") {
+      console.log(history.location.state);
+      let data = {
+        otp: otp,
+        phone: phoneNumber,
+      };
       let payload = {
-        data: otp,
+        data,
         cb: (res) => {
           if (res.http_status_code === 200) {
+            alert(1);
             setTimeout(() => {
               setError("");
             }, 1000);
+            history.push("/newsplash", "loginPhoneOtp");
           } else if (res.http_status_code === 401) {
-            setError("Login failed or OTP expired.");
+            alert(2);
+            return setError("Login failed or OTP expired.");
           }
         },
       };
+      console.log("login-payload: ", payload);
       dispatch(userAction.userPhoneVerification_LOGIN_Saga(payload));
-      use.push("/newsplash", "loginPhoneOtp");
     }
   };
 
@@ -133,7 +138,7 @@ function Otppage() {
             We have sent the code verification to your
           </p>
           <p className="lato-font">
-            mobile number <strong>+92{phoneNumber}</strong>
+            mobile number <strong>{phoneNumber}</strong>
           </p>
         </div>
         <div className="form">

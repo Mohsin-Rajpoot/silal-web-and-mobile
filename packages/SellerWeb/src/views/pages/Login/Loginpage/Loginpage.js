@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Wrapper from "./Loginpage.styled";
 import { Link } from "react-router-dom";
 import Button from "../../../components/auth/Button/Button";
-import Linktag from "../../../components/auth/Linktag/Linktag";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import FormControl from "../../../components/auth/FormControl/FormControl";
@@ -12,7 +11,9 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 function Loginpage() {
-  const [formValue, setFormValue] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showNumForm, setShowNumForm] = useState(true);
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState("");
@@ -51,24 +52,43 @@ function Loginpage() {
   };
 
   const sendLoginOtp = () => {
-    if (!formValue) return setError("Please enter your number.");
+    if (!phoneNo) {
+      return setError("Please enter your number.");
+    } else if (phoneNo.length < 10) {
+      return setError("The length must be atleast 10 numbers long.");
+    } else if (phoneNo.length > 15) {
+      return setError("The length must not be longer then 15 numbers.");
+    }
 
-    let data = { phone: "+92" + formValue };
+    let data = { phone: "+92" + phoneNo };
 
     let payload = {
       data,
       cb: (res) => {
-        if (res.http_status_code === 401) return setError(res.msg);
-        else if (res.http_status_code === 410) return setError(res.msg);
-        else if (res.http_status_code === 200) setError("");
+        if (res.http_status_code === 401) {
+          return setError(res.msg);
+        } else if (res.http_status_code === 410) {
+          return setError(res.msg);
+        } else if (res.http_status_code === 400) {
+          setError("Please Enter Valid Phone Number!");
+          return;
+        } else if (res.http_status_code === 200) {
+          setError("");
+          history.push({
+            pathname: "/otp",
+            state: { phoneNo: "+92" + phoneNo, previousPage: "login" },
+          });
+        }
       },
     };
 
     dispatch(userAction.userloginWithPhoneSaga(payload));
-    history.push({
-      pathname: "/otp",
-      state: { phoneNo: formValue, previousPage: "login" },
-    });
+  };
+
+  const setPhone = (e) => {
+    if (!isNaN(e.target.value)) {
+      setPhoneNo(e.target.value);
+    }
   };
 
   return (
@@ -116,10 +136,10 @@ function Loginpage() {
                   <FormControl
                     style={{ border: "none" }}
                     input={true}
-                    inputValue={formValue}
+                    inputValue={phoneNo}
                     type="text"
                     htmlFor="PhoneNumber"
-                    onChange={(e) => setFormValue(e.target.value)}
+                    onChange={setPhone}
                   />
                 </div>
                 <div className="text-center">
@@ -134,9 +154,9 @@ function Loginpage() {
                   labelValue="Email"
                   htmlFor="email"
                   input={true}
-                  inputValue={formValue}
+                  inputValue={email}
                   type="text"
-                  onChange={(e) => setFormValue(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="email.example@gmail.com"
                 />
               </motion.div>
@@ -146,9 +166,9 @@ function Loginpage() {
                     labelValue="Password"
                     htmlFor="password"
                     input={true}
-                    inputValue={formValue}
+                    inputValue={password}
                     type={showPass ? "text" : "password"}
-                    onChange={(e) => setFormValue(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter password"
                     passwordType={true}
                     onClick={() => setShowPass(!showPass)}
@@ -161,10 +181,13 @@ function Loginpage() {
       </div>
       <div className="bottom-row">
         <div className="form-submit">
-          <Linktag
+          <Button
+            className={"w-100"}
             text={showNumForm ? "Continue" : "Log in"}
             primary={true}
-            onClick={showNumForm ? () => sendLoginOtp() : undefined}
+            onClick={
+              showNumForm ? () => sendLoginOtp() : () => console.log("clicked.")
+            }
             textcolor={true}
             blockitem={true}
             // to={showNumForm ? "otp" : "newsplash"}

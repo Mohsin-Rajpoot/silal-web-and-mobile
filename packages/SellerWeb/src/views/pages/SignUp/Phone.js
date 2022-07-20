@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 function Loginpage() {
   const history = useHistory();
   const dispatch = useDispatch();
+  // const state = useSelector
   const [formValue, setFormValue] = useState("");
   const [error, setError] = useState("");
 
@@ -39,6 +40,12 @@ function Loginpage() {
     transition: { duration: 1 },
   };
 
+  const setPhone = (e) => {
+    if (!isNaN(e.target.value)) {
+      setFormValue(e.target.value);
+    }
+  };
+
   const sendToOtp = () => {
     if (!formValue) {
       setError("Please Enter Phone Number!");
@@ -48,24 +55,34 @@ function Loginpage() {
     let payload = {
       data,
       cb: (res) => {
-        if (res.http_status_code === 201) {
+        console.log("---------------------------");
+        console.log(res);
+        if (res.success) {
           setTimeout(() => {
             setError("");
           }, 1000);
-        } else if (res.http_status_code === 409) {
-          // setError(t("alreadyusedPhone"));
-          setError("alreadyusedPhone");
-        } else if (res.http_status_code === 429) {
-          // setError(t("alreadySentPhone"));
-          setError("alreadySentPhone");
+          history.push({
+            pathname: "/otp",
+            state: { phoneNo: "+92" + formValue, previousPage: "signup" },
+          });
+        } else {
+          setError("SomeThing Went Wrong!");
+        }
+      },
+      failure: (err) => {
+        setError(err.msg);
+        console.log("Failure Error: ", err);
+        if (err.code === 429) {
+          setTimeout(() => {
+            history.push({
+              pathname: "/otp",
+              state: { phoneNo: "+92" + formValue, previousPage: "signup" },
+            });
+          }, 2000);
         }
       },
     };
     dispatch(userAction.userSignUpSaga(payload));
-    history.push({
-      pathname: "/otp",
-      state: { phoneNo: formValue, previousPage: "signup" },
-    });
   };
   // animation email input field
 
@@ -104,7 +121,7 @@ function Loginpage() {
                     inputValue={formValue}
                     type="text"
                     htmlFor="PhoneNumber"
-                    onChange={(e) => setFormValue(e.target.value)}
+                    onChange={(e) => setPhone(e)}
                   />
                 </div>
                 {error !== "" ? (

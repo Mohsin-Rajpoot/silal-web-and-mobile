@@ -3,8 +3,9 @@ import * as actions from "./actions";
 
 import { API, requestPost, requestPut } from "../../../Api/Api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {Platform} from 'react-native'
+import { Platform } from "react-native";
 
+import { ErrorHandler } from "./../../utils/errorHandler";
 
 function* login({ payload }) {
   try {
@@ -23,28 +24,34 @@ function* login({ payload }) {
 //============== Sign up api with phone
 function* signUp({ payload }) {
   console.log("-----Payload", payload);
+  const response = {};
   try {
     yield put(actions.setUserRequest());
-    const response = yield requestPost(
+    response = yield requestPost(
       API.SIGNUP_Phone,
       { phone: payload.data },
       true
     );
     if (response.http_status_code == 201) {
-      console.log("======Response", response);
-
-      payload.cb(response);
+      const resObj = {
+        success: true,
+        data: response.data,
+        code: response.http_status_code,
+      };
+      payload.cb(resObj);
       yield put(actions.setUserSuccess(response));
-    } else if (response.http_status_code == 409) {
-      payload.cb(response);
-      console.log("Something went wrong");
-    } else if (response.http_status_code == 429) {
-      payload.cb(response);
+    } else {
+      const resObj = {
+        success: false,
+        data: response.data,
+        code: response.http_status_code,
+      };
+      payload.cb(resObj);
+      yield put(actions.setUserSuccess(response));
     }
   } catch (error) {
-    console.log("======Error", error.response.data);
-    payload.cb(error.response.data)
-    yield put(actions.setUserError("Please check your internet connection"));
+    const errObj = ErrorHandler(error);
+    payload.failure(errObj);
   }
 }
 //============verify phone after sign up
@@ -63,15 +70,12 @@ function* Phone_Verification_signup({ payload }) {
     if (response.http_status_code == 200) {
       yield put(actions.setUserSuccess(response));
       payload.cb(response);
-
-
-
     } else if (response.http_status_code == 401) {
       console.log("----Valid phone");
       payload.cb("Something went wrong");
       yield put(actions.setUserError());
-    }else if(response.http_status_code==429){
-      payload.cb(response)
+    } else if (response.http_status_code == 429) {
+      payload.cb(response);
     }
   } catch (error) {
     if (error.response.data.http_status_code == 401) {
@@ -288,11 +292,7 @@ function* createStore({ payload }) {
 
   try {
     yield put(actions.setUserRequest());
-    const response = yield requestPost(
-      API.Create_Store,
-      payload.data123,
-      true
-    );
+    const response = yield requestPost(API.Create_Store, payload.data123, true);
 
     if (response.http_status_code == 201) {
       console.log("======Response", response.msg);
@@ -306,8 +306,6 @@ function* createStore({ payload }) {
     yield put(actions.setUserError("Please check your internet connection"));
   }
 }
-
-
 
 //===============Watchers=============================
 export function* actionLoginWatcher() {
