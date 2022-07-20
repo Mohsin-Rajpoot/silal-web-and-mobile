@@ -45,6 +45,10 @@ const ThirdPage = () => {
     { label: "Banana", value: "banana" },
   ]);
 
+  const [store_Slogan, setstore_Slogan] = useState("");
+  const [Time_Start, setTimeStart] = useState("");
+  const [Time_End, setTime_End] = useState("");
+
   const onStartChange = (event, selectedDate, setTime, time) => {
     const currentDate = selectedDate || time;
     setShow(Platform.OS === "ios");
@@ -354,7 +358,12 @@ const ThirdPage = () => {
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
-        <TextInput placeholderText={t("SloganPlaceholder")} isTab={IsTablet} />
+        <TextInput
+          value={store_Slogan}
+          onChangeText={(text) => props.store_Slogan(text)}
+          placeholderText={t("SloganPlaceholder")}
+          isTab={IsTablet}
+        />
         <View
           style={{
             flexDirection: "row",
@@ -426,6 +435,10 @@ const ThirdPage = () => {
               onChange={(event, selectedDate) =>
                 onStartChange(event, selectedDate, setStartTime, startTime)
               }
+              // display={
+              //   Platform.OS === "ios" ? "spinner" : "default"
+              // }
+              // style={{width:100, backgroundColor: "red"}}
             />
           )}
           <CustomText

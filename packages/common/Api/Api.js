@@ -15,6 +15,7 @@ export const API = {
   VERIFY_PHONE_AFTER_SIGNUP: "/auth_api/v1/sign_up/phone/otp",
   VERIFY_EMAIL_AFTER_SIGNUP: "/auth_api/v1/sign_up/email/otp",
   ADD_PERSONAL_INFORMATION: "/api/v1/personal_info",
+  Create_Store:'/api/v1/stores/' 
 };
 
 export const requestGet = (url, extraHeaders = {}) => {

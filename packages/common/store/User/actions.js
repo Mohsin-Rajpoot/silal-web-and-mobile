@@ -15,6 +15,7 @@ export const USER_EMAIL_VERIFICATION_AFTER_LOGIN =
 export const ADD_PERSONAL_INFORMATION_SAGA = "ADD_PERSONAL_INFORMATION_SAGA";
 export const VERIFY_PHONE_AFTER_SIGNUP_SAGA = "VERIFY_PHONE_AFTER_SIGNUP_SAGA";
 export const VERIFY_EMAIL_AFTER_SIGNUP_SAGA = "VERIFY_EMAIL_AFTER_SIGNUP_SAGA";
+export const USER_CREATESTORE_SAGA ="USER_CREATESTORE_SAGA"
 export const LOGOUT = "LOGOUT";
 export const setLoading = (payload) => ({
   type: SET_LOADING,
@@ -76,3 +77,8 @@ export const verify_email_after_signup = (payload) => ({
 export const logout = () => ({
   type: LOGOUT,
 });
+
+export const userCreateStoreSaga=(payload)=>({
+  type:USER_CREATESTORE_SAGA,
+  payload
+})

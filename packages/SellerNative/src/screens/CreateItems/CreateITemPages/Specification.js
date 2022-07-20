@@ -3,8 +3,11 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
-  Dimensions,
+  FlatList,
+  Image,
 } from 'react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Tooltip from 'react-native-walkthrough-tooltip';
 import React, {useState} from 'react';
 import {ScaledSheet} from 'react-native-size-matters';
 import colors from '@SilalApp/common/assets/colors';
@@ -19,13 +22,285 @@ import MultiSelectDropDown from '@SilalApp/common/components/native/MultipleSele
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
-
+import {CheckBox} from 'react-native-elements';
 const Specification = ({moveForward, goPrev}) => {
   const {t} = useTranslation();
 
   const [active, setActive] = useState(false);
   const [customField, setCustomField] = useState(false);
   const navigation = useNavigation();
+  const [showTip1, setTip1] = useState(false);
+  const [showTip, setTip] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [selected_index, set_selected_index] = useState('');
+  const [CombinationModal, setCombinationModal] = useState(false);
+  const setcheck = index => {
+    console.log(index, 'Harris Saleem');
+    const val = data[index];
+    val.checked = !val.checked;
+    data[index] = val;
+    setTimeout(() => {
+      setData(data);
+      setTimeout(() => {
+        setLoader(!loader);
+      }, 100);
+    }, 200);
+  };
+
+  const ModelData = [
+    {id: 0},
+    {id: 1},
+    {id: 2},
+    {id: 3},
+    {id: 4},
+    {id: 5},
+    {id: 6},
+    {id: 7},
+  ];
+  var [data, setData] = useState([
+    {
+      id: '1',
+      Title: 'Embedded Software Engineer',
+      SubTitle: 'Newyork',
+      year: '22/03/2022',
+      image: require('../../../Assets/image8.png'),
+      checked: false,
+    },
+    {
+      id: '2',
+      Title: 'Web Developer',
+      SubTitle: 'Lahore',
+      year: '22/03/2022',
+      checked: false,
+    },
+    {
+      id: '3',
+      Title: 'Embedded Software Engineer',
+      SubTitle: 'USA',
+      year: '22/03 /2022',
+      checked: false,
+    },
+    {
+      id: '4',
+      Title: 'Embedded Software Engineer',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+      checked: false,
+    },
+    {
+      id: '5',
+      Title: 'Embedded Software last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+      checked: false,
+    },
+    {
+      id: '6',
+      Title: 'Embedded Software last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+      checked: false,
+    },
+    {
+      id: '7',
+      Title: 'Embedded Software full last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+      checked: false,
+    },
+    {
+      id: '8',
+      Title: 'Embedded Software full last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+      checked: false,
+    },
+    {
+      id: '9',
+      Title: 'Embedded Software full last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+      checked: false,
+    },
+    {
+      id: '10',
+      Title: 'Embedded Software full last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+      checked: false,
+    },
+  ]);
+
+  const header_alloredrs = () => {
+    return (
+      <View style={styles.all_orders_header}>
+        <View style={[styles.all_orders, {width: '5%'}]}>
+          <Text style={styles.all_orders_heading_txt}>{t('Valid')}</Text>
+        </View>
+        <View style={[styles.all_orders, {width: '20%'}]}>
+          <Text style={[styles.all_orders_heading_txt, {marginLeft: '15%'}]}>
+            {t('Capacity')}
+          </Text>
+        </View>
+        <View style={[styles.all_orders, {width: '14%'}]}>
+          <Text style={styles.all_orders_heading_txt}>{t('Color')}</Text>
+        </View>
+        <View style={[styles.all_orders, {width: '14%'}]}>
+          <Text style={styles.all_orders_heading_txt}>{t('HDR')}</Text>
+        </View>
+        <View
+          style={[
+            styles.all_orders,
+            {
+              width: '16%',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              paddingLeft: '5%',
+            },
+          ]}>
+          <Text style={[styles.all_orders_heading_txt]}>{t('Price')}</Text>
+          {/* ToolTip Start */}
+
+          <Tooltip
+            contentStyle={styles.ContainerToolTip}
+            isVisible={showTip}
+            content={
+              <Text
+                style={{
+                  color: fonts.textWhite,
+                  fontSize: 13,
+                  fontFamily: fonts.LatoRegular,
+                  color: colors.textWhite,
+                }}>
+                Didn’t find an appropriate Item Name? Contact us and we'll add
+                it! and we'll add it!
+              </Text>
+            }
+            onClose={() => setTip(false)}
+            placement="bottom"
+            showChildInTooltip={false}
+            accessible={false}>
+            <TouchableOpacity
+              style={[
+                styles.TooltipButton,
+                {
+                  backgroundColor:
+                    showTip == true ? colors.primary : colors.blurPrimary,
+                },
+              ]}
+              onPress={() => setTip(true)}>
+              <AntDesign
+                name="question"
+                style={[
+                  styles.TooltipText,
+                  {
+                    color: showTip == true ? colors.textWhite : colors.primary,
+                  },
+                ]}
+              />
+            </TouchableOpacity>
+          </Tooltip>
+          {/* /////Tol Tip End */}
+        </View>
+        <View style={[styles.all_orders, {width: '15%'}]}>
+          <Text style={styles.all_orders_heading_txt}>{t('Image')}</Text>
+        </View>
+        <View style={[styles.all_orders, {width: '12%', paddingRight: '2%'}]}>
+          <Text style={styles.all_orders_heading_txt}>{t('In Stock')}</Text>
+        </View>
+      </View>
+    );
+  };
+
+  const render_all_oredrs = (item, index) => {
+    return (
+      <View>
+        <View
+          style={[
+            styles.render_all_orders,
+            {
+              backgroundColor:
+                index == selected_index ? colors.blurPrimary : colors.textWhite,
+            },
+          ]}>
+          <View style={{right: 25}}>
+            <CheckBox
+              checked={
+                item.checked == true || item.checked == 'true' ? true : false
+              }
+              onPress={() => setcheck(index)}
+              checkedColor={colors.primary}
+              uncheckedColor={colors.light_grey}
+            />
+          </View>
+
+          <View
+            style={[
+              styles.render_all_order_single,
+              {
+                justifyContent: 'flex-start',
+                flexDirection: 'row',
+                right: 20,
+              },
+            ]}>
+            <Text style={{fontFamily: fonts.LatoRegular}}>256GB</Text>
+          </View>
+
+          <View
+            style={[
+              styles.render_all_order_single,
+              {
+                width: '10%',
+                justifyContent: 'flex-start',
+                flexDirection: 'row',
+              },
+            ]}>
+            <Text style={{}}>Space Gray</Text>
+          </View>
+
+          <View style={[styles.render_all_order_single, styles.HdrText]}>
+            <Text style={{fontFamily: fonts.LatoRegular, fontSize: 15}}>
+              Yes
+            </Text>
+          </View>
+
+          <View
+            style={[
+              styles.render_all_order_single,
+              {
+                width: '10%',
+                backgroundColor: colors.textWhite,
+                borderRadius: 5,
+              },
+            ]}>
+            <Text style={{fontFamily: fonts.LatoRegular, color: colors.black}}>
+              1000 $
+            </Text>
+          </View>
+
+          <TouchableOpacity
+            onPress={() => setCombinationModal(true)}
+            style={[styles.render_all_order_single, styles.ImageViewInTable]}>
+            <Image
+              source={require('../../../Assets/Dress.png')}
+              style={{height: 40, width: 40, resizeMode: 'contain'}}
+            />
+          </TouchableOpacity>
+
+          <View style={{}}>
+            <CheckBox
+              checked={
+                item.checked == true || item.checked == 'true' ? true : false
+              }
+              onPress={() => setcheck(index)}
+              checkedColor={colors.primary}
+              uncheckedColor={colors.light_grey}
+            />
+          </View>
+        </View>
+      </View>
+    );
+  };
 
   return (
     <>
@@ -47,212 +322,220 @@ const Specification = ({moveForward, goPrev}) => {
             ) : (
               <View style={{flexDirection: 'row'}}>
                 <CustomText
-                  label={t('specification')}
+                  label={IsTablet ? t('Combination Table') : t('specification')}
                   textStyle={styles.headerTitle}
+                  container={{flexDirection: 'column', alignItems: 'center'}}
                 />
-                <TouchableOpacity
-                  activeOpacity={0.6}
-                  style={styles.questionInActive}>
-                  <Icon
-                    name="question"
-                    type="antdesign"
-                    size={16}
-                    color={colors.primary}
-                  />
-                </TouchableOpacity>
+                {/* ToolTip Start */}
+
+                <Tooltip
+                  contentStyle={styles.ContainerToolTip}
+                  isVisible={showTip1}
+                  content={
+                    <Text
+                      style={{
+                        color: fonts.textWhite,
+                        fontSize: 13,
+                        fontFamily: fonts.LatoRegular,
+                        color: colors.textWhite,
+                      }}>
+                      Didn’t find an appropriate Item Name? Contact us and we'll
+                      add it! and we'll add it!
+                    </Text>
+                  }
+                  onClose={() => setTip1(false)}
+                  placement="bottom"
+                  showChildInTooltip={false}
+                  accessible={false}>
+                  <TouchableOpacity
+                    style={[
+                      styles.TooltipButton,
+                      {
+                        backgroundColor:
+                          showTip1 == true
+                            ? colors.primary
+                            : colors.blurPrimary,
+                      },
+                    ]}
+                    onPress={() => setTip1(true)}>
+                    <AntDesign
+                      name="question"
+                      style={[
+                        styles.TooltipText,
+                        {
+                          color:
+                            showTip1 == true
+                              ? colors.textWhite
+                              : colors.primary,
+                        },
+                      ]}
+                    />
+                  </TouchableOpacity>
+                </Tooltip>
+                {/* /////Tol Tip End */}
               </View>
             )}
           </View>
           {IsTablet ? <View style={styles.divider} /> : null}
           <View style={styles.InnerContainer}>
             <CustomText
-              label={t('Category_Required')}
+              label={
+                IsTablet
+                  ? t(
+                      'All Combinations of attributes that have multiple values',
+                    )
+                  : t('Category_Required')
+              }
               textStyle={styles.categoryRequired}
+              container={{marginVertical: '2%'}}
             />
-            <CustomText label={t('Brand')} textStyle={styles.inputTitle} />
-            <View style={{zIndex: 1}}>
-              <View style={styles.MainRowContainer}>
-                <View
-                  style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
-                  <DropDown
-                    CustomtextStyle={{zIndex: 10}}
-                    multiple={true}
-                    DropDownCustomStyle={!IsTablet ? styles.dropSSd : null}
-                    placeholder="Apple"
-                  />
-                </View>
 
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('CustomValue')}
-                  style={
-                    IsTablet
-                      ? styles.plusContainer
-                      : [styles.plusContainerMobile]
-                  }>
-                  <Icon name="plus" type="antdesign" color={colors.primary} />
-                </TouchableOpacity>
-              </View>
-            </View>
-
-            <CustomText label={t('Color')} textStyle={styles.inputTitle} />
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <View style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
-                <MultiSelectDropDown
-                  CustomDropdownStyle={
-                    !IsTablet ? styles.DropDownMobileCustom : null
-                  }
-                />
-              </View>
-
-              <TouchableOpacity
-                onPress={() => navigation.navigate('CustomValue')}
-                style={
-                  IsTablet
-                    ? styles.plusContainer
-                    : [styles.plusContainerMobile1]
-                }>
-                <Icon name="plus" type="antdesign" color={colors.primary} />
-              </TouchableOpacity>
-            </View>
-
-            <View style={{zIndex: 1}}>
-              <CustomText
-                label={t('Screen_size')}
-                textStyle={styles.inputTitle1}
-              />
-              <View style={styles.MainRowContainer}>
-                <View
-                  style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
-                  <DropDown
-                    CustomtextStyle={{zIndex: 10}}
-                    multiple={true}
-                    DropDownCustomStyle={!IsTablet ? styles.dropSSd : null}
-                    placeholder="15.3"
-                  />
-                </View>
-
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('CustomValue')}
-                  style={
-                    IsTablet
-                      ? styles.plusContainer
-                      : [styles.plusContainerMobile]
-                  }>
-                  <Icon name="plus" type="antdesign" color={colors.primary} />
-                </TouchableOpacity>
-              </View>
-            </View>
-            <CustomText label={t('Capacity')} textStyle={styles.inputTitle} />
-            <View style={styles.MainRowContainer}>
-              <View style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
-                <MultiSelectDropDown
-                  CustomDropdownStyle={
-                    !IsTablet ? styles.DropDownMobileCustom : null
-                  }
-                />
-              </View>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('CustomValue')}
-                style={
-                  IsTablet ? styles.plusContainer : styles.plusContainerMobile1
-                }>
-                <Icon name="plus" type="antdesign" color={colors.primary} />
-              </TouchableOpacity>
-            </View>
-
-            <View style={{zIndex: 1}}>
-              <CustomText
-                label={t('StorageType')}
-                textStyle={styles.inputTitle}
-              />
-
-              <View style={styles.MainRowContainer}>
-                <View
-                  style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
-                  <DropDown
-                    DropDownCustomStyle={!IsTablet ? styles.dropSSd : null}
-                    placeholder="SSD"
-                  />
-                </View>
-
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('CustomValue')}
-                  style={
-                    IsTablet
-                      ? styles.plusContainer
-                      : [styles.plusContainerMobile, {marginTop: 10}]
-                  }>
-                  <Icon name="plus" type="antdesign" color={colors.primary} />
-                </TouchableOpacity>
-              </View>
-            </View>
-
-            <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-              <CustomText label={t('display')} textStyle={styles.inputTitle} />
-              <View style={styles.MainRowContainer}>
-                <View style={styles.customRadioOne} />
-                <CustomText label={t('yes')} textStyle={styles.yesText} />
-              </View>
-              <View style={styles.MainRowContainer}>
-                <View style={styles.customRadioInActive} />
-                <CustomText label={t('no')} textStyle={styles.yesText} />
-              </View>
-              <View style={styles.MainRowContainer}>
-                <View style={styles.customRadioInActive} />
-                <CustomText label={t('Both')} textStyle={styles.yesText} />
-              </View>
-            </View>
-
-            <CustomText label={t('Capacity')} textStyle={styles.inputTitle} />
-            <View style={styles.MainRowContainer}>
-              <View style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
-                <MultiSelectDropDown
-                  CustomDropdownStyle={
-                    !IsTablet ? styles.DropDownMobileCustom : null
-                  }
-                />
-              </View>
-
-              <TouchableOpacity
-                onPress={() => navigation.navigate('CustomValue')}
-                style={
-                  IsTablet ? styles.plusContainer : styles.plusContainerMobile2
-                }>
-                <Icon name="plus" type="antdesign" color={colors.primary} />
-              </TouchableOpacity>
-            </View>
             {!IsTablet ? (
-              <TouchableOpacity
-                onPress={() => setCustomField(!customField)}
-                style={styles.CreateFieldsContainer}>
-                <Icon
-                  name="plus"
-                  type="antdesign"
-                  size={24}
-                  color={colors.primary}
-                />
+              <View>
+                <CustomText label={t('Brand')} textStyle={styles.inputTitle} />
+                <View style={{zIndex: 1}}>
+                  <View style={styles.MainRowContainer}>
+                    <View
+                      style={
+                        IsTablet ? {width: '90%'} : styles.ColorMobileView
+                      }>
+                      <DropDown
+                        CustomtextStyle={{zIndex: 10}}
+                        multiple={true}
+                        DropDownCustomStyle={styles.dropSSd}
+                        placeholder="Apple"
+                      />
+                    </View>
+
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate('CustomValue')}
+                      style={styles.plusContainerMobile}>
+                      <Icon
+                        name="plus"
+                        type="antdesign"
+                        color={colors.primary}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </View>
+
+                <CustomText label={t('Color')} textStyle={styles.inputTitle} />
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <View style={styles.ColorMobileView}>
+                    <MultiSelectDropDown
+                      CustomDropdownStyle={styles.DropDownMobileCustom}
+                    />
+                  </View>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('CustomValue')}
+                    style={styles.plusContainerMobile1}>
+                    <Icon name="plus" type="antdesign" color={colors.primary} />
+                  </TouchableOpacity>
+                </View>
+                <View style={{zIndex: 1}}>
+                  <CustomText
+                    label={t('Screen_size')}
+                    textStyle={styles.inputTitle1}
+                  />
+                  <View style={styles.MainRowContainer}>
+                    <View style={styles.ColorMobileView}>
+                      <DropDown
+                        CustomtextStyle={{zIndex: 10}}
+                        multiple={true}
+                        DropDownCustomStyle={styles.dropSSd}
+                        placeholder="15.3"
+                      />
+                    </View>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate('CustomValue')}
+                      style={[styles.plusContainerMobile]}>
+                      <Icon
+                        name="plus"
+                        type="antdesign"
+                        color={colors.primary}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </View>
                 <CustomText
-                  label={t('Add_custom_field')}
-                  textStyle={styles.customTextMobile}
+                  label={t('Capacity')}
+                  textStyle={styles.inputTitle}
                 />
-              </TouchableOpacity>
-            ) : null}
-          </View>
-          {IsTablet ? (
-            <View style={styles.buttonContainer}>
-              <CustomButton
-                text={t('back')}
-                containerStyle={
-                  IsTablet ? styles.backContainer : styles.backContainerMobile
-                }
-                textStyle={styles.backText}
-                onPress={goPrev}
-              />
-              <View style={styles.MainRowContainer}>
+                <View style={styles.MainRowContainer}>
+                  <View
+                    style={IsTablet ? {width: '90%'} : styles.ColorMobileView}>
+                    <MultiSelectDropDown
+                      CustomDropdownStyle={styles.DropDownMobileCustom}
+                    />
+                  </View>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('CustomValue')}
+                    style={styles.plusContainerMobile1}>
+                    <Icon name="plus" type="antdesign" color={colors.primary} />
+                  </TouchableOpacity>
+                </View>
+                <View style={{zIndex: 1}}>
+                  <CustomText
+                    label={t('StorageType')}
+                    textStyle={styles.inputTitle}
+                  />
+                  <View style={styles.MainRowContainer}>
+                    <View style={styles.ColorMobileView}>
+                      <DropDown
+                        DropDownCustomStyle={styles.dropSSd}
+                        placeholder="SSD"
+                      />
+                    </View>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate('CustomValue')}
+                      style={[styles.plusContainerMobile, {marginTop: 10}]}>
+                      <Icon
+                        name="plus"
+                        type="antdesign"
+                        color={colors.primary}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
+                  <CustomText
+                    label={t('display')}
+                    textStyle={styles.inputTitle}
+                  />
+                  <View style={styles.MainRowContainer}>
+                    <View style={styles.customRadioOne} />
+                    <CustomText label={t('yes')} textStyle={styles.yesText} />
+                  </View>
+                  <View style={styles.MainRowContainer}>
+                    <View style={styles.customRadioInActive} />
+                    <CustomText label={t('no')} textStyle={styles.yesText} />
+                  </View>
+                  <View style={styles.MainRowContainer}>
+                    <View style={styles.customRadioInActive} />
+                    <CustomText label={t('Both')} textStyle={styles.yesText} />
+                  </View>
+                </View>
+
+                <CustomText
+                  label={t('Capacity')}
+                  textStyle={styles.inputTitle}
+                />
+                <View style={styles.MainRowContainer}>
+                  <View style={styles.ColorMobileView}>
+                    <MultiSelectDropDown
+                      CustomDropdownStyle={styles.DropDownMobileCustom}
+                    />
+                  </View>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('CustomValue')}
+                    style={styles.plusContainerMobile2}>
+                    <Icon name="plus" type="antdesign" color={colors.primary} />
+                  </TouchableOpacity>
+                </View>
+
                 <TouchableOpacity
-                  activeOpacity={0.6}
-                  style={styles.addCustomField}
-                  onPress={() => setCustomField(!customField)}>
+                  onPress={() => setCustomField(!customField)}
+                  style={styles.CreateFieldsContainer}>
                   <Icon
                     name="plus"
                     type="antdesign"
@@ -261,19 +544,23 @@ const Specification = ({moveForward, goPrev}) => {
                   />
                   <CustomText
                     label={t('Add_custom_field')}
-                    textStyle={styles.customText}
+                    textStyle={styles.customTextMobile}
                   />
                 </TouchableOpacity>
-
-                <CustomButton
-                  text={t('Next_step')}
-                  textStyle={styles.nextStep}
-                  onPress={moveForward}
+              </View>
+            ) : (
+              <View>
+                {header_alloredrs()}
+                <FlatList
+                  keyExtractor={(item, index) => index.toString()}
+                  data={data}
+                  renderItem={({item, index}) => render_all_oredrs(item, index)}
                 />
               </View>
-            </View>
-          ) : null}
-          {!IsTablet ? <View style={styles.divider} /> : null}
+            )}
+          </View>
+
+          <View style={!IsTablet ? styles.divider : null} />
           {!IsTablet ? (
             <View style={{flexDirection: 'row'}}>
               <TouchableOpacity
@@ -295,10 +582,61 @@ const Specification = ({moveForward, goPrev}) => {
                 />
               </TouchableOpacity>
             </View>
-          ) : null}
+          ) : (
+            <View style={styles.buttonContainer}>
+              <CustomButton
+                text={t('back')}
+                containerStyle={styles.backContainer}
+                textStyle={styles.backText}
+                onPress={goPrev}
+              />
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <CustomButton
+                  text={t('Next_step')}
+                  textStyle={styles.nextStep}
+                  onPress={moveForward}
+                />
+              </View>
+            </View>
+          )}
+
           <View style={{height: 20, width: '100%'}} />
         </View>
       </ScrollView>
+      {/* Tab Image Modal Start */}
+      <CustomModal
+        isModalVisible={CombinationModal}
+        setModalVisible={setCombinationModal}
+        modalWrapperStyle={styles.CombinationModal_ModalContainer}>
+        <View style={{flexDirection: 'row'}}>
+          <View style={{width: '30%'}}>
+            <Image
+              style={{height: 200, width: 200}}
+              resizeMode={'contain'}
+              source={require('../../../Assets/download.png')}
+            />
+          </View>
+          <View style={{}}>
+          <FlatList
+            data={ModelData}
+            numColumns={4}
+            renderItem={({item}) => (
+              <View style={styles.FlatListMainView}>
+                <TouchableOpacity style={{borderColor:'red',borderWidth:2,backgroundColor:colors.ImageBack}}>
+                <Image
+                  style={{height: 90, width: 80}}
+                  source={require('../../../Assets/download.png')}
+                />
+                </TouchableOpacity>
+              </View>
+            )}
+            keyExtractor={item => item.id}
+          />
+          </View>
+        </View>
+      </CustomModal>
+
+      {/* tab Image Modal End */}
       <CustomModal
         isModalVisible={customField}
         setModalVisible={setCustomField}
@@ -397,7 +735,7 @@ const styles = ScaledSheet.create({
   mainContainer: {
     backgroundColor: IsTablet ? colors.textWhite : colors.profileBackground,
     marginLeft: '5@s',
-    width: IsTablet ? '65%' : '93%',
+    width: IsTablet ? '97%' : '93%',
     borderRadius: '4@s',
     marginBottom: '10@s',
   },
@@ -476,10 +814,10 @@ const styles = ScaledSheet.create({
   },
   InnerContainer: {
     paddingHorizontal: '10@s',
-    paddingVertical: '5@s',
   },
   headerTitleContainer: {
     margin: '10@s',
+    paddingTop: '5@s',
   },
   headerTitle: {
     fontSize: '13@ms',
@@ -487,10 +825,13 @@ const styles = ScaledSheet.create({
     color: colors.black,
   },
   questionInActive: {
-    backgroundColor: colors.primaryBlur,
-    borderRadius: '99@s',
-    padding: '5@s',
-    marginLeft: '8@s',
+    backgroundColor: colors.blurPrimary,
+    marginLeft: '5@s',
+    height: 30,
+    width: 30,
+    borderRadius: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   divider: {
     backgroundColor: colors.underLine,
@@ -507,7 +848,6 @@ const styles = ScaledSheet.create({
     fontSize: '10@ms',
     fontFamily: fonts.bold,
     color: colors.textPrime,
-
     paddingBottom: '5@s',
   },
   inputTitle: {
@@ -522,6 +862,7 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginHorizontal: '10@s',
+    marginVertical: '10@s',
   },
   backContainer: {
     borderRadius: '3@s',
@@ -536,6 +877,11 @@ const styles = ScaledSheet.create({
     backgroundColor: 'transparent',
     width: '50%',
   },
+  backText: {
+    fontSize: '12@ms',
+    fontFamily: fonts.PoppinsSemiBold,
+    color: colors.primary,
+  },
   plusContainer: {
     backgroundColor: colors.blurPrimary,
     marginHorizontal: '10@s',
@@ -545,7 +891,6 @@ const styles = ScaledSheet.create({
   plusContainerMobile: {
     backgroundColor: colors.blurPrimary,
     marginHorizontal: '10@s',
-
     borderRadius: '4@s',
     height: '45@s',
     width: '43@s',
@@ -555,7 +900,6 @@ const styles = ScaledSheet.create({
   plusContainerMobile2: {
     backgroundColor: colors.blurPrimary,
     marginHorizontal: '10@s',
-
     borderRadius: '4@s',
     height: '45@s',
     width: '43@s',
@@ -574,11 +918,7 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     marginBottom: '16@s',
   },
-  backText: {
-    fontSize: '12@ms',
-    fontFamily: fonts.PoppinsSemiBold,
-    color: colors.primary,
-  },
+
   barcodeModalHeader: {
     flexDirection: 'row',
     width: '100%',
@@ -602,18 +942,7 @@ const styles = ScaledSheet.create({
     marginRight: '10@s',
     paddingVertical: '3@s',
   },
-  addCustomFieldMobile: {
-    backgroundColor: colors.blurPrimary,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: '3@s',
 
-    width: '100%',
-    textAlign: 'center',
-
-    height: 40,
-    marginVertical: 20,
-  },
   addCustomField1: {
     justifyContent: 'center',
     flexDirection: 'row',
@@ -671,6 +1000,7 @@ const styles = ScaledSheet.create({
   ForwordbottomButtonContainerMobile: {
     // alignContent:'center',
     // backgroundColor:'red'
+    marginVertical: 10,
   },
   barCodeModalContainer: {
     width: '100%',
@@ -678,12 +1008,7 @@ const styles = ScaledSheet.create({
     height: '91%',
     marginTop: '10@s',
   },
-  barcodeContainer: {
-    borderColor: colors.borderColor,
-    borderWidth: '1@s',
-    borderRadius: '4@s',
-    padding: '5@s',
-  },
+
   borderCodeHeaderText: {
     fontSize: '16@ms',
     fontFamily: fonts.PoppinsSemiBold,
@@ -695,15 +1020,7 @@ const styles = ScaledSheet.create({
     color: colors.textPrime,
     marginBottom: '3@s',
   },
-  SpecificationMobileDrop: {
-    backgroundColor: colors.dullWhite,
-    width: '85%',
-    height: '45@s',
-    borderRadius: 5,
-    overflow: 'hidden',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+
   ColorMobileView: {
     width: '85%',
   },
@@ -721,7 +1038,7 @@ const styles = ScaledSheet.create({
   },
   BackbottomButtonContainerMobile: {
     backgroundColor: colors.blurPrimary,
-    height: '40@s',
+    height: '43@s',
     width: '40@s',
     justifyContent: 'center',
     alignItems: 'center',
@@ -739,6 +1056,13 @@ const styles = ScaledSheet.create({
     marginVertical: 0,
     marginLeft: '65%',
     justifyContent: 'flex-start',
+  },
+  CombinationModal_ModalContainer: {
+    marginHorizontal: 0,
+    marginVertical: 0,
+    marginLeft: '38%',
+    justifyContent: 'flex-start',
+    paddingVertical: '1%',
   },
   ModalContainerMobile: {
     marginHorizontal: 0,
@@ -766,4 +1090,68 @@ const styles = ScaledSheet.create({
     borderRadius: 5,
     overflow: 'hidden',
   },
+  // ///////
+  render_all_orders: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+  render_all_order_single: {
+    height: '30@vs',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 5,
+  },
+  all_orders_header: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    height: 50,
+    backgroundColor: '#F2F4F5',
+    padding: 10,
+    marginVertical: 8,
+  },
+  all_orders: {
+    backgroundColor: '#F2F4F5',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  all_orders_heading_txt: {
+    fontFamily: fonts.LatoBold,
+    color: colors.black,
+    fontSize: '9@vs',
+  },
+  ContainerToolTip: {
+    flex: 1,
+    backgroundColor: colors.primary,
+    width: '100@s',
+  },
+  TooltipButton: {
+    height: 30,
+    width: 30,
+    borderRadius: 15,
+    marginHorizontal: 10,
+  },
+  TooltipText: {
+    fontSize: 25,
+    justifyContent: 'center',
+    textAlign: 'center',
+    paddingVertical: 2,
+  },
+  ImageViewInTable: {
+    width: 55,
+    height: 55,
+    marginTop: 5,
+    borderColor: colors.black,
+    borderWidth: 2,
+    borderRadius: 5,
+    marginLeft: 20,
+  },
+  HdrText: {
+    width: '10%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  FlatListMainView:{
+    paddingHorizontal:'2%',
+    paddingVertical:'1%'
+  }
 });

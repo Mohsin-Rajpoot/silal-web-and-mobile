@@ -50,7 +50,8 @@ const Login = ({ navigation, route }) => {
   };
 
   const SignUpWithPhone = (data) => {
-    if (data.length < 10) {
+    console.log("************", data)
+    if (data.length < 8) {
       setError(t("EnterValidPhone"));
     } else {
       dispatch(

@@ -656,6 +656,7 @@
     "alreadySentEmail":"OTP Email was already sent",
     "noUser":"User not found",
     "alreadySentPhone":"An Otp was already sent to this phone, Do you want to verify it",
-    "ClickHere":"Click here"
+    "ClickHere":"Click here",
+    "Valid":"Valid"
   }
 }

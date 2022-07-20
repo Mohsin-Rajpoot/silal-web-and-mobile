@@ -1,24 +1,55 @@
 import { View, Text, Button, TouchableOpacity } from "react-native";
 import React, { useRef, useState } from "react";
 import PagerView from "react-native-pager-view";
-import FirstPage from "./SignUpFormPages/FirstPage";
 import HeaderBack from "../../components/native/HeaderBack";
 import Header from "./SignUpFormPages/Molecules/Header";
+import FirstPage from "./SignUpFormPages/FirstPage";
 import SecondPage from "./SignUpFormPages/SecondPage";
+import ThirdPage from "./SignUpFormPages/ThirdPage";
 import styles from "./style";
+import * as userAction from "../../store/User/actions";
 import CustomText from "../../components/CustomText";
 import AuthButton from "../../components/native/AuthButton";
 import { Icon } from "react-native-elements";
 import colors from "../../assets/colors";
-import ThirdPage from "./SignUpFormPages/ThirdPage";
 import { useTranslation } from "react-i18next";
-
 import IsTablet from "../../components/native/IsTablet";
 import { verticalScale } from "react-native-size-matters";
+import { useDispatch } from "react-redux";
 const SignUpForm = ({ navigation }) => {
   const { t } = useTranslation();
+  const AllFieldsData = {
+    name: "",
+    bio: "",
+    address: {
+      address_line_2: " ",
+      address_line_1: "",
+      town_id: "",
+      notes: "",
+      lat: "",
+      lng: "",
+    },
+    tax_id: "",
+    slogan: "",
+    business_phone: "",
+    business_email: "",
+    business_owner_full_name: "",
+    main_category_id: "",
+    working_time_start: "",
+    working_time_end: "",
+  };
+  const [CreateStore, setCreateStore] = useState(AllFieldsData);
+  const [BusinesName, setBusinesName] = useState();
+  const [BusinessOwner, setBusinessOwner] = useState();
+  const [BusinessEmail, setBusinessEmail] = useState();
+  const [socialmediaProfile, setsocialmediaProfile] = useState();
+  const [socialmediaWebsite, setBusinessWebsite] = useState();
+  const [BusinesTax_Id, setBusinesTax_Id] = useState();
+  const [PhoneNumber, setPhoneNumber] = useState();
   const ref = useRef(null);
   const [page, setPage] = useState(0);
+  const dispatch = useDispatch();
+
   const isTab = IsTablet;
   const goprev = () => {
     if (page > 0) {
@@ -45,11 +76,38 @@ const SignUpForm = ({ navigation }) => {
     }
   };
   const goToGettingStarted = () => {
-    navigation.navigate("GettingStarted", {
-      params: {
-        gettingStarted: true,
-      },
-    });
+    console.log("####################",CreateStore)
+    // return
+    var data123 = {
+      BusinesName: BusinesName,
+      BusinessOwner: BusinessOwner,
+      BusinessEmail: BusinessEmail,
+      socialmediaProfile: socialmediaProfile,
+      socialmediaWebsite: socialmediaWebsite,
+      BusinesTax_Id: BusinesTax_Id,
+      PhoneNumber: PhoneNumber,
+    };
+    dispatch(
+      userAction.userCreateStoreSaga({
+        data123,
+        cb: (res) => {
+          if (res == "Email Verified") {
+            setTimeout(() => {
+              navigation.navigate("GettingStarted", {
+                params: {
+                  gettingStarted: true,
+                },
+              });
+            }, 1000);
+          }
+        },
+      })
+    );
+    // navigation.navigate("GettingStarted", {
+    //   params: {
+    //     gettingStarted: true,
+    //   },
+    // });
   };
   return (
     <>
@@ -101,10 +159,35 @@ const SignUpForm = ({ navigation }) => {
         ref={ref}
       >
         <View key="1">
-          <FirstPage />
+          <FirstPage
+            businessName={(text) =>
+              setCreateStore({ ...CreateStore, name: text })
+            }
+            BusinessOwner={(text) =>
+              setCreateStore({ ...CreateStore, business_owner_full_name: text })
+            }
+            BusinessEmail={(text) =>
+              setCreateStore({ ...CreateStore, business_email: text })
+            }
+            // BusinessWebsite={(text) =>
+            //   setCreateStore({ ...CreateStore, name: text })
+            // }
+            // socialmediaProfile={(text) =>
+            //   setCreateStore({ ...CreateStore, name: text })
+            // }
+            BusinesTax_Id={(text) =>
+              setCreateStore({ ...CreateStore, tax_id: text })
+            }
+            PhoneNumber={(text) => setCreateStore({ ...CreateStore, business_phone: text })}
+          />
         </View>
         <View key="2">
-          <SecondPage navigation={navigation} />
+          <SecondPage
+           Adress_One={(text) =>
+            setCreateStore({ ...CreateStore, address_line_1:text })
+          }
+          navigation={navigation}
+          />
         </View>
         <View key="3">
           <ThirdPage />

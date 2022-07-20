@@ -18,6 +18,13 @@ const SecondPage = ({navigation}) => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [value, setValue] = useState(null);
+  const [Adress_One, setAdress_One] = useState("");
+  const [Adress_Two, setAdress_Two] = useState("");
+  const [Notes, setNotes] = useState("");
+  const [Longitude, setLongitude] = useState("");
+  const [Latitude, setLatitude] = useState("");
+  const [GPS, setGPS] = useState("");
+
   const [items, setItems] = useState([
     { label: "New York", value: "New York" },
     { label: "Banana", value: "banana" },
@@ -36,9 +43,19 @@ const SecondPage = ({navigation}) => {
           <CustomText label="*" textStyle={styles.star} />
         </View>
 
-        <TextInput placeholderText={t("addressLine")} isTab={IsTablet} />
+        <TextInput
+          value={Adress_One}
+          onChangeText={(text) => props.Adress_One(text)}
+          placeholderText={t("addressLine")}
+          isTab={IsTablet}
+        />
         <View style={{ height: verticalScale(10) }} />
-        <TextInput placeholderText={t("addressLine1")} isTab={IsTablet} />
+        <TextInput
+          value={Adress_Two}
+          onChangeText={(text) => props.Adress_Two(text)}
+          placeholderText={t("addressLine1")}
+          isTab={IsTablet}
+        />
         <View style={{ flexDirection: "row", marginTop: 30 }}>
           <CustomText
             label={t("BusinessLocation")}
@@ -68,6 +85,8 @@ const SecondPage = ({navigation}) => {
               }}
             >
               <TextInput
+                value={Longitude}
+                onChangeText={(text) => props.Longitude(text)}
                 placeholderText={t("Longitude")}
                 inputStyle={styles.addressInput}
                 isTab={IsTablet}
@@ -81,6 +100,8 @@ const SecondPage = ({navigation}) => {
               }}
             >
               <TextInput
+                value={Latitude}
+                onChangeText={(text) => props.Latitude(text)}
                 placeholderText={t("Latitude")}
                 inputStyle={styles.addressInput}
                 isTab={IsTablet}
@@ -94,6 +115,8 @@ const SecondPage = ({navigation}) => {
             }}
           >
             <TextInput
+              value={GPS}
+              onChangeText={(text) => props.GPS(text)}
               placeholderText={t("GPS_location")}
               inputStyle={styles.addressInput}
               isTab={IsTablet}
@@ -114,7 +137,6 @@ const SecondPage = ({navigation}) => {
               alignItems: "center",
               justifyContent: "space-between",
               width: !IsTablet ? "100%" : "65%",
-     
             }}
           >
             <View
@@ -272,6 +294,8 @@ const SecondPage = ({navigation}) => {
         <View style={{ height: verticalScale(!IsTablet ? 20 : 40) }} />
         <CustomText label={t("Notes")} textStyle={styles.formTextHeading} />
         <TextInput
+          value={Notes}
+          onChangeText={(text) => props.Notes(text)}
           placeholderText={t("Anything")}
           isTab={IsTablet}
           multiLine={true}

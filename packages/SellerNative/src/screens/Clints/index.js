@@ -198,8 +198,6 @@ const Clints = ({navigation}) => {
   ] = useState(false);
 
   const [SecondModalVisible, setSecondModalVisible] = useState(false);
-  // ////
-
   const footer = () => {
     return (
       <View style={{marginTop: 10}}>
@@ -368,11 +366,11 @@ const Clints = ({navigation}) => {
           <View style={{marginTop: 10}}>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>
-                {' '}
+                
                 {t('customer_name')}
               </Text>
               <Text style={styles.modal_title_second}>
-                {' '}
+            
                 {t('Willson_Genemal')}
               </Text>
             </View>
@@ -975,7 +973,7 @@ const Clints = ({navigation}) => {
         :
         null
         }
-        <ModalView
+        <ModalViewS
           transparent={true}
           animationType="fade"
           onBackdropPress={() => changeModalVisibilty(false)}
@@ -985,7 +983,7 @@ const Clints = ({navigation}) => {
             changeModalVisibilty={changeModalVisibilty}
             setData={setData}
           />
-        </ModalView>
+        </ModalViewS>
       </View>
       {/* <View style={{ marginTop: 5, marginBottom: 120 }}> */}
       <FlatList
@@ -993,7 +991,6 @@ const Clints = ({navigation}) => {
         numColumns={!IsTablet ? '1' : '3'}
         ListFooterComponent={footer}
         style={!IsTablet ? styles.FlatListMobileMain : styles.FlatListMain}
-        // showsVerticalScrollIndicator={false}
         renderItem={({item}) => (
           <View
             style={

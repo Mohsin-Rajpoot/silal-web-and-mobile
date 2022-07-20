@@ -9,9 +9,15 @@ import colors from "../../../assets/colors";
 import { useTranslation } from "react-i18next";
 import IsTablet from "../../../components/native/IsTablet";
 import { verticalScale } from "react-native-size-matters";
-const FirstPage = () => {
+const FirstPage = (props) => {
   const { t } = useTranslation();
-  const [text, setText] = useState("");
+  const [PhoneNumber, setPhoneNumber] = useState("");
+  const [BusinesName, setBusinesName] = useState();
+  const [BusinessOwner, setBusinessOwner] = useState();
+  const [BusinessEmail, setBusinessEmail] = useState();
+  const [socialmediaProfile, setsocialmediaProfile] = useState();
+  const [socialmediaWebsite, setBusinessWebsite] = useState();
+  const [BusinesTax_Id, setBusinesTax_Id] = useState();
 
   return (
     <View style={styles.firstPageMainContainer}>
@@ -29,7 +35,12 @@ const FirstPage = () => {
           <CustomText label="*" textStyle={styles.star} />
         </View>
         <View style={{ width: !IsTablet ? "100%" : "50%" }}>
-          <TextInput placeholderText={t("Enter_name")} isTab={IsTablet} />
+          <TextInput
+            placeholderText={t("Enter_name")}
+            isTab={IsTablet}
+            value={BusinesName}
+            onChangeText={(text) => props.businessName(text)}
+          />
         </View>
         <View style={{ flexDirection: "row", marginTop: verticalScale(10) }}>
           <CustomText
@@ -40,7 +51,12 @@ const FirstPage = () => {
           />
           <CustomText label="*" textStyle={styles.star} />
         </View>
-        <TextInput placeholderText={t("enter_full_name")} isTab={IsTablet} />
+        <TextInput
+          placeholderText={t("enter_full_name")}
+          isTab={IsTablet}
+          value={BusinessOwner}
+          onChangeText={(text) => props.BusinessOwner(text)}
+        />
         <View style={{ height: 10 }} />
         <View style={{ flexDirection: "row", marginTop: 5 }}>
           <CustomText
@@ -70,9 +86,9 @@ const FirstPage = () => {
           codeTextStyle={styles.codeText}
           defaultCode="RU"
           layout="second"
-          onChangeText={(value) => setText(value)}
+          onChangeText={(text) => props.PhoneNumber(text)}
           // onChangeFormattedText={(value) => setText(value)}
-          value={text}
+          value={PhoneNumber}
           placeholder={t("phone_number")}
         />
 
@@ -85,7 +101,12 @@ const FirstPage = () => {
           />
           <CustomText label={!IsTablet ? " " : "*"} textStyle={styles.star} />
         </View>
-        <TextInput placeholderText={"example@example.com"} isTab={IsTablet} />
+        <TextInput
+          value={BusinessEmail}
+          onChangeText={(text) => props.BusinessEmail(text)}
+          placeholderText={"example@example.com"}
+          isTab={IsTablet}
+        />
 
         <View style={{ flexDirection: "row", marginTop: verticalScale(10) }}>
           <CustomText
@@ -101,6 +122,8 @@ const FirstPage = () => {
           )}
         </View>
         <TextInput
+          value={socialmediaProfile}
+          onChangeText={(text) => props.socialmediaProfile(text)}
           placeholderText={"https://www.instagram.com/silal.app"}
           isTab={IsTablet}
         />
@@ -112,13 +135,15 @@ const FirstPage = () => {
               !IsTablet ? styles.formTextHeadingMobile : styles.formTextHeading
             }
           />
-         {!IsTablet ? (
+          {!IsTablet ? (
             <CustomText label=" " textStyle={styles.star} />
           ) : (
             <CustomText label={t("optional")} textStyle={styles.optionalText} />
           )}
         </View>
         <TextInput
+          value={socialmediaWebsite}
+          onChangeText={(text) => props.BusinessWebsite(text)}
           placeholderText={"https://www.facebook.com/silal.app"}
           isTab={IsTablet}
         />
@@ -132,7 +157,12 @@ const FirstPage = () => {
           />
           <CustomText label={!IsTablet ? " " : "*"} textStyle={styles.star} />
         </View>
-        <TextInput placeholderText={t("000-000-000")} isTab={IsTablet} />
+        <TextInput
+          value={BusinesTax_Id}
+          onChangeText={(text) => props.BusinesTax_Id(text)}
+          placeholderText={t("000-000-000")}
+          isTab={IsTablet}
+        />
       </ScrollView>
     </View>
   );
