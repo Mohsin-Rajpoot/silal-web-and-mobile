@@ -14,7 +14,7 @@ const ProductLayout = () => {
 
   return (
     <React.Fragment>
-      <div className="main-content d-flex">
+      <div className="d-flex">
         <Sidebar sideBar={sideBar} setSideBar={sideBarToggle} />
         <div className="flex-1">
           {pathname == "/product/create-new-item" ? '' :

@@ -320,7 +320,7 @@ export default function Archive_orders({title, navigation}) {
                 borderBottomWidth: 1,
                 borderRightWidth: 1,
                 borderLeftWidth: 6,
-                borderColor: '#5AB3A8',
+                borderColor: '#05AE4B',
                 paddingHorizontal: 20,
               }}
               keyExtractor={(item, index) => index.toString()}
@@ -403,7 +403,7 @@ export default function Archive_orders({title, navigation}) {
         {active && (
           <TouchableOpacity
             style={{
-              backgroundColor: '#5AB3A8',
+              backgroundColor: '#05AE4B',
               width: 150,
               height: 40,
               marginLeft: 20,
@@ -689,7 +689,7 @@ const styles = StyleSheet.create({
     marginLeft: 30,
   },
   accept_btn: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
@@ -716,7 +716,7 @@ const styles = StyleSheet.create({
   },
   ready_btn: {
     flex: 1,
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     borderRadius: 5,
     alignItems: 'center',
     paddingVertical: 10,
@@ -788,7 +788,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   modal_recuring: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,

@@ -12,10 +12,10 @@ const styles = ScaledSheet.create({
   WhiteDive: {
     flexDirection: 'row',
     paddingVertical: verticalScale(4),
-    justifyContent:"space-around",
+    justifyContent: 'space-around',
     paddingTop: 10,
-    width:"100%",
-    alignItems:"center"
+    width: '100%',
+    alignItems: 'center',
   },
   WhiteDiveMobile: {
     flexDirection: 'column',
@@ -28,7 +28,7 @@ const styles = ScaledSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
-    marginHorizontal:"5@s"
+    marginHorizontal: '5@s',
   },
   CurrencyImage: {
     height: '20@vs',
@@ -86,13 +86,13 @@ const styles = ScaledSheet.create({
     flexWrap: 'wrap',
     paddingHorizontal: '11@s',
     alignSelf: 'center',
-    marginBottom:"5@s"
+    marginBottom: '5@s',
   },
   One: {
     backgroundColor: colors.textWhite,
     width: '24%',
     elevation: 2,
-    borderRadius: "5@s",
+    borderRadius: '5@s',
     marginVertical: 15,
     padding: '1@s',
   },
@@ -104,7 +104,7 @@ const styles = ScaledSheet.create({
     margin: '5@s',
     borderRadius: '8@s',
     paddingHorizontal: '5@s',
-    alignItems:"flex-start"
+    alignItems: 'flex-start',
   },
   DollorSign: {
     justifyContent: 'center',
@@ -277,12 +277,11 @@ const styles = ScaledSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
   },
-  renewItem:{
-    fontSize:"10@vs",
-    color:colors.primary,
-    fontFamily:fonts.LatoRegular,
-    marginLeft:"6@s"
-  }
-  
+  renewItem: {
+    fontSize: '10@vs',
+    color: colors.primary,
+    fontFamily: fonts.LatoRegular,
+    marginLeft: '6@s',
+  },
 });
 export default styles;

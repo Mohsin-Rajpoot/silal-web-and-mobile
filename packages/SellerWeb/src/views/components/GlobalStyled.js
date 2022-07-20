@@ -4,7 +4,7 @@ import { collpaseArrow } from "./AllImages";
 const GlobalStyle = createGlobalStyle`
 :root {
     --dark-clr: #002733;
-    --theme-clr: #5AB3A8;
+    --theme-clr: #05AE4B;
 }
 * {
     margin: 0;
@@ -47,7 +47,6 @@ body {
 .f-semibold {
     font-weight: 600;
 }
-
 .f-bold {
     font-weight: 700 !important;
 }
@@ -98,7 +97,7 @@ span {
     height: 30px;
     padding: 0 10px;
     background: #F2F4F5;
-    border: 1px solid #5AB3A8;
+    border: 1px solid #05AE4B;
     border-radius: 5px;
     cursor: pointer;
     input {
@@ -247,21 +246,21 @@ hr {
     border-radius:5px;
 
 }
-.modal-546{
+.modal-546 {
     width:546px;
     max-width: inherit;
-    .modal-header{
+    .modal-header {
         border-bottom:0;
         padding-bottom:0;
     }
-    .modal-title{
+    .modal-title {
         font-size: 17px;
         font-weight:700;
-        span{
+        span {
             color:var(--theme-clr);
         }
     }
-    .modal-footer{
+    .modal-footer {
         padding-top:0px;
         border-top:0;
     }
@@ -399,9 +398,10 @@ hr {
     left: 10px;
 }
 .info-sign {
+    font-family: 'Poppins';
     width: 15px;
     height: 15px;
-    background: #5AB3A8;
+    background: #05AE4B;
     font-weight: 500;
     font-size: 11px;
     line-height: 14px;
@@ -484,9 +484,57 @@ hr {
         min-width: 71px;
     }
 }
-.radius-0{
+.radius-0 {
     border-radius:0;
 }
+.refusal-modal {
+    .modal-dialog {
+        max-width: 546px;
+    }
+}
+.modal-title-center {
+    .modal-title {
+        margin-left: auto !important;
+        text-align: center;
+    }
+}
+.save-note-hover:hover {
+    background: rgba(90, 179, 168, 0.2);
+    color: #05AE4B;
+}
+.detail-modal {
+    .modal-dialog {
+        max-width: 700px;
+    }
+    .modal-content {
+        background-color: #FAFAFA;
+    }
+}
+.file-input-none {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+.modal-width-420 {
+    .modal-dialog {
+        max-width: 420px;
+    }
+}
+.category-canvas {
+    width: 775px;
+    overflow-y: auto;
+}
+
+    .pre {
+    padding: 0px 219px 20px 20px;
+    
+  }
+
 `;
 
 export default GlobalStyle;

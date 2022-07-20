@@ -34,9 +34,7 @@ import {
     Box,
     BoxCol,
 } from '../../../components/products/Components'
-import {
-    SearchWindow
-} from '../../../components/UseFullElements'
+import { SearchWindow } from '../../../components/UseFullElements'
 import {
     BackArrow,
     uploadImgPlaceholder,

@@ -100,12 +100,12 @@ const colors = {
   borderColor5: "rgba(232, 232, 232, 1)",
   red10: "rgba(222, 53, 11, 1)",
   Blur_Red: "#FAE1DA",
-  borderColor4:"(232, 232, 232, 0.5)",
-  modalBg:"#FDFDFD",
-  primaryGreenColor:"rgba(130, 214, 165, 1)",
-  darkGray:"rgba(4, 26, 33, 0.3)",
-  black40:"#555559",
-  dullColor:"rgba(0, 0, 0, 0.14)"
+  borderColor4: "(232, 232, 232, 0.5)",
+  modalBg: "#FDFDFD",
+  primaryGreenColor: "rgba(130, 214, 165, 1)",
+  darkGray: "rgba(4, 26, 33, 0.3)",
+  black40: "#555559",
+  dullColor: "rgba(0, 0, 0, 0.14)",
 };
 
 export default colors;

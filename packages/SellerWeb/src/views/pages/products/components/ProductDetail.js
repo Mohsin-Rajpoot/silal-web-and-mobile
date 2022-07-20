@@ -257,7 +257,7 @@ const ProductDetail = () => {
 
     return (
         <>
-            <TableStyled className="product-detail-height">
+            <TableStyled>
                 <DataTable
                     columns={columns}
                     data={data}

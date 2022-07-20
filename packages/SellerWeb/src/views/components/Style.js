@@ -1,17 +1,53 @@
-import styled from "styled-components"
-import { selectArrow } from './AllImages'
+import styled from "styled-components";
+import { selectArrow } from "./AllImages";
 
 const CardStyled = styled.div`
   background: #ffffff;
   box-shadow: 0px 5px 10px -2px rgba(196, 214, 220, 0.25);
   border-radius: 5px;
-  padding: 20px;
+  padding: ${(props) => (props.padding ? props.padding : "20px")};
   margin-bottom: 20px;
   &.bg-grey {
     background-color: #e5eaeb;
   }
   &.bg-blue {
     background-color: #4c6870;
+  }
+  .head {
+    padding: 20px 20px 15px;
+    margin: -20px -20px 15px -20px;
+    border-bottom: 1px solid rgba(0, 39, 51, 0.08);
+    h1 {
+      font-family: "Poppins";
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      color: #002733;
+      margin: 0;
+    }
+  }
+  .checkBoxes {
+    padding: 13px;
+    h6 {
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      color: rgba(0, 39, 51, 0.5);
+    }
+  }
+  .form-check-input:checked {
+    background-color: #05ae4b;
+  }
+  .form-check {
+    label {
+      font-weight: 400;
+      font-size: 15px;
+      color: #002733;
+    }
+  }
+  .used {
+    padding-left: 39px;
   }
 `;
 
@@ -23,21 +59,24 @@ const Heading = styled.h1`
 `;
 
 const Button = styled.button`
-  background: #5ab3a8;
+  background: ${(props) => (props.bg ? props.bg : "#05AE4B")};
   border-radius: 5px;
-  border: none;
+  border: ${(props) => (props.bg ? props.bg : "none")};
   padding: 0 20px;
   min-width: 100px;
-  height: 40px;
+  width: ${(props) => props.width};
+  height: ${(props) => (props.height ? props.height : "40px")};
   white-space: nowrap;
-  color: white;
+  color: ${(props) => (props.color ? props.color : "white")};
   font-weight: 600;
   font-size: 15px;
   transition: 0.2s all;
-  margin-bottom: ${props => props.mb};
+  margin-bottom: ${(props) => props.mb};
+  margin-top: ${(props) => props.mt};
   &:hover {
-    background: rgba(90, 179, 169, 0.9);
-    transform: scale(1.02);
+    background: "#CDEFDB";
+    color: "#05AE4B";
+    transform: scale(1.01);
   }
   &:disabled {
     background: rgba(90, 179, 168, 0.5);
@@ -47,7 +86,7 @@ const Button = styled.button`
     }
   }
   &.grey {
-    background: #CCD4D6;
+    background: #ccd4d6;
     color: rgba(0, 39, 51, 0.5);
   }
   &.w-230 {
@@ -60,7 +99,21 @@ const Button = styled.button`
     margin-right: 10px;
   }
   &.delete {
-    background-color: #DE350B;
+    background-color: #de350b;
+  }
+  &.hover-fill {
+    background-color: white;
+    color: #05ae4b;
+    border: 1px solid #05ae4b;
+    &:hover {
+      background-color: #05ae4b;
+      color: white !important;
+      svg {
+        path {
+          fill: white;
+        }
+      }
+    }
   }
 `;
 
@@ -71,13 +124,38 @@ const ButtonText = styled.button`
   height: 40px;
   white-space: nowrap;
   color: var(--theme-clr);
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: ${(props) => (props.weight ? props.weight : "600")};
+  font-size: ${(props) => (props.size ? props.size : "15px")};
   transition: 0.2s all;
 `;
 
 const TableStyled = styled.div`
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
+  button[data-testid] {
+    background: #f2f4f5;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    margin: auto;
+  }
+  &.modal-table {
+    background: #fafafa;
+    max-height: 228px;
+    overflow-y: auto;
+    padding: 14px;
+    border-radius: 8px;
+    .rdt_Table {
+      padding: 0;
+    }
+    .rdt_TableHeadRow {
+      min-height: 30px;
+      height: 30px;
+    }
+    .rdt_TableRow {
+      background: #fafafa;
+      min-height: 42px;
+    }
+  }
   .rdt_Table {
     padding: 20px;
     background: #ffffff;
@@ -86,6 +164,7 @@ const TableStyled = styled.div`
   .rdt_TableHeadRow {
     background: #f2f4f5;
     box-shadow: 0px 1px 1px rgba(0, 39, 51, 0.25);
+  }
   .rdt_TableRow {
     border-color: rgba(0, 39, 51, 0.08);
     &:hover {
@@ -99,10 +178,11 @@ const TableStyled = styled.div`
   .rdt_TableCell {
     padding-top: 8px;
     padding-bottom: 8px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
   }
   .rdt_Pagination {
+    justify-content: inherit;
     background-color: #f4f7f8;
     border-top: 0;
     font-size: 15px;
@@ -118,6 +198,9 @@ const TableStyled = styled.div`
         }
       }
     }
+    & > *:last-child {
+      margin-left: auto;
+    }
   }
   .stock-status {
     padding: 3px 9px;
@@ -132,6 +215,14 @@ const TableStyled = styled.div`
     }
     &.out {
       background: #ff5630;
+    }
+    &.bank {
+      background: #fffae6;
+      color: #ff8b00;
+    }
+    &.credit {
+      background: #e6fcff;
+      color: #008da6;
     }
   }
   .action-btn {
@@ -170,7 +261,7 @@ const TableStyled = styled.div`
       }
     }
   }
-  input[type=checkbox] {
+  input[type="checkbox"] {
     transform: scale(1.16);
   }
 `;
@@ -248,7 +339,7 @@ const ThemeAccordion = styled.div`
 
 const RangeSlider = styled.div`
   width: 100%;
-  font-family: 'lato';
+  font-family: "lato";
   ul {
     li {
       margin-right: 20px;
@@ -271,7 +362,7 @@ const RangeSlider = styled.div`
         margin-right: 0;
       }
       &.current {
-        color: #CCD4D6;
+        color: #ccd4d6;
         margin: 0 auto;
         &::before {
           content: none;
@@ -296,7 +387,7 @@ const RangeSlider = styled.div`
   .slider-range::-moz-range-thumb {
     width: 40px;
     height: 40px;
-    border: 2px solid #5ab3a8;
+    border: 2px solid #05ae4b;
     cursor: pointer;
     background-color: #fff;
     border-radius: 50%;
@@ -318,7 +409,7 @@ const RangeSlider = styled.div`
     height: 35px;
     border-radius: 50%;
     background-color: #fff;
-    border: 2px solid #5ab3a8;
+    border: 2px solid #05ae4b;
     cursor: pointer;
     /* &:before{
         content:"";
@@ -387,15 +478,19 @@ const NavStyled = styled.nav`
 `;
 
 const FlexContainer = styled.div`
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 `;
 
 const HeadingStyled = styled.h1`
-  font-size:${(props) => props.size && (props.size)};
-  font-weight:${(props) => props.weight && (props.weight)};
-  color:${(props) => props.color ? props.color : "inherit"};
-  margin:${(props) => props.margin ? props.margin : "0"};
+  font-size: ${(props) => props.size && props.size};
+  font-weight: ${(props) => props.weight && props.weight};
+  color: ${(props) => (props.color ? props.color : "#002733")};
+  margin: ${(props) => (props.margin ? props.margin : "0")};
+  a {
+    color: var(--theme-clr);
+    text-decoration: none;
+  }
 `;
 
 const Title = styled.h6`
@@ -407,11 +502,11 @@ const Title = styled.h6`
 `;
 
 const Label = styled.label`
-  font-family: 'lato';
+  font-family: "lato", sans-serif;
   font-weight: 600;
-  font-size: 12px;
+  font-size: ${(props) => (props.size ? props.size : "12px")};
   line-height: 120%;
-  color: #002733;
+  color: ${(props) => (props.color ? props.color : "#002733")};
   margin-bottom: 7px;
 `;
 
@@ -423,7 +518,7 @@ const Select = styled.select`
   padding: 9px 10px 8px;
   width: 100%;
   height: 39px;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #e8e8e8;
   border-radius: 5px;
   margin-bottom: 20px;
   font-weight: 400;
@@ -442,12 +537,12 @@ const Textarea = styled.textarea`
   padding: 10px;
   height: 105px;
   width: 100%;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #e8e8e8;
   border-radius: 5px;
   resize: none;
   margin-bottom: 20px;
   &::placeholder {
-    color: #CCD4D6;
+    color: #ccd4d6;
   }
   &.small {
     height: 60px;
@@ -457,7 +552,7 @@ const Textarea = styled.textarea`
 const Input = styled.input`
   width: 100%;
   height: 39px;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #e8e8e8;
   border-radius: 5px;
   padding: 9px 15px 8px 10px;
   margin-bottom: 20px;
@@ -467,14 +562,14 @@ const Input = styled.input`
   letter-spacing: -0.408px;
   color: #002733;
   &::placeholder {
-    color: #CCD4D6;
+    color: #ccd4d6;
   }
 `;
 
 const EditButton = styled.button`
   width: 24px;
   height: 24px;
-  background: #4C6870;
+  background: #4c6870;
   border: none;
   border-radius: 3px;
   margin-left: 5px;
@@ -500,11 +595,11 @@ const ThemeModal = styled.div`
     border: none;
   }
   .text {
-    font-family: 'lato';
+    font-family: "lato";
     font-weight: 400;
     font-size: 15px;
     line-height: 150%;
-    color: #4C6870;
+    color: #4c6870;
     margin: 0;
     span {
       color: #002733;
@@ -512,14 +607,9 @@ const ThemeModal = styled.div`
     }
   }
   .refusal-textarea {
-    background: #F2F4F5;
+    background: #f2f4f5;
     height: 126px;
     border: none;
-  }
-  .refusal-modal {
-    .modal-dialog {
-      max-width: 546px;
-    }
   }
 `;
 
@@ -541,12 +631,12 @@ const UploadImages = styled.div`
       right: 7px;
     }
     .checkbox,
-    .checkmark  {
+    .checkmark {
       width: 16px;
       height: 16px;
     }
     .checkmark {
-      border: 2px solid #CCD4D6;
+      border: 2px solid #ccd4d6;
     }
     .checkbox .checkmark:after {
       left: 4px;
@@ -560,13 +650,13 @@ const UploadImages = styled.div`
     font-size: 12px;
     line-height: 120%;
     text-align: right;
-    color: #CCD4D6;
+    color: #ccd4d6;
     margin-bottom: 9px;
   }
   button {
     width: 100%;
     height: 39px;
-    background: #4C6870;
+    background: #4c6870;
     border-radius: 5px;
     font-weight: 500;
     font-size: 15px;
@@ -580,21 +670,21 @@ const UploadImages = styled.div`
 const UsedItemTag = styled.div`
   padding: 5px 10px;
   height: 28px;
-  background: #F2A341;
+  background: #f2a341;
   border-radius: 5px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 15px;
   line-height: 120%;
   letter-spacing: -0.408px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 0 5px 10px 0;
 `;
 
 const UploadImageSmallContainer = styled.div`
   width: 36px;
   height: 36px;
-  border: 1px solid #CCD4D6;
+  border: 1px solid #ccd4d6;
   border-radius: 5px;
   position: relative;
   display: flex;
@@ -617,7 +707,7 @@ const UploadImageSmallContainer = styled.div`
 const UploadedImageSmallContainer = styled.div`
   width: 100%;
   height: 87px;
-  border: 1px solid #C4C4C4;
+  border: 1px solid #c4c4c4;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -639,7 +729,7 @@ const SimpleNav = styled.div`
   margin-top: 19px;
   display: flex;
   align-items: center;
-  padding-bottom: 25px;
+  // padding-bottom: 25px;
   .menu {
     border: none;
     background-color: transparent;
@@ -659,7 +749,7 @@ const SimpleNav = styled.div`
 `;
 
 const Description = styled.p`
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 17px;
   line-height: 140%;
@@ -667,46 +757,12 @@ const Description = styled.p`
   color: #002733;
 `;
 
-const ContactButton = styled.button`
-  width: 343px;
-  height: 50px;
-  background: linear-gradient(180deg, #73D5C9 0%, #5AB3A8 100%);
-  box-shadow: 0px 5px 15px -8px rgba(115, 213, 201, 0.4);
-  border-radius: 5px;
-  border: none;
-  font-size: 17px;
-  line-height: 22px;
-  color: #FFFFFF;
-`;
-
-const SettingBtn = styled.button`
-  background: #FFFFFF;
-  border-radius: 5px;
-  border: none;
-  text-align: left;
-  height: 35px;
-  width: 317px;
-  padding: 8px 10px;
-  font-family: 'Lato';
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 18px;
-  color: #002733;
-  margin-bottom: 20px;
-  .icon {
-    margin-right: 10px;
-  }
-  &.red {
-    color: #DE350B;
-  }
-`;
-
 const Radio = styled.label`
   display: block;
   position: relative;
   cursor: pointer;
   user-select: none;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 15px;
   line-height: 120%;
@@ -726,7 +782,7 @@ const Radio = styled.label`
     height: 20px;
     width: 20px;
     background-color: transparent;
-    border: 2px solid #E8E8E8;
+    border: 2px solid #e8e8e8;
     border-radius: 50%;
   }
   &:hover input ~ .checkmark {
@@ -744,8 +800,9 @@ const Radio = styled.label`
     border-color: var(--theme-clr);
   }
   .checkmark:after {
-    top: 3px;
-    left: 3px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -754,20 +811,287 @@ const Radio = styled.label`
 `;
 
 const Suggestions = styled.div`
-  font-family: 'lato';
+  font-family: "lato";
   padding: 5px;
   height: 26px;
-  background: #E6F4F2;
+  background: #e6f4f2;
   border-radius: 5px;
   font-weight: 500;
   font-size: 13px;
   line-height: 120%;
-  color: #4C6870;
+  color: #05ae4b;
   margin-bottom: 8px;
   margin-right: 5px;
 `;
 
+const Tag = styled.div`
+  font-family: "lato", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 130%;
+  color: #0052cc;
+  background-color: #deebff;
+  padding: 8px 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+`;
+
+const Switch = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 32px;
+  input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(120, 120, 128, 0.16);
+    border: 0.5px solid rgba(204, 212, 214, 0.5);
+    border-radius: 34px;
+    transition: 0.4s;
+    z-index: -1;
+    cursor: pointer;
+    &::before {
+      position: absolute;
+      content: "";
+      height: 27px;
+      width: 27px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      box-shadow: -2px 2px 7px rgba(0, 39, 51, 0.14),
+        -4px 4px 4px rgba(0, 39, 51, 0.02);
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+  }
+  input:checked + .slider {
+    background-color: #05ae4b;
+  }
+  input:focus + .slider {
+    box-shadow: 0 0 1px #cacfd0;
+  }
+  input:checked + .slider:before {
+    transform: translateX(28px);
+  }
+`;
+const Margin = styled.div`
+  margin: ${(props) => props.margin};
+`;
+
+const SecurityPrefrence = styled.div`
+  display: flex;
+  .display {
+    justify-content: space-between;
+  }
+  .form-check-input:checked {
+    background-color: #05ae4b;
+    // border-color: pink;
+  }
+
+  h1 {
+    font-family: "Poppins";
+    font-weight: 700;
+    font-size: 19px;
+    color: #002733;
+  }
+  p {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #002733;
+  }
+  .text {
+    padding: 22px 0px;
+  }
+  .form {
+    width: 80%;
+  }
+  .form-check-input {
+    width: 39px;
+    height: 19px;
+  }
+  .right {
+    // border:2px solid yellow;
+  }
+
+  .butns {
+    text-align: right;
+  }
+  .btn1 {
+    background: #ccd4d6;
+    color: #4c7061;
+    border: none;
+    margin: 5px;
+  }
+  .btn2 {
+    background: #05ae4b;
+    color: #ffffff;
+    border: none;
+    margin: 5px;
+  }
+`;
+
+const ModalStyle = styled.div`
+  .modal-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    color: #414342;
+    margin: 0;
+  }
+  .modal-header {
+    padding: 20px 20px 15px 20px;
+    border: none;
+  }
+  .modal-body {
+    padding: 0 20px 15px 20px;
+  }
+  .modal-footer {
+    padding: 0 20px 20px 20px;
+    border: none;
+  }
+  .text {
+    font-family: "lato";
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    color: #4c6870;
+    margin: 0;
+    span {
+      color: #002733;
+      font-weight: 500;
+    }
+  }
+
+  .admins {
+    font-family: "lato";
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    color: #4c6870;
+    margin: 31px 0px;
+  }
+
+  .mainteners {
+    font-family: "lato";
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    color: #4c6870;
+    margin: 31px 0px;
+  }
+
+  .colored {
+    font-weight: 600;
+    font-size: 13px;
+    color: #05ae4b;
+  }
+  .card {
+    font-weight: 600;
+    font-size: 13px;
+    padding: 8px;
+    background: rgba(220, 238, 221, 0.5);
+    border: 1px solid #cdefdb;
+    border-radius: 5px;
+  }
+  .refusal-textarea {
+    background: #f2f4f5;
+    height: 126px;
+    border: none;
+  }
+  .btn1 {
+    background: #ccd4d6;
+    color: #4c7061;
+    border: none;
+    margin: 5px;
+  }
+  .btn2 {
+    background: #05ae4b;
+    color: #ffffff;
+    border: none;
+    margin: 5px;
+  }
+`;
+const WorkStyle = styled.div`
+  .row {
+    justify-content: space-around;
+  }
+`;
+
+const SellerIdStyle = styled.div`
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 25px;
+  .form-check-input:checked {
+    background-color: #05ae4b;
+    // border-color: pink;
+  }
+  .text {
+    font-weight: 500;
+    font-size: 15px;
+    color: #979797;
+  }
+  .questionMark {
+    margin: 2px;
+    margin-left: 8px;
+  }
+  .butn {
+    text-align: right;
+    margin-top: 43px;
+  }
+  .btn2 {
+    background: #05ae4b;
+    color: #ffffff;
+    border: none;
+    margin: 5px;
+    padding: 9px 40px;
+  }
+`;
+const SellerWorkStyle = styled.div`
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 15px;
+  .form-check-input:checked {
+    background-color: #05ae4b;
+    // border-color: pink;
+  }
+  .content {
+    padding-left: 23px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #002733;
+  }
+  form-check-label {
+    font-weight: 400;
+    font-size: 15px;
+    color: #002733;
+  }
+  .btn1 {
+    color: #ffffff;
+    border: none;
+    margin: 5px;
+    padding: 9px 40px;
+    background: #de350b;
+    border-radius: 5px;
+  }
+`;
 export {
+  SellerWorkStyle,
+  SellerIdStyle,
+  WorkStyle,
+  ModalStyle,
+  SecurityPrefrence,
   CardStyled,
   Heading,
   Button,
@@ -792,8 +1116,9 @@ export {
   UploadedImageSmallContainer,
   SimpleNav,
   Description,
-  ContactButton,
-  SettingBtn,
   Radio,
   Suggestions,
+  Tag,
+  Switch,
+  Margin,
 };

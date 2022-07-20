@@ -51,10 +51,13 @@ const Screens = ({navigation, style}) => {
         <Stack.Screen name="Setting" component={Setting} />
         <Stack.Screen name="InviteWorkforce" component={InviteWorkforce} />
         <Stack.Screen name="PreOrderSettings" component={PreOrderSettings} />
-        <Stack.Screen name="SecurityPreferance" component={SecurityPreferance}/>
-        <Stack.Screen name="EmailSettings" component={EmailSettings}/>
-        <Stack.Screen name="PasswordSettings" component={PasswordSettings}/>
-        <Stack.Screen name="NumberSettings" component={NumberSettings}/>
+        <Stack.Screen
+          name="SecurityPreferance"
+          component={SecurityPreferance}
+        />
+        <Stack.Screen name="EmailSettings" component={EmailSettings} />
+        <Stack.Screen name="PasswordSettings" component={PasswordSettings} />
+        <Stack.Screen name="NumberSettings" component={NumberSettings} />
 
         <Stack.Screen name="AdminCodeScreen" component={AdminCodeScreen} />
         <Stack.Screen name="AboutApp" component={AboutApp} />

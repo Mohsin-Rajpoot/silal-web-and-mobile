@@ -4,6 +4,7 @@ import { Search } from "react-bootstrap-icons";
 import { Link, useLocation } from "react-router-dom";
 import { Menu } from "../../../components/AllImages";
 import { SearchBar } from "../../../components/clients/Nav";
+// import NavStyled from "./NavStyled";
 import {
   Button,
   FlexContainer,
@@ -16,7 +17,7 @@ const Nav = ({ sideBar, setSideBar }) => {
   const location = useLocation();
   const [modalShow, setModalShow] = useState(false);
   const setModal = (view, type) => {
-    setModalShow(view)
+    setModalShow(view);
   };
 
   const sidebarHandler = () => {
@@ -40,16 +41,18 @@ const Nav = ({ sideBar, setSideBar }) => {
         </div>
         <div className="d-flex">
           <Link
-            to="/"
-            className={`nav-link-btn active ${location.pathname == "/current-order" ? "active" : ""
-              }`}
+            // to="/"
+            className={`nav-link-btn active ${
+              location.pathname === "/current-order" ? "active" : ""
+            }`}
           >
             Current
           </Link>
           <Link
-            to="/"
-            className={`nav-link-btn ${location.pathname == "/archive-order" ? "active" : ""
-              }`}
+            // to="/"
+            className={`nav-link-btn ${
+              location.pathname === "/archive-order" ? "active" : ""
+            }`}
           >
             Past
           </Link>
@@ -66,9 +69,9 @@ const Nav = ({ sideBar, setSideBar }) => {
           <Search className="icon-label position-absolute" size={17} />
         </SearchBar>
         <Link to="#" className="ms-auto mb-3 d-block">
-          <Button
-            className="w-230"
-            onClick={() => setModal(true)}>Add new item</Button>
+          <Button className="w-230" onClick={() => setModal(true)}>
+            Add new item
+          </Button>
         </Link>
       </FlexContainer>
       <AddItemModal show={modalShow} setShow={setModal} />

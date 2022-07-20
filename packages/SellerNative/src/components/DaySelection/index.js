@@ -15,12 +15,12 @@ const index = ({
   activelabel,
   state,
   setState,
-  toggleButton
+  toggleButton,
 }) => {
   const {t} = useTranslation();
   const [active, setActive] = useState(false);
   return (
-    <View style={[containerStyle ? containerStyle : styles.daySelectContainer]}>
+    <View style={styles.daySelectContainer}>
       <CustomText
         label={t(day)}
         textStyle={[
@@ -31,7 +31,7 @@ const index = ({
             : styles.dayText,
         ]}
       />
-      {day == 'EveryDay'  || toggleButton? (
+      {day == 'EveryDay' || toggleButton ? (
         <ToggleSwitch
           isOn={active}
           onColor={colors.light_green}

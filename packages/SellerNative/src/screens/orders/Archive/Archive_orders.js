@@ -342,8 +342,10 @@ export default function Archive_orders({title, navigation}) {
     );
   };
 
-  return !IsTablet ? <Archive_orders_mobile navigation={navigation} /> : ( 
-    <View style={{flex:1, padding: 20}}>
+  return !IsTablet ? (
+    <Archive_orders_mobile navigation={navigation} />
+  ) : (
+    <View style={{flex: 1, padding: 20}}>
       {/* <MenuProvider > */}
 
       <View style={{flexDirection: 'row'}}>

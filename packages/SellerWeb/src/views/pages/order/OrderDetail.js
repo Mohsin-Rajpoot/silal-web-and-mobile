@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Modal } from "react-bootstrap";
 import { Button, RangeSlider } from "../../components/Style";
 import {
   OrderIdMain,
@@ -10,13 +10,22 @@ import {
   OrderDetails,
   OrderHistory,
 } from "../../components/orders/Components";
-import { Heading, CardStyled } from "../../components/Style";
+import {
+  Heading,
+  CardStyled,
+  ThemeModal,
+  Textarea,
+} from "../../components/Style";
+import { orderListData } from "../../components/orders/Data";
 import { BackArrow } from "../../components/AllImages";
-import { orderListData } from "./DummyData";
-import Modal from "react-bootstrap/Modal";
+
 const OrderDetail = () => {
-  const [modalShow, setModalShow] = React.useState(false);
   const history = useHistory();
+  const [modalShow, setModalShow] = React.useState(false);
+  const [showCancelModal, setShowCancelModal] = useState(false);
+
+  const handleCloseCancelModal = () => setShowCancelModal(false);
+  const handleShowCancelModal = () => setShowCancelModal(true);
 
   return (
     <>
@@ -77,25 +86,30 @@ const OrderDetail = () => {
             <Button
               type="button"
               onClick={() => setModalShow(true)}
-              className="w-100 mb-2 f-medium"
-              style={{
-                background: "#ADD9D3",
-                color: "inherit",
-                fontSize: "15px",
-              }}
+              className="w-100 mb-2 f-medium theme-clr"
+              bg="#05AE4B33"
             >
               Change estimation time
             </Button>
-            <Button
-              type="button"
-              className="w-100 f-medium"
-              style={{ fontSize: "15px" }}
-            >
-              Ready for pickup
-            </Button>
+            <div className="d-flex">
+              <Button
+                type="button"
+                className="me-2 px-1"
+                width="129px"
+                bg="#CCD4D680"
+                color="#4C6870"
+                onClick={handleShowCancelModal}
+              >
+                Cancel order
+              </Button>
+              <Button type="button" className="w-100 f-medium flex-1">
+                Ready for pickup
+              </Button>
+            </div>
           </CardStyled>
         </Col>
       </Row>
+
       <Modal
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -109,7 +123,13 @@ const OrderDetail = () => {
         </Modal.Header>
         <Modal.Body>
           <RangeSlider className="mt-4">
-            <input type="range" min="0" max="100" step="14" className="slider-range" />
+            <input
+              type="range"
+              min="0"
+              max="100"
+              step="14"
+              className="slider-range"
+            />
             <ul className="mb-0 p-0 list-unstyled d-flex">
               <li>-15 min</li>
               <li>-10 min</li>
@@ -132,7 +152,11 @@ const OrderDetail = () => {
         </Modal.Body>
         <Modal.Footer>
           <div className="w-50 m-0 pe-2">
-            <Button className="w-100 m-0" style={{ background: "#CCD4D6", color: "rgba(0, 39, 51, 0.5)" }} onClick={() => setModalShow(false)}>
+            <Button
+              className="w-100 m-0"
+              style={{ background: "#CCD4D6", color: "rgba(0, 39, 51, 0.5)" }}
+              onClick={() => setModalShow(false)}
+            >
               Cancel
             </Button>
           </div>
@@ -140,6 +164,42 @@ const OrderDetail = () => {
             Save
           </Button>
         </Modal.Footer>
+      </Modal>
+
+      <Modal
+        show={showCancelModal}
+        onHide={handleCloseCancelModal}
+        centered
+        className="refusal-modal"
+      >
+        <ThemeModal>
+          <Modal.Header closeButton className="pb-1">
+            <Modal.Title>Indicate the reason for cancelation</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="py-0">
+            <div className="text dark-clr">
+              We will notify the client about it
+            </div>
+            <Textarea
+              placeholder="Type here..."
+              className="mb-4 mt-3 refusal-textarea"
+            ></Textarea>
+          </Modal.Body>
+          <Modal.Footer>
+            <div className="d-flex w-100">
+              <Col lg={6} className="pe-2">
+                <Button className="grey w-100" onClick={handleCloseCancelModal}>
+                  Cancel
+                </Button>
+              </Col>
+              <Col lg={6} className="ps-2">
+                <Button className="w-100" onClick={handleCloseCancelModal}>
+                  Submit
+                </Button>
+              </Col>
+            </div>
+          </Modal.Footer>
+        </ThemeModal>
       </Modal>
     </>
   );

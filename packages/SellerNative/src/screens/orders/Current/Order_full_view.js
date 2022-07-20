@@ -500,6 +500,19 @@ const App = ({navigation, route}) => {
             </Text>
           </TouchableOpacity>
           {status == 'from_current' ? (
+            <TouchableOpacity
+              style={{
+                backgroundColor: '#05AE4B',
+                borderRadius: 5,
+                padding: 10,
+                alignItems: 'center',
+                marginTop: 10,
+              }}>
+              <Text style={{color: 'white', fontFamily: 'Poppins-SemiBold'}}>
+                {t('ready_for_pickup')}
+              </Text>
+            </TouchableOpacity>
+          ) : (
             <View
               style={{
                 flexDirection: 'row',
@@ -814,7 +827,7 @@ const styles = StyleSheet.create({
   modal_save_btn: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     width: 210,
     padding: 10,
     borderRadius: 5,

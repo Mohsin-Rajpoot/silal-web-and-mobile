@@ -48,7 +48,8 @@ export const requestPost = (url, data, isRaw, extraHeaders = {}) => {
     }
   }
   return new Promise((resolve, reject) => {
-   axios.post(base_url + url, formData, {
+    axios
+      .post(base_url + url, formData, {
         headers: {
           Accept: "application/json",
           ...extraHeaders,

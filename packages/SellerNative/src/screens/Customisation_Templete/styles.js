@@ -28,7 +28,7 @@ const styles = ScaledSheet.create({
     color: '#4C6870B2',
     paddingHorizontal: 15,
     fontSize: 18,
-    fontFamily:fonts.LatoMedium,
+    fontFamily: fonts.LatoMedium,
   },
   headingText: {
     fontSize: 17,

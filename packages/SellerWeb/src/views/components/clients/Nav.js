@@ -22,7 +22,7 @@ const Nav = ({ sideBar, setSideBar }) => {
       </NavStyled>
       <FlexContainer>
         <HeadingStyled size="25px" weight="700" className="mb-0">
-          Clients database
+          Client database
         </HeadingStyled>
         <SearchBar className="mx-5">
           <Form

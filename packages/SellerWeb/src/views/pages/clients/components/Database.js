@@ -8,8 +8,8 @@ const Database = () => {
   const [modalShow, setModalShow] = useState(false);
   const [modalType, setModalType] = useState(false);
   const setModal = (view, type) => {
-    setModalShow(view)
-    setModalType(type)
+    setModalShow(view);
+    setModalType(type);
   };
 
   return (
@@ -21,7 +21,7 @@ const Database = () => {
               <DataCard
                 className="bg-white overflow-hiden"
                 type="button"
-                onClick={() => setModal(true, 'reccuring')}
+                onClick={() => setModal(true, "reccuring")}
               >
                 <DataCardHeader>
                   <HeadingStyled
@@ -174,7 +174,7 @@ export const DataCard = styled.div`
 export const DataCardHeader = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background: #5ab3a8;
+  background: #05ae4b;
   border-radius: 5px 5px 0px 0px;
   padding: 15px;
   .status-tip {

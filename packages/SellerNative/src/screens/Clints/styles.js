@@ -101,7 +101,7 @@ const styles = ScaledSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10,
   },
-  ItemId2:{
+  ItemId2: {
     color: colors.black,
     fontSize: 17,
     width: 250,

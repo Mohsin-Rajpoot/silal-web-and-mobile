@@ -5,10 +5,9 @@ import {
   SafeAreaView,
   TouchableOpacity,
   ScrollView,
+  StyleSheet,
   Dimensions,
   FlatList,
-  TextInput,
-  Image,
 } from 'react-native';
 import Current_orders from './Current/Current_orders';
 import Pre_orders from './Pre_orders';
@@ -17,8 +16,7 @@ import PagerView from 'react-native-pager-view';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useTranslation} from 'react-i18next';
 import CommonTab from '../../components/CommonTab';
-import {Icon, CheckBox} from 'react-native-elements';
-import Accepted from './molecule/Accepted';
+const {width, height} = Dimensions.get('window');
 
 import {
   widthPercentageToDP as width,
@@ -40,7 +38,6 @@ import {SwipeListView} from 'react-native-swipe-list-view';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 const Order = ({navigation}) => {
   const {t} = useTranslation();
-  const toastRef = useRef();
   // const [Statistic, setStatistic] = useState(true);
   // const [Reviews, setReviews] = useState(false);
   // const [Outofstock, setOutofstack] = useState(false);
@@ -48,15 +45,8 @@ const Order = ({navigation}) => {
   // const [current_order_state, set_current_order_state] = useState(true);
   // const [pre_order_state, set_pre_order_state] = useState(false);
   // const [archive_order_state, set_archive_order_state] = useState(false);
-  const [modal, setModal] = useState(false);
-  const [contactModal, setContactModal] = useState(false);
-  const [order_state, set_order_state] = useState('current');
-  const [activeShift, setActiveShift] = useState(false);
-  // const [shiftModal, setShiftModal] = useState(activeShift);
-  const [noteModal, setNoteModal] = useState(false);
-  const [addNote, setAddNote] = useState(2);
-  const [check, setcheck] = useState(0);
 
+  const [order_state, set_order_state] = useState('current');
   const ref = useRef(null);
   const tabs = ['Current orders', 'Pre-orders', 'Archive'];
   const [page, setPage] = useState(0);
@@ -126,73 +116,25 @@ const Order = ({navigation}) => {
   // };
   const Header = () => {
     return (
-      <View
-        style={{
-          paddingVertical: 5,
-          flex: 1,
-          flexDirection: 'row',
-          alignItems: 'center',
-        }}>
+      // <View style={{ paddingVertical: 15,flex:1, flexDirection: 'row',}}>
+      //   <TouchableOpacity onPress={()=>set_order_state('current')}  style={[styles.order_button,{backgroundColor:order_state=='current'? '#05AE4B':null,width:200}]}>
+      //     <Text style={[styles.order_button_text,{color:order_state=='current'?'white':'#4C6870'}]}>Current orders</Text>
+      //   </TouchableOpacity>
+      //   <TouchableOpacity onPress={()=>set_order_state('preorder')}  style={[styles.order_button,{backgroundColor:order_state=='preorder'? '#05AE4B':null,width:200}]}>
+      //     <Text style={[styles.order_button_text,{color:order_state=='preorder'?'white':'#4C6870'}]}>Pre-orders <Text style={{color:'#CCD4D6',}}>(8)</Text></Text>
+      //   </TouchableOpacity>
+      //   <TouchableOpacity onPress={()=>set_order_state('archive')}  style={[styles.order_button,{backgroundColor:order_state=='archive'? '#05AE4B':null,width:120}]}>
+      //     <Text style={[styles.order_button_text,{color:order_state=='archive'?'white':'#4C6870'}]}>Archive</Text>
+      //   </TouchableOpacity>
+      // </View>
+      <View style={{paddingVertical: 15, flex: 1, flexDirection: 'row'}}>
         <CommonTab tabs={tabs} page={page} onChangeTab={onChangeTab} />
-        {IsTablet && (
-          <View style={styles.sideTabContainer}>
-            <TouchableOpacity
-              activeOpacity={0.6}
-              onPress={() => setNoteModal(!noteModal)}>
-              <View style={styles.tabNewItemsContainer}>
-                <Icon
-                  name="pluscircle"
-                  type="antdesign"
-                  size={18}
-                  color={colors.primary}
-                />
-                <Text style={styles.noteText}>{t('Note')}</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              activeOpacity={0.6}
-              onPress={() => setModal(!modal)}>
-              <View style={styles.tabNewItemsContainer}>
-                <Icon
-                  name="timer"
-                  type="material-community"
-                  size={18}
-                  color={colors.primary}
-                />
-                <Text style={styles.noteText}>40 MIN</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              activeOpacity={0.6}
-              onPress={() => setContactModal(!contactModal)}>
-              <View style={styles.tabNewItemsContainer}>
-                <Icon
-                  name="exclamationcircle"
-                  type="antdesign"
-                  size={18}
-                  color={colors.textPrimaryBlur}
-                  style={styles.cautionIcon}
-                />
-              </View>
-            </TouchableOpacity>
-            {/* <DaySelect
-              day={t('Start_shift')}
-              containerStyle={styles.shiftContainer}
-              buttonSize={'large'}
-              textStyle={styles.textStyleShift}
-              activelabel={t('End_shift')}
-              state={activeShift}
-              setState={setActiveShift}
-            /> */}
-            <CustomText label={t('Start_shift')} />
-          </View>
-        )}
         {/* <TouchableOpacity
           onPress={() => tabclick('0', 'current')}
           style={[
             styles.order_button,
             {
-              backgroundColor: current_order_state == true ? '#5AB3A8' : null,
+              backgroundColor: current_order_state == true ? '#05AE4B' : null,
               width: 200,
             },
           ]}>
@@ -209,7 +151,7 @@ const Order = ({navigation}) => {
           style={[
             styles.order_button,
             {
-              backgroundColor: pre_order_state == true ? '#5AB3A8' : null,
+              backgroundColor: pre_order_state == true ? '#05AE4B' : null,
               width: 200,
             },
           ]}>
@@ -226,7 +168,7 @@ const Order = ({navigation}) => {
           style={[
             styles.order_button,
             {
-              backgroundColor: archive_order_state == true ? '#5AB3A8' : null,
+              backgroundColor: archive_order_state == true ? '#05AE4B' : null,
               width: 120,
             },
           ]}>
@@ -243,25 +185,15 @@ const Order = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{backgroundColor: colors.background, flex: 1}}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          height: !IsTablet ? '8%' : '10%',
-        }}>
-        <View style={{padding: 5}}>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => navigation.openDrawer()}>
-            <Image
-              source={require('../../Assets/menu-expand.png')}
-              resizeMode="contain"
-              style={{
-                width: verticalScale(28),
-                height: verticalScale(30),
-                marginRight: IsTablet ? verticalScale(5) : 0,
-              }}
+    <SafeAreaView style={{backgroundColor: '#f4f7f8', flex: 1}}>
+      <View style={{flexDirection: 'row', alignItems: 'center', height: '15%'}}>
+        <View style={{padding: 15}}>
+          <TouchableOpacity>
+            <MaterialCommunityIcons
+              name="reorder-horizontal"
+              size={20}
+              style={{marginLeft: 10}}
+              color={'#000000'}
             />
           </TouchableOpacity>
         </View>
@@ -491,7 +423,7 @@ const Order = ({navigation}) => {
                   <CheckBox
                     checked={check}
                     onPress={() => setcheck(index)}
-                    checkedColor="#5AB3A8"
+                    checkedColor="#05AE4B"
                     uncheckedColor="#CCD4D6"
                   />
                   <CustomText
@@ -508,7 +440,7 @@ const Order = ({navigation}) => {
                   <CheckBox
                     checked={check}
                     onPress={() => setcheck(index)}
-                    checkedColor="#5AB3A8"
+                    checkedColor="#05AE4B"
                     uncheckedColor="#CCD4D6"
                   />
                   <CustomText
@@ -525,7 +457,7 @@ const Order = ({navigation}) => {
                   <CheckBox
                     checked={check}
                     onPress={() => setcheck(index)}
-                    checkedColor="#5AB3A8"
+                    checkedColor="#05AE4B"
                     uncheckedColor="#CCD4D6"
                   />
                   <CustomText
@@ -542,7 +474,7 @@ const Order = ({navigation}) => {
                   <CheckBox
                     checked={check}
                     onPress={() => setcheck(index)}
-                    checkedColor="#5AB3A8"
+                    checkedColor="#05AE4B"
                     uncheckedColor="#CCD4D6"
                   />
                   <CustomText
@@ -559,7 +491,7 @@ const Order = ({navigation}) => {
                   <CheckBox
                     checked={check}
                     onPress={() => setcheck(index)}
-                    checkedColor="#5AB3A8"
+                    checkedColor="#05AE4B"
                     uncheckedColor="#CCD4D6"
                   />
                   <CustomText
@@ -645,7 +577,7 @@ const Order = ({navigation}) => {
                 <CheckBox
                   checked={check}
                   onPress={() => setcheck(0)}
-                  checkedColor="#5AB3A8"
+                  checkedColor="#05AE4B"
                   uncheckedColor="#CCD4D6"
                 />
                 <TextInput
@@ -761,7 +693,7 @@ const Order = ({navigation}) => {
   );
 };
 export default Order;
-const styles = ScaledSheet.create({
+const styles = StyleSheet.create({
   WhiteDive: {
     flexDirection: 'row',
     paddingVertical: 5,
@@ -984,13 +916,6 @@ const styles = ScaledSheet.create({
     color: '#4C6870',
     paddingHorizontal: 10,
     paddingTop: 10,
-  },
-  textStyleShift: {
-    fontSize: 16,
-    fontFamily: fonts.PoppinsSemiBold,
-    color: colors.black,
-    width: '100%',
-    marginHorizontal: 15,
   },
   PercentageBkgGreen: {
     backgroundColor: '#E3FCEF',

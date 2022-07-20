@@ -539,9 +539,7 @@ const Clints = ({navigation}) => {
             </View>
             <View style={styles.modal_fields}>
               <Text style={styles.modal_title_first}>{t('credit_card')}</Text>
-              <Text style={styles.modal_title_second}>
-                ** ** ** 4543{' '}
-              </Text>
+              <Text style={styles.modal_title_second}>** ** ** 4543 </Text>
             </View>
           </View>
         ) : null}
@@ -947,33 +945,31 @@ const Clints = ({navigation}) => {
             </>
           ) : null}
         </View>
-        {IsTablet ? 
-        <TouchableOpacity
-          onPress={() => changeModalVisibilty(true)}
-          style={[
-            styles.modelTextTitle,
-            {backgroundColor: colors.textWhite, elevation: 0.5},
-          ]}>
-          <View style={{paddingHorizontal: 5}}>
-            <Svg
-              width="19"
-              height="14"
-              viewBox="0 0 19 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <Path
-                d="M4.50628 0.576109C4.84799 0.250672 5.40201 0.250672 5.74372 0.576109L9.24372 3.90944C9.58543 4.23488 9.58543 4.76252 9.24372 5.08795C8.90201 5.41339 8.34799 5.41339 8.00628 5.08795L6 3.17721V12.832C6 13.2923 5.60825 13.6654 5.125 13.6654C4.64175 13.6654 4.25 13.2923 4.25 12.832V3.17721L2.24372 5.08795C1.90201 5.41339 1.34799 5.41339 1.00628 5.08795C0.664573 4.76252 0.664573 4.23488 1.00628 3.90944L4.50628 0.576109ZM13 10.8202V1.16536C13 0.705127 13.3918 0.332031 13.875 0.332031C14.3583 0.332031 14.75 0.705127 14.75 1.16536V10.8202L16.7563 8.90944C17.098 8.584 17.652 8.584 17.9937 8.90944C18.3354 9.23488 18.3354 9.76252 17.9937 10.088L14.4937 13.4213C14.3296 13.5776 14.1071 13.6654 13.875 13.6654C13.6429 13.6654 13.4204 13.5776 13.2563 13.4213L9.75628 10.088C9.41457 9.76252 9.41457 9.23488 9.75628 8.90944C10.098 8.584 10.652 8.584 10.9937 8.90944L13 10.8202Z"
-                fill="#4C6870"
-              />
-            </Svg>
-          </View>
-          <Text style={styles.SortedDrop}>{choseData}</Text>
-          <AntDesign name="down" style={styles.SortBy} />
-        </TouchableOpacity>
-        :
-        null
-        }
-        <ModalViewS
+        {IsTablet ? (
+          <TouchableOpacity
+            onPress={() => changeModalVisibilty(true)}
+            style={[
+              styles.modelTextTitle,
+              {backgroundColor: colors.textWhite, elevation: 0.5},
+            ]}>
+            <View style={{paddingHorizontal: 5}}>
+              <Svg
+                width="19"
+                height="14"
+                viewBox="0 0 19 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <Path
+                  d="M4.50628 0.576109C4.84799 0.250672 5.40201 0.250672 5.74372 0.576109L9.24372 3.90944C9.58543 4.23488 9.58543 4.76252 9.24372 5.08795C8.90201 5.41339 8.34799 5.41339 8.00628 5.08795L6 3.17721V12.832C6 13.2923 5.60825 13.6654 5.125 13.6654C4.64175 13.6654 4.25 13.2923 4.25 12.832V3.17721L2.24372 5.08795C1.90201 5.41339 1.34799 5.41339 1.00628 5.08795C0.664573 4.76252 0.664573 4.23488 1.00628 3.90944L4.50628 0.576109ZM13 10.8202V1.16536C13 0.705127 13.3918 0.332031 13.875 0.332031C14.3583 0.332031 14.75 0.705127 14.75 1.16536V10.8202L16.7563 8.90944C17.098 8.584 17.652 8.584 17.9937 8.90944C18.3354 9.23488 18.3354 9.76252 17.9937 10.088L14.4937 13.4213C14.3296 13.5776 14.1071 13.6654 13.875 13.6654C13.6429 13.6654 13.4204 13.5776 13.2563 13.4213L9.75628 10.088C9.41457 9.76252 9.41457 9.23488 9.75628 8.90944C10.098 8.584 10.652 8.584 10.9937 8.90944L13 10.8202Z"
+                  fill="#4C6870"
+                />
+              </Svg>
+            </View>
+            <Text style={styles.SortedDrop}>{choseData}</Text>
+            <AntDesign name="down" style={styles.SortBy} />
+          </TouchableOpacity>
+        ) : null}
+        <ModalView
           transparent={true}
           animationType="fade"
           onBackdropPress={() => changeModalVisibilty(false)}
@@ -983,7 +979,7 @@ const Clints = ({navigation}) => {
             changeModalVisibilty={changeModalVisibilty}
             setData={setData}
           />
-        </ModalViewS>
+        </ModalView>
       </View>
       {/* <View style={{ marginTop: 5, marginBottom: 120 }}> */}
       <FlatList

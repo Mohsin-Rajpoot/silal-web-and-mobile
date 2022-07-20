@@ -44,7 +44,7 @@ const ItemCreaterFirstStep = ({navigation}) => {
                 name="keyboard-backspace"
                 style={styles.BackArrow}
               />
-              <Text style={styles.backTitle}>{t('create_new_item' )}</Text>
+              <Text style={styles.backTitle}>{t('create_new_item')}</Text>
             </TouchableOpacity>
             <View style={{marginHorizontal: 5, marginVertical: 4}}>
               <Modal
@@ -52,114 +52,125 @@ const ItemCreaterFirstStep = ({navigation}) => {
                 animationType="slideInRight"
                 transparent={true}>
                 <View style={styles.ModalContainerPreview}>
-                  <View style={styles.ModalContainePreviewMain}> 
-                  <Entypo
-                    onPress={() => setOpenmodal(false)}
-                    name="cross"
-                    style={styles.CrossPreview}
-                  />
-                  <View style={styles.MobileViewModal}>
-                    <View
-                      style={styles.ModalHeading}>
-                      <Ionicons
-                        name="chevron-back-sharp"
-                        style={styles.IconModalMobile}
-                      />
-                      <Ionicons
-                        name="ios-cart-outline"
-                        style={styles.IconModalMobile}
-                      />
+                  <View style={styles.ModalContainePreviewMain}>
+                    <Entypo
+                      onPress={() => setOpenmodal(false)}
+                      name="cross"
+                      style={styles.CrossPreview}
+                    />
+                    <View style={styles.MobileViewModal}>
+                      <View style={styles.ModalHeading}>
+                        <Ionicons
+                          name="chevron-back-sharp"
+                          style={styles.IconModalMobile}
+                        />
+                        <Ionicons
+                          name="ios-cart-outline"
+                          style={styles.IconModalMobile}
+                        />
+                      </View>
                     </View>
+                    <View style={styles.heartIcon}>
+                      <AntDesign name="hearto" style={styles.iconStyleHeart} />
+                    </View>
+                    <ScrollView>
+                      <View style={{marginHorizontal: 45}}>
+                        <Text style={styles.TitleModalPreview}>
+                          Nepolitana Pizza, 30 sm
+                        </Text>
+
+                        <Text style={styles.paragaphPreview}>
+                          The release of Letraset sheets containing Lorem Ipsum
+                          passages, and more recently with desktop publishing
+                          software like Aldus PageMaker including versions of
+                          Lorem Ipsum
+                        </Text>
+                      </View>
+
+                      <View style={styles.ParagraphPadingHorizontal}>
+                        <Text style={styles.TitleModalPreview}>
+                          {t('Ingredients')}
+                        </Text>
+                        <Text style={styles.paragaphPreview}>
+                          The release of Letraset sheets containing Lorem Ipsum
+                          passages, and more recently with desktop publishing
+                          software like Aldus PageMaker including versions of
+                          Lorem Ipsum
+                        </Text>
+                      </View>
+                      <View
+                        style={{flexDirection: 'row', marginHorizontal: 40}}>
+                        <View style={{width: 60}}>
+                          <Text style={styles.Cal}>221 cal</Text>
+                          <Text style={{color: colors.sidebar}}>
+                            {t('calories')}
+                          </Text>
+                        </View>
+
+                        <View style={{width: 60}}>
+                          <Text style={styles.Cal}>11g</Text>
+                          <Text style={{color: colors.sidebar}}>
+                            {t('Protein')}
+                          </Text>
+                        </View>
+                        <View style={{width: 60, paddingLeft: 5}}>
+                          <Text style={styles.Cal}>11g</Text>
+                          <Text style={{color: colors.sidebar}}>
+                            {t('Fats')}
+                          </Text>
+                        </View>
+
+                        <View style={{width: 90}}>
+                          <Text style={styles.Cal}>221 cal</Text>
+                          <Text style={{color: colors.sidebar}}>
+                            {t('Carbohydrates')}
+                          </Text>
+                        </View>
+                      </View>
+                      <Text style={styles.AlertModal}>
+                        {t('Allergies')} (!): Eggs, Glutten.
+                      </Text>
+                      <View
+                        style={{flexDirection: 'row', marginHorizontal: 42}}>
+                        <TouchableOpacity style={styles.ModalTertiaryButton}>
+                          <Text
+                            style={[
+                              styles.ButtonText,
+                              {color: colors.primary},
+                            ]}>
+                            {t('Save_as_draft')}
+                          </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                          onPress={() =>
+                            toastRef.current.show(
+                              <View style={styles.ToastMainView}>
+                                <Ionicons
+                                  name="md-checkmark-circle"
+                                  style={styles.IconToast}
+                                />
+                                <Text style={styles.ToastParagraph}>
+                                  The "Name" item has been Submitted for Quelity
+                                  assurance{' '}
+                                </Text>
+                                <TouchableOpacity
+                                  onPress={() => {
+                                    toastRef.current.close(), alert('undo');
+                                  }}>
+                                  <Text style={styles.ActionToast}>OK</Text>
+                                </TouchableOpacity>
+                              </View>,
+                              3000,
+                            )
+                          }
+                          style={styles.PrimaryButtonModal}>
+                          <Text style={styles.TextPrimaryButton}>
+                            {t('Request_to_publish')}
+                          </Text>
+                        </TouchableOpacity>
+                      </View>
+                    </ScrollView>
                   </View>
-                  <View style={styles.heartIcon}>
-                    <AntDesign name="hearto" style={styles.iconStyleHeart} />
-                  </View>
-                  <ScrollView>
-                    <View style={{marginHorizontal: 45}}>
-                      <Text style={styles.TitleModalPreview}>
-                        Nepolitana Pizza, 30 sm
-                      </Text>
-
-                      <Text style={styles.paragaphPreview}>
-                        The release of Letraset sheets containing Lorem Ipsum
-                        passages, and more recently with desktop publishing
-                        software like Aldus PageMaker including versions of
-                        Lorem Ipsum
-                      </Text>
-                    </View>
-
-                    <View style={styles.ParagraphPadingHorizontal}>
-                      <Text style={styles.TitleModalPreview}>
-                        {t('Ingredients')}
-                      </Text>
-                      <Text style={styles.paragaphPreview}>
-                        The release of Letraset sheets containing Lorem Ipsum
-                        passages, and more recently with desktop publishing
-                        software like Aldus PageMaker including versions of
-                        Lorem Ipsum
-                      </Text>
-                    </View>
-                    <View style={{flexDirection: 'row', marginHorizontal: 40}}>
-                      <View style={{width: 60}}>
-                        <Text style={styles.Cal}>221 cal</Text>
-                        <Text style={{color: colors.sidebar}}>{t('calories')}</Text>
-                      </View>
-
-                      <View style={{width: 60}}>
-                        <Text style={styles.Cal}>11g</Text>
-                        <Text style={{color:colors.sidebar}}>{t('Protein')}</Text>
-                      </View>
-                      <View style={{width: 60, paddingLeft: 5}}>
-                        <Text style={styles.Cal}>11g</Text>
-                        <Text style={{color: colors.sidebar}}>{t('Fats')}</Text>
-                      </View>
-
-                      <View style={{width: 90}}>
-                        <Text style={styles.Cal}>221 cal</Text>
-                        <Text style={{color: colors.sidebar}}>
-                          {t('Carbohydrates')}
-                        </Text>
-                      </View>
-                    </View>
-                    <Text style={styles.AlertModal}>
-                      {t('Allergies')} (!): Eggs, Glutten.
-                    </Text>
-                    <View style={{flexDirection: 'row', marginHorizontal: 42}}>
-                      <TouchableOpacity style={styles.ModalTertiaryButton}>
-                        <Text style={[styles.ButtonText,{color:colors.primary}]}>
-                          {t('Save_as_draft')}
-                        </Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                        onPress={() =>
-                          toastRef.current.show(
-                            <View style={styles.ToastMainView}>
-                              <Ionicons
-                                name="md-checkmark-circle"
-                                style={styles.IconToast}
-                              />
-                              <Text style={styles.ToastParagraph}>
-                                The "Name" item has been Submitted for Quelity
-                                assurance{' '}
-                              </Text>
-                              <TouchableOpacity
-                                onPress={() => {
-                                  toastRef.current.close(), alert('undo');
-                                }}>
-                                <Text style={styles.ActionToast}>OK</Text>
-                              </TouchableOpacity>
-                            </View>,
-                            3000,
-                          )
-                        }
-                        style={styles.PrimaryButtonModal}>
-                        <Text style={styles.TextPrimaryButton}>
-                          {t('Request_to_publish')}
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
-                  </ScrollView>
-                </View>
                 </View>
               </Modal>
             </View>
@@ -244,7 +255,11 @@ const ItemCreaterFirstStep = ({navigation}) => {
                             {backgroundColor: colors.primary},
                             styles.Buttonss,
                           ]}>
-                          <Text style={[{color: colors.textWhite}, styles.DeleteModal]}>
+                          <Text
+                            style={[
+                              {color: colors.textWhite},
+                              styles.DeleteModal,
+                            ]}>
                             {t('Save_as_draft')}
                           </Text>
                         </TouchableOpacity>
@@ -254,7 +269,10 @@ const ItemCreaterFirstStep = ({navigation}) => {
                 </Modal>
                 <TouchableOpacity
                   onPress={() => setShowmodal(true)}
-                  style={[styles.HeaderButton, {backgroundColor: colors.blurPrimary1}]}>
+                  style={[
+                    styles.HeaderButton,
+                    {backgroundColor: colors.blurPrimary1},
+                  ]}>
                   <Text style={styles.HeaderButtonText}>
                     {t('Save_as_draft')}
                   </Text>
@@ -319,7 +337,8 @@ const ItemCreaterFirstStep = ({navigation}) => {
             <TouchableOpacity onPress={() => set_order_state('completed')}>
               <Text
                 style={{
-                  color: order_state == 'completed' ? colors.black: colors.sidebar,
+                  color:
+                    order_state == 'completed' ? colors.black : colors.sidebar,
                   fontFamily: fonts.PoppinsSemiBold,
                   paddingHorizontal: 20,
                 }}>

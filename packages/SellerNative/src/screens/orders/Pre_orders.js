@@ -15,10 +15,7 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {
-  widthPercentageToDP as width,
-  heightPercentageToDP as height,
-} from 'react-native-responsive-screen';
+
 import {Image, SvgXml} from 'react-native-svg';
 import IsTablet from '@SilalApp/common/components/native/IsTablet';
 import Svg, {
@@ -74,6 +71,24 @@ export default function Pre_orders({title, navigation}) {
     },
     {
       id: '5',
+      Title: 'Embedded Software last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+    },
+    {
+      id: '6',
+      Title: 'Embedded Software last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+    },
+    {
+      id: '7',
+      Title: 'Embedded Software full last',
+      SubTitle: 'USA',
+      year: '22/03/2022',
+    },
+    {
+      id: '8',
       Title: 'Embedded Software full last',
       SubTitle: 'USA',
       year: '22/03/2022',
@@ -149,12 +164,37 @@ export default function Pre_orders({title, navigation}) {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => setModal(!modal)}
+            onPress={() =>
+              toastRef.current.show(
+                <View style={{flexDirection: 'row'}}>
+                  <Text
+                    style={{
+                      color: '#002733',
+                      fontSize: 15,
+                      fontFamily: 'Lato-Bold',
+                    }}>
+                    The order #247HW9 has been moved to current orders
+                  </Text>
+                  <TouchableOpacity
+                    onPress={() => {
+                      toastRef.current.close(), alert('undo');
+                    }}>
+                    <Text
+                      style={{
+                        color: '#018FFB',
+                        fontSize: 15,
+                        fontFamily: 'Lato-Bold',
+                        marginLeft: 20,
+                      }}>
+                      UNDO
+                    </Text>
+                  </TouchableOpacity>
+                </View>,
+                3000,
+              )
+            }
             style={[styles.accept_btn, {width: '60%'}]}>
-            <Text style={styles.accept_btn_txt}>
-              {t('move_to_current_order')}
-            </Text>
+            <Text style={styles.accept_btn_txt}>Move to current orders</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -367,7 +407,37 @@ export default function Pre_orders({title, navigation}) {
               placeholder={t('Type_here') + '...'}
               placeholderTextColor="#4C6870"
             />
-            <View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 10,
+              }}>
+              <Text
+                style={[
+                  styles.modal_heading,
+                  {fontWeight: '200', fontSize: 15},
+                ]}>
+                {t('suggestions')}
+              </Text>
+              <FlatList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item, index) => index.toString()}
+                data={data}
+                renderItem={({item}) => (
+                  <View
+                    style={{
+                      paddingVertical: 5,
+                      paddingHorizontal: 10,
+                      backgroundColor: '#E6F4F2',
+                      marginLeft: 10,
+                      borderRadius: 5,
+                    }}>
+                    <Text>{item.SubTitle}</Text>
+                  </View>
+                )}
+              />
               <View
                 style={{
                   flexDirection: 'row',
@@ -379,7 +449,7 @@ export default function Pre_orders({title, navigation}) {
                     styles.modal_heading,
                     {fontWeight: '200', fontSize: 15, color: colors.black},
                   ]}>
-                  {t('suggestions')}
+                  Suggestions:
                 </Text>
                 <FlatList
                   horizontal
@@ -983,19 +1053,18 @@ const styles = ScaledSheet.create({
     color: '#F2A341',
     fontFamily: 'Lato-Bold',
   },
-
   modalView: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
     padding: 20,
     borderRadius: '20@vs',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 0,
+      height: 2,
     },
-    shadowOpacity: 0.15,
-    shadowRadius: 1,
-    elevation: 0,
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
   modal_save_btn: {
     alignItems: 'center',

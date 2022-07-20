@@ -1,25 +1,26 @@
-import React, { Suspense } from "react"
+import React, { Suspense } from "react";
 import {
   Route,
   Switch,
   Redirect,
   BrowserRouter as Router,
-} from "react-router-dom"
-import routes from "./Routes"
+} from "react-router-dom";
+import routes from "./Routes";
 
 const loading = (
   <div className="" style={{ height: "100vh" }}>
     <div className="d-flex my-5 pt-3 justify-content-center">Loading...</div>
   </div>
-)
+);
 
 const Content = ({ setSideBar, sideBar }) => {
   return (
-    <div className="px-3 flex-1">
+    <div className="main-content px-3 flex-1">
       <React.Fragment>
         <Suspense fallback={loading}>
           <Switch>
             {routes.map((route, idx) => {
+              console.log(route.path);
               return (
                 route.component && (
                   <Route
@@ -28,18 +29,22 @@ const Content = ({ setSideBar, sideBar }) => {
                     exact={route.exact}
                     name={route.name}
                     render={(props) => (
-                      <route.component {...props} setSideBar={setSideBar} sideBar={sideBar} />
+                      <route.component
+                        {...props}
+                        setSideBar={setSideBar}
+                        sideBar={sideBar}
+                      />
                     )}
                   />
                 )
-              )
+              );
             })}
             <Route path="*" render={() => <Redirect to="/404" />} />
           </Switch>
         </Suspense>
       </React.Fragment>
     </div>
-  )
-}
+  );
+};
 
-export default React.memo(Content)
+export default React.memo(Content);

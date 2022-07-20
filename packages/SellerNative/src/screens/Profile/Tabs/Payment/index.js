@@ -282,7 +282,7 @@ const styles = ScaledSheet.create({
     marginTop: 5,
   },
   accept_btn: {
-    backgroundColor: '#5AB3A8',
+    backgroundColor: '#05AE4B',
     padding: 10,
     borderRadius: 5,
     marginTop: 10,

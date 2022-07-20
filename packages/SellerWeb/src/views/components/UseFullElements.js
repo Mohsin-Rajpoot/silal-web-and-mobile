@@ -4,6 +4,7 @@ import {
     FilterIcon,
     XIcon,
     SearchIcon,
+    PeakHoursIcon,
 } from './AllImages'
 
 const RestaurantHeading = ({
@@ -15,7 +16,10 @@ const RestaurantHeading = ({
         <RestHeadStyled>
             <div className="d-flex align-items-center">
                 <h1 className="dark-clr">{heading}</h1>
-                <span className="text-white">{hours}</span>
+                <span className="f-medium">
+                    <PeakHoursIcon />
+                    {hours}
+                </span>
             </div>
             <p className="f-medium lato">{location}</p>
         </RestHeadStyled>
@@ -30,11 +34,15 @@ const RestHeadStyled = styled.div`
         margin: 0 12px 5px 0;
     }
     span {
-        background: #8777D9;
+        svg {
+            margin-right: 6px;
+        }
+        background: rgba(226, 9, 9, 0.15);
         border-radius: 5px;
-        padding: 5px 10px;
+        padding: 5px 8px;
         font-size: 12px;
         text-transform: uppercase;
+        color: #E20909;
     }
     p {
         font-size: 13px;
@@ -190,14 +198,17 @@ const QtyDetailStyled = styled.div`
 const SearchWindow = ({
     classN,
     ID,
+    height,
+    change,
 }) => {
     return (
-        <SearchWindowStyled className={classN}>
+        <SearchWindowStyled className={classN} height={height}>
             <SearchIcon />
             <input
                 type="text"
                 id={ID}
                 placeholder="Search"
+                onChange={change}
             />
         </SearchWindowStyled>
     )
@@ -205,7 +216,7 @@ const SearchWindow = ({
 
 const SearchWindowStyled = styled.div`
     width: 100%;
-    height: 30px;
+    height: ${props => props.height || "30px"};
     padding: 7px 0 7px 10px;
     margin-bottom: 20px;
     background: #FFFFFF;
