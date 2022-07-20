@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import FormControl from "../../components/auth/FormControl/FormControl";
 import Gobackbuton from "../../components/auth/Gobackbutton/Gobackbuton";
-import * as userAction from "@SilalApp/common/store/User/actions";
+import * as userAction from "@SilalApp/common/Store/SellerReducers/User/actions";
 import { useDispatch } from "react-redux";
 
 function Loginpage() {
-  const location = useHistory();
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [formValue, setFormValue] = useState("");
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
   const options = [
     {
@@ -40,31 +40,32 @@ function Loginpage() {
   };
 
   const sendToOtp = () => {
-    if(!formValue) {
-      setError('Please Enter Phone Number!')
-      return
+    if (!formValue) {
+      setError("Please Enter Phone Number!");
+      return;
     }
-    let data = "+92"+formValue
+    let data = "+92" + formValue;
     let payload = {
       data,
       cb: (res) => {
-        if (res.http_status_code == 201) {
+        if (res.http_status_code === 201) {
           setTimeout(() => {
-            setError("")
+            setError("");
           }, 1000);
-        } else if (res.http_status_code == 409) {
+        } else if (res.http_status_code === 409) {
           // setError(t("alreadyusedPhone"));
           setError("alreadyusedPhone");
-        } else if (res.http_status_code == 429) {
+        } else if (res.http_status_code === 429) {
           // setError(t("alreadySentPhone"));
           setError("alreadySentPhone");
         }
       },
-    }
-    dispatch(
-      userAction.userSignUpSaga(payload)
-    );
-    location.push("/otp", "signup");
+    };
+    dispatch(userAction.userSignUpSaga(payload));
+    history.push({
+      pathname: "/otp",
+      state: { phoneNo: formValue, previousPage: "signup" },
+    });
   };
   // animation email input field
 
@@ -106,9 +107,9 @@ function Loginpage() {
                     onChange={(e) => setFormValue(e.target.value)}
                   />
                 </div>
-                {error !== ""?
+                {error !== "" ? (
                   <span className="text-danger">{error}</span>
-                :null}
+                ) : null}
               </div>
             </motion.div>
           </div>
@@ -162,9 +163,9 @@ const Wrapper = styled.div`
         }
         .row {
           border: 1px solid #ededed;
-          border-radius:10px;
-          margin-top:5px;
-          display: flex;ededed
+          border-radius: 10px;
+          margin-top: 5px;
+          display: flex;
           justify-content: center;
           align-items: center;
           .col1 {
@@ -215,15 +216,15 @@ const Wrapper = styled.div`
     width: 80%;
     margin-top: 300px;
   }
-  h6{
-    margin:5px;
-font-weight: 500;
-font-size: 15px;
-color: #4C7061;
+  h6 {
+    margin: 5px;
+    font-weight: 500;
+    font-size: 15px;
+    color: #4c7061;
   }
-  .colored{
-font-weight: 500;
+  .colored {
+    font-weight: 500;
 
-    color:#05AE4B;
+    color: #05ae4b;
   }
 `;

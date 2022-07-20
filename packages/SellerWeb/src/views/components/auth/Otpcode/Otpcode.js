@@ -13,7 +13,7 @@ function Otpcode({ num, onChange }) {
       {Object.keys(num).map((item, index) => (
         <motion.input
           key={index}
-          type="number"
+          type="string"
           id={item}
           animate={inputAnimate}
           transition={{ delay: (index * 10) / 80 }}

@@ -7,13 +7,18 @@ import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import FormControl from "../../../components/auth/FormControl/FormControl";
 import Gobackbuton from "../../../components/auth/Gobackbutton/Gobackbuton";
+import * as userAction from "@SilalApp/common/Store/SellerReducers/User/actions";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function Loginpage() {
   const [formValue, setFormValue] = useState("");
   const [showNumForm, setShowNumForm] = useState(true);
   const [showPass, setShowPass] = useState(false);
-  // console.log(showNumForm);
-  // select options
+  const [error, setError] = useState("");
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const options = [
     {
       label: "RU + 7",
@@ -43,6 +48,27 @@ function Loginpage() {
     y: [100, 0],
     opacity: [0, 1],
     transition: { duration: 1 },
+  };
+
+  const sendLoginOtp = () => {
+    if (!formValue) return setError("Please enter your number.");
+
+    let data = { phone: "+92" + formValue };
+
+    let payload = {
+      data,
+      cb: (res) => {
+        if (res.http_status_code === 401) return setError(res.msg);
+        else if (res.http_status_code === 410) return setError(res.msg);
+        else if (res.http_status_code === 200) setError("");
+      },
+    };
+
+    dispatch(userAction.userloginWithPhoneSaga(payload));
+    history.push({
+      pathname: "/otp",
+      state: { phoneNo: formValue, previousPage: "login" },
+    });
   };
 
   return (
@@ -96,6 +122,9 @@ function Loginpage() {
                     onChange={(e) => setFormValue(e.target.value)}
                   />
                 </div>
+                <div className="text-center">
+                  {error ? <span className="text-danger">{error}</span> : " "}
+                </div>
               </div>
             </motion.div>
           ) : (
@@ -135,9 +164,10 @@ function Loginpage() {
           <Linktag
             text={showNumForm ? "Continue" : "Log in"}
             primary={true}
+            onClick={showNumForm ? () => sendLoginOtp() : undefined}
             textcolor={true}
             blockitem={true}
-            to={showNumForm ? "otp" : "newsplash"}
+            // to={showNumForm ? "otp" : "newsplash"}
           />
         </div>
         <div className="forgot-pass-text">
