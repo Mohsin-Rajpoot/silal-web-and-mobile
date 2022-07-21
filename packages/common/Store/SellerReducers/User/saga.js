@@ -5,7 +5,7 @@ import { API, requestPost, requestPut } from "../../../Api/Api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Platform } from "react-native";
 
-import { ErrorHandler } from "./../../utils/errorHandler";
+import  ErrorHandler  from "../../../util/errorHandler";
 
 function* login({ payload }) {
   try {
@@ -24,7 +24,7 @@ function* login({ payload }) {
 //============== Sign up api with phone
 function* signUp({ payload }) {
   console.log("-----Payload", payload);
-  const response = {};
+ 
   try {
     yield put(actions.setUserRequest());
     response = yield requestPost(
@@ -37,6 +37,7 @@ function* signUp({ payload }) {
         success: true,
         data: response.data,
         code: response.http_status_code,
+        expireCode:response.expiration_date
       };
       payload.cb(resObj);
       yield put(actions.setUserSuccess(response));
@@ -47,11 +48,12 @@ function* signUp({ payload }) {
         code: response.http_status_code,
       };
       payload.cb(resObj);
-      yield put(actions.setUserSuccess(response));
+      // yield put(actions.setUserSuccess(response));
     }
   } catch (error) {
     const errObj = ErrorHandler(error);
     payload.failure(errObj);
+    yield put(actions.setUserError())
   }
 }
 //============verify phone after sign up

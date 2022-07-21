@@ -59,13 +59,13 @@ const Login = ({ navigation, route }) => {
           data,
           cb: (res) => {
             console.log("----Res", res);
-            if (res.http_status_code == 201) {
+            if (res.code == 201) {
               setTimeout(() => {
                 setError("");
                 navigation.navigate("Verification", {
                   params: {
                     phone: phone,
-                    expireTimer: res.expiration_date,
+                    expireTimer: res.expireCode,
                     activeTab: data?.params?.signupEmail
                       ? 5
                       : data?.params?.signUp
