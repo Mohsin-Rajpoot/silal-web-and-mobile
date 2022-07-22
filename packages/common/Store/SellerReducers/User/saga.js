@@ -3,7 +3,7 @@ import * as actions from "./actions";
 
 import { API, requestPost, requestPut } from "../../../Api/Api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Platform } from "react-native";
+// import { Platform } from "react-native";
 
 import { ErrorHandler } from "./../../utils/errorHandler";
 
@@ -24,7 +24,7 @@ function* login({ payload }) {
 //============== Sign up api with phone
 function* signUp({ payload }) {
   console.log("-----Payload", payload);
-  const response = {};
+  let response = {};
   try {
     yield put(actions.setUserRequest());
     response = yield requestPost(
@@ -32,24 +32,25 @@ function* signUp({ payload }) {
       { phone: payload.data },
       true
     );
-    if (response.http_status_code == 201) {
+    console.log("response");
+    console.log(response);
+    if (response.http_status_code === 201) {
       const resObj = {
         success: true,
-        data: response.data,
+        data: response,
         code: response.http_status_code,
       };
       payload.cb(resObj);
-      yield put(actions.setUserSuccess(response));
     } else {
       const resObj = {
         success: false,
-        data: response.data,
+        data: response,
         code: response.http_status_code,
       };
       payload.cb(resObj);
-      yield put(actions.setUserSuccess(response));
     }
   } catch (error) {
+    console.log("Simple Error: " + error);
     const errObj = ErrorHandler(error);
     payload.failure(errObj);
   }
