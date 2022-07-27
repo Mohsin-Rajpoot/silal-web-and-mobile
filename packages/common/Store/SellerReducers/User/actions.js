@@ -10,13 +10,24 @@ export const USER_PHONE_VERIFICATION_LOGIN = "USER_PHONE_VERIFICATION_LOGIN";
 export const USER_SIGNUP_WITH_EMAIL_SAGA = "USER_SIGNUP_WITH_EMAIL_SAGA";
 export const USER_LOGIN_WITH_PHONE = "USER_LOGIN_WITH_PHONE";
 export const USER_LOGIN_WITH_EMAIL = "USER_LOGIN_WITH_EMAIL";
-export const USER_EMAIL_VERIFICATION_AFTER_LOGIN =
-  "USER_EMAIL_VERIFICATION_AFTER_LOGIN";
+export const USER_EMAIL_VERIFICATION_AFTER_LOGIN = "USER_EMAIL_VERIFICATION_AFTER_LOGIN";
 export const ADD_PERSONAL_INFORMATION_SAGA = "ADD_PERSONAL_INFORMATION_SAGA";
 export const VERIFY_PHONE_AFTER_SIGNUP_SAGA = "VERIFY_PHONE_AFTER_SIGNUP_SAGA";
 export const VERIFY_EMAIL_AFTER_SIGNUP_SAGA = "VERIFY_EMAIL_AFTER_SIGNUP_SAGA";
-export const USER_CREATESTORE_SAGA ="USER_CREATESTORE_SAGA"
+export const USER_CREATESTORE_SAGA ="USER_CREATESTORE_SAGA";
+export const SET_TOKEN ="SET_TOKEN";
 export const LOGOUT = "LOGOUT";
+// Haris
+export const GET_STORE_DATA_SAGA = "GET_STORE_DATA_SAGA";
+export const DELETE_STORE_DATA_SAGA ="DELETE_STORE_DATA_SAGA";
+export const CREATE_STORE_DATA_SAGA ="CREATE_STORE_DATA_SAGA";
+export const UPDATE_STORE_DATA_SAGA="UPDATE_STORE_DATA_SAGA";
+
+
+
+
+
+
 export const setLoading = (payload) => ({
   type: SET_LOADING,
   payload,
@@ -24,6 +35,10 @@ export const setLoading = (payload) => ({
 
 export const setUserRequest = () => ({
   type: SET_USER_REQUEST,
+});
+export const setToken = (payload) => ({
+  type: SET_TOKEN,
+  payload
 });
 export const setUserSuccess = (payload) => ({
   type: SET_USER_SUCCESS,
@@ -81,4 +96,23 @@ export const logout = () => ({
 export const userCreateStoreSaga=(payload)=>({
   type:USER_CREATESTORE_SAGA,
   payload
+});
+
+// Haris
+export const get_store_data = (payload) => ({
+  type: GET_STORE_DATA_SAGA,
+  payload,
+});
+export const delete_store_data = (payload) => ({
+  type: DELETE_STORE_DATA_SAGA,
+  payload,
+});
+export const create_store_data = (payload) => ({
+  type: CREATE_STORE_DATA_SAGA,
+  payload,
+});
+export const update_store_data =(payload) => ({
+  type: UPDATE_STORE_DATA_SAGA,
+  payload
 })
+

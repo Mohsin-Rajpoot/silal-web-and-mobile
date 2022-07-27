@@ -18,7 +18,7 @@ import { useTranslation } from "react-i18next";
 import DeviceInfo from "react-native-device-info";
 import colors from "../../assets/colors";
 import { useDispatch, useSelector } from "react-redux";
-import * as userAction from "../../store/SellerReducers/User/actions";
+import * as userAction from "../../Store/SellerReducers/User/actions";
 import Loader from "../../Loader";
 import Toast from "react-native-simple-toast";
 const Verification = ({ route, navigation }) => {

@@ -1,4 +1,4 @@
-import { takeLatest, put } from "@redux-saga/core/effects";
+import { takeLatest, put, select } from "@redux-saga/core/effects";
 import * as actions from "./actions";
 
 import { API, requestPost, requestPut } from "../../../Api/Api";
@@ -6,6 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Platform } from "react-native";
 
 import  ErrorHandler  from "../../../util/errorHandler";
+import { getToken } from "../../SellerStore/selectors";
 
 function* login({ payload }) {
   try {
@@ -27,11 +28,12 @@ function* signUp({ payload }) {
  
   try {
     yield put(actions.setUserRequest());
-    response = yield requestPost(
+    const response = yield requestPost(
       API.SIGNUP_Phone,
       { phone: payload.data },
       true
     );
+    console.log(response);
     if (response.http_status_code == 201) {
       const resObj = {
         success: true,
@@ -51,16 +53,18 @@ function* signUp({ payload }) {
       // yield put(actions.setUserSuccess(response));
     }
   } catch (error) {
+    console.log(error);
     const errObj = ErrorHandler(error);
     payload.failure(errObj);
-    yield put(actions.setUserError())
+    // yield put(actions.setUserError())
   }
 }
 //============verify phone after sign up
 function* Phone_Verification_signup({ payload }) {
   console.log("------Payload1", payload);
   try {
-    yield put(actions.setUserRequest());
+    // yield put(actions.setUserRequest());
+    console.log(payload);
     const response = yield requestPost(
       API.VERIFY_PHONE_AFTER_SIGNUP,
       {
@@ -69,17 +73,22 @@ function* Phone_Verification_signup({ payload }) {
       },
       true
     );
-    if (response.http_status_code == 200) {
-      yield put(actions.setUserSuccess(response));
-      payload.cb(response);
-    } else if (response.http_status_code == 401) {
-      console.log("----Valid phone");
-      payload.cb("Something went wrong");
-      yield put(actions.setUserError());
-    } else if (response.http_status_code == 429) {
-      payload.cb(response);
-    }
+    yield put(actions.setToken({token: response.bearer}))
+
+    // if (response.http_status_code == 200) {
+    //   yield put(actions.setToken(response.bearer))
+    //   alert(response.bearer)
+    //   yield put(actions.setUserSuccess(response));
+    //   payload.cb(response);
+    // } else if (response.http_status_code == 401) {
+    //   console.log("----Valid phone");
+    //   payload.cb("Something went wrong");
+    //   yield put(actions.setUserError());
+    // } else if (response.http_status_code == 429) {
+    //   payload.cb(response);
+    // }
   } catch (error) {
+    alert(JSON.stringify(error))
     if (error.response.data.http_status_code == 401) {
       payload.cb({ http_status_code: 401 });
       yield put(actions.setUserError());
@@ -269,6 +278,7 @@ function* Email_Verification_signup({ payload }) {
 function* add_personal_information({ payload }) {
   console.log("------Payload Information", payload);
   try {
+    const {token} = yield select(getToken)
     yield put(actions.setUserRequest());
     const response = yield requestPost(
       API.ADD_PERSONAL_INFORMATION,
@@ -277,7 +287,10 @@ function* add_personal_information({ payload }) {
         last_name: payload.data.last_name,
         id_number: payload.data.id_number,
       },
-      true
+      true,
+      // {headers: {
+      //   'Authorization': `Bearer ${token}`
+      // }}
     );
     if (response.http_status_code == 200) {
       yield put(actions.setUserSuccess(response));
@@ -307,6 +320,48 @@ function* createStore({ payload }) {
     console.log("======Error", error);
     yield put(actions.setUserError("Please check your internet connection"));
   }
+}
+// haris
+//============Get Store Data
+function* Get_Store_Data({ payload }) {
+  alert("********Get_Store_Data********")
+  console.log("------Payload1", payload);
+ 
+}
+
+// ==========Delete Store Data
+function* delete_store_data({ payload }) {
+  alert("*******delete_store_data*******")
+  console.log("------Payload1", payload);
+   
+}
+// ==========Create Store Data
+function* create_store_data({ payload }) {
+  alert("*****Create_store_data*******")
+  // console.log("------Payload1", payload);
+ 
+  try {
+    // yield put(actions.setUserRequest());
+    const response = yield requestPost(API.Create_Store, payload, true);
+    console.log('....create store response........',response)
+    if (response.http_status_code == 201) {
+      console.log("======Response", response.msg);
+      payload.cb("Create User");
+      yield put(actions.setUserSuccess(response));
+    } else {
+      console.log("Something went wrong");
+    }
+  } catch (error) {
+    console.log("======Error", error);
+    yield put(actions.setUserError("Please check your internet connection"));
+  }
+   
+}
+// ==========Update Store Data
+function* update_store_data({ payload }) {
+  alert("********update_store_data************")
+  console.log("------Payload1", payload);
+   
 }
 
 //===============Watchers=============================
@@ -354,5 +409,32 @@ export function* actionPhoneVerificationAfterLoginWatcher() {
   return yield takeLatest(
     actions.USER_PHONE_VERIFICATION_LOGIN,
     phone_verification_after_login
+  );
+}
+
+
+// Haris
+export function* actionGetStoreDataWatcher() {
+  return yield takeLatest(
+    actions.GET_STORE_DATA_SAGA,
+    Get_Store_Data
+  );
+}
+export function* actionDeleteStoreDataWatcher() {
+  return yield takeLatest(
+    actions.DELETE_STORE_DATA_SAGA,
+    delete_store_data
+  );
+}
+export function* actionCreateStoreDataWatcher() {
+  return yield takeLatest(
+    actions.CREATE_STORE_DATA_SAGA,
+    create_store_data
+  );
+}
+export function* actionUpdateStoreDataWatcher() {
+  return yield takeLatest(
+    actions.UPDATE_STORE_DATA_SAGA,
+    update_store_data
   );
 }

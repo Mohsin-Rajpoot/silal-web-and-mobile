@@ -27,9 +27,9 @@
 		1806713B280A7FAF00A12AE2 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1806712C280A7FAF00A12AE2 /* Lato-Italic.ttf */; };
 		1806713C280A7FAF00A12AE2 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1806712D280A7FAF00A12AE2 /* Lato-Regular.ttf */; };
 		450752C8D3B36DD23BC25168 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5863AD42E0BCC7BE8D26EF98 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */; };
-		4B85A67C7B640639849EC205 /* libPods-Seller_App_Silal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E240F582F5D58AD30B9BF9F0 /* libPods-Seller_App_Silal.a */; };
+		4B85A67C7B640639849EC205 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		D4009DE1A2E47A170AAEE066 /* libPods-Seller_App_Silal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B70ADE50D488F00B88BBB35 /* libPods-Seller_App_Silal.a */; };
+		8AB6C6DDB367C9B554967143 /* libPods-Seller_App_Silal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6238B3329D668AA4A9EB6776 /* libPods-Seller_App_Silal.a */; };
 		FA7CF0E7282D98E500833813 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = FA7CF0E6282D98E500833813 /* main.jsbundle */; };
 /* End PBXBuildFile section */
 
@@ -47,13 +47,13 @@
 		00E356EE1AD99517003FC87E /* Seller_App_SilalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Seller_App_SilalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* Seller_App_SilalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Seller_App_SilalTests.m; sourceTree = "<group>"; };
+		042F91454F30E4B2C84FD195 /* Pods-Seller_App_Silal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal.debug.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Seller_App_Silal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seller_App_Silal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Seller_App_Silal/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Seller_App_Silal/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Seller_App_Silal/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Seller_App_Silal/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Seller_App_Silal/main.m; sourceTree = "<group>"; };
-		154BD6B6144925C580B8AC8B /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig"; sourceTree = "<group>"; };
 		1806711F280A7FAF00A12AE2 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Poppins-Medium.ttf"; path = "../assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		18067120280A7FAF00A12AE2 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Poppins-Light.ttf"; path = "../assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
 		18067121280A7FAF00A12AE2 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Lato-Semibold.ttf"; path = "../assets/fonts/Lato-Semibold.ttf"; sourceTree = "<group>"; };
@@ -70,8 +70,10 @@
 		1806712C280A7FAF00A12AE2 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Lato-Italic.ttf"; path = "../assets/fonts/Lato-Italic.ttf"; sourceTree = "<group>"; };
 		1806712D280A7FAF00A12AE2 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		1806713D280A8E6500A12AE2 /* Seller_App_Silal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Seller_App_Silal.entitlements; path = Seller_App_Silal/Seller_App_Silal.entitlements; sourceTree = "<group>"; };
+		451A9E79C3B08F8085A42BF3 /* Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		528DF25206173876DE702D7F /* Pods-Seller_App_Silal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal.release.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal/Pods-Seller_App_Silal.release.xcconfig"; sourceTree = "<group>"; };
 		5863AD42E0BCC7BE8D26EF98 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seller_App_Silal-Seller_App_SilalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6238B3329D668AA4A9EB6776 /* libPods-Seller_App_Silal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seller_App_Silal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Seller_App_Silal/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B608F7027DFC6AF0014FE72 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Poppins-Bold.ttf"; path = "../android/app/src/main/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		9B608F7127DFC6AF0014FE72 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Poppins-ExtraBoldItalic.ttf"; path = "../android/app/src/main/assets/fonts/Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 		9B608F9B27DFC7140014FE72 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Lato-LightItalic.ttf"; path = "../android/app/src/main/assets/fonts/Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		9B608F9C27DFC7140014FE72 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Lato-ThinItalic.ttf"; path = "../android/app/src/main/assets/fonts/Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 		9B608F9D27DFC7140014FE72 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Lato-Regular.ttf"; path = "../android/app/src/main/assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
-		A3118B1FEDE0859E9A033FFB /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seller_App_Silal-Seller_App_SilalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EE8658E96486EB1763678A9 /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig"; path = "Target Support Files/Pods-Seller_App_Silal-Seller_App_SilalTests/Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FA7CF0E6282D98E500833813 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B85A67C7B640639849EC205 /* libPods-Seller_App_Silal.a in Frameworks */,
+				4B85A67C7B640639849EC205 /* BuildFile in Frameworks */,
+				8AB6C6DDB367C9B554967143 /* libPods-Seller_App_Silal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,8 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				E240F582F5D58AD30B9BF9F0 /* libPods-Seller_App_Silal.a */,
 				5863AD42E0BCC7BE8D26EF98 /* libPods-Seller_App_Silal-Seller_App_SilalTests.a */,
+				6238B3329D668AA4A9EB6776 /* libPods-Seller_App_Silal.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -171,10 +174,10 @@
 		32C5ADC0B9539448E4BBC0B4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A748C404339B820A6AEDE46B /* Pods-Seller_App_Silal.debug.xcconfig */,
 				528DF25206173876DE702D7F /* Pods-Seller_App_Silal.release.xcconfig */,
-				E8D4F311B3842A2D84ACCD89 /* Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig */,
-				BA87E990B8978E415F64A937 /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */,
+				042F91454F30E4B2C84FD195 /* Pods-Seller_App_Silal.debug.xcconfig */,
+				451A9E79C3B08F8085A42BF3 /* Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig */,
+				9EE8658E96486EB1763678A9 /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -557,7 +560,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8D4F311B3842A2D84ACCD89 /* Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig */;
+			baseConfigurationReference = 451A9E79C3B08F8085A42BF3 /* Pods-Seller_App_Silal-Seller_App_SilalTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -584,7 +587,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA87E990B8978E415F64A937 /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */;
+			baseConfigurationReference = 9EE8658E96486EB1763678A9 /* Pods-Seller_App_Silal-Seller_App_SilalTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -617,7 +620,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A748C404339B820A6AEDE46B /* Pods-Seller_App_Silal.debug.xcconfig */;
+			baseConfigurationReference = 042F91454F30E4B2C84FD195 /* Pods-Seller_App_Silal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

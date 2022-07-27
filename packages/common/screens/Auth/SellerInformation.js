@@ -12,7 +12,8 @@ import AuthButton from "../../components/native/AuthButton";
 import { Icon } from "react-native-elements";
 import colors from "../../assets/colors";
 import { useDispatch, useSelector } from "react-redux";
-import * as userAction from "../../store/SellerReducers/User/actions";
+// import * as userAction from "../../store/SellerReducers/User/actions";
+import * as userAction from "../../Store/SellerReducers/User/actions"
 import Loader from "../../Loader";
 import axios from "axios";
 const SellerInformation = ({ navigation }) => {

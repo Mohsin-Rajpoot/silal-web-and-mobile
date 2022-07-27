@@ -12,5 +12,9 @@ export function* rootSaga() {
     fork(user.actionAddPersonalInformationWatcher),
     fork(user.actionEmailVerifcationAfterLoginWatcher),
     fork(user.actionPhoneVerificationAfterLoginWatcher),
+    fork(user.actionGetStoreDataWatcher),
+    fork(user.actionDeleteStoreDataWatcher),
+    fork(user.actionCreateStoreDataWatcher),
+    fork(user.actionUpdateStoreDataWatcher),
   ]);
 }

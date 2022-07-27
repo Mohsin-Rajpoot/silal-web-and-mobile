@@ -1,5 +1,7 @@
 import axios from "axios";
+import { select } from '@redux-saga/core/effects'
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getToken } from "../Store/SellerStore/selectors";
 
 const base_url = "https://seller.dev.silal.app/";
 
@@ -18,10 +20,18 @@ export const API = {
   Create_Store:'/api/v1/stores/' 
 };
 
+axios.defaults.baseURL = API.BASE_URL
+axios.defaults.withCredentials = true
+// axios.defaults.headers.common = `Bearer ${select(getToken)}`
+axios.defaults.headers.common = `Bearer eyJhbGciOiJIUzUxMiIsImlhdCI6MTY1
+ODgyODY5MSwiZXhwIjoxNjY2NjA0NjkxfQ.eyJiZWFyZXIgY29uZmlybWF0aW9uIjoiODMxNjU4O
+DE3MTMwMzQ2MjAyIn0.ScJ-QOe5tefFkcwVWhvAxnhXpmPGUd78rejFh4ZCpQAf8t9BHsnWejvpW1dvKwbQ5i9csxuqLodd-UXOL4jP2g`
+
 export const requestGet = (url, extraHeaders = {}) => {
   return new Promise((resolve, reject) => {
     axios
       .get(base_url + url, {
+        withCredentials: true,
         headers: {
           Accept: "application/json",
           ...extraHeaders,
@@ -50,6 +60,7 @@ export const requestPost = (url, data, isRaw, extraHeaders = {}) => {
   return new Promise((resolve, reject) => {
     axios
       .post(base_url + url, formData, {
+        withCredentials: true,
         headers: {
           Accept: "application/json",
           ...extraHeaders,
@@ -78,6 +89,7 @@ export const requestPut = (url, data, isRaw, extraHeaders = {}) => {
   return new Promise((resolve, reject) => {
     axios
       .put(base_url + url, formData, {
+        
         headers: {
           Accept: "application/json",
           ...extraHeaders,
@@ -93,20 +105,20 @@ export const requestPut = (url, data, isRaw, extraHeaders = {}) => {
       });
   });
 };
-axios.interceptors.request.use(
-  async (config) => {
-    const token = await AsyncStorage.getItem("isAuth");
-    console.log("---Token", token);
-    const requestConfig = config;
-    requestConfig.headers = {
-      Authorization: `bearer ${token}`,
-      Accept: "application/json",
-    };
-    console.log("RESQUEST", config);
-    return requestConfig;
-  },
-  (err) => {
-    console.log("Error", err);
-    return Promise.reject(err);
-  }
-);
+// axios.interceptors.request.use(
+//   async (config) => {
+//     const token = await AsyncStorage.getItem("isAuth");
+//     console.log("---Token", token);
+//     const requestConfig = config;
+//     requestConfig.headers = {
+//       Authorization: `bearer ${token}`,
+//       Accept: "application/json",
+//     };
+//     console.log("RESQUEST", config);
+//     return requestConfig;
+//   },
+//   (err) => {
+//     console.log("Error", err);
+//     return Promise.reject(err);
+//   }
+// );

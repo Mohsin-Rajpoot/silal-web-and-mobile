@@ -16,7 +16,7 @@ import PhoneNumber from "../../components/native/PhoneNumberInput";
 import HeaderBack from "../../components/native/HeaderBack";
 import colors from "../../assets/colors";
 import { useTranslation } from "react-i18next";
-import * as userAction from "../../store/SellerReducers/User/actions";
+import * as userAction from "../../Store/SellerReducers/User/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../Loader";
 import DeviceInfo from "react-native-device-info";
@@ -29,8 +29,10 @@ const Login = ({ navigation, route }) => {
   const { t } = useTranslation();
   const isTab = DeviceInfo.isTablet();
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.User);
+  const { loading, token } = useSelector((state) => state.User);
+  const user = useSelector((state) => state);
 
+  // alert(JSON.stringify(user))
   const data = route?.params;
   const init = {
     password: "",
