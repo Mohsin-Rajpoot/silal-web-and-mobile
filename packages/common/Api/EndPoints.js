@@ -2,7 +2,7 @@ export const EndPoint = {
   LOGIN: "/login",
   SIGNUP_Phone: "/auth_api/v1/sign_up/phone",
   Phone_Verification_Login: "/auth_api/v1/login/phone/otp",
-  SIGN_UP_WITH_EMAIL: "/auth_api/v1/preferences/email",
+  SIGN_UP_WITH_EMAIL: "/auth_api/v1/sign_up/email",
   LOGIN_WITH_PHONE: "/auth_api/v1/login/phone/send_otp",
   LOGIN_WITH_EMAIL: "/auth_api/v1/login/email/send_otp",
   EMAIL_VERIFICATION_Login: "/auth_api/v1/login/email/otp",

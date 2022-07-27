@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as userAction from "../../store/SellerReducers/User/actions";
 import Loader from "../../Loader";
 import Toast from "react-native-simple-toast";
+import SimpleToast from "react-native-simple-toast";
 const Verification = ({ route, navigation }) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.User);
@@ -43,12 +44,12 @@ const Verification = ({ route, navigation }) => {
   const goSellerInformation = () => {
     navigation.navigate("SellerInformation");
   };
-  const goChooseAccount = () => {
-    navigation.navigate("ChooseAccount");
-  };
-  const goToConformationAccount = () => {
-    navigation.navigate("ConformationAccount");
-  };
+  // const goChooseAccount = () => {
+  //   navigation.navigate("ChooseAccount");
+  // };
+  // const goToConformationAccount = () => {
+  //   navigation.navigate("ConformationAccount");
+  // };
   const goToSignUpForm = () => {
     navigation.navigate("SignUpForm");
   };
@@ -57,17 +58,20 @@ const Verification = ({ route, navigation }) => {
   };
 
   const phone_numberVerification_SignUp = (data) => {
-    if (data.length < 4) {
-      setError(t("validCode"));
+    if (data.otp.length < 4) {
+      Toast.show(t("validCode"));
     } else {
       dispatch(
         userAction.verify_phone_after_signup({
           data,
           cb: (res) => {
-            if (res.http_status_code == 200) {
+            if (res.code == 200) {
               Toast.show(t("Account_verified"));
               goSignUpDetail();
-            } else if (res.http_status_code == 401) {
+            }
+          },
+          failure: (res) => {
+            if (res.code == 401) {
               Toast.show(t("Enter_validCode"));
             }
           },
@@ -112,8 +116,8 @@ const Verification = ({ route, navigation }) => {
     }
   };
   const email_numberVerification_SignUp = (data) => {
-    if (data.length < 5) {
-      setError(t("validCode"));
+    if (data.otp.length < 5) {
+     SimpleToast.show(t("validCode"));
     } else {
       dispatch(
         userAction.verify_email_after_signup({
@@ -232,9 +236,9 @@ const Verification = ({ route, navigation }) => {
                 ? goToChangePassword()
                 : params?.active == 2 && params.isLogin == true
                 ? email_numberVerification_AfterLogin({
-                  otp:code,
-                  email:params.email
-                })
+                    otp: code,
+                    email: params.email,
+                  })
                 : params?.active == 2 && params.email
                 ? email_numberVerification_SignUp({
                     otp: code,

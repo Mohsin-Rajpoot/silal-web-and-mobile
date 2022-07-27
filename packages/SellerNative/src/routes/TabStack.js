@@ -16,6 +16,7 @@ import HomeStack from './HomeStack';
 const Tab = createBottomTabNavigator();
 
 const TabStack = () => {
+  const {t}=useTranslation()
   return (
     <Tab.Navigator
       screenOptions={{

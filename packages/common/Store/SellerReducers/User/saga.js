@@ -25,6 +25,7 @@ function* signUp({ payload }) {
         expireCode: response.expiration_date,
       };
       payload.cb(resObj);
+      yield put(actions.setUserSuccess());
     } else {
       const resObj = {
         success: false,
@@ -45,8 +46,7 @@ function* signUp({ payload }) {
 function* Phone_Verification_signup({ payload }) {
   console.log("------Payload1", payload);
   try {
-    // yield put(actions.setUserRequest());
-    console.log(payload);
+    yield put(actions.setUserRequest());
     const response = yield requestPost(
       EndPoint.VERIFY_PHONE_AFTER_SIGNUP,
       {
@@ -57,26 +57,28 @@ function* Phone_Verification_signup({ payload }) {
     );
     console.log("----Response", response);
     if (response.http_status_code == 200) {
+      const resObj = {
+        success: true,
+        data: response,
+        code: response.http_status_code,
+      };
+      payload.cb(resObj);
       yield AsyncStorage.setItem("isAuth", response.bearer);
       yield put(actions.setUserSuccess(response));
-      payload.cb(response);
-    } else if (response.http_status_code == 401) {
-      console.log("----Valid phone");
-      payload.cb("Something went wrong");
-      yield put(actions.setUserError());
-    } else if (response.http_status_code == 429) {
-      payload.cb(response);
+      // payload.cb(response);
+    } else {
+      const resObj = {
+        success: true,
+        data: response,
+        code: response.http_status_code,
+      };
+      payload.cb(resObj);
     }
   } catch (error) {
-    yield put(actions.setUserError());
     console.log("-======Error", error);
-    if (error.response.data.http_status_code == 401) {
-      payload.cb({ http_status_code: 401 });
-      yield put(actions.setUserError());
-    } else {
-      console.log("------Error", error.response.http_status_code);
-      yield put(actions.setUserError());
-    }
+    const errObj = ErrorHandler(error);
+    payload.failure(errObj);
+    yield put(actions.setUserError());
   }
 }
 //================Sign up with email
@@ -91,17 +93,26 @@ function* signupWithEmail({ payload }) {
     );
     if (response.http_status_code == 201) {
       console.log("======Response", response);
-      payload.cb(response);
+      const resObj = {
+        success: true,
+        data: response,
+        code: response.http_status_code,
+        expireCode: response.expiration_date,
+      };
+      payload.cb(resObj);
       yield put(actions.setUserSuccess(response));
-    } else if (response.http_status_code == 202) {
-      payload.cb(response);
-      yield put(actions.setUserSuccess(response));
-    } else if (response.http_status_code == 409) {
-      payload.cb(response);
-      console.log("Something went wrong");
+    } else {
+      const resObj = {
+        success: false,
+        data: response,
+        code: response.http_status_code,
+        expireCode: response.expiration_date,
+      };
+      payload.cb(resObj);
     }
   } catch (error) {
-    payload.cb({ http_status_code: 409 });
+    const errObj = ErrorHandler(error);
+    payload.failure(errObj);
     console.log("======Error", error);
     yield put(actions.setUserError("Please check your internet connection"));
   }
@@ -237,14 +248,32 @@ function* Email_Verification_signup({ payload }) {
       },
       true
     );
-    if (response.http_status_code == 200) {
+
+    if (response.http_status_code == 201) {
+      console.log("======Response", response);
+      const resObj = {
+        success: true,
+        data: response,
+        code: response.http_status_code,
+      };
+      payload.cb(resObj);
       yield put(actions.setUserSuccess(response));
-      payload.cb(response);
-    } else if (response.http_status_code == 401) {
-      console.log("----Valid phone");
-      payload.cb("Something went wrong");
-      yield put(actions.setUserError());
+    } else {
+      const resObj = {
+        success: false,
+        data: response,
+        code: response.http_status_code,
+      };
+      payload.cb(resObj);
     }
+    // if (response.http_status_code == 200) {
+    //   yield put(actions.setUserSuccess(response));
+    //   payload.cb(response);
+    // } else if (response.http_status_code == 401) {
+    //   console.log("----Valid phone");
+    //   payload.cb("Something went wrong");
+    //   yield put(actions.setUserError());
+    // }
   } catch (error) {
     if (error.response.data.http_status_code == 401) {
       payload.cb({ http_status_code: 401 });
@@ -259,7 +288,6 @@ function* Email_Verification_signup({ payload }) {
 function* add_personal_information({ payload }) {
   console.log("------Payload Information", payload);
   try {
-    const { token } = yield select(getToken);
     yield put(actions.setUserRequest());
     const response = yield requestPost(
       EndPoint.ADD_PERSONAL_INFORMATION,

@@ -11,7 +11,6 @@ const LockOnLandscape = ({ width, setWidth }) => {
   const determineAndSetOrientation = () => {
     if (Dimensions == PORTRAIT) {
       setOrientation(!IsTablet ? PORTRAIT : LANDSCAPE);
-      console.log(orientation, "orientation  ");
     } else {
       setOrientation(!IsTablet ? "PORTRAIT" : "LANDSCAPE");
       console.log(orientation, "LANDSCAPE  ");

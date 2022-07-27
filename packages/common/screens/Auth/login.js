@@ -79,11 +79,15 @@ const Login = ({ navigation, route }) => {
                   },
                 });
               }, 1000);
-            } else if (res.code == 409) {
+            }
+          },
+          failure: (res) => {
+            console.log("-------------ErrorMessage", res);
+            if (res.code == 409) {
               setError(t("alreadyusedPhone"));
             } else if (res.code == 429) {
-              SimpleToast.show(t("alreadySentPhone"))
-              setTimeout(()=>{
+              SimpleToast.show(t("alreadySentPhone"));
+              setTimeout(() => {
                 navigation.navigate("Verification", {
                   params: {
                     phone: phone,
@@ -96,7 +100,7 @@ const Login = ({ navigation, route }) => {
                     active: active,
                   },
                 });
-              })
+              });
             }
           },
         })
@@ -118,7 +122,7 @@ const Login = ({ navigation, route }) => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (reg.test(data) === false) {
       console.log("Email is Not Correct");
-      setError(t("enter_valid_email"));
+      SimpleToast.show(t("enter_valid_email"));
     } else
       dispatch(
         userAction.userSignupWithEmail({
@@ -126,13 +130,13 @@ const Login = ({ navigation, route }) => {
           cb: (res) => {
             console.log("Response Email", res);
 
-            if (res.http_status_code == 201) {
+            if (res.code == 201) {
               setTimeout(() => {
                 setError("");
                 navigation.navigate("Verification", {
                   params: {
                     email: email,
-                    expireTimer: res.expiration_date,
+                    expireTimer: res.expireCode,
                     activeTab: data?.params?.signupEmail
                       ? 5
                       : data?.params?.signUp
@@ -142,16 +146,19 @@ const Login = ({ navigation, route }) => {
                   },
                 });
               }, 1000);
-            } else if (res.http_status_code == 409) {
+            } 
+          },
+          failure:(res)=>{
+         if (res.code == 409) {
               setError(t("alreadyusedEmail"));
-            } else if (res.http_status_code == 429) {
+            } else if (res.code == 429) {
               setError(t("alreadySentEmail"));
               setTimeout(() => {
                 setError("");
                 navigation.navigate("Verification", {
                   params: {
                     email: email,
-                    expireTimer: res.expiration_date,
+                    expireTimer: res.expireCode,
                     activeTab: data?.params?.signupEmail
                       ? 5
                       : data?.params?.signUp
@@ -162,12 +169,12 @@ const Login = ({ navigation, route }) => {
                 });
               }, 1000);
             }
-          },
+          }
         })
       );
   };
   const loginWithPhone = (data) => {
-    console.log("--")
+    console.log("--");
     if (data.length < 10) {
       setError(t("EnterValidPhone"));
     } else {
