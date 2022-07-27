@@ -50,7 +50,7 @@ function* Phone_Verification_signup({ payload }) {
   try {
     yield put(actions.setUserRequest());
     const response = yield requestPost(
-      API.VERIFY_PHONE_AFTER_SIGNUP,
+      EndPoint.VERIFY_PHONE_AFTER_SIGNUP,
       {
         phone: payload.data.phone,
         otp: payload.data.otp,
@@ -87,7 +87,7 @@ function* signupWithEmail({ payload }) {
   try {
     yield put(actions.setUserRequest());
     const response = yield requestPost(
-      API.SIGN_UP_WITH_EMAIL,
+      EndPoint.SIGN_UP_WITH_EMAIL,
       { email: payload.data },
       true
     );
@@ -141,7 +141,7 @@ function* login_with_email({ payload }) {
   try {
     yield put(actions.setUserRequest());
     const response = yield requestPut(
-      API.LOGIN_WITH_EMAIL,
+      EndPoint.LOGIN_WITH_EMAIL,
       { email: payload.data },
       true
     );
@@ -168,7 +168,7 @@ function* Email_Verification_after_Login({ payload }) {
   try {
     yield put(actions.setUserRequest());
     const response = yield requestPost(
-      API.EMAIL_VERIFICATION_Login,
+      EndPoint.EMAIL_VERIFICATION_Login,
       {
         email: payload.data.email,
         otp: payload.data.otp,
@@ -201,7 +201,7 @@ function* phone_verification_after_login({ payload }) {
   try {
     yield put(actions.setUserRequest());
     const response = yield requestPost(
-      API.Phone_Verification_Login,
+      EndPoint.Phone_Verification_Login,
       {
         phone: payload.data.phone,
         otp: payload.data.otp,
@@ -232,7 +232,7 @@ function* Email_Verification_signup({ payload }) {
   try {
     yield put(actions.setUserRequest());
     const response = yield requestPost(
-      API.VERIFY_EMAIL_AFTER_SIGNUP,
+      EndPoint.VERIFY_EMAIL_AFTER_SIGNUP,
       {
         email: payload.data.email,
         otp: payload.data.otp,
@@ -263,7 +263,7 @@ function* add_personal_information({ payload }) {
   try {
     yield put(actions.setUserRequest());
     const response = yield requestPost(
-      API.ADD_PERSONAL_INFORMATION,
+      EndPoint.ADD_PERSONAL_INFORMATION,
       {
         first_name: payload.data.first_name,
         last_name: payload.data.last_name,
