@@ -86,8 +86,8 @@ const FirstPage = (props) => {
           codeTextStyle={styles.codeText}
           defaultCode="RU"
           layout="second"
-          onChangeText={(text) => props.PhoneNumber(text)}
-          // onChangeFormattedText={(value) => setText(value)}
+          // onChangeText={(text) => props.PhoneNumber(text)}
+          onChangeFormattedText={(value) => props.PhoneNumber(value)}
           value={PhoneNumber}
           placeholder={t("phone_number")}
         />

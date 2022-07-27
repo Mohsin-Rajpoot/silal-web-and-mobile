@@ -22,13 +22,14 @@ const ConformationAccount = ({ navigation, route }) => {
   const { t } = useTranslation();
   const toastRef = useRef();
   const data = route?.params;
+  console.log("------Routes", data);
   const goToSignUpForm = () => {
-    navigation.navigate("Login", { params: { signUp: true } });
+    navigation.navigate("SignUpForm", data);
   };
 
-  const goToChoseAccount=()=>{
-    navigation.navigate('ChooseAccount')
-  }
+  const goToChoseAccount = () => {
+    navigation.navigate("ChooseAccount");
+  };
   const goToMainStack = () => {
     setTimeout(() => {
       navigation.navigate("MainStack");

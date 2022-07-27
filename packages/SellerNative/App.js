@@ -65,3 +65,37 @@ const App = () => {
 };
 
 export default App;
+
+// import axios from 'axios';
+// import React from 'react';
+// import { View, Text } from 'react-native';
+// import Routes from './src/routes';
+// const App = () => {
+//   React.useEffect(() => {
+//     var data = JSON.stringify({
+//       "first_name": "Shoaib",
+//       "last_name": "Sialkot",
+//       "id_number": 12321312
+//     });
+//     var config = {
+//       method: 'post',
+//       url: 'https://seller.dev.silal.app//api/v1/personal_info',
+//       headers: {
+//         'Authorization': 'Bearer eyJhbGciOiJIUzUxMiIsImlhdCI6MTY1ODczMTAxNSwiZXhwIjoxNjY2NTA3MDE1fQ.eyJiZWFyZXIgY29uZmlybWF0aW9uIjoiMzQxNjU4NzIwMjE1OTMwODYxIn0._15U0JLMhi3c2Rzq46_OS1HTsm-JtGihCaJzKM2jH7LJhNJmNqz1JU01hF-QruZ_3mabbt3rfv6d5gQcm2HYJQ',
+//         'Content-Type': 'application/json'
+//       },
+//       data : data
+//     };
+//     axios(config)
+//     .then(function (response) {
+//       console.log("____", JSON.stringify(response.data));
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     });
+//   }, []);
+//   return (
+//   <View><Text>Hello</Text></View>
+//   )
+// };
+// export default App;

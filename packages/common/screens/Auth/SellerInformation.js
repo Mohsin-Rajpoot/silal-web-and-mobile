@@ -47,37 +47,15 @@ const SellerInformation = ({ navigation }) => {
         userAction.addPersonalInformation({
           data,
           cb: (res) => {
+            if (res.code == 202) {
+              navigation.navigate("ConformationAccount", res);
+            }
             console.log("------DataInformation", res);
           },
         })
       );
     }
   };
-
-  useEffect(async () => {
-    var data = JSON.stringify({
-      first_name: "Saad",
-      last_name: "Butt",
-      id_number: 767857,
-    });
-
-    var config = {
-      method: "post",
-      url: "https://seller.dev.silal.app//api/v1/personal_info",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzUxMiIsImlhdCI6MTY1NzY5NTIyMCwiZXhwIjoxNjY1NDcxMjIwfQ.eyJiZWFyZXIgY29uZmlybWF0aW9uIjoiMzExNjU3Njg0NDIwMjMxOTIyIn0.ipN6xY74h8DkDrpaTRYjuoACWMGWEf1peHZ7utKtdveBAzSkfmWUUIIFWDpz30AvzNnUqPOgaNasdutRUDPOiw",
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
-    try {
-      const response = await axios(config);
-      console.log("-----REsponse", response);
-    } catch (error) {
-      console.log("-----REsponseERRir", error);
-    }
-  }, []);
 
   return (
     <SafeAreaView style={CommonStyle.mainContainer}>
@@ -183,6 +161,7 @@ const SellerInformation = ({ navigation }) => {
         ) : (
           <View />
         )}
+        {loading ? <Loader /> : null}
         <View style={{ height: verticalScale(!IsTablet ? 260 : 200) }} />
         <View style={styles.outerContainer}>
           {!IsTablet ? (

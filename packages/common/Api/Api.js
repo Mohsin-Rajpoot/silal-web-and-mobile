@@ -2,31 +2,28 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const base_url = "https://seller.dev.silal.app/";
+import { getUser } from "../store/SellerStore/Selector";
+import {select } from "@redux-saga/core/effects";
+console.log('------')
+const {user} =  select(getUser)
+console.log("----------------token", user)
 
 export const API = {
   BASE_URL: base_url,
-  LOGIN: "/login",
-  SIGNUP_Phone: "/auth_api/v1/sign_up/phone",
-  Phone_Verification_Login: "/auth_api/v1/login/phone/otp",
-  SIGN_UP_WITH_EMAIL: "/auth_api/v1/preferences/email",
-  LOGIN_WITH_PHONE: "/auth_api/v1/login/phone/send_otp",
-  LOGIN_WITH_EMAIL: "/auth_api/v1/login/email/send_otp",
-  EMAIL_VERIFICATION_Login: "/auth_api/v1/login/email/otp",
-  VERIFY_PHONE_AFTER_SIGNUP: "/auth_api/v1/sign_up/phone/otp",
-  VERIFY_EMAIL_AFTER_SIGNUP: "/auth_api/v1/sign_up/email/otp",
-  ADD_PERSONAL_INFORMATION: "/api/v1/personal_info",
-  Create_Store:'/api/v1/stores/' 
 };
 
 export const requestGet = (url, extraHeaders = {}) => {
   return new Promise((resolve, reject) => {
-    axios
-      .get(base_url + url, {
-        headers: {
-          Accept: "application/json",
-          ...extraHeaders,
-        },
-      })
+    var config = {
+      method: "get",
+      url: base_url + url,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      withCredentials: false,
+    };
+    axios(config)
       .then((response) => {
         console.log("API", "requestGet-success", url, response.data);
         resolve(response.data);
@@ -46,15 +43,22 @@ export const requestPost = (url, data, isRaw, extraHeaders = {}) => {
         formData.append(key, data[key]);
       }
     }
-  }
-  return new Promise((resolve, reject) => {
-    axios
-      .post(base_url + url, formData, {
-        headers: {
-          Accept: "application/json",
-          ...extraHeaders,
-        },
-      })
+  } 
+
+  return new Promise(async (resolve, reject) => {
+    let token = await AsyncStorage.getItem("isAuth");
+    console.log("----Token", token);
+    var config = {
+      method: "post",
+      url: base_url + url,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      withCredentials: false,
+      data: formData,
+    };
+    axios(config)
       .then((response) => {
         console.log("API", url, "requestPost-response.status", response.data);
         resolve(response.data);
@@ -93,15 +97,10 @@ export const requestPut = (url, data, isRaw, extraHeaders = {}) => {
       });
   });
 };
+
 axios.interceptors.request.use(
   async (config) => {
-    const token = await AsyncStorage.getItem("isAuth");
-    console.log("---Token", token);
     const requestConfig = config;
-    requestConfig.headers = {
-      Authorization: `bearer ${token}`,
-      Accept: "application/json",
-    };
     console.log("RESQUEST", config);
     return requestConfig;
   },

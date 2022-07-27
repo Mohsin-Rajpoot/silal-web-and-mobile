@@ -44,10 +44,15 @@ const CustomMap = ({ setMarker, marker, setRegion, region }) => {
       <MapView
         style={{ width: "100%", height: "100%" }}
         region={region}
-        onRegionChangeComplete={setRegion}
+        onRegionChange={setRegion}
       >
-        {marker && <Marker coordinate={marker} />}
+        <Marker
+          draggable
+          coordinate={marker}
+          onDragEnd={(e) => setMarker({ x: e.nativeEvent.coordinate })}
+        />
       </MapView>
+      {console.log("------Logs", region)}
     </View>
   );
 };

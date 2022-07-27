@@ -3,41 +3,27 @@ import * as actions from "./actions";
 
 import { API, requestPost, requestPut } from "../../../Api/Api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Platform } from "react-native";
+import { EndPoint } from "../../../Api/EndPoints";
+import { ErrorHandler } from "../../../util/errorHandler";
 
-import  ErrorHandler  from "../../../util/errorHandler";
-
-function* login({ payload }) {
-  try {
-    yield put(actions.setUserRequest());
-    const response = yield requestPost(
-      API.BASE_URL + API.LOGIN,
-      (isRaw = true)
-    );
-
-    yield put(actions.setUserSuccess(response.data));
-  } catch (error) {
-    yield put(actions.setUserError("Please check your internet connection"));
-    console.log("error in loginSaga", error);
-  }
-}
 //============== Sign up api with phone
 function* signUp({ payload }) {
   console.log("-----Payload", payload);
- 
+
   try {
     yield put(actions.setUserRequest());
-    response = yield requestPost(
-      API.SIGNUP_Phone,
+    const response = yield requestPost(
+      EndPoint.SIGNUP_Phone,
       { phone: payload.data },
       true
     );
+    console.log("----Respose", response);
     if (response.http_status_code == 201) {
       const resObj = {
         success: true,
         data: response.data,
         code: response.http_status_code,
-        expireCode:response.expiration_date
+        expireCode: response.expiration_date,
       };
       payload.cb(resObj);
       yield put(actions.setUserSuccess(response));
@@ -48,12 +34,14 @@ function* signUp({ payload }) {
         code: response.http_status_code,
       };
       payload.cb(resObj);
-      // yield put(actions.setUserSuccess(response));
+      yield put(actions.setUserSuccess(response));
     }
   } catch (error) {
+    console.log("-----ERrir", error);
     const errObj = ErrorHandler(error);
-    payload.failure(errObj);
-    yield put(actions.setUserError())
+    console.log("-----Errrrrr", errObj);
+    payload.cb(errObj);
+    yield put(actions.setUserError(error));
   }
 }
 //============verify phone after sign up
@@ -69,7 +57,9 @@ function* Phone_Verification_signup({ payload }) {
       },
       true
     );
+    console.log("----Response", response);
     if (response.http_status_code == 200) {
+      yield AsyncStorage.setItem("isAuth", response.bearer);
       yield put(actions.setUserSuccess(response));
       payload.cb(response);
     } else if (response.http_status_code == 401) {
@@ -80,6 +70,8 @@ function* Phone_Verification_signup({ payload }) {
       payload.cb(response);
     }
   } catch (error) {
+    yield put(actions.setUserError());
+    console.log("-======Error", error);
     if (error.response.data.http_status_code == 401) {
       payload.cb({ http_status_code: 401 });
       yield put(actions.setUserError());
@@ -279,12 +271,29 @@ function* add_personal_information({ payload }) {
       },
       true
     );
-    if (response.http_status_code == 200) {
+    console.log("-----REsponse Add", response);
+
+    if (response.http_status_code == 202) {
+      const resObj = {
+        success: true,
+        data: response.user,
+        code: response.http_status_code,
+        expireCode: response.expiration_date,
+      };
+      payload.cb(resObj);
       yield put(actions.setUserSuccess(response));
     } else {
-      yield put(actions.setUserError());
+      const resObj = {
+        success: false,
+        data: response.data,
+        code: response.http_status_code,
+      };
+      payload.cb(resObj);
     }
   } catch (error) {
+    console.log("-----Errri", error);
+    const errObj = ErrorHandler(error);
+    payload.cb(errObj);
     yield put(actions.setUserError());
   }
 }

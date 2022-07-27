@@ -16,13 +16,16 @@ import { useTranslation } from "react-i18next";
 import IsTablet from "../../components/native/IsTablet";
 import { verticalScale } from "react-native-size-matters";
 import { useDispatch } from "react-redux";
-const SignUpForm = ({ navigation }) => {
+import Toast from "react-native-simple-toast";
+import { useSelector } from "react-redux";
+const SignUpForm = ({ navigation, route }) => {
+  console.log("-------Route", route.params);
   const { t } = useTranslation();
   const AllFieldsData = {
     name: "",
     bio: "",
     address: {
-      address_line_2: " ",
+      address_line_2: "",
       address_line_1: "",
       town_id: "",
       notes: "",
@@ -67,8 +70,22 @@ const SignUpForm = ({ navigation }) => {
   };
   const moveForward = () => {
     const nextStep = Math.min(4, page + 1);
-
-    if (nextStep === 3) {
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    if (!CreateStore.name.length) {
+      Toast.show(t("enterName"));
+    } else if (!CreateStore.business_owner_full_name.length) {
+      Toast.show(t("enter_businessOwner"));
+    } else if (!CreateStore.business_phone.length) {
+      Toast.show(t("enter_phone"));
+    } else if(CreateStore.business_phone.length<8){
+      Toast.show("EnterValidPhone")
+    } else if (!CreateStore.business_email.length) {
+      Toast.show("enter_email");
+    } else if (reg.test(CreateStore.business_email) === false) {
+      Toast.show("enter_valid_email");
+    } else if(!CreateStore.tax_id.length){
+      Toast.show("tax_id")
+    } else if (nextStep === 3) {
       goToGettingStarted();
     } else {
       ref.current?.setPageWithoutAnimation(nextStep);
@@ -76,7 +93,7 @@ const SignUpForm = ({ navigation }) => {
     }
   };
   const goToGettingStarted = () => {
-    console.log("####################",CreateStore)
+    console.log("####################", CreateStore);
     // return
     var data123 = {
       BusinesName: BusinesName,
@@ -109,6 +126,7 @@ const SignUpForm = ({ navigation }) => {
     //   },
     // });
   };
+  console.log("-------Dataaaa", CreateStore);
   return (
     <>
       <HeaderBack name={`${t("Step")} ${page + 1}/3`} onGoBack={goprev} />
@@ -178,15 +196,17 @@ const SignUpForm = ({ navigation }) => {
             BusinesTax_Id={(text) =>
               setCreateStore({ ...CreateStore, tax_id: text })
             }
-            PhoneNumber={(text) => setCreateStore({ ...CreateStore, business_phone: text })}
+            PhoneNumber={(text) =>
+              setCreateStore({ ...CreateStore, business_phone: text })
+            }
           />
         </View>
         <View key="2">
           <SecondPage
-           Adress_One={(text) =>
-            setCreateStore({ ...CreateStore, address_line_1:text })
-          }
-          navigation={navigation}
+            Adress_One={(text) =>
+              setCreateStore({ ...CreateStore, address_line_1: text })
+            }
+            navigation={navigation}
           />
         </View>
         <View key="3">

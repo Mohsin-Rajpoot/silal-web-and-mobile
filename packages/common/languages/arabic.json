@@ -655,8 +655,12 @@
     "alreadyusedEmail": "Email is already in use by an account, you may want to login instead",
     "alreadySentEmail":"OTP Email was already sent",
     "noUser":"User not found",
-    "alreadySentPhone":"An Otp was already sent to this phone, Do you want to verify it",
+    "alreadySentPhone": "An Otp was already sent to this phone, Kindly verify it",
     "ClickHere":"Click here",
-    "Valid":"Valid"
+    "Valid":"Valid",
+    "enterName": "Kindly enter your name",
+    "enter_businessOwner":"Kindly enter business owner name",
+    "enter_phone":"Kindly enter phone number" ,
+    "tax_id":"Kindly add your tax id"
   }
 }

@@ -54,6 +54,7 @@ const index = ({
         )}
 
         <TextInput
+        
           placeholder={placeholderText}
           placeholderTextColor={
             placeholderTextColor ? placeholderTextColor : colors.light_grey
@@ -66,6 +67,7 @@ const index = ({
           onChangeText={onChangeText}
           keyboardType={keyboardType}
           autoCapitalize={false}
+          
           editable={iseditable ? iseditable : true}
         />
         {secureText && (

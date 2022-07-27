@@ -1,4 +1,4 @@
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import CustomText from "../../../components/CustomText";
 import styles from "../style";
@@ -10,8 +10,8 @@ import DropDownPicker from "react-native-dropdown-picker";
 import { useTranslation } from "react-i18next";
 import IsTablet from "../../../components/native/IsTablet";
 import { verticalScale } from "react-native-size-matters";
-
-const SecondPage = ({navigation}) => {
+import CustomMap from "../../../components/native/CustomMap";
+const SecondPage = ({ navigation }) => {
   const { t } = useTranslation();
   const [text, setText] = useState("");
   const [open, setOpen] = useState(false);
@@ -90,7 +90,6 @@ const SecondPage = ({navigation}) => {
                 placeholderText={t("Longitude")}
                 inputStyle={styles.addressInput}
                 isTab={IsTablet}
-            
               />
             </View>
             <View
@@ -114,14 +113,20 @@ const SecondPage = ({navigation}) => {
               marginBottom: verticalScale(!IsTablet ? 8 : 5),
             }}
           >
-            <TextInput
-              value={GPS}
-              onChangeText={(text) => props.GPS(text)}
-              placeholderText={t("GPS_location")}
-              inputStyle={styles.addressInput}
-              isTab={IsTablet}
-              onPress={()=>navigation.navigate("Map")}
-            />
+            <TouchableOpacity  onPress={()=>navigation.navigate("Map")}>
+              <View>
+                <CustomText label={t("GPS_location")}/>
+              </View>
+              {/* <TextInput
+                value={GPS}
+                onChangeText={(text) => props.GPS(text)}
+                placeholderText=}
+                inputStyle={styles.addressInput}
+                isTab={IsTablet}
+                onPress={()=>navigation.navigate("Map")}
+                iseditable={false}
+              /> */}
+            </TouchableOpacity>
           </View>
         </View>
         <View

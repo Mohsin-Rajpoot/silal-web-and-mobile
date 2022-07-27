@@ -24,6 +24,8 @@ import CustomText from "../../components/CustomText";
 import { verticalScale } from "react-native-size-matters";
 import { CheckBox, Icon } from "react-native-elements";
 import IsTablet from "../../components/native/IsTablet";
+import Toast from "react-native-easy-toast";
+import SimpleToast from "react-native-simple-toast";
 
 const Login = ({ navigation, route }) => {
   const { t } = useTranslation();
@@ -75,10 +77,24 @@ const Login = ({ navigation, route }) => {
                   },
                 });
               }, 1000);
-            } else if (res.http_status_code == 409) {
+            } else if (res.code == 409) {
               setError(t("alreadyusedPhone"));
-            } else if (res.http_status_code == 429) {
-              setError(t("alreadySentPhone"));
+            } else if (res.code == 429) {
+              SimpleToast.show(t("alreadySentPhone"))
+              setTimeout(()=>{
+                navigation.navigate("Verification", {
+                  params: {
+                    phone: phone,
+                    expireTimer: res.expireCode,
+                    activeTab: data?.params?.signupEmail
+                      ? 5
+                      : data?.params?.signUp
+                      ? 4
+                      : null,
+                    active: active,
+                  },
+                });
+              })
             }
           },
         })
