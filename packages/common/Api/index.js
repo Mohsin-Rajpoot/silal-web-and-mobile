@@ -1,5 +1,5 @@
 import axios from "axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import storage from 'redux-persist/lib/storage'
 
 const base_url = "https://seller.dev.silal.app/";
 
@@ -37,7 +37,7 @@ export const requestPost = (url, data, isRaw, extraHeaders = {}) => {
   }
 
   return new Promise(async (resolve, reject) => {
-    let token = await AsyncStorage.getItem("isAuth");
+    let token = await storage.getItem("isAuth");
     console.log("----Token", token);
     var config = {
       method: "post",

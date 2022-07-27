@@ -17,7 +17,7 @@ export const VERIFY_EMAIL_AFTER_SIGNUP_SAGA = "VERIFY_EMAIL_AFTER_SIGNUP_SAGA";
 export const USER_CREATESTORE_SAGA ="USER_CREATESTORE_SAGA";
 export const SET_TOKEN ="SET_TOKEN";
 export const LOGOUT = "LOGOUT";
-// Haris
+
 export const GET_STORE_DATA_SAGA = "GET_STORE_DATA_SAGA";
 export const DELETE_STORE_DATA_SAGA ="DELETE_STORE_DATA_SAGA";
 export const CREATE_STORE_DATA_SAGA ="CREATE_STORE_DATA_SAGA";
@@ -98,7 +98,6 @@ export const userCreateStoreSaga=(payload)=>({
   payload
 });
 
-// Haris
 export const get_store_data = (payload) => ({
   type: GET_STORE_DATA_SAGA,
   payload,

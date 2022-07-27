@@ -1,5 +1,4 @@
 import axios from "axios";
-import { select } from "@redux-saga/core/effects";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const base_url = "https://seller.dev.silal.app/";

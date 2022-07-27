@@ -6,7 +6,7 @@ import {Icon} from 'react-native-elements';
 import colors from '@SilalApp/common/assets/colors';
 import Preference from 'react-native-preference';
 import {useTranslation} from 'react-i18next';
-import {store, persistor} from '@SilalApp/common/Store/SellerStore/nativeStore';
+import {store, persistor} from '@SilalApp/common/store/SellerStore/nativeStore';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 
@@ -17,6 +17,7 @@ import Menu, {
   MenuOption,
   renderers,
 } from 'react-native-popup-menu';
+
 const App = () => {
   const {i18n} = useTranslation();
   const getLang = Preference.get('languageValue');

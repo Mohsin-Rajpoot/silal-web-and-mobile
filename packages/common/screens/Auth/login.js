@@ -16,7 +16,7 @@ import PhoneNumber from "../../components/native/PhoneNumberInput";
 import HeaderBack from "../../components/native/HeaderBack";
 import colors from "../../assets/colors";
 import { useTranslation } from "react-i18next";
-import * as userAction from "../../Store/SellerReducers/User/actions";
+import * as userAction from "../../store/SellerReducers/User/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../Loader";
 import DeviceInfo from "react-native-device-info";

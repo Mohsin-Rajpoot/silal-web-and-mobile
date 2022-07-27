@@ -8,7 +8,7 @@ import rootReducer from "./rootReducer";
 
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
-import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import hardSet from "redux-persist/lib/stateReconciler/hardSet";
 
 // Imports: Redux Root Saga
@@ -22,7 +22,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const persistConfig = {
   key: "root",
-  storage: AsyncStorage?AsyncStorage:storage,
+  storage: storage,
   stateReconciler: hardSet,
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);

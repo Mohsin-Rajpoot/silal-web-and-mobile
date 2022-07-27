@@ -24,10 +24,9 @@ import fonts from "../../assets/fonts";
 import { Icon } from "react-native-elements";
 import DeviceInfo from "react-native-device-info";
 import { verticalScale } from "react-native-size-matters";
-import { create_store_data, delete_store_data, get_store_data } from "../../Store/SellerReducers/User/actions";
 import { useDispatch } from "react-redux";
 const OnBoarding = ({ navigation }) => {
-  const { t , i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   const isTab = DeviceInfo.isTablet();
 
   const getLang = Preference.get("languageValue");
@@ -42,7 +41,6 @@ const OnBoarding = ({ navigation }) => {
   const ref = useRef(null);
   const [page, setPage] = useState(0);
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     lor(setOrientation);
@@ -101,21 +99,7 @@ const OnBoarding = ({ navigation }) => {
                 <View />
               )}
 
-              <TouchableOpacity activeOpacity={0.6} 
-              // onPress={() => setPage(3)}
-              onPress={()=> {
-                var data='haris'
-                dispatch(
-                  create_store_data({
-                    data,
-                    cb: (res) => {
-                     alert(res)
-                    },
-                  })
-                );
-                
-              }}
-              >
+              <TouchableOpacity activeOpacity={0.6} onPress={() => setPage(3)}>
                 <Text
                   style={!isTab ? styles.skipbuttonMobile : styles.skipbutton}
                 >
@@ -251,7 +235,10 @@ const OnBoarding = ({ navigation }) => {
                             !isTab
                               ? [
                                   styles.letsGoButton,
-                                  { backgroundColor: colors.blurPrimary , marginBottom:verticalScale(250)},
+                                  {
+                                    backgroundColor: colors.blurPrimary,
+                                    marginBottom: verticalScale(250),
+                                  },
                                 ]
                               : styles.button1
                           }
@@ -260,7 +247,6 @@ const OnBoarding = ({ navigation }) => {
                           onPress={goToLogin}
                           isTab={isTab}
                         />
-                     
                       </View>
                     </>
                   ) : (
@@ -270,11 +256,8 @@ const OnBoarding = ({ navigation }) => {
               )}
             />
           </View>
-        
         </View>
-
       </ScrollView>
-     
     </SafeAreaView>
   );
 };
