@@ -9,7 +9,6 @@ import { ErrorHandler } from "../../../util/errorHandler";
 //============== Sign up api with phone
 function* signUp({ payload }) {
   console.log("-----Payload", payload);
-
   try {
     yield put(actions.setUserRequest());
     const response = yield requestPost(
@@ -21,26 +20,24 @@ function* signUp({ payload }) {
     if (response.http_status_code == 201) {
       const resObj = {
         success: true,
-        data: response.data,
+        data: response,
         code: response.http_status_code,
         expireCode: response.expiration_date,
       };
       payload.cb(resObj);
-      yield put(actions.setUserSuccess(response));
     } else {
       const resObj = {
         success: false,
-        data: response.data,
+        data: response,
         code: response.http_status_code,
       };
       payload.cb(resObj);
-      yield put(actions.setUserSuccess(response));
     }
   } catch (error) {
     console.log("-----ERrir", error);
     const errObj = ErrorHandler(error);
     console.log("-----Errrrrr", errObj);
-    payload.cb(errObj);
+    payload.failure(errObj);
     yield put(actions.setUserError(error));
   }
 }

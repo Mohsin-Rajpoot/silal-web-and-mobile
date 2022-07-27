@@ -2,12 +2,12 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import FormControl from "../../components/auth/FormControl/FormControl";
 import Gobackbuton from "../../components/auth/Gobackbutton/Gobackbuton";
 import * as userAction from "@SilalApp/common/Store/SellerReducers/User/actions";
 import { useDispatch } from "react-redux";
+import CountrySelectForm from "../../components/CountrySelectForm/CountrySelectForm";
 
 function Loginpage() {
   const history = useHistory();
@@ -15,24 +15,8 @@ function Loginpage() {
   // const state = useSelector
   const [formValue, setFormValue] = useState("");
   const [error, setError] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
 
-  const options = [
-    {
-      label: "RU + 7",
-      value: "ru",
-      default: true,
-    },
-    {
-      label: "BD + 7",
-      value: "bd",
-      default: false,
-    },
-    {
-      label: "PK + 7",
-      value: "pk",
-      default: false,
-    },
-  ];
   // animation phone number field
   const animate1 = {
     x: [-100, 0],
@@ -51,20 +35,27 @@ function Loginpage() {
       setError("Please Enter Phone Number!");
       return;
     }
-    let data = "+92" + formValue;
+    let data = selectedCountry.value + formValue;
     let payload = {
       data,
       cb: (res) => {
         console.log("---------------------------");
         console.log(res);
-        if (res.success) {
-          setTimeout(() => {
-            setError("");
-          }, 1000);
-          history.push({
-            pathname: "/otp",
-            state: { phoneNo: "+92" + formValue, previousPage: "signup" },
-          });
+        if (res.code === 201) {
+          if (res.success) {
+            setTimeout(() => {
+              setError(data.msg);
+            }, 1000);
+            history.push({
+              pathname: "/otp",
+              state: {
+                phoneNo: selectedCountry.value + formValue,
+                previousPage: "signup",
+              },
+            });
+          } else {
+            setError(data.msg);
+          }
         } else {
           setError("SomeThing Went Wrong!");
         }
@@ -102,17 +93,7 @@ function Loginpage() {
               <FormControl labelValue="Phone Number" htmlFor="PhoneNumber" />
               <div className="row ">
                 <div className="col1 col">
-                  <FormControl
-                    style={{ border: "none", padding: "5px" }}
-                    select={true}
-                    options={options}
-                    dropdownIcon={
-                      <Icon
-                        icon="ant-design:caret-down-filled"
-                        color="#05AE4B"
-                      />
-                    }
-                  />
+                  <CountrySelectForm setSelectedCountry={setSelectedCountry} />
                 </div>
                 <div className="col2 col">
                   <FormControl
