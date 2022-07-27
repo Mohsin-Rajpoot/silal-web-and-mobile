@@ -1,7 +1,7 @@
-import { takeLatest, put } from "@redux-saga/core/effects";
+import { takeLatest, put, select } from "@redux-saga/core/effects";
 import * as actions from "./actions";
 
-import { API, requestPost, requestPut } from "../../../Api/Api";
+import { API, requestPost, requestPut } from "../../../Api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { EndPoint } from "../../../Api/EndPoints";
 import { ErrorHandler } from "../../../util/errorHandler";
@@ -45,7 +45,8 @@ function* signUp({ payload }) {
 function* Phone_Verification_signup({ payload }) {
   console.log("------Payload1", payload);
   try {
-    yield put(actions.setUserRequest());
+    // yield put(actions.setUserRequest());
+    console.log(payload);
     const response = yield requestPost(
       EndPoint.VERIFY_PHONE_AFTER_SIGNUP,
       {
@@ -258,6 +259,7 @@ function* Email_Verification_signup({ payload }) {
 function* add_personal_information({ payload }) {
   console.log("------Payload Information", payload);
   try {
+    const { token } = yield select(getToken);
     yield put(actions.setUserRequest());
     const response = yield requestPost(
       EndPoint.ADD_PERSONAL_INFORMATION,
@@ -267,6 +269,9 @@ function* add_personal_information({ payload }) {
         id_number: payload.data.id_number,
       },
       true
+      // {headers: {
+      //   'Authorization': `Bearer ${token}`
+      // }}
     );
     console.log("-----REsponse Add", response);
 
@@ -313,6 +318,44 @@ function* createStore({ payload }) {
     console.log("======Error", error);
     yield put(actions.setUserError("Please check your internet connection"));
   }
+}
+// haris
+//============Get Store Data
+function* Get_Store_Data({ payload }) {
+  alert("********Get_Store_Data********");
+  console.log("------Payload1", payload);
+}
+
+// ==========Delete Store Data
+function* delete_store_data({ payload }) {
+  alert("*******delete_store_data*******");
+  console.log("------Payload1", payload);
+}
+// ==========Create Store Data
+function* create_store_data({ payload }) {
+  alert("*****Create_store_data*******");
+  // console.log("------Payload1", payload);
+
+  try {
+    // yield put(actions.setUserRequest());
+    const response = yield requestPost(API.Create_Store, payload, true);
+    console.log("....create store response........", response);
+    if (response.http_status_code == 201) {
+      console.log("======Response", response.msg);
+      payload.cb("Create User");
+      yield put(actions.setUserSuccess(response));
+    } else {
+      console.log("Something went wrong");
+    }
+  } catch (error) {
+    console.log("======Error", error);
+    yield put(actions.setUserError("Please check your internet connection"));
+  }
+}
+// ==========Update Store Data
+function* update_store_data({ payload }) {
+  alert("********update_store_data************");
+  console.log("------Payload1", payload);
 }
 
 //===============Watchers=============================
@@ -361,4 +404,18 @@ export function* actionPhoneVerificationAfterLoginWatcher() {
     actions.USER_PHONE_VERIFICATION_LOGIN,
     phone_verification_after_login
   );
+}
+
+// Haris
+export function* actionGetStoreDataWatcher() {
+  return yield takeLatest(actions.GET_STORE_DATA_SAGA, Get_Store_Data);
+}
+export function* actionDeleteStoreDataWatcher() {
+  return yield takeLatest(actions.DELETE_STORE_DATA_SAGA, delete_store_data);
+}
+export function* actionCreateStoreDataWatcher() {
+  return yield takeLatest(actions.CREATE_STORE_DATA_SAGA, create_store_data);
+}
+export function* actionUpdateStoreDataWatcher() {
+  return yield takeLatest(actions.UPDATE_STORE_DATA_SAGA, update_store_data);
 }

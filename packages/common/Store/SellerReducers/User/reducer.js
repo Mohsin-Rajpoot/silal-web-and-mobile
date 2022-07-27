@@ -4,11 +4,14 @@ const init = {
   loading: false,
   error: '',
   user: {},
+  token: "",
 };
 export default (state = init, action) => {
   switch (action.type) {
     case actions.SET_USER_REQUEST:
       return {...state, loading: true, error: '', user: {}};
+    case actions.SET_TOKEN:
+      return {...state, token: action.payload.token};
     case actions.SET_USER_SUCCESS:
       return {...state, loading: false, user: action.payload, error: ''};
     case actions.SET_USER_ERROR:

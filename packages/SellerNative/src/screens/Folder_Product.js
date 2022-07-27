@@ -31,6 +31,7 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import {Picker} from '@react-native-picker/picker';
 import Foundation from 'react-native-vector-icons/Foundation';
 import MultiSelectDropDown from '../components/MultiSelectDropDown';
+import colors from '@SilalApp/common/assets/colors';
 
 const Secondary = '#002733';
 
@@ -187,7 +188,7 @@ export default function Archive_orders({title, navigation}) {
                               name="chevron-down"
                               style={[
                                 styles.cross_icon,
-                                {color: '#4C6870', fontSize: 20},
+                                {color: colors.sidebar, fontSize: 20},
                               ]}
                             />
                           </View>
@@ -240,7 +241,7 @@ export default function Archive_orders({title, navigation}) {
                       placeholder="Amet minim mollit non 
                                         deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
                                         duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-                      placeholderTextColor="#002733"
+                      placeholderTextColor={colors.black}
                       style={styles.TextInputMAinView}
                     />
                   </View>
@@ -257,7 +258,7 @@ export default function Archive_orders({title, navigation}) {
                         <View style={styles.CalViewFaltModal}>
                           <TextInput
                             placeholder="313 cal"
-                            placeholderTextColor="#002733"
+                            placeholderTextColor={colors.black}
                             style={styles.CalInputFaltModal}
                           />
                         </View>
@@ -287,14 +288,14 @@ export default function Archive_orders({title, navigation}) {
                     <View style={{flexDirection: 'row'}}>
                       <Text style={styles.ToppingTitle}>
                         Toppings:{' '}
-                        <Text style={{color: '#4C6870', fontSize: 13}}>
+                        <Text style={{color: colors.sidebar, fontSize: 13}}>
                           Lettuce, Cheese, Tomatoes, Pickle
                         </Text>
                       </Text>
                       <View style={styles.WhitePencilBkgView}>
                         <Foundation
                           name="pencil"
-                          style={{fontSize: 20, color: '#fff'}}
+                          style={{fontSize: 20, color:colors.textWhite}}
                         />
                       </View>
                     </View>
@@ -307,7 +308,7 @@ export default function Archive_orders({title, navigation}) {
                         <TouchableOpacity style={styles.FlatLettuce}>
                           <Text
                             style={{
-                              color: '#4C6870',
+                              color: colors.sidebar,
                               fontFamily: 'Lato-Regular',
                             }}>
                             Lettuce
@@ -321,14 +322,14 @@ export default function Archive_orders({title, navigation}) {
                     <View style={{flexDirection: 'row'}}>
                       <Text style={styles.ToppingTitle}>
                         Sauces:{' '}
-                        <Text style={{color: '#4C6870', fontSize: 13}}>
+                        <Text style={{color: colors.sidebar, fontSize: 13}}>
                           Ketchup, Maynoaise, BBQ
                         </Text>
                       </Text>
                       <View style={styles.WhitePencilBkgView}>
                         <Foundation
                           name="pencil"
-                          style={{fontSize: 20, color: '#fff'}}
+                          style={{fontSize: 20, color: colors.textWhite}}
                         />
                       </View>
                     </View>
@@ -350,14 +351,14 @@ export default function Archive_orders({title, navigation}) {
                     <View style={{flexDirection: 'row'}}>
                       <Text style={styles.ToppingTitle}>
                         Drinks:{' '}
-                        <Text style={{color: '#4C6870', fontSize: 13}}>
+                        <Text style={{color: colors.sidebar, fontSize: 13}}>
                           Pepsi, Nestea, Coca-cola, Water, 7UP
                         </Text>
                       </Text>
                       <View style={styles.WhitePencilBkgView}>
                         <Foundation
                           name="pencil"
-                          style={{fontSize: 20, color: '#fff'}}
+                          style={{fontSize: 20, color: colors.textWhite}}
                         />
                       </View>
                     </View>
@@ -399,12 +400,12 @@ export default function Archive_orders({title, navigation}) {
                   <Entypo
                     onPress={() => setOpenmodal(false)}
                     name="cross"
-                    style={{fontSize: 25, color: '#CCD4D6'}}
+                    style={{fontSize: 25, color: colors.light_grey}}
                   />
                 </View>
                 <Text style={styles.ModalParagraph}>
                   Are you sure you want to delete the{' '}
-                  <Text style={{fontFamily: 'Lato-Bold', color: '#002733'}}>
+                  <Text style={{fontFamily: 'Lato-Bold', color: colors.black}}>
                     #723DN2{' '}
                   </Text>{' '}
                   item from Salads folder?
@@ -412,12 +413,12 @@ export default function Archive_orders({title, navigation}) {
                 <View style={styles.ModalButtonContainer}>
                   <TouchableOpacity
                     onPress={() => setOpenmodal(false)}
-                    style={[{backgroundColor: '#CCD4D6'}, styles.Buttonss]}>
+                    style={[{backgroundColor: colors.light_grey}, styles.Buttonss]}>
                     <Text style={styles.DeleteModal}>Cancel</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    style={[{backgroundColor: '#05AE4B'}, styles.Buttonss]}>
-                    <Text style={[{color: '#fff'}, styles.DeleteModal]}>
+                    style={[{backgroundColor: colors.primary}, styles.Buttonss]}>
+                    <Text style={[{color: colors.textWhite}, styles.DeleteModal]}>
                       Delete
                     </Text>
                   </TouchableOpacity>
@@ -441,8 +442,8 @@ export default function Archive_orders({title, navigation}) {
                           : false
                       }
                       onPress={() => setcheck(index)}
-                      checkedColor="#05AE4B"
-                      uncheckedColor="#CCD4D6"
+                      checkedColor={colors.primary}
+                      uncheckedColor={colors.light_grey}
                     />
                   </View>
                   <View
@@ -532,7 +533,7 @@ export default function Archive_orders({title, navigation}) {
                             name="dots-three-vertical"
                             style={[
                               styles.cross_icon,
-                              {color: '#4C6870', fontSize: 20},
+                              {color: colors.sidebar, fontSize: 20},
                             ]}
                           />
                         </View>
@@ -644,14 +645,14 @@ export default function Archive_orders({title, navigation}) {
                 name="keyboard-backspace"
                 style={{
                   fontSize: 40,
-                  color: '#002733',
+                  color: colors.black,
                   fontFamily: 'Poppins-Bold',
                 }}
               />
               <Text
                 style={{
                   fontSize: 25,
-                  color: '#002733',
+                  color: colors.black,
                   fontFamily: 'Poppins-Bold',
                 }}>
                 Salads
@@ -669,7 +670,7 @@ export default function Archive_orders({title, navigation}) {
         </View>
         <View
           style={{
-            backgroundColor: '#fff',
+            backgroundColor: colors.textWhite,
             width: '100%',
             paddingVertical: 12,
             paddingHorizontal: 10,
@@ -699,13 +700,13 @@ export default function Archive_orders({title, navigation}) {
               name="chevron-back"
               style={{color: '#d1d8da', fontSize: 24}}
             />
-            <Text style={{fontFamily: 'Lato-Regular', color: 'black'}}>1</Text>
+            <Text style={{fontFamily: 'Lato-Regular', color: colors.black}}>1</Text>
             <Text>2</Text>
             <Text>3</Text>
             <Text>4</Text>
             <MaterialCommunityIcons
               name="chevron-right-circle"
-              style={{color: '#4c6870', fontSize: 24}}
+              style={{color: colors.sidebar, fontSize: 24}}
             />
           </View>
         </View>
@@ -721,7 +722,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   single_order: {
-    backgroundColor: 'white',
+    backgroundColor: colors.textWhite,
     marginHorizontal: 10,
     marginVertical: 5,
     borderRadius: 5,
@@ -736,7 +737,7 @@ const styles = StyleSheet.create({
   },
   filter: {
     flexDirection: 'row',
-    backgroundColor: 'white',
+    backgroundColor: colors.textWhite,
     height: 40,
     width: 150,
     borderRadius: 5,
@@ -751,11 +752,11 @@ const styles = StyleSheet.create({
   },
   orderid_text: {
     fontSize: 15,
-    color: '#CCD4D6',
+    color: colors.light_grey,
     fontWeight: 'bold',
   },
   order_timer: {
-    backgroundColor: '#F2A341',
+    backgroundColor: colors.orange1,
     borderRadius: '0 0 5 5',
   },
   order_title: {
@@ -767,7 +768,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   cross_icon: {
-    color: '#CCD4D6',
+    color: colors.light_grey,
     fontSize: 16,
   },
   more_order: {
@@ -781,20 +782,20 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   accept_btn: {
-    backgroundColor: '#05AE4B',
+    backgroundColor: colors.primary,
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
     alignItems: 'center',
   },
   accept_btn_txt: {
-    color: 'white',
+    color: colors.textWhite,
     fontSize: 15,
   },
   order_recve_name: {
     fontSize: 17,
     fontWeight: '400',
-    color: 'black',
+    color: colors.black,
   },
   order_recve_phone_view: {
     flexDirection: 'row',
@@ -808,7 +809,7 @@ const styles = StyleSheet.create({
   },
   ready_btn: {
     flex: 1,
-    backgroundColor: '#05AE4B',
+    backgroundColor: colors.primary,
     borderRadius: 5,
     alignItems: 'center',
     paddingVertical: 10,
@@ -820,7 +821,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   delivryby_btn_txt: {
-    color: '#F2A341',
+    color: colors.orange1,
   },
   all_orders: {
     backgroundColor: '#F2F4F5',
@@ -838,7 +839,7 @@ const styles = StyleSheet.create({
   render_all_orders: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    backgroundColor: 'white',
+    backgroundColor: colors.textWhite,
     // padding: 10
   },
   render_all_order_single: {
@@ -856,7 +857,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '50%',
     alignSelf: 'flex-end',
-    backgroundColor: 'white',
+    backgroundColor: colors.textWhite,
     padding: 20,
     shadowColor: '#000',
     shadowOffset: {
@@ -869,7 +870,7 @@ const styles = StyleSheet.create({
   },
   orderid_text: {
     fontSize: 15,
-    color: 'black',
+    color: colors.black,
     fontWeight: 'bold',
   },
   modal_header: {
@@ -878,7 +879,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   modal_recuring: {
-    backgroundColor: '#05AE4B',
+    backgroundColor: colors.primary,
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,
@@ -895,11 +896,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modal_title_second: {
-    color: 'black',
+    color: colors.black,
     fontSize: 15,
   },
   modal_title_first: {
-    color: '#CCD4D6',
+    color: colors.light_grey,
     fontSize: 15,
     width: 150,
   },
@@ -910,7 +911,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   calndr_date: {
-    backgroundColor: 'white',
+    backgroundColor: colors.textWhite,
     height: 40,
     width: 200,
     borderRadius: 5,
@@ -922,7 +923,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
   },
   toast: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.textWhite,
     // marginHorizontal:30,
     paddingVertical: 10,
     paddingHorizontal: 20,
@@ -963,20 +964,20 @@ const styles = StyleSheet.create({
   SwiperTextfg: {
     textAlign: 'center',
     paddingVertical: 3,
-    color: '#002733',
+    color: colors.black,
     // borderRadius: 5,
   },
   SwiperTextbg: {
     textAlign: 'center',
     // paddingVertical: 3,
-    color: '#FFFFFF',
+    color: colors.textWhite,
     paddingHorizontal: 5,
     paddingVertical: 8,
     fontSize: 16,
   },
   rowBack: {
     height: 55,
-    backgroundColor: '#fff',
+    backgroundColor: colors.textWhite,
   },
   BackButtons: {
     height: 60,
@@ -985,7 +986,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   BackButtonsText: {
-    color: '#fff',
+    color: colors.textWhite,
     fontSize: 15,
     fontFamily: 'Lato-Medium',
   },
@@ -999,7 +1000,7 @@ const styles = StyleSheet.create({
   ModeView: {
     height: 180,
     width: 410,
-    backgroundColor: '#fff',
+    backgroundColor: colors.textWhite,
     borderRadius: 5,
     elevation: 0.2,
   },
@@ -1015,7 +1016,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
   },
   ModalParagraph: {
-    color: '#4C6870',
+    color: colors.sidebar,
     fontFamily: 'Lato-Regular',
     paddingHorizontal: 20,
     fontSize: 15,
@@ -1043,7 +1044,7 @@ const styles = StyleSheet.create({
   ModalContainerPreview: {
     width: '40%',
     height: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: colors.textWhite,
     position: 'absolute',
     right: 0,
     paddingVertical: 20,
@@ -1083,10 +1084,10 @@ const styles = StyleSheet.create({
   },
   closeShowmodalicon: {
     fontSize: 30,
-    color: '#002733',
+    color: colors.black,
   },
   SaveButton: {
-    backgroundColor: '#05AE4B',
+    backgroundColor: colors.primary,
     width: '80%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -1095,7 +1096,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   Savetext: {
-    color: '#fff',
+    color: colors.textWhite,
     fontSize: 16,
     fontFamily: 'Poppins-SemiBold',
   },
@@ -1117,7 +1118,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   InnerViewMainImage: {
-    backgroundColor: '#fff',
+    backgroundColor: colors.textWhite,
     height: 33,
     width: 35,
     justifyContent: 'center',
@@ -1129,17 +1130,17 @@ const styles = StyleSheet.create({
   },
   IconePencilMain: {
     fontSize: 20,
-    color: '#4C6870',
+    color: colors.sidebar,
   },
   ModalSubTitle: {
-    color: '#002733',
+    color: colors.black,
     fontSize: 17,
     fontFamily: 'Poppins-SemiBold',
   },
   dropDownModalTitle: {
     fontSize: 12,
     fontFamily: 'Lato-Semibold',
-    color: '#002733',
+    color: colors.black,
     paddingVertical: 4,
   },
   TextInputMAinView: {
@@ -1149,7 +1150,7 @@ const styles = StyleSheet.create({
     height: 150,
     borderWidth: 1,
     borderColor: '#f1f1f1',
-    color: '#002733',
+    color: colors.black,
     borderRadius: 5,
     paddingVertical: 15,
     paddingHorizontal: 10,
@@ -1169,7 +1170,7 @@ const styles = StyleSheet.create({
     height: 40,
   },
   AddViewModal: {
-    color: '#002733',
+    color: colors.black,
     fontSize: 17,
     fontFamily: 'Poppins-SemiBold',
     paddingVertical: 10,
@@ -1186,13 +1187,13 @@ const styles = StyleSheet.create({
   },
   ToppingTitle: {
     fontSize: 14,
-    color: '#002733',
+    color: colors.black,
     paddingHorizontal: 5,
     width: 280,
     paddingVertical: 4,
   },
   WhitePencilBkgView: {
-    backgroundColor: '#4C6870',
+    backgroundColor: colors.sidebar,
     height: 30,
     width: 30,
     justifyContent: 'center',
@@ -1205,14 +1206,14 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     borderRadius: 5,
     borderWidth: 1,
-    backgroundColor: '#CCD4D6',
+    backgroundColor: colors.light_grey,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
-    borderColor: '#CCD4D6',
+    borderColor: colors.orange1,
   },
   TextStyleFlatModal: {
-    color: '#4C6870',
+    color: colors.sidebar,
     fontFamily: 'Lato-Regular',
   },
   BottomButtonModal: {

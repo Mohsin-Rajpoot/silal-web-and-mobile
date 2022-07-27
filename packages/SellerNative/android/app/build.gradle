@@ -176,8 +176,7 @@ signingConfigs
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
-            // Apk
-             signingConfig signingConfigs.release
+           
             if (nativeArchitectures) {
                 ndk {
                     abiFilters nativeArchitectures.split(',')

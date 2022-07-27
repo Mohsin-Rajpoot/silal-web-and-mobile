@@ -10,6 +10,7 @@ import {
 } from '@SilalApp/common/components/native';
 import images from '../../../../Assets/index';
 import styles from './Styles';
+import colors from '@SilalApp/common/assets/colors';
 const Statistics = () => {
   const data = [
     {
@@ -159,7 +160,7 @@ const Statistics = () => {
         <View
           style={{
             width: '64%',
-            backgroundColor: '#fff',
+            backgroundColor: colors.textWhite,
             elevation: 2,
             marginHorizontal: 10,
           }}>

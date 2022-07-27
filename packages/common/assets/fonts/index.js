@@ -6,5 +6,6 @@ export default {
     LatoMedium:'Lato-Medium',
     PoppinsMedium:'Poppins-Medium',
     PoppinsRegular:'Poppins-Regular',
-    LatoSemiBold:'Lato-SemiBold'
+    LatoSemiBold:'Lato-SemiBold',
+    LightPopins:'Poppins-Light'
 }

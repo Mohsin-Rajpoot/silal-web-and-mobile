@@ -1,16 +1,8 @@
 import axios from "axios";
+import { select } from "@redux-saga/core/effects";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const base_url = "https://seller.dev.silal.app/";
-import { getUser } from "../store/SellerStore/Selector";
-import {select } from "@redux-saga/core/effects";
-console.log('------')
-const {user} =  select(getUser)
-console.log("----------------token", user)
-
-export const API = {
-  BASE_URL: base_url,
-};
 
 export const requestGet = (url, extraHeaders = {}) => {
   return new Promise((resolve, reject) => {
@@ -43,7 +35,7 @@ export const requestPost = (url, data, isRaw, extraHeaders = {}) => {
         formData.append(key, data[key]);
       }
     }
-  } 
+  }
 
   return new Promise(async (resolve, reject) => {
     let token = await AsyncStorage.getItem("isAuth");
